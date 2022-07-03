@@ -15,6 +15,8 @@
 		<properties>
 			<property name="jakarta.persistence.schema-generation.database.action" value="create"/>
 			<property name="jpa.showSql" value="true"/>
+			<property name="hibernate.search.default.directory_provider" value="local-heap"/>
+			<property name="hibernate.search.default.indexBase" value="."/>
 			<property name="openjpa.jdbc.DBDictionary" value="postgres"/>
 			<property name="eclipselink.target-database"
 					  value="org.eclipse.persistence.platform.database.PostgreSQLPlatform"/>
