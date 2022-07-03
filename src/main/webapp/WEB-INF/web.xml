@@ -21,11 +21,6 @@
       <welcome-file>/index.html</welcome-file>
     </welcome-file-list>
 
-    <error-page>
-      <error-code>403</error-code>
-      <location>/error403.html</location>
-    </error-page>
-
     <context-param>
         <param-name>jakarta.faces.FACELETS_REFRESH_PERIOD</param-name>
         <param-value>-1</param-value>

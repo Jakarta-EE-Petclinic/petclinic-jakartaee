@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.config.messages;
+package org.woehlke.jakartaee.petclinic.application.messages;
 
 import jakarta.inject.Qualifier;
 

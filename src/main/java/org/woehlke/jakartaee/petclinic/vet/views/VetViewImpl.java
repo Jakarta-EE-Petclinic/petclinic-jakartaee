@@ -1,11 +1,8 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
-import jakarta.security.enterprise.SecurityContext;
-import jakarta.security.enterprise.authentication.mechanism.http.FormAuthenticationMechanismDefinition;
-import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import lombok.extern.java.Log;
 import org.primefaces.model.DualListModel;
-import org.woehlke.jakartaee.petclinic.application.config.messages.MessageProvider;
+import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FrontendMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
