@@ -28,7 +28,7 @@
 					<p:menubar>
 						<p:menuitem
 								value="#{msg['org.woehlke.jakartaee.petclinic.home']}"
-								url="start.jsf" icon="pi pi-home"
+								url="home.jsf" icon="pi pi-home"
 								update="messages"
 								ajax="false"/>
 						<p:menuitem
@@ -58,10 +58,6 @@
 								value="#{msg['org.woehlke.jakartaee.petclinic.info']}"
 								url="info.jsf"
 								icon="fa fa-fw fa-info-circle"/>
-						<p:menuitem
-								value="#{msg['org.woehlke.jakartaee.petclinic.user']}"
-								url="user.jsf"
-								icon="fa fa-solid fa-user" rendered="#{userBean.isAuthenticated()}"/>
 						<f:facet name="options">
 							<span class="ui-inputgroup">
 								<p:selectOneMenu value="#{languageView.localeSelected}">
