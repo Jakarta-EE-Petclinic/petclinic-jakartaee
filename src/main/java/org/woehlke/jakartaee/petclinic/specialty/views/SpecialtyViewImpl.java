@@ -51,9 +51,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
     private SpecialtyService entityService;
 
     @Inject
-    private SecurityContext securityContext;
-
-    @Inject
     private LanguageView languageView;
 
     @Inject

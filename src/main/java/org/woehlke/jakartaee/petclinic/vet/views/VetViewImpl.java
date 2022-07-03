@@ -46,9 +46,6 @@ public class VetViewImpl implements VetView {
     private MessageProvider provider;
 
     @Inject
-    private SecurityContext securityContext;
-
-    @Inject
     private LanguageView languageView;
 
     @Inject

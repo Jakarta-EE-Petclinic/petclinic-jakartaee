@@ -43,9 +43,6 @@ public class PetTypeViewImpl implements PetTypeView {
     private PetTypeService entityService;
 
     @Inject
-    private SecurityContext securityContext;
-
-    @Inject
     private LanguageView languageView;
 
     @Inject

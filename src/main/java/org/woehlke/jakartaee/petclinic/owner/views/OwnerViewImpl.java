@@ -59,9 +59,6 @@ public class OwnerViewImpl implements OwnerView {
     private VisitService visitService;
 
     @Inject
-    private SecurityContext securityContext;
-
-    @Inject
     private LanguageView languageView;
 
     @Inject
