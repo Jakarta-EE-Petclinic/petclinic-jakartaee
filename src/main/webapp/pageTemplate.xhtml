@@ -43,34 +43,27 @@
 								icon="fa fa-fw fa-user"
 								update="messages"
 								ajax="false"/>
+						<p:menuitem value="#{msg['org.woehlke.jakartaee.petclinic.petType.list']}"
+								url="petType.jsf"
+								icon="fa fa-fw fa-paw"
+								update="messages"
+								ajax="false"/>
 						<p:menuitem
 								value="#{msg['org.woehlke.jakartaee.petclinic.veterinarian.list']}"
 								url="veterinarian.jsf"
 								icon="fa fa-fw fa-stethoscope"
 								update="messages"
 								ajax="false"/>
-						<p:submenu label="#{msg['org.woehlke.jakartaee.petclinic.masterdata']}" icon="fa fa-fw fa-list">
-							<p:menuitem value="#{msg['org.woehlke.jakartaee.petclinic.petType.list']}"
-								url="petType.jsf"
-								icon="fa fa-fw fa-paw"
-								update="messages"
-								ajax="false"/>
-							<p:separator/>
-							<p:menuitem
+						<p:menuitem
 								value="#{msg['org.woehlke.jakartaee.petclinic.specialty.list']}"
 								url="specialty.jsf"
 								icon="fa fa-fw fa-briefcase"
 								update="messages"
 								ajax="false"/>
-						</p:submenu>
 						<p:menuitem
 								value="#{msg['org.woehlke.jakartaee.petclinic.info']}"
 								url="info.jsf"
 								icon="fa fa-fw fa-info-circle"/>
-						<p:menuitem
-								value="#{msg['org.woehlke.jakartaee.petclinic.help']}"
-								url="help.jsf"
-								icon="fa fa-fw fa-question-circle"/>
 						<p:menuitem
 								value="#{msg['org.woehlke.jakartaee.petclinic.user']}"
 								url="user.jsf"
