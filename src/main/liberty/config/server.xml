@@ -7,7 +7,9 @@
 		<feature>jsonb-2.0</feature>
 		<feature>jsonp-2.0</feature>
 		<feature>xmlBinding-3.0</feature>
+		<!--
 		<feature>sessionDatabase-1.0</feature>
+		-->
 		<feature>adminCenter-1.0</feature>
 		<feature>pages-3.0</feature>
 		<feature>restConnector-2.0</feature>
@@ -15,18 +17,23 @@
 		<feature>appAuthentication-2.0</feature>
 		<feature>appAuthorization-2.0</feature>
 		<feature>audit-1.0</feature>
+		<feature>ssl-1.0</feature>
 	</featureManager>
 
 	<include location="userRegistry.xml"/>
 
-	<httpSession idLength="56"/>
+	<httpSession idLength="56" cookieHttpOnly="false" cookieName="JSESSIONID" invalidationTimeout="8h"/>
+	<ltpa expiration="8h" keysFileName="${server.config.dir}/resources/security/ltpa.keys"
+		  keysPassword="{xor}KixsLS8+ZZ2="/>
 
 	<applicationMonitor updateTrigger="mbean" />
-	<logging consoleLogLevel="INFO" />
+
 	<httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="9080" httpsPort="9443">
 		<accessLogging filepath="${server.output.dir}/logs/http_defaultEndpoint_access.log"
 					   logFormat='%h %i %u %t "%r" %s %b %D %{R}W' />
 	</httpEndpoint>
+
+	<logging consoleLogLevel="INFO" />
 	<logging traceSpecification="*=info:RRA=all:com.ibm.ws.postgresql.logwriter=all" />
 	<logging jsonAccessLogFields="logFormat"/>
 
@@ -62,9 +69,11 @@
 
 	<applicationManager autoExpand="true"/>
 
-	<ssl id="defaultSSLConfig" trustDefaultCerts="true" />
-
 	<trustAssociation id="petclinicSso" disableLtpaCookie="false" />
+
+	<ssl id="defaultSSLConfig" trustDefaultCerts="true" verifyHostname="false"/>
+
+	<keyStore id="defaultKeyStore" password="mpKeystore"/>
 
 	<application location="petclinic.war" type="war"
 				 id="petclinic.war"

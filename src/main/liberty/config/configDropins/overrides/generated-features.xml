@@ -10,7 +10,9 @@
 		<feature>jsonb-2.0</feature>
 		<feature>jsonp-2.0</feature>
 		<feature>xmlBinding-3.0</feature>
+		<!--
 		<feature>sessionDatabase-1.0</feature>
+		-->
 		<feature>adminCenter-1.0</feature>
 		<feature>appSecurity-4.0</feature>
 		<feature>pages-3.0</feature>
@@ -18,5 +20,6 @@
 		<feature>appAuthentication-2.0</feature>
 		<feature>appAuthorization-2.0</feature>
 		<feature>audit-1.0</feature>
+		<feature>ssl-1.0</feature>
     </featureManager>
 </server>
