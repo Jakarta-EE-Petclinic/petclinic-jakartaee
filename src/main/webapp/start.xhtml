@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="pageTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="contentTitle">
+        <h1>
+            <i class="fas fa-home"></i>
+            <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.start']}"/>
+        </h1>
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="container">
+
+            <p:panel id="contentPanel" header="#{msg['org.woehlke.jakartaee.petclinic.owner.list']}"
+                     style="margin-bottom:20px">
+                <h:form id="findOwnersForm">
+                    <div class="ui-g newAndSearchGrid">
+                        <div class="ui-g-4">
+                            <p:commandButton
+                                    id="addNew" action="#{ownerView.showNewForm}"
+                                    icon="fa fa-fw fa-plus-square"
+                                    ajax="false"
+                                    value="#{msg['org.woehlke.jakartaee.petclinic.owner.addNew']}"/>
+                        </div>
+                        <div class="ui-g-8 tw-form-group">
+                            <p:inputText id="searchFormInput"
+                                         styleClass="tw-form-control"
+                                         value="#{ownerView.searchterm}"/>
+                            <p:message for="searchFormInput" display="icon"/>
+                            <p:commandButton id="search"
+                                             action="#{ownerView.search}"
+                                             value="#{msg['org.woehlke.jakartaee.petclinic.owner.search']}"
+                                             icon="fa fa-fw fa-search"
+                                             ajax="false"/>
+                        </div>
+                    </div>
+                </h:form>
+            </p:panel>
+
+            <p:panel id="welcomePanel" header="#{msg['org.woehlke.jakartaee.petclinic.home.welcome_a']}" style="margin-bottom:20px">
+                <div class="ui-g footerGrid">
+                    <div class="ui-g-12">
+                        <ul>
+                            <li><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.home.welcome_a_a']}"/></li>
+                            <li><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.home.welcome_a_b']}"/></li>
+                            <li><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.home.welcome_a_c']}"/></li>
+                            <li><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.home.welcome_a_d']}"/></li>
+                        </ul>
+                    </div>
+                </div>
+            </p:panel>
+
+            <p:panel id="projectInfoPanel" header="#{msg['org.woehlke.jakartaee.petclinic.home.welcome_info']}" style="margin-bottom:20px">
+                <div class="ui-g footerGrid">
+                    <div class="ui-g-12">
+                        <ul>
+                            <li>Github:
+                                <a href="https://jakarta-ee-petclinic.github.io/petclinic-jakartaee/">
+                                    https://jakarta-ee-petclinic.github.io/petclinic-jakartaee/
+                                </a>
+                            </li>
+                            <li>Issues:
+                                <a href="https://github.com/Jakarta-EE-Petclinic/jakartaee-petclinic/issues">
+                                    https://github.com/Jakarta-EE-Petclinic/jakartaee-petclinic/issues
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </p:panel>
+
+        </div>
+    </ui:define>
+
+</ui:composition>

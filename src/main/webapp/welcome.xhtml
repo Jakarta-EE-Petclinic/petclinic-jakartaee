@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="pageTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+  <ui:define name="contentTitle">
+    <h1>
+      <i class="fas fa-home"></i>
+      <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.welcome']}"/>
+    </h1>
+  </ui:define>
+
+  <ui:define name="content">
+    <div class="container">
+
+      <p:panel id="contentPanel" header="#{msg['org.woehlke.jakartaee.petclinic.welcome']}" style="margin-bottom:20px">
+            <h2><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.welcome.h2']}"/></h2>
+            <p><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.welcome.p']}"/></p>
+            <p:panel id="loginFormPanel">
+                <form method="post" action="j_security_check" id="welcomeForm" class="welcomeForm">
+                    <div class="ui-g">
+                        <div class="ui-g-2 tw-form-group">
+                            <label for="welcomeLoginInputText">
+                                <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.welcome.login']}"/>*
+                            </label>
+                        </div>
+                        <div class="ui-g-10 tw-form-group">
+                            <input id="welcomeLoginInputText" type="text" size="20" name="j_username"
+                                   class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all tw-form-control"></input>
+                        </div>
+                        <div class="ui-g-2 tw-form-group">
+                            <label for="welcomePasswordInputText">
+                                <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.welcome.password']}"/>*
+                            </label>
+                        </div>
+                        <div class="ui-g-10 tw-form-group">
+                            <input id="welcomePasswordInputText" type="password" size="20" name="j_password" autocomplete="off"
+                                   class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all tw-form-control"></input>
+                        </div>
+                        <div class="ui-g-2">
+                            <input id="welcomeLoginButton" type="submit" name="  Go!  " value="  Go!  " role="button"
+                                   class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"/>
+                        </div>
+                        <div class="ui-g-10">
+                        </div>
+                    </div>
+                </form>
+            </p:panel>
+            <script type="text/javascript">
+              // Force safari to refresh the page
+              // if a cached copy was loaded
+              // from the browser back-forward cache.
+              window.onpageshow = function(e) {
+                if (e.persisted) {
+                  window.location.reload();
+                }
+              }
+            </script>
+      </p:panel>
+    </div>
+  </ui:define>
+
+</ui:composition>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <display-name>Petclinics Jakarta EE</display-name>
+
+    <servlet>
+      <servlet-name>Faces Servlet</servlet-name>
+      <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+      <servlet-name>Faces Servlet</servlet-name>
+      <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+      <welcome-file>/index.html</welcome-file>
+    </welcome-file-list>
+
+    <security-role>
+      <role-name>admin</role-name>
+    </security-role>
+
+    <security-role>
+      <role-name>user</role-name>
+    </security-role>
+
+    <security-role>
+        <role-name>AllAuthenticated</role-name>
+    </security-role>
+
+    <security-constraint>
+      <web-resource-collection>
+        <web-resource-name>AdminViewProperties</web-resource-name>
+        <url-pattern>/admin.jsf</url-pattern>
+        <http-method>GET</http-method>
+      </web-resource-collection>
+      <auth-constraint>
+        <role-name>admin</role-name>
+      </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AdminViewProperties</web-resource-name>
+            <url-pattern>/admin.jsf</url-pattern>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+      <web-resource-collection>
+        <web-resource-name>UserViewProperties</web-resource-name>
+        <url-pattern>/user.jsf</url-pattern>
+        <http-method>GET</http-method>
+      </web-resource-collection>
+      <auth-constraint>
+        <role-name>user</role-name>
+      </auth-constraint>
+    </security-constraint>
+    <deny-uncovered-http-methods/>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>UserViewProperties</web-resource-name>
+            <url-pattern>/user.jsf</url-pattern>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <deny-uncovered-http-methods/>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/owner.jsf</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <deny-uncovered-http-methods/>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/owner.jsf</url-pattern>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <deny-uncovered-http-methods/>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/veterinarian.jsf</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/veterinarian.jsf</url-pattern>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/petType.jsf</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/petType.jsf</url-pattern>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/specialty.jsf</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/specialty.jsf</url-pattern>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/start.jsf</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AllViewProperties</web-resource-name>
+            <url-pattern>/start.jsf</url-pattern>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <deny-uncovered-http-methods/>
+
+    <error-page>
+      <error-code>403</error-code>
+      <location>/error403.html</location>
+    </error-page>
+</web-app>

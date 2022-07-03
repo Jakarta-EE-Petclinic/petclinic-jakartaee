@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server description="defaultServer">
+	<featureManager>
+		<feature>jakartaee-9.1</feature>
+		<feature>microProfile-5.0</feature>
+		<feature>restfulWS-3.0</feature>
+		<feature>jsonb-2.0</feature>
+		<feature>jsonp-2.0</feature>
+		<feature>xmlBinding-3.0</feature>
+		<feature>sessionDatabase-1.0</feature>
+		<feature>adminCenter-1.0</feature>
+		<feature>pages-3.0</feature>
+		<feature>restConnector-2.0</feature>
+		<feature>appSecurity-4.0</feature>
+		<feature>appAuthentication-2.0</feature>
+		<feature>appAuthorization-2.0</feature>
+		<feature>audit-1.0</feature>
+	</featureManager>
+
+	<include location="userRegistry.xml"/>
+
+	<httpSession idLength="56"/>
+
+	<applicationMonitor updateTrigger="mbean" />
+	<logging consoleLogLevel="INFO" />
+	<httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="9080" httpsPort="9443">
+		<accessLogging filepath="${server.output.dir}/logs/http_defaultEndpoint_access.log"
+					   logFormat='%h %i %u %t "%r" %s %b %D %{R}W' />
+	</httpEndpoint>
+	<logging traceSpecification="*=info:RRA=all:com.ibm.ws.postgresql.logwriter=all" />
+	<logging jsonAccessLogFields="logFormat"/>
+
+	<remoteFileAccess>
+		<writeDir>${server.config.dir}/dropins</writeDir>
+	</remoteFileAccess>
+
+	<serverCommands startServerTimeout="240" stopServerTimeout="240"/>
+
+	<variable name="io_openliberty_guides_system_inMaintenance" value="false"/>
+
+	<dataSource id="DefaultDataSource"
+	            jdbcDriverRef="postgresqlDriver"
+	            jndiName="jdbc/dsPetclinicJakartaee"
+	            transactional="true"
+	            type="javax.sql.ConnectionPoolDataSource">
+
+		<properties databaseName="petclinic_jakartaee"
+		            password="petclinic_jakartaeepwd"
+		            portNumber="5432"
+		            serverName="localhost"
+		            user="petclinic_jakartaee"/>
+	</dataSource>
+
+	<jdbcDriver id="postgresqlDriver"
+	            javax.sql.ConnectionPoolDataSource="org.postgresql.ds.PGConnectionPoolDataSource"
+	            javax.sql.XADataSource="org.postgresql.xa.PGXADataSource"
+	            libraryRef="postgresqlLibrary"/>
+
+	<library id="postgresqlLibrary">
+		<file name="${server.config.dir}/postgresql.jar"/>
+	</library>
+
+	<applicationManager autoExpand="true"/>
+
+	<ssl id="defaultSSLConfig" trustDefaultCerts="true" />
+
+	<trustAssociation id="petclinicSso" disableLtpaCookie="false" />
+
+	<application location="petclinic.war" type="war"
+				 id="petclinic.war"
+				 name="petclinic.war" context-root="/petclinic">
+		<application-bnd>
+			<security-role name="AllAuthenticated">
+				<special-subject type="ALL_AUTHENTICATED_USERS" />
+			</security-role>
+			<security-role name="admin">
+				<group name="Manager" />
+				<group name="TeamLead" />
+			</security-role>
+			<security-role name="user">
+				<group name="Employee" />
+			</security-role>
+		</application-bnd>
+	</application>
+</server>

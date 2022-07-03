@@ -1,0 +1,45 @@
+/* (c) 2019-2022 Thomas Woehlke */
+
+i.fas, i.far, label {
+	margin-right: 6px;
+}
+
+.foo td {
+	vertical-align: top;
+}
+
+.foo > tbody > tr > td {
+	vertical-align: top;
+}
+
+.contentPanel {
+	margin-bottom: 20px;
+}
+
+.contentTitleHeadline {
+
+}
+
+.contentTitleHeadlineIcon {
+
+}
+
+.contentTitleHeadlineText {
+
+}
+
+.addNewEntityForm {
+
+}
+
+.inputText {
+
+}
+
+.saveButton {
+
+}
+
+.cancelButton {
+
+}
