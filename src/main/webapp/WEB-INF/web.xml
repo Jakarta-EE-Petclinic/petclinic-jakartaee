@@ -34,20 +34,10 @@
     </security-role>
 
     <security-constraint>
-      <web-resource-collection>
-        <web-resource-name>AdminViewProperties</web-resource-name>
-        <url-pattern>/admin.jsf</url-pattern>
-        <http-method>GET</http-method>
-      </web-resource-collection>
-      <auth-constraint>
-        <role-name>admin</role-name>
-      </auth-constraint>
-    </security-constraint>
-    <security-constraint>
         <web-resource-collection>
             <web-resource-name>AdminViewProperties</web-resource-name>
             <url-pattern>/admin.jsf</url-pattern>
-            <http-method>POST</http-method>
+            <http-method-omission/>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
@@ -55,66 +45,43 @@
     </security-constraint>
 
     <security-constraint>
-      <web-resource-collection>
-        <web-resource-name>UserViewProperties</web-resource-name>
-        <url-pattern>/user.jsf</url-pattern>
-        <http-method>GET</http-method>
-      </web-resource-collection>
-      <auth-constraint>
-        <role-name>user</role-name>
-      </auth-constraint>
+        <web-resource-collection>
+            <web-resource-name>UserViewProperties</web-resource-name>
+            <url-pattern>/user.jsf</url-pattern>
+            <http-method-omission/>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
     </security-constraint>
-    <deny-uncovered-http-methods/>
+
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>UserViewProperties</web-resource-name>
             <url-pattern>/user.jsf</url-pattern>
-            <http-method>POST</http-method>
+            <http-method-omission/>
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>
         </auth-constraint>
     </security-constraint>
-    <deny-uncovered-http-methods/>
 
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>AllViewProperties</web-resource-name>
             <url-pattern>/owner.jsf</url-pattern>
-            <http-method>GET</http-method>
+            <http-method-omission/>
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>
         </auth-constraint>
     </security-constraint>
-    <deny-uncovered-http-methods/>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>AllViewProperties</web-resource-name>
-            <url-pattern>/owner.jsf</url-pattern>
-            <http-method>POST</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <deny-uncovered-http-methods/>
 
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>AllViewProperties</web-resource-name>
             <url-pattern>/veterinarian.jsf</url-pattern>
-            <http-method>GET</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>AllViewProperties</web-resource-name>
-            <url-pattern>/veterinarian.jsf</url-pattern>
-            <http-method>POST</http-method>
+            <http-method-omission/>
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>
@@ -125,17 +92,7 @@
         <web-resource-collection>
             <web-resource-name>AllViewProperties</web-resource-name>
             <url-pattern>/petType.jsf</url-pattern>
-            <http-method>GET</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>AllViewProperties</web-resource-name>
-            <url-pattern>/petType.jsf</url-pattern>
-            <http-method>POST</http-method>
+            <http-method-omission/>
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>
@@ -146,17 +103,7 @@
         <web-resource-collection>
             <web-resource-name>AllViewProperties</web-resource-name>
             <url-pattern>/specialty.jsf</url-pattern>
-            <http-method>GET</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>AllViewProperties</web-resource-name>
-            <url-pattern>/specialty.jsf</url-pattern>
-            <http-method>POST</http-method>
+            <http-method-omission/>
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>
@@ -167,17 +114,7 @@
         <web-resource-collection>
             <web-resource-name>AllViewProperties</web-resource-name>
             <url-pattern>/start.jsf</url-pattern>
-            <http-method>GET</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>AllViewProperties</web-resource-name>
-            <url-pattern>/start.jsf</url-pattern>
-            <http-method>POST</http-method>
+            <http-method-omission/>
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>
@@ -190,4 +127,14 @@
       <error-code>403</error-code>
       <location>/error403.html</location>
     </error-page>
+
+    <context-param>
+        <param-name>jakarta.faces.FACELETS_REFRESH_PERIOD</param-name>
+        <param-value>-1</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>org.apache.myfaces.LOG_WEB_CONTEXT_PARAMS</param-name>
+        <param-value>false</param-value>
+    </context-param>
 </web-app>
