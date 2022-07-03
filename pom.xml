@@ -4,7 +4,7 @@
 	<groupId>org.woehlke.jakartaee</groupId>
 	<artifactId>petclinic-jakartaee</artifactId>
 	<packaging>war</packaging>
-	<version>9.1.0.26-SNAPSHOT</version>
+	<version>9.1.0.26</version>
 
 	<name>Jakarta EE 9.1 Petclinic</name>
 	<description>A JSF and Jakarta EE Version of Spring Petclinic and Update from Java EE 7 Petclinic.</description>
@@ -19,7 +19,7 @@
 		<connection>scm:git:git@github.com:Jakarta-EE-Petclinic/jakartaee-petclinic.git</connection>
 		<developerConnection>scm:git:git@github.com:Jakarta-EE-Petclinic/jakartaee-petclinic.git</developerConnection>
 		<url>https://github.com/Jakarta-EE-Petclinic/jakartaee-petclinic/tree/${project.scm.tag}</url>
-		<tag>HEAD</tag>
+		<tag>v9.1.0.26</tag>
 	</scm>
 
 	<issueManagement>
