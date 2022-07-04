@@ -1837,8 +1837,6 @@
 			<dependencyManagement>
 				<dependencies>
 
-
-
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ejb-client-bom</artifactId>
@@ -1854,6 +1852,14 @@
 						<type>pom</type>
 						<scope>provided</scope>
 					</dependency>
+
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
+						<version>26.1.1.Final</version>
+						<scope>provided</scope>
+					</dependency>
+
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-jakarta</artifactId>
@@ -2223,6 +2229,13 @@
 					<artifactId>wildfly-ee-jakarta</artifactId>
 					<scope>provided</scope>
 				</dependency>
+
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
+					<scope>provided</scope>
+				</dependency>
+
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-jsf</artifactId>
