@@ -1827,12 +1827,27 @@
 			<id>wildfly</id>
 			<dependencyManagement>
 				<dependencies>
+
+					<dependency>
+						<groupId>jakarta.platform</groupId>
+						<artifactId>jakarta.jakartaee-bom</artifactId>
+						<version>9.1.0</version>
+						<type>pom</type>
+						<scope>import</scope>
+					</dependency>
 					<dependency>
 						<groupId>jakarta.platform</groupId>
 						<artifactId>jakarta.jakartaee-api</artifactId>
 						<version>9.1.0</version>
 						<scope>provided</scope>
 					</dependency>
+					<dependency>
+						<groupId>jakarta.platform</groupId>
+						<artifactId>jakarta.jakartaee-web-api</artifactId>
+						<version>9.1.0</version>
+						<scope>provided</scope>
+					</dependency>
+
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-feature-pack-common</artifactId>
@@ -1842,7 +1857,13 @@
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-ee</artifactId>
+						<artifactId>wildfly-ee-jakarta</artifactId>
+						<version>26.1.1.Final</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-jsf</artifactId>
 						<version>26.1.1.Final</version>
 						<scope>provided</scope>
 					</dependency>
@@ -1894,6 +1915,12 @@
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-protocol</artifactId>
 						<version>18.1.1.Final</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-web-common</artifactId>
+						<version>26.1.1.Final</version>
 						<scope>provided</scope>
 					</dependency>
 
@@ -2169,6 +2196,12 @@
 					<scope>provided</scope>
 				</dependency>
 				<dependency>
+					<groupId>jakarta.platform</groupId>
+					<artifactId>jakarta.jakartaee-web-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-ee-feature-pack-common</artifactId>
 					<type>pom</type>
@@ -2176,7 +2209,12 @@
 				</dependency>
 				<dependency>
 					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-ee</artifactId>
+					<artifactId>wildfly-ee-jakarta</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-jsf</artifactId>
 					<scope>provided</scope>
 				</dependency>
 				<dependency>
@@ -2219,25 +2257,33 @@
 				<dependency>
 					<groupId>org.wildfly.core</groupId>
 					<artifactId>wildfly-protocol</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-web-common</artifactId>
+					<scope>provided</scope>
+				</dependency>
+
+				<!--
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-ee</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-dist</artifactId>
 					<scope>provided</scope>
 				</dependency>
 
 				<dependency>
-					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-ee</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-dist</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
 					<groupId>org.wildfly.plugins</groupId>
 					<artifactId>wildfly-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+
 				<dependency>
 					<groupId>org.jboss.galleon</groupId>
 					<artifactId>galleon-maven-plugin</artifactId>
@@ -2269,6 +2315,7 @@
 					<artifactId>wildfly-protocol</artifactId>
 					<scope>provided</scope>
 				</dependency>
+				-->
 				<!--
 				<dependency>
 					<groupId>org.wildfly.plugins</groupId>
