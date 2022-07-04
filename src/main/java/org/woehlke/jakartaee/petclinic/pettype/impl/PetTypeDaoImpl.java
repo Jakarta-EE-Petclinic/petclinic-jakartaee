@@ -50,6 +50,7 @@ public class PetTypeDaoImpl implements PetTypeDao {
 
     @Override
     public PetType addNew(@NotNull PetType petType) {
+        petType = updateSearchindex(petType);
         log.info("addNew PetType: " + petType.toString());
         petType.setUuid(UUID.randomUUID());
         entityManager.persist(petType);
@@ -63,8 +64,21 @@ public class PetTypeDaoImpl implements PetTypeDao {
 
     @Override
     public PetType update(@NotNull PetType petType) {
+        petType = updateSearchindex(petType);
         log.info("update PetType: " + petType.toString());
         return entityManager.merge(petType);
+    }
+
+    private PetType updateSearchindex(@NotNull PetType petType) {
+        String element[] = petType.getName().split("\\W");
+
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        petType.setSearchindex(b.toString());
+        return petType;
     }
 
     @Override
