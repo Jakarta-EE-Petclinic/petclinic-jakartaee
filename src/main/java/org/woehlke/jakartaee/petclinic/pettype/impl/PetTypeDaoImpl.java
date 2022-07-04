@@ -5,6 +5,7 @@ import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pettype.PetTypeDao;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
@@ -48,7 +49,7 @@ public class PetTypeDaoImpl implements PetTypeDao {
     }
 
     @Override
-    public PetType addNew(PetType petType) {
+    public PetType addNew(@NotNull PetType petType) {
         log.info("addNew PetType: " + petType.toString());
         petType.setUuid(UUID.randomUUID());
         entityManager.persist(petType);
@@ -61,7 +62,7 @@ public class PetTypeDaoImpl implements PetTypeDao {
     }
 
     @Override
-    public PetType update(PetType petType) {
+    public PetType update(@NotNull PetType petType) {
         log.info("update PetType: " + petType.toString());
         return entityManager.merge(petType);
     }

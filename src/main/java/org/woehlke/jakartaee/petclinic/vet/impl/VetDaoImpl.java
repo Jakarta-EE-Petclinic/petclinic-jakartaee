@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.vet.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.vet.VetDao;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
@@ -55,7 +56,7 @@ public class VetDaoImpl implements VetDao {
     }
 
     @Override
-    public Vet addNew(Vet vet) {
+    public Vet addNew(@NotNull Vet vet) {
         vet.setUuid(UUID.randomUUID());
         log.info("addNew Vet: " + vet.toString());
         entityManager.persist(vet);
@@ -64,7 +65,7 @@ public class VetDaoImpl implements VetDao {
     }
 
     @Override
-    public Vet update(Vet vet) {
+    public Vet update(@NotNull Vet vet) {
         log.info("update Vet: " + vet.toString());
         return entityManager.merge(vet);
     }

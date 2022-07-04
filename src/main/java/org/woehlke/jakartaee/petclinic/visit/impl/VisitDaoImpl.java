@@ -63,7 +63,7 @@ public class VisitDaoImpl implements VisitDao {
     }
 
     @Override
-    public Visit addNew(@NotNull Visit visit) {
+    public Visit addNew(@org.jetbrains.annotations.NotNull @NotNull Visit visit) {
         visit.setUuid(UUID.randomUUID());
         visit = updateSearchindex(visit);
         log.info("addNew Visit: " + visit.toString());

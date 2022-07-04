@@ -63,7 +63,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     }
 
     @Override
-    public Specialty addNew(Specialty specialty) {
+    public Specialty addNew(@NotNull Specialty specialty) {
         specialty.setUuid(UUID.randomUUID());
         specialty = updateSearchindex(specialty);
         log.info("addNewSpecialty: " + specialty.toString());

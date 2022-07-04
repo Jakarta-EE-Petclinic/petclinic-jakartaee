@@ -4,6 +4,7 @@ package org.woehlke.jakartaee.petclinic.owner.impl;
 import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.OwnerDao;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
@@ -49,7 +50,7 @@ public class OwnerDaoImpl implements OwnerDao {
     }
 
     @Override
-    public Owner addNew(Owner owner) {
+    public Owner addNew(@NotNull Owner owner) {
         owner.setUuid(UUID.randomUUID());
         log.info("addNew Owner: " + owner.toString());
         entityManager.persist(owner);
@@ -62,7 +63,7 @@ public class OwnerDaoImpl implements OwnerDao {
     }
 
     @Override
-    public Owner update(Owner owner) {
+    public Owner update(@NotNull Owner owner) {
         log.info("update Owner: " + owner.toString());
         return entityManager.merge(owner);
     }
