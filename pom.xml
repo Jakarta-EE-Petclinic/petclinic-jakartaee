@@ -324,25 +324,23 @@
 				<scope>import</scope>
 			</dependency>
 			<dependency>
-				<groupId>jakarta.platform</groupId>
-				<artifactId>jakarta.jakartaee-api</artifactId>
-				<version>${version.jakarta.jakartaee-api}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>jakarta.platform</groupId>
-				<artifactId>jakarta.jakartaee-web-api</artifactId>
-				<version>${version.jakarta.jakartaee-api}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
 				<groupId>org.eclipse.microprofile</groupId>
 				<artifactId>microprofile</artifactId>
 				<version>${version.org.eclipse.microprofile}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>jakarta.platform</groupId>
+				<artifactId>jakarta.jakartaee-api</artifactId>
+				<version>${version.jakarta.jakartaee-api}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>jakarta.platform</groupId>
+				<artifactId>jakarta.jakartaee-web-api</artifactId>
+				<version>${version.jakarta.jakartaee-api}</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<!-- Jakarta EE Runtime: OpenLiberty -->
@@ -607,6 +605,17 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-web-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- Frontend webjars for HTML, CSS and JS -->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -1828,23 +1837,13 @@
 			<dependencyManagement>
 				<dependencies>
 
+
+
 					<dependency>
-						<groupId>jakarta.platform</groupId>
-						<artifactId>jakarta.jakartaee-bom</artifactId>
-						<version>9.1.0</version>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-ejb-client-bom</artifactId>
+						<version>26.1.1.Final</version>
 						<type>pom</type>
-						<scope>import</scope>
-					</dependency>
-					<dependency>
-						<groupId>jakarta.platform</groupId>
-						<artifactId>jakarta.jakartaee-api</artifactId>
-						<version>9.1.0</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>jakarta.platform</groupId>
-						<artifactId>jakarta.jakartaee-web-api</artifactId>
-						<version>9.1.0</version>
 						<scope>provided</scope>
 					</dependency>
 
@@ -1858,6 +1857,18 @@
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-jakarta</artifactId>
+						<version>26.1.1.Final</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-ejb3</artifactId>
+						<version>26.1.1.Final</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-weld</artifactId>
 						<version>26.1.1.Final</version>
 						<scope>provided</scope>
 					</dependency>
