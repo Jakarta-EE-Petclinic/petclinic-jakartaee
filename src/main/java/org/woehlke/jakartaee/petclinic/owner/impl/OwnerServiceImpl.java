@@ -105,7 +105,6 @@ public class OwnerServiceImpl implements OwnerService {
             }
             this.petDao.update(p);
         }
-        this.ownerDao.update(owner);
         return owner;
     }
 
