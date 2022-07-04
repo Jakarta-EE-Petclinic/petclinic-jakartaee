@@ -11,4 +11,6 @@ public interface SearchableService<T extends EntityBase> extends Serializable {
     long serialVersionUID = -1893303126489909752L;
 
     List<T> search(String searchterm);
+
+    void resetSearchIndex();
 }

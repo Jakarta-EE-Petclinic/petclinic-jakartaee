@@ -12,4 +12,6 @@ public interface OwnerService extends CrudService<Owner>, SearchableService<Owne
     long serialVersionUID = -5744255576144969978L;
 
     Visit addNewVisit(Visit visit);
+
+
 }

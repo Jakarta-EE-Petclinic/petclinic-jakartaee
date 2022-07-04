@@ -83,45 +83,11 @@ public class PetTypeDaoImpl implements PetTypeDao {
 
     @Override
     public List<PetType> search(String searchterm) {
-    /*
-    log.info("search for: " + searchterm);
-    FullTextEntityManager fullTextEntityManager =
-        org.hibernate.search.jpa.Search.getFullTextEntityManager(entityManager);
-    QueryBuilder qb = fullTextEntityManager.getSearchFactory()
-        .buildQueryBuilder().forEntity(PetType.class).get();
-    org.apache.lucene.search.Query query = qb
-        .keyword()
-        .onFields("name")
-        .matching(searchterm)
-        .createQuery();
-    // wrap Lucene query in a javax.persistence.Query
-    javax.persistence.Query persistenceQuery =
-        fullTextEntityManager.createFullTextQuery(query, PetType.class);
-    // execute search
-    @SuppressWarnings("unchecked")
-    List<PetType> result = persistenceQuery.getResultList();
-    log.info("found: " + result.size());
-    for (PetType o : result) {
-      log.info("found: " + o.getName());
-    }
-    return result;
-     */
         return new ArrayList<>();
     }
 
     @Override
     public void resetSearchIndex() {
-    /*
-    FullTextEntityManager fullTextEntityManager =
-        org.hibernate.search.jpa.Search.getFullTextEntityManager(entityManager);
-    String qlString = "select o from PetType o";
-    TypedQuery<PetType> findAllActionItems = fullTextEntityManager.createQuery(qlString, PetType.class);
-    for (PetType petType : findAllActionItems.getResultList()) {
-      fullTextEntityManager.index(petType);
-    }
-    */
-        //fullTextEntityManager.flushToIndexes();
-        //fullTextEntityManager.clear();
     }
 
     @Override

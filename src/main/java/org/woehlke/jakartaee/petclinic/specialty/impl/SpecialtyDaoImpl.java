@@ -96,18 +96,14 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     @Override
     public List<Specialty> search(String searchterm) {
         log.info("search Specialty for: " + searchterm);
-        /*
-        TODO
-        */
+        /* TODO */
         return new ArrayList<Specialty>();
     }
 
     @Override
     public void resetSearchIndex() {
         log.info("resetSearchIndex Specialty ");
-        /*
-        TODO
-         */
+        /* TODO */
     }
 
 

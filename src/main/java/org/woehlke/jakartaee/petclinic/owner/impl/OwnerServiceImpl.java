@@ -4,6 +4,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.OwnerDao;
 import org.woehlke.jakartaee.petclinic.pet.PetDao;
@@ -16,6 +17,7 @@ import org.woehlke.jakartaee.petclinic.owner.OwnerService;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +57,19 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
+    public void resetSearchIndex() {
+        for(Owner o: this.getAll()){
+            for(Pet p:o.getPets()){
+                for(Visit v:p.getVisits()){
+                    this.visitDao.update(v);
+                }
+                this.petDao.update(p);
+            }
+            this.ownerDao.update(o);
+        }
+    }
+
+    @Override
     public List<Owner> getAll() {
         return this.ownerDao.getAll();
     }
@@ -67,6 +82,7 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     public Owner addNew(Owner owner) {
+        owner = this.updateSearchindex(owner);
         log.info("addNew Owner: " + owner.toString());
         return this.ownerDao.addNew(owner);
     }
@@ -78,8 +94,20 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     public Owner update(Owner owner) {
+        owner = this.updateSearchindex(owner);
         log.info("update Owner: " + owner.toString());
         return this.ownerDao.update(owner);
+    }
+
+    private Owner updateSearchindex(@NotNull Owner owner) {
+        for(Pet p:owner.getPets()){
+            for(Visit v:p.getVisits()){
+                this.visitDao.update(v);
+            }
+            this.petDao.update(p);
+        }
+        this.ownerDao.update(owner);
+        return owner;
     }
 
     @Override

@@ -51,7 +51,7 @@ public class OwnerDaoImpl implements OwnerDao {
 
     @Override
     public Owner addNew(@NotNull Owner owner) {
-        owner = this.updateSearchindex(owner);
+        owner = updateSearchindex(owner);
         owner.setUuid(UUID.randomUUID());
         log.info("addNew Owner: " + owner.toString());
         entityManager.persist(owner);
@@ -65,43 +65,34 @@ public class OwnerDaoImpl implements OwnerDao {
 
     @Override
     public Owner update(@NotNull Owner owner) {
-        owner = this.updateSearchindex(owner);
+        owner = updateSearchindex(owner);
         log.info("update Owner: " + owner.toString());
         return entityManager.merge(owner);
     }
 
     private Owner updateSearchindex(@NotNull Owner owner) {
-        StringBuilder b = new StringBuilder();
-        b.append(owner.getFirstName());
-        b.append(" ");
-        b.append(owner.getLastName());
-        b.append(" ");
-        b.append(owner.getAddress());
-        b.append(" ");
-        b.append(owner.getHouseNumber());
-        b.append(" ");
+        List<String> l = new ArrayList<>();
+        for(Pet p: owner.getPets()){
+            l.add(p.getSearchindex());
+        }
         String x = owner.getAddressInfo();
         if( null != x){
-            b.append(x);
-            b.append(" ");
+            l.add(x);
         }
-        b.append(owner.getZipCode());
-        b.append(" ");
-        b.append(owner.getCity());
-        b.append(" ");
-        b.append(owner.getPhoneNumber());
-        b.append(" ");
-        b.append(owner.getEmail());
-        b.append(" ");
-        for(Pet p: owner.getPets()){
-            b.append(p.getSearchindex());
-            b.append(" ");
-        }
-        String a[] = b.toString().split("\\W");
-        b = new StringBuilder();
-        for(String c :a){
-            b.append(c);
-            b.append(" ");
+        l.add(owner.getFirstName());
+        l.add(owner.getLastName());
+        l.add(owner.getAddress());
+        l.add(owner.getHouseNumber());
+        l.add(owner.getZipCode());
+        l.add(owner.getCity());
+        l.add(owner.getPhoneNumber());
+        l.add(owner.getEmail());
+        StringBuilder b = new StringBuilder();
+        for(String ll:l){
+            for(String e:ll.split("\\W")){
+                b.append(e);
+                b.append(" ");
+            }
         }
         owner.setSearchindex(b.toString());
         return owner;
@@ -110,46 +101,16 @@ public class OwnerDaoImpl implements OwnerDao {
     @Override
     public List<Owner> search(String searchterm) {
         log.info("search Owner: " + searchterm);
-    /*
-    FullTextEntityManager fullTextEntityManager =
-        org.hibernate.search.jpa.Search.getFullTextEntityManager(entityManager);
-    QueryBuilder qb = fullTextEntityManager.getSearchFactory()
-        .buildQueryBuilder().forEntity(Owner.class).get();
-    org.apache.lucene.search.Query query = qb
-        .keyword()
-        .onFields("firstName", "lastName", "city", "pets.name")
-        .matching(searchterm)
-        .createQuery();
-    // wrap Lucene query in a javax.persistence.Query
-    javax.persistence.Query persistenceQuery =
-        fullTextEntityManager.createFullTextQuery(query, Owner.class);
-    // execute search
-    @SuppressWarnings("unchecked")
-    List<Owner> result = persistenceQuery.getResultList();
-    for (Owner o : result) {
-      log.info("found: " + o.getFullName());
-    }
-    return result;
-    */
+        /*
+            TODO
+        */
         return new ArrayList<>();
     }
 
     @Override
     public void resetSearchIndex() {
-        log.info("resetSearchIndex Owner");
-    /*
-    FullTextEntityManager fullTextEntityManager =
-        org.hibernate.search.jpa.Search.getFullTextEntityManager(entityManager);
-    String jpaQuery = "select o from Owner o";
-    TypedQuery<Owner> findAllActionItems = fullTextEntityManager.createQuery(jpaQuery,Owner.class);
-    for (Owner owner : findAllActionItems.getResultList()) {
-      fullTextEntityManager.index(owner);
-    }
-    fullTextEntityManager.flushToIndexes();
-     */
-        //fullTextEntityManager.clear();
-    }
 
+    }
 
     @PostConstruct
     public void postConstruct() {

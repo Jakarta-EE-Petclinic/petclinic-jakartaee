@@ -1,6 +1,7 @@
 package org.woehlke.jakartaee.petclinic.vet.impl;
 
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.specialty.SpecialtyDao;
 import org.woehlke.jakartaee.petclinic.vet.VetDao;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
@@ -12,6 +13,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
+import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.util.List;
 import java.util.UUID;
@@ -67,7 +69,15 @@ public class VetServiceImpl implements VetService {
         return this.vetDao.search(searchterm);
     }
 
-
+    @Override
+    public void resetSearchIndex() {
+        for(Vet v: getAll()){
+            for(Specialty s:v.getSpecialties()){
+                this.specialtyDao.update(s);
+            }
+            this.vetDao.update(v);
+        }
+    }
     @PostConstruct
     public void postConstruct() {
         log.info("postConstruct: "+VetServiceImpl.class.getCanonicalName() );
