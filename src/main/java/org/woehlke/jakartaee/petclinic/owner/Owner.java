@@ -91,7 +91,7 @@ public class Owner extends EntityBaseObject implements EntityBase {
     @Column(name = COL_UUID, nullable = false)
     private UUID uuid;
 
-    @Column(name = COL_SEARCHINDEX, nullable = false)
+    @Column(name = COL_SEARCHINDEX, nullable = true)
     private String searchindex;
 
     @Column(name = COL_FIRSTNAME, nullable = false)

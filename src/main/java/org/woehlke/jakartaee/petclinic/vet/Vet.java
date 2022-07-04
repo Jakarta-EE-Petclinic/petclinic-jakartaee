@@ -88,7 +88,7 @@ public class Vet extends EntityBaseObject implements EntityBase {
     @Column(name = COL_UUID, nullable = false, unique = true)
     private UUID uuid;
 
-    @Column(name = COL_SEARCHINDEX, nullable = false)
+    @Column(name = COL_SEARCHINDEX, nullable = true)
     private String searchindex;
 
     @NotBlank
