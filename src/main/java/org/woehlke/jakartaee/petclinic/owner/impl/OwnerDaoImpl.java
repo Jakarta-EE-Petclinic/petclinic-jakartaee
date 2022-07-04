@@ -16,12 +16,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
-import static org.apache.commons.lang3.StringUtils.join;
-import static org.apache.commons.lang3.StringUtils.joinWith;
 
 /**
  * Created with IntelliJ IDEA.
@@ -101,7 +97,13 @@ public class OwnerDaoImpl implements OwnerDao {
             b.append(p.getSearchindex());
             b.append(" ");
         }
-        owner.setSearchindex(joinWith(" " ,b.toString().split("\\W")));
+        String a[] = b.toString().split("\\W");
+        b = new StringBuilder();
+        for(String c :a){
+            b.append(c);
+            b.append(" ");
+        }
+        owner.setSearchindex(b.toString());
         return owner;
     }
 
