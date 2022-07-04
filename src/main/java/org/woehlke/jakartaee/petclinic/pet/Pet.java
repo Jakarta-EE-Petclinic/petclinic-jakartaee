@@ -74,6 +74,7 @@ public class Pet extends EntityBaseObject implements EntityBase {
     public final static String COL_BIRTH_DATE = "birth_date";
     public final static String COL_PETTYPE_ID = "owner_pet_type_id";
     public final static String COL_OWNER_ID = "owner_id";
+    public final static String COL_SEARCHINDEX = "searchindex";
     private static final long serialVersionUID = 1007513582768464905L;
 
     @NotNull
@@ -91,21 +92,27 @@ public class Pet extends EntityBaseObject implements EntityBase {
     @Column(name = COL_UUID, nullable = false, unique = true)
     private UUID uuid;
 
+    @Column(name = COL_SEARCHINDEX, nullable = false)
+    private String searchindex;
+
     @NotNull
     @NotEmpty
     @XmlElement(required = true)
     @Column(name = COL_NAME, nullable = false)
     private String name;
+
     @NotNull
     @XmlElement(required = true)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = COL_PETTYPE_ID)
     private PetType type;
+
     @NotNull
     @XmlTransient
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = COL_OWNER_ID)
     private Owner owner;
+
     @XmlElementWrapper(name = "visits", nillable = false, required = true)
     @XmlElement(name = "visit")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)

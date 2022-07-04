@@ -4,9 +4,6 @@ package org.woehlke.jakartaee.petclinic.vet;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-//import org.hibernate.search.annotations.Field;
-//import org.hibernate.search.annotations.Indexed;
-//import org.hibernate.search.annotations.IndexedEmbedded;
 import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
 import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBaseObject;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
@@ -31,7 +28,6 @@ import java.util.*;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-//@Indexed
 @Table(
         name = Vet.TABLENAME,
         uniqueConstraints = {
@@ -81,6 +77,7 @@ public class Vet extends EntityBaseObject implements EntityBase {
     public final static String COL_VET_SPECIALTIES = "vet_specialties";
     public final static String COL_JOIN_VET_ID = "vet_id";
     public final static String COL_JOIN_SPECIALTY_ID = "specialty_id";
+    public final static String COL_SEARCHINDEX = "searchindex";
 
     @Id
     @XmlElement(required = true)
@@ -89,37 +86,24 @@ public class Vet extends EntityBaseObject implements EntityBase {
 
     @XmlElement(required = true)
     @Column(name = COL_UUID, nullable = false, unique = true)
-    //@Field(
-    //    index = org.hibernate.search.annotations.Index.YES,
-    //    analyze = org.hibernate.search.annotations.Analyze.NO,
-    //    store = org.hibernate.search.annotations.Store.YES
-    //)
     private UUID uuid;
+
+    @Column(name = COL_SEARCHINDEX, nullable = false)
+    private String searchindex;
 
     @NotBlank
     @XmlElement(required = true)
     @Column(name = COL_FIRSTNAME, nullable = false)
-    //@Field(
-    //    index = org.hibernate.search.annotations.Index.YES,
-    //    analyze = org.hibernate.search.annotations.Analyze.YES,
-    //    store = org.hibernate.search.annotations.Store.YES
-    //)
     private String firstName;
 
     @NotBlank
     @XmlElement(required = true)
     @Column(name = COL_LASTNAME, nullable = false)
-    //@Field(
-    //    index = org.hibernate.search.annotations.Index.YES,
-    //    analyze = org.hibernate.search.annotations.Analyze.YES,
-    //    store = org.hibernate.search.annotations.Store.YES
-    //)
     private String lastName;
 
     @NotNull
     @XmlElementWrapper(name = "specialties", nillable = false, required = true)
     @XmlElement(name = "specialty")
-    //@IndexedEmbedded
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = COL_VET_SPECIALTIES,
             joinColumns = @JoinColumn(name = COL_JOIN_VET_ID),

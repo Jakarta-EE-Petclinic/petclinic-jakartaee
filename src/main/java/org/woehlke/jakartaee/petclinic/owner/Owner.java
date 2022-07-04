@@ -2,9 +2,6 @@ package org.woehlke.jakartaee.petclinic.owner;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
-//import org.hibernate.search.annotations.Field;
-//import org.hibernate.search.annotations.Indexed;
-//import org.hibernate.search.annotations.IndexedEmbedded;
 import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBaseObject;
 import org.woehlke.jakartaee.petclinic.owner.impl.OwnerListener;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -80,6 +77,7 @@ public class Owner extends EntityBaseObject implements EntityBase {
     public final static String COL_ZIPCODE = "zipcode";
     public final static String COL_PHONENUMBER = "phonenumber";
     public final static String COL_EMAIL = "email";
+    public final static String COL_SEARCHINDEX = "searchindex";
     private static final long serialVersionUID = 7995827646591579744L;
 
     @Id
@@ -88,6 +86,9 @@ public class Owner extends EntityBaseObject implements EntityBase {
 
     @Column(name = COL_UUID, nullable = false)
     private UUID uuid;
+
+    @Column(name = COL_SEARCHINDEX, nullable = false)
+    private String searchindex;
 
     @Column(name = COL_FIRSTNAME, nullable = false)
     @NotEmpty

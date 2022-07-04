@@ -71,6 +71,7 @@ public class Visit extends EntityBaseObject implements EntityBase {
     public final static String COL_VISIT_DATE = "visit_date";
     public final static String COL_DESCRIPTION = "description";
     public final static String COL_PET_ID = "owner_pet_id";
+    public final static String COL_SEARCHINDEX = "searchindex";
     private static final long serialVersionUID = 2357446696894656827L;
 
     @Id
@@ -81,6 +82,9 @@ public class Visit extends EntityBaseObject implements EntityBase {
     @XmlElement(required = true)
     @Column(name = COL_UUID, nullable = false, unique = true)
     private UUID uuid;
+
+    @Column(name = COL_SEARCHINDEX, nullable = false)
+    private String searchindex;
 
     @NotNull
     @XmlElement(required = true)

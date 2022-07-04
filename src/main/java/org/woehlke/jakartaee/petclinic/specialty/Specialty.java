@@ -62,6 +62,7 @@ public class Specialty extends EntityBaseObject implements EntityBase {
     public final static String COL_ID = "id";
     public final static String COL_UUID = "uuid";
     public final static String COL_NAME = "name";
+    public final static String COL_SEARCHINDEX = "searchindex";
     private static final long serialVersionUID = -836560513920170089L;
 
     @Id
@@ -72,6 +73,9 @@ public class Specialty extends EntityBaseObject implements EntityBase {
     @XmlElement(required = true)
     @Column(name = COL_UUID, nullable = false, unique = true)
     private UUID uuid;
+
+    @Column(name = COL_SEARCHINDEX, nullable = false)
+    private String searchindex;
 
     @NotEmpty
     @XmlElement(required = true)
