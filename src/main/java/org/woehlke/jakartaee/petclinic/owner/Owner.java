@@ -34,6 +34,10 @@ import java.util.*;
                         columnNames = {Owner.COL_UUID}
                 ),
                 @UniqueConstraint(
+                        name = Owner.TABLENAME + "_unique_email",
+                        columnNames = {Owner.COL_EMAIL}
+                ),
+                @UniqueConstraint(
                         name = Owner.TABLENAME + "_unique_names",
                         columnNames = {
                                 Owner.COL_FIRSTNAME,
