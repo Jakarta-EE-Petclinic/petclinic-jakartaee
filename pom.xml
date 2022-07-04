@@ -2201,7 +2201,6 @@
 					<scope>provided</scope>
 				</dependency>
 
-
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-ee-jakarta</artifactId>
@@ -2210,7 +2209,6 @@
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
-					<scope>provided</scope>
 				</dependency>
 
 				<dependency>
@@ -2391,6 +2389,10 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.myfaces.core</groupId>
+					<artifactId>myfaces-impl</artifactId>
 				</dependency>
 			</dependencies>
 			<build>
