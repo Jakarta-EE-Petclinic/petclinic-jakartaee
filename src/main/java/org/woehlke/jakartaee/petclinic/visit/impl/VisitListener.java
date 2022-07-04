@@ -20,8 +20,8 @@ public class VisitListener implements Serializable {
 
     @PrePersist
     public void onPrePersist(Object domainObject) {
-
         boolean correctType = domainObject instanceof Visit;
+
         logIt("try to Persist: ", (Visit) domainObject);
     }
 

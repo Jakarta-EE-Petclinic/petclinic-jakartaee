@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.pet.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 //import lombok.extern.log4j.Log4j2;
 import org.woehlke.jakartaee.petclinic.pet.PetDao;
@@ -15,6 +16,7 @@ import jakarta.ejb.Stateless;
 //import javax.persistence.EntityManager;
 //import javax.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.util.List;
 import java.util.UUID;
@@ -35,10 +37,22 @@ public class PetDaoImpl implements PetDao {
     @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
     private EntityManager entityManager;
 
+    private Pet updateSearchindex(@NotNull  Pet pet) {
+        String element[] = pet.getName().split("\\W");
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        pet.setSearchindex(b.toString());
+        return pet;
+    }
+
 
     @Override
-    public Pet addNew(Pet pet) {
+    public Pet addNew(@NotNull Pet pet) {
         pet.setUuid(UUID.randomUUID());
+        pet = updateSearchindex(pet);
         log.info("transient New Pet: " + pet.toString());
         entityManager.persist(pet);
         log.info("persistent New Pet: " + pet.toString());
@@ -58,7 +72,8 @@ public class PetDaoImpl implements PetDao {
     }
 
     @Override
-    public Pet update(Pet pet) {
+    public Pet update(@NotNull Pet pet) {
+        pet = updateSearchindex(pet);
         log.info("update Pet: " + pet.toString());
         return entityManager.merge(pet);
     }

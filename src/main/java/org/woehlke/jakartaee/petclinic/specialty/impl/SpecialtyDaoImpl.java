@@ -5,6 +5,7 @@ import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.SpecialtyDao;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
@@ -12,6 +13,7 @@ import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.persistence.TypedQuery;
+import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +65,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     @Override
     public Specialty addNew(Specialty specialty) {
         specialty.setUuid(UUID.randomUUID());
+        specialty = updateSearchindex(specialty);
         log.info("addNewSpecialty: " + specialty.toString());
         entityManager.persist(specialty);
         log.info("persisted:       " + specialty.toString());
@@ -70,7 +73,8 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     }
 
     @Override
-    public Specialty update(Specialty specialty) {
+    public Specialty update(@NotNull Specialty specialty) {
+        specialty = updateSearchindex(specialty);
         log.info("update: " + specialty.toString());
         specialty = entityManager.merge(specialty);
         log.info("merged: " + specialty.toString());
@@ -94,6 +98,17 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
          */
     }
 
+    private Specialty updateSearchindex(@NotNull Specialty specialty) {
+        String element[] = specialty.getName().split("\\W");
+
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        specialty.setSearchindex(b.toString());
+        return specialty;
+    }
 
     @PostConstruct
     public void postConstruct() {
