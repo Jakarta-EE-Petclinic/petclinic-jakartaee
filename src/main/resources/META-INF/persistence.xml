@@ -13,7 +13,7 @@
 		<class>org.woehlke.jakartaee.petclinic.vet.Vet</class>
 		<class>org.woehlke.jakartaee.petclinic.visit.Visit</class>
 		<properties>
-			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="jakarta.persistence.schema-generation.database.action" value="create"/>
 			<property name="jpa.showSql" value="true"/>
 			<!--
 			<property name="hibernate.search.default.directory_provider" value="local-heap"/>
