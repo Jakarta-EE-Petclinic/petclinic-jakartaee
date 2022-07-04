@@ -13,6 +13,7 @@ import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.persistence.TypedQuery;
+import org.woehlke.jakartaee.petclinic.vet.Vet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.util.ArrayList;
@@ -96,8 +97,11 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     @Override
     public List<Specialty> search(String searchterm) {
         log.info("search Specialty for: " + searchterm);
-        /* TODO */
-        return new ArrayList<Specialty>();
+        String qlString = "select v from Specialty v where v.searchindex like '%:searchterm%' order by v.name";
+        TypedQuery<Specialty> q = entityManager.createQuery(qlString, Specialty.class);
+        q.setParameter("searchterm", searchterm);
+        List<Specialty> list = q.getResultList();
+        return list;
     }
 
     @Override

@@ -2,8 +2,10 @@ package org.woehlke.jakartaee.petclinic.vet.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
+import org.postgresql.core.NativeQuery;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.vet.VetDao;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
@@ -98,44 +100,16 @@ public class VetDaoImpl implements VetDao {
     @Override
     public List<Vet> search(String searchterm) {
         log.info("search Vet: " + searchterm);
-    /*
-    FullTextEntityManager fullTextEntityManager =
-        org.hibernate.search.jpa.Search.getFullTextEntityManager(entityManager);
-    QueryBuilder qb = fullTextEntityManager.getSearchFactory()
-        .buildQueryBuilder().forEntity(Vet.class).get();
-    org.apache.lucene.search.Query query = qb
-        .keyword()
-        .onFields("firstName", "lastName", "specialties.name")
-        .matching(searchterm)
-        .createQuery();
-    // wrap Lucene query in a javax.persistence.Query
-    javax.persistence.Query persistenceQuery =
-        fullTextEntityManager.createFullTextQuery(query, Vet.class);
-    // execute search
-    @SuppressWarnings("unchecked")
-    List<Vet> result = persistenceQuery.getResultList();
-    return result;
-    */
-        return new ArrayList<Vet>();
+        String qlString = "select v from Vet v where v.searchindex like '%:searchterm%' order by v.lastName,v.firstName";
+        TypedQuery<Vet> q = entityManager.createQuery(qlString, Vet.class);
+        q.setParameter("searchterm", searchterm);
+        List<Vet> list = q.getResultList();
+        return list;
     }
 
     @Override
     public void resetSearchIndex() {
         log.info("resetSearchIndex Vet");
-    /*
-    FullTextEntityManager fullTextEntityManager =
-        org.hibernate.search.jpa.Search.getFullTextEntityManager(entityManager);
-    String qlString = "select o from Vet o";
-    TypedQuery<Vet> findAllActionItems = fullTextEntityManager.createQuery(
-        qlString,
-        Vet.class
-    );
-    for (Vet vet : findAllActionItems.getResultList()) {
-      fullTextEntityManager.index(vet);
-    }
-    fullTextEntityManager.flushToIndexes();
-     */
-        //fullTextEntityManager.clear();
     }
 
 

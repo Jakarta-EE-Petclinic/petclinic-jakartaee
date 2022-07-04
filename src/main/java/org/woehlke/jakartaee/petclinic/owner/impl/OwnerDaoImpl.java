@@ -15,6 +15,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
+import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
 import java.util.*;
 
@@ -101,10 +102,11 @@ public class OwnerDaoImpl implements OwnerDao {
     @Override
     public List<Owner> search(String searchterm) {
         log.info("search Owner: " + searchterm);
-        /*
-            TODO
-        */
-        return new ArrayList<>();
+        String qlString = "select v from Owner v where v.searchindex like '%:searchterm%' order by v.lastName,v.firstName,v.city";
+        TypedQuery<Owner> q = entityManager.createQuery(qlString, Owner.class);
+        q.setParameter("searchterm", searchterm);
+        List<Owner> list = q.getResultList();
+        return list;
     }
 
     @Override

@@ -13,6 +13,7 @@ import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.persistence.TypedQuery;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +84,12 @@ public class PetTypeDaoImpl implements PetTypeDao {
 
     @Override
     public List<PetType> search(String searchterm) {
-        return new ArrayList<>();
+        log.info("search PetType for: " + searchterm);
+        String qlString = "select v from PetType v where v.searchindex like '%:searchterm%' order by v.name";
+        TypedQuery<PetType> q = entityManager.createQuery(qlString, PetType.class);
+        q.setParameter("searchterm", searchterm);
+        List<PetType> list = q.getResultList();
+        return list;
     }
 
     @Override
