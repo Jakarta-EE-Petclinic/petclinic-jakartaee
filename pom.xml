@@ -1839,56 +1839,40 @@
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-ejb-client-bom</artifactId>
-						<version>26.1.1.Final</version>
-						<type>pom</type>
-						<scope>provided</scope>
-					</dependency>
-
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-ee-feature-pack-common</artifactId>
-						<version>26.1.1.Final</version>
-						<type>pom</type>
-						<scope>provided</scope>
-					</dependency>
-
-					<dependency>
-						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
 						<version>26.1.1.Final</version>
-						<scope>provided</scope>
+
 					</dependency>
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-jakarta</artifactId>
 						<version>26.1.1.Final</version>
-						<scope>provided</scope>
+
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ejb3</artifactId>
 						<version>26.1.1.Final</version>
-						<scope>provided</scope>
+
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-weld</artifactId>
 						<version>26.1.1.Final</version>
-						<scope>provided</scope>
+
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-jsf</artifactId>
 						<version>26.1.1.Final</version>
-						<scope>provided</scope>
+
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-dist</artifactId>
 						<version>26.1.1.Final</version>
-						<scope>provided</scope>
+
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly.plugins</groupId>
@@ -1937,7 +1921,6 @@
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-web-common</artifactId>
-						<version>26.1.1.Final</version>
 						<scope>provided</scope>
 					</dependency>
 
@@ -2218,16 +2201,10 @@
 					<scope>provided</scope>
 				</dependency>
 
-				<dependency>
-					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-ee-feature-pack-common</artifactId>
-					<type>pom</type>
-					<scope>provided</scope>
-				</dependency>
+
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-ee-jakarta</artifactId>
-					<scope>provided</scope>
 				</dependency>
 
 				<dependency>
@@ -2239,12 +2216,10 @@
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-jsf</artifactId>
-					<scope>provided</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-dist</artifactId>
-					<scope>provided</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.wildfly.plugins</groupId>
@@ -2281,11 +2256,6 @@
 				<dependency>
 					<groupId>org.wildfly.core</groupId>
 					<artifactId>wildfly-protocol</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-web-common</artifactId>
 					<scope>provided</scope>
 				</dependency>
 
