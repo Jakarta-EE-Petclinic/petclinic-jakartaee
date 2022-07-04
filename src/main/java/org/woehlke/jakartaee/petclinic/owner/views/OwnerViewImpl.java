@@ -269,7 +269,7 @@ public class OwnerViewImpl implements OwnerView {
     @Override
     public void performSearch() {
         log.info("performSearch");
-        this.list = entityService.search(searchterm);
+        this.list = entityService.search(this.searchterm);
     }
 
     @Override
@@ -527,7 +527,11 @@ public class OwnerViewImpl implements OwnerView {
 
     @Override
     public List<Owner> getList() {
-        loadList();
+        if (this.ownerViewFlow.isFlowStateSearchResult()) {
+            performSearch();
+        } else {
+            loadList();
+        }
         return list;
     }
 
