@@ -59,6 +59,13 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     }
 
     @Override
+    public void resetSearchIndex() {
+        for(Specialty s:getAll()){
+            this.specialtyDao.update(s);
+        }
+    }
+
+    @Override
     public Specialty findSpecialtyByName(String name) {
         return this.specialtyDao.findSpecialtyByName(name);
     }

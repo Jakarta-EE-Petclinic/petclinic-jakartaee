@@ -60,6 +60,13 @@ public class PetTypeServiceImpl implements PetTypeService {
     }
 
     @Override
+    public void resetSearchIndex() {
+        for(PetType s:getAll()){
+            this.petTypeDao.update(s);
+        }
+    }
+
+    @Override
     public PetType findByName(String name) {
         return this.petTypeDao.findByName(name);
     }
