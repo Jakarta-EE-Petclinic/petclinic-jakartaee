@@ -14,10 +14,14 @@ import jakarta.annotation.PreDestroy;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static org.apache.commons.lang3.StringUtils.join;
+import static org.apache.commons.lang3.StringUtils.joinWith;
 
 /**
  * Created with IntelliJ IDEA.
@@ -51,6 +55,7 @@ public class OwnerDaoImpl implements OwnerDao {
 
     @Override
     public Owner addNew(@NotNull Owner owner) {
+        owner = this.updateSearchindex(owner);
         owner.setUuid(UUID.randomUUID());
         log.info("addNew Owner: " + owner.toString());
         entityManager.persist(owner);
@@ -64,8 +69,40 @@ public class OwnerDaoImpl implements OwnerDao {
 
     @Override
     public Owner update(@NotNull Owner owner) {
+        owner = this.updateSearchindex(owner);
         log.info("update Owner: " + owner.toString());
         return entityManager.merge(owner);
+    }
+
+    private Owner updateSearchindex(@NotNull Owner owner) {
+        StringBuilder b = new StringBuilder();
+        b.append(owner.getFirstName());
+        b.append(" ");
+        b.append(owner.getLastName());
+        b.append(" ");
+        b.append(owner.getAddress());
+        b.append(" ");
+        b.append(owner.getHouseNumber());
+        b.append(" ");
+        String x = owner.getAddressInfo();
+        if( null != x){
+            b.append(x);
+            b.append(" ");
+        }
+        b.append(owner.getZipCode());
+        b.append(" ");
+        b.append(owner.getCity());
+        b.append(" ");
+        b.append(owner.getPhoneNumber());
+        b.append(" ");
+        b.append(owner.getEmail());
+        b.append(" ");
+        for(Pet p: owner.getPets()){
+            b.append(p.getSearchindex());
+            b.append(" ");
+        }
+        owner.setSearchindex(joinWith(" " ,b.toString().split("\\W")));
+        return owner;
     }
 
     @Override

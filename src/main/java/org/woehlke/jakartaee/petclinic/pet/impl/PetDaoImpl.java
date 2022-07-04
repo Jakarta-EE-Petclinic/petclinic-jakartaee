@@ -37,18 +37,6 @@ public class PetDaoImpl implements PetDao {
     @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
     private EntityManager entityManager;
 
-    private Pet updateSearchindex(@NotNull  Pet pet) {
-        String element[] = pet.getName().split("\\W");
-        StringBuilder b = new StringBuilder();
-        for(String e: element){
-            b.append(e);
-            b.append(" ");
-        }
-        pet.setSearchindex(b.toString());
-        return pet;
-    }
-
-
     @Override
     public Pet addNew(@NotNull Pet pet) {
         pet.setUuid(UUID.randomUUID());
@@ -76,6 +64,17 @@ public class PetDaoImpl implements PetDao {
         pet = updateSearchindex(pet);
         log.info("update Pet: " + pet.toString());
         return entityManager.merge(pet);
+    }
+
+    private Pet updateSearchindex(@NotNull  Pet pet) {
+        String element[] = pet.getName().split("\\W");
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        pet.setSearchindex(b.toString());
+        return pet;
     }
 
     @Override
