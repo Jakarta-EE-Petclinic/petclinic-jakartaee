@@ -138,7 +138,7 @@ public class PetTypeViewImpl implements PetTypeView {
 
     @Override
     public String search() {
-        this.petTypeViewFlow.setFlowStateSearchResult();
+        this.performSearch();
         return JSF_PAGE;
     }
 
@@ -152,19 +152,14 @@ public class PetTypeViewImpl implements PetTypeView {
             String detail = this.provider.getBundle().getString(missingKey);
             frontendMessagesView.addInfoMessage(summary, detail);
         } else {
-            try {
-                this.petTypeViewFlow.setFlowStateSearchResult();
-                this.list = entityService.search(searchterm);
-                String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
-                String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
-                String found = this.provider.getBundle().getString(foundKey);
-                String results = this.provider.getBundle().getString(resultsKey);
-                String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
-                frontendMessagesView.addInfoMessage(summary, detail);
-            } catch (Exception e) {
-                this.petTypeViewFlow.setFlowStateList();
-                frontendMessagesView.addWarnMessage(e.getLocalizedMessage(), searchterm);
-            }
+            this.petTypeViewFlow.setFlowStateSearchResult();
+            this.list = entityService.search(searchterm);
+            String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
+            String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
+            String found = this.provider.getBundle().getString(foundKey);
+            String results = this.provider.getBundle().getString(resultsKey);
+            String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
+            frontendMessagesView.addInfoMessage(summary, detail);
         }
     }
 

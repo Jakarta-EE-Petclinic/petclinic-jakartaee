@@ -261,19 +261,14 @@ public class OwnerViewImpl implements OwnerView {
             frontendMessagesView.addInfoMessage(summary, detail);
             this.ownerViewFlow.setFlowStateList();
         } else {
-            try {
-                this.list = entityService.search(searchterm);
-                String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
-                String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
-                String found = this.messageProvider.getBundle().getString(foundKey);
-                String results = this.messageProvider.getBundle().getString(resultsKey);
-                String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
-                frontendMessagesView.addInfoMessage(summary, detail);
-                this.ownerViewFlow.setFlowStateSearchResult();
-            } catch (Exception e) {
-                this.ownerViewFlow.setFlowStateList();
-                frontendMessagesView.addWarnMessage(e.getLocalizedMessage(), searchterm);
-            }
+            this.list = entityService.search(searchterm);
+            String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
+            String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
+            String found = this.messageProvider.getBundle().getString(foundKey);
+            String results = this.messageProvider.getBundle().getString(resultsKey);
+            String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
+            frontendMessagesView.addInfoMessage(summary, detail);
+            this.ownerViewFlow.setFlowStateSearchResult();
         }
     }
 

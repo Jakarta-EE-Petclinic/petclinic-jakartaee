@@ -255,7 +255,7 @@ public class VetViewImpl implements VetView {
     @Override
     public String search() {
         log.info("search");
-        this.vetViewFlow.setFlowStateSearchResult();
+        this.performSearch();
         return JSF_PAGE;
     }
 
@@ -270,19 +270,14 @@ public class VetViewImpl implements VetView {
             String detail = this.provider.getBundle().getString(missingKey);
             frontendMessagesView.addInfoMessage(summary, detail);
         } else {
-            try {
-                this.vetViewFlow.setFlowStateSearchResult();
-                this.list = entityService.search(searchterm);
-                String foundKey = "org.woehlke.jakartaee.petclinic.frontend.web.entity.list.searchterm.found";
-                String resultsKey = "org.woehlke.jakartaee.petclinic.frontend.web.entity.list.searchterm.results";
-                String found = this.provider.getBundle().getString(foundKey);
-                String results = this.provider.getBundle().getString(resultsKey);
-                String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
-                frontendMessagesView.addInfoMessage(summary, detail);
-            } catch (Exception e) {
-                this.vetViewFlow.setFlowStateList();
-                frontendMessagesView.addWarnMessage(e.getLocalizedMessage(), searchterm);
-            }
+            this.vetViewFlow.setFlowStateSearchResult();
+            this.list = entityService.search(searchterm);
+            String foundKey = "org.woehlke.jakartaee.petclinic.frontend.web.entity.list.searchterm.found";
+            String resultsKey = "org.woehlke.jakartaee.petclinic.frontend.web.entity.list.searchterm.results";
+            String found = this.provider.getBundle().getString(foundKey);
+            String results = this.provider.getBundle().getString(resultsKey);
+            String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
+            frontendMessagesView.addInfoMessage(summary, detail);
         }
     }
 
