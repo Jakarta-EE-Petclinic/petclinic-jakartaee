@@ -100,9 +100,9 @@ public class VetDaoImpl implements VetDao {
     @Override
     public List<Vet> search(String searchterm) {
         log.info("search Vet: " + searchterm);
-        String qlString = "select v from Vet v where v.searchindex like '%:searchterm%' order by v.lastName,v.firstName";
+        String qlString = "select v from Vet v where v.searchindex like :searchterm";
         TypedQuery<Vet> q = entityManager.createQuery(qlString, Vet.class);
-        q.setParameter("searchterm", searchterm);
+        q.setParameter("searchterm", "%" + searchterm + "%");
         List<Vet> list = q.getResultList();
         return list;
     }
