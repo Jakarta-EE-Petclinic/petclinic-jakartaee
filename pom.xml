@@ -1861,6 +1861,13 @@
 			<id>wildfly</id>
 			<dependencyManagement>
 				<dependencies>
+					<dependency>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<version>4.0.0.Alpha2</version>
+						<type>maven-plugin</type>
+						<scope>provided</scope>
+					</dependency>
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
@@ -1899,13 +1906,7 @@
 						<version>26.1.1.Final</version>
 
 					</dependency>
-					<dependency>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-maven-plugin</artifactId>
-						<version>4.0.0.Alpha2</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
+
 					<dependency>
 						<groupId>org.jboss.galleon</groupId>
 						<artifactId>galleon-maven-plugin</artifactId>
@@ -2216,6 +2217,12 @@
 			</dependencyManagement>
 			<dependencies>
 				<dependency>
+					<groupId>org.wildfly.plugins</groupId>
+					<artifactId>wildfly-maven-plugin</artifactId>
+					<type>maven-plugin</type>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
 					<groupId>jakarta.platform</groupId>
 					<artifactId>jakarta.jakartaee-api</artifactId>
 					<scope>provided</scope>
@@ -2230,12 +2237,10 @@
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-ee-jakarta</artifactId>
 				</dependency>
-
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
 				</dependency>
-
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-jsf</artifactId>
@@ -2243,12 +2248,6 @@
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-dist</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.wildfly.plugins</groupId>
-					<artifactId>wildfly-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.jboss.galleon</groupId>
