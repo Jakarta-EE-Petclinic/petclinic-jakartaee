@@ -246,13 +246,6 @@ public class OwnerViewImpl implements OwnerView {
     @Override
     public String search() {
         log.info("search");
-        performSearch();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public void performSearch() {
-        log.info("performSearch");
         String summaryKey = "org.woehlke.jakartaee.petclinic.owner.search.done";
         String summary = this.messageProvider.getBundle().getString(summaryKey);
         if (searchterm == null || searchterm.isEmpty()) {
@@ -261,7 +254,7 @@ public class OwnerViewImpl implements OwnerView {
             frontendMessagesView.addInfoMessage(summary, detail);
             this.ownerViewFlow.setFlowStateList();
         } else {
-            this.list = entityService.search(searchterm);
+            this.performSearch();
             String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
             String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
             String found = this.messageProvider.getBundle().getString(foundKey);
@@ -270,6 +263,13 @@ public class OwnerViewImpl implements OwnerView {
             frontendMessagesView.addInfoMessage(summary, detail);
             this.ownerViewFlow.setFlowStateSearchResult();
         }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public void performSearch() {
+        log.info("performSearch");
+        this.list = entityService.search(searchterm);
     }
 
     @Override

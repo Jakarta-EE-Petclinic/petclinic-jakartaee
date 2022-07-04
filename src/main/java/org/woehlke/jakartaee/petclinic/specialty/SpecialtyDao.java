@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.specialty;
 
+import jakarta.validation.constraints.NotNull;
 import org.woehlke.jakartaee.petclinic.application.framework.crud.CrudDao;
 import org.woehlke.jakartaee.petclinic.application.framework.entity.SearchableEntity;
 
@@ -14,5 +15,5 @@ public interface SpecialtyDao extends CrudDao<Specialty>, SearchableEntity<Speci
 
     long serialVersionUID = -3942585068863132460L;
 
-    Specialty findSpecialtyByName(String name);
+    Specialty findSpecialtyByName(@NotNull String name);
 }

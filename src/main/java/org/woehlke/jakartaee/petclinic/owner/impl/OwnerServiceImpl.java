@@ -38,7 +38,7 @@ public class OwnerServiceImpl implements OwnerService {
     private VisitDao visitDao;
 
     @Override
-    public Visit addNewVisit(Visit visit) {
+    public Visit addNewVisit(@NotNull Visit visit) {
         log.info("addNew Visit: " + visit.toString());
         Pet pet = visit.getPet();
         Owner owner = pet.getOwner();
@@ -80,7 +80,7 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public Owner addNew(Owner owner) {
+    public Owner addNew(@NotNull Owner owner) {
         owner = this.updateSearchindex(owner);
         log.info("addNew Owner: " + owner.toString());
         return this.ownerDao.addNew(owner);
@@ -92,7 +92,7 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public Owner update(Owner owner) {
+    public Owner update(@NotNull Owner owner) {
         owner = this.updateSearchindex(owner);
         log.info("update Owner: " + owner.toString());
         return this.ownerDao.update(owner);
@@ -109,7 +109,7 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public List<Owner> search(String searchterm) {
+    public List<Owner> search(@NotNull String searchterm) {
         return this.ownerDao.search(searchterm);
     }
 

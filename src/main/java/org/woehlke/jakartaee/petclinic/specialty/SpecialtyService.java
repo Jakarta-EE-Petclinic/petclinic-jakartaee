@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.specialty;
 
+import jakarta.validation.constraints.NotNull;
 import org.woehlke.jakartaee.petclinic.application.framework.crud.CrudService;
 import org.woehlke.jakartaee.petclinic.application.framework.entity.SearchableService;
 
@@ -12,6 +13,6 @@ public interface SpecialtyService extends CrudService<Specialty>, SearchableServ
 
     long serialVersionUID = -5259594533899166058L;
 
-    Specialty findSpecialtyByName(String name);
+    Specialty findSpecialtyByName(@NotNull String name);
 
 }

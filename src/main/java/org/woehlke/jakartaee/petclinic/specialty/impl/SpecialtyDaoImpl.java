@@ -47,7 +47,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     }
 
     @Override
-    public Specialty findSpecialtyByName(String name) {
+    public Specialty findSpecialtyByName(@NotNull String name) {
         String ql = "select  s from Specialty s where s.name=:name";
         TypedQuery<Specialty> query = entityManager.createQuery(ql, Specialty.class);
         query.setParameter("name", name);
@@ -92,7 +92,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     }
 
     @Override
-    public List<Specialty> search(String searchterm) {
+    public List<Specialty> search(@NotNull String searchterm) {
         log.info("search Specialty for: " + searchterm);
         String qlString = "select v from Specialty v where v.searchindex like :searchterm";
         TypedQuery<Specialty> q = entityManager.createQuery(qlString, Specialty.class);

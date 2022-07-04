@@ -4,6 +4,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.SpecialtyDao;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
@@ -35,13 +36,13 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     }
 
     @Override
-    public Specialty addNew(Specialty specialty) {
+    public Specialty addNew(@NotNull Specialty specialty) {
         log.info("addNew Specialty: " + specialty.toString());
         return this.specialtyDao.addNew(specialty);
     }
 
     @Override
-    public Specialty update(Specialty specialty) {
+    public Specialty update(@NotNull Specialty specialty) {
         log.info("update Specialty: " + specialty.toString());
         return this.specialtyDao.update(specialty);
     }
@@ -53,7 +54,7 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     }
 
     @Override
-    public List<Specialty> search(String searchterm) {
+    public List<Specialty> search(@NotNull String searchterm) {
         log.info("search Specialty: " + searchterm);
         return this.specialtyDao.search(searchterm);
     }
@@ -66,7 +67,7 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     }
 
     @Override
-    public Specialty findSpecialtyByName(String name) {
+    public Specialty findSpecialtyByName(@NotNull String name) {
         return this.specialtyDao.findSpecialtyByName(name);
     }
 

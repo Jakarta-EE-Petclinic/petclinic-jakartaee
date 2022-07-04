@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.visit.impl;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.visit.VisitDao;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
@@ -38,13 +39,13 @@ public class VisitServiceImpl implements VisitService {
     }
 
     @Override
-    public Visit addNew(Visit visit) {
+    public Visit addNew(@NotNull Visit visit) {
         log.info("addNew Visit: " + visit.toString());
         return this.visitDao.addNew(visit);
     }
 
     @Override
-    public Visit update(Visit visit) {
+    public Visit update(@NotNull Visit visit) {
         log.info("update Visit: " + visit.toString());
         return this.visitDao.update(visit);
     }
