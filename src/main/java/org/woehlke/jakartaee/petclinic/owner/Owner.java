@@ -124,7 +124,7 @@ public class Owner extends EntityBaseObject implements EntityBase {
             message = "{invalid.phoneNumber}")
     private String phoneNumber;
 
-    @Column(name = COL_PHONENUMBER, nullable = false, unique = true)
+    @Column(name = COL_EMAIL, nullable = false, unique = true)
     @NotEmpty
     @Email
     private String email;
