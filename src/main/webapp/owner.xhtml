@@ -151,6 +151,17 @@
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-2">
+                                <p:outputLabel
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.email']}"
+                                        for="emailAddNewOwner"/>
+                            </div>
+                            <div class="ui-g-10">
+                                <p:inputText id="emailAddNewOwner"
+                                             value="#{ownerView.entity.email}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-2">
                                 <p:commandButton
                                         id="saveAddNewOwner"
                                         type="submit"
@@ -270,6 +281,17 @@
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-2">
+                                <p:outputLabel
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.email']}"
+                                        for="emailEditOwner"/>
+                            </div>
+                            <div class="ui-g-10">
+                                <p:inputText id="emailEditOwner"
+                                             value="#{ownerView.entity.email}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-2">
                                 <p:commandButton
                                         id="saveEditOwner"
                                         type="submit"
@@ -306,7 +328,7 @@
                                         value="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.addNew']}"
                                         action="#{ownerView.showOwnerPetNewForm}"
                                         ajax="false"
-                                        icon="fa fa-fw fa-plus-square"
+                                        icon    ="fa fa-fw fa-plus-square"
                                         styleClass="addNewButton"/>
                             </div>
                             <div class="ui-g-10"></div>

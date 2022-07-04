@@ -1,9 +1,6 @@
 package org.woehlke.jakartaee.petclinic.owner;
 
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Null;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.*;
 //import org.hibernate.search.annotations.Field;
 //import org.hibernate.search.annotations.Indexed;
@@ -82,6 +79,7 @@ public class Owner extends EntityBaseObject implements EntityBase {
     public final static String COL_CITY = "city";
     public final static String COL_ZIPCODE = "zipcode";
     public final static String COL_PHONENUMBER = "phonenumber";
+    public final static String COL_EMAIL = "email";
     private static final long serialVersionUID = 7995827646591579744L;
 
     @Id
@@ -126,6 +124,11 @@ public class Owner extends EntityBaseObject implements EntityBase {
             message = "{invalid.phoneNumber}")
     private String phoneNumber;
 
+    @Column(name = COL_PHONENUMBER, nullable = false, unique = true)
+    @NotEmpty
+    @Email
+    private String email;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.EAGER)
     private Set<Pet> pets = new TreeSet<>();
 
@@ -145,7 +148,7 @@ public class Owner extends EntityBaseObject implements EntityBase {
                 COL_ID, COL_UUID,
                 COL_FIRSTNAME, COL_LASTNAME, COL_ADDRESS,
                 COL_HOUSENUMBER, COL_ADDRESS_INFO,
-                COL_CITY, COL_ZIPCODE, COL_PHONENUMBER
+                COL_CITY, COL_ZIPCODE, COL_PHONENUMBER,COL_EMAIL
         };
         return thisColumnNames;
     }
