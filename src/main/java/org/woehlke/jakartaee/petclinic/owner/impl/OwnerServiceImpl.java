@@ -17,7 +17,6 @@ import org.woehlke.jakartaee.petclinic.owner.OwnerService;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
