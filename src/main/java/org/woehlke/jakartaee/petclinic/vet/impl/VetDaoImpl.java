@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.vet.VetDao;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
 
@@ -58,6 +59,7 @@ public class VetDaoImpl implements VetDao {
     @Override
     public Vet addNew(@NotNull Vet vet) {
         vet.setUuid(UUID.randomUUID());
+        vet = updateSearchindex(vet);
         log.info("addNew Vet: " + vet.toString());
         entityManager.persist(vet);
         log.info("addded New Vet: " + vet.toString());
@@ -66,8 +68,31 @@ public class VetDaoImpl implements VetDao {
 
     @Override
     public Vet update(@NotNull Vet vet) {
+        vet = updateSearchindex(vet);
         log.info("update Vet: " + vet.toString());
         return entityManager.merge(vet);
+    }
+
+    private Vet updateSearchindex(@NotNull Vet vet) {
+        List<String> vetElements = new ArrayList<>();
+        for(String element :vet.getFirstName().split("\\W")){
+            vetElements.add(element);
+        }
+        for(String element :vet.getLastName().split("\\W")){
+            vetElements.add(element);
+        }
+        for(Specialty s: vet.getSpecialties()){
+            for(String element :s.getName().split("\\W")) {
+                vetElements.add(element);
+            }
+        }
+        StringBuilder b = new StringBuilder();
+        for(String e: vetElements){
+            b.append(e);
+            b.append(" ");
+        }
+        vet.setSearchindex(b.toString());
+        return vet;
     }
 
     @Override

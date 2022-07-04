@@ -81,6 +81,18 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
         return specialty;
     }
 
+    private Specialty updateSearchindex(@NotNull Specialty specialty) {
+        String element[] = specialty.getName().split("\\W");
+
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        specialty.setSearchindex(b.toString());
+        return specialty;
+    }
+
     @Override
     public List<Specialty> search(String searchterm) {
         log.info("search Specialty for: " + searchterm);
@@ -98,17 +110,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
          */
     }
 
-    private Specialty updateSearchindex(@NotNull Specialty specialty) {
-        String element[] = specialty.getName().split("\\W");
 
-        StringBuilder b = new StringBuilder();
-        for(String e: element){
-            b.append(e);
-            b.append(" ");
-        }
-        specialty.setSearchindex(b.toString());
-        return specialty;
-    }
 
     @PostConstruct
     public void postConstruct() {
