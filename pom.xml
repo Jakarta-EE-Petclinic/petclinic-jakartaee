@@ -861,11 +861,6 @@
 					<version>${version.artifactory-maven-plugin}</version>
 				</plugin>
 				<plugin>
-					<groupId>io.openliberty.tools</groupId>
-					<artifactId>liberty-maven-plugin</artifactId>
-					<version>${version.liberty-maven-plugin}</version>
-				</plugin>
-				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-scm-plugin</artifactId>
 					<version>${version.org.apache.maven.scm}</version>
@@ -962,10 +957,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>io.openliberty.tools</groupId>
-				<artifactId>liberty-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -1877,53 +1868,6 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
-
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
-						<version>27.0.0.Alpha1</version>
-
-					</dependency>
-
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-ee-jakarta</artifactId>
-						<version>27.0.0.Alpha1</version>
-
-					</dependency>
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-ejb3-jakarta</artifactId>
-						<version>27.0.0.Alpha1</version>
-
-					</dependency>
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-weld-jakarta</artifactId>
-						<version>27.0.0.Alpha1</version>
-
-					</dependency>
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-jsf-jakarta</artifactId>
-						<version>27.0.0.Alpha1</version>
-
-					</dependency>
-
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-galleon-pack</artifactId>
-						<version>27.0.0.Alpha1</version>
-						<type>zip</type>
-					</dependency>
-
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-dist</artifactId>
-						<version>27.0.0.Alpha1</version>
-						<type>zip</type>
-					</dependency>
-
 					<dependency>
 						<groupId>org.wildfly.galleon-plugins</groupId>
 						<artifactId>wildfly-galleon-maven-plugin</artifactId>
@@ -1932,6 +1876,45 @@
 						<scope>provided</scope>
 					</dependency>
 
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
+						<version>27.0.0.Alpha1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-ee-jakarta</artifactId>
+						<version>27.0.0.Alpha1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-ejb3-jakarta</artifactId>
+						<version>27.0.0.Alpha1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-weld-jakarta</artifactId>
+						<version>27.0.0.Alpha1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-jsf-jakarta</artifactId>
+						<version>27.0.0.Alpha1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-galleon-pack</artifactId>
+						<version>27.0.0.Alpha1</version>
+						<type>zip</type>
+					</dependency>
+					<!--
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-dist</artifactId>
+						<version>27.0.0.Alpha1</version>
+						<type>zip</type>
+					</dependency>
+					-->
 					<dependency>
 						<groupId>org.jboss.logmanager</groupId>
 						<artifactId>jboss-logmanager</artifactId>
@@ -2593,6 +2576,7 @@
 					<plugin>
 						<groupId>org.wildfly.galleon-plugins</groupId>
 						<artifactId>wildfly-galleon-maven-plugin</artifactId>
+						<!--
 						<configuration>
 							<jboss-fork-embedded>true</jboss-fork-embedded>
 							<feature-packs>
@@ -2634,6 +2618,7 @@
 								</feature-pack>
 							</feature-packs>
 						</configuration>
+						-->
 						<executions>
 							<execution>
 								<id>myproject-galleon-pack-build</id>
@@ -2681,289 +2666,6 @@
 						<groupId>org.jfrog.buildinfo</groupId>
 						<artifactId>artifactory-maven-plugin</artifactId>
 					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-scm-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>payara</id>
-			<dependencyManagement>
-				<dependencies>
-				</dependencies>
-			</dependencyManagement>
-			<dependencies>
-				<dependency>
-					<groupId>jakarta.platform</groupId>
-					<artifactId>jakarta.jakartaee-api</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>jakarta.platform</groupId>
-					<artifactId>jakarta.jakartaee-web-api</artifactId>
-					<scope>provided</scope>
-				</dependency>
-
-
-				<dependency>
-					<groupId>org.postgresql</groupId>
-					<artifactId>postgresql</artifactId>
-				</dependency>
-
-				<dependency>
-					<groupId>org.junit.jupiter</groupId>
-					<artifactId>junit-jupiter-engine</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.junit.jupiter</groupId>
-					<artifactId>junit-jupiter-params</artifactId>
-					<scope>test</scope>
-				</dependency>
-
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-client</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-json-binding-provider</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-jaxb-provider</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.glassfish</groupId>
-					<artifactId>jakarta.json</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<!-- Java utility classes -->
-				<dependency>
-					<groupId>org.apache.commons</groupId>
-					<artifactId>commons-lang3</artifactId>
-				</dependency>
-
-				<!-- Maven Build -->
-				<dependency>
-					<groupId>org.projectlombok</groupId>
-					<artifactId>lombok</artifactId>
-					<scope>provided</scope>
-				</dependency>
-
-				<dependency>
-					<groupId>org.projectlombok</groupId>
-					<artifactId>lombok-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>com.dkanejs.maven.plugins</groupId>
-					<artifactId>docker-compose-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jfrog.buildinfo</groupId>
-					<artifactId>artifactory-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-scm-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-failsafe-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.myfaces.core</groupId>
-					<artifactId>myfaces-impl</artifactId>
-				</dependency>
-			</dependencies>
-			<build>
-				<finalName>petclinic</finalName>
-				<defaultGoal>clean install</defaultGoal>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok-maven-plugin</artifactId>
-							<version>${version.lombok-maven-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-war-plugin</artifactId>
-							<version>${version.maven-war-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>com.dkanejs.maven.plugins</groupId>
-							<artifactId>docker-compose-maven-plugin</artifactId>
-							<version>${version.docker-compose-maven-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-compiler-plugin</artifactId>
-							<version>${version.maven-compiler-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>${version.maven-javadoc-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-project-info-reports-plugin</artifactId>
-							<version>${version.maven-project-info-reports-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-site-plugin</artifactId>
-							<version>${version.maven-site-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-release-plugin</artifactId>
-							<version>${version.maven-release-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.jfrog.buildinfo</groupId>
-							<artifactId>artifactory-maven-plugin</artifactId>
-							<version>${version.artifactory-maven-plugin}</version>
-						</plugin>
-						<!-- -->
-
-						<!-- -->
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-scm-plugin</artifactId>
-							<version>${version.org.apache.maven.scm}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-failsafe-plugin</artifactId>
-							<version>3.0.0-M7</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-surefire-plugin</artifactId>
-							<version>3.0.0-M7</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-				<plugins>
-					<plugin>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok-maven-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-war-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>com.dkanejs.maven.plugins</groupId>
-						<artifactId>docker-compose-maven-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-project-info-reports-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-site-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-release-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.jfrog.buildinfo</groupId>
-						<artifactId>artifactory-maven-plugin</artifactId>
-					</plugin>
-					<!-- -->
-
-					<!-- -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-scm-plugin</artifactId>
