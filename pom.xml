@@ -2683,12 +2683,6 @@
 									<version>26.1.1.Final</version>
 									<type>zip</type>
 								</feature-pack>
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-microprofile-health-smallrye</artifactId>
-									<version>26.1.1.Final</version>
-									<type>jar</type>
-								</feature-pack>
 							</feature-packs>
 						</configuration>
 						<executions>
