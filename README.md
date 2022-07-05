@@ -21,8 +21,28 @@ And Update from Java EE 7 Petclinic
 * It is simple enough but yet it shows more than just the CRUD Use Cases (Create, Read, Update, Delete) of most Demos and Training Examples.
 * You can think of it as smallest complete Web App with the usual things to solve.
 
-## Spring Petclinic
+### Spring Petclinic
 * Github: [https://github.com/spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic)
+
+## dev, build and run
+
+```
+git clone git@github.com:Jakarta-EE-Petclinic/petclinic-jakartaee.git
+cd petclinic-jakartaee
+./mvnw
+```
+
+### JBoss Wildfly JakartEE 9.1 Preview (26.1.1) 
+
+```
+./mvnw -Pwildfly
+```
+
+### IBM OpenLiberty JakartEE 9.1 (22.0.0.6) 
+
+```
+./mvnw -Pliberty
+```
 
 ## Software Design
 
