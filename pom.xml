@@ -1865,6 +1865,9 @@
 
 		<profile>
 			<id>wildfly</id>
+			<properties>
+				<wildfly.provisioning.overwrite-provisioned-server>true</wildfly.provisioning.overwrite-provisioned-server>
+			</properties>
 			<dependencyManagement>
 				<dependencies>
 					<dependency>
@@ -1878,48 +1881,57 @@
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
-						<version>26.1.1.Final</version>
+						<version>27.0.0.Alpha1</version>
 
 					</dependency>
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-jakarta</artifactId>
-						<version>26.1.1.Final</version>
+						<version>27.0.0.Alpha1</version>
 
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-ejb3</artifactId>
-						<version>26.1.1.Final</version>
+						<artifactId>wildfly-ejb3-jakarta</artifactId>
+						<version>27.0.0.Alpha1</version>
 
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-weld</artifactId>
-						<version>26.1.1.Final</version>
+						<artifactId>wildfly-weld-jakarta</artifactId>
+						<version>27.0.0.Alpha1</version>
 
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-jsf</artifactId>
-						<version>26.1.1.Final</version>
+						<artifactId>wildfly-jsf-jakarta</artifactId>
+						<version>27.0.0.Alpha1</version>
 
 					</dependency>
+
+					<dependency>
+						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-galleon-pack</artifactId>
+						<version>27.0.0.Alpha1</version>
+						<type>zip</type>
+					</dependency>
+
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-dist</artifactId>
-						<version>26.1.1.Final</version>
-
+						<version>27.0.0.Alpha1</version>
+						<type>zip</type>
 					</dependency>
 
 					<dependency>
-						<groupId>org.jboss.galleon</groupId>
-						<artifactId>galleon-maven-plugin</artifactId>
-						<version>5.0.3.Final</version>
+						<groupId>org.wildfly.galleon-plugins</groupId>
+						<artifactId>wildfly-galleon-maven-plugin</artifactId>
+						<version>5.2.8.Final</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
+
 					<dependency>
 						<groupId>org.jboss.logmanager</groupId>
 						<artifactId>jboss-logmanager</artifactId>
@@ -1935,24 +1947,25 @@
 					<dependency>
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-controller-client</artifactId>
-						<version>18.1.1.Final</version>
+						<version>19.0.0.Beta9</version>
 						<scope>provided</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-launcher</artifactId>
-						<version>18.1.1.Final</version>
+						<version>19.0.0.Beta9</version>
 						<scope>provided</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-protocol</artifactId>
-						<version>18.1.1.Final</version>
+						<version>19.0.0.Beta9</version>
 						<scope>provided</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-web-common</artifactId>
+						<artifactId>wildfly-web-common-jakarta</artifactId>
+						<version>27.0.0.Alpha1</version>
 						<scope>provided</scope>
 					</dependency>
 
@@ -2229,6 +2242,13 @@
 					<scope>provided</scope>
 				</dependency>
 				<dependency>
+					<groupId>org.wildfly.galleon-plugins</groupId>
+					<artifactId>wildfly-galleon-maven-plugin</artifactId>
+					<type>maven-plugin</type>
+					<scope>provided</scope>
+				</dependency>
+
+				<dependency>
 					<groupId>jakarta.platform</groupId>
 					<artifactId>jakarta.jakartaee-api</artifactId>
 					<scope>provided</scope>
@@ -2249,17 +2269,25 @@
 				</dependency>
 				<dependency>
 					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-jsf</artifactId>
+					<artifactId>wildfly-ejb3-jakarta</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-weld-jakarta</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-jsf-jakarta</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-galleon-pack</artifactId>
+					<type>zip</type>
 				</dependency>
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-dist</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.galleon</groupId>
-					<artifactId>galleon-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
+					<type>zip</type>
 				</dependency>
 				<dependency>
 					<groupId>org.jboss.logmanager</groupId>
@@ -2431,6 +2459,17 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
+							<groupId>org.wildfly.plugins</groupId>
+							<artifactId>wildfly-maven-plugin</artifactId>
+							<version>4.0.0.Alpha2</version>
+						</plugin>
+						<plugin>
+							<groupId>org.wildfly.galleon-plugins</groupId>
+							<artifactId>wildfly-galleon-maven-plugin</artifactId>
+							<version>5.2.8.Final</version>
+						</plugin>
+
+						<plugin>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok-maven-plugin</artifactId>
 							<version>${version.lombok-maven-plugin}</version>
@@ -2476,16 +2515,6 @@
 							<version>${version.artifactory-maven-plugin}</version>
 						</plugin>
 						<plugin>
-							<groupId>org.wildfly.plugins</groupId>
-							<artifactId>wildfly-maven-plugin</artifactId>
-							<version>4.0.0.Alpha2</version>
-						</plugin>
-						<plugin>
-							<groupId>org.jboss.galleon</groupId>
-							<artifactId>galleon-maven-plugin</artifactId>
-							<version>5.0.3.Final</version>
-						</plugin>
-						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-scm-plugin</artifactId>
 							<version>${version.org.apache.maven.scm}</version>
@@ -2503,6 +2532,119 @@
 					</plugins>
 				</pluginManagement>
 				<plugins>
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<configuration>
+							<galleonOptions>
+								<jboss-fork-embedded>true</jboss-fork-embedded>
+							</galleonOptions>
+							<overwriteProvisionedServer>true</overwriteProvisionedServer>
+							<logProvisioningTime>true</logProvisioningTime>
+							<feature-packs>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-galleon-pack</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>zip</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-ee-jakarta</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-jsf-jakarta</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-ejb3-jakarta</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-weld-jakarta</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+							</feature-packs>
+						</configuration>
+						<executions>
+							<execution>
+								<id>myproject-provision</id>
+								<goals>
+									<goal>provision</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.wildfly.galleon-plugins</groupId>
+						<artifactId>wildfly-galleon-maven-plugin</artifactId>
+						<configuration>
+							<jboss-fork-embedded>true</jboss-fork-embedded>
+							<feature-packs>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-galleon-pack</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>zip</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-ee-jakarta</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-jsf-jakarta</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-ejb3-jakarta</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-weld-jakarta</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
+									<version>27.0.0.Alpha1</version>
+									<type>jar</type>
+								</feature-pack>
+							</feature-packs>
+						</configuration>
+						<executions>
+							<execution>
+								<id>myproject-galleon-pack-build</id>
+								<goals>
+									<goal>build-user-feature-pack</goal>
+								</goals>
+								<phase>compile</phase>
+							</execution>
+						</executions>
+					</plugin>
+
 					<plugin>
 						<groupId>org.projectlombok</groupId>
 						<artifactId>lombok-maven-plugin</artifactId>
@@ -2538,14 +2680,6 @@
 					<plugin>
 						<groupId>org.jfrog.buildinfo</groupId>
 						<artifactId>artifactory-maven-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-maven-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.jboss.galleon</groupId>
-						<artifactId>galleon-maven-plugin</artifactId>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
