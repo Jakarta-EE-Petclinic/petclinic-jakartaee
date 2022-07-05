@@ -289,22 +289,23 @@ And Update from Java EE 7 Petclinic
 ## visit Spring Petclinic
 * [https://github.com/spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic)
 
-### More Developer Info
+## More Developer Info
+#### Java and Jakarta EE
 * [Jakarta EE 9.1](etc/docs/JARTKARTA_EE.md)
 * [Java jdk and jvm](etc/docs/JAVA_JDK_AND_JVM.md)
 * [Java Server Faces JSF](etc/docs/JSF_PRIMEFACES.md)
 * [Maven Plugins](etc/docs/MAVEN.md)
-### Development
+#### Development
 * [Software Design](etc/docs/Software_Design.md)
 * [Maven Profiles and Git Branches](etc/docs/PROFILES_AND_BRANCHES.md)
 * [ToDo](etc/TODO.md)
 * [Testing](etc/docs/TESTING.md)
 * [Source on Github](etc/docs/SOURCE.md)
-### Jakarta EE Runtimes
+#### Jakarta EE Runtimes
 * [OpenLiberty](etc/docs/RUNTIME_OPEN_LIBERTY.md)
 * [Wildfly](etc/docs/RUNTIME_WILDFLY.md)
 * [Glassfish](etc/docs/RUNTIME_GLASSFISH.md)
-### Cloud
+#### Cloud
 * [Openshift](etc/docs/CLOUD.md)
 
 ## Imprint
