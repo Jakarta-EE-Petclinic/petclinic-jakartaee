@@ -1,6 +1,5 @@
 package org.woehlke.jakartaee.petclinic.application.framework.crud;
 
-import jakarta.validation.constraints.NotNull;
 import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
 
 import java.io.Serializable;
@@ -22,9 +21,9 @@ public interface CrudDao<T extends EntityBase> extends Serializable {
 
     T findById(long id);
 
-    T addNew(@NotNull T entity);
+    T addNew(T entity);
 
-    T update(@NotNull T entity);
+    T update(T entity);
 
     void delete(long id);
 

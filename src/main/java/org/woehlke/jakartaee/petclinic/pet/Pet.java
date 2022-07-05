@@ -11,7 +11,6 @@ import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.*;
 
 import java.util.*;
 

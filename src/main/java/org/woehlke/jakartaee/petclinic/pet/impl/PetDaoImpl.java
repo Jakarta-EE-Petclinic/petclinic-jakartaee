@@ -2,9 +2,7 @@ package org.woehlke.jakartaee.petclinic.pet.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
-//import lombok.extern.log4j.Log4j2;
 import org.woehlke.jakartaee.petclinic.pet.PetDao;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
@@ -13,8 +11,6 @@ import jakarta.annotation.PreDestroy;
 import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
-//import javax.persistence.EntityManager;
-//import javax.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
@@ -38,7 +34,7 @@ public class PetDaoImpl implements PetDao {
     private EntityManager entityManager;
 
     @Override
-    public Pet addNew(@NotNull Pet pet) {
+    public Pet addNew(Pet pet) {
         pet.setUuid(UUID.randomUUID());
         pet = updateSearchindex(pet);
         log.info("transient New Pet: " + pet.toString());
@@ -60,13 +56,13 @@ public class PetDaoImpl implements PetDao {
     }
 
     @Override
-    public Pet update(@NotNull Pet pet) {
+    public Pet update(Pet pet) {
         pet = updateSearchindex(pet);
         log.info("update Pet: " + pet.toString());
         return entityManager.merge(pet);
     }
 
-    private Pet updateSearchindex(@NotNull  Pet pet) {
+    private Pet updateSearchindex(Pet pet) {
         String element[] = pet.getName().split("\\W");
         StringBuilder b = new StringBuilder();
         for(String e: element){

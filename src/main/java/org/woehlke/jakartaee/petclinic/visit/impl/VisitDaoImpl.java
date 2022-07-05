@@ -1,6 +1,5 @@
 package org.woehlke.jakartaee.petclinic.visit.impl;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.visit.VisitDao;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
@@ -46,7 +45,7 @@ public class VisitDaoImpl implements VisitDao {
         return entityManager.find(Visit.class, id);
     }
 
-    private Visit updateSearchindex(@NotNull Visit visit) {
+    private Visit updateSearchindex(Visit visit) {
         String element1[] = visit.getDate().toLocaleString().split("\\W");
         String element2[] = visit.getDescription().split("\\W");
         StringBuilder b = new StringBuilder();
@@ -63,7 +62,7 @@ public class VisitDaoImpl implements VisitDao {
     }
 
     @Override
-    public Visit addNew(@org.jetbrains.annotations.NotNull @NotNull Visit visit) {
+    public Visit addNew(Visit visit) {
         visit.setUuid(UUID.randomUUID());
         visit = updateSearchindex(visit);
         log.info("addNew Visit: " + visit.toString());
@@ -72,7 +71,7 @@ public class VisitDaoImpl implements VisitDao {
     }
 
     @Override
-    public Visit update(@NotNull Visit visit) {
+    public Visit update(Visit visit) {
         visit = updateSearchindex(visit);
         log.info("addNew Visit: " + visit.toString());
         return entityManager.merge(visit);

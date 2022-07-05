@@ -1,6 +1,5 @@
 package org.woehlke.jakartaee.petclinic.vet.impl;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.specialty.SpecialtyDao;
@@ -51,20 +50,20 @@ public class VetServiceImpl implements VetService {
     }
 
     @Override
-    public Vet addNew(@NotNull Vet vet) {
+    public Vet addNew(Vet vet) {
         vet.setUuid(UUID.randomUUID());
         log.info("try to addNew: " + vet.toString());
         return this.vetDao.addNew(vet);
     }
 
     @Override
-    public Vet update(@NotNull Vet vet) {
+    public Vet update(Vet vet) {
         log.info("update Vet: " + vet.toString());
         return this.vetDao.update(vet);
     }
 
     @Override
-    public List<Vet> search(@NotNull String searchterm) {
+    public List<Vet> search(String searchterm) {
         log.info("search: " + searchterm);
         return this.vetDao.search(searchterm);
     }

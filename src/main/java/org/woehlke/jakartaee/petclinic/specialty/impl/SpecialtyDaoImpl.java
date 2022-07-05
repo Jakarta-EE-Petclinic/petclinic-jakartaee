@@ -5,7 +5,6 @@ import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.SpecialtyDao;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
@@ -47,7 +46,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     }
 
     @Override
-    public Specialty findSpecialtyByName(@NotNull String name) {
+    public Specialty findSpecialtyByName(String name) {
         String ql = "select  s from Specialty s where s.name=:name";
         TypedQuery<Specialty> query = entityManager.createQuery(ql, Specialty.class);
         query.setParameter("name", name);
@@ -61,7 +60,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     }
 
     @Override
-    public Specialty addNew(@NotNull Specialty specialty) {
+    public Specialty addNew(Specialty specialty) {
         specialty.setUuid(UUID.randomUUID());
         specialty = updateSearchindex(specialty);
         log.info("addNewSpecialty: " + specialty.toString());
@@ -71,7 +70,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     }
 
     @Override
-    public Specialty update(@NotNull Specialty specialty) {
+    public Specialty update(Specialty specialty) {
         specialty = updateSearchindex(specialty);
         log.info("update: " + specialty.toString());
         specialty = entityManager.merge(specialty);
@@ -79,7 +78,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
         return specialty;
     }
 
-    private Specialty updateSearchindex(@NotNull Specialty specialty) {
+    private Specialty updateSearchindex(Specialty specialty) {
         String element[] = specialty.getName().split("\\W");
 
         StringBuilder b = new StringBuilder();
@@ -92,7 +91,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     }
 
     @Override
-    public List<Specialty> search(@NotNull String searchterm) {
+    public List<Specialty> search(String searchterm) {
         log.info("search Specialty for: " + searchterm);
         String qlString = "select v from Specialty v where v.searchindex like :searchterm";
         TypedQuery<Specialty> q = entityManager.createQuery(qlString, Specialty.class);

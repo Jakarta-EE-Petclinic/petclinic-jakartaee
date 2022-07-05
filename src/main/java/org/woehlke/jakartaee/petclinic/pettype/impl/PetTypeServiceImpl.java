@@ -4,7 +4,6 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pettype.PetTypeDao;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
@@ -39,7 +38,7 @@ public class PetTypeServiceImpl implements PetTypeService {
     }
 
     @Override
-    public PetType addNew(@NotNull PetType petType) {
+    public PetType addNew(PetType petType) {
         log.info("addNew PetType: " + petType.toString());
         return this.petTypeDao.addNew(petType);
     }
@@ -50,13 +49,13 @@ public class PetTypeServiceImpl implements PetTypeService {
     }
 
     @Override
-    public PetType update(@NotNull PetType petType) {
+    public PetType update(PetType petType) {
         log.info("about to update: " + petType.toString());
         return this.petTypeDao.update(petType);
     }
 
     @Override
-    public List<PetType> search(@NotNull String searchterm) {
+    public List<PetType> search(String searchterm) {
         return this.petTypeDao.search(searchterm);
     }
 
@@ -68,7 +67,7 @@ public class PetTypeServiceImpl implements PetTypeService {
     }
 
     @Override
-    public PetType findByName(@NotNull String name) {
+    public PetType findByName(String name) {
         return this.petTypeDao.findByName(name);
     }
 
