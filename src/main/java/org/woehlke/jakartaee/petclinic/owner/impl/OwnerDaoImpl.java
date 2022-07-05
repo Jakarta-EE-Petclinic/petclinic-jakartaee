@@ -4,7 +4,6 @@ package org.woehlke.jakartaee.petclinic.owner.impl;
 import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.OwnerDao;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
@@ -15,7 +14,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
-import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
 import java.util.*;
 
@@ -51,7 +49,7 @@ public class OwnerDaoImpl implements OwnerDao {
     }
 
     @Override
-    public Owner addNew(@NotNull Owner owner) {
+    public Owner addNew(Owner owner) {
         owner = updateSearchindex(owner);
         owner.setUuid(UUID.randomUUID());
         log.info("addNew Owner: " + owner.toString());
@@ -65,13 +63,13 @@ public class OwnerDaoImpl implements OwnerDao {
     }
 
     @Override
-    public Owner update(@NotNull Owner owner) {
+    public Owner update(Owner owner) {
         owner = updateSearchindex(owner);
         log.info("update Owner: " + owner.toString());
         return entityManager.merge(owner);
     }
 
-    private Owner updateSearchindex(@NotNull Owner owner) {
+    private Owner updateSearchindex(Owner owner) {
         List<String> l = new ArrayList<>();
         for(Pet p: owner.getPets()){
             l.add(p.getSearchindex());

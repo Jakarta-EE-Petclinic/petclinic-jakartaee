@@ -4,7 +4,6 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.OwnerDao;
 import org.woehlke.jakartaee.petclinic.pet.PetDao;
@@ -38,7 +37,7 @@ public class OwnerServiceImpl implements OwnerService {
     private VisitDao visitDao;
 
     @Override
-    public Visit addNewVisit(@NotNull Visit visit) {
+    public Visit addNewVisit(Visit visit) {
         log.info("addNew Visit: " + visit.toString());
         Pet pet = visit.getPet();
         Owner owner = pet.getOwner();
@@ -80,7 +79,7 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public Owner addNew(@NotNull Owner owner) {
+    public Owner addNew(Owner owner) {
         owner = this.updateSearchindex(owner);
         log.info("addNew Owner: " + owner.toString());
         return this.ownerDao.addNew(owner);
@@ -92,13 +91,13 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public Owner update(@NotNull Owner owner) {
+    public Owner update(Owner owner) {
         owner = this.updateSearchindex(owner);
         log.info("update Owner: " + owner.toString());
         return this.ownerDao.update(owner);
     }
 
-    private Owner updateSearchindex(@NotNull Owner owner) {
+    private Owner updateSearchindex(Owner owner) {
         for(Pet p:owner.getPets()){
             for(Visit v:p.getVisits()){
                 this.visitDao.update(v);
@@ -109,7 +108,7 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public List<Owner> search(@NotNull String searchterm) {
+    public List<Owner> search(String searchterm) {
         return this.ownerDao.search(searchterm);
     }
 
