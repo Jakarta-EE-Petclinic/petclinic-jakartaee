@@ -136,17 +136,6 @@ public class Owner extends EntityBaseObject implements EntityBase {
     }
 
     @Transient
-    public String[] getColumnNames() {
-        String[] thisColumnNames = {
-                COL_ID, COL_UUID,
-                COL_FIRSTNAME, COL_LASTNAME, COL_ADDRESS,
-                COL_HOUSENUMBER, COL_ADDRESS_INFO,
-                COL_CITY, COL_ZIPCODE, COL_PHONENUMBER,COL_EMAIL
-        };
-        return thisColumnNames;
-    }
-
-    @Transient
     public String getPrimaryKey() {
         return "" + this.getFullName() + " ( " + this.getCity() + " ) ";
     }

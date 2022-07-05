@@ -20,9 +20,6 @@ public interface EntityBase extends Serializable {
     String getTableName();
 
     @Transient
-    String[] getColumnNames();
-
-    @Transient
     String getPrimaryKey();
 
     @Transient
