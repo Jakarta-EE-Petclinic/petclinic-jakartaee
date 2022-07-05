@@ -889,7 +889,6 @@
 					<compilerArgs>
 						<arg>-Xlint:all</arg>
 					</compilerArgs>
-					<compilerArgument>-Xlint:all</compilerArgument>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.projectlombok</groupId>
@@ -987,6 +986,7 @@
 				<defaultGoal>clean install</defaultGoal>
 			</build>
 		</profile>
+
 		<profile>
 			<id>liberty</id>
 			<dependencyManagement>
