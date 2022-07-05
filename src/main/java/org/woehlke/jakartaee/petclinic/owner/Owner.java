@@ -55,18 +55,6 @@ import java.util.*;
         )
 })
 @EntityListeners(OwnerListener.class)
-@XmlRootElement(
-        name = "Owner"
-)
-@XmlType(
-        name = "Owner",
-        namespace = "http://woehlke.org/org/woehlke/jakartaee/petclinic/oodm/entities/Owner",
-        propOrder = {
-                "id", "uuid", "firstName", "lastName", "address", "houseNumber",
-                "addressInfo", "city", "zipCode", "phoneNumber", "pets"
-        }
-)
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Owner extends EntityBaseObject implements EntityBase {
 
     public final static String TABLENAME = "owner";

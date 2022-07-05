@@ -54,15 +54,6 @@ import java.util.UUID;
         )
 })
 @EntityListeners(VisitListener.class)
-@XmlRootElement(name = "Visit")
-@XmlType(
-        name = "Visit",
-        namespace = "http://woehlke.org/org/woehlke/jakartaee/petclinic/oodm/entities/Visit",
-        propOrder = {
-                "id", "uuid", "date", "description"
-        }
-)
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Visit extends EntityBaseObject implements EntityBase {
 
     public final static String TABLENAME = "owner_pet_visit";
@@ -75,11 +66,9 @@ public class Visit extends EntityBaseObject implements EntityBase {
     private static final long serialVersionUID = 2357446696894656827L;
 
     @Id
-    @XmlElement(required = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @XmlElement(required = true)
     @Column(name = COL_UUID, nullable = false, unique = true)
     private UUID uuid;
 
@@ -87,17 +76,14 @@ public class Visit extends EntityBaseObject implements EntityBase {
     private String searchindex;
 
     @NotNull
-    @XmlElement(required = true)
     @Column(name = COL_VISIT_DATE, nullable = false)
     @Temporal(TemporalType.DATE)
     protected Date date;
 
     @NotEmpty
-    @XmlElement(required = true)
     @Column(name = COL_DESCRIPTION, nullable = false)
     private String description;
 
-    @XmlTransient
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = COL_PET_ID)
     private Pet pet;

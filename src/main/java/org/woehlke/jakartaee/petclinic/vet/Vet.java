@@ -53,17 +53,6 @@ import java.util.*;
         )
 })
 @EntityListeners(VetListener.class)
-@XmlRootElement(
-        name = "Vet"
-)
-@XmlType(
-        name = "Vet",
-        namespace = "http://woehlke.org/org/woehlke/jakartaee/petclinic/oodm/entities/Vet",
-        propOrder = {
-                "id", "uuid", "firstName", "lastName", "specialties"
-        }
-)
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Vet extends EntityBaseObject implements EntityBase {
 
     private static final long serialVersionUID = 6749793465861123385L;
@@ -80,11 +69,9 @@ public class Vet extends EntityBaseObject implements EntityBase {
     public final static String COL_SEARCHINDEX = "searchindex";
 
     @Id
-    @XmlElement(required = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @XmlElement(required = true)
     @Column(name = COL_UUID, nullable = false, unique = true)
     private UUID uuid;
 
@@ -92,18 +79,14 @@ public class Vet extends EntityBaseObject implements EntityBase {
     private String searchindex;
 
     @NotBlank
-    @XmlElement(required = true)
     @Column(name = COL_FIRSTNAME, nullable = false)
     private String firstName;
 
     @NotBlank
-    @XmlElement(required = true)
     @Column(name = COL_LASTNAME, nullable = false)
     private String lastName;
 
     @NotNull
-    @XmlElementWrapper(name = "specialties", nillable = false, required = true)
-    @XmlElement(name = "specialty")
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = COL_VET_SPECIALTIES,
             joinColumns = @JoinColumn(name = COL_JOIN_VET_ID),

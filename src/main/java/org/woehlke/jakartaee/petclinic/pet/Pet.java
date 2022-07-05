@@ -54,17 +54,6 @@ import java.util.*;
         )
 })
 @EntityListeners(PetListener.class)
-@XmlRootElement(
-        name = "Pet"
-)
-@XmlType(
-        name = "Pet",
-        namespace = "http://woehlke.org/org/woehlke/jakartaee/petclinic/oodm/entities/Pet",
-        propOrder = {
-                "id", "uuid", "name", "birthDate", "type", "visits"
-        }
-)
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Pet extends EntityBaseObject implements EntityBase {
 
     public final static String TABLENAME = "owner_pet";
@@ -78,17 +67,14 @@ public class Pet extends EntityBaseObject implements EntityBase {
     private static final long serialVersionUID = 1007513582768464905L;
 
     @NotNull
-    @XmlElement(required = true)
     @Column(name = COL_BIRTH_DATE, columnDefinition = "DATE", nullable = false)
     @Temporal(TemporalType.DATE)
     protected Date birthDate;
 
     @Id
-    @XmlElement(required = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @XmlElement(required = true)
     @Column(name = COL_UUID, nullable = false, unique = true)
     private UUID uuid;
 
@@ -97,24 +83,19 @@ public class Pet extends EntityBaseObject implements EntityBase {
 
     @NotNull
     @NotEmpty
-    @XmlElement(required = true)
     @Column(name = COL_NAME, nullable = false)
     private String name;
 
     @NotNull
-    @XmlElement(required = true)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = COL_PETTYPE_ID)
     private PetType type;
 
     @NotNull
-    @XmlTransient
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = COL_OWNER_ID)
     private Owner owner;
 
-    @XmlElementWrapper(name = "visits", nillable = false, required = true)
-    @XmlElement(name = "visit")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
     private Set<Visit> visits = new HashSet<>();
 

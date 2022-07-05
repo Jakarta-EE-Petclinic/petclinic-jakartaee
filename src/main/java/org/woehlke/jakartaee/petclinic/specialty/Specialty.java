@@ -47,15 +47,6 @@ import java.util.UUID;
                 query = "select s from Specialty s order by s.name"
         )
 })
-@XmlRootElement(name = "Specialty")
-@XmlType(
-        name = "Specialty",
-        namespace = "http://woehlke.org/org/woehlke/jakartaee/petclinic/oodm/entities/Specialty",
-        propOrder = {
-                "id", "uuid", "name"
-        }
-)
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Specialty extends EntityBaseObject implements EntityBase {
 
     public final static String TABLENAME = "specialty";
@@ -66,11 +57,9 @@ public class Specialty extends EntityBaseObject implements EntityBase {
     private static final long serialVersionUID = -836560513920170089L;
 
     @Id
-    @XmlElement(required = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @XmlElement(required = true)
     @Column(name = COL_UUID, nullable = false, unique = true)
     private UUID uuid;
 
