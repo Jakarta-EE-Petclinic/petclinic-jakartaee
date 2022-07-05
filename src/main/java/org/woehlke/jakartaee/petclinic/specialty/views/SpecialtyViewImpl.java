@@ -5,7 +5,7 @@ import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
-import org.woehlke.jakartaee.petclinic.application.views.FrontendMessagesView;
+import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.specialty.SpecialtyService;
@@ -50,7 +50,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
     private LanguageView languageView;
 
     @Inject
-    private FrontendMessagesView frontendMessagesView;
+    private FlashMessagesView flashMessagesView;
 
     @Inject
     private SpecialtyViewFlow specialtyViewFlow;
@@ -75,7 +75,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
             String summary = this.provider.getBundle().getString(summaryKey);
             String detailKey = "org.woehlke.jakartaee.petclinic.specialty.list.choose.detail";
             String detail = this.provider.getBundle().getString(detailKey);
-            frontendMessagesView.addWarnMessage(summary, detail);
+            flashMessagesView.addWarnMessage(summary, detail);
             return false;
         }
     }
@@ -94,10 +94,10 @@ public class SpecialtyViewImpl implements SpecialtyView {
             this.specialtyViewFlow.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.search.done";
             String summary = this.provider.getBundle().getString(summaryKey);
-            frontendMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
+            flashMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
         } catch (EJBException e) {
             this.specialtyViewFlow.setFlowStateNew();
-            frontendMessagesView.addWarnMessage(e.getLocalizedMessage(), this.entity);
+            flashMessagesView.addWarnMessage(e.getLocalizedMessage(), this.entity);
         }
     }
 
@@ -110,10 +110,10 @@ public class SpecialtyViewImpl implements SpecialtyView {
             this.specialtyViewFlow.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.edit.done";
             String summary = this.provider.getBundle().getString(summaryKey);
-            frontendMessagesView.addInfoMessage(summary, this.entity);
+            flashMessagesView.addInfoMessage(summary, this.entity);
         } catch (EJBException e) {
             this.specialtyViewFlow.setFlowStateEdit();
-            frontendMessagesView.addWarnMessage(e.getLocalizedMessage(), this.entity);
+            flashMessagesView.addWarnMessage(e.getLocalizedMessage(), this.entity);
         }
     }
 
@@ -131,16 +131,16 @@ public class SpecialtyViewImpl implements SpecialtyView {
                 this.specialtyViewFlow.setFlowStateList();
                 String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.delete.done";
                 String summary = this.provider.getBundle().getString(summaryKey);
-                frontendMessagesView.addInfoMessage(summary, details);
+                flashMessagesView.addInfoMessage(summary, details);
             }
         } catch (EJBTransactionRolledbackException e) {
             this.specialtyViewFlow.setFlowStateDelete();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.delete.denied";
             String summary = this.provider.getBundle().getString(summaryKey);
-            frontendMessagesView.addWarnMessage(summary, this.selected);
+            flashMessagesView.addWarnMessage(summary, this.selected);
         } catch (EJBException e) {
             this.specialtyViewFlow.setFlowStateDelete();
-            frontendMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
+            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
         }
     }
 
@@ -243,7 +243,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
             this.specialtyViewFlow.setFlowStateList();
             String missingKey = "org.woehlke.jakartaee.petclinic.list.searchterm.missing";
             String detail = this.provider.getBundle().getString(missingKey);
-            frontendMessagesView.addInfoMessage(summary, detail);
+            flashMessagesView.addInfoMessage(summary, detail);
         } else {
             try {
                 this.specialtyViewFlow.setFlowStateSearchResult();
@@ -253,10 +253,10 @@ public class SpecialtyViewImpl implements SpecialtyView {
                 String found = this.provider.getBundle().getString(foundKey);
                 String results = this.provider.getBundle().getString(resultsKey);
                 String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
-                frontendMessagesView.addInfoMessage(summary, detail);
+                flashMessagesView.addInfoMessage(summary, detail);
             } catch (Exception e) {
                 this.specialtyViewFlow.setFlowStateList();
-                frontendMessagesView.addWarnMessage(e.getLocalizedMessage(), searchterm);
+                flashMessagesView.addWarnMessage(e.getLocalizedMessage(), searchterm);
             }
         }
     }
@@ -271,12 +271,12 @@ public class SpecialtyViewImpl implements SpecialtyView {
         this.languageView = languageView;
     }
 
-    public FrontendMessagesView getFrontendMessagesView() {
-        return frontendMessagesView;
+    public FlashMessagesView getFrontendMessagesView() {
+        return flashMessagesView;
     }
 
-    public void setFrontendMessagesView(FrontendMessagesView frontendMessagesView) {
-        this.frontendMessagesView = frontendMessagesView;
+    public void setFrontendMessagesView(FlashMessagesView flashMessagesView) {
+        this.flashMessagesView = flashMessagesView;
     }
 
     @Override

@@ -3,7 +3,7 @@ package org.woehlke.jakartaee.petclinic.application.views.impl;
 //import lombok.extern.log4j.Log4j2;
 
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.application.views.FrontendMessagesView;
+import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 
 import jakarta.annotation.PostConstruct;
@@ -35,7 +35,7 @@ public class LanguageViewImpl implements LanguageView {
     private final Locale DEFAULT = Locale.ENGLISH;
     private final Locale[] LOCALE_OPTIONS = {Locale.ENGLISH, Locale.GERMAN};
     @Inject
-    private FrontendMessagesView frontendMessagesView;
+    private FlashMessagesView flashMessagesView;
     private Locale locale;
 
     private String localeSelected;
@@ -90,12 +90,12 @@ public class LanguageViewImpl implements LanguageView {
         this.localeSelected = localeSelected;
     }
 
-    public FrontendMessagesView getFrontendMessagesView() {
-        return frontendMessagesView;
+    public FlashMessagesView getFrontendMessagesView() {
+        return flashMessagesView;
     }
 
-    public void setFrontendMessagesView(FrontendMessagesView frontendMessagesView) {
-        this.frontendMessagesView = frontendMessagesView;
+    public void setFrontendMessagesView(FlashMessagesView flashMessagesView) {
+        this.flashMessagesView = flashMessagesView;
     }
 
 
@@ -119,7 +119,7 @@ public class LanguageViewImpl implements LanguageView {
                 .getViewRoot()
                 .setLocale(myLocale);
         this.setLocale(myLocale);
-        this.frontendMessagesView.addInfoMessage("changed Language", msg);
+        this.flashMessagesView.addInfoMessage("changed Language", msg);
         return "#";
     }
 

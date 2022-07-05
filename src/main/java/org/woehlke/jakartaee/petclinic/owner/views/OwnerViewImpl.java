@@ -5,7 +5,7 @@ import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
-import org.woehlke.jakartaee.petclinic.application.views.FrontendMessagesView;
+import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -59,7 +59,7 @@ public class OwnerViewImpl implements OwnerView {
     private LanguageView languageView;
 
     @Inject
-    private FrontendMessagesView frontendMessagesView;
+    private FlashMessagesView flashMessagesView;
 
     @Inject
     private OwnerViewFlow ownerViewFlow;
@@ -94,7 +94,7 @@ public class OwnerViewImpl implements OwnerView {
             String summary = this.messageProvider.getBundle().getString(summaryKey);
             String detailKey = "org.woehlke.jakartaee.petclinic.owner.list.choose.detail";
             String detail = this.messageProvider.getBundle().getString(detailKey);
-            frontendMessagesView.addWarnMessage(summary, detail);
+            flashMessagesView.addWarnMessage(summary, detail);
             return false;
         }
     }
@@ -114,13 +114,13 @@ public class OwnerViewImpl implements OwnerView {
                 this.selected = this.entity;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
                 String summary = this.messageProvider.getBundle().getString(summaryKey);
-                frontendMessagesView.addInfoMessage(summary, this.entity);
+                flashMessagesView.addInfoMessage(summary, this.entity);
             } else {
                 this.newEntity();
             }
         } catch (EJBException e) {
             this.ownerViewFlow.setFlowStateNew();
-            frontendMessagesView.addWarnMessage(e, this.entity);
+            flashMessagesView.addWarnMessage(e, this.entity);
         }
     }
 
@@ -134,11 +134,11 @@ public class OwnerViewImpl implements OwnerView {
                 this.selected = this.entity;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.edit.done";
                 String summary = this.messageProvider.getBundle().getString(summaryKey);
-                frontendMessagesView.addInfoMessage(summary, this.entity);
+                flashMessagesView.addInfoMessage(summary, this.entity);
             }
         } catch (EJBException e) {
             this.ownerViewFlow.setFlowStateEdit();
-            frontendMessagesView.addWarnMessage(e, this.entity);
+            flashMessagesView.addWarnMessage(e, this.entity);
         }
     }
 
@@ -156,7 +156,7 @@ public class OwnerViewImpl implements OwnerView {
                 this.ownerViewFlow.setFlowStateList();
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
                 String summary = this.messageProvider.getBundle().getString(summaryKey);
-                frontendMessagesView.addInfoMessage(summary, msgInfo);
+                flashMessagesView.addInfoMessage(summary, msgInfo);
                 this.ownerViewFlow.setFlowStateDelete();
             } else {
                 this.ownerViewFlow.setFlowStateList();
@@ -165,10 +165,10 @@ public class OwnerViewImpl implements OwnerView {
             this.ownerViewFlow.setFlowStateDelete();
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.denied";
             String summary = this.messageProvider.getBundle().getString(summaryKey);
-            frontendMessagesView.addWarnMessage(summary, this.selected);
+            flashMessagesView.addWarnMessage(summary, this.selected);
         } catch (EJBException e) {
             this.ownerViewFlow.setFlowStateDelete();
-            frontendMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
+            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
         }
     }
 
@@ -251,7 +251,7 @@ public class OwnerViewImpl implements OwnerView {
         if (searchterm == null || searchterm.isEmpty()) {
             String missingKey = "org.woehlke.jakartaee.petclinic.list.searchterm.missing";
             String detail = this.messageProvider.getBundle().getString(missingKey);
-            frontendMessagesView.addInfoMessage(summary, detail);
+            flashMessagesView.addInfoMessage(summary, detail);
             this.ownerViewFlow.setFlowStateList();
         } else {
             this.performSearch();
@@ -260,7 +260,7 @@ public class OwnerViewImpl implements OwnerView {
             String found = this.messageProvider.getBundle().getString(foundKey);
             String results = this.messageProvider.getBundle().getString(resultsKey);
             String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
-            frontendMessagesView.addInfoMessage(summary, detail);
+            flashMessagesView.addInfoMessage(summary, detail);
             this.ownerViewFlow.setFlowStateSearchResult();
         }
         return JSF_PAGE;
@@ -368,10 +368,10 @@ public class OwnerViewImpl implements OwnerView {
             this.ownerViewFlow.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
             String summary = this.messageProvider.getBundle().getString(summaryKey);
-            frontendMessagesView.addInfoMessage(summary, selectedPrimaryKey);
+            flashMessagesView.addInfoMessage(summary, selectedPrimaryKey);
         } catch (EJBException e) {
             this.ownerViewFlow.setFlowStateDelete();
-            frontendMessagesView.addWarnMessage(e, this.selected);
+            flashMessagesView.addWarnMessage(e, this.selected);
         }
         return JSF_PAGE;
     }
@@ -401,11 +401,11 @@ public class OwnerViewImpl implements OwnerView {
             this.entity = entityService.update(this.entity);
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
             String summary = this.messageProvider.getBundle().getString(summaryKey);
-            frontendMessagesView.addInfoMessage(summary, this.pet);
+            flashMessagesView.addInfoMessage(summary, this.pet);
             this.ownerViewFlow.setFlowStateEdit();
         } catch (EJBException e) {
             this.ownerViewFlow.setFlowStateNewPet();
-            frontendMessagesView.addWarnMessage(e, this.pet);
+            flashMessagesView.addWarnMessage(e, this.pet);
         }
         return JSF_PAGE;
     }
@@ -430,7 +430,7 @@ public class OwnerViewImpl implements OwnerView {
             String summary = this.messageProvider.getBundle().getString(summaryKey);
             String msgKey = "org.woehlke.jakartaee.petclinic.owner.pet.choose.detail";
             String msg = this.messageProvider.getBundle().getString(msgKey);
-            frontendMessagesView.addWarnMessage(summary, msg);
+            flashMessagesView.addWarnMessage(summary, msg);
             this.ownerViewFlow.setFlowStateEdit();
             return JSF_PAGE;
         }
@@ -448,11 +448,11 @@ public class OwnerViewImpl implements OwnerView {
             this.selected = this.entity;
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.edit.done";
             String summary = this.messageProvider.getBundle().getString(summaryKey);
-            frontendMessagesView.addInfoMessage(summary, this.pet);
+            flashMessagesView.addInfoMessage(summary, this.pet);
             this.ownerViewFlow.setFlowStateEdit();
         } catch (EJBException e) {
             this.ownerViewFlow.setFlowStateEditPet();
-            frontendMessagesView.addWarnMessage(e, this.pet);
+            flashMessagesView.addWarnMessage(e, this.pet);
         }
         return JSF_PAGE;
     }
@@ -479,7 +479,7 @@ public class OwnerViewImpl implements OwnerView {
             String summary = this.messageProvider.getBundle().getString(summaryKey);
             String msgKey = "org.woehlke.jakartaee.petclinic.owner.pet.choose.detail";
             String msg = this.messageProvider.getBundle().getString(msgKey);
-            frontendMessagesView.addWarnMessage(summary, msg);
+            flashMessagesView.addWarnMessage(summary, msg);
             this.ownerViewFlow.setFlowStateEdit();
             return JSF_PAGE;
         }
@@ -501,20 +501,20 @@ public class OwnerViewImpl implements OwnerView {
                 log.info("owner2: " + this.entity.toString());
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.done";
                 String summary = this.messageProvider.getBundle().getString(summaryKey);
-                frontendMessagesView.addInfoMessage(summary, this.visit);
+                flashMessagesView.addInfoMessage(summary, this.visit);
             } else {
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew";
                 String summary = this.messageProvider.getBundle().getString(summaryKey);
                 String msgKey = "org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.denied";
                 String msg = this.messageProvider.getBundle().getString(msgKey);
-                frontendMessagesView.addWarnMessage(summary, msg);
+                flashMessagesView.addWarnMessage(summary, msg);
             }
             this.reloadEntityFromSelected();
             this.ownerViewFlow.setFlowStateEdit();
             return JSF_PAGE;
         } catch (EJBException e) {
             this.ownerViewFlow.setFlowStateNewVisit();
-            frontendMessagesView.addWarnMessage(e, this.visit);
+            flashMessagesView.addWarnMessage(e, this.visit);
             return JSF_PAGE;
         }
     }
@@ -579,12 +579,12 @@ public class OwnerViewImpl implements OwnerView {
 
     }
 
-    public FrontendMessagesView getFrontendMessagesView() {
-        return frontendMessagesView;
+    public FlashMessagesView getFrontendMessagesView() {
+        return flashMessagesView;
     }
 
-    public void setFrontendMessagesView(FrontendMessagesView frontendMessagesView) {
-        this.frontendMessagesView = frontendMessagesView;
+    public void setFrontendMessagesView(FlashMessagesView flashMessagesView) {
+        this.flashMessagesView = flashMessagesView;
     }
 
 }

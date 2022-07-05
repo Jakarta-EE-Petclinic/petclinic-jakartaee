@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface FrontendMessagesView extends Serializable {
+public interface FlashMessagesView extends Serializable {
 
     long serialVersionUID = 2936821773310905949L;
 

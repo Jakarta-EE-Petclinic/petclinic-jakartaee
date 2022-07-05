@@ -3,7 +3,7 @@ package org.woehlke.jakartaee.petclinic.vet.views;
 import lombok.extern.java.Log;
 import org.primefaces.model.DualListModel;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
-import org.woehlke.jakartaee.petclinic.application.views.FrontendMessagesView;
+import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
@@ -46,7 +46,7 @@ public class VetViewImpl implements VetView {
     private LanguageView languageView;
 
     @Inject
-    private FrontendMessagesView frontendMessagesView;
+    private FlashMessagesView flashMessagesView;
 
     @Inject
     private VetViewFlow vetViewFlow;
@@ -134,12 +134,12 @@ public class VetViewImpl implements VetView {
         this.selected = selected;
     }
 
-    public FrontendMessagesView getFrontendMessagesView() {
-        return frontendMessagesView;
+    public FlashMessagesView getFrontendMessagesView() {
+        return flashMessagesView;
     }
 
-    public void setFrontendMessagesView(FrontendMessagesView frontendMessagesView) {
-        this.frontendMessagesView = frontendMessagesView;
+    public void setFrontendMessagesView(FlashMessagesView flashMessagesView) {
+        this.flashMessagesView = flashMessagesView;
     }
 
     @Override
@@ -268,7 +268,7 @@ public class VetViewImpl implements VetView {
             this.vetViewFlow.setFlowStateList();
             String missingKey = "org.woehlke.jakartaee.petclinic.frontend.web.entity.list.searchterm.missing";
             String detail = this.provider.getBundle().getString(missingKey);
-            frontendMessagesView.addInfoMessage(summary, detail);
+            flashMessagesView.addInfoMessage(summary, detail);
         } else {
             this.vetViewFlow.setFlowStateSearchResult();
             this.list = entityService.search(searchterm);
@@ -277,7 +277,7 @@ public class VetViewImpl implements VetView {
             String found = this.provider.getBundle().getString(foundKey);
             String results = this.provider.getBundle().getString(resultsKey);
             String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
-            frontendMessagesView.addInfoMessage(summary, detail);
+            flashMessagesView.addInfoMessage(summary, detail);
         }
     }
 
@@ -309,7 +309,7 @@ public class VetViewImpl implements VetView {
             String summary = this.provider.getBundle().getString(summaryKey);
             String detailKey = "org.woehlke.jakartaee.petclinic.veterinarian.list.choose.detail";
             String detail = this.provider.getBundle().getString(detailKey);
-            frontendMessagesView.addWarnMessage(summary, detail);
+            flashMessagesView.addWarnMessage(summary, detail);
             return false;
         }
     }
@@ -339,10 +339,10 @@ public class VetViewImpl implements VetView {
             this.selected = this.entity;
             String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.addNew.done";
             String summary = this.provider.getBundle().getString(summaryKey);
-            frontendMessagesView.addInfoMessage(summary, this.entity);
+            flashMessagesView.addInfoMessage(summary, this.entity);
         } catch (EJBException e) {
             log.info(e.getMessage() + this.entity.toString());
-            frontendMessagesView.addWarnMessage(e, this.entity);
+            flashMessagesView.addWarnMessage(e, this.entity);
         }
     }
 
@@ -360,10 +360,10 @@ public class VetViewImpl implements VetView {
             this.selected = this.entity;
             String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.edit.done";
             String summary = this.provider.getBundle().getString(summaryKey);
-            frontendMessagesView.addInfoMessage(summary, this.entity);
+            flashMessagesView.addInfoMessage(summary, this.entity);
         } catch (EJBException e) {
             log.info(e.getMessage() + this.entity.toString());
-            frontendMessagesView.addWarnMessage(e, this.entity);
+            flashMessagesView.addWarnMessage(e, this.entity);
         }
     }
 
@@ -382,15 +382,15 @@ public class VetViewImpl implements VetView {
                 this.selected = null;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.delete.done";
                 String summary = this.provider.getBundle().getString(summaryKey);
-                frontendMessagesView.addInfoMessage(summary, msgInfo);
+                flashMessagesView.addInfoMessage(summary, msgInfo);
             }
             loadList();
         } catch (EJBTransactionRolledbackException e) {
             String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.delete.denied";
             String summary = this.provider.getBundle().getString(summaryKey);
-            frontendMessagesView.addWarnMessage(summary, this.selected);
+            flashMessagesView.addWarnMessage(summary, this.selected);
         } catch (EJBException e) {
-            frontendMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
+            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
         }
     }
 

@@ -1,7 +1,7 @@
 package org.woehlke.jakartaee.petclinic.application.views.impl;
 
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.application.views.FrontendMessagesView;
+import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
 
 import jakarta.annotation.PostConstruct;
@@ -20,7 +20,7 @@ import java.util.List;
 @Log
 @Named("frontendMessagesView")
 @SessionScoped
-public class FrontendMessagesViewImpl implements FrontendMessagesView {
+public class FlashMessagesViewImpl implements FlashMessagesView {
 
     private static final long serialVersionUID = -2267751568724878682L;
 
@@ -220,12 +220,12 @@ public class FrontendMessagesViewImpl implements FrontendMessagesView {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: "+FrontendMessagesViewImpl.class.getSimpleName());
+        log.info("postConstruct: "+ FlashMessagesViewImpl.class.getSimpleName());
     }
 
     @PreDestroy
     public void preDestroy() {
-        log.info("preDestroy: "+FrontendMessagesViewImpl.class.getSimpleName());
+        log.info("preDestroy: "+ FlashMessagesViewImpl.class.getSimpleName());
     }
 
 }
