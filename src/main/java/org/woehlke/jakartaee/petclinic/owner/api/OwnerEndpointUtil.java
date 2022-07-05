@@ -2,11 +2,18 @@ package org.woehlke.jakartaee.petclinic.owner.api;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbException;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.api.PetEndpointUtil;
 
 import java.io.Serializable;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +23,7 @@ import java.util.List;
 public class OwnerEndpointUtil implements Serializable {
 
     private static final long serialVersionUID = 532726561254887897L;
+
     @Inject
     private PetEndpointUtil petEndpointUtil;
 
@@ -44,4 +52,29 @@ public class OwnerEndpointUtil implements Serializable {
         return new OwnerListDto(dtoList);
     }
 
+    public String dtoJsonFactory(OwnerDto dto) throws JsonbException {
+        Jsonb jsonb = JsonbBuilder.create();
+        return jsonb.toJson(dto);
+    }
+
+    public String dtoListJsonFactory(OwnerListDto dtoList) throws JsonbException {
+        Jsonb jsonb = JsonbBuilder.create();
+        return jsonb.toJson(dtoList);
+    }
+
+    public String dtoXmlFactory(OwnerDto dto) throws JAXBException {
+        JAXBContext jc = JAXBContext.newInstance(OwnerDto.class);
+        Marshaller m = jc.createMarshaller();
+        StringWriter stringWriter = new StringWriter();
+        m.marshal(dto, stringWriter);
+        return stringWriter.toString();
+    }
+
+    public String dtoListXmlFactory(OwnerListDto dtoList) throws JAXBException {
+        JAXBContext jc = JAXBContext.newInstance(OwnerListDto.class);
+        Marshaller m = jc.createMarshaller();
+        StringWriter stringWriter = new StringWriter();
+        m.marshal(dtoList, stringWriter);
+        return stringWriter.toString();
+    }
 }
