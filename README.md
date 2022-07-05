@@ -72,3 +72,7 @@ And Update from Java EE 7 Petclinic
 ## Cloud
 * [Openshift](etc/docs/CLOUD.md)
 
+## Imprint
+* [(c) 2022 Thomas Woehlke](https://github.com/thomaswoehlke)
+* [This Document](https://jakarta-ee-petclinic.github.io/petclinic-jakartaee/)
+* [github repository](https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee)
