@@ -3,7 +3,6 @@ package org.woehlke.jakartaee.petclinic.specialty.api;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -28,8 +27,7 @@ public class SpecialtyEndpoint implements Serializable {
     @EJB
     private SpecialtyService specialtyService;
 
-    @Inject
-    private SpecialtyEndpointUtil specialtyEndpointUtil;
+    private final SpecialtyEndpointUtil specialtyEndpointUtil = new SpecialtyEndpointUtil();
 
     @GET
     @Path("/list")

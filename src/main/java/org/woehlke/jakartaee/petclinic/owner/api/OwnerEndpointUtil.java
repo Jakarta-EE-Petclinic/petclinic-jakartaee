@@ -1,7 +1,6 @@
 package org.woehlke.jakartaee.petclinic.owner.api;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
+
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbException;
@@ -19,13 +18,11 @@ import java.util.List;
 
 
 @Log
-@ApplicationScoped
 public class OwnerEndpointUtil implements Serializable {
 
     private static final long serialVersionUID = 532726561254887897L;
 
-    @Inject
-    private PetEndpointUtil petEndpointUtil;
+    private final PetEndpointUtil petEndpointUtil = new PetEndpointUtil();
 
     public OwnerDto dtoFactory(Owner o) {
         OwnerDto dto = new OwnerDto();

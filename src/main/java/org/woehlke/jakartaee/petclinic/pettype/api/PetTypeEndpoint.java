@@ -3,7 +3,6 @@ package org.woehlke.jakartaee.petclinic.pettype.api;
 import jakarta.ejb.EJB;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -25,9 +24,7 @@ public class PetTypeEndpoint implements Serializable {
     @EJB
     private PetTypeService petTypeService;
 
-    @Inject
-    private PetTypeEndpointUtil petTypeEndpointUtil;
-
+    private final PetTypeEndpointUtil petTypeEndpointUtil = new PetTypeEndpointUtil();
 
     @GET
     @Path("/list")

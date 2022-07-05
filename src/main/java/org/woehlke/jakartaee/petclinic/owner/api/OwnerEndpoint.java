@@ -2,18 +2,12 @@ package org.woehlke.jakartaee.petclinic.owner.api;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import jakarta.json.bind.Jsonb;
-import jakarta.json.bind.JsonbBuilder;
-import jakarta.json.bind.JsonbException;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.OwnerService;
 
@@ -32,8 +26,7 @@ public class OwnerEndpoint implements Serializable {
     @EJB
     private OwnerService ownerService;
 
-    @Inject
-    private OwnerEndpointUtil ownerEndpointUtil;
+    private final OwnerEndpointUtil ownerEndpointUtil = new OwnerEndpointUtil();
 
     @GET
     @Path("/list")

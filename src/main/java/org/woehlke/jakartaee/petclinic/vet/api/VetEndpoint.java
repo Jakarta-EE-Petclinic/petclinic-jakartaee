@@ -2,7 +2,6 @@ package org.woehlke.jakartaee.petclinic.vet.api;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -32,8 +31,7 @@ public class VetEndpoint implements Serializable {
     @EJB
     private VetService vetService;
 
-    @Inject
-    private VetEndpointUtil vetEndpointUtil;
+    private final VetEndpointUtil vetEndpointUtil = new VetEndpointUtil();
 
     @GET
     @Path("/list")
