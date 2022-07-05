@@ -8,3 +8,8 @@
 * https://jakarta.ee/specifications/security/2.0/
 * https://jakarta.ee/specifications/platform/9.1/
 * https://openliberty.io/docs/latest/jakarta-ee9-feature-updates.html
+
+## features
+* Calendar for Pet.Birthday and Visit.date
+* AJAX Frontend in JSF
+* 

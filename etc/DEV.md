@@ -1,29 +1,29 @@
-# jakartaee8-petclinic
-Jakarta EE 8 Petclinic -  a JSF and Jakarta EE Version of Spring Petclinic -  and Update from Java EE 7 Petclinic
+# petclinic-jakartaee
 
-# Development Milestones
+Jakarta EE 9.1 Petclinic - a JSF and Jakarta EE Version of Spring Petclinic, and Update from Java EE 7 Petclinic
+
+# DevOps
 
 ## running the Application
+
 * Managed
     * Wildfly ... OK
     * OpenLiberty ... OK
-    * Glassfish ... TODO
+    * Payara (Glassfish) ... TODO
 * Remote
     * Wildfly OK
     * OpenLiberty OK
-    * Glassfish ... TODO
+    * Payara (Glassfish) ... OK (manual Deployment)
     
-## testing the Application with Arquillian
+## Integration testing the Application with Selenium or Arquillian
 * Managed
     * Wildfly ... TODO
     * OpenLiberty ... TODO
-    * Glassfish ... TODO
+    * Payara (Glassfish) ... TODO
 * Remote
     * Wildfly ... TODO
     * OpenLiberty ... TODO
-    * Glassfish ... TODO
+    * Payara (Glassfish) ... TODO
     
-## features
-* Calendar for Pet.Birthday and Visit.date
-* AJAX Frontend in JSF
+
 

@@ -1,36 +1,51 @@
 # petclinic-jakartaee
 Petclinic Jakarta EE - a JSF and Jakarta EE 9.1 Version of Spring Petclinic. 
 And Update from Java EE 7 Petclinic
+
 ## What is this?
 * JSF and Jakarta EE 9.1 Version of [Spring Petclinic](https://github.com/spring-projects/spring-petclinic)
-* This is an Update of [Java EE 7 Petclinic](https://github.com/Jakarta-EE-Petclinic/javaee7-petclinic)
+* This is an Update of [Java EE 7 Petclinic](https://jakarta-ee-petclinic.github.io/petclinic-javaee7/)
+
 ## Where is it?
 * Github: [https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee](https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee)
 * Demo on OpenShift: [http://jakartaee8petclinic.rhcloud.com/](http://jakartaee8petclinic.rhcloud.com)
-* Blog: [http://thomas-woehlke.blogspot.de/2018/10/jakarta-ee-8-petclinic.html](http://thomas-woehlke.blogspot.de/2018/10/jakarta-ee-8-petclinic.html)
+* Blog: [https://thomas-woehlke.blogspot.com/2014/02/java-ee-7-petclinic.html](https://thomas-woehlke.blogspot.com/2014/02/java-ee-7-petclinic.html)
+
 ## Motivation
 * Some experimental Work with JSF, Jakarta EE 9.1 and Java EE 
-* Comparison between Java EE / Jakarta EE and Spring Frameworks.
+* These Demo Application is planned to be the first in a series of “Rosetta Stone” to compare OOP Web Application Frameworks
+
+## Why Petclinic?
+* The Domain Classes show all relationships like one-to-many (1:n), many-to-one (n:1) and many-to-many (n:m)
+* It is simple enough but yet it shows more than just the CRUD Use Cases (Create, Read, Update, Delete) of most Demos and Training Examples.
+* You can think of it as smallest complete Web App with the usual things to solve.
+
 ## Spring Petclinic
 * Github: [https://github.com/spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic)
 
-# Software Design
-## Domain Class Modell
+## Software Design
+
+* [Requirements Engineering (OOA,OOD,UML)](https://jakarta-ee-petclinic.github.io/petclinic-uml/)
+
+### Domain Class Modell
 ![Figure Domain Class Modell](etc/images/DomainClassModell.jpg)
-## Use Cases
+
+### Use Cases
 ![Figure Uses Cases Vet](etc/images/UseCases.jpg)
 ![Figure Uses Cases Owner](etc/images/UseCasesOwner.jpg)
-## Page Flow
+
+### Page Flow
 ![Figure Pageflow](etc/images/Pageflow.jpg)
-## Screens
-### Add Vet with ManyToMany Relation to Specialty
+
+### Screens
+#### Add Vet with ManyToMany Relation to Specialty
 ![Figure Add Vet with ManyToMany Relation to Specialty](etc/images/screenAddVet.png)
-### New Visit
+#### New Visit
 ![Figure New Visit](etc/images/screenNewVisit.png)
-### Owner
+#### Owner
 ![Figure Owner](etc/images/screenOwner.png)
 
-## First Steps to use
+## User: First Steps to do
 * add some PetTypes like dog,cat,mouse,...
 * add some Specialties for Vetinarians like dentist, anesthetist, radiology,...
 * add a Vetinarian
@@ -56,3 +71,4 @@ And Update from Java EE 7 Petclinic
 * [Glassfish](etc/docs/RUNTIME_GLASSFISH.md)
 ## Cloud
 * [Openshift](etc/docs/CLOUD.md)
+
