@@ -60,7 +60,7 @@
 		<version.postgresql.driver>42.4.0</version.postgresql.driver>
 
 		<!-- JAX-RS JSON -->
-		<version.org.jboss.resteasy>6.0.0.Final</version.org.jboss.resteasy>
+		<version.org.jboss.resteasy>6.0.1.Final</version.org.jboss.resteasy>
 
 		<!-- webjars Frontend -->
 		<version.webjars.jquery>3.6.0</version.webjars.jquery>
@@ -1881,106 +1881,116 @@
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-jakarta</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ejb3-jakarta</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 					</dependency>
+					-->
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-weld-jakarta</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-jsf-jakarta</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-preview-feature-pack</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
+						<artifactId>wildfly-microprofile-health-smallrye</artifactId>
+						<version>26.1.1.Final</version>
+						<type>jar</type>
+					</dependency>
+
+
+					<dependency>
+						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-dist</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-galleon-pack</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-mp-feature-pack-galleon-common</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-feature-pack-common</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-feature-pack-galleon-common</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-servlet-feature-pack-common</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-servlet-feature-pack-galleon-common</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-preview-feature-pack-common</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-preview-feature-pack-ee-9-api</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-preview-feature-pack-common-microprofile</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-core-feature-pack-common</artifactId>
-						<version>19.0.0.Beta13</version>
+						<version>18.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-core-feature-pack-galleon-common</artifactId>
-						<version>19.0.0.Beta13</version>
+						<version>18.1.1.Final</version>
 						<type>zip</type>
 					</dependency>
 
@@ -1999,25 +2009,25 @@
 					<dependency>
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-controller-client</artifactId>
-						<version>19.0.0.Beta9</version>
+						<version>18.1.1.Final</version>
 						<scope>provided</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-launcher</artifactId>
-						<version>19.0.0.Beta9</version>
+						<version>18.1.1.Final</version>
 						<scope>provided</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-protocol</artifactId>
-						<version>19.0.0.Beta9</version>
+						<version>18.1.1.Final</version>
 						<scope>provided</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-web-common-jakarta</artifactId>
-						<version>27.0.0.Alpha1</version>
+						<version>26.1.1.Final</version>
 						<scope>provided</scope>
 					</dependency>
 
@@ -2319,10 +2329,12 @@
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-ee-9-deployment-transformer</artifactId>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-ejb3-jakarta</artifactId>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-weld-jakarta</artifactId>
@@ -2354,6 +2366,14 @@
 					<artifactId>wildfly-mp-feature-pack-galleon-common</artifactId>
 					<type>zip</type>
 				</dependency>
+
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-microprofile-health-smallrye</artifactId>
+					<type>jar</type>
+				</dependency>
+
+
 				<!--
 				<dependency>
 					<groupId>org.wildfly</groupId>
@@ -2376,6 +2396,7 @@
 					<artifactId>wildfly-servlet-feature-pack-galleon-common</artifactId>
 					<type>zip</type>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-preview-feature-pack-common</artifactId>
@@ -2391,6 +2412,7 @@
 					<artifactId>wildfly-preview-feature-pack-common-microprofile</artifactId>
 					<type>zip</type>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>org.wildfly.core</groupId>
 					<artifactId>wildfly-core-feature-pack-common</artifactId>
@@ -2658,8 +2680,14 @@
 								<feature-pack>
 									<groupId>org.wildfly</groupId>
 									<artifactId>wildfly-preview-feature-pack</artifactId>
-									<version>27.0.0.Alpha1</version>
+									<version>26.1.1.Final</version>
 									<type>zip</type>
+								</feature-pack>
+								<feature-pack>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-microprofile-health-smallrye</artifactId>
+									<version>26.1.1.Final</version>
+									<type>jar</type>
 								</feature-pack>
 							</feature-packs>
 						</configuration>
