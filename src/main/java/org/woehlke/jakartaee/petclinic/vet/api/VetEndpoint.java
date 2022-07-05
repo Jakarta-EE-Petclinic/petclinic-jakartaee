@@ -1,7 +1,7 @@
 package org.woehlke.jakartaee.petclinic.vet.api;
 
 import jakarta.ejb.EJB;
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.ejb.Stateless;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -23,7 +23,7 @@ import java.io.Serializable;
  */
 @Log
 @Path("/vet")
-@ApplicationScoped
+@Stateless
 public class VetEndpoint implements Serializable {
 
     private static final long serialVersionUID = 607664665910620584L;
