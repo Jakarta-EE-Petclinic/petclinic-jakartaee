@@ -30,18 +30,18 @@ And Update from Java EE 7 Petclinic
 
 
 ### Petclinic Domain Class Modell
-![Figure Domain Class Modell](uml/Petclinic__Domain_Class_Modell-Petclinic_Domain_Class_Modell.png)
+![Figure Domain Class Modell](etc/uml/Petclinic__Domain_Class_Modell-Petclinic_Domain_Class_Modell.png)
 
 ### Petclinic Use Case Diagram
 
-![Figure Uses Cases Petclinic](uml/Petclinic__Use_Cases-Petclinic_Use_Case_Diagram.png)
+![Figure Uses Cases Petclinic](etc/uml/Petclinic__Use_Cases-Petclinic_Use_Case_Diagram.png)
 
 
 ## PetType
 
 ### PetType Use Case Diagram
 
-![Figure Uses Case PetType](uml/owner/concept/PetType__UseCase-PetType_Use_Case_Diagram.png)
+![Figure Uses Case PetType](etc/uml/owner/concept/PetType__UseCase-PetType_Use_Case_Diagram.png)
 
 ### PetType State Diagram
 
@@ -59,7 +59,7 @@ And Update from Java EE 7 Petclinic
 
 *) TODO
 
-![Figure Uses Cases PetType](uml/owner/concept/PetType__State-PetType_State_Diagram.png)
+![Figure Uses Cases PetType](etc/uml/owner/concept/PetType__State-PetType_State_Diagram.png)
 
 | PetType Use Cases | Actions                              | Frontend to View              | View to Backend (DB) | outcome             | precondition                   | postcondition                                |
 |-------------------|--------------------------------------|-------------------------------|----------------------|---------------------|--------------------------------|----------------------------------------------|
@@ -83,14 +83,14 @@ And Update from Java EE 7 Petclinic
 | PetType.delete    | PetTypeView.db_delete()              |                               | x                    | OK                  | length(list(PetType)) = n > 0  | length(list(PetType)) = n-1                  |
 | PetType.delete    | PetTypeView.db_delete()              |                               | x                    | not OK, invalid     | length(list(PetType)) = n >= 0 | display cause as flash message               |
 
-![Figure PetTypeView](uml/owner/implementation/View__Class-OwnerView_Class_Diagram.png)
+![Figure PetTypeView](etc/uml/owner/implementation/View__Class-OwnerView_Class_Diagram.png)
 
 
 ## Specialty
 
 ### Specialty Use Case Diagram
 
-![Figure Uses Case Specialty](uml/vet/concept/Specialty__UseCase-Specialty_Use_Case_Diagram.png)
+![Figure Uses Case Specialty](etc/uml/vet/concept/Specialty__UseCase-Specialty_Use_Case_Diagram.png)
 
 ### Specialty State Diagram
 
@@ -108,7 +108,7 @@ And Update from Java EE 7 Petclinic
 
 *) TODO
 
-![Figure Uses Cases Specialty](uml/vet/concept/Specialty__UseCase__State-Specialty_State_Diagram.png)
+![Figure Uses Cases Specialty](etc/uml/vet/concept/Specialty__UseCase__State-Specialty_State_Diagram.png)
 
 | Specialty Use Cases | Actions                                | Frontend to View                | View to Backend (DB) | outcome             | precondition                     | postcondition                                  |
 |---------------------|----------------------------------------|---------------------------------|----------------------|---------------------|----------------------------------|------------------------------------------------|
@@ -133,13 +133,13 @@ And Update from Java EE 7 Petclinic
 | Specialty.delete    | SpecialtyView.db_delete()              |                                 | x                    | not OK, invalid     | length(list(Specialty)) = n >= 0 | display cause as flash message                 |
 
 ### SpecialtyViw Class
-![Figure Class SpecialtyView](uml/vet/implementation/View__Class-VetView_and_SpecialtyView_Class_Diagram.png)
+![Figure Class SpecialtyView](etc/uml/vet/implementation/View__Class-VetView_and_SpecialtyView_Class_Diagram.png)
 
 ## Vetinarian
 
 ### Vetinarian Use Case Diagram
 
-![Figure Uses Cases Vet](uml/vet/concept/Vet__UseCase-Vetinarian_Use_Case_Diagram.png)
+![Figure Uses Cases Vet](etc/uml/vet/concept/Vet__UseCase-Vetinarian_Use_Case_Diagram.png)
 
 ### Vetinarian State Diagram
 
@@ -157,7 +157,7 @@ And Update from Java EE 7 Petclinic
 
 *) TODO
 
-![Figure Vetinarian_State_Diagram](uml/vet/concept/Vet__UseCase__State-Vetinarian_State_Diagram.png)
+![Figure Vetinarian_State_Diagram](etc/uml/vet/concept/Vet__UseCase__State-Vetinarian_State_Diagram.png)
 
 | Use Case    | Actions                           | Frontend to View                 | View to Backend (DB) | outcome             | precondition                      | postcondition                                   |
 |-------------|-----------------------------------|----------------------------------|----------------------|---------------------|-----------------------------------|-------------------------------------------------|
@@ -183,17 +183,17 @@ And Update from Java EE 7 Petclinic
 
 ### VetinarianView Class
 
-![Figure View Class](uml/vet/implementation/View__Class-VetView_and_SpecialtyView_Class_Diagram.png)
+![Figure View Class](etc/uml/vet/implementation/View__Class-VetView_and_SpecialtyView_Class_Diagram.png)
 
 ### vet.oodm
 
-![Figure DB Class](uml/vet/implementation/DB__Class-vet_oodm_Class_Diagram.png)
+![Figure DB Class](etc/uml/vet/implementation/DB__Class-vet_oodm_Class_Diagram.png)
 
 ## Owner
 
 ### Owner Use Cases
 
-![Figure Uses Cases Owner](uml/owner/concept/Owner__UseCases-Owner_Use_Case_Diagram.png)
+![Figure Uses Cases Owner](etc/uml/owner/concept/Owner__UseCases-Owner_Use_Case_Diagram.png)
 
 ### Owner State
 
@@ -216,13 +216,13 @@ And Update from Java EE 7 Petclinic
 
 #### Owner State Diagram
 
-![Figure Uses Cases Owner](uml/owner/concept/Owner__State-Owner_State_Diagram.png)
+![Figure Uses Cases Owner](etc/uml/owner/concept/Owner__State-Owner_State_Diagram.png)
 
 #### Owner State Diagram without Pet and Visits
-![Figure Uses Cases Owner](uml/owner/concept/Owner__State__without_details-Owner_State_Diagram_without_Pet_and_Visits.png)
+![Figure Uses Cases Owner](etc/uml/owner/concept/Owner__State__without_details-Owner_State_Diagram_without_Pet_and_Visits.png)
 
 #### Owner State Diagram of Pet and Visits
-![Figure Uses Cases Owner](uml/owner/concept/Owner__State__details-Owner_State_Diagram_of_Pet_and_Visits.png)
+![Figure Uses Cases Owner](etc/uml/owner/concept/Owner__State__details-Owner_State_Diagram_of_Pet_and_Visits.png)
 
 | Use Case               | Actions                                  | Frontend to View                  | View to Backend (DB) | outcome             | precondition                  | postcondition                              |
 |------------------------|------------------------------------------|-----------------------------------|----------------------|---------------------|-------------------------------|--------------------------------------------|
@@ -274,11 +274,11 @@ And Update from Java EE 7 Petclinic
 
 ### OwnerView Class
 
-![Figure View Class](uml/vet/implementation/View__Class-VetView_and_SpecialtyView_Class_Diagram.png)
+![Figure View Class](etc/uml/vet/implementation/View__Class-VetView_and_SpecialtyView_Class_Diagram.png)
 
 ### owner.oodm
 
-![Figure DB Class](uml/owner/implementation/DB__class-owner_oodm_Class_Diagram.png)
+![Figure DB Class](etc/uml/owner/implementation/DB__class-owner_oodm_Class_Diagram.png)
 
 
 ## User: First Steps to do
