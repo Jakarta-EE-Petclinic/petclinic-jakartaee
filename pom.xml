@@ -2657,85 +2657,8 @@
 							<feature-packs>
 								<feature-pack>
 									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-dist</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-galleon-pack</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
 									<artifactId>wildfly-preview-feature-pack</artifactId>
 									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-mp-feature-pack-galleon-common</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-ee-feature-pack-common</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-ee-feature-pack-galleon-common</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-servlet-feature-pack-common</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-servlet-feature-pack-galleon-common</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-preview-feature-pack-common</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-preview-feature-pack-ee-9-api</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-preview-feature-pack-common-microprofile</artifactId>
-									<version>27.0.0.Alpha1</version>
-									<type>zip</type>
-								</feature-pack>
-									<feature-pack>
-									<groupId>org.wildfly.core</groupId>
-									<artifactId>wildfly-core-feature-pack-common</artifactId>
-									<version>19.0.0.Beta13</version>
-									<type>zip</type>
-								</feature-pack>
-								<feature-pack>
-									<groupId>org.wildfly.core</groupId>
-									<artifactId>wildfly-core-feature-pack-galleon-common</artifactId>
-									<version>19.0.0.Beta13</version>
 									<type>zip</type>
 								</feature-pack>
 							</feature-packs>
@@ -2763,7 +2686,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
 					<plugin>
 						<groupId>org.projectlombok</groupId>
 						<artifactId>lombok-maven-plugin</artifactId>
