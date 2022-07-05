@@ -1,6 +1,6 @@
 package org.woehlke.jakartaee.petclinic.pettype.views;
 
-import org.woehlke.jakartaee.petclinic.application.views.CrudView;
+import org.woehlke.jakartaee.petclinic.application.views.CrudViewFlow;
 import org.woehlke.jakartaee.petclinic.application.framework.has.HasLanguage;
 import org.woehlke.jakartaee.petclinic.application.framework.has.HasSearch;
 import org.woehlke.jakartaee.petclinic.application.framework.has.HasViewModelOperations;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface PetTypeView extends CrudView<PetType>,
+public interface PetTypeView extends CrudViewFlow<PetType>,
         HasLanguage,
         HasSearch,
         HasViewModelOperations,

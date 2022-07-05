@@ -1,7 +1,7 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
 import org.primefaces.model.DualListModel;
-import org.woehlke.jakartaee.petclinic.application.views.CrudView;
+import org.woehlke.jakartaee.petclinic.application.views.CrudViewFlow;
 import org.woehlke.jakartaee.petclinic.application.framework.has.HasLanguage;
 import org.woehlke.jakartaee.petclinic.application.framework.has.HasSearch;
 import org.woehlke.jakartaee.petclinic.application.framework.has.HasViewModelOperations;
@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface VetView extends CrudView<Vet>,
+public interface VetViewFlow extends CrudViewFlow<Vet>,
         HasLanguage,
         HasSearch,
         HasViewModelOperations,

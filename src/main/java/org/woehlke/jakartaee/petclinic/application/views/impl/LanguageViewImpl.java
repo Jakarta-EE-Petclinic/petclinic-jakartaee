@@ -32,10 +32,15 @@ import java.util.Map;
 public class LanguageViewImpl implements LanguageView {
 
     private static final long serialVersionUID = -5444922829398489233L;
+
     private final Locale DEFAULT = Locale.ENGLISH;
     private final Locale[] LOCALE_OPTIONS = {Locale.ENGLISH, Locale.GERMAN};
+
+    //TODO without reference to FlashMesseges
+    @Deprecated
     @Inject
     private FlashMessagesView flashMessagesView;
+
     private Locale locale;
 
     private String localeSelected;

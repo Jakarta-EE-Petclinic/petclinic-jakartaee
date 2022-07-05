@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  *
  */
-public enum CrudViewFlowState implements Serializable {
+public enum CrudViewState implements Serializable {
     LIST,
     NEW,
     EDIT,

@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 /**
  * @param <T>
  */
-public interface CrudView<T extends EntityBase> extends HasSearch, HasLanguage, Serializable {
+public interface CrudViewFlow<T extends EntityBase> extends HasSearch, HasLanguage, Serializable {
 
     long serialVersionUID = -4976697275728754000L;
 

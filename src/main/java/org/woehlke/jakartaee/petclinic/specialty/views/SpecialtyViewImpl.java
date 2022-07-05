@@ -53,7 +53,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private SpecialtyViewFlow specialtyViewFlow;
+    private SpecialtyViewFlowImpl specialtyViewFlow;
 
     @Override
     @PostConstruct

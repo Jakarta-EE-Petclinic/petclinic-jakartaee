@@ -24,6 +24,8 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
 
     private static final long serialVersionUID = -2267751568724878682L;
 
+    //TODO: Table:  FacesMessage.SEVERITY_INFO -> Logging Severity -> Color Frontend
+
     public void addInfoMessage(String summary, String detail) {
         FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_INFO;
         String clientId = null;
@@ -104,6 +106,9 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
         this.addMessageForEntityAndRuntimeException(e, entity, clientId, messageSeverity);
     }
 
+
+    //TODO: simplify
+    //TODO: display all flash messeges
     private void doLogging(
             List<String> logInfos,
             FacesMessage.Severity messageSeverity
@@ -213,6 +218,8 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
             logInfos.add("addFrontendMessage.clientId:  " + clientId);
         }
         this.doLogging(logInfos, messageSeverity);
+
+        // TODO: Store messages in Session and display them
         FacesMessage message = new FacesMessage(messageSeverity, summary, detail);
         FacesContext.getCurrentInstance().addMessage(clientId, message);
     }

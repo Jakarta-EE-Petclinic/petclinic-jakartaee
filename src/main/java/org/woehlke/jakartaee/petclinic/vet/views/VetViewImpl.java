@@ -49,7 +49,7 @@ public class VetViewImpl implements VetView {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private VetViewFlow vetViewFlow;
+    private VetViewFlowImpl vetViewFlow;
 
     @EJB
     private SpecialtyService specialtyService;
@@ -400,11 +400,11 @@ public class VetViewImpl implements VetView {
         this.entity = new Vet();
     }
 
-    public VetViewFlow getVetViewFlow() {
+    public VetViewFlowImpl getVetViewFlow() {
         return vetViewFlow;
     }
 
-    public void setVetViewFlow(VetViewFlow vetViewFlow) {
+    public void setVetViewFlow(VetViewFlowImpl vetViewFlow) {
         this.vetViewFlow = vetViewFlow;
     }
 }
