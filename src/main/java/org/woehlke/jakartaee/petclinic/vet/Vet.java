@@ -154,17 +154,6 @@ public class Vet extends EntityBaseObject implements EntityBase {
 
     @Transient
     @Override
-    public String[] getColumnNames() {
-        String[] thisColumnNames = {
-                COL_ID, COL_UUID,
-                COL_FIRSTNAME, COL_LASTNAME, COL_VET_SPECIALTIES,
-                COL_JOIN_VET_ID, COL_JOIN_SPECIALTY_ID
-        };
-        return thisColumnNames;
-    }
-
-    @Transient
-    @Override
     public String getPrimaryKey() {
         return lastName + " " + firstName;
     }
