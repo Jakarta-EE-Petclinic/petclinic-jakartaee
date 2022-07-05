@@ -18,7 +18,7 @@ import java.util.List;
  *
  */
 @Log
-@Named("frontendMessagesView")
+@Named("flashMessagesView")
 @SessionScoped
 public class FlashMessagesViewImpl implements FlashMessagesView {
 
