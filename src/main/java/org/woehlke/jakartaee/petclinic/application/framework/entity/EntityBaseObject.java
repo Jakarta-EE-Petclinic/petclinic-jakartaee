@@ -19,9 +19,6 @@ public abstract class EntityBaseObject extends Object implements EntityBase, Com
     public abstract String getTableName();
 
     @Override
-    public abstract String[] getColumnNames();
-
-    @Override
     public abstract String getPrimaryKey();
 
     @Override

@@ -8,7 +8,6 @@ import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
 
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.*;
 
 import java.util.*;
 

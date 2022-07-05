@@ -104,16 +104,6 @@ public class Pet extends EntityBaseObject implements EntityBase {
     }
 
     @Transient
-    public String[] getColumnNames() {
-        String[] thisColumnNames = {
-                COL_ID, COL_UUID,
-                COL_NAME, COL_BIRTH_DATE,
-                COL_PETTYPE_ID, COL_OWNER_ID
-        };
-        return thisColumnNames;
-    }
-
-    @Transient
     public String getPrimaryKey() {
         return "" + this.getName() + " ( " + this.getType().getName() + ")";
     }

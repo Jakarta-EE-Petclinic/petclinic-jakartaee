@@ -8,7 +8,6 @@ import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBaseOb
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.*;
 import org.woehlke.jakartaee.petclinic.visit.impl.VisitListener;
 
 import java.util.Date;
@@ -92,16 +91,6 @@ public class Visit extends EntityBaseObject implements EntityBase {
     @Override
     public String getTableName() {
         return TABLENAME;
-    }
-
-    @Transient
-    @Override
-    public String[] getColumnNames() {
-        String[] thisColumnNames = {
-                COL_ID, COL_UUID,
-                COL_VISIT_DATE, COL_DESCRIPTION, COL_PET_ID
-        };
-        return thisColumnNames;
     }
 
     @Transient

@@ -81,14 +81,6 @@ public class Specialty extends EntityBaseObject implements EntityBase {
     }
 
     @Override
-    public String[] getColumnNames() {
-        String[] thisColumnNames = {
-                COL_ID, COL_UUID, COL_NAME
-        };
-        return thisColumnNames;
-    }
-
-    @Override
     public String getPrimaryKey() {
         return this.getName();
     }
