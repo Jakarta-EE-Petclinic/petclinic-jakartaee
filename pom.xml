@@ -1761,6 +1761,8 @@
 						<configuration>
 							<source>${java.version}</source>
 							<target>${java.version}</target>
+							<verbose>true</verbose>
+							<fork>true</fork>
 							<showWarnings>true</showWarnings>
 							<useIncrementalCompilation>false</useIncrementalCompilation>
 							<compilerArgs>
@@ -2267,11 +2269,13 @@
 					<artifactId>wildfly-galleon-pack</artifactId>
 					<type>zip</type>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-dist</artifactId>
 					<type>zip</type>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>org.jboss.logmanager</groupId>
 					<artifactId>jboss-logmanager</artifactId>

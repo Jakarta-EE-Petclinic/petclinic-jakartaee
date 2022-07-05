@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface VetViewFlow extends CrudViewFlow<Vet>,
+public interface VetView extends CrudViewFlow<Vet>,
         HasLanguage,
         HasSearch,
         HasViewModelOperations,
