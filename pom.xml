@@ -6,7 +6,7 @@
 	<packaging>war</packaging>
 	<version>9.1.0.36-SNAPSHOT</version>
 
-	<name>Jakarta EE 9.1 Petclinic</name>
+	<name>Petclinic Jakarta EE 9.1</name>
 	<description>A JSF and Jakarta EE Version of Spring Petclinic and Update from Java EE 7 Petclinic.</description>
 	<url>https://jakarta-ee-petclinic.github.io/jakartaee-petclinic/</url>
 	<organization>
@@ -71,30 +71,35 @@
 
 		<!-- OpenLiberty -->
 		<version.openliberty-runtime>22.0.0.6</version.openliberty-runtime>
+		<version.liberty-maven-plugin>3.6.1</version.liberty-maven-plugin>
 		<generateFeatures>false</generateFeatures>
 		<runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
 		<runtime.jakartaee.server.openliberty.ServerName>petclinicServer</runtime.jakartaee.server.openliberty.ServerName>
 		<version.infinispan-jcache-remote>12.1.7.Final</version.infinispan-jcache-remote>
 
+		<!-- Wildfly -->
+		<version.wildfly-runtime>26.1.1.Final</version.wildfly-runtime>
+		<version.wildfly-server>999.22.0.0.6</version.wildfly-server>
+
+		<!-- Payara -->
+		<version.payara-runtime>5.2021.5</version.payara-runtime>
+		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
+
 		<!-- maven Plugin Versions -->
 		<version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
+		<version.org.projectlombok.lombok>1.18.24</version.org.projectlombok.lombok>
 		<version.maven-war-plugin>3.3.2</version.maven-war-plugin>
 		<version.lombok-maven-plugin>1.18.20.0</version.lombok-maven-plugin>
-		<version.org.projectlombok.lombok>1.18.24</version.org.projectlombok.lombok>
-		<version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
-
 		<version.maven-dependency-plugin>3.3.0</version.maven-dependency-plugin>
 		<version.maven-resources-plugin>3.2.0</version.maven-resources-plugin>
 		<version.maven-javadoc-plugin>3.4.0</version.maven-javadoc-plugin>
-
 		<version.maven-project-info-reports-plugin>3.3.0</version.maven-project-info-reports-plugin>
 		<version.maven-site-plugin>3.12.0</version.maven-site-plugin>
 		<version.maven-release-plugin>3.0.0-M4</version.maven-release-plugin>
+
+		<!-- maven DevOps Plugin Versions -->
 		<version.artifactory-maven-plugin>3.4.0</version.artifactory-maven-plugin>
-
-		<version.liberty-maven-plugin>3.6.1</version.liberty-maven-plugin>
-
-		<payaramicro.maven.plugin.version>1.4.0</payaramicro.maven.plugin.version>
+		<version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
 	</properties>
 
 	<repositories>
@@ -1887,20 +1892,20 @@
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-preview-feature-pack</artifactId>
-						<version>26.1.1.Final</version>
+						<version>${version.wildfly-runtime}</version>
 						<type>zip</type>
 					</dependency>
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-dist</artifactId>
-						<version>26.1.1.Final</version>
+						<version>${version.wildfly-runtime}</version>
 						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly</groupId>
 						<artifactId>wildfly-galleon-pack</artifactId>
-						<version>26.1.1.Final</version>
+						<version>${version.wildfly-runtime}</version>
 						<type>zip</type>
 					</dependency>
 
@@ -2456,7 +2461,7 @@
 								<feature-pack>
 									<groupId>org.wildfly</groupId>
 									<artifactId>wildfly-preview-feature-pack</artifactId>
-									<version>26.1.1.Final</version>
+									<version>${version.wildfly-runtime}</version>
 									<type>zip</type>
 								</feature-pack>
 							</feature-packs>
@@ -2544,7 +2549,7 @@
 					<dependency>
 						<groupId>fish.payara.maven.plugins</groupId>
 						<artifactId>payara-micro-maven-plugin</artifactId>
-						<version>${payaramicro.maven.plugin.version}</version>
+						<version>${version.payaramicro.maven.plugin}</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
@@ -2984,7 +2989,7 @@
 						<plugin>
 							<groupId>fish.payara.maven.plugins</groupId>
 							<artifactId>payara-micro-maven-plugin</artifactId>
-							<version>${payaramicro.maven.plugin.version}</version>
+							<version>${version.payaramicro.maven.plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.projectlombok</groupId>
@@ -3081,7 +3086,7 @@
 					<plugin>
 						<groupId>fish.payara.maven.plugins</groupId>
 						<artifactId>payara-micro-maven-plugin</artifactId>
-						<version>${payaramicro.maven.plugin.version}</version>
+						<version>${version.payaramicro.maven.plugin}</version>
 						<executions>
 							<execution>
 								<id>01-payara-bundle</id>
@@ -3108,12 +3113,12 @@
 							<daemon>true</daemon>
 							<immediateExit>false</immediateExit>
 							<javaPath>/usr/bin/java</javaPath>
-							<payaraMicroAbsolutePath>/home/tw/.m2/repository/fish/payara/extras/payara-micro/5.2021.5/payara-micro-5.2021.5.jar</payaraMicroAbsolutePath>
-							<payaraVersion>5.2021.5</payaraVersion>
+							<payaraMicroAbsolutePath>/home/tw/.m2/repository/fish/payara/extras/payara-micro/${version.payara-runtime}/payara-micro-${version.payara-runtime}.jar</payaraMicroAbsolutePath>
+							<payaraVersion>${version.payara-runtime}</payaraVersion>
 							<artifactItem>
 								<groupId>fish.payara.extras</groupId>
 								<artifactId>payara-micro</artifactId>
-								<version>5.2021.5</version>
+								<version>${version.payara-runtime}</version>
 							</artifactItem>
 							<deployWar>true</deployWar>
 							<contextRoot>petclinic</contextRoot>
