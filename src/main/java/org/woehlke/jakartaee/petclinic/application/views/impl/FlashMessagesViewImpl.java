@@ -95,7 +95,8 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
             EntityBase entity,
             FacesMessage.Severity messageSeverity
     ) {
-        String summary = e.getLocalizedMessage();
+
+       String summary = e.getLocalizedMessage();
        log.info("-----------------------------------------------------\n");
        log.info("entity Table       " + entity.getTableName() + "\n");
        log.info("entity Class       " + entity.getClass().getName() + "\n");
@@ -136,7 +137,7 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
         log.info("addFrontendMessage.summary:   " + summary);
         log.info("addFrontendMessage.detail:    " + detail);
         FacesMessage message = new FacesMessage(messageSeverity, summary, detail);
-        messageHolder.add(message);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
     @PostConstruct
