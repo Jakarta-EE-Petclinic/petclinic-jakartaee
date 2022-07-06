@@ -89,12 +89,24 @@
 			</section>
 
 			<footer>
-				<hr/>
+				<p:separator />
 				<div style="float: left">
 					&#169; <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.web.copyright']}"/>
 				</div>
 				<div style="float: right">
-
+					<f:facet name="options">
+							<span class="ui-inputgroup">
+								<p:selectOneMenu value="#{languageView.localeSelected}">
+									<f:selectItems value="#{languageView.countries}"/>
+								</p:selectOneMenu>
+								<p:commandButton
+										type="submit"
+										ajax="false"
+										icon="fa fa-fw fa-save"
+										update="messages"
+										action="#{languageView.changeLanguage}"/>
+							</span>
+					</f:facet>
 				</div>
 			</footer>
 		</div>

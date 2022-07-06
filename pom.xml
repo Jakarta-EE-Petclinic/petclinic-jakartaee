@@ -14,6 +14,14 @@
 		<url>https://github.com/Jakarta-EE-Petclinic</url>
 	</organization>
 	<inceptionYear>2019</inceptionYear>
+	<developers>
+		<developer>
+			<id>thomaswoehlke</id>
+			<name>Thomas Woehlke</name>
+			<url>https://github.com/thomaswoehlke</url>
+			<timezone>Europe/Paris</timezone>
+		</developer>
+	</developers>
 
 	<scm>
 		<connection>scm:git:git@github.com:Jakarta-EE-Petclinic/jakartaee-petclinic.git</connection>
@@ -51,6 +59,9 @@
 
 		<!-- general -->
 		<version.log4j>2.17.2</version.log4j>
+		<version.jakarta.json>2.0.1</version.jakarta.json>
+		<version.apache.commons.commons-lang3>3.12.0</version.apache.commons.commons-lang3>
+		<version.org.slf4j.slf4j-api>1.7.25</version.org.slf4j.slf4j-api>
 
 		<!-- jakartaee APIs -->
 		<version.jakarta.jakartaee-api>9.1.0</version.jakarta.jakartaee-api>
@@ -67,6 +78,7 @@
 		<version.webjars.popper.js>2.9.3</version.webjars.popper.js>
 		<version.webjars.bootstrap>5.1.3</version.webjars.bootstrap>
 		<version.webjars.font-awesome>6.1.1</version.webjars.font-awesome>
+		<version.webjars.primeflex>3.0.1</version.webjars.primeflex>
 		<version.org.primefaces>11.0.0</version.org.primefaces>
 
 		<!-- OpenLiberty -->
@@ -80,6 +92,9 @@
 		<!-- Wildfly -->
 		<version.wildfly-runtime>26.1.1.Final</version.wildfly-runtime>
 		<version.wildfly-server>999.22.0.0.6</version.wildfly-server>
+		<version.wildfly-maven-plugin>4.0.0.Alpha2</version.wildfly-maven-plugin>
+		<version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
+		<version.jboss-logmanager>2.3.0.Alpha1</version.jboss-logmanager>
 
 		<!-- Payara -->
 		<version.payara-runtime>5.2021.5</version.payara-runtime>
@@ -96,6 +111,8 @@
 		<version.maven-project-info-reports-plugin>3.3.0</version.maven-project-info-reports-plugin>
 		<version.maven-site-plugin>3.12.0</version.maven-site-plugin>
 		<version.maven-release-plugin>3.0.0-M4</version.maven-release-plugin>
+		<version.maven-failsafe-plugin>3.0.0-M7</version.maven-failsafe-plugin>
+		<version.maven-surefire-plugin>3.0.0-M7</version.maven-surefire-plugin>
 
 		<!-- maven DevOps Plugin Versions -->
 		<version.artifactory-maven-plugin>3.4.0</version.artifactory-maven-plugin>
@@ -446,7 +463,7 @@
 			<dependency>
 				<groupId>org.webjars.npm</groupId>
 				<artifactId>primeflex</artifactId>
-				<version>3.0.1</version>
+				<version>${version.webjars.primeflex}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.primefaces</groupId>
@@ -521,14 +538,14 @@
 			<dependency>
 				<groupId>org.glassfish</groupId>
 				<artifactId>jakarta.json</artifactId>
-				<version>2.0.1</version>
+				<version>${version.jakarta.json}</version>
 				<scope>test</scope>
 			</dependency>
 			<!-- Java utility classes -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
-				<version>3.12.0</version>
+				<version>${version.apache.commons.commons-lang3}</version>
 			</dependency>
 
 			<!-- Maven Build -->
@@ -626,18 +643,17 @@
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>3.0.0-M7</version>
+				<version>${version.maven-failsafe-plugin}</version>
 				<type>maven-plugin</type>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M7</version>
+				<version>${version.maven-surefire-plugin}</version>
 				<type>maven-plugin</type>
 				<scope>test</scope>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -879,12 +895,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>3.0.0-M7</version>
+					<version>${version.maven-failsafe-plugin}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M7</version>
+					<version>${version.maven-surefire-plugin}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -1322,7 +1338,7 @@
 					<dependency>
 						<groupId>org.webjars.npm</groupId>
 						<artifactId>primeflex</artifactId>
-						<version>3.0.1</version>
+						<version>${version.webjars.primeflex}</version>
 					</dependency>
 					<dependency>
 						<groupId>org.primefaces</groupId>
@@ -1389,14 +1405,14 @@
 					<dependency>
 						<groupId>org.glassfish</groupId>
 						<artifactId>jakarta.json</artifactId>
-						<version>2.0.1</version>
+						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
 					<!-- Java utility classes -->
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
-						<version>3.12.0</version>
+						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
 
 					<!-- Maven Build -->
@@ -1501,14 +1517,14 @@
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
-						<version>3.0.0-M7</version>
+						<version>${version.maven-failsafe-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
-						<version>3.0.0-M7</version>
+						<version>${version.maven-surefire-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
@@ -1756,12 +1772,12 @@
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-failsafe-plugin</artifactId>
-							<version>3.0.0-M7</version>
+							<version>${version.maven-failsafe-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-surefire-plugin</artifactId>
-							<version>3.0.0-M7</version>
+							<version>${version.maven-surefire-plugin}</version>
 						</plugin>
 					</plugins>
 				</pluginManagement>
@@ -1877,14 +1893,14 @@
 					<dependency>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
-						<version>4.0.0.Alpha2</version>
+						<version>${version.wildfly-maven-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.wildfly.galleon-plugins</groupId>
 						<artifactId>wildfly-galleon-maven-plugin</artifactId>
-						<version>5.2.8.Final</version>
+						<version>${version.wildfly-galleon-maven-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
@@ -1912,7 +1928,7 @@
 					<dependency>
 						<groupId>org.jboss.logmanager</groupId>
 						<artifactId>jboss-logmanager</artifactId>
-						<version>2.3.0.Alpha1</version>
+						<version>${version.jboss-logmanager}</version>
 						<scope>test</scope>
 					</dependency>
 
@@ -1989,7 +2005,7 @@
 					<dependency>
 						<groupId>org.webjars.npm</groupId>
 						<artifactId>primeflex</artifactId>
-						<version>3.0.1</version>
+						<version>${version.webjars.primeflex}</version>
 					</dependency>
 					<dependency>
 						<groupId>org.primefaces</groupId>
@@ -2056,14 +2072,14 @@
 					<dependency>
 						<groupId>org.glassfish</groupId>
 						<artifactId>jakarta.json</artifactId>
-						<version>2.0.1</version>
+						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
 					<!-- Java utility classes -->
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
-						<version>3.12.0</version>
+						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
 
 					<!-- Maven Build -->
@@ -2168,14 +2184,14 @@
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
-						<version>3.0.0-M7</version>
+						<version>${version.maven-failsafe-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
-						<version>3.0.0-M7</version>
+						<version>${version.maven-surefire-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
@@ -2377,12 +2393,12 @@
 						<plugin>
 							<groupId>org.wildfly.plugins</groupId>
 							<artifactId>wildfly-maven-plugin</artifactId>
-							<version>4.0.0.Alpha2</version>
+							<version>${version.wildfly-maven-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.wildfly.galleon-plugins</groupId>
 							<artifactId>wildfly-galleon-maven-plugin</artifactId>
-							<version>5.2.8.Final</version>
+							<version>${version.wildfly-galleon-maven-plugin}</version>
 						</plugin>
 
 						<plugin>
@@ -2438,12 +2454,12 @@
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-failsafe-plugin</artifactId>
-							<version>3.0.0-M7</version>
+							<version>${version.maven-failsafe-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-surefire-plugin</artifactId>
-							<version>3.0.0-M7</version>
+							<version>${version.maven-surefire-plugin}</version>
 						</plugin>
 					</plugins>
 				</pluginManagement>
@@ -2983,7 +2999,7 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean install payara-micro:start</defaultGoal>
+				<defaultGoal>clean install payara-micro:bundle payara-micro:start</defaultGoal>
 				<pluginManagement>
 					<plugins>
 						<plugin>
@@ -3049,12 +3065,12 @@
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-failsafe-plugin</artifactId>
-							<version>3.0.0-M7</version>
+							<version>${version.maven-failsafe-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-surefire-plugin</artifactId>
-							<version>3.0.0-M7</version>
+							<version>${version.maven-surefire-plugin}</version>
 						</plugin>
 					</plugins>
 				</pluginManagement>
@@ -3126,7 +3142,7 @@
 								<artifactItem>
 									<groupId>org.slf4j</groupId>
 									<artifactId>slf4j-api</artifactId>
-									<version>1.7.25</version>
+									<version>${version.org.slf4j.slf4j-api}</version>
 								</artifactItem>
 								<artifactItem>
 									<groupId>org.postgresql</groupId>
