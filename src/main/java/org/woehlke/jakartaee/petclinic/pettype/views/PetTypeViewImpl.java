@@ -4,6 +4,8 @@ package org.woehlke.jakartaee.petclinic.pettype.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
@@ -30,10 +32,14 @@ import java.util.ResourceBundle;
 @Log
 @Named("petTypeView")
 @SessionScoped
+@Getter
+@Setter
 public class PetTypeViewImpl implements PetTypeView {
 
     private static final long serialVersionUID = -528406859430949031L;
+
     private final static String JSF_PAGE = "petType.jsf";
+
     private MessageProvider provider;
 
     @EJB
@@ -53,12 +59,6 @@ public class PetTypeViewImpl implements PetTypeView {
     private List<PetType> list;
     private String searchterm;
 
-    @PostConstruct
-    public void init() {
-        log.info("postConstruct: " + PetTypeViewImpl.class.getSimpleName());
-        this.provider = new MessageProvider();
-        this.petTypeViewFlow.setFlowStateList();
-    }
 
     @Override
     public String showNewForm() {
@@ -172,45 +172,11 @@ public class PetTypeViewImpl implements PetTypeView {
     }
 
     @Override
-    public void setEntity(PetType entity) {
-        this.entity = entity;
-    }
-
-    public FlashMessagesView getFrontendMessagesView() {
-        return flashMessagesView;
-    }
-
-    public void setFrontendMessagesView(FlashMessagesView flashMessagesView) {
-        this.flashMessagesView = flashMessagesView;
-    }
-
-    @Override
-    public PetType getSelected() {
-        return selected;
-    }
-
-    @Override
     public void setSelected(PetType selected) {
         this.selected = selected;
         if (this.selected != null) {
             this.entity = entityService.findById(this.selected.getId());
         }
-    }
-
-    public String getSearchterm() {
-        return searchterm;
-    }
-
-    public void setSearchterm(String searchterm) {
-        this.searchterm = searchterm;
-    }
-
-    public LanguageView getLanguageView() {
-        return languageView;
-    }
-
-    public void setLanguageView(LanguageView languageView) {
-        this.languageView = languageView;
     }
 
     public ResourceBundle getMsg() {
@@ -226,11 +192,8 @@ public class PetTypeViewImpl implements PetTypeView {
         } else {
             loadList();
         }
+        this.flashMessagesView.flashTheMessages();
         return list;
-    }
-
-    public void setList(List<PetType> list) {
-        this.list = list;
     }
 
     @Override
@@ -323,11 +286,19 @@ public class PetTypeViewImpl implements PetTypeView {
 
     @Override
     public void newEntity() {
-        log.info("deleteSelectedEntity");
-        String name = "add new name";
+        log.info("newEntity");
         this.entity = new PetType();
     }
 
+    @Override
+    @PostConstruct
+    public void postConstruct() {
+        log.info("postConstruct: " + PetTypeViewImpl.class.getSimpleName());
+        this.provider = new MessageProvider();
+        this.petTypeViewFlow.setFlowStateList();
+    }
+
+    @Override
     @PreDestroy
     public void preDestroy() {
         log.info("preDestroy");

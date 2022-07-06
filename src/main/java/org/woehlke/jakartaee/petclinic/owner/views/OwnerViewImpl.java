@@ -3,7 +3,10 @@ package org.woehlke.jakartaee.petclinic.owner.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
+import org.netbeans.lib.cvsclient.commandLine.command.log;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
@@ -35,6 +38,8 @@ import java.util.ResourceBundle;
 @Log
 @Named("ownerView")
 @SessionScoped
+@Getter
+@Setter
 public class OwnerViewImpl implements OwnerView {
 
     private static final long serialVersionUID = -4809817472969005481L;
@@ -73,14 +78,6 @@ public class OwnerViewImpl implements OwnerView {
     private List<PetType> petTypeList;
     private long petTypeId;
     private Visit visit;
-
-    @Override
-    @PostConstruct
-    public void init() {
-        log.info("postConstruct: " + OwnerViewImpl.class.getSimpleName());
-        this.messageProvider = new MessageProvider();
-        this.ownerViewFlow.setFlowStateList();
-    }
 
     @Override
     public boolean reloadEntityFromSelected() {
@@ -178,56 +175,6 @@ public class OwnerViewImpl implements OwnerView {
     }
 
     @Override
-    public Visit getVisit() {
-        return visit;
-    }
-
-    @Override
-    public void setVisit(Visit visit) {
-        this.visit = visit;
-    }
-
-    @Override
-    public Pet getPet() {
-        return pet;
-    }
-
-    @Override
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
-
-    @Override
-    public long getPetTypeId() {
-        return petTypeId;
-    }
-
-    @Override
-    public void setPetTypeId(long petTypeId) {
-        this.petTypeId = petTypeId;
-    }
-
-    @Override
-    public String getSearchterm() {
-        return searchterm;
-    }
-
-    @Override
-    public void setSearchterm(String searchterm) {
-        this.searchterm = searchterm;
-    }
-
-    @Override
-    public Pet getPetSelected() {
-        return petSelected;
-    }
-
-    @Override
-    public void setPetSelected(Pet petSelected) {
-        this.petSelected = petSelected;
-    }
-
-    @Override
     public void loadPetTypeList() {
         this.petTypeList = this.petTypeService.getAll();
     }
@@ -236,11 +183,6 @@ public class OwnerViewImpl implements OwnerView {
     public List<PetType> getPetTypeList() {
         this.loadPetTypeList();
         return petTypeList;
-    }
-
-    @Override
-    public void setPetTypeList(List<PetType> petTypeList) {
-        this.petTypeList = petTypeList;
     }
 
     @Override
@@ -532,42 +474,8 @@ public class OwnerViewImpl implements OwnerView {
         } else {
             loadList();
         }
+        this.flashMessagesView.flashTheMessages();
         return list;
-    }
-
-    @Override
-    public void setList(List<Owner> list) {
-        this.list = list;
-    }
-
-    @Override
-    public Owner getEntity() {
-        return entity;
-    }
-
-    @Override
-    public void setEntity(Owner entity) {
-        this.entity = entity;
-    }
-
-    @Override
-    public Owner getSelected() {
-        return selected;
-    }
-
-    @Override
-    public void setSelected(Owner selected) {
-        this.selected = selected;
-    }
-
-    @Override
-    public LanguageView getLanguageView() {
-        return languageView;
-    }
-
-    @Override
-    public void setLanguageView(LanguageView languageView) {
-        this.languageView = languageView;
     }
 
     @Override
@@ -575,16 +483,13 @@ public class OwnerViewImpl implements OwnerView {
         return this.messageProvider.getBundle();
     }
 
-    public void setMsg(ResourceBundle msg) {
+    public void setMsg(ResourceBundle msg) {}
 
+    @Override
+    @PostConstruct
+    public void postConstruct() {
+        log.info("postConstruct: " + OwnerViewImpl.class.getSimpleName());
+        this.messageProvider = new MessageProvider();
+        this.ownerViewFlow.setFlowStateList();
     }
-
-    public FlashMessagesView getFrontendMessagesView() {
-        return flashMessagesView;
-    }
-
-    public void setFrontendMessagesView(FlashMessagesView flashMessagesView) {
-        this.flashMessagesView = flashMessagesView;
-    }
-
 }

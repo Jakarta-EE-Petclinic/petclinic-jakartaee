@@ -23,4 +23,5 @@ public interface FlashMessagesView extends Serializable {
 
     void addWarnMessage(RuntimeException e, EntityBase entity);
 
+    void flashTheMessages();
 }

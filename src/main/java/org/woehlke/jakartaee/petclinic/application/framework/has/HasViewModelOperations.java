@@ -21,7 +21,7 @@ public interface HasViewModelOperations extends Serializable {
 
     void newEntity();
 
-    void init();
+    void postConstruct();
 
     void preDestroy();
 }

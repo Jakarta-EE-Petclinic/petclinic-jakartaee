@@ -56,14 +56,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
     private SpecialtyViewFlowImpl specialtyViewFlow;
 
     @Override
-    @PostConstruct
-    public void init() {
-        log.info("postConstruct: " + SpecialtyViewImpl.class.getSimpleName());
-        this.specialtyViewFlow.setFlowStateList();
-        this.provider = new MessageProvider();
-    }
-
-    @Override
     public boolean reloadEntityFromSelected() {
         log.info("reloadEntityFromSelected");
         if (this.selected != null) {
@@ -324,12 +316,21 @@ public class SpecialtyViewImpl implements SpecialtyView {
         } else {
             loadList();
         }
+        this.flashMessagesView.flashTheMessages();
         return this.list;
     }
 
     @Override
     public void setList(List<Specialty> list) {
         this.list = list;
+    }
+
+    @Override
+    @PostConstruct
+    public void postConstruct() {
+        log.info("postConstruct: " + SpecialtyViewImpl.class.getSimpleName());
+        this.specialtyViewFlow.setFlowStateList();
+        this.provider = new MessageProvider();
     }
 
     @Override
