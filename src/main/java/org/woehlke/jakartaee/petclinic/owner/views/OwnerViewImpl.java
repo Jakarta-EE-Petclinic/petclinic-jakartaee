@@ -214,6 +214,14 @@ public class OwnerViewImpl implements OwnerView {
         this.list = entityService.search(this.searchterm);
     }
 
+
+    @Override
+    public String clearSearchterm(){
+        log.info("clearSearchterm");
+        this.searchterm = null;
+        return JSF_PAGE;
+    }
+
     @Override
     public String showNewForm() {
         log.info("showNewForm");

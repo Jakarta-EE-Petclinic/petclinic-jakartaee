@@ -245,6 +245,13 @@ public class VetViewImpl implements VetView {
     }
 
     @Override
+    public String clearSearchterm(){
+        log.info("clearSearchterm");
+        this.searchterm = null;
+        return JSF_PAGE;
+    }
+
+    @Override
     public String search() {
         log.info("search");
         this.performSearch();

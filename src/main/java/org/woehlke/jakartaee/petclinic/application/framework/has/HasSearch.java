@@ -16,4 +16,6 @@ public interface HasSearch extends Serializable {
     String getSearchterm();
 
     void setSearchterm(String searchterm);
+
+    String clearSearchterm();
 }

@@ -225,7 +225,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
         return JSF_PAGE;
     }
 
-
     @Override
     public void performSearch() {
         log.info("performSearch");
@@ -251,6 +250,13 @@ public class SpecialtyViewImpl implements SpecialtyView {
                 flashMessagesView.addWarnMessage(e.getLocalizedMessage(), searchterm);
             }
         }
+    }
+
+    @Override
+    public String clearSearchterm(){
+        log.info("clearSearchterm");
+        this.searchterm = null;
+        return JSF_PAGE;
     }
 
     @Override

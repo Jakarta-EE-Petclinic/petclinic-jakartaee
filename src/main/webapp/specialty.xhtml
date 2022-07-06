@@ -230,18 +230,24 @@
 											value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew']}"/>
 						</div>
 						<div class="ui-g-8 tw-form-group">
-							<p:inputText id="inputTextSearchterm"
-							             styleClass="tw-form-control"
-							             value="#{specialtyView.searchterm}"
-							             label="#{msg['org.woehlke.jakartaee.petclinic.specialty.search']}"/>
-							<p:message for="inputTextSearchterm" display="icon"/>
-							<p:commandButton
-											id="searchButton"
-											styleClass="searchButton"
-											action="#{specialtyView.search}"
-											ajax="false"
-											value="#{msg['org.woehlke.jakartaee.petclinic.specialty.search']}"
-											icon="fa fa-fw fa-search"/>
+							<div class="ui-inputgroup">
+								<p:commandButton
+										id="searchButton"
+										styleClass="searchButton"
+										action="#{specialtyView.search}"
+										ajax="false"
+										icon="fa fa-fw fa-search"/>
+								<p:inputText id="inputTextSearchterm"
+											 styleClass="tw-form-control"
+											 value="#{specialtyView.searchterm}"
+											 placeholder="#{msg['org.woehlke.jakartaee.petclinic.specialty.search']}"/>
+								<p:commandButton
+										id="clearSearchButton"
+										styleClass="searchButton"
+										ajax="false"
+										action="#{specialtyView.clearSearchterm}"
+										icon="pi pi-times"/>
+							</div>
 						</div>
 					</div>
 					<p:defaultCommand target="searchButton" />

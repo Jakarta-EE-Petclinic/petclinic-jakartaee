@@ -164,6 +164,13 @@ public class PetTypeViewImpl implements PetTypeView {
     }
 
     @Override
+    public String clearSearchterm(){
+        log.info("clearSearchterm");
+        this.searchterm = null;
+        return JSF_PAGE;
+    }
+
+    @Override
     public PetType getEntity() {
         if (entity == null) {
             newEntity();
