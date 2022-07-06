@@ -248,6 +248,7 @@ public class VetViewImpl implements VetView {
     public String clearSearchterm(){
         log.info("clearSearchterm");
         this.searchterm = null;
+        this.vetViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
 
