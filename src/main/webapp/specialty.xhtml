@@ -263,7 +263,9 @@
 									selection="#{specialtyView.selected}"
 									rowKey="#{specialty.id}"
 									selectionMode="single"
-									paginator="true" rows="5" paginatorPosition="bottom">
+									paginator="true" rows="5"
+									paginatorPosition="bottom"
+									paginatorAlwaysVisible="false">
 								<p:column id="columnSpecialtyName"
 								          headerText="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"
 								          sortBy="#{specialty.name}">

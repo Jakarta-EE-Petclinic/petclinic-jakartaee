@@ -783,7 +783,9 @@
                                              rowKey="#{owner.id}"
                                              selection="#{ownerView.selected}"
                                              selectionMode="single"
-                                             paginator="true" rows="5" paginatorPosition="bottom">
+                                             paginator="true" rows="5"
+                                             paginatorPosition="bottom"
+                                             paginatorAlwaysVisible="false">
                                     <p:column
                                             headerText="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.firstName']}"
                                             sortBy="#{owner.firstName}">
