@@ -1,5 +1,7 @@
 package org.woehlke.jakartaee.petclinic.application.views.impl;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
@@ -27,6 +29,8 @@ import java.util.Map;
 @Log
 @Named("languageView")
 @SessionScoped
+@Getter
+@Setter
 public class LanguageViewImpl implements LanguageView {
 
     private static final long serialVersionUID = -5444922829398489233L;
@@ -34,8 +38,6 @@ public class LanguageViewImpl implements LanguageView {
     private final Locale DEFAULT = Locale.ENGLISH;
     private final Locale[] LOCALE_OPTIONS = {Locale.ENGLISH, Locale.GERMAN};
 
-    //TODO without reference to FlashMesseges
-    @Deprecated
     @Inject
     private FlashMessagesView flashMessagesView;
 
@@ -50,9 +52,7 @@ public class LanguageViewImpl implements LanguageView {
         this.localeSelected = DEFAULT.getLanguage();
     }
 
-
     public Map<String, String> getCountries() {
-        //log.info("getCountries: " + this.locale);
         this.countries.clear();
         for (Locale locale : LOCALE_OPTIONS) {
             this.countries.put(
@@ -60,9 +60,6 @@ public class LanguageViewImpl implements LanguageView {
                     locale.getLanguage()
             );
         }
-        //for (String key : this.countries.keySet()) {
-        //  log.info(key + " : " + countries.get(key));
-        //}
         return countries;
     }
 
@@ -75,27 +72,6 @@ public class LanguageViewImpl implements LanguageView {
         }
         return locale;
     }
-
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-    }
-
-    public String getLocaleSelected() {
-        return localeSelected;
-    }
-
-    public void setLocaleSelected(String localeSelected) {
-        this.localeSelected = localeSelected;
-    }
-
-    public FlashMessagesView getFrontendMessagesView() {
-        return flashMessagesView;
-    }
-
-    public void setFrontendMessagesView(FlashMessagesView flashMessagesView) {
-        this.flashMessagesView = flashMessagesView;
-    }
-
 
     @Deprecated
     public String getMsgCantDeleteSpecialty() {

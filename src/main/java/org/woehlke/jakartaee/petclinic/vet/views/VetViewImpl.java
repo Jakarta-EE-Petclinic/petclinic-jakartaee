@@ -65,15 +65,6 @@ public class VetViewImpl implements VetView {
 
     private DualListModel<Specialty> specialtiesPickList;
 
-    @Override
-    @PostConstruct
-    public void init() {
-        log.info("postConstruct: " + VetViewImpl.class.getSimpleName());
-        this.provider = new MessageProvider();
-        this.vetViewFlow.setFlowStateList();
-        loadList();
-        initSpecialtiesPickList();
-    }
 
     private void initSpecialtiesPickList() {
         log.info("initSpecialtiesPickList");
@@ -181,6 +172,7 @@ public class VetViewImpl implements VetView {
         } else {
             this.loadList();
         }
+        this.flashMessagesView.flashTheMessages();
         return this.list;
     }
 
@@ -406,5 +398,16 @@ public class VetViewImpl implements VetView {
 
     public void setVetViewFlow(VetViewFlowImpl vetViewFlow) {
         this.vetViewFlow = vetViewFlow;
+    }
+
+
+    @Override
+    @PostConstruct
+    public void postConstruct() {
+        log.info("postConstruct: " + VetViewImpl.class.getSimpleName());
+        this.provider = new MessageProvider();
+        this.vetViewFlow.setFlowStateList();
+        loadList();
+        initSpecialtiesPickList();
     }
 }
