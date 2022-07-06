@@ -22,6 +22,11 @@
     </welcome-file-list>
 
     <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>saga</param-value>
+    </context-param>
+
+    <context-param>
         <param-name>jakarta.faces.FACELETS_REFRESH_PERIOD</param-name>
         <param-value>-1</param-value>
     </context-param>
