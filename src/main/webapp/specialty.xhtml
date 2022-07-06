@@ -220,15 +220,6 @@
 						<p:autoUpdate/>
 					</p:messages>
 					<div class="ui-g newAndSearchGrid">
-						<div class="ui-g-4">
-							<p:commandButton
-											id="showNewFormButton"
-											styleClass="showNewFormButton"
-											action="#{specialtyView.showNewForm}"
-											icon="fa fa-fw fa-plus-square"
-											ajax="false"
-											value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew']}"/>
-						</div>
 						<div class="ui-g-8 tw-form-group">
 							<div class="ui-inputgroup">
 								<p:commandButton
@@ -248,6 +239,15 @@
 										action="#{specialtyView.clearSearchterm}"
 										icon="pi pi-times"/>
 							</div>
+						</div>
+						<div class="ui-g-4">
+							<p:commandButton
+									id="showNewFormButton"
+									styleClass="showNewFormButton"
+									action="#{specialtyView.showNewForm}"
+									icon="fa fa-fw fa-plus-square"
+									ajax="false"
+									value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew']}"/>
 						</div>
 					</div>
 					<p:defaultCommand target="searchButton" />
@@ -294,12 +294,14 @@
 								icon="fa fa-fw fa-trash"/>
 						</div>
 						<div class="ui-g-4">
+						</div>
+						<div class="ui-g-2">
 							<p:link href="./rest/specialty/xml/list" type="application/xml">
 								<i class="fa fa-fw fa-arrow-alt-circle-right"/>
 								<h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.list.showXml']}"/>
 							</p:link>
 						</div>
-						<div class="ui-g-4">
+						<div class="ui-g-2">
 							<p:link href="./rest/specialty/list" type="application/json">
 								<i class="fa fa-fw fa-arrow-alt-circle-right"/>
 								<h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.list.showJson']}"/>

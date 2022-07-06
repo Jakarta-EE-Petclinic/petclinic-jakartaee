@@ -221,15 +221,6 @@
 				</p:messages>
 				<h:form id="findEntityForm">
 					<div class="ui-g newAndSearchGrid">
-						<div class="ui-g-4">
-							<p:commandButton
-											id="showNewFormButton"
-											styleClass="showNewFormButton"
-											action="#{petTypeView.showNewForm}"
-											icon="fa fa-fw fa-plus-square"
-											ajax="false"
-											value="#{msg['org.woehlke.jakartaee.petclinic.petType.addNew']}"/>
-						</div>
 						<div class="ui-g-8 tw-form-group">
 							<div class="ui-inputgroup">
 								<p:commandButton
@@ -249,6 +240,15 @@
 										action="#{petTypeView.clearSearchterm}"
 										icon="pi pi-times"/>
 							</div>
+						</div>
+						<div class="ui-g-4">
+							<p:commandButton
+									id="showNewFormButton"
+									styleClass="showNewFormButton"
+									action="#{petTypeView.showNewForm}"
+									icon="fa fa-fw fa-plus-square"
+									ajax="false"
+									value="#{msg['org.woehlke.jakartaee.petclinic.petType.addNew']}"/>
 						</div>
 					</div>
 					<p:defaultCommand target="searchButton" />
@@ -294,12 +294,14 @@
 								icon="fa fa-fw fa-trash"/>
 						</div>
 						<div class="ui-g-4">
+						</div>
+						<div class="ui-g-2">
 							<p:link href="./rest/petType/xml/list">
 								<i class="fa fa-fw fa-arrow-alt-circle-right"/>
 								<h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.list.showXml']}"/>
 							</p:link>
 						</div>
-						<div class="ui-g-4">
+						<div class="ui-g-2">
 							<p:link href="./rest/petType/list">
 								<i class="fa fa-fw fa-arrow-alt-circle-right"/>
 								<h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.list.showJson']}"/>

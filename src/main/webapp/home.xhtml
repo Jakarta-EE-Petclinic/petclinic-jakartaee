@@ -21,22 +21,24 @@
                 <h:form id="findOwnersForm">
                     <div class="ui-g newAndSearchGrid">
                         <div class="ui-g-4">
-                            <p:commandButton
-                                    id="addNew" action="#{ownerView.showNewForm}"
-                                    icon="fa fa-fw fa-plus-square"
-                                    ajax="false"
-                                    value="#{msg['org.woehlke.jakartaee.petclinic.owner.addNew']}"/>
-                        </div>
-                        <div class="ui-g-8 tw-form-group">
-                            <p:inputText id="searchFormInput"
-                                         styleClass="tw-form-control"
-                                         value="#{ownerView.searchterm}"/>
-                            <p:message for="searchFormInput" display="icon"/>
-                            <p:commandButton id="search"
-                                             action="#{ownerView.search}"
-                                             value="#{msg['org.woehlke.jakartaee.petclinic.owner.search']}"
-                                             icon="fa fa-fw fa-search"
-                                             ajax="false"/>
+                                <div class="ui-inputgroup">
+                                    <p:commandButton
+                                            id="searchButton"
+                                            styleClass="searchButton"
+                                            action="#{ownerView.search}"
+                                            ajax="false"
+                                            icon="fa fa-fw fa-search"/>
+                                    <p:inputText id="inputTextSearchterm"
+                                                 styleClass="tw-form-control"
+                                                 value="#{ownerView.searchterm}"
+                                                 placeholder="#{msg['org.woehlke.jakartaee.petclinic.owner.search']}"/>
+                                    <p:commandButton
+                                            id="clearSearchButton"
+                                            styleClass="searchButton"
+                                            ajax="false"
+                                            action="#{ownerView.clearSearchterm}"
+                                            icon="pi pi-times"/>
+                            </div>
                         </div>
                     </div>
                 </h:form>
