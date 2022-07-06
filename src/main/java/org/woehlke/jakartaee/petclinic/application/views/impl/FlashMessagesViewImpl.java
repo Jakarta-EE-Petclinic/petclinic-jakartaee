@@ -24,122 +24,90 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
 
     private static final long serialVersionUID = -2267751568724878682L;
 
+
+    private List<FacesMessage> messageHolder = new ArrayList<>();
+
+    public void flashTheMessages(){
+        for(FacesMessage message :messageHolder){
+            String clientId = null;
+            FacesContext.getCurrentInstance().addMessage(clientId, message);
+        }
+    }
+
     //TODO: Table:  FacesMessage.SEVERITY_INFO -> Logging Severity -> Color Frontend
 
     public void addInfoMessage(String summary, String detail) {
         FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_INFO;
-        String clientId = null;
-        this.addMessage(messageSeverity, summary, detail, clientId);
+        this.addMessage(messageSeverity, summary, detail);
     }
 
     public void addWarnMessage(String summary, String detail) {
         FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_WARN;
-        String clientId = null;
-        this.addMessage(messageSeverity, summary, detail, clientId);
+        this.addMessage(messageSeverity, summary, detail);
     }
 
     @Override
     public void addInfoMessage(String summary, EntityBase entity) {
-        String clientId = null;
         FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_INFO;
-        this.addMessageForEntity(summary, entity, clientId, messageSeverity);
+        this.addMessageForEntity(summary, entity,  messageSeverity);
     }
 
     @Override
     public void addWarnMessage(String summary, EntityBase entity) {
-        String clientId = null;
         FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_WARN;
-        this.addMessageForEntity(summary, entity, clientId, messageSeverity);
+        this.addMessageForEntity(summary, entity, messageSeverity);
     }
 
     @Override
     public void addErrorMessage(String summary, EntityBase entity) {
-        String clientId = null;
         FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_ERROR;
-        this.addMessageForEntity(summary, entity, clientId, messageSeverity);
+        this.addMessageForEntity(summary, entity, messageSeverity);
     }
 
     @Override
     public void addWarnMessage(RuntimeException e, EntityBase entity) {
-        String clientId = null;
         FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_WARN;
-        this.addMessageForEntityAndRuntimeException(e, entity, clientId, messageSeverity);
-    }
-
-    //TODO: simplify
-    //TODO: display all flash messeges
-    private void doLogging(
-            List<String> logInfos,
-            FacesMessage.Severity messageSeverity
-    ) {
-        if (!logInfos.isEmpty()) {
-            int first = 0;
-            String firstLine = logInfos.remove(first);
-            if (messageSeverity.equals(FacesMessage.SEVERITY_INFO)) {
-                log.info(firstLine);
-            }
-            if (messageSeverity.equals(FacesMessage.SEVERITY_WARN)) {
-                log.info(firstLine);
-            }
-            if (messageSeverity.equals(FacesMessage.SEVERITY_ERROR)) {
-                log.info(firstLine);
-            }
-            if (messageSeverity.equals(FacesMessage.SEVERITY_FATAL)) {
-                log.info(firstLine);
-            }
-            for (String logInfo : logInfos) {
-                log.info(logInfo);
-            }
-        }
+        this.addMessageForEntityAndRuntimeException(e, entity, messageSeverity);
     }
 
     private void addMessageForEntity(
             String summary,
             EntityBase entity,
-            String clientId,
             FacesMessage.Severity messageSeverity
     ) {
-        List<String> logInfos = new ArrayList<>();
-        logInfos.add("summary:           " + summary);
+        log.info("summary:           " + summary);
         String detail = "";
         if (entity != null) {
-            logInfos.add("addFrontendMessageForEntity.PrimaryKey: " + entity.getPrimaryKey());
-            logInfos.add("addFrontendMessageForEntity.id:         " + entity.getId());
-            logInfos.add("addFrontendMessageForEntity.uud:        " + entity.getUuid());
-            if (clientId != null) {
-                logInfos.add("addFrontendMessageForEntity.clientId:   " + clientId);
-            }
+            log.info("addFrontendMessageForEntity.PrimaryKey: " + entity.getPrimaryKey());
+            log.info("addFrontendMessageForEntity.id:         " + entity.getId());
+            log.info("addFrontendMessageForEntity.uud:        " + entity.getUuid());
             detail = entity.getPrimaryKey();
         } else {
             String msg = "entity == null ";
-            logInfos.add(msg);
+            log.info(msg);
             detail = msg;
         }
-        this.doLogging(logInfos, messageSeverity);
-        this.addMessage(messageSeverity, summary, detail, clientId);
+        this.addMessage(messageSeverity, summary, detail);
     }
 
     private void addMessageForEntityAndRuntimeException(
             RuntimeException e,
             EntityBase entity,
-            String clientId,
             FacesMessage.Severity messageSeverity
     ) {
         String summary = e.getLocalizedMessage();
-        StringBuilder sb1 = new StringBuilder("\n");
-        sb1.append("-----------------------------------------------------\n");
-        sb1.append("entity Table       " + entity.getTableName() + "\n");
-        sb1.append("entity Class       " + entity.getClass().getName() + "\n");
-        sb1.append("entity UUID        " + entity.getUuid() + "\n");
-        sb1.append("entity ID          " + entity.getId() + "\n");
-        sb1.append("entity PK          " + entity.getPrimaryKey() + "\n");
-        sb1.append("-----------------------------------------------------\n");
-        sb1.append("RuntimeException Class   " + e.getClass().getName() + "\n");
-        sb1.append("RuntimeException Message " + e.getLocalizedMessage() + "\n");
-        sb1.append("Exception Cause Class    " + e.getCause().getClass().getName() + "\n");
-        sb1.append("Exception Cause Message   " + e.getCause().getLocalizedMessage() + "\n");
-        sb1.append("-----------------------------------------------------\n");
-        StringBuilder sb = new StringBuilder("\n");
+       log.info("-----------------------------------------------------\n");
+       log.info("entity Table       " + entity.getTableName() + "\n");
+       log.info("entity Class       " + entity.getClass().getName() + "\n");
+       log.info("entity UUID        " + entity.getUuid() + "\n");
+       log.info("entity ID          " + entity.getId() + "\n");
+       log.info("entity PK          " + entity.getPrimaryKey() + "\n");
+       log.info("-----------------------------------------------------\n");
+       log.info("RuntimeException Class   " + e.getClass().getName() + "\n");
+       log.info("RuntimeException Message " + e.getLocalizedMessage() + "\n");
+       log.info("Exception Cause Class    " + e.getCause().getClass().getName() + "\n");
+       log.info("Exception Cause Message   " + e.getCause().getLocalizedMessage() + "\n");
+       log.info("-----------------------------------------------------\n");
         long i = 0L;
         for (StackTraceElement element : e.getStackTrace()) {
             i++;
@@ -151,38 +119,26 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
                 lfdnr.append(" ");
             }
             lfdnr.append(i);
-            sb.append("StackTrace[" + lfdnr.toString() + "]: " + element.getClassName());
-            sb.append(" . " + element.getMethodName() + " in: \n");
-            sb.append("StackTrace[" + lfdnr.toString() + "]: " + element.getFileName());
-            sb.append(" ( Line " + element.getLineNumber() + ")\n");
+            log.info("StackTrace[" + lfdnr.toString() + "]: " + element.getClassName());
+            log.info(" . " + element.getMethodName() + " in: \n");
+            log.info("StackTrace[" + lfdnr.toString() + "]: " + element.getFileName());
+            log.info(" ( Line " + element.getLineNumber() + ")\n");
         }
-        sb.append("-----------------------------------------------------\n");
-        List<String> logInfos = new ArrayList<>();
-        logInfos.add(sb.toString());
-        logInfos.add(sb1.toString());
-        this.doLogging(logInfos, messageSeverity);
-        this.addMessageForEntity(summary, entity, clientId, messageSeverity);
+        log.info("-----------------------------------------------------\n");
+        this.addMessageForEntity(summary, entity, messageSeverity);
     }
 
     private void addMessage(
             FacesMessage.Severity messageSeverity,
             String summary,
-            String detail,
-            String clientId
+            String detail
     ) {
-        List<String> logInfos = new ArrayList<>();
-        logInfos.add("addFrontendMessage.summary:   " + summary);
-        logInfos.add("addFrontendMessage.detail:    " + detail);
-        if (clientId != null) {
-            logInfos.add("addFrontendMessage.clientId:  " + clientId);
-        }
-        this.doLogging(logInfos, messageSeverity);
-
+        log.info("addFrontendMessage.summary:   " + summary);
+        log.info("addFrontendMessage.detail:    " + detail);
         // TODO: Store messages in Session and display them
         FacesMessage message = new FacesMessage(messageSeverity, summary, detail);
-        FacesContext.getCurrentInstance().addMessage(clientId, message);
+        messageHolder.add(message);
     }
-
 
     @PostConstruct
     public void postConstruct() {
