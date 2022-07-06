@@ -116,6 +116,7 @@
 						</div>
 					</p:panel>
 					<br/>
+					<p:defaultCommand target="cancelNew" />
 				</h:form>
 			</ui:fragment>
 			<ui:fragment rendered="#{vetViewFlow.flowStateEdit}">
@@ -178,6 +179,7 @@
 						</div>
 					</p:panel>
 					<br/>
+					<p:defaultCommand target="cancelEdit" />
 				</h:form>
 			</ui:fragment>
 
@@ -237,6 +239,7 @@
 								                 includeViewParams="true"/>
 							</div>
 						</div>
+						<p:defaultCommand target="cancelDelete" />
 					</p:panel>
 					<br/>
 				</h:form>
@@ -273,6 +276,7 @@
 											ajax="false"/>
 						</div>
 					</div>
+					<p:defaultCommand target="searchButton" />
 				</h:form>
 				<h:form id="entityDataTableForm">
 					<div class="ui-g tableGrid">
@@ -346,6 +350,7 @@
 							</p:link>
 						</div>
 					</div>
+					<p:defaultCommand target="showEditFormButton" />
 				</h:form>
 			</p:panel>
 		</div>

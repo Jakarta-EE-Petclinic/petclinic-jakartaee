@@ -102,6 +102,7 @@
 						</div>
 					</p:panel>
 					<br/>
+					<p:defaultCommand target="cancelNew" />
 				</h:form>
 			</ui:fragment>
 			<ui:fragment rendered="#{specialtyViewFlow.flowStateEdit}">
@@ -149,6 +150,7 @@
 						</div>
 					</p:panel>
 					<br/>
+					<p:defaultCommand target="cancelEdit" />
 				</h:form>
 			</ui:fragment>
 
@@ -194,6 +196,7 @@
 						</div>
 					</p:panel>
 					<br/>
+					<p:defaultCommand target="cancelDelete" />
 				</h:form>
 			</ui:fragment>
 
@@ -229,6 +232,7 @@
 											icon="fa fa-fw fa-search"/>
 						</div>
 					</div>
+					<p:defaultCommand target="searchButton" />
 				</h:form>
 				<h:form id="entityDataTableForm">
 					<div class="ui-g tableGrid">
@@ -284,6 +288,7 @@
 							</p:link>
 						</div>
 					</div>
+					<p:defaultCommand target="showEditFormButton" />
 				</h:form>
 			</p:panel>
 
