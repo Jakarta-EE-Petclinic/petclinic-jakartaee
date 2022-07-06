@@ -31,10 +31,10 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
         for(FacesMessage message :messageHolder){
             String clientId = null;
             FacesContext.getCurrentInstance().addMessage(clientId, message);
+            messageHolder.remove(message);
         }
-    }
 
-    //TODO: Table:  FacesMessage.SEVERITY_INFO -> Logging Severity -> Color Frontend
+    }
 
     public void addInfoMessage(String summary, String detail) {
         FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_INFO;
@@ -135,7 +135,6 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
     ) {
         log.info("addFrontendMessage.summary:   " + summary);
         log.info("addFrontendMessage.detail:    " + detail);
-        // TODO: Store messages in Session and display them
         FacesMessage message = new FacesMessage(messageSeverity, summary, detail);
         messageHolder.add(message);
     }
