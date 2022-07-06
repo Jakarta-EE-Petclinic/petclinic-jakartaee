@@ -219,6 +219,7 @@ public class OwnerViewImpl implements OwnerView {
     public String clearSearchterm(){
         log.info("clearSearchterm");
         this.searchterm = null;
+        this.ownerViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
 
