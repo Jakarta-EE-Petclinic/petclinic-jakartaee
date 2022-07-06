@@ -15,24 +15,12 @@ public interface FlashMessagesView extends Serializable {
 
     void addWarnMessage(String summary, String detail);
 
-    void addErrorMessage(String summary, String detail);
-
-    void addFatalMessage(String summary, String detail);
-
     void addInfoMessage(String summary, EntityBase entity);
 
     void addWarnMessage(String summary, EntityBase entity);
 
     void addErrorMessage(String summary, EntityBase entity);
 
-    void addFatalMessage(String summary, EntityBase entity);
-
-    void addInfoMessage(RuntimeException e, EntityBase entity);
-
     void addWarnMessage(RuntimeException e, EntityBase entity);
-
-    void addErrorMessage(RuntimeException e, EntityBase entity);
-
-    void addFatalMessage(RuntimeException e, EntityBase entity);
 
 }

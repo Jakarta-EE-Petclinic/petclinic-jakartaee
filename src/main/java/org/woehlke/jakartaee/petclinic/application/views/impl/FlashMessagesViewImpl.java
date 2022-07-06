@@ -38,18 +38,6 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
         this.addMessage(messageSeverity, summary, detail, clientId);
     }
 
-    public void addErrorMessage(String summary, String detail) {
-        FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_ERROR;
-        String clientId = null;
-        this.addMessage(messageSeverity, summary, detail, clientId);
-    }
-
-    public void addFatalMessage(String summary, String detail) {
-        FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_FATAL;
-        String clientId = null;
-        this.addMessage(messageSeverity, summary, detail, clientId);
-    }
-
     @Override
     public void addInfoMessage(String summary, EntityBase entity) {
         String clientId = null;
@@ -72,40 +60,11 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
     }
 
     @Override
-    public void addFatalMessage(String summary, EntityBase entity) {
-        String clientId = null;
-        FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_FATAL;
-        this.addMessageForEntity(summary, entity, clientId, messageSeverity);
-    }
-
-    @Override
-    public void addInfoMessage(RuntimeException e, EntityBase entity) {
-        String clientId = null;
-        FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_INFO;
-        this.addMessageForEntityAndRuntimeException(e, entity, clientId, messageSeverity);
-    }
-
-    @Override
     public void addWarnMessage(RuntimeException e, EntityBase entity) {
         String clientId = null;
         FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_WARN;
         this.addMessageForEntityAndRuntimeException(e, entity, clientId, messageSeverity);
     }
-
-    @Override
-    public void addErrorMessage(RuntimeException e, EntityBase entity) {
-        String clientId = null;
-        FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_ERROR;
-        this.addMessageForEntityAndRuntimeException(e, entity, clientId, messageSeverity);
-    }
-
-    @Override
-    public void addFatalMessage(RuntimeException e, EntityBase entity) {
-        String clientId = null;
-        FacesMessage.Severity messageSeverity = FacesMessage.SEVERITY_FATAL;
-        this.addMessageForEntityAndRuntimeException(e, entity, clientId, messageSeverity);
-    }
-
 
     //TODO: simplify
     //TODO: display all flash messeges

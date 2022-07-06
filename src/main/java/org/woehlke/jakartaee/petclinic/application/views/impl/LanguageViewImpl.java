@@ -50,11 +50,6 @@ public class LanguageViewImpl implements LanguageView {
         this.localeSelected = DEFAULT.getLanguage();
     }
 
-    @PostConstruct
-    public void init() {
-        log.info("postConstruct: "+LanguageViewImpl.class.getSimpleName());
-        countries = this.getCountries();
-    }
 
     public Map<String, String> getCountries() {
         //log.info("getCountries: " + this.locale);
@@ -124,6 +119,12 @@ public class LanguageViewImpl implements LanguageView {
         this.setLocale(myLocale);
         this.flashMessagesView.addInfoMessage("changed Language", msg);
         return "#";
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("postConstruct: "+LanguageViewImpl.class.getSimpleName());
+        countries = this.getCountries();
     }
 
     @PreDestroy
