@@ -67,9 +67,11 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-4 tw-form-group">
+							<div class="ui-g-3 tw-form-group">
 								<p:outputLabel for="specialtyNameNew"
 								               value="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
+							</div>
+								<div class="ui-g-9 tw-form-group">
 								<p:inputText id="specialtyNameNew"
 								             styleClass="tw-form-control"
 								             value="#{specialtyView.entity.name}"
@@ -79,7 +81,9 @@
 								</p:inputText>
 								<p:message for="specialtyNameNew" display="icon"/>
 							</div>
-							<div class="ui-g-2">
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-3">
 								<p:commandButton id="saveNewButton"
 								                 type="submit"
 								                 styleClass="saveButton"
@@ -88,7 +92,7 @@
 								                 ajax="false"
 								                 action="#{specialtyView.saveNew}"/>
 							</div>
-							<div class="ui-g-2">
+							<div class="ui-g-3">
 								<p:commandButton id="cancelNew"
 								                 type="cancel"
 								                 styleClass="cancelButton"
@@ -115,9 +119,11 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-4 tw-form-group">
+							<div class="ui-g-3 tw-form-group">
 								<p:outputLabel for="specialtyNameEdit"
 								               value="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
+							</div>
+							<div class="ui-g-9 tw-form-group">
 								<p:inputText id="specialtyNameEdit"
 								             styleClass="tw-form-control"
 								             value="#{specialtyView.entity.name}"
@@ -127,7 +133,9 @@
 								</p:inputText>
 								<p:message for="specialtyNameEdit" display="icon"/>
 							</div>
-							<div class="ui-g-2">
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-3">
 								<p:commandButton id="saveEditButton"
 								                 type="submit"
 								                 styleClass="saveButton"
@@ -136,7 +144,7 @@
 								                 ajax="false"
 								                 action="#{specialtyView.saveEdited}"/>
 							</div>
-							<div class="ui-g-2">
+							<div class="ui-g-3">
 								<p:commandButton id="cancelEdit"
 								                 type="cancel"
 								                 styleClass="cancelButton"
@@ -162,9 +170,11 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-4 tw-form-group">
+							<div class="ui-g-3 tw-form-group">
 								<p:outputLabel for="nameDelete"
 								               value="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
+							</div>
+							<div class="ui-g-9 tw-form-group">
 								<p:inputText id="nameDelete"
 								             styleClass="tw-form-control"
 								             value="#{specialtyView.entity.name}"
@@ -173,7 +183,9 @@
 								             label="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
 								<p:message for="nameDelete" display="icon"/>
 							</div>
-							<div class="ui-g-2">
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-3">
 								<p:commandButton id="deleteButton"
 								                 type="submit"
 								                 styleClass="deleteButton"
@@ -182,7 +194,7 @@
 								                 ajax="false"
 								                 action="#{specialtyView.performDelete}"/>
 							</div>
-							<div class="ui-g-2">
+							<div class="ui-g-3">
 								<p:commandButton id="cancelDelete"
 								                 type="cancel"
 								                 styleClass="cancelButton"

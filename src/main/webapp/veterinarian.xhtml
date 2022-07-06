@@ -218,7 +218,9 @@
 												itemValue="#{specialty}"
 												itemLabel="#{specialty.name}"/>
 							</div>
-							<div class="ui-g-2">
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-3">
 								<p:commandButton id="saveDeleteButton"
 								                 type="submit"
 								                 styleClass="deleteButton"
@@ -227,7 +229,7 @@
 								                 ajax="false"
 								                 action="#{vetView.performDelete()}"/>
 							</div>
-							<div class="ui-g-2">
+							<div class="ui-g-3">
 								<p:commandButton id="cancelDelete"
 								                 type="cancel"
 								                 styleClass="cancelButton"
@@ -286,9 +288,9 @@
 									styleClass="entityDataTable"
 									value="#{vetView.list}"
 									var="vet"
+									selectionMode="single"
 									selection="#{vetView.selected}"
 									rowKey="#{vet.id}"
-									selectionMode="single"
 									paginator="true" rows="5" paginatorPosition="bottom">
 								<p:column
 									id="columnVeterinarianFirstName"

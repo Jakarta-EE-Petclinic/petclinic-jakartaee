@@ -66,9 +66,11 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-4 tw-form-group">
+							<div class="ui-g-3 tw-form-group">
 								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.petType.name']}"
 								               for="newPetTypeName"/>
+							</div>
+							<div class="ui-g-9 tw-form-group">
 								<p:inputText id="newPetTypeName"
 								             styleClass="tw-form-control"
 								             value="#{petTypeView.entity.name}"
@@ -77,7 +79,9 @@
 								</p:inputText>
 								<p:message for="newPetTypeName" display="icon"/>
 							</div>
-							<div class="ui-g-2">
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-3">
 								<p:commandButton id="saveNewButton"
 								                 type="submit"
 								                 styleClass="saveButton"
@@ -86,7 +90,7 @@
 								                 ajax="false"
 								                 action="#{petTypeView.saveNew}"/>
 							</div>
-							<div class="ui-g-2">
+							<div class="ui-g-3">
 								<p:commandButton id="cancelNew"
 								                 type="cancel"
 								                 styleClass="cancelButton"
@@ -114,9 +118,11 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-4 tw-form-group">
+							<div class="ui-g-3 tw-form-group">
 								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.petType.name']}"
 								               for="editPetTypeName"/>
+							</div>
+							<div class="ui-g-9 tw-form-group">
 								<p:inputText id="editPetTypeName"
 								             styleClass="tw-form-control"
 								             value="#{petTypeView.entity.name}"
@@ -125,7 +131,9 @@
 								</p:inputText>
 								<p:message for="editPetTypeName" display="icon"/>
 							</div>
-							<div class="ui-g-2">
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-3">
 								<p:commandButton id="saveEditButton"
 								                 type="submit"
 								                 styleClass="saveButton"
@@ -134,7 +142,7 @@
 								                 ajax="false"
 								                 action="#{petTypeView.saveEdited}"/>
 							</div>
-							<div class="ui-g-2">
+							<div class="ui-g-3">
 								<p:commandButton id="cancelEdit"
 								                 type="cancel"
 								                 styleClass="cancelButton"
@@ -160,9 +168,11 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-4 tw-form-group">
+							<div class="ui-g-3 tw-form-group">
 								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.petType.name']}"
 								               for="deletePetTypeName"/>
+							</div>
+							<div class="ui-g-9 tw-form-group">
 								<p:inputText id="deletePetTypeName"
 								             styleClass="tw-form-control"
 								             value="#{petTypeView.entity.name}"
@@ -172,7 +182,9 @@
 								</p:inputText>
 								<p:message for="deletePetTypeName" display="icon"/>
 							</div>
-							<div class="ui-g-2">
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-3">
 								<p:commandButton
 										id="deleteButton"
 									 	type="submit"
@@ -182,7 +194,7 @@
 									 	ajax="false"
 									 	action="#{petTypeView.performDelete}"/>
 							</div>
-							<div class="ui-g-2">
+							<div class="ui-g-3">
 								<p:commandButton
 										id="cancelDelete"
 										type="cancel"
