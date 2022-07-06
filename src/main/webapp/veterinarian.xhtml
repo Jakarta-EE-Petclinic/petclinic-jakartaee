@@ -269,17 +269,24 @@
 											value="#{msg['org.woehlke.jakartaee.petclinic.veterinarian.addNew']}"/>
 						</div>
 						<div class="ui-g-8 tw-form-group">
-							<p:inputText
-											id="inputTextSearchterm"
-											styleClass="tw-form-control"
-											value="#{vetView.searchterm}"/>
-							<p:message for="inputTextSearchterm" display="icon"/>
-							<p:commandButton
-											id="searchButton"
-											action="#{vetView.search}"
-											value="#{msg['org.woehlke.jakartaee.petclinic.veterinarian.search']}"
-											icon="fa fa-fw fa-search"
-											ajax="false"/>
+							<div class="ui-inputgroup">
+								<p:commandButton
+										id="searchButton"
+										styleClass="searchButton"
+										action="#{vetView.search}"
+										ajax="false"
+										icon="fa fa-fw fa-search"/>
+								<p:inputText id="inputTextSearchterm"
+											 styleClass="tw-form-control"
+											 value="#{vetView.searchterm}"
+											 placeholder="#{msg['org.woehlke.jakartaee.petclinic.veterinarian.search']}"/>
+								<p:commandButton
+										id="clearSearchButton"
+										styleClass="searchButton"
+										ajax="false"
+										action="#{vetView.clearSearchterm}"
+										icon="pi pi-times"/>
+							</div>
 						</div>
 					</div>
 					<p:defaultCommand target="searchButton" />
