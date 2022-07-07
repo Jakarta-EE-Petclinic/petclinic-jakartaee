@@ -116,7 +116,6 @@
 		<version.maven-surefire-plugin>3.0.0-M7</version.maven-surefire-plugin>
 
 		<!-- maven DevOps Plugin Versions -->
-		<version.artifactory-maven-plugin>3.4.0</version.artifactory-maven-plugin>
 		<version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
 	</properties>
 
@@ -591,6 +590,7 @@
 				<type>maven-plugin</type>
 				<scope>provided</scope>
 			</dependency>
+			<!--
 			<dependency>
 				<groupId>com.dkanejs.maven.plugins</groupId>
 				<artifactId>docker-compose-maven-plugin</artifactId>
@@ -598,6 +598,7 @@
 				<type>maven-plugin</type>
 				<scope>provided</scope>
 			</dependency>
+			-->
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -630,13 +631,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>${version.maven-release-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jfrog.buildinfo</groupId>
-				<artifactId>artifactory-maven-plugin</artifactId>
-				<version>${version.artifactory-maven-plugin}</version>
 				<type>maven-plugin</type>
 				<scope>provided</scope>
 			</dependency>
@@ -780,12 +774,14 @@
 			<type>maven-plugin</type>
 			<scope>provided</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>com.dkanejs.maven.plugins</groupId>
 			<artifactId>docker-compose-maven-plugin</artifactId>
 			<type>maven-plugin</type>
 			<scope>provided</scope>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-compiler-plugin</artifactId>
@@ -813,12 +809,6 @@
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-release-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jfrog.buildinfo</groupId>
-			<artifactId>artifactory-maven-plugin</artifactId>
 			<type>maven-plugin</type>
 			<scope>provided</scope>
 		</dependency>
@@ -857,11 +847,13 @@
 					<artifactId>maven-war-plugin</artifactId>
 					<version>${version.maven-war-plugin}</version>
 				</plugin>
+				<!--
 				<plugin>
 					<groupId>com.dkanejs.maven.plugins</groupId>
 					<artifactId>docker-compose-maven-plugin</artifactId>
 					<version>${version.docker-compose-maven-plugin}</version>
 				</plugin>
+				-->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -886,11 +878,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>${version.maven-release-plugin}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.jfrog.buildinfo</groupId>
-					<artifactId>artifactory-maven-plugin</artifactId>
-					<version>${version.artifactory-maven-plugin}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -965,6 +952,7 @@
 					<goals>package</goals>
 				</configuration>
 			</plugin>
+			<!--
 			<plugin>
 				<groupId>com.dkanejs.maven.plugins</groupId>
 				<artifactId>docker-compose-maven-plugin</artifactId>
@@ -977,10 +965,7 @@
 					<detachedMode>true</detachedMode>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.jfrog.buildinfo</groupId>
-				<artifactId>artifactory-maven-plugin</artifactId>
-			</plugin>
+			-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -1456,6 +1441,7 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
@@ -1463,6 +1449,7 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
+					-->
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
@@ -1495,13 +1482,6 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-release-plugin</artifactId>
 						<version>${version.maven-release-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.jfrog.buildinfo</groupId>
-						<artifactId>artifactory-maven-plugin</artifactId>
-						<version>${version.artifactory-maven-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
@@ -1647,12 +1627,14 @@
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>com.dkanejs.maven.plugins</groupId>
 					<artifactId>docker-compose-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -1680,12 +1662,6 @@
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jfrog.buildinfo</groupId>
-					<artifactId>artifactory-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
@@ -1729,11 +1705,13 @@
 							<artifactId>maven-war-plugin</artifactId>
 							<version>${version.maven-war-plugin}</version>
 						</plugin>
+						<!--
 						<plugin>
 							<groupId>com.dkanejs.maven.plugins</groupId>
 							<artifactId>docker-compose-maven-plugin</artifactId>
 							<version>${version.docker-compose-maven-plugin}</version>
 						</plugin>
+						-->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-compiler-plugin</artifactId>
@@ -1758,11 +1736,6 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-release-plugin</artifactId>
 							<version>${version.maven-release-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.jfrog.buildinfo</groupId>
-							<artifactId>artifactory-maven-plugin</artifactId>
-							<version>${version.artifactory-maven-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>io.openliberty.tools</groupId>
@@ -1845,6 +1818,7 @@
 							<goals>package</goals>
 						</configuration>
 					</plugin>
+					<!--
 					<plugin>
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
@@ -1857,10 +1831,7 @@
 							<detachedMode>true</detachedMode>
 						</configuration>
 					</plugin>
-					<plugin>
-						<groupId>org.jfrog.buildinfo</groupId>
-						<artifactId>artifactory-maven-plugin</artifactId>
-					</plugin>
+					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -2130,6 +2101,7 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
@@ -2137,6 +2109,7 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
+					-->
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
@@ -2169,13 +2142,6 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-release-plugin</artifactId>
 						<version>${version.maven-release-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.jfrog.buildinfo</groupId>
-						<artifactId>artifactory-maven-plugin</artifactId>
-						<version>${version.artifactory-maven-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
@@ -2337,12 +2303,14 @@
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>com.dkanejs.maven.plugins</groupId>
 					<artifactId>docker-compose-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+				--->
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -2370,12 +2338,6 @@
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jfrog.buildinfo</groupId>
-					<artifactId>artifactory-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
@@ -2435,11 +2397,13 @@
 							<artifactId>maven-war-plugin</artifactId>
 							<version>${version.maven-war-plugin}</version>
 						</plugin>
+						<!--
 						<plugin>
 							<groupId>com.dkanejs.maven.plugins</groupId>
 							<artifactId>docker-compose-maven-plugin</artifactId>
 							<version>${version.docker-compose-maven-plugin}</version>
 						</plugin>
+						-->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-compiler-plugin</artifactId>
@@ -2466,11 +2430,6 @@
 							<version>${version.maven-release-plugin}</version>
 						</plugin>
 						<plugin>
-							<groupId>org.jfrog.buildinfo</groupId>
-							<artifactId>artifactory-maven-plugin</artifactId>
-							<version>${version.artifactory-maven-plugin}</version>
-						</plugin>
-						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-scm-plugin</artifactId>
 							<version>${version.org.apache.maven.scm}</version>
@@ -2492,11 +2451,13 @@
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
 						<configuration>
-						<galleonOptions>
-							<jboss-fork-embedded>true</jboss-fork-embedded>
-						</galleonOptions>
-						<overwriteProvisionedServer>true</overwriteProvisionedServer>
-						<logProvisioningTime>true</logProvisioningTime>
+							<overwriteProvisionedServer>true</overwriteProvisionedServer>
+							<logProvisioningTime>true</logProvisioningTime>
+							<galleonOptions>
+								<jboss-fork-embedded>true</jboss-fork-embedded>
+							</galleonOptions>
+							<overwriteProvisionedServer>true</overwriteProvisionedServer>
+							<logProvisioningTime>true</logProvisioningTime>
 						</configuration>
 						<executions>
 							<execution>
@@ -2513,16 +2474,19 @@
 						<artifactId>wildfly-jar-maven-plugin</artifactId>
 						<configuration>
 							<feature-packs>
+								<!--
 								<feature-pack>
 									<groupId>org.wildfly</groupId>
 									<artifactId>wildfly-preview-feature-pack</artifactId>
 									<version>${version.wildfly-runtime}</version>
 									<type>zip</type>
-								</feature-pack><!-- Our custom feature-pack -->
+								</feature-pack>
+								-->
 								<feature-pack>
 									<groupId>org.woehlke.jakartaee</groupId>
-									<artifactId>my-custom-galleon-pack</artifactId>
+									<artifactId>wildfly-postgesql-galleon-pack</artifactId>
 									<version>1.0-SNAPSHOT</version>
+									<type>zip</type>
 								</feature-pack>
 							</feature-packs>
 							<layers>
@@ -2555,10 +2519,12 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-war-plugin</artifactId>
 					</plugin>
+					<!--
 					<plugin>
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
 					</plugin>
+					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
@@ -2578,10 +2544,6 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-release-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.jfrog.buildinfo</groupId>
-						<artifactId>artifactory-maven-plugin</artifactId>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -2804,6 +2766,7 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
@@ -2811,6 +2774,7 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
+					-->
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
@@ -2843,13 +2807,6 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-release-plugin</artifactId>
 						<version>${version.maven-release-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.jfrog.buildinfo</groupId>
-						<artifactId>artifactory-maven-plugin</artifactId>
-						<version>${version.artifactory-maven-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
@@ -2984,12 +2941,14 @@
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>com.dkanejs.maven.plugins</groupId>
 					<artifactId>docker-compose-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -3017,12 +2976,6 @@
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jfrog.buildinfo</groupId>
-					<artifactId>artifactory-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
@@ -3065,11 +3018,13 @@
 							<artifactId>maven-war-plugin</artifactId>
 							<version>${version.maven-war-plugin}</version>
 						</plugin>
+						<!--
 						<plugin>
 							<groupId>com.dkanejs.maven.plugins</groupId>
 							<artifactId>docker-compose-maven-plugin</artifactId>
 							<version>${version.docker-compose-maven-plugin}</version>
 						</plugin>
+						-->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-compiler-plugin</artifactId>
@@ -3094,11 +3049,6 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-release-plugin</artifactId>
 							<version>${version.maven-release-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.jfrog.buildinfo</groupId>
-							<artifactId>artifactory-maven-plugin</artifactId>
-							<version>${version.artifactory-maven-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>io.openliberty.tools</groupId>
@@ -3257,6 +3207,7 @@
 							<goals>package</goals>
 						</configuration>
 					</plugin>
+					<!--
 					<plugin>
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
@@ -3269,10 +3220,7 @@
 							<detachedMode>true</detachedMode>
 						</configuration>
 					</plugin>
-					<plugin>
-						<groupId>org.jfrog.buildinfo</groupId>
-						<artifactId>artifactory-maven-plugin</artifactId>
-					</plugin>
+					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-project-info-reports-plugin</artifactId>
