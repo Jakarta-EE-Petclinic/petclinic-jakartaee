@@ -109,6 +109,7 @@
 		<version.maven-dependency-plugin>3.3.0</version.maven-dependency-plugin>
 		<version.maven-resources-plugin>3.2.0</version.maven-resources-plugin>
 		<version.maven-javadoc-plugin>3.4.0</version.maven-javadoc-plugin>
+		<version.maven-deploy-plugin>3.0.0-M2</version.maven-deploy-plugin>
 		<version.maven-project-info-reports-plugin>3.3.0</version.maven-project-info-reports-plugin>
 		<version.maven-site-plugin>3.12.0</version.maven-site-plugin>
 		<version.maven-release-plugin>3.0.0-M4</version.maven-release-plugin>
@@ -401,7 +402,6 @@
 				<version>3.0.6</version>
 			</dependency>
 
-
 			<dependency>
 				<groupId>org.apache.maven.scm</groupId>
 				<artifactId>maven-scm-providers-standard</artifactId>
@@ -503,13 +503,11 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!--
 			<dependency>
 				<groupId>org.apache.myfaces.core</groupId>
 				<artifactId>myfaces-impl</artifactId>
-				<version>3.0.2</version>
+				<version>3.0.1</version>
 			</dependency>
-			-->
 
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
@@ -615,6 +613,13 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${version.maven-deploy-plugin}</version>
+				<type>maven-plugin</type>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>${version.maven-project-info-reports-plugin}</version>
 				<type>maven-plugin</type>
@@ -703,6 +708,11 @@
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-impl</artifactId>
 		</dependency>
 
 		<dependency>
@@ -796,6 +806,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-deploy-plugin</artifactId>
+			<type>maven-plugin</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-project-info-reports-plugin</artifactId>
 			<type>maven-plugin</type>
 			<scope>provided</scope>
@@ -866,6 +882,11 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${version.maven-deploy-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>${version.maven-project-info-reports-plugin}</version>
 				</plugin>
@@ -920,6 +941,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.projectlombok</groupId>
@@ -1724,6 +1749,11 @@
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-deploy-plugin</artifactId>
+							<version>${version.maven-deploy-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-project-info-reports-plugin</artifactId>
 							<version>${version.maven-project-info-reports-plugin}</version>
 						</plugin>
@@ -1880,6 +1910,8 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
+
+					<!--
 					<dependency>
 						<groupId>org.wildfly.galleon-plugins</groupId>
 						<artifactId>wildfly-galleon-maven-plugin</artifactId>
@@ -1887,6 +1919,7 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
+					-->
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
@@ -2189,12 +2222,14 @@
 					<scope>provided</scope>
 				</dependency>
 
+				<!--
 				<dependency>
 					<groupId>org.wildfly.galleon-plugins</groupId>
 					<artifactId>wildfly-galleon-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+				-->
 
 				<dependency>
 					<groupId>jakarta.platform</groupId>
@@ -2368,7 +2403,7 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean install wildfly-jar:package wildfly-jar:dev</defaultGoal>
+				<defaultGoal>clean install wildfly:run</defaultGoal>
 				<pluginManagement>
 					<plugins>
 						<plugin>
@@ -2381,12 +2416,13 @@
 							<artifactId>wildfly-jar-maven-plugin</artifactId>
 							<version>${version.wildfly-jar-maven-plugin}</version>
 						</plugin>
+						<!--
 						<plugin>
 							<groupId>org.wildfly.galleon-plugins</groupId>
 							<artifactId>wildfly-galleon-maven-plugin</artifactId>
 							<version>${version.wildfly-galleon-maven-plugin}</version>
 						</plugin>
-
+						-->
 						<plugin>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok-maven-plugin</artifactId>
@@ -2413,6 +2449,11 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-javadoc-plugin</artifactId>
 							<version>${version.maven-javadoc-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-deploy-plugin</artifactId>
+							<version>${version.maven-deploy-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -2453,11 +2494,6 @@
 						<configuration>
 							<overwriteProvisionedServer>true</overwriteProvisionedServer>
 							<logProvisioningTime>true</logProvisioningTime>
-							<galleonOptions>
-								<jboss-fork-embedded>true</jboss-fork-embedded>
-							</galleonOptions>
-							<overwriteProvisionedServer>true</overwriteProvisionedServer>
-							<logProvisioningTime>true</logProvisioningTime>
 						</configuration>
 						<executions>
 							<execution>
@@ -2474,14 +2510,12 @@
 						<artifactId>wildfly-jar-maven-plugin</artifactId>
 						<configuration>
 							<feature-packs>
-								<!--
 								<feature-pack>
 									<groupId>org.wildfly</groupId>
 									<artifactId>wildfly-preview-feature-pack</artifactId>
 									<version>${version.wildfly-runtime}</version>
 									<type>zip</type>
 								</feature-pack>
-								-->
 								<feature-pack>
 									<groupId>org.woehlke.jakartaee</groupId>
 									<artifactId>wildfly-postgesql-galleon-pack</artifactId>
@@ -2498,6 +2532,7 @@
 							</layers>
 						</configuration>
 					</plugin>
+					<!--
 					<plugin>
 						<groupId>org.wildfly.galleon-plugins</groupId>
 						<artifactId>wildfly-galleon-maven-plugin</artifactId>
@@ -2511,6 +2546,7 @@
 							</execution>
 						</executions>
 					</plugin>
+					-->
 					<plugin>
 						<groupId>org.projectlombok</groupId>
 						<artifactId>lombok-maven-plugin</artifactId>
@@ -3175,6 +3211,10 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-deploy-plugin</artifactId>
 					</plugin>
 					<plugin>
 						<groupId>org.projectlombok</groupId>
