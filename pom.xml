@@ -2368,7 +2368,7 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean install wildfly-jar:package wildfly-jar:dev-watch</defaultGoal>
+				<defaultGoal>clean install wildfly-jar:package wildfly-jar:dev</defaultGoal>
 				<pluginManagement>
 					<plugins>
 						<plugin>
