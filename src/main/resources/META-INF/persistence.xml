@@ -6,6 +6,8 @@
              version="3.0">
 
 	<persistence-unit name="petclinicJakartaee" transaction-type="JTA">
+		<jta-data-source>java:app/jdbc/PetclinicDS</jta-data-source>
+
 		<class>org.woehlke.jakartaee.petclinic.owner.Owner</class>
 		<class>org.woehlke.jakartaee.petclinic.pet.Pet</class>
 		<class>org.woehlke.jakartaee.petclinic.pettype.PetType</class>
@@ -18,7 +20,9 @@
 			<!--
 			<property name="openjpa.jdbc.DBDictionary" value="postgres"/>
 			-->
+			<property name="jta-data-source" value="ExampleDS"/>
 		</properties>
+		<jta-data-source>java:app/jdbc/MyDataSource</jta-data-source>
 	</persistence-unit>
 
 </persistence>

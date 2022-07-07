@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0" name="postgresql-datasource">
+
+    <!-- express a dependency on the driver layer to have it automatically provisioned when mariadb-datasource is provisioned -->
+    <dependencies>
+        <layer name="postgresql-driver"/>
+    </dependencies>
+
+    <feature spec="subsystem.datasources.data-source">
+        <param name="data-source" value="PetclinicDS"/>
+        <param name="jndi-name" value="java:app/jdbc/PetclinicDS"/>
+        <param name="connection-url" value="jdbc:mariadb://localhost:5432/petclinic_jakartaee"/>
+        <param name="driver-name" value="postgresql"/>
+        <param name="user-name" value="petclinic_jakartaee"/>
+        <param name="password" value="petclinic_jakartaeepwd"/>
+    </feature>
+</layer-spec>

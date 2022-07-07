@@ -93,6 +93,7 @@
 		<version.wildfly-runtime>26.1.1.Final</version.wildfly-runtime>
 		<version.wildfly-server>999.22.0.0.6</version.wildfly-server>
 		<version.wildfly-maven-plugin>4.0.0.Alpha2</version.wildfly-maven-plugin>
+		<version.wildfly-jar-maven-plugin>7.0.2.Final</version.wildfly-jar-maven-plugin>
 		<version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
 		<version.jboss-logmanager>2.3.0.Alpha1</version.jboss-logmanager>
 
@@ -828,12 +829,6 @@
 			<artifactId>maven-surefire-plugin</artifactId>
 			<type>maven-plugin</type>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jetbrains</groupId>
-			<artifactId>annotations</artifactId>
-			<version>13.0</version>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
@@ -1890,10 +1885,19 @@
 			</properties>
 			<dependencyManagement>
 				<dependencies>
+					<!--
 					<dependency>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
 						<version>${version.wildfly-maven-plugin}</version>
+						<type>maven-plugin</type>
+						<scope>provided</scope>
+					</dependency>
+					-->
+					<dependency>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-jar-maven-plugin</artifactId>
+						<version>${version.wildfly-jar-maven-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
@@ -2198,12 +2202,21 @@
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
+				<!--
 				<dependency>
 					<groupId>org.wildfly.plugins</groupId>
 					<artifactId>wildfly-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+				-->
+				<dependency>
+					<groupId>org.wildfly.plugins</groupId>
+					<artifactId>wildfly-jar-maven-plugin</artifactId>
+					<type>maven-plugin</type>
+					<scope>provided</scope>
+				</dependency>
+
 				<dependency>
 					<groupId>org.wildfly.galleon-plugins</groupId>
 					<artifactId>wildfly-galleon-maven-plugin</artifactId>
@@ -2387,13 +2400,13 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean install wildfly:run</defaultGoal>
+				<defaultGoal>clean install wildfly-jar:package wildfly-jar:dev-watch</defaultGoal>
 				<pluginManagement>
 					<plugins>
 						<plugin>
 							<groupId>org.wildfly.plugins</groupId>
-							<artifactId>wildfly-maven-plugin</artifactId>
-							<version>${version.wildfly-maven-plugin}</version>
+							<artifactId>wildfly-jar-maven-plugin</artifactId>
+							<version>${version.wildfly-jar-maven-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.wildfly.galleon-plugins</groupId>
@@ -2466,7 +2479,7 @@
 				<plugins>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-maven-plugin</artifactId>
+						<artifactId>wildfly-jar-maven-plugin</artifactId>
 						<configuration>
 							<galleonOptions>
 								<jboss-fork-embedded>true</jboss-fork-embedded>
@@ -2479,12 +2492,24 @@
 									<artifactId>wildfly-preview-feature-pack</artifactId>
 									<version>${version.wildfly-runtime}</version>
 									<type>zip</type>
+								</feature-pack><!-- Our custom feature-pack -->
+								<feature-pack>
+									<groupId>org.woehlke.jakartaee</groupId>
+									<artifactId>my-custom-galleon-pack</artifactId>
+									<version>1.0-SNAPSHOT</version>
 								</feature-pack>
 							</feature-packs>
+							<layers>
+								<!-- WildFly layer that provides web + support for datasources -->
+								<layer>datasources-web-server</layer>
+								<!-- The custom layers we have defined -->
+								<layer>mariadb-datasource</layer>
+								<layer>my-undertow-handler</layer>
+							</layers>
 						</configuration>
 						<executions>
 							<execution>
-								<id>myproject-provision</id>
+								<id>petclinic-provision</id>
 								<goals>
 									<goal>provision</goal>
 								</goals>
