@@ -1,5 +1,0 @@
-<?xml version="1.0" ?>
-
-<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0" name="my-undertow-handler">
-    <feature-group name="my-undertow-handler-grp"/>
-</layer-spec>

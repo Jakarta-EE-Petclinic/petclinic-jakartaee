@@ -396,6 +396,12 @@
 				<artifactId>postgresql</artifactId>
 				<version>${version.postgresql.driver}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.mariadb.jdbc</groupId>
+				<artifactId>mariadb-java-client</artifactId>
+				<version>3.0.6</version>
+			</dependency>
+
 
 			<dependency>
 				<groupId>org.apache.maven.scm</groupId>
@@ -699,6 +705,10 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
 		</dependency>
 
 		<dependency>
@@ -1885,7 +1895,6 @@
 			</properties>
 			<dependencyManagement>
 				<dependencies>
-					<!--
 					<dependency>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
@@ -1893,7 +1902,6 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
-					-->
 					<dependency>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-jar-maven-plugin</artifactId>
@@ -2202,14 +2210,12 @@
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
-				<!--
 				<dependency>
 					<groupId>org.wildfly.plugins</groupId>
 					<artifactId>wildfly-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
-				-->
 				<dependency>
 					<groupId>org.wildfly.plugins</groupId>
 					<artifactId>wildfly-jar-maven-plugin</artifactId>
@@ -2405,6 +2411,11 @@
 					<plugins>
 						<plugin>
 							<groupId>org.wildfly.plugins</groupId>
+							<artifactId>wildfly-maven-plugin</artifactId>
+							<version>${version.wildfly-maven-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.wildfly.plugins</groupId>
 							<artifactId>wildfly-jar-maven-plugin</artifactId>
 							<version>${version.wildfly-jar-maven-plugin}</version>
 						</plugin>
@@ -2479,13 +2490,28 @@
 				<plugins>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<configuration>
+						<galleonOptions>
+							<jboss-fork-embedded>true</jboss-fork-embedded>
+						</galleonOptions>
+						<overwriteProvisionedServer>true</overwriteProvisionedServer>
+						<logProvisioningTime>true</logProvisioningTime>
+						</configuration>
+						<executions>
+							<execution>
+								<id>petclinic-provision</id>
+								<goals>
+									<goal>provision</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-jar-maven-plugin</artifactId>
 						<configuration>
-							<galleonOptions>
-								<jboss-fork-embedded>true</jboss-fork-embedded>
-							</galleonOptions>
-							<overwriteProvisionedServer>true</overwriteProvisionedServer>
-							<logProvisioningTime>true</logProvisioningTime>
 							<feature-packs>
 								<feature-pack>
 									<groupId>org.wildfly</groupId>
@@ -2507,15 +2533,6 @@
 								<layer>my-undertow-handler</layer>
 							</layers>
 						</configuration>
-						<executions>
-							<execution>
-								<id>petclinic-provision</id>
-								<goals>
-									<goal>provision</goal>
-								</goals>
-								<phase>package</phase>
-							</execution>
-						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.wildfly.galleon-plugins</groupId>
@@ -2599,6 +2616,12 @@
 						<groupId>org.postgresql</groupId>
 						<artifactId>postgresql</artifactId>
 						<version>${version.postgresql.driver}</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.mariadb.jdbc</groupId>
+						<artifactId>mariadb-java-client</artifactId>
+						<version>3.0.6</version>
 					</dependency>
 
 					<dependency>
