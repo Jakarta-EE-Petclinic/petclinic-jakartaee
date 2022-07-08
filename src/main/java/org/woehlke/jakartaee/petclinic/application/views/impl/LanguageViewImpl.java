@@ -41,9 +41,9 @@ public class LanguageViewImpl implements LanguageView {
     @Inject
     private FlashMessagesView flashMessagesView;
 
-    private Locale locale;
+    private Locale locale = Locale.ENGLISH;
 
-    private String localeSelected;
+    private String localeSelected = DEFAULT.getLanguage();
 
     private Map<String, String> countries = new HashMap<>();
 
@@ -101,6 +101,7 @@ public class LanguageViewImpl implements LanguageView {
     public void postConstruct() {
         log.info("postConstruct: "+LanguageViewImpl.class.getSimpleName());
         countries = this.getCountries();
+        locale = Locale.ENGLISH;
     }
 
     @PreDestroy
