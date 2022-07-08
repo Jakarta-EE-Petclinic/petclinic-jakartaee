@@ -2228,16 +2228,20 @@
 					</dependency>
 					<dependency>
 						<groupId>io.netty</groupId>
-						<artifactId>netty-transport-classes-kqueue</artifactId>
+						<artifactId>netty-transport-native-kqueue</artifactId>
 						<version>4.1.78.Final</version>
-						<!--
 						<scope>provided</scope>
-						-->
 					</dependency>
 					<dependency>
 						<groupId>org.apache.myfaces.core</groupId>
 						<artifactId>myfaces-impl</artifactId>
 						<version>3.0.1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly.core</groupId>
+						<artifactId>wildfly-core-galleon-pack</artifactId>
+						<version>18.1.1.Final</version>
+						<type>pom</type>
 					</dependency>
 				</dependencies>
 			</dependencyManagement>
@@ -2437,15 +2441,13 @@
 				</dependency>
 				<dependency>
 					<groupId>io.netty</groupId>
-					<artifactId>netty-transport-classes-kqueue</artifactId>
-					<!--
+					<artifactId>netty-transport-native-kqueue</artifactId>
 					<scope>provided</scope>
-					-->
 				</dependency>
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean install wildfly-jar:dev-watch</defaultGoal>
+				<defaultGoal>clean package wildfly-jar:dev-watch</defaultGoal>
 				<pluginManagement>
 					<plugins>
 						<!--
@@ -2558,31 +2560,61 @@
 							<context-root>false</context-root>
 							<feature-packs>
 								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-preview-feature-pack</artifactId>
-									<version>${version.wildfly-runtime}</version>
-									<type>zip</type>
+									<location>wildfly-preview@maven(org.jboss.universe:community-universe)#${version.wildfly-runtime}</location>
 								</feature-pack>
 								<feature-pack>
 									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-datasources-galleon-pack</artifactId>
-									<version>1.0.8.Final</version>
+									<artifactId>wildfly-datasources-preview-galleon-pack</artifactId>
+									<version>2.2.2.Final</version>
 								</feature-pack>
 							</feature-packs>
 							<layers>
+								<layer>datasources-web-server</layer>
+								<layer>jaxrs-server</layer>
+								<layer>cloud-server</layer>
+								<layer>bean-validation</layer>
+								<layer>cdi</layer>
+								<layer>core-management</layer>
+								<layer>core-tools</layer>
+								<layer>datasources</layer>
+								<layer>discovery</layer>
+								<layer>ee</layer>
+								<layer>ee-security</layer>
+								<layer>ejb</layer>
+								<layer>ejb-dist-cache</layer>
+								<layer>ejb-local-cache</layer>
 								<layer>elytron</layer>
+								<layer>io</layer>
+								<layer>jaxrs</layer>
+								<layer>jdr</layer>
+								<layer>jms-activemq</layer>
+								<layer>jmx</layer>
+								<layer>jmx-remoting</layer>
+								<layer>jpa</layer>
+								<layer>jsf</layer>
+								<layer>jsonb</layer>
+								<layer>jsonp</layer>
+								<layer>logging</layer>
+								<layer>mail</layer>
+								<layer>management</layer>
+								<layer>messaging-activemq</layer>
+								<layer>naming</layer>
+								<layer>pojo</layer>
+								<layer>remote-activemq</layer>
+								<layer>remoting</layer>
+								<layer>request-controller</layer>
+								<layer>resource-adapters</layer>
+								<layer>sar</layer>
+								<layer>security-manager</layer>
+								<layer>transactions</layer>
+								<layer>undertow</layer>
+								<layer>undertow-load-balancer</layer>
+								<layer>web-clustering</layer>
+								<layer>web-console</layer>
 								<layer>web-server</layer>
 								<layer>webservices</layer>
-								<layer>jsf</layer>
-								<layer>ejb</layer>
-								<layer>jpa</layer>
-								<layer>cdi</layer>
-								<layer>ee</layer>
-								<layer>jaxrs</layer>
-								<layer>logging</layer>
-								<layer>management</layer>
-								<layer>h2-driver</layer>
-                                <layer>postgresql-datasource</layer>
+								<layer>datasources-web-server</layer>
+								<layer>postgresql-datasource</layer>
 							</layers>
 							<excluded-layers>
 								<layer>deployment-scanner</layer>
@@ -3230,7 +3262,7 @@
 							<daemon>true</daemon>
 							<immediateExit>false</immediateExit>
 							<javaPath>/usr/bin/java</javaPath>
-							<payaraMicroAbsolutePath>/home/tw/.m2/repository/fish/payara/extras/payara-micro/${version.payara-runtime}/payara-micro-${version.payara-runtime}.jar</payaraMicroAbsolutePath>
+							<payaraMicroAbsolutePath>${user.home}/.m2/repository/fish/payara/extras/payara-micro/${version.payara-runtime}/payara-micro-${version.payara-runtime}.jar</payaraMicroAbsolutePath>
 							<payaraVersion>${version.payara-runtime}</payaraVersion>
 							<artifactItem>
 								<groupId>fish.payara.extras</groupId>
