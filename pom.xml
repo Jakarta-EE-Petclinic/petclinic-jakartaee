@@ -2232,11 +2232,13 @@
 						<version>4.1.78.Final</version>
 						<scope>provided</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.apache.myfaces.core</groupId>
 						<artifactId>myfaces-impl</artifactId>
 						<version>3.0.1</version>
 					</dependency>
+					-->
 					<dependency>
 						<groupId>org.wildfly.core</groupId>
 						<artifactId>wildfly-core-galleon-pack</artifactId>
@@ -2435,10 +2437,12 @@
 					<type>maven-plugin</type>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
 					<artifactId>myfaces-impl</artifactId>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>io.netty</groupId>
 					<artifactId>netty-transport-native-kqueue</artifactId>
