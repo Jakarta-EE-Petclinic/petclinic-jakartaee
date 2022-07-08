@@ -6,13 +6,16 @@
              version="3.0">
 
 	<persistence-unit name="petclinicJakartaee" transaction-type="JTA">
-		<jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
+
+		<jta-data-source>java:jdbc/datasources/PostgreSQLDS</jta-data-source>
+
 		<class>org.woehlke.jakartaee.petclinic.owner.Owner</class>
 		<class>org.woehlke.jakartaee.petclinic.pet.Pet</class>
 		<class>org.woehlke.jakartaee.petclinic.visit.Visit</class>
 		<class>org.woehlke.jakartaee.petclinic.pettype.PetType</class>
 		<class>org.woehlke.jakartaee.petclinic.vet.Vet</class>
 		<class>org.woehlke.jakartaee.petclinic.specialty.Specialty</class>
+
 		<properties>
 			<property name="jakarta.persistence.schema-generation.database.action" value="create"/>
 			<property name="jpa.showSql" value="true"/>

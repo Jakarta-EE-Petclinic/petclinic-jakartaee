@@ -50,7 +50,7 @@
 
 	<dataSource id="DefaultDataSource"
 	            jdbcDriverRef="postgresqlDriver"
-	            jndiName="jdbc/dsPetclinicJakartaee"
+	            jndiName="jdbc/datasources/PostgreSQLDS"
 	            transactional="true"
 	            type="javax.sql.ConnectionPoolDataSource">
 
