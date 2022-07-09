@@ -1824,7 +1824,7 @@
 						<executions>
 							<execution>
 								<id>id-liberty-persistence-xml</id>
-								<phase>compile</phase>
+								<phase>process-resources</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
@@ -2604,7 +2604,7 @@
 						<executions>
 							<execution>
 								<id>id-wildfly-persistence-xml</id>
-								<phase>compile</phase>
+								<phase>process-resources</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
@@ -3281,7 +3281,7 @@
 						<executions>
 							<execution>
 								<id>id-payara-persistence-xml</id>
-								<phase>compile</phase>
+								<phase>prepare-package</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>

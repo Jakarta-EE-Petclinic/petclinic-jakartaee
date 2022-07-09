@@ -17,11 +17,6 @@
 		<class>org.woehlke.jakartaee.petclinic.specialty.Specialty</class>
 
 		<properties>
-			<property name="jakarta.persistence.schema-generation.database.action" value="create"/>
-			<property name="jpa.showSql" value="true"/>
-			<!--
-			<property name="openjpa.jdbc.DBDictionary" value="postgres"/>
-			-->
 			<!-- Properties for Hibernate -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 			<property name="hibernate.hbm2ddl.auto" value="validate"/>
