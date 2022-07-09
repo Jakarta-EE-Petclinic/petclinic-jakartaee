@@ -15,7 +15,7 @@ public interface CrudDao<T extends EntityBase> extends Serializable {
     /**
      * see src/main/resources/META-INF/persistence.xml
      */
-    String PERSISTENCE_UNIT_NAME = "petclinicJakartaee";
+    String PERSISTENCE_UNIT_NAME = "petclinicPersistenceUnit";
 
     List<T> getAll();
 
