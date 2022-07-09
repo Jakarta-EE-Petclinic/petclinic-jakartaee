@@ -1831,11 +1831,18 @@
 								</goals>
 							</execution>
 							<execution>
-								<id>id-all</id>
+								<id>default-resources</id>
 								<configuration>
+									<propertiesEncoding>UTF-8</propertiesEncoding>
 									<resources>
 										<resource>
 											<directory>src/main/resources</directory>
+											<includes>
+												<include>**/Messages_en.properties</include>
+												<include>**/Messages_de.properties</include>
+											</includes>
+										</resource>
+										<resource>
 											<directory>src/main/liberty/resources</directory>
 										</resource>
 									</resources>
