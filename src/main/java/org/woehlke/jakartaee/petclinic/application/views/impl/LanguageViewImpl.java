@@ -41,9 +41,9 @@ public class LanguageViewImpl implements LanguageView {
     @Inject
     private FlashMessagesView flashMessagesView;
 
-    private Locale locale = Locale.ENGLISH;
+    private Locale locale;
 
-    private String localeSelected = DEFAULT.getLanguage();
+    private String localeSelected;
 
     private Map<String, String> countries = new HashMap<>();
 
@@ -70,6 +70,10 @@ public class LanguageViewImpl implements LanguageView {
         if (this.locale == null) {
             locale = Locale.ENGLISH;
         }
+        FacesContext
+                .getCurrentInstance()
+                .getViewRoot()
+                .setLocale(this.locale);
         return locale;
     }
 
@@ -88,12 +92,12 @@ public class LanguageViewImpl implements LanguageView {
         Locale myLocale = new Locale(this.localeSelected);
         String msg = "cool: newLocale: " + this.locale + " -> " + myLocale;
         log.info("changed Language " + msg);
+        this.flashMessagesView.addInfoMessage("changed Language", msg);
+        this.setLocale(myLocale);
         FacesContext
                 .getCurrentInstance()
                 .getViewRoot()
-                .setLocale(myLocale);
-        this.setLocale(myLocale);
-        this.flashMessagesView.addInfoMessage("changed Language", msg);
+                .setLocale(this.locale);
         return "#";
     }
 
@@ -101,8 +105,10 @@ public class LanguageViewImpl implements LanguageView {
     public void postConstruct() {
         log.info("postConstruct: "+LanguageViewImpl.class.getSimpleName());
         countries = this.getCountries();
-        locale = Locale.ENGLISH;
-        this.localeSelected = DEFAULT.getLanguage();
+        FacesContext
+                .getCurrentInstance()
+                .getViewRoot()
+                .setLocale(this.getLocale());
     }
 
     @PreDestroy
