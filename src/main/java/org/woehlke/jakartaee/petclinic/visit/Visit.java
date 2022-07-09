@@ -12,6 +12,7 @@ import org.woehlke.jakartaee.petclinic.visit.impl.VisitListener;
 
 import java.util.Date;
 import java.util.UUID;
+//import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
