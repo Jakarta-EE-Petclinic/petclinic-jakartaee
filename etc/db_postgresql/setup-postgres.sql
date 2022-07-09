@@ -24,13 +24,19 @@ ALTER TABLESPACE tablespace_petclinic_jakartaee
 -- DROP DATABASE petclinic_jakartaee;
 -- CONNECTION LIMIT = -1;
 
-CREATE DATABASE petclinic_jakartaee
+CREATE DATABASE petclinic_jakartaee_liberty
     WITH OWNER = petclinic_jakartaee
     ENCODING = 'UTF8'
     TABLESPACE = tablespace_petclinic_jakartaee
     CONNECTION LIMIT = -1;
 
 CREATE DATABASE petclinic_jakartaee_wildfly
+    WITH OWNER = petclinic_jakartaee
+    ENCODING = 'UTF8'
+    TABLESPACE = tablespace_petclinic_jakartaee
+    CONNECTION LIMIT = -1;
+
+CREATE DATABASE petclinic_jakartaee_payara
     WITH OWNER = petclinic_jakartaee
     ENCODING = 'UTF8'
     TABLESPACE = tablespace_petclinic_jakartaee

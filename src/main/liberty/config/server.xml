@@ -35,7 +35,7 @@
 	            transactional="true"
 	            type="javax.sql.ConnectionPoolDataSource">
 
-		<properties databaseName="petclinic_jakartaee"
+		<properties databaseName="petclinic_jakartaee_liberty"
 		            password="petclinic_jakartaeepwd"
 		            portNumber="5432"
 		            serverName="localhost"
