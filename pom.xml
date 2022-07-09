@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.woehlke.jakartaee</groupId>
@@ -1955,6 +1956,21 @@
 			</properties>
 			<dependencyManagement>
 				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<version>3.4.1</version>
+						<type>maven-plugin</type>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>3.1.0</version>
+						<type>maven-plugin</type>
+						<scope>test</scope>
+					</dependency>
+
 					<!--
 					<dependency>
 						<groupId>org.wildfly.plugins</groupId>
@@ -2291,6 +2307,18 @@
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
+				<dependency>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<type>maven-plugin</type>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<type>maven-plugin</type>
+					<scope>test</scope>
+				</dependency>
 				<!--
 				<dependency>
 					<groupId>org.wildfly.plugins</groupId>
@@ -2499,6 +2527,16 @@
 					<plugins>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-assembly-plugin</artifactId>
+							<version>3.4.1</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-antrun-plugin</artifactId>
+							<version>3.1.0</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-resources-plugin</artifactId>
 							<version>${version.maven-resources-plugin}</version>
 						</plugin>
@@ -2626,11 +2664,18 @@
 								</goals>
 							</execution>
 							<execution>
-								<id>id-all</id>
+								<id>default-resources</id>
 								<configuration>
+									<propertiesEncoding>UTF-8</propertiesEncoding>
 									<resources>
 										<resource>
-											<directory>src/main/resources</directory>
+											<directory>src/main/resources/org/woehlke/jakartaee/petclinic</directory>
+											<includes>
+												<include>Messages.properties</include>
+												<include>Messages_de.properties</include>
+											</includes>
+										</resource>
+										<resource>
 											<directory>src/main/wildfly/resources</directory>
 										</resource>
 									</resources>
