@@ -1824,7 +1824,7 @@
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
 									<overwrite>true</overwrite>
 								</configuration>
-								<phase>generate-resources</phase>
+								<phase>clean</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
@@ -1835,7 +1835,7 @@
 									<resources>
 										<resource>
 											<directory>src/main/resources</directory>
-											<directory>src/main/wildfly/resources</directory>
+											<directory>src/main/liberty/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2620,7 +2620,7 @@
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
 									<overwrite>true</overwrite>
 								</configuration>
-								<phase>generate-resources</phase>
+								<phase>clean</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
