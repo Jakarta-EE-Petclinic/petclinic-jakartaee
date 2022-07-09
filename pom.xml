@@ -1753,6 +1753,11 @@
 						-->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-resources-plugin</artifactId>
+							<version>${version.maven-resources-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-compiler-plugin</artifactId>
 							<version>${version.maven-compiler-plugin}</version>
 						</plugin>
@@ -1804,6 +1809,10 @@
 					</plugins>
 				</pluginManagement>
 				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
@@ -2454,6 +2463,11 @@
 				<defaultGoal>clean package wildfly-jar:dev-watch</defaultGoal>
 				<pluginManagement>
 					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-resources-plugin</artifactId>
+							<version>${version.maven-resources-plugin}</version>
+						</plugin>
 						<!--
 						<plugin>
 							<groupId>org.wildfly.plugins</groupId>
@@ -2557,6 +2571,10 @@
 						</executions>
 					</plugin>
 					-->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+					</plugin>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-jar-maven-plugin</artifactId>
