@@ -1812,6 +1812,24 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
+						<configuration>
+							<outputDirectory>src/main/resources</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/liberty/resources</directory>
+								</resource>
+							</resources>
+							<overwrite>true</overwrite>
+						</configuration>
+						<executions>
+							<execution>
+								<id>id-liberty-persistence-xml</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -2574,6 +2592,24 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
+						<configuration>
+							<outputDirectory>src/main/resources</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/wildfly/resources</directory>
+								</resource>
+							</resources>
+							<overwrite>true</overwrite>
+						</configuration>
+						<executions>
+							<execution>
+								<id>id-wildfly-persistence-xml</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
@@ -3230,6 +3266,28 @@
 					</plugins>
 				</pluginManagement>
 				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<configuration>
+							<outputDirectory>src/main/resources</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/payara/resources</directory>
+								</resource>
+							</resources>
+							<overwrite>true</overwrite>
+						</configuration>
+						<executions>
+							<execution>
+								<id>id-payara-persistence-xml</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
