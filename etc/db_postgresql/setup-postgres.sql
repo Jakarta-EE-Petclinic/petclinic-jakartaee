@@ -29,3 +29,9 @@ CREATE DATABASE jakartaee_petclinic
     ENCODING = 'UTF8'
     TABLESPACE = tablespace_jakartaee_petclinic
     CONNECTION LIMIT = -1;
+
+CREATE DATABASE petclinic_jakartaee_wildfly
+    WITH OWNER = jakartaee_petclinic
+    ENCODING = 'UTF8'
+    TABLESPACE = tablespace_jakartaee_petclinic
+    CONNECTION LIMIT = -1;
