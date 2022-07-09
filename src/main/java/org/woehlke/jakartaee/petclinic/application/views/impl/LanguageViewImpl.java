@@ -102,6 +102,7 @@ public class LanguageViewImpl implements LanguageView {
         log.info("postConstruct: "+LanguageViewImpl.class.getSimpleName());
         countries = this.getCountries();
         locale = Locale.ENGLISH;
+        this.localeSelected = DEFAULT.getLanguage();
     }
 
     @PreDestroy
