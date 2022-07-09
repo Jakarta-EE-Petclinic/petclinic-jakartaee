@@ -1813,10 +1813,10 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
 						<configuration>
-							<outputDirectory>src/main/resources</outputDirectory>
+							<outputDirectory>src/main/resources/META-INF</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/main/liberty/resources</directory>
+									<directory>src/main/liberty/resources/META-INF</directory>
 								</resource>
 							</resources>
 							<overwrite>true</overwrite>
@@ -2593,10 +2593,10 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
 						<configuration>
-							<outputDirectory>src/main/resources</outputDirectory>
+							<outputDirectory>src/main/resources/META-INF</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/main/wildfly/resources</directory>
+									<directory>src/main/wildfly/resources/META-INF</directory>
 								</resource>
 							</resources>
 							<overwrite>true</overwrite>
@@ -3270,10 +3270,10 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
 						<configuration>
-							<outputDirectory>src/main/resources</outputDirectory>
+							<outputDirectory>src/main/resources/META-INF</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/main/payara/resources</directory>
+									<directory>src/main/payara/resources/META-INF</directory>
 								</resource>
 							</resources>
 							<overwrite>true</overwrite>
