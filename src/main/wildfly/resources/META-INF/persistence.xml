@@ -7,7 +7,7 @@
 
 	<persistence-unit name="petclinicJakartaee" transaction-type="JTA">
 
-		<jta-data-source>java:jdbc/datasources/PostgreSQLDS</jta-data-source>
+		<jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
 
 		<class>org.woehlke.jakartaee.petclinic.owner.Owner</class>
 		<class>org.woehlke.jakartaee.petclinic.pet.Pet</class>
