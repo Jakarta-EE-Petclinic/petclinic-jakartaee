@@ -5,6 +5,7 @@
 CREATE ROLE petclinic_jakartaee LOGIN
     PASSWORD 'petclinic_jakartaeepwd'
     SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION;
+
 GRANT pg_monitor TO petclinic_jakartaee;
 GRANT pg_read_all_settings TO petclinic_jakartaee;
 GRANT pg_read_all_stats TO petclinic_jakartaee;
