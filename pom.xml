@@ -1812,15 +1812,24 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/main/liberty/resources</directory>
-									<directory>src/main/resources</directory>
-								</resource>
-							</resources>
-							<overwrite>true</overwrite>
-						</configuration>
+						<executions>
+							<execution>
+								<id>id-persistence-xml</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/liberty/resources/META-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>src/main/resources/META-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -2583,14 +2592,24 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/main/wildfly/resources</directory>
-									<directory>src/main/resources</directory>
-								</resource>
-							</resources>
-						</configuration>
+						<executions>
+							<execution>
+								<id>id-persistence-xml</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/wildfly/resources/META-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>src/main/resources/META-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
