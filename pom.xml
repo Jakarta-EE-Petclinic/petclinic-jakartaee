@@ -1824,6 +1824,7 @@
 										<resource>
 											<directory>src/main/resources</directory>
 											<includes>
+												<include>**/Messages.properties</include>
 												<include>**/Messages_en.properties</include>
 												<include>**/Messages_de.properties</include>
 											</includes>
@@ -2524,6 +2525,7 @@
 											<includes>
 												<include>**/Messages.properties</include>
 												<include>**/Messages_de.properties</include>
+												<include>**/Messages_en.properties</include>
 											</includes>
 										</resource>
 										<resource>
