@@ -869,13 +869,6 @@
 					<version>${version.maven-war-plugin}</version>
 				</plugin>
 				-->
-				<!--
-				<plugin>
-					<groupId>com.dkanejs.maven.plugins</groupId>
-					<artifactId>docker-compose-maven-plugin</artifactId>
-					<version>${version.docker-compose-maven-plugin}</version>
-				</plugin>
-				-->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -985,20 +978,6 @@
 					<goals>package</goals>
 				</configuration>
 			</plugin>
-			<!--
-			<plugin>
-				<groupId>com.dkanejs.maven.plugins</groupId>
-				<artifactId>docker-compose-maven-plugin</artifactId>
-				<configuration>
-					<composeFile>${project.basedir}/docker-compose.yml</composeFile>
-					<verbose>true</verbose>
-					<removeImages>true</removeImages>
-					<removeVolumes>true</removeVolumes>
-					<ignorePullFailures>true</ignorePullFailures>
-					<detachedMode>true</detachedMode>
-				</configuration>
-			</plugin>
-			-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -1026,6 +1005,7 @@
 	</build>
 
 	<profiles>
+
 		<profile>
 			<id>war</id>
 			<activation>
@@ -1034,6 +1014,37 @@
 			<build>
 				<finalName>petclinic</finalName>
 				<defaultGoal>clean install</defaultGoal>
+			</build>
+		</profile>
+
+		<profile>
+			<id>docker</id>
+			<build>
+				<finalName>petclinic</finalName>
+				<defaultGoal>clean install</defaultGoal>
+				<pluginManagement>
+					<plugins>
+                        <plugin>
+                            <groupId>com.dkanejs.maven.plugins</groupId>
+                            <artifactId>docker-compose-maven-plugin</artifactId>
+                            <version>${version.docker-compose-maven-plugin}</version>
+                        </plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+                    <plugin>
+                        <groupId>com.dkanejs.maven.plugins</groupId>
+                        <artifactId>docker-compose-maven-plugin</artifactId>
+                        <configuration>
+                            <composeFile>${project.basedir}/docker-compose.yml</composeFile>
+                            <verbose>true</verbose>
+                            <removeImages>true</removeImages>
+                            <removeVolumes>true</removeVolumes>
+                            <ignorePullFailures>true</ignorePullFailures>
+                            <detachedMode>true</detachedMode>
+                        </configuration>
+                    </plugin>
+				</plugins>
 			</build>
 		</profile>
 
@@ -1476,15 +1487,6 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
-					<!--
-					<dependency>
-						<groupId>com.dkanejs.maven.plugins</groupId>
-						<artifactId>docker-compose-maven-plugin</artifactId>
-						<version>${version.docker-compose-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					-->
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
@@ -1664,14 +1666,6 @@
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>com.dkanejs.maven.plugins</groupId>
-					<artifactId>docker-compose-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -1742,13 +1736,6 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-war-plugin</artifactId>
 							<version>${version.maven-war-plugin}</version>
-						</plugin>
-						-->
-						<!--
-						<plugin>
-							<groupId>com.dkanejs.maven.plugins</groupId>
-							<artifactId>docker-compose-maven-plugin</artifactId>
-							<version>${version.docker-compose-maven-plugin}</version>
 						</plugin>
 						-->
 						<plugin>
@@ -1885,25 +1872,6 @@
 						<groupId>org.projectlombok</groupId>
 						<artifactId>lombok-maven-plugin</artifactId>
 					</plugin>
-					<!--
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-war-plugin</artifactId>
-						<configuration>
-							<failOnMissingWebXml>false</failOnMissingWebXml>
-							<packagingExcludes>pom.xml</packagingExcludes>
-						</configuration>
-						<executions>
-							<execution>
-								<id>war</id>
-								<phase>prepare-package</phase>
-								<goals>
-									<goal>war</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-release-plugin</artifactId>
@@ -1914,20 +1882,6 @@
 							<goals>package</goals>
 						</configuration>
 					</plugin>
-					<!--
-					<plugin>
-						<groupId>com.dkanejs.maven.plugins</groupId>
-						<artifactId>docker-compose-maven-plugin</artifactId>
-						<configuration>
-							<composeFile>${project.basedir}/docker-compose.yml</composeFile>
-							<verbose>true</verbose>
-							<removeImages>true</removeImages>
-							<removeVolumes>true</removeVolumes>
-							<ignorePullFailures>true</ignorePullFailures>
-							<detachedMode>true</detachedMode>
-						</configuration>
-					</plugin>
-					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -1976,16 +1930,6 @@
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
-
-					<!--
-					<dependency>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-maven-plugin</artifactId>
-						<version>${version.wildfly-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					-->
 					<dependency>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-jar-maven-plugin</artifactId>
@@ -1993,16 +1937,6 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
-
-					<!--
-					<dependency>
-						<groupId>org.wildfly.galleon-plugins</groupId>
-						<artifactId>wildfly-galleon-maven-plugin</artifactId>
-						<version>${version.wildfly-galleon-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					-->
 
 					<dependency>
 						<groupId>org.wildfly</groupId>
@@ -2196,15 +2130,7 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
-					<!--
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-war-plugin</artifactId>
-						<version>${version.maven-war-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					-->
+
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
@@ -2219,15 +2145,6 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
-					<!--
-					<dependency>
-						<groupId>com.dkanejs.maven.plugins</groupId>
-						<artifactId>docker-compose-maven-plugin</artifactId>
-						<version>${version.docker-compose-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					-->
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
@@ -2325,29 +2242,12 @@
 					<type>maven-plugin</type>
 					<scope>test</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.wildfly.plugins</groupId>
-					<artifactId>wildfly-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>org.wildfly.plugins</groupId>
 					<artifactId>wildfly-jar-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
-
-				<!--
-				<dependency>
-					<groupId>org.wildfly.galleon-plugins</groupId>
-					<artifactId>wildfly-galleon-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				-->
 
 				<dependency>
 					<groupId>jakarta.platform</groupId>
@@ -2438,14 +2338,7 @@
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				-->
+
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
@@ -2458,14 +2351,6 @@
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>com.dkanejs.maven.plugins</groupId>
-					<artifactId>docker-compose-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -2546,25 +2431,11 @@
 							<artifactId>maven-resources-plugin</artifactId>
 							<version>${version.maven-resources-plugin}</version>
 						</plugin>
-						<!--
-						<plugin>
-							<groupId>org.wildfly.plugins</groupId>
-							<artifactId>wildfly-maven-plugin</artifactId>
-							<version>${version.wildfly-maven-plugin}</version>
-						</plugin>
-						-->
 						<plugin>
 							<groupId>org.wildfly.plugins</groupId>
 							<artifactId>wildfly-jar-maven-plugin</artifactId>
 							<version>${version.wildfly-jar-maven-plugin}</version>
 						</plugin>
-						<!--
-						<plugin>
-							<groupId>org.wildfly.galleon-plugins</groupId>
-							<artifactId>wildfly-galleon-maven-plugin</artifactId>
-							<version>${version.wildfly-galleon-maven-plugin}</version>
-						</plugin>
-						-->
 						<plugin>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok-maven-plugin</artifactId>
@@ -2575,13 +2446,6 @@
 							<artifactId>maven-war-plugin</artifactId>
 							<version>${version.maven-war-plugin}</version>
 						</plugin>
-						<!--
-						<plugin>
-							<groupId>com.dkanejs.maven.plugins</groupId>
-							<artifactId>docker-compose-maven-plugin</artifactId>
-							<version>${version.docker-compose-maven-plugin}</version>
-						</plugin>
-						-->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-compiler-plugin</artifactId>
@@ -2630,25 +2494,6 @@
 					</plugins>
 				</pluginManagement>
 				<plugins>
-					<!--
-					<plugin>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-maven-plugin</artifactId>
-						<configuration>
-							<overwriteProvisionedServer>true</overwriteProvisionedServer>
-							<logProvisioningTime>true</logProvisioningTime>
-						</configuration>
-						<executions>
-							<execution>
-								<id>petclinic-provision</id>
-								<goals>
-									<goal>provision</goal>
-								</goals>
-								<phase>package</phase>
-							</execution>
-						</executions>
-					</plugin>
-					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
@@ -2772,21 +2617,6 @@
 							</execution>
 						</executions>
 					</plugin>
-					<!--
-					<plugin>
-						<groupId>org.wildfly.galleon-plugins</groupId>
-						<artifactId>wildfly-galleon-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>myproject-galleon-pack-build</id>
-								<goals>
-									<goal>build-user-feature-pack</goal>
-								</goals>
-								<phase>compile</phase>
-							</execution>
-						</executions>
-					</plugin>
-					-->
 					<plugin>
 						<groupId>org.projectlombok</groupId>
 						<artifactId>lombok-maven-plugin</artifactId>
@@ -2795,12 +2625,6 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-war-plugin</artifactId>
 					</plugin>
-					<!--
-					<plugin>
-						<groupId>com.dkanejs.maven.plugins</groupId>
-						<artifactId>docker-compose-maven-plugin</artifactId>
-					</plugin>
-					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
@@ -2996,14 +2820,14 @@
 					<dependency>
 						<groupId>org.glassfish</groupId>
 						<artifactId>jakarta.json</artifactId>
-						<version>2.0.1</version>
+						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
 					<!-- Java utility classes -->
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
-						<version>3.12.0</version>
+						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
 
 					<!-- Maven Build -->
@@ -3042,15 +2866,6 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
-					<!--
-					<dependency>
-						<groupId>com.dkanejs.maven.plugins</groupId>
-						<artifactId>docker-compose-maven-plugin</artifactId>
-						<version>${version.docker-compose-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					-->
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
@@ -3096,14 +2911,14 @@
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
-						<version>3.0.0-M7</version>
+						<version>${version.maven-failsafe-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
-						<version>3.0.0-M7</version>
+						<version>${version.maven-surefire-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
@@ -3217,14 +3032,6 @@
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>com.dkanejs.maven.plugins</groupId>
-					<artifactId>docker-compose-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -3294,13 +3101,6 @@
 							<artifactId>maven-war-plugin</artifactId>
 							<version>${version.maven-war-plugin}</version>
 						</plugin>
-						<!--
-						<plugin>
-							<groupId>com.dkanejs.maven.plugins</groupId>
-							<artifactId>docker-compose-maven-plugin</artifactId>
-							<version>${version.docker-compose-maven-plugin}</version>
-						</plugin>
-						-->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-compiler-plugin</artifactId>
@@ -3325,11 +3125,6 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-release-plugin</artifactId>
 							<version>${version.maven-release-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>io.openliberty.tools</groupId>
-							<artifactId>liberty-maven-plugin</artifactId>
-							<version>${version.liberty-maven-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -3500,20 +3295,6 @@
 							<goals>package</goals>
 						</configuration>
 					</plugin>
-					<!--
-					<plugin>
-						<groupId>com.dkanejs.maven.plugins</groupId>
-						<artifactId>docker-compose-maven-plugin</artifactId>
-						<configuration>
-							<composeFile>${project.basedir}/docker-compose.yml</composeFile>
-							<verbose>true</verbose>
-							<removeImages>true</removeImages>
-							<removeVolumes>true</removeVolumes>
-							<ignorePullFailures>true</ignorePullFailures>
-							<detachedMode>true</detachedMode>
-						</configuration>
-					</plugin>
-					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-project-info-reports-plugin</artifactId>
