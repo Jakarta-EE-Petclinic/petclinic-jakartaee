@@ -19,7 +19,7 @@
 		<class>org.woehlke.jakartaee.petclinic.specialty.Specialty</class>
 
 		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
 			<property name="hibernate.hbm2ddl.auto" value="validate"/>
 			<property name="hibernate.show_sql" value="true"/>
 		</properties>
