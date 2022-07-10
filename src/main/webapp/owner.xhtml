@@ -647,7 +647,7 @@
             </ui:fragment>
 
             <ui:fragment rendered="#{ownerViewFlow.renderPanelAddNewOwnersPetVisit}">
-                <p:panel id="contentPanelAddNewOwnersPetVisit"
+                <p:panel id="contentPanelOwnersPetAddNewVisit"
                          styleClass="contentPanel"
                          header="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.list']}">
                     <p:messages id="messagesOutAddNewOwnersPetVisit" showDetail="true" closable="true">
@@ -659,55 +659,62 @@
                                 <p:autoUpdate/>
                             </p:messages>
                             <div class="ui-g">
-                                <div class="ui-g-4">
+                                <div class="ui-g-2">
                                     <p:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.name']}"
                                         for="petName"/>
                                 </div>
-                                <div class="ui-g-8">
+                                <div class="ui-g-10">
                                     <h:outputText
                                         id="petName"
                                         value="#{ownerView.pet.name}"/>
                                 </div>
-                                <div class="ui-g-4">
+                            </div>
+                            <div class="ui-g">
+                                <div class="ui-g-2">
                                     <h:outputText
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"/>
                                 </div>
-                                <div class="ui-g-8">
+                                <div class="ui-g-10">
                                     <h:outputText
                                         id="petType"
                                         value="#{ownerView.pet.type.name}"/>
                                 </div>
-                                <div class="ui-g-4">
+                            </div>
+                            <div class="ui-g">
+                                <div class="ui-g-2">
                                     <h:outputText
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.birthdate']}"/>
                                 </div>
-                                <div class="ui-g-8">
+                                <div class="ui-g-10">
                                     <h:outputText
                                         id="petBirthDate"
                                         value="#{ownerView.pet.birthDate}">
                                         <f:convertDateTime type="date" dateStyle="medium"/>
                                     </h:outputText>
                                 </div>
-                                <div class="ui-g-4">
+                            </div>
+                            <div class="ui-g">
+                                <div class="ui-g-2">
                                     <h:outputText
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner']}"/>
                                 </div>
-                                <div class="ui-g-8">
+                                <div class="ui-g-10">
                                     <h:outputText
                                         id="ownerFullName"
                                         value="#{ownerView.pet.owner.fullName}"/>
                                 </div>
                             </div>
                         </p:panel>
+                        <br/>
                         <p:panel id="contentPanelNewVisit" header="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew']}">
                             <div class="ui-g">
-                                <div class="ui-g-4">
+                                <div class="ui-g-2">
                                     <p:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.date']}"
                                         for="visitDate"/>
                                 </div>
-                                <div class="ui-g-8">
+                                <div class="ui-g-10">
                                     <p:datePicker
                                         id="visitDate"
                                         styleClass="twCalendar"
@@ -716,18 +723,24 @@
                                         required="true"
                                         showButtonBar="true"/>
                                 </div>
-                                <div class="ui-g-4">
+                            </div>
+                            <div class="ui-g">
+                                <div class="ui-g-2">
                                     <p:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.description']}"
                                         for="visitDescription"/>
                                 </div>
-                                <div class="ui-g-8">
+                                <div class="ui-g-10">
                                     <p:inputText
                                         id="visitDescription"
                                         styleClass="tw-form-control"
                                         value="#{ownerView.visit.description}"/>
                                 </div>
-                                <div class="ui-g-2">
+                            </div>
+                            <p:separator/>
+                            <div class="ui-g">
+                                <div class="ui-g-2"></div>
+                                <div class="ui-g-3">
                                     <p:commandButton
                                         id="saveAddNewOwnersPetVisit"
                                         type="submit"
@@ -737,7 +750,7 @@
                                         icon="fa fa-fw fa-save"
                                         styleClass="saveButton"/>
                                 </div>
-                                <div class="ui-g-2">
+                                <div class="ui-g-3">
                                     <p:commandButton
                                         id="cancelAddNewOwnersPetVisit"
                                         type="cancel"
@@ -749,8 +762,10 @@
                                         styleClass="cancelButton"
                                         includeViewParams="true"/>
                                 </div>
+                                <div class="ui-g-4"></div>
                             </div>
                         </p:panel>
+                        <br/>
                         <p:panel id="contentPanelPreviousVisits"
                                  header="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.previousVisits']}">
                             <p:dataTable
