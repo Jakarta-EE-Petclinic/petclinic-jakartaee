@@ -450,48 +450,70 @@
                     </p:messages>
                     <h:form id="addNewPetForm">
                         <div class="ui-g">
-                            <div class="ui-g-4">
-                                <p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.list']}"
-                                               for="fullNameAddNewOwnersPet"/>
+                            <div class="ui-g-2">
+                                <p:outputLabel
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.list']}"
+                                        for="fullNameAddNewOwnersPet"/>
                             </div>
-                            <div class="ui-g-8">
-                                    <h:outputText id="fullNameAddNewOwnersPet"
-                                              value="#{ownerView.entity.fullName}"/>
+                            <div class="ui-g-10">
+                                    <h:outputText
+                                        id="fullNameAddNewOwnersPet"
+                                        value="#{ownerView.entity.fullName}"/>
                             </div>
-                            <div class="ui-g-4">
-                                    <p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.name']}"
-                                                   for="petNameAddNewOwnersPet"/>
+                        </div>
+                        <p:separator/>
+                        <div class="ui-g">
+                            <div class="ui-g-2">
+                                    <p:outputLabel
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.name']}"
+                                        for="petNameAddNewOwnersPet"/>
                             </div>
-                            <div class="ui-g-8">
+                            <div class="ui-g-10">
                                 <p:inputText id="petNameAddNewOwnersPet"
-                                         value="#{ownerView.pet.name}"/>
+                                        value="#{ownerView.pet.name}"/>
                             </div>
-                            <div class="ui-g-4">
-                                <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.birthdate']}"
-                                          for="petBirthDateAddNewOwnersPet"/>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-2">
+                                <h:outputText
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.birthdate']}"
+                                        for="petBirthDateAddNewOwnersPet"/>
+                            </div>
+                            <div class="ui-g-10">
+                                <p:datePicker
+                                        id="petBirthDateAddNewOwnersPet"
+                                        styleClass="twCalendar"
+                                        value="#{ownerView.pet.birthDate}"
+                                        showIcon="true"
+                                        required="true"
+                                        showButtonBar="true"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-2">
+                                <p:outputLabel
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"
+                                        for="petTypeAddNewOwnersPet"/>
                             </div>
                             <div class="ui-g-8">
-                                <p:datePicker id="petBirthDateAddNewOwnersPet"
-                                              styleClass="twCalendar"
-                                              value="#{ownerView.pet.birthDate}"
-                                              showIcon="true"
-                                          showButtonBar="true"/>
-                            </div>
-                            <div class="ui-g-4">
-                                <p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"
-                                               for="petTypeAddNewOwnersPet"/>
-                            </div>
-                            <div class="ui-g-8">
-                                <p:selectOneListbox id="petTypeAddNewOwnersPet"
-                                                    value="#{ownerView.petTypeId}">
-                                    <f:selectItems id="petTypeItemsAddNewOwnersPet"
-                                                   value="#{ownerView.allPetTypes}"
-                                                   var="petType"
-                                                   itemLabel="#{petType.name}"
-                                                   itemValue="#{petType.id}"/>
+                                <p:selectOneListbox
+                                        id="petTypeAddNewOwnersPet"
+                                        value="#{ownerView.petTypeId}"
+                                        required="true">
+                                    <f:selectItems
+                                        id="petTypeItemsAddNewOwnersPet"
+                                        value="#{ownerView.allPetTypes}"
+                                        var="petType"
+                                        itemLabel="#{petType.name}"
+                                        itemValue="#{petType.id}"/>
                                 </p:selectOneListbox>
                             </div>
-                            <div class="ui-g-2">
+                            <div class="ui-g-2"></div>
+                        </div>
+                        <p:separator/>
+                        <div class="ui-g">
+                            <div class="ui-g-2"></div>
+                            <div class="ui-g-3">
                                 <p:commandButton
                                         id="saveButtonAddNewOwnersPet"
                                         type="submit"
@@ -501,7 +523,7 @@
                                         icon="fa fa-fw fa-save"
                                         styleClass="saveButton"/>
                             </div>
-                            <div class="ui-g-2">
+                            <div class="ui-g-3">
                                 <p:commandButton
                                         id="cancelButtonAddNewOwnersPet"
                                         type="cancel"
@@ -513,8 +535,7 @@
                                         styleClass="cancelButton"
                                         includeViewParams="true"/>
                             </div>
-                            <div class="ui-g-8">
-                            </div>
+                            <div class="ui-g-4"></div>
                         </div>
                     </h:form>
                 </p:panel>
@@ -530,40 +551,50 @@
                     </p:messages>
                     <h:form id="editPetForm">
                         <div class="ui-g">
-                            <div class="ui-g-4">
+                            <div class="ui-g-2">
                                 <h:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner']}"
                                         for="fullNameEditOwnersPet"/>
                             </div>
-                            <div class="ui-g-8">
-                                <h:outputText id="fullNameEditOwnersPet"
-                                              value="#{ownerView.entity.fullName}"/>
+                            <div class="ui-g-10">
+                                <h:outputText
+                                        id="fullNameEditOwnersPet"
+                                        value="#{ownerView.entity.fullName}"/>
                             </div>
-                            <div class="ui-g-4">
+                        </div>
+                        <p:separator/>
+                        <div class="ui-g">
+                            <div class="ui-g-2">
                                 <p:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.name']}"
                                         for="petNameEditOwnersPet"/>
                             </div>
-                            <div class="ui-g-8">
-                                <p:inputText id="petNameEditOwnersPet"
-                                             styleClass="tw-form-control"
-                                             required="true"
-                                             value="#{ownerView.pet.name}"/>
+                            <div class="ui-g-10">
+                                <p:inputText
+                                        id="petNameEditOwnersPet"
+                                        styleClass="tw-form-control"
+                                        required="true"
+                                        value="#{ownerView.pet.name}"/>
                             </div>
-                            <div class="ui-g-4">
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-2">
                                 <p:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.birthdate']}"
                                         for="petBirthDateEditOwnersPet"/>
                             </div>
-                            <div class="ui-g-8">
-                                <p:datePicker id="petBirthDateEditOwnersPet"
-                                              styleClass="twCalendar"
-                                              value="#{ownerView.pet.birthDate}"
-                                              required="true"
-                                              showIcon="true"
-                                              showButtonBar="true"/>
+                            <div class="ui-g-10">
+                                <p:datePicker
+                                        id="petBirthDateEditOwnersPet"
+                                        styleClass="twCalendar"
+                                        value="#{ownerView.pet.birthDate}"
+                                        required="true"
+                                        showIcon="true"
+                                        showButtonBar="true"/>
                             </div>
-                            <div class="ui-g-4">
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-2">
                                 <p:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"
                                         for="petTypeEditOwnersPet"/>
@@ -574,13 +605,18 @@
                                         value="#{ownerView.petTypeId}"
                                         required="true">
                                     <f:selectItems
-                                            value="#{ownerView.allPetTypes}"
-                                            var="petType"
-                                            itemLabel="#{petType.name}"
-                                            itemValue="#{petType.id}"/>
+                                        value="#{ownerView.allPetTypes}"
+                                        var="petType"
+                                        itemLabel="#{petType.name}"
+                                        itemValue="#{petType.id}"/>
                                 </p:selectOneListbox>
                             </div>
-                            <div class="ui-g-2">
+                            <div class="ui-g-2"></div>
+                        </div>
+                        <p:separator/>
+                        <div class="ui-g">
+                            <div class="ui-g-2"></div>
+                            <div class="ui-g-3">
                                 <p:commandButton
                                         id="saveButtonEditOwnersPet"
                                         type="submit"
@@ -590,7 +626,7 @@
                                         icon="fa fa-fw fa-save"
                                         styleClass="saveButton"/>
                             </div>
-                            <div class="ui-g-2">
+                            <div class="ui-g-3">
                                 <p:commandButton
                                         id="cancelButtonEditOwnersPet"
                                         type="cancel"
@@ -601,9 +637,8 @@
                                         styleClass="cancelButton"
                                         immediate="true"
                                         includeViewParams="true"/>
-
                             </div>
-                            <div class="ui-g-8">
+                            <div class="ui-g-4">
                             </div>
                         </div>
                     </h:form>
@@ -626,42 +661,42 @@
                             <div class="ui-g">
                                 <div class="ui-g-4">
                                     <p:outputLabel
-                                            value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.name']}"
-                                            for="petName"/>
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.name']}"
+                                        for="petName"/>
                                 </div>
                                 <div class="ui-g-8">
                                     <h:outputText
-                                            id="petName"
-                                            value="#{ownerView.pet.name}"/>
+                                        id="petName"
+                                        value="#{ownerView.pet.name}"/>
                                 </div>
                                 <div class="ui-g-4">
                                     <h:outputText
-                                            value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"/>
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"/>
                                 </div>
                                 <div class="ui-g-8">
                                     <h:outputText
-                                            id="petType"
-                                            value="#{ownerView.pet.type.name}"/>
+                                        id="petType"
+                                        value="#{ownerView.pet.type.name}"/>
                                 </div>
                                 <div class="ui-g-4">
                                     <h:outputText
-                                            value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.birthdate']}"/>
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.birthdate']}"/>
                                 </div>
                                 <div class="ui-g-8">
                                     <h:outputText
-                                            id="petBirthDate"
-                                            value="#{ownerView.pet.birthDate}">
+                                        id="petBirthDate"
+                                        value="#{ownerView.pet.birthDate}">
                                         <f:convertDateTime type="date" dateStyle="medium"/>
                                     </h:outputText>
                                 </div>
                                 <div class="ui-g-4">
                                     <h:outputText
-                                            value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner']}"/>
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner']}"/>
                                 </div>
                                 <div class="ui-g-8">
                                     <h:outputText
-                                            id="ownerFullName"
-                                            value="#{ownerView.pet.owner.fullName}"/>
+                                        id="ownerFullName"
+                                        value="#{ownerView.pet.owner.fullName}"/>
                                 </div>
                             </div>
                         </p:panel>
@@ -669,75 +704,78 @@
                             <div class="ui-g">
                                 <div class="ui-g-4">
                                     <p:outputLabel
-                                            value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.date']}"
-                                            for="visitDate"/>
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.date']}"
+                                        for="visitDate"/>
                                 </div>
                                 <div class="ui-g-8">
                                     <p:datePicker
-                                            id="visitDate"
-                                            styleClass="twCalendar"
-                                            value="#{ownerView.visit.date}"
-                                            showIcon="true"
-                                            showButtonBar="true"/>
+                                        id="visitDate"
+                                        styleClass="twCalendar"
+                                        value="#{ownerView.visit.date}"
+                                        showIcon="true"
+                                        required="true"
+                                        showButtonBar="true"/>
                                 </div>
                                 <div class="ui-g-4">
                                     <p:outputLabel
-                                            value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.description']}"
-                                            for="visitDescription"/>
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.description']}"
+                                        for="visitDescription"/>
                                 </div>
                                 <div class="ui-g-8">
                                     <p:inputText
-                                            id="visitDescription"
-                                            styleClass="tw-form-control"
-                                            value="#{ownerView.visit.description}"/>
+                                        id="visitDescription"
+                                        styleClass="tw-form-control"
+                                        value="#{ownerView.visit.description}"/>
                                 </div>
                                 <div class="ui-g-2">
                                     <p:commandButton
-                                            id="saveAddNewOwnersPetVisit"
-                                            type="submit"
-                                            value="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.save']}"
-                                            action="#{ownerView.saveOwnerPetVisitNew}"
-                                            ajax="false"
-                                            icon="fa fa-fw fa-save"
-                                            styleClass="saveButton"/>
+                                        id="saveAddNewOwnersPetVisit"
+                                        type="submit"
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.save']}"
+                                        action="#{ownerView.saveOwnerPetVisitNew}"
+                                        ajax="false"
+                                        icon="fa fa-fw fa-save"
+                                        styleClass="saveButton"/>
                                 </div>
                                 <div class="ui-g-2">
                                     <p:commandButton
-                                            id="cancelAddNewOwnersPetVisit"
-                                            type="cancel"
-                                            value="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.cancel']}"
-                                            action="#{ownerView.cancelOwnerPetVisitNew}"
-                                            immediate="true"
-                                            ajax="false"
-                                            icon="fa fa-fw fa-times-circle"
-                                            styleClass="cancelButton"
-                                            includeViewParams="true"/>
+                                        id="cancelAddNewOwnersPetVisit"
+                                        type="cancel"
+                                        value="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.cancel']}"
+                                        action="#{ownerView.cancelOwnerPetVisitNew}"
+                                        immediate="true"
+                                        ajax="false"
+                                        icon="fa fa-fw fa-times-circle"
+                                        styleClass="cancelButton"
+                                        includeViewParams="true"/>
                                 </div>
                             </div>
                         </p:panel>
-                        <p:panel id="contentPanelPreviousVisits" header="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.previousVisits']}">
-                            <p:dataTable id="previousVisitsTable"
-                                         value="#{ownerView.pet.visits}"
-                                         var="petsVisit"
-                                         styleClass="table table-striped">
+                        <p:panel id="contentPanelPreviousVisits"
+                                 header="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.previousVisits']}">
+                            <p:dataTable
+                                        id="previousVisitsTable"
+                                        value="#{ownerView.pet.visits}"
+                                        var="petsVisit"
+                                        styleClass="table table-striped">
                                 <p:column>
                                     <f:facet name="header">
                                         <h:outputText
-                                                value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.date']}"/>
+                                            value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.date']}"/>
                                     </f:facet>
                                     <h:outputText
                                             id="datePreviousVisits"
                                             value="#{petsVisit.date}">
                                         <f:convertDateTime
-                                                type="date"
-                                                dateStyle="medium"
-                                                locale="#{languageView.locale}"/>
+                                            type="date"
+                                            dateStyle="medium"
+                                            locale="#{languageView.locale}"/>
                                     </h:outputText>
                                 </p:column>
                                 <p:column>
                                     <f:facet name="header">
                                         <h:outputText
-                                                value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.description']}"/>
+                                            value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.description']}"/>
                                     </f:facet>
                                     <h:outputText
                                             id="descriptionPreviousVisits"
@@ -768,10 +806,11 @@
                                             action="#{ownerView.search}"
                                             ajax="false"
                                             icon="fa fa-fw fa-search"/>
-                                    <p:inputText id="inputTextSearchterm"
-                                                 styleClass="tw-form-control"
-                                                 value="#{ownerView.searchterm}"
-                                                 placeholder="#{msg['org.woehlke.jakartaee.petclinic.owner.search']}"/>
+                                    <p:inputText
+                                            id="inputTextSearchterm"
+                                             styleClass="tw-form-control"
+                                             value="#{ownerView.searchterm}"
+                                             placeholder="#{msg['org.woehlke.jakartaee.petclinic.owner.search']}"/>
                                     <p:commandButton
                                             id="clearSearchButton"
                                             styleClass="searchButton"
@@ -794,35 +833,39 @@
                     <h:form id="entityDataTableForm">
                         <div class="ui-g tableGrid">
                             <div class="ui-g-12">
-                                <p:dataTable id="entityDataTable"
-                                             styleClass="entityDataTable"
-                                             value="#{ownerView.list}"
-                                             var="owner"
-                                             rowKey="#{owner.id}"
-                                             selection="#{ownerView.selected}"
-                                             selectionMode="single"
-                                             paginator="true" rows="5"
-                                             paginatorPosition="bottom"
-                                             paginatorAlwaysVisible="false">
+                                <p:dataTable
+                                        id="entityDataTable"
+                                        styleClass="entityDataTable"
+                                        value="#{ownerView.list}"
+                                        var="owner"
+                                        rowKey="#{owner.id}"
+                                        selection="#{ownerView.selected}"
+                                        selectionMode="single"
+                                        paginator="true" rows="5"
+                                        paginatorPosition="bottom"
+                                        paginatorAlwaysVisible="false">
                                     <p:column
                                             headerText="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.firstName']}"
                                             sortBy="#{owner.firstName}">
-                                        <h:outputText id="firstNameInList"
-                                                      styleClass="entityDataTableCell"
-                                                      value="#{owner.firstName}"/>
+                                        <h:outputText
+                                            id="firstNameInList"
+                                            styleClass="entityDataTableCell"
+                                            value="#{owner.firstName}"/>
                                     </p:column>
                                     <p:column
                                             headerText="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.lastName']}"
                                             sortBy="#{owner.lastName}">
-                                        <h:outputText id="lastNameInList"
-                                                      styleClass="entityDataTableCell"
-                                                      value="#{owner.lastName}"/>
+                                        <h:outputText
+                                            id="lastNameInList"
+                                            styleClass="entityDataTableCell"
+                                            value="#{owner.lastName}"/>
                                     </p:column>
                                     <p:column headerText="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.city']}"
                                               sortBy="#{owner.city}">
-                                        <h:outputText id="cityInList"
-                                                      styleClass="entityDataTableCell"
-                                                      value="#{owner.city}"/>
+                                        <h:outputText
+                                            id="cityInList"
+                                            styleClass="entityDataTableCell"
+                                            value="#{owner.city}"/>
                                     </p:column>
                                 </p:dataTable>
                             </div>
@@ -830,21 +873,21 @@
                         <div class="ui-g footerGrid">
                             <div class="ui-g-2">
                                 <p:commandButton
-                                        id="showEditFormButtonInList"
-                                        styleClass="showEditFormButton"
-                                        action="#{ownerView.showOwnerEditForm}"
-                                        value="#{msg['org.woehlke.jakartaee.petclinic.owner.edit']}"
-                                        ajax="false"
-                                        icon="fa fa-fw fa-edit"/>
+                                    id="showEditFormButtonInList"
+                                    styleClass="showEditFormButton"
+                                    action="#{ownerView.showOwnerEditForm}"
+                                    value="#{msg['org.woehlke.jakartaee.petclinic.owner.edit']}"
+                                    ajax="false"
+                                    icon="fa fa-fw fa-edit"/>
                             </div>
                             <div class="ui-g-2">
                                 <p:commandButton
-                                        id="deleteSelectedButton"
-                                        styleClass="deleteSelectedButton"
-                                        action="#{ownerView.showDeleteForm}"
-                                        value="#{msg['org.woehlke.jakartaee.petclinic.owner.delete']}"
-                                        ajax="false"
-                                        icon="fa fa-fw fa-trash"/>
+                                    id="deleteSelectedButton"
+                                    styleClass="deleteSelectedButton"
+                                    action="#{ownerView.showDeleteForm}"
+                                    value="#{msg['org.woehlke.jakartaee.petclinic.owner.delete']}"
+                                    ajax="false"
+                                    icon="fa fa-fw fa-trash"/>
                             </div>
                             <div class="ui-g-4">
                             </div>
