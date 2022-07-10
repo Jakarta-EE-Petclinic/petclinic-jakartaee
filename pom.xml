@@ -1883,8 +1883,8 @@
 							<execution>
 								<id>default-resources</id>
 								<configuration>
+									<propertiesEncoding>UTF-8</propertiesEncoding>
 									<resources>
-										<propertiesEncoding>UTF-8</propertiesEncoding>
 										<resource>
 											<directory>src/main/resources</directory>
 											<includes>
@@ -2582,8 +2582,8 @@
 							<execution>
 								<id>default-resources</id>
 								<configuration>
+									<propertiesEncoding>UTF-8</propertiesEncoding>
 									<resources>
-										<propertiesEncoding>UTF-8</propertiesEncoding>
 										<resource>
 											<directory>src/main/resources</directory>
 											<includes>
