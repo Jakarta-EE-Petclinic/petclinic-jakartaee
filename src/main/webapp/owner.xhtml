@@ -73,18 +73,20 @@
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.firstName']}"
                                         for="firstNameAddNewOwner"/>
                             </div>
-                            <div class="ui-g-4">
+                            <div class="ui-g-10">
                                 <p:inputText id="firstNameAddNewOwner"
-                                             value="#{ownerView.entity.firstName}"/>
+                                             value="#{ownerView.entity.firstName}"  size="90"/>
                             </div>
+                        </div>
+                        <div class="ui-g">
                             <div class="ui-g-2">
                                 <p:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.lastName']}"
                                         for="lastNameAddNewOwner"/>
                             </div>
-                            <div class="ui-g-4">
+                            <div class="ui-g-10">
                                 <p:inputText id="lastNameAddNewOwner"
-                                             value="#{ownerView.entity.lastName}"/>
+                                             value="#{ownerView.entity.lastName}"  size="90"/>
                             </div>
                         </div>
                         <div class="ui-g">
@@ -93,18 +95,18 @@
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.address']}"
                                         for="addressAddNewOwner"/>
                             </div>
-                            <div class="ui-g-4">
+                            <div class="ui-g-5">
                                 <p:inputText id="addressAddNewOwner"
-                                             value="#{ownerView.entity.address}"/>
+                                             value="#{ownerView.entity.address}" size="40"/>
                             </div>
                             <div class="ui-g-2">
                                 <p:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.houseNumber']}"
                                         for="houseNumberAddNewOwner"/>
                             </div>
-                            <div class="ui-g-4">
+                            <div class="ui-g-3">
                                 <p:inputText id="houseNumberAddNewOwner"
-                                             value="#{ownerView.entity.houseNumber}"/>
+                                             value="#{ownerView.entity.houseNumber}" size="10"/>
                             </div>
                         </div>
                         <div class="ui-g">
@@ -115,7 +117,7 @@
                             </div>
                             <div class="ui-g-10">
                                 <p:inputText id="addressInfoAddNewOwner"
-                                             value="#{ownerView.entity.addressInfo}"/>
+                                             value="#{ownerView.entity.addressInfo}" size="90"/>
                             </div>
                         </div>
                         <div class="ui-g">
@@ -124,18 +126,18 @@
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.city']}"
                                         for="cityAddNewOwner"/>
                             </div>
-                            <div class="ui-g-4">
+                            <div class="ui-g-5">
                                 <p:inputText id="cityAddNewOwner"
-                                             value="#{ownerView.entity.city}"/>
+                                             value="#{ownerView.entity.city}" size="40"/>
                             </div>
                             <div class="ui-g-2">
                                 <p:outputLabel
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.zipCode']}"
                                         for="zipCodeAddNewOwner"/>
                             </div>
-                            <div class="ui-g-4">
+                            <div class="ui-g-3">
                                 <p:inputText id="zipCodeAddNewOwner"
-                                             value="#{ownerView.entity.zipCode}"/>
+                                             value="#{ownerView.entity.zipCode}" size="10"/>
                             </div>
                         </div>
                         <div class="ui-g">
@@ -146,7 +148,7 @@
                             </div>
                             <div class="ui-g-10">
                                 <p:inputText id="phoneNumberAddNewOwner"
-                                             value="#{ownerView.entity.phoneNumber}"/>
+                                             value="#{ownerView.entity.phoneNumber}" size="90"/>
                             </div>
                         </div>
                         <div class="ui-g">
@@ -157,10 +159,12 @@
                             </div>
                             <div class="ui-g-10">
                                 <p:inputText id="emailAddNewOwner"
-                                             value="#{ownerView.entity.email}"/>
+                                             value="#{ownerView.entity.email}" size="90"/>
                             </div>
                         </div>
+                        <p:separator/>
                         <div class="ui-g">
+                            <div class="ui-g-2"></div>
                             <div class="ui-g-3">
                                 <p:commandButton
                                         id="saveAddNewOwner"
@@ -182,7 +186,7 @@
                                                  immediate="true"
                                                  includeViewParams="true"/>
                             </div>
-                            <div class="ui-g-8">
+                            <div class="ui-g-4">
                             </div>
                         </div>
                     </h:form>
