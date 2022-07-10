@@ -221,36 +221,51 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-6 ui-g-nopad">
-								<div class="ui-g-12 tw-form-group">
+								<div class="ui-g-2">
 									<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.veterinarian.firstName']}"
 									               for="firstNameDelete"/>
+								</div>
+								<div class="ui-g-10">
 									<p:inputText id="firstNameDelete"
 									             styleClass="tw-form-control"
-									             value="#{vetView.entity.firstName}"/>
+									             value="#{vetView.entity.firstName}"
+												 readonly="true" size="50"/>
 									<p:message for="firstNameDelete" display="icon"/>
 								</div>
-								<div class="ui-g-12 tw-form-group">
+						</div>
+						<div class="ui-g">
+								<div class="ui-g-2">
 									<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.veterinarian.lastName']}"
 									               for="lastNameDelete"/>
+								</div>
+								<div class="ui-g-10">
 									<p:inputText id="lastNameDelete"
 									             styleClass="tw-form-control"
-									             value="#{vetView.entity.lastName}"/>
+									             value="#{vetView.entity.lastName}"
+												 readonly="true" size="50"/>
 									<p:message for="lastNameDelete" display="icon"/>
 								</div>
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-2">
+								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.veterinarian.specialties']}"
+											   for="selectedSpecialtiesPickListDelete"/>
 							</div>
-							<div class="ui-g-6">
+							<div class="ui-g-10">
 								<p:pickList
 												id="selectedSpecialtiesPickListDelete"
 												value="#{vetView.specialtiesPickList}"
 												var="specialty"
 												converter="specialtyConverter"
+												readonly="true"
 												itemValue="#{specialty}"
 												itemLabel="#{specialty.name}"/>
 							</div>
 						</div>
+						<p:separator/>
 						<div class="ui-g">
-							<div class="ui-g-4">
+							<div class="ui-g-2"></div>
+							<div class="ui-g-3">
 								<p:commandButton id="saveDeleteButton"
 								                 type="submit"
 								                 styleClass="deleteButton"
@@ -259,7 +274,7 @@
 								                 ajax="false"
 								                 action="#{vetView.performDelete()}"/>
 							</div>
-							<div class="ui-g-4">
+							<div class="ui-g-3">
 								<p:commandButton id="cancelDelete"
 								                 type="cancel"
 								                 styleClass="cancelButton"
@@ -270,6 +285,7 @@
 								                 immediate="true"
 								                 includeViewParams="true"/>
 							</div>
+							<div class="ui-g-4"></div>
 						</div>
 						<p:defaultCommand target="cancelDelete" />
 					</p:panel>
