@@ -66,21 +66,22 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-3 tw-form-group">
+							<div class="ui-g-2">
 								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.petType.name']}"
 								               for="newPetTypeName"/>
 							</div>
-							<div class="ui-g-9 tw-form-group">
+							<div class="ui-g-10">
 								<p:inputText id="newPetTypeName"
 								             styleClass="tw-form-control"
 								             value="#{petTypeView.entity.name}"
-								             required="true">
+								             required="true" size="100">
 									<f:validateLength minimum="3"/>
 								</p:inputText>
 								<p:message for="newPetTypeName" display="icon"/>
 							</div>
 						</div>
 						<div class="ui-g">
+							<div class="ui-g-2"></div>
 							<div class="ui-g-3">
 								<p:commandButton id="saveNewButton"
 								                 type="submit"
@@ -118,21 +119,22 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-3 tw-form-group">
+							<div class="ui-g-2">
 								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.petType.name']}"
 								               for="editPetTypeName"/>
 							</div>
-							<div class="ui-g-9 tw-form-group">
+							<div class="ui-g-10">
 								<p:inputText id="editPetTypeName"
 								             styleClass="tw-form-control"
 								             value="#{petTypeView.entity.name}"
-								             required="true">
-									<f:validateLength minimum="4"/>
+								             required="true" size="100">
+									<f:validateLength minimum="3"/>
 								</p:inputText>
 								<p:message for="editPetTypeName" display="icon"/>
 							</div>
 						</div>
 						<div class="ui-g">
+							<div class="ui-g-2"></div>
 							<div class="ui-g-3">
 								<p:commandButton id="saveEditButton"
 								                 type="submit"
@@ -168,22 +170,23 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-3 tw-form-group">
+							<div class="ui-g-2">
 								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.petType.name']}"
 								               for="deletePetTypeName"/>
 							</div>
-							<div class="ui-g-9 tw-form-group">
+							<div class="ui-g-10">
 								<p:inputText id="deletePetTypeName"
 								             styleClass="tw-form-control"
 								             value="#{petTypeView.entity.name}"
 								             required="true"
-								             readonly="true">
+								             readonly="true" size="100">
 									<f:validateLength minimum="3"/>
 								</p:inputText>
 								<p:message for="deletePetTypeName" display="icon"/>
 							</div>
 						</div>
 						<div class="ui-g">
+							<div class="ui-g-2"></div>
 							<div class="ui-g-3">
 								<p:commandButton
 										id="deleteButton"

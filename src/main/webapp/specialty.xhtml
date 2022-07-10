@@ -67,15 +67,16 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-3 tw-form-group">
+							<div class="ui-g-2 tw-form-group">
 								<p:outputLabel for="specialtyNameNew"
 								               value="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
 							</div>
-								<div class="ui-g-9 tw-form-group">
+								<div class="ui-g-10 tw-form-group">
 								<p:inputText id="specialtyNameNew"
 								             styleClass="tw-form-control"
 								             value="#{specialtyView.entity.name}"
 								             required="true"
+											 size="100"
 								             label="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}">
 									<f:validateLength minimum="4"/>
 								</p:inputText>
@@ -83,6 +84,7 @@
 							</div>
 						</div>
 						<div class="ui-g">
+							<div class="ui-g-2"></div>
 							<div class="ui-g-3">
 								<p:commandButton id="saveNewButton"
 								                 type="submit"
@@ -119,15 +121,16 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-3 tw-form-group">
+							<div class="ui-g-2 tw-form-group">
 								<p:outputLabel for="specialtyNameEdit"
 								               value="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
 							</div>
-							<div class="ui-g-9 tw-form-group">
+							<div class="ui-g-10 tw-form-group">
 								<p:inputText id="specialtyNameEdit"
 								             styleClass="tw-form-control"
 								             value="#{specialtyView.entity.name}"
 								             required="true"
+											 size="100"
 								             label="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}">
 									<f:validateLength minimum="4"/>
 								</p:inputText>
@@ -135,6 +138,7 @@
 							</div>
 						</div>
 						<div class="ui-g">
+							<div class="ui-g-2"></div>
 							<div class="ui-g-3">
 								<p:commandButton id="saveEditButton"
 								                 type="submit"
@@ -170,21 +174,23 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-3 tw-form-group">
+							<div class="ui-g-2 tw-form-group">
 								<p:outputLabel for="nameDelete"
 								               value="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
 							</div>
-							<div class="ui-g-9 tw-form-group">
+							<div class="ui-g-10 tw-form-group">
 								<p:inputText id="nameDelete"
 								             styleClass="tw-form-control"
 								             value="#{specialtyView.entity.name}"
 								             required="true"
 								             readonly="true"
+											 size="100"
 								             label="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
 								<p:message for="nameDelete" display="icon"/>
 							</div>
 						</div>
 						<div class="ui-g">
+							<div class="ui-g-2"></div>
 							<div class="ui-g-3">
 								<p:commandButton id="deleteButton"
 								                 type="submit"
