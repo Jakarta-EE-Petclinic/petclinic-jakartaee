@@ -66,25 +66,35 @@
 							<p:autoUpdate/>
 						</p:messages>
 						<div class="ui-g">
-							<div class="ui-g-6 ui-g-nopad">
-								<div class="ui-g-12">
-									<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.veterinarian.firstName']}"
-									               for="firstNameAddNew"/>
-									<p:inputText id="firstNameAddNew"
-									             styleClass="tw-form-control"
-									             value="#{vetView.entity.firstName}"/>
-									<p:message for="firstNameAddNew" display="icon"/>
-								</div>
-								<div class="ui-g-12">
-									<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.veterinarian.lastName']}"
-									               for="lastNameAddNew"/>
-									<p:inputText id="lastNameAddNew"
-									             styleClass="tw-form-control"
-									             value="#{vetView.entity.lastName}"/>
-									<p:message for="lastNameAddNew" display="icon"/>
-								</div>
+							<div class="ui-g-2">
+								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.veterinarian.firstName']}"
+											   for="firstNameAddNew"/>
 							</div>
-							<div class="ui-g-6">
+							<div class="ui-g-10">
+								<p:inputText id="firstNameAddNew"
+											 styleClass="tw-form-control"
+											 value="#{vetView.entity.firstName}" size="50"/>
+								<p:message for="firstNameAddNew" display="icon"/>
+							</div>
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-2">
+								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.veterinarian.lastName']}"
+											   for="lastNameAddNew"/>
+							</div>
+							<div class="ui-g-10">
+								<p:inputText id="lastNameAddNew"
+											 styleClass="tw-form-control"
+											 value="#{vetView.entity.lastName}"  size="50"/>
+								<p:message for="lastNameAddNew" display="icon"/>
+							</div>
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-2">
+								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.veterinarian.specialties']}"
+											   for="selectedSpecialtiesPickListAddNew"/>
+							</div>
+							<div class="ui-g-10">
 								<p:pickList
 												id="selectedSpecialtiesPickListAddNew"
 												value="#{vetView.specialtiesPickList}"
@@ -94,8 +104,10 @@
 												itemLabel="#{specialty.name}"/>
 							</div>
 						</div>
+						<p:separator/>
 						<div class="ui-g">
-							<div class="ui-g-4">
+							<div class="ui-g-2"></div>
+							<div class="ui-g-3">
 								<p:commandButton id="saveNewButton"
 								                 type="submit"
 								                 styleClass="saveButton"
@@ -104,7 +116,7 @@
 								                 ajax="false"
 								                 action="#{vetView.saveNew()}"/>
 							</div>
-							<div class="ui-g-4">
+							<div class="ui-g-3">
 								<p:commandButton id="cancelNew"
 								                 type="cancel"
 								                 styleClass="cancelButton"
@@ -115,6 +127,7 @@
 								                 immediate="true"
 								                 includeViewParams="true"/>
 							</div>
+							<div class="ui-g-4"></div>
 						</div>
 					</p:panel>
 					<br/>
