@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 @Log
 @Named("specialtyView")
 @SessionScoped
-public class SpecialtyView2Impl implements SpecialtyView {
+public class SpecialtyViewImpl implements SpecialtyView {
 
     private static final long serialVersionUID = 9080853875975855082L;
 
@@ -52,7 +52,7 @@ public class SpecialtyView2Impl implements SpecialtyView {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private SpecialtyViewFlowImpl specialtyViewFlow;
+    private SpecialtyFlowViewImpl specialtyViewFlow;
 
     @Override
     public void loadList() {
@@ -313,7 +313,7 @@ public class SpecialtyView2Impl implements SpecialtyView {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + SpecialtyView2Impl.class.getSimpleName());
+        log.info("postConstruct: " + SpecialtyViewImpl.class.getSimpleName());
         this.specialtyViewFlow.setFlowStateList();
         this.provider = new MessageProvider();
     }

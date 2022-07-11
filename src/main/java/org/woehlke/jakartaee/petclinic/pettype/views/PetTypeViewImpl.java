@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 @SessionScoped
 @Getter
 @Setter
-public class PetTypeViewImpl2 implements PetTypeView2 {
+public class PetTypeViewImpl implements PetTypeView {
 
     private static final long serialVersionUID = -528406859430949031L;
 
@@ -178,7 +178,6 @@ public class PetTypeViewImpl2 implements PetTypeView2 {
         return entity;
     }
 
-    @Override
     public void setSelected(PetType selected) {
         this.selected = selected;
         if (this.selected != null) {
@@ -203,7 +202,6 @@ public class PetTypeViewImpl2 implements PetTypeView2 {
         return list;
     }
 
-    @Override
     public boolean reloadEntityFromSelected() {
         if (this.selected != null) {
             this.entity = entityService.findById(this.selected.getId());
@@ -300,7 +298,7 @@ public class PetTypeViewImpl2 implements PetTypeView2 {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + PetTypeViewImpl2.class.getSimpleName());
+        log.info("postConstruct: " + PetTypeViewImpl.class.getSimpleName());
         this.provider = new MessageProvider();
         this.petTypeViewFlow.setFlowStateList();
     }

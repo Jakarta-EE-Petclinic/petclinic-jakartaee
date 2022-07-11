@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 /**
  * @param <T>
  */
-public interface CrudView<T extends EntityBase> extends SearchView, HasLanguageView, Serializable {
+public interface CrudView<T extends EntityBase> extends SearchView, LanguageSelectorView, Serializable {
 
     long serialVersionUID = -4976697275728754000L;
 

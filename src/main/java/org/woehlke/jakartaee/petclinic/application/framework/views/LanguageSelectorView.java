@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface HasLanguageView extends Serializable {
+public interface LanguageSelectorView extends Serializable {
 
     long serialVersionUID = -7665952921129558730L;
 
