@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.specialty.impl;
+package org.woehlke.jakartaee.petclinic.specialty.db;
 
 import jakarta.ejb.EJB;
 import jakarta.ejb.PostActivate;
