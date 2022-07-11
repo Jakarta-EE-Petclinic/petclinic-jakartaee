@@ -218,6 +218,68 @@
 				</h:form>
 			</ui:fragment>
 
+			<ui:fragment rendered="#{specialtyViewFlow.flowStateDetails}">
+				<h:form id="detailsEntityForm" styleClass="detailsEntityForm">
+					<p:panel id="detailsEntityFormPanel" styleClass="detailsEntityForm"
+							 header="#{msg['org.woehlke.jakartaee.petclinic.specialty']}">
+						<p:messages id="messagesOutDetails" showDetail="true" closable="true">
+							<p:autoUpdate/>
+						</p:messages>
+						<div class="ui-g">
+							<div class="ui-g-2 tw-form-group">
+								<p:outputLabel for="nameDetails"
+											   value="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
+							</div>
+							<div class="ui-g-10 tw-form-group">
+								<p:inputText id="nameDetails"
+											 styleClass="tw-form-control"
+											 value="#{specialtyView.entity.name}"
+											 required="true"
+											 readonly="true"
+											 size="100"
+											 label="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
+								<p:message for="nameDetails" display="icon"/>
+							</div>
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-3">
+								<p:commandButton
+										id="cancelDetails"
+										type="cancel"
+										styleClass="cancelButton"
+										icon="fa fa-solid fa-chevrons-left"
+										value="#{msg['org.woehlke.jakartaee.petclinic.specialty.delete.cancel']}"
+										ajax="false"
+										action="#{specialtyView.cancelDelete}"
+										immediate="true"
+										includeViewParams="true"/>
+							</div>
+							<div class="ui-g-3">
+								<p:commandButton
+										id="showEditFormButton"
+										styleClass="showEditFormButton"
+										action="#{specialtyView.showEditForm}"
+										ajax="false"
+										value="#{msg['org.woehlke.jakartaee.petclinic.specialty.edit']}"
+										icon="fa fa-fw fa-edit"/>
+							</div>
+							<div class="ui-g-3">
+								<p:commandButton
+										id="deleteSelectedButton"
+										styleClass="deleteSelectedButton"
+										action="#{specialtyView.showDeleteForm}"
+										ajax="false"
+										value="#{msg['org.woehlke.jakartaee.petclinic.specialty.delete']}"
+										icon="fa fa-fw fa-trash"/>
+							</div>
+							<div class="ui-g-3"></div>
+						</div>
+					</p:panel>
+					<br/>
+					<p:defaultCommand target="cancelDetails" />
+				</h:form>
+			</ui:fragment>
+
 			<p:panel id="contentPanel"
 			         styleClass="contentPanel"
 			         header="#{msg['org.woehlke.jakartaee.petclinic.specialty.list']}">
@@ -247,13 +309,6 @@
 							</div>
 						</div>
 						<div class="ui-g-4">
-							<p:commandButton
-									id="showNewFormButton"
-									styleClass="showNewFormButton"
-									action="#{specialtyView.showNewForm}"
-									icon="fa fa-fw fa-plus-square"
-									ajax="false"
-									value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew']}"/>
 						</div>
 					</div>
 					<p:defaultCommand target="searchButton" />
@@ -289,26 +344,13 @@
 						</div>
 					</div>
 					<div class="ui-g footerGrid">
-						<div class="ui-g-2">
-							<p:commandButton
-								id="showEditFormButton"
-								styleClass="showEditFormButton"
-								action="#{specialtyView.showEditForm}"
+						<p:commandButton
+								id="showNewFormButton"
+								styleClass="showNewFormButton"
+								action="#{specialtyView.showNewForm}"
+								icon="fa fa-fw fa-plus-square"
 								ajax="false"
-								value="#{msg['org.woehlke.jakartaee.petclinic.specialty.edit']}"
-								icon="fa fa-fw fa-edit"/>
-						</div>
-						<div class="ui-g-2">
-							<p:commandButton
-								id="deleteSelectedButton"
-								styleClass="deleteSelectedButton"
-								action="#{specialtyView.showDeleteForm}"
-								ajax="false"
-								value="#{msg['org.woehlke.jakartaee.petclinic.specialty.delete']}"
-								icon="fa fa-fw fa-trash"/>
-						</div>
-						<div class="ui-g-4">
-						</div>
+								value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew']}"/>
 						<div class="ui-g-2">
 							<p:link href="./rest/specialty/xml/list" type="application/xml">
 								<i class="fa fa-fw fa-arrow-alt-circle-right"/>
@@ -322,7 +364,7 @@
 							</p:link>
 						</div>
 					</div>
-					<p:defaultCommand target="showEditFormButton" />
+					<p:defaultCommand target="showNewFormButton" />
 				</h:form>
 			</p:panel>
 		</div>
