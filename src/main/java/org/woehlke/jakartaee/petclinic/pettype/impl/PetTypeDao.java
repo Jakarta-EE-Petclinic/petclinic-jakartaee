@@ -1,7 +1,8 @@
-package org.woehlke.jakartaee.petclinic.pettype;
+package org.woehlke.jakartaee.petclinic.pettype.impl;
 
 import org.woehlke.jakartaee.petclinic.application.framework.impl.CrudDao;
 import org.woehlke.jakartaee.petclinic.application.framework.SearchableEntity;
+import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
 /**
  * Created with IntelliJ IDEA.

@@ -6,16 +6,12 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.pettype.PetTypeDao;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.persistence.TypedQuery;
-import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.vet.Vet;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 

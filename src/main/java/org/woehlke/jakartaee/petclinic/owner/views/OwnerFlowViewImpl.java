@@ -1,7 +1,6 @@
 package org.woehlke.jakartaee.petclinic.owner.views;
 
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.pet.views.HasOwnerViewFlowState;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -14,47 +13,47 @@ import java.io.Serializable;
 @Log
 @Named("ownerViewFlow")
 @SessionScoped
-public class OwnerViewFlow implements HasOwnerViewFlowState, Serializable {
+public class OwnerFlowViewImpl implements OwnerFlowView, Serializable {
 
     private static final long serialVersionUID = 4530858836742945751L;
 
-    private OwnerViewFlowState flowState;
+    private OwnerFlowState flowState;
 
-    private OwnerViewFlowState getFlowState() {
+    private OwnerFlowState getFlowState() {
         if (this.flowState == null) {
-            this.flowState = OwnerViewFlowState.LIST;
+            this.flowState = OwnerFlowState.LIST;
         }
         return this.flowState;
     }
 
     @Override
     public boolean isFlowStateList() {
-        return this.getFlowState() == OwnerViewFlowState.LIST;
+        return this.getFlowState() == OwnerFlowState.LIST;
     }
 
     @Override
     public boolean isFlowStateDetails() {
-        return this.getFlowState() == OwnerViewFlowState.DETAILS;
+        return this.getFlowState() == OwnerFlowState.DETAILS;
     }
 
     @Override
     public boolean isFlowStateNew() {
-        return this.getFlowState() == OwnerViewFlowState.NEW_OWNER;
+        return this.getFlowState() == OwnerFlowState.NEW_OWNER;
     }
 
     @Override
     public boolean isFlowStateEdit() {
-        return this.getFlowState() == OwnerViewFlowState.EDIT_OWNER;
+        return this.getFlowState() == OwnerFlowState.EDIT_OWNER;
     }
 
     @Override
     public boolean isFlowStateDelete() {
-        return this.getFlowState() == OwnerViewFlowState.DELETE_OWNER;
+        return this.getFlowState() == OwnerFlowState.DELETE_OWNER;
     }
 
     @Override
     public boolean isFlowStateSearchResult() {
-        return this.getFlowState() == OwnerViewFlowState.LIST_SEARCH_RESULT;
+        return this.getFlowState() == OwnerFlowState.LIST_SEARCH_RESULT;
     }
 
     public void logFlowState(){
@@ -64,62 +63,62 @@ public class OwnerViewFlow implements HasOwnerViewFlowState, Serializable {
 
     @Override
     public boolean isFlowStateNewPet() {
-        return this.getFlowState() == OwnerViewFlowState.NEW_PET;
+        return this.getFlowState() == OwnerFlowState.NEW_PET;
     }
 
     @Override
     public boolean isFlowStateEditPet() {
-        return this.getFlowState() == OwnerViewFlowState.EDIT_PET;
+        return this.getFlowState() == OwnerFlowState.EDIT_PET;
     }
 
     @Override
     public boolean isFlowStateNewVisit() {
-        return this.getFlowState() == OwnerViewFlowState.NEW_VISIT;
+        return this.getFlowState() == OwnerFlowState.NEW_VISIT;
     }
 
     @Override
     public void setFlowStateNewVisit() {
-        this.flowState = OwnerViewFlowState.NEW_VISIT;
+        this.flowState = OwnerFlowState.NEW_VISIT;
     }
 
     @Override
     public void setFlowStateNewPet() {
-        this.flowState = OwnerViewFlowState.NEW_PET;
+        this.flowState = OwnerFlowState.NEW_PET;
     }
 
     @Override
     public void setFlowStateEditPet() {
-        this.flowState = OwnerViewFlowState.EDIT_PET;
+        this.flowState = OwnerFlowState.EDIT_PET;
     }
 
     @Override
     public void setFlowStateList() {
-        this.flowState = OwnerViewFlowState.LIST;
+        this.flowState = OwnerFlowState.LIST;
     }
 
     @Override
     public void setFlowStateDetails() {
-        this.flowState = OwnerViewFlowState.DETAILS;
+        this.flowState = OwnerFlowState.DETAILS;
     }
 
     @Override
     public void setFlowStateNew() {
-        this.flowState = OwnerViewFlowState.NEW_OWNER;
+        this.flowState = OwnerFlowState.NEW_OWNER;
     }
 
     @Override
     public void setFlowStateEdit() {
-        this.flowState = OwnerViewFlowState.EDIT_OWNER;
+        this.flowState = OwnerFlowState.EDIT_OWNER;
     }
 
     @Override
     public void setFlowStateDelete() {
-        this.flowState = OwnerViewFlowState.DELETE_OWNER;
+        this.flowState = OwnerFlowState.DELETE_OWNER;
     }
 
     @Override
     public void setFlowStateSearchResult() {
-        this.flowState = OwnerViewFlowState.LIST_SEARCH_RESULT;
+        this.flowState = OwnerFlowState.LIST_SEARCH_RESULT;
     }
 
 

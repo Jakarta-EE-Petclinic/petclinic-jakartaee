@@ -34,7 +34,7 @@ import java.util.UUID;
 @Log
 @Named("vetView")
 @SessionScoped
-public class VetView2Impl implements VetView2 {
+public class VetViewImpl implements VetView {
 
     private static final long serialVersionUID = 2838339162976374606L;
 
@@ -49,7 +49,7 @@ public class VetView2Impl implements VetView2 {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private VetViewFlowImpl vetViewFlow;
+    private VetFlowViewImpl vetViewFlow;
 
     @EJB
     private SpecialtyService specialtyService;
@@ -115,12 +115,10 @@ public class VetView2Impl implements VetView2 {
         this.entity = entity;
     }
 
-    @Override
     public Vet getSelected() {
         return selected;
     }
 
-    @Override
     public void setSelected(Vet selected) {
         this.selected = selected;
     }
@@ -297,7 +295,6 @@ public class VetView2Impl implements VetView2 {
         log.info("preDestroy");
     }
 
-    @Override
     public boolean reloadEntityFromSelected() {
         log.info("reloadEntityFromSelected");
         if (this.selected != null) {
@@ -400,11 +397,11 @@ public class VetView2Impl implements VetView2 {
         this.entity = new Vet();
     }
 
-    public VetViewFlowImpl getVetViewFlow() {
+    public VetFlowViewImpl getVetViewFlow() {
         return vetViewFlow;
     }
 
-    public void setVetViewFlow(VetViewFlowImpl vetViewFlow) {
+    public void setVetViewFlow(VetFlowViewImpl vetViewFlow) {
         this.vetViewFlow = vetViewFlow;
     }
 
@@ -412,7 +409,7 @@ public class VetView2Impl implements VetView2 {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + VetView2Impl.class.getSimpleName());
+        log.info("postConstruct: " + VetViewImpl.class.getSimpleName());
         this.provider = new MessageProvider();
         this.vetViewFlow.setFlowStateList();
         loadList();

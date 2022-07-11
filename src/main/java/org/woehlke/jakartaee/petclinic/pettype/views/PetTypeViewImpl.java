@@ -52,7 +52,7 @@ public class PetTypeViewImpl implements PetTypeView {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private PetTypeViewFlowImpl petTypeViewFlow;
+    private PetTypeFlowViewImpl petTypeViewFlow;
 
     private PetType entity;
     private PetType selected;

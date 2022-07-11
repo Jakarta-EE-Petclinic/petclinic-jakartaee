@@ -1,7 +1,6 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
 
-import org.woehlke.jakartaee.petclinic.application.framework.views.HasCrudFlowState;
 import org.woehlke.jakartaee.petclinic.application.framework.views.CrudViewFlowImpl;
 
 import jakarta.enterprise.context.SessionScoped;
@@ -15,6 +14,6 @@ import java.io.Serializable;
  */
 @Named("vetViewFlow")
 @SessionScoped
-public class VetViewFlowImpl extends CrudViewFlowImpl implements HasCrudFlowState, Serializable {
+public class VetFlowViewImpl extends CrudViewFlowImpl implements VetFlowView, Serializable {
     private static final long serialVersionUID = -4032116498859585466L;
 }

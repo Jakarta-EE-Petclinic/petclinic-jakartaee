@@ -3,7 +3,6 @@ package org.woehlke.jakartaee.petclinic.pet.impl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.pet.PetDao;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import jakarta.annotation.PostConstruct;
@@ -12,7 +11,6 @@ import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
-import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.util.List;
 import java.util.UUID;
