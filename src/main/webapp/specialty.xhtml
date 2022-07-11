@@ -242,13 +242,12 @@
 							</div>
 						</div>
 						<div class="ui-g">
-							<div class="ui-g-3">
+							<div class="ui-g-2">
 								<p:commandButton
 										id="cancelDetails"
 										type="cancel"
 										styleClass="cancelButton"
-										icon="fa fa-solid fa-chevrons-left"
-										value="#{msg['org.woehlke.jakartaee.petclinic.specialty.delete.cancel']}"
+										icon="fa fa-solid fa-chevron-left"
 										ajax="false"
 										action="#{specialtyView.cancelDelete}"
 										immediate="true"
@@ -272,7 +271,7 @@
 										value="#{msg['org.woehlke.jakartaee.petclinic.specialty.delete']}"
 										icon="fa fa-fw fa-trash"/>
 							</div>
-							<div class="ui-g-3"></div>
+							<div class="ui-g-4"></div>
 						</div>
 					</p:panel>
 					<br/>
@@ -344,13 +343,15 @@
 						</div>
 					</div>
 					<div class="ui-g footerGrid">
-						<p:commandButton
-								id="showNewFormButton"
-								styleClass="showNewFormButton"
-								action="#{specialtyView.showNewForm}"
-								icon="fa fa-fw fa-plus-square"
-								ajax="false"
-								value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew']}"/>
+						<div class="ui-g-6">
+							<p:commandButton
+									id="showNewFormButton"
+									styleClass="showNewFormButton"
+									action="#{specialtyView.showNewForm}"
+									icon="fa fa-fw fa-plus-square"
+									ajax="false"
+									value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew']}"/>
+							</div>
 						<div class="ui-g-2">
 							<p:link href="./rest/specialty/xml/list" type="application/xml">
 								<i class="fa fa-fw fa-arrow-alt-circle-right"/>
