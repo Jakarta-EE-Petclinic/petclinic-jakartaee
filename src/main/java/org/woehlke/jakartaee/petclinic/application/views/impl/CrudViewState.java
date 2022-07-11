@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 public enum CrudViewState implements Serializable {
     LIST,
+    DETAILS,
     NEW,
     EDIT,
     DELETE,

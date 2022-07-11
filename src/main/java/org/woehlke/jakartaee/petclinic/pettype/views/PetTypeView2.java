@@ -1,23 +1,21 @@
-package org.woehlke.jakartaee.petclinic.specialty.views;
+package org.woehlke.jakartaee.petclinic.pettype.views;
 
 import org.woehlke.jakartaee.petclinic.application.views.CrudView;
 import org.woehlke.jakartaee.petclinic.application.views.HasLanguageView;
 import org.woehlke.jakartaee.petclinic.application.framework.has.SearchView;
 import org.woehlke.jakartaee.petclinic.application.framework.has.View2Model;
-import org.woehlke.jakartaee.petclinic.specialty.Specialty;
+import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
 import java.io.Serializable;
 
 /**
  *
  */
-public interface SpecialtyView extends CrudView<Specialty>,
-        SearchView,
+public interface PetTypeView2 extends CrudView<PetType>,
         HasLanguageView,
+        SearchView,
         View2Model,
         Serializable {
 
-    long serialVersionUID = -3557696335568559475L;
-
-    String showDetailsForm(Specialty o);
+    long serialVersionUID = -7305835717012880655L;
 }

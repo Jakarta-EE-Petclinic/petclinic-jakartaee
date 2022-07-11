@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 @SessionScoped
 @Getter
 @Setter
-public class PetTypeViewImpl implements PetTypeView {
+public class PetTypeViewImpl2 implements PetTypeView2 {
 
     private static final long serialVersionUID = -528406859430949031L;
 
@@ -300,7 +300,7 @@ public class PetTypeViewImpl implements PetTypeView {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + PetTypeViewImpl.class.getSimpleName());
+        log.info("postConstruct: " + PetTypeViewImpl2.class.getSimpleName());
         this.provider = new MessageProvider();
         this.petTypeViewFlow.setFlowStateList();
     }

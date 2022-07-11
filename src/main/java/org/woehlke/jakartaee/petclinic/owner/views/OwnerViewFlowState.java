@@ -8,6 +8,7 @@ import java.io.Serializable;
 public enum OwnerViewFlowState implements Serializable {
     LIST,
     LIST_SEARCH_RESULT,
+    DETAILS,
     NEW_OWNER,
     EDIT_OWNER,
     DELETE_OWNER,

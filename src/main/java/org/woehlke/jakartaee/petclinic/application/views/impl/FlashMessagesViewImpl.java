@@ -2,7 +2,7 @@ package org.woehlke.jakartaee.petclinic.application.views.impl;
 
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
-import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

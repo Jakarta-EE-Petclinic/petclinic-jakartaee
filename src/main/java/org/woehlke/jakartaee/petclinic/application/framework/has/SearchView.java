@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface HasSearch extends Serializable {
+public interface SearchView extends Serializable {
 
     long serialVersionUID = 7807892292217350921L;
 

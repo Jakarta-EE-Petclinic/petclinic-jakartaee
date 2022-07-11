@@ -1,6 +1,7 @@
 package org.woehlke.jakartaee.petclinic.application.framework.entity;
 
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
 
 import java.io.Serializable;
 

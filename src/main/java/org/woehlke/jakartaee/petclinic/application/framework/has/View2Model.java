@@ -5,23 +5,16 @@ import java.io.Serializable;
 /**
  *
  */
-public interface HasViewModelOperations extends Serializable {
+public interface View2Model extends Serializable {
 
     long serialVersionUID = 6750797521381818959L;
 
-    boolean reloadEntityFromSelected();
-
     void loadList();
-
+    void newEntity();
     void saveNewEntity();
-
     void saveEditedEntity();
-
     void deleteSelectedEntity();
 
-    void newEntity();
-
     void postConstruct();
-
     void preDestroy();
 }

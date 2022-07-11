@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.owner.views;
 
+import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pet.views.HasOwnerViewFlowState;
 
 import jakarta.enterprise.context.SessionScoped;
@@ -10,6 +11,7 @@ import java.io.Serializable;
 /**
  *
  */
+@Log
 @Named("ownerViewFlow")
 @SessionScoped
 public class OwnerViewFlow implements HasOwnerViewFlowState, Serializable {
@@ -31,6 +33,11 @@ public class OwnerViewFlow implements HasOwnerViewFlowState, Serializable {
     }
 
     @Override
+    public boolean isFlowStateDetails() {
+        return this.getFlowState() == OwnerViewFlowState.DETAILS;
+    }
+
+    @Override
     public boolean isFlowStateNew() {
         return this.getFlowState() == OwnerViewFlowState.NEW_OWNER;
     }
@@ -48,6 +55,11 @@ public class OwnerViewFlow implements HasOwnerViewFlowState, Serializable {
     @Override
     public boolean isFlowStateSearchResult() {
         return this.getFlowState() == OwnerViewFlowState.LIST_SEARCH_RESULT;
+    }
+
+    public void logFlowState(){
+        String msg = "flowState: " + this.flowState.name();
+        log.info(msg);
     }
 
     @Override
@@ -83,6 +95,11 @@ public class OwnerViewFlow implements HasOwnerViewFlowState, Serializable {
     @Override
     public void setFlowStateList() {
         this.flowState = OwnerViewFlowState.LIST;
+    }
+
+    @Override
+    public void setFlowStateDetails() {
+        this.flowState = OwnerViewFlowState.DETAILS;
     }
 
     @Override

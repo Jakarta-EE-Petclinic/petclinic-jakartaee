@@ -1,7 +1,7 @@
 package org.woehlke.jakartaee.petclinic.application.views.impl;
 
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.application.framework.has.HasCrudFlowState;
+import org.woehlke.jakartaee.petclinic.application.views.HasCrudFlowState;
 
 import java.io.Serializable;
 
@@ -28,6 +28,11 @@ public abstract class CrudViewFlowImpl implements HasCrudFlowState, Serializable
     }
 
     @Override
+    public boolean isFlowStateDetails(){
+        return CrudViewState.DETAILS  == this.getFlowState();
+    }
+
+    @Override
     public boolean isFlowStateNew() {
         return CrudViewState.NEW == this.getFlowState();
     }
@@ -48,38 +53,38 @@ public abstract class CrudViewFlowImpl implements HasCrudFlowState, Serializable
     }
 
 
+    public void logFlowState(){
+        String msg = "flowState: " + this.flowState.name();
+        log.info(msg);
+    }
+
     @Override
     public void setFlowStateList() {
-        String msg = "setFlowState: " + CrudViewState.LIST.name();
-        log.info(msg);
         this.flowState = CrudViewState.LIST;
     }
 
     @Override
+    public void setFlowStateDetails() {
+        this.flowState = CrudViewState.DETAILS;
+    }
+
+    @Override
     public void setFlowStateNew() {
-        String msg = "setFlowState: " + CrudViewState.NEW.name();
-        log.info(msg);
         this.flowState = CrudViewState.NEW;
     }
 
     @Override
     public void setFlowStateEdit() {
-        String msg = "setFlowState: " + CrudViewState.EDIT.name();
-        log.info(msg);
         this.flowState = CrudViewState.EDIT;
     }
 
     @Override
     public void setFlowStateDelete() {
-        String msg = "setFlowState: " + CrudViewState.DELETE.name();
-        log.info(msg);
         this.flowState = CrudViewState.DELETE;
     }
 
     @Override
     public void setFlowStateSearchResult() {
-        String msg = "setFlowState: " + CrudViewState.LIST_SEARCH_RESULT.name();
-        log.info(msg);
         this.flowState = CrudViewState.LIST_SEARCH_RESULT;
     }
 }

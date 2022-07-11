@@ -3,7 +3,6 @@ package org.woehlke.jakartaee.petclinic.specialty.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
-import jakarta.el.MethodExpression;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
@@ -30,7 +29,7 @@ import java.util.ResourceBundle;
 @Log
 @Named("specialtyView")
 @SessionScoped
-public class SpecialtyViewImpl implements SpecialtyView {
+public class SpecialtyView2Impl implements SpecialtyView {
 
     private static final long serialVersionUID = 9080853875975855082L;
 
@@ -39,7 +38,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
     private MessageProvider provider;
 
     private Specialty entity;
-    private Specialty selected;
     private List<Specialty> list;
 
     private String searchterm;
@@ -57,23 +55,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
     private SpecialtyViewFlowImpl specialtyViewFlow;
 
     @Override
-    public boolean reloadEntityFromSelected() {
-        log.info("reloadEntityFromSelected");
-        if (this.selected != null) {
-            this.selected = entityService.findById(this.selected.getId());
-            this.entity = this.selected;
-            return true;
-        } else {
-            String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.list.choose.summary";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            String detailKey = "org.woehlke.jakartaee.petclinic.specialty.list.choose.detail";
-            String detail = this.provider.getBundle().getString(detailKey);
-            flashMessagesView.addWarnMessage(summary, detail);
-            return false;
-        }
-    }
-
-    @Override
     public void loadList() {
         this.list = entityService.getAll();
     }
@@ -83,7 +64,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
         log.info("saveNewEntity");
         try {
             this.entity = entityService.addNew(this.entity);
-            this.selected = this.entity;
             this.specialtyViewFlow.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.search.done";
             String summary = this.provider.getBundle().getString(summaryKey);
@@ -99,7 +79,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
         log.info("saveEditedEntity");
         try {
             this.entity = this.entityService.update(this.entity);
-            this.selected = this.entity;
             this.specialtyViewFlow.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.edit.done";
             String summary = this.provider.getBundle().getString(summaryKey);
@@ -114,13 +93,10 @@ public class SpecialtyViewImpl implements SpecialtyView {
     public void deleteSelectedEntity() {
         log.info("deleteSelectedEntity");
         try {
-            if (this.selected != null) {
-                String details = this.selected.getPrimaryKey();
-                entityService.delete(this.selected.getId());
-                if (this.selected.compareTo(this.entity) == 0) {
-                    this.entity = null;
-                }
-                this.selected = null;
+            if (this.entity != null) {
+                String details = this.entity.getPrimaryKey();
+                entityService.delete(this.entity.getId());
+                this.entity = null;
                 this.specialtyViewFlow.setFlowStateList();
                 String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.delete.done";
                 String summary = this.provider.getBundle().getString(summaryKey);
@@ -130,10 +106,10 @@ public class SpecialtyViewImpl implements SpecialtyView {
             this.specialtyViewFlow.setFlowStateDelete();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.delete.denied";
             String summary = this.provider.getBundle().getString(summaryKey);
-            flashMessagesView.addWarnMessage(summary, this.selected);
+            flashMessagesView.addWarnMessage(summary, this.entity);
         } catch (EJBException e) {
             this.specialtyViewFlow.setFlowStateDelete();
-            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
+            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
         }
     }
 
@@ -148,9 +124,8 @@ public class SpecialtyViewImpl implements SpecialtyView {
     public String showDetailsForm(Specialty o) {
         log.info("showDetailsForm");;
         if (o != null) {
-            this.selected = entityService.findById(o.getId());
-            this.entity = this.selected;
-            this.specialtyViewFlow.setFlowStateEdit();
+            this.entity = entityService.findById(o.getId());
+            this.specialtyViewFlow.setFlowStateDetails();
         } else {
             this.specialtyViewFlow.setFlowStateList();
         }
@@ -160,7 +135,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
     @Override
     public String showEditForm() {
         log.info("showEditForm");
-        if (this.reloadEntityFromSelected()) {
+        if ( this.entity != null) {
             this.specialtyViewFlow.setFlowStateEdit();
         } else {
             this.specialtyViewFlow.setFlowStateList();
@@ -209,7 +184,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
     @Override
     public String showDeleteForm() {
         log.info("showDeleteForm");
-        if (this.reloadEntityFromSelected()) {
+        if ( this.entity != null) {
             this.specialtyViewFlow.setFlowStateDelete();
         } else {
             this.specialtyViewFlow.setFlowStateList();
@@ -312,16 +287,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
     }
 
     @Override
-    public Specialty getSelected() {
-        return selected;
-    }
-
-    @Override
-    public void setSelected(Specialty selected) {
-        this.selected = selected;
-    }
-
-    @Override
     public ResourceBundle getMsg() {
         return this.provider.getBundle();
     }
@@ -348,7 +313,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + SpecialtyViewImpl.class.getSimpleName());
+        log.info("postConstruct: " + SpecialtyView2Impl.class.getSimpleName());
         this.specialtyViewFlow.setFlowStateList();
         this.provider = new MessageProvider();
     }

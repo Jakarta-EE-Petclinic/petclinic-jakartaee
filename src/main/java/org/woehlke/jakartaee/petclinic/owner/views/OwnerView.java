@@ -1,7 +1,8 @@
 package org.woehlke.jakartaee.petclinic.owner.views;
 
 import org.woehlke.jakartaee.petclinic.application.framework.has.*;
-import org.woehlke.jakartaee.petclinic.application.views.CrudViewFlow;
+import org.woehlke.jakartaee.petclinic.application.views.CrudView;
+import org.woehlke.jakartaee.petclinic.application.views.HasLanguageView;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 
 import java.io.Serializable;
@@ -9,13 +10,13 @@ import java.io.Serializable;
 /**
  *
  */
-public interface OwnerView extends CrudViewFlow<Owner>,
+public interface OwnerView extends CrudView<Owner>,
         OwnersPetView,
         OwnersPetVisitView,
-        HasOwnerModelOperations,
+        Owner2Model,
         HasOwnersPetModelOperations,
-        HasLanguage,
-        HasSearch,
+        HasLanguageView,
+        SearchView,
         Serializable {
 
     long serialVersionUID = 3691413509555926089L;

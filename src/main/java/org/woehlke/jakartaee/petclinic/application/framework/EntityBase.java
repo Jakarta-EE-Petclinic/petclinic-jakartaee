@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.framework.entity;
+package org.woehlke.jakartaee.petclinic.application.framework;
 
 import jakarta.persistence.Transient;
 

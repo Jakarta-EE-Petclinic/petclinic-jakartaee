@@ -34,7 +34,7 @@ import java.util.UUID;
 @Log
 @Named("vetView")
 @SessionScoped
-public class VetViewImpl implements VetView {
+public class VetView2Impl implements VetView2 {
 
     private static final long serialVersionUID = 2838339162976374606L;
 
@@ -412,7 +412,7 @@ public class VetViewImpl implements VetView {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + VetViewImpl.class.getSimpleName());
+        log.info("postConstruct: " + VetView2Impl.class.getSimpleName());
         this.provider = new MessageProvider();
         this.vetViewFlow.setFlowStateList();
         loadList();

@@ -6,7 +6,6 @@ import jakarta.ejb.EJBTransactionRolledbackException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
-import org.netbeans.lib.cvsclient.commandLine.command.log;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
@@ -79,7 +78,6 @@ public class OwnerViewImpl implements OwnerView {
     private long petTypeId;
     private Visit visit;
 
-    @Override
     public boolean reloadEntityFromSelected() {
         log.info("reloadEntityFromSelected");
         if (this.selected != null) {

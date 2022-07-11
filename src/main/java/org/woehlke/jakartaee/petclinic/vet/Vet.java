@@ -4,12 +4,11 @@ package org.woehlke.jakartaee.petclinic.vet;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
-import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBaseObject;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.*;
 import org.woehlke.jakartaee.petclinic.vet.impl.VetListener;
 
 import java.util.*;

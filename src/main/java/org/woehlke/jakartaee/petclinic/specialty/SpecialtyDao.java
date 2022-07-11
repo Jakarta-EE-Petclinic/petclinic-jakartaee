@@ -2,7 +2,7 @@ package org.woehlke.jakartaee.petclinic.specialty;
 
 import jakarta.validation.constraints.NotNull;
 import org.woehlke.jakartaee.petclinic.application.framework.crud.CrudDao;
-import org.woehlke.jakartaee.petclinic.application.framework.entity.SearchableEntity;
+import org.woehlke.jakartaee.petclinic.application.framework.SearchableEntity;
 
 /**
  * Created with IntelliJ IDEA.

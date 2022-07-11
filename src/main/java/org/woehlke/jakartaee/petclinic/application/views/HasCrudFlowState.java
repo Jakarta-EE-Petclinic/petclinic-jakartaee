@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.framework.has;
+package org.woehlke.jakartaee.petclinic.application.views;
 
 import java.io.Serializable;
 
@@ -11,6 +11,8 @@ public interface HasCrudFlowState extends Serializable {
 
     boolean isFlowStateList();
 
+    boolean isFlowStateDetails();
+
     boolean isFlowStateNew();
 
     boolean isFlowStateEdit();
@@ -19,7 +21,11 @@ public interface HasCrudFlowState extends Serializable {
 
     boolean isFlowStateSearchResult();
 
+    void logFlowState();
+
     void setFlowStateList();
+
+    void setFlowStateDetails();
 
     void setFlowStateNew();
 

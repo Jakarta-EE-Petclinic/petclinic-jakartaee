@@ -1,8 +1,7 @@
 package org.woehlke.jakartaee.petclinic.application.views;
 
-import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
-import org.woehlke.jakartaee.petclinic.application.framework.has.HasLanguage;
-import org.woehlke.jakartaee.petclinic.application.framework.has.HasSearch;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
+import org.woehlke.jakartaee.petclinic.application.framework.has.SearchView;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.ResourceBundle;
 /**
  * @param <T>
  */
-public interface CrudViewFlow<T extends EntityBase> extends HasSearch, HasLanguage, Serializable {
+public interface CrudView<T extends EntityBase> extends SearchView, HasLanguageView, Serializable {
 
     long serialVersionUID = -4976697275728754000L;
 
@@ -32,10 +31,6 @@ public interface CrudViewFlow<T extends EntityBase> extends HasSearch, HasLangua
     String performDelete();
 
     String cancelDelete();
-
-    T getSelected();
-
-    void setSelected(T selected);
 
     T getEntity();
 

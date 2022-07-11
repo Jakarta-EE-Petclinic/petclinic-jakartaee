@@ -1,6 +1,7 @@
-package org.woehlke.jakartaee.petclinic.application.framework.entity;
+package org.woehlke.jakartaee.petclinic.application.framework;
 
 import jakarta.validation.constraints.NotNull;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import java.io.Serializable;
 import java.util.List;
