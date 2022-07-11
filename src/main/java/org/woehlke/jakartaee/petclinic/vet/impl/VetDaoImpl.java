@@ -2,10 +2,8 @@ package org.woehlke.jakartaee.petclinic.vet.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.vet.VetDao;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import jakarta.annotation.PostConstruct;

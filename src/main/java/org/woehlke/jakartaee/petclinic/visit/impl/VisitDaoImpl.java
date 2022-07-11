@@ -1,7 +1,6 @@
 package org.woehlke.jakartaee.petclinic.visit.impl;
 
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.visit.VisitDao;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import jakarta.annotation.PostConstruct;

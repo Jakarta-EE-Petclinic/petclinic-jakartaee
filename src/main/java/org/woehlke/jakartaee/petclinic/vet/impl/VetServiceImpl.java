@@ -2,8 +2,7 @@ package org.woehlke.jakartaee.petclinic.vet.impl;
 
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.specialty.SpecialtyDao;
-import org.woehlke.jakartaee.petclinic.vet.VetDao;
+import org.woehlke.jakartaee.petclinic.specialty.impl.SpecialtyDao;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
 import org.woehlke.jakartaee.petclinic.vet.VetService;
 

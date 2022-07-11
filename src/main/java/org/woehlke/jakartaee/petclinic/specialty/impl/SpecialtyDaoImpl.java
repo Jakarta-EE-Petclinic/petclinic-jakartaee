@@ -6,7 +6,6 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.specialty.SpecialtyDao;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import jakarta.annotation.PostConstruct;

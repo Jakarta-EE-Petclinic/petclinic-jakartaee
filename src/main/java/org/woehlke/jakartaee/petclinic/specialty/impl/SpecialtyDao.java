@@ -1,8 +1,9 @@
-package org.woehlke.jakartaee.petclinic.specialty;
+package org.woehlke.jakartaee.petclinic.specialty.impl;
 
 import jakarta.validation.constraints.NotNull;
 import org.woehlke.jakartaee.petclinic.application.framework.impl.CrudDao;
 import org.woehlke.jakartaee.petclinic.application.framework.SearchableEntity;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 /**
  * Created with IntelliJ IDEA.

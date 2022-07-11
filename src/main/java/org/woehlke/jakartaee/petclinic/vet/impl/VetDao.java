@@ -1,7 +1,8 @@
-package org.woehlke.jakartaee.petclinic.vet;
+package org.woehlke.jakartaee.petclinic.vet.impl;
 
 import org.woehlke.jakartaee.petclinic.application.framework.impl.CrudDao;
 import org.woehlke.jakartaee.petclinic.application.framework.SearchableEntity;
+import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 /**
  * Created with IntelliJ IDEA.
