@@ -1,7 +1,7 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
 import org.primefaces.model.DualListModel;
-import org.woehlke.jakartaee.petclinic.application.framework.views.CrudChangeableView;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView;
 import org.woehlke.jakartaee.petclinic.application.framework.views.LanguageChangeableView;
 import org.woehlke.jakartaee.petclinic.application.framework.views.SearchableView;
 import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView2Model;
@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface VetCrudChangeableView extends CrudChangeableView<Vet>,
+public interface VetCrudView extends CrudView<Vet>,
         LanguageChangeableView,
         SearchableView,
         CrudView2Model,

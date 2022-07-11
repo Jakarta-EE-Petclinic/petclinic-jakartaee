@@ -34,7 +34,7 @@ import java.util.UUID;
 @Log
 @Named("vetView")
 @SessionScoped
-public class VetCrudChangeableViewImpl implements VetCrudChangeableView {
+public class VetCrudViewImpl implements VetCrudView {
 
     private static final long serialVersionUID = 2838339162976374606L;
 
@@ -409,7 +409,7 @@ public class VetCrudChangeableViewImpl implements VetCrudChangeableView {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + VetCrudChangeableViewImpl.class.getSimpleName());
+        log.info("postConstruct: " + VetCrudViewImpl.class.getSimpleName());
         this.provider = new MessageProvider();
         this.vetViewFlow.setFlowStateList();
         loadList();

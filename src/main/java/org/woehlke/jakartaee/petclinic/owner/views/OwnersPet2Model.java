@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.owner.views.impl;
+package org.woehlke.jakartaee.petclinic.owner.views;
 
 import java.io.Serializable;
 

@@ -39,7 +39,7 @@ import java.util.ResourceBundle;
 @SessionScoped
 @Getter
 @Setter
-public class OwnerCrudChangeableViewImpl implements OwnerCrudChangeableView {
+public class OwnerViewImpl implements OwnerView {
 
     private static final long serialVersionUID = -4809817472969005481L;
 
@@ -495,7 +495,7 @@ public class OwnerCrudChangeableViewImpl implements OwnerCrudChangeableView {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + OwnerCrudChangeableViewImpl.class.getSimpleName());
+        log.info("postConstruct: " + OwnerViewImpl.class.getSimpleName());
         this.messageProvider = new MessageProvider();
         this.ownerFlowViewImpl.setFlowStateList();
     }

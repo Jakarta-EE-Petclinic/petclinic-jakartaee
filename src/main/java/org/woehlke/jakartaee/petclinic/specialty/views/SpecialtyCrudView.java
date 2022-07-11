@@ -1,6 +1,6 @@
 package org.woehlke.jakartaee.petclinic.specialty.views;
 
-import org.woehlke.jakartaee.petclinic.application.framework.views.CrudChangeableView;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView;
 import org.woehlke.jakartaee.petclinic.application.framework.views.LanguageChangeableView;
 import org.woehlke.jakartaee.petclinic.application.framework.views.SearchableView;
 import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView2Model;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface SpecialtyCrudChangeableView extends CrudChangeableView<Specialty>,
+public interface SpecialtyCrudView extends CrudView<Specialty>,
         SearchableView,
         LanguageChangeableView,
         CrudView2Model,

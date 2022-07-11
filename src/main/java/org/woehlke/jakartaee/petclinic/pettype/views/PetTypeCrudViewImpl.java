@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 @SessionScoped
 @Getter
 @Setter
-public class PetTypeCrudChangeableViewImpl implements PetTypeCrudChangeableView {
+public class PetTypeCrudViewImpl implements PetTypeCrudView {
 
     private static final long serialVersionUID = -528406859430949031L;
 
@@ -298,7 +298,7 @@ public class PetTypeCrudChangeableViewImpl implements PetTypeCrudChangeableView 
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + PetTypeCrudChangeableViewImpl.class.getSimpleName());
+        log.info("postConstruct: " + PetTypeCrudViewImpl.class.getSimpleName());
         this.provider = new MessageProvider();
         this.petTypeViewFlow.setFlowStateList();
     }
