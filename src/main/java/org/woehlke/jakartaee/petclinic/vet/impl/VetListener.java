@@ -6,7 +6,7 @@ import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import java.io.Serializable;
 
-import static org.woehlke.jakartaee.petclinic.application.framework.entity.EntityListenerLogger.logIt;
+import static org.woehlke.jakartaee.petclinic.application.framework.impl.EntityListenerLogger.logIt;
 
 /**
  *

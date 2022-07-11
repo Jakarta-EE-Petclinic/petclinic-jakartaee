@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.framework.crud;
+package org.woehlke.jakartaee.petclinic.application.framework.impl;
 
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 

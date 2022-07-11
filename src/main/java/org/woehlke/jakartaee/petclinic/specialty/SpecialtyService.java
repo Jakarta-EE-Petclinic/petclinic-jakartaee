@@ -1,8 +1,8 @@
 package org.woehlke.jakartaee.petclinic.specialty;
 
 import jakarta.validation.constraints.NotNull;
-import org.woehlke.jakartaee.petclinic.application.framework.crud.CrudService;
-import org.woehlke.jakartaee.petclinic.application.framework.crud.SearchableService;
+import org.woehlke.jakartaee.petclinic.application.framework.impl.CrudService;
+import org.woehlke.jakartaee.petclinic.application.framework.impl.SearchableService;
 
 import java.io.Serializable;
 
