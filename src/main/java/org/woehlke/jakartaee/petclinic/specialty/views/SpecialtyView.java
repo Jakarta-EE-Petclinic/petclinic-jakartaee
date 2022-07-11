@@ -18,4 +18,6 @@ public interface SpecialtyView extends CrudViewFlow<Specialty>,
         Serializable {
 
     long serialVersionUID = -3557696335568559475L;
+
+    String showDetailsForm(Specialty o);
 }

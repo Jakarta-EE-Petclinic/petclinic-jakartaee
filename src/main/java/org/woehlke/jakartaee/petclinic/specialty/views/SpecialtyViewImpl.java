@@ -3,6 +3,7 @@ package org.woehlke.jakartaee.petclinic.specialty.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import jakarta.el.MethodExpression;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
@@ -141,6 +142,19 @@ public class SpecialtyViewImpl implements SpecialtyView {
         log.info("newEntity");
         String name = "add new name";
         this.entity = new Specialty();
+    }
+
+    @Override
+    public String showDetailsForm(Specialty o) {
+        log.info("showDetailsForm");;
+        if (o != null) {
+            this.selected = entityService.findById(o.getId());
+            this.entity = this.selected;
+            this.specialtyViewFlow.setFlowStateEdit();
+        } else {
+            this.specialtyViewFlow.setFlowStateList();
+        }
+        return JSF_PAGE;
     }
 
     @Override
