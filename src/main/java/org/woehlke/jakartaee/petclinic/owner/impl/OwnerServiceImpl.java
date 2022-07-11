@@ -5,7 +5,6 @@ import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.owner.OwnerDao;
 import org.woehlke.jakartaee.petclinic.pet.impl.PetDao;
 import org.woehlke.jakartaee.petclinic.visit.VisitDao;
 import org.woehlke.jakartaee.petclinic.owner.Owner;

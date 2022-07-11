@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.owner.views;
+package org.woehlke.jakartaee.petclinic.pet.views;
 
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;

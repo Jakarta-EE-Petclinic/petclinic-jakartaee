@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.owner.views;
+package org.woehlke.jakartaee.petclinic.visit.views;
 
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 

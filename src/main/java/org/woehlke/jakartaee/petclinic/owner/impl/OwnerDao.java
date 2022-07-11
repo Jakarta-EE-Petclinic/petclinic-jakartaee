@@ -1,7 +1,8 @@
-package org.woehlke.jakartaee.petclinic.owner;
+package org.woehlke.jakartaee.petclinic.owner.impl;
 
 import org.woehlke.jakartaee.petclinic.application.framework.impl.CrudDao;
 import org.woehlke.jakartaee.petclinic.application.framework.SearchableEntity;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
 
 /**
  * Created with IntelliJ IDEA.
