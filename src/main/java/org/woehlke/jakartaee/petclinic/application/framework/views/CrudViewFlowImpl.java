@@ -1,7 +1,6 @@
-package org.woehlke.jakartaee.petclinic.application.views.impl;
+package org.woehlke.jakartaee.petclinic.application.framework.views;
 
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.application.views.HasCrudFlowState;
 
 import java.io.Serializable;
 

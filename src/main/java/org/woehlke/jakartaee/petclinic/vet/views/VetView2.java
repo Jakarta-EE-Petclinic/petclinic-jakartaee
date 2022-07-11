@@ -1,8 +1,8 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
 import org.primefaces.model.DualListModel;
-import org.woehlke.jakartaee.petclinic.application.views.CrudView;
-import org.woehlke.jakartaee.petclinic.application.views.HasLanguageView;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView;
+import org.woehlke.jakartaee.petclinic.application.framework.views.HasLanguageView;
 import org.woehlke.jakartaee.petclinic.application.framework.has.SearchView;
 import org.woehlke.jakartaee.petclinic.application.framework.has.View2Model;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;

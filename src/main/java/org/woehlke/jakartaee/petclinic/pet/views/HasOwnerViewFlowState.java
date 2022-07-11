@@ -1,6 +1,6 @@
 package org.woehlke.jakartaee.petclinic.pet.views;
 
-import org.woehlke.jakartaee.petclinic.application.views.HasCrudFlowState;
+import org.woehlke.jakartaee.petclinic.application.framework.views.HasCrudFlowState;
 
 import java.io.Serializable;
 

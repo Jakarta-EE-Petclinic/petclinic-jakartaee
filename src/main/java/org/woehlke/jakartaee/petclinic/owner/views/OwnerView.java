@@ -1,8 +1,8 @@
 package org.woehlke.jakartaee.petclinic.owner.views;
 
 import org.woehlke.jakartaee.petclinic.application.framework.has.*;
-import org.woehlke.jakartaee.petclinic.application.views.CrudView;
-import org.woehlke.jakartaee.petclinic.application.views.HasLanguageView;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView;
+import org.woehlke.jakartaee.petclinic.application.framework.views.HasLanguageView;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 
 import java.io.Serializable;

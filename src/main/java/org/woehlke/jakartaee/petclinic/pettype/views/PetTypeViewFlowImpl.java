@@ -1,8 +1,8 @@
 package org.woehlke.jakartaee.petclinic.pettype.views;
 
 
-import org.woehlke.jakartaee.petclinic.application.views.HasCrudFlowState;
-import org.woehlke.jakartaee.petclinic.application.views.impl.CrudViewFlowImpl;
+import org.woehlke.jakartaee.petclinic.application.framework.views.HasCrudFlowState;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudViewFlowImpl;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;

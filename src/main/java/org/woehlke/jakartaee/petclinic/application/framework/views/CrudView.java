@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.views;
+package org.woehlke.jakartaee.petclinic.application.framework.views;
 
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 import org.woehlke.jakartaee.petclinic.application.framework.has.SearchView;
