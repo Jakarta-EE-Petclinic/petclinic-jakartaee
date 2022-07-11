@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 @Log
 @Named("specialtyView")
 @SessionScoped
-public class SpecialtyViewImpl implements SpecialtyView {
+public class SpecialtyCrudChangeableViewImpl implements SpecialtyCrudChangeableView {
 
     private static final long serialVersionUID = 9080853875975855082L;
 
@@ -313,7 +313,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + SpecialtyViewImpl.class.getSimpleName());
+        log.info("postConstruct: " + SpecialtyCrudChangeableViewImpl.class.getSimpleName());
         this.specialtyViewFlow.setFlowStateList();
         this.provider = new MessageProvider();
     }

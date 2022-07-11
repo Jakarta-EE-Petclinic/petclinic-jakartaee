@@ -1,13 +1,13 @@
 package org.woehlke.jakartaee.petclinic.owner.views;
 
-import org.woehlke.jakartaee.petclinic.application.framework.views.HasCrudFlowState;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudFlowView;
 
 import java.io.Serializable;
 
 /**
  *
  */
-public interface OwnerFlowView extends HasCrudFlowState, Serializable {
+public interface OwnerFlowView extends CrudFlowView, Serializable {
 
     long serialVersionUID = 6654391340545426308L;
 

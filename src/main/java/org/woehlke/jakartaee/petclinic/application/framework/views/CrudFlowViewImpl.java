@@ -8,47 +8,47 @@ import java.io.Serializable;
  *
  */
 @Log
-public abstract class CrudViewFlowImpl implements HasCrudFlowState, Serializable {
+public abstract class CrudFlowViewImpl implements CrudFlowView, Serializable {
 
     private static final long serialVersionUID = 8853867570285389553L;
 
-    private CrudViewState flowState;
+    private CrudFlowState flowState;
 
-    protected CrudViewState getFlowState() {
+    protected CrudFlowState getFlowState() {
         if (this.flowState == null) {
-            this.flowState = CrudViewState.LIST;
+            this.flowState = CrudFlowState.LIST;
         }
         return flowState;
     }
 
     @Override
     public boolean isFlowStateList() {
-        return CrudViewState.LIST == this.getFlowState();
+        return CrudFlowState.LIST == this.getFlowState();
     }
 
     @Override
     public boolean isFlowStateDetails(){
-        return CrudViewState.DETAILS  == this.getFlowState();
+        return CrudFlowState.DETAILS  == this.getFlowState();
     }
 
     @Override
     public boolean isFlowStateNew() {
-        return CrudViewState.NEW == this.getFlowState();
+        return CrudFlowState.NEW == this.getFlowState();
     }
 
     @Override
     public boolean isFlowStateEdit() {
-        return CrudViewState.EDIT == this.getFlowState();
+        return CrudFlowState.EDIT == this.getFlowState();
     }
 
     @Override
     public boolean isFlowStateDelete() {
-        return CrudViewState.DELETE == this.getFlowState();
+        return CrudFlowState.DELETE == this.getFlowState();
     }
 
     @Override
     public boolean isFlowStateSearchResult() {
-        return CrudViewState.LIST_SEARCH_RESULT == this.getFlowState();
+        return CrudFlowState.LIST_SEARCH_RESULT == this.getFlowState();
     }
 
 
@@ -59,31 +59,31 @@ public abstract class CrudViewFlowImpl implements HasCrudFlowState, Serializable
 
     @Override
     public void setFlowStateList() {
-        this.flowState = CrudViewState.LIST;
+        this.flowState = CrudFlowState.LIST;
     }
 
     @Override
     public void setFlowStateDetails() {
-        this.flowState = CrudViewState.DETAILS;
+        this.flowState = CrudFlowState.DETAILS;
     }
 
     @Override
     public void setFlowStateNew() {
-        this.flowState = CrudViewState.NEW;
+        this.flowState = CrudFlowState.NEW;
     }
 
     @Override
     public void setFlowStateEdit() {
-        this.flowState = CrudViewState.EDIT;
+        this.flowState = CrudFlowState.EDIT;
     }
 
     @Override
     public void setFlowStateDelete() {
-        this.flowState = CrudViewState.DELETE;
+        this.flowState = CrudFlowState.DELETE;
     }
 
     @Override
     public void setFlowStateSearchResult() {
-        this.flowState = CrudViewState.LIST_SEARCH_RESULT;
+        this.flowState = CrudFlowState.LIST_SEARCH_RESULT;
     }
 }

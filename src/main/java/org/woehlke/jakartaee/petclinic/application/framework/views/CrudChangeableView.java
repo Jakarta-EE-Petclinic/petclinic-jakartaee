@@ -1,7 +1,6 @@
 package org.woehlke.jakartaee.petclinic.application.framework.views;
 
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
-import org.woehlke.jakartaee.petclinic.application.framework.has.SearchView;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,34 +9,26 @@ import java.util.ResourceBundle;
 /**
  * @param <T>
  */
-public interface CrudView<T extends EntityBase> extends SearchView, LanguageSelectorView, Serializable {
+public interface CrudChangeableView<T extends EntityBase> extends SearchableView, LanguageChangeableView, Serializable {
 
     long serialVersionUID = -4976697275728754000L;
 
     String showNewForm();
-
+    String cancelNew();
     String saveNew();
 
-    String cancelNew();
-
     String showEditForm();
-
+    String cancelEdited();
     String saveEdited();
 
-    String cancelEdited();
-
     String showDeleteForm();
-
+    String cancelDelete();
     String performDelete();
 
-    String cancelDelete();
-
     T getEntity();
-
     void setEntity(T entity);
 
     List<T> getList();
-
     void setList(List<T> list);
 
     ResourceBundle getMsg();

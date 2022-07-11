@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface HasCrudFlowState extends Serializable {
+public interface CrudFlowView extends Serializable {
 
     long serialVersionUID = -2732706731385890693L;
 

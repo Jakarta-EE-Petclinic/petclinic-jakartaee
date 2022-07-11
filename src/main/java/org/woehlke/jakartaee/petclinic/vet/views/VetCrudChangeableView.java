@@ -1,10 +1,10 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
 import org.primefaces.model.DualListModel;
-import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView;
-import org.woehlke.jakartaee.petclinic.application.framework.views.LanguageSelectorView;
-import org.woehlke.jakartaee.petclinic.application.framework.has.SearchView;
-import org.woehlke.jakartaee.petclinic.application.framework.has.View2Model;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudChangeableView;
+import org.woehlke.jakartaee.petclinic.application.framework.views.LanguageChangeableView;
+import org.woehlke.jakartaee.petclinic.application.framework.views.SearchableView;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView2Model;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
 
@@ -14,10 +14,10 @@ import java.io.Serializable;
 /**
  *
  */
-public interface VetView extends CrudView<Vet>,
-        LanguageSelectorView,
-        SearchView,
-        View2Model,
+public interface VetCrudChangeableView extends CrudChangeableView<Vet>,
+        LanguageChangeableView,
+        SearchableView,
+        CrudView2Model,
         Serializable {
 
     long serialVersionUID = -4141782100256382881L;

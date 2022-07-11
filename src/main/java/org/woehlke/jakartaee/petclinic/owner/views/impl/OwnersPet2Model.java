@@ -1,11 +1,11 @@
-package org.woehlke.jakartaee.petclinic.application.framework.has;
+package org.woehlke.jakartaee.petclinic.owner.views.impl;
 
 import java.io.Serializable;
 
 /**
  *
  */
-public interface HasOwnersPetModelOperations extends Serializable {
+public interface OwnersPet2Model extends Serializable {
 
     long serialVersionUID = -6954521350743401666L;
 
