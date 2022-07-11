@@ -15,6 +15,7 @@ import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.woehlke.jakartaee.petclinic.specialty.SpecialtyView;
 
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,11 +30,9 @@ import java.util.ResourceBundle;
 @Log
 @Named("specialtyView")
 @SessionScoped
-public class SpecialtyCrudViewImpl implements SpecialtyCrudView {
+public class SpecialtyViewImpl implements SpecialtyView {
 
     private static final long serialVersionUID = 9080853875975855082L;
-
-    private final static String JSF_PAGE = "specialty.jsf";
 
     private MessageProvider provider;
 
@@ -52,7 +51,7 @@ public class SpecialtyCrudViewImpl implements SpecialtyCrudView {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private SpecialtyFlowViewImpl specialtyViewFlow;
+    private SpecialtyFlowView specialtyViewFlow;
 
     @Override
     public void loadList() {
@@ -313,7 +312,7 @@ public class SpecialtyCrudViewImpl implements SpecialtyCrudView {
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + SpecialtyCrudViewImpl.class.getSimpleName());
+        log.info("postConstruct: " + SpecialtyViewImpl.class.getSimpleName());
         this.specialtyViewFlow.setFlowStateList();
         this.provider = new MessageProvider();
     }
