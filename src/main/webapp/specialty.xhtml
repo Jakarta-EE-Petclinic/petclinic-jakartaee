@@ -84,7 +84,16 @@
 							</div>
 						</div>
 						<div class="ui-g">
-							<div class="ui-g-2"></div>
+							<div class="ui-g-2">
+								<p:commandButton id="cancelNew"
+												 type="cancel"
+												 styleClass="cancelButton"
+												 icon="fa fa-solid fa-chevron-left"
+												 ajax="false"
+												 action="#{specialtyView.cancelNew}"
+												 immediate="true"
+												 includeViewParams="true"/>
+							</div>
 							<div class="ui-g-3">
 								<p:commandButton id="saveNewButton"
 								                 type="submit"
@@ -93,17 +102,6 @@
 								                 value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew.save']}"
 								                 ajax="false"
 								                 action="#{specialtyView.saveNew}"/>
-							</div>
-							<div class="ui-g-3">
-								<p:commandButton id="cancelNew"
-								                 type="cancel"
-								                 styleClass="cancelButton"
-								                 icon="fa fa-fw fa-times-circle"
-								                 value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew.cancel']}"
-								                 ajax="false"
-								                 action="#{specialtyView.cancelNew}"
-								                 immediate="true"
-								                 includeViewParams="true"/>
 							</div>
 						</div>
 					</p:panel>
@@ -188,7 +186,16 @@
 							</div>
 						</div>
 						<div class="ui-g">
-							<div class="ui-g-2"></div>
+							<div class="ui-g-2">
+								<p:commandButton id="cancelDelete"
+												 type="cancel"
+												 styleClass="cancelButton"
+												 icon="fa fa-solid fa-chevron-left"
+												 ajax="false"
+												 action="#{specialtyView.cancelDelete}"
+												 immediate="true"
+												 includeViewParams="true"/>
+							</div>
 							<div class="ui-g-3">
 								<p:commandButton id="deleteButton"
 								                 type="submit"
@@ -197,17 +204,6 @@
 								                 value="#{msg['org.woehlke.jakartaee.petclinic.specialty.delete.save']}"
 								                 ajax="false"
 								                 action="#{specialtyView.performDelete}"/>
-							</div>
-							<div class="ui-g-3">
-								<p:commandButton id="cancelDelete"
-								                 type="cancel"
-								                 styleClass="cancelButton"
-								                 icon="fa fa-fw fa-times-circle"
-								                 value="#{msg['org.woehlke.jakartaee.petclinic.specialty.delete.cancel']}"
-								                 ajax="false"
-								                 action="#{specialtyView.cancelDelete}"
-								                 immediate="true"
-								                 includeViewParams="true"/>
 							</div>
 						</div>
 					</p:panel>
