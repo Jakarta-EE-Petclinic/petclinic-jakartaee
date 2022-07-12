@@ -77,6 +77,7 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
         return specialty;
     }
 
+    //TODO: move method to Specialty classs
     private Specialty updateSearchindex(Specialty specialty) {
         String element[] = specialty.getName().split("\\W");
 

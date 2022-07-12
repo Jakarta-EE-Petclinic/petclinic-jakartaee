@@ -12,45 +12,54 @@
 				<h1 id="listEntityHeader" class="contentTitleHeadline">
 					<i class="fa fa-stethoscope contentTitleHeadlineIcon"/>
 					<h:outputText
-									id="listEntityHeaderId"
-									styleClass="contentTitleHeadlineText"
-									value="#{msg['org.woehlke.jakartaee.petclinic.specialty.list']}"/>
+							id="listEntityHeaderId"
+							styleClass="contentTitleHeadlineText"
+							value="#{msg['org.woehlke.jakartaee.petclinic.specialty.list']}"/>
+				</h1>
+			</ui:fragment>
+			<ui:fragment rendered="#{specialtyViewFlow.flowStateDetails}">
+				<h1 id="detailsEntityHeader" class="contentTitleHeadline">
+					<i class="fa fa-stethoscope contentTitleHeadlineIcon"/>
+					<h:outputText
+							id="detailsEntityHeaderId"
+							value="#{msg['org.woehlke.jakartaee.petclinic.specialty']}"
+							styleClass="contentTitleHeadlineText"/>
 				</h1>
 			</ui:fragment>
 			<ui:fragment rendered="#{specialtyViewFlow.flowStateNew}">
 				<h1 id="newEntityHeader" class="contentTitleHeadline">
 					<i class="fa fa-stethoscope contentTitleHeadlineIcon"/>
 					<h:outputText
-									id="newEntityHeaderId"
-									value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew']}"
-									styleClass="contentTitleHeadlineText"/>
+							id="newEntityHeaderId"
+							value="#{msg['org.woehlke.jakartaee.petclinic.specialty.addNew']}"
+							styleClass="contentTitleHeadlineText"/>
 				</h1>
 			</ui:fragment>
 			<ui:fragment rendered="#{specialtyViewFlow.flowStateEdit}">
 				<h1 id="editEntityHeader" class="contentTitleHeadline">
 					<i class="fa fa-stethoscope contentTitleHeadlineIcon"/>
 					<h:outputText
-									id="editEntityHeaderId"
-									value="#{msg['org.woehlke.jakartaee.petclinic.specialty.edit']}"
-									styleClass="contentTitleHeadlineText"/>
+							id="editEntityHeaderId"
+							value="#{msg['org.woehlke.jakartaee.petclinic.specialty.edit']}"
+							styleClass="contentTitleHeadlineText"/>
 				</h1>
 			</ui:fragment>
 			<ui:fragment rendered="#{specialtyViewFlow.flowStateDelete}">
 				<h1 id="deleteEntityHeader" class="contentTitleHeadline">
 					<i class="fa fa-stethoscope contentTitleHeadlineIcon"/>
 					<h:outputText
-									id="deleteEntityHeaderId"
-									value="#{msg['org.woehlke.jakartaee.petclinic.specialty.delete']}"
-									styleClass="contentTitleHeadlineText"/>
+							id="deleteEntityHeaderId"
+							value="#{msg['org.woehlke.jakartaee.petclinic.specialty.delete']}"
+							styleClass="contentTitleHeadlineText"/>
 				</h1>
 			</ui:fragment>
 			<ui:fragment rendered="#{specialtyViewFlow.flowStateSearchResult}">
 				<h1 id="searchResultEntityHeader" class="contentTitleHeadline">
 					<i class="fa fa-stethoscope contentTitleHeadlineIcon"/>
 					<h:outputText
-									id="searchResultEntityHeaderId"
-									value="#{msg['org.woehlke.jakartaee.petclinic.specialty.search']}"
-									styleClass="contentTitleHeadlineText"/>
+							id="searchResultEntityHeaderId"
+							value="#{msg['org.woehlke.jakartaee.petclinic.specialty.search']}"
+							styleClass="contentTitleHeadlineText"/>
 				</h1>
 			</ui:fragment>
 		</div>
@@ -325,7 +334,7 @@
 											styleClass="entityDataTableCell"
 											value="#{specialty.name}"/>
 								</p:column>
-								<p:column id="columnSpecialtyId">
+								<p:column id="columnEntityId">
 									<p:commandButton
 											id="showDetailsFormButton"
 											styleClass="showDetailsFormButton"
