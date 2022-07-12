@@ -121,6 +121,9 @@ public class OwnerFlowViewImpl implements OwnerFlowView, Serializable {
         this.flowState = OwnerFlowState.LIST_SEARCH_RESULT;
     }
 
+    public boolean isRenderPanelDetailsOwner() {
+        return this.isFlowStateDetails();
+    }
 
     public boolean isRenderPanelAddNewOwner() {
         return this.isFlowStateNew();

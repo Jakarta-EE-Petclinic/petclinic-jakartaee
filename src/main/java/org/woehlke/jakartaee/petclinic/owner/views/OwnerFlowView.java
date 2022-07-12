@@ -23,6 +23,8 @@ public interface OwnerFlowView extends CrudFlowView, Serializable {
 
     void setFlowStateNewVisit();
 
+    boolean isRenderPanelDetailsOwner();
+
     boolean isRenderPanelAddNewOwner();
 
     boolean isRenderPanelEditOwner();
