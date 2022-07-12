@@ -43,7 +43,6 @@ public class VetViewImpl implements VetView {
 
     private static final long serialVersionUID = 2838339162976374606L;
 
-    private final static String JSF_PAGE = "veterinarian.jsf";
 
     private MessageProvider provider;
 
@@ -67,43 +66,24 @@ public class VetViewImpl implements VetView {
     private List<Vet> list;
     private String searchterm;
 
-    private void initSpecialtiesPickList() {
-        log.info("initSpecialtiesPickList");
-        List<Specialty> srcList = specialtyService.getAll();
-        List<Specialty> targetList = new ArrayList<>();
-        this.specialtiesPickList = new DualListModel<Specialty>(srcList, targetList);
-    }
-
-    private void resetSpecialtiesPickList() {
-        log.info("resetSpecialtiesPickList");
-        List<Specialty> srcList = new ArrayList<>();
-        List<Specialty> targetList = new ArrayList<>();
-        for (Specialty specialty : this.entity.getSpecialties()) {
-            targetList.add(specialty);
-        }
-        for (Specialty specialty : this.specialtyService.getAll()) {
-            if (!targetList.contains(specialty)) {
-                srcList.add(specialty);
-            }
-        }
-        this.specialtiesPickList = new DualListModel<>(srcList, targetList);
-    }
-
-
-    @Override
-    public Specialty findSpecialtyByName(String name) {
-        return specialtyService.findSpecialtyByName(name);
-    }
-
 
     @Override
     public String showDetailsForm(Vet o) {
-        return null;
+        log.info("showDetailsForm");;
+        if (o != null) {
+            this.entity = entityService.findById(o.getId());
+            this.vetViewFlow.setFlowStateDetails();
+        } else {
+            this.vetViewFlow.setFlowStateList();
+        }
+        return JSF_PAGE;
     }
 
     @Override
-    public String cancelDetails() {
-        return null;
+    public  String cancelDetails(){
+        log.info("cancelDetails");
+        this.vetViewFlow.setFlowStateList();
+        return JSF_PAGE;
     }
 
     @Override
@@ -184,16 +164,6 @@ public class VetViewImpl implements VetView {
     }
 
     @Override
-    public String getSearchterm() {
-        return searchterm;
-    }
-
-    @Override
-    public void setSearchterm(String searchterm) {
-        this.searchterm = searchterm;
-    }
-
-    @Override
     public String clearSearchterm(){
         log.info("clearSearchterm");
         this.searchterm = null;
@@ -208,21 +178,6 @@ public class VetViewImpl implements VetView {
         return JSF_PAGE;
     }
 
-    @Override
-    public LanguageView getLanguageView() {
-        return this.languageView;
-    }
-
-    @Override
-    public void setLanguageView(LanguageView languageView) {
-        this.languageView = languageView;
-    }
-
-    @Override
-    @PreDestroy
-    public void preDestroy() {
-        log.info("preDestroy");
-    }
 
     @Override
     public void loadList() {
@@ -326,6 +281,28 @@ public class VetViewImpl implements VetView {
         }
     }
 
+    public void initSpecialtiesPickList() {
+        log.info("initSpecialtiesPickList");
+        List<Specialty> srcList = specialtyService.getAll();
+        List<Specialty> targetList = new ArrayList<>();
+        this.specialtiesPickList = new DualListModel<Specialty>(srcList, targetList);
+    }
+
+    public void resetSpecialtiesPickList() {
+        log.info("resetSpecialtiesPickList");
+        List<Specialty> srcList = new ArrayList<>();
+        List<Specialty> targetList = new ArrayList<>();
+        for (Specialty specialty : this.entity.getSpecialties()) {
+            targetList.add(specialty);
+        }
+        for (Specialty specialty : this.specialtyService.getAll()) {
+            if (!targetList.contains(specialty)) {
+                srcList.add(specialty);
+            }
+        }
+        this.specialtiesPickList = new DualListModel<>(srcList, targetList);
+    }
+
     @Override
     public List<Vet> getList() {
         if (this.vetViewFlow.isFlowStateSearchResult()) {
@@ -338,8 +315,8 @@ public class VetViewImpl implements VetView {
     }
 
     @Override
-    public void setList(List<Vet> list) {
-        this.list = list;
+    public Specialty findSpecialtyByName(String name) {
+        return specialtyService.findSpecialtyByName(name);
     }
 
     @Override
@@ -358,5 +335,11 @@ public class VetViewImpl implements VetView {
         this.vetViewFlow.setFlowStateList();
         loadList();
         initSpecialtiesPickList();
+    }
+
+    @Override
+    @PreDestroy
+    public void preDestroy() {
+        log.info("preDestroy");
     }
 }

@@ -6,7 +6,6 @@ import org.woehlke.jakartaee.petclinic.application.framework.views.LanguageChang
 import org.woehlke.jakartaee.petclinic.application.framework.views.SearchableView;
 import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView2Model;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import java.io.Serializable;
 
@@ -20,7 +19,7 @@ public interface VetView extends CrudView<Vet>,
         CrudView2Model,
         Serializable {
 
-    long serialVersionUID = -4141782100256382881L;
+    String JSF_PAGE = "veterinarian.jsf";
 
     /**
      * @param name
@@ -37,4 +36,8 @@ public interface VetView extends CrudView<Vet>,
      * @param specialtiesPickList
      */
     void setSpecialtiesPickList(DualListModel<Specialty> specialtiesPickList);
+
+
+
+    long serialVersionUID = -4141782100256382881L;
 }
