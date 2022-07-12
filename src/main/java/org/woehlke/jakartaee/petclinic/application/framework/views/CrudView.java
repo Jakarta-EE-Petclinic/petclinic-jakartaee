@@ -35,4 +35,5 @@ public interface CrudView<T extends EntityBase> extends SearchableView, Language
     void setList(List<T> list);
 
     ResourceBundle getMsg();
+    void setMsg(ResourceBundle msg);
 }
