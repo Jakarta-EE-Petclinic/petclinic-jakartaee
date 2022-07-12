@@ -2,10 +2,10 @@ package org.woehlke.jakartaee.petclinic.owner;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
-import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBaseObject;
-import org.woehlke.jakartaee.petclinic.owner.impl.OwnerListener;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
+import org.woehlke.jakartaee.petclinic.owner.db.OwnerListener;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
-import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import jakarta.persistence.*;
 

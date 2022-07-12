@@ -1,5 +1,7 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import org.primefaces.model.DualListModel;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
@@ -18,6 +20,7 @@ import jakarta.ejb.EJBTransactionRolledbackException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.woehlke.jakartaee.petclinic.vet.VetView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +37,12 @@ import java.util.UUID;
 @Log
 @Named("vetView")
 @SessionScoped
+@Getter
+@Setter
 public class VetViewImpl implements VetView {
 
     private static final long serialVersionUID = 2838339162976374606L;
 
-    private final static String JSF_PAGE = "veterinarian.jsf";
 
     private MessageProvider provider;
 
@@ -49,7 +53,7 @@ public class VetViewImpl implements VetView {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private VetViewFlowImpl vetViewFlow;
+    private VetFlowViewImpl vetViewFlow;
 
     @EJB
     private SpecialtyService specialtyService;
@@ -58,87 +62,28 @@ public class VetViewImpl implements VetView {
     private VetService entityService;
 
     private Vet entity;
-    private Vet selected;
+    private DualListModel<Specialty> specialtiesPickList;
     private List<Vet> list;
-
     private String searchterm;
 
-    private DualListModel<Specialty> specialtiesPickList;
 
-
-    private void initSpecialtiesPickList() {
-        log.info("initSpecialtiesPickList");
-        List<Specialty> srcList = specialtyService.getAll();
-        List<Specialty> targetList = new ArrayList<>();
-        this.specialtiesPickList = new DualListModel<Specialty>(srcList, targetList);
-    }
-
-    private void resetSpecialtiesPickList() {
-        log.info("resetSpecialtiesPickList");
-        List<Specialty> srcList = new ArrayList<>();
-        List<Specialty> targetList = new ArrayList<>();
-        for (Specialty specialty : this.entity.getSpecialties()) {
-            targetList.add(specialty);
+    @Override
+    public String showDetailsForm(Vet o) {
+        log.info("showDetailsForm");;
+        if (o != null) {
+            this.entity = entityService.findById(o.getId());
+            this.vetViewFlow.setFlowStateDetails();
+        } else {
+            this.vetViewFlow.setFlowStateList();
         }
-        for (Specialty specialty : this.specialtyService.getAll()) {
-            if (!targetList.contains(specialty)) {
-                srcList.add(specialty);
-            }
-        }
-        this.specialtiesPickList = new DualListModel<>(srcList, targetList);
-    }
-
-
-    @Override
-    public DualListModel<Specialty> getSpecialtiesPickList() {
-        return specialtiesPickList;
+        return JSF_PAGE;
     }
 
     @Override
-    public void setSpecialtiesPickList(DualListModel<Specialty> specialtiesPickList) {
-        this.specialtiesPickList = specialtiesPickList;
-    }
-
-
-    @Override
-    public Specialty findSpecialtyByName(String name) {
-        return specialtyService.findSpecialtyByName(name);
-    }
-
-    @Override
-    public Vet getEntity() {
-        return entity;
-    }
-
-    @Override
-    public void setEntity(Vet entity) {
-        this.entity = entity;
-    }
-
-    @Override
-    public Vet getSelected() {
-        return selected;
-    }
-
-    @Override
-    public void setSelected(Vet selected) {
-        this.selected = selected;
-    }
-
-    public FlashMessagesView getFrontendMessagesView() {
-        return flashMessagesView;
-    }
-
-    public void setFrontendMessagesView(FlashMessagesView flashMessagesView) {
-        this.flashMessagesView = flashMessagesView;
-    }
-
-    @Override
-    public ResourceBundle getMsg() {
-        return this.provider.getBundle();
-    }
-
-    public void setMsg(ResourceBundle msg) {
+    public  String cancelDetails(){
+        log.info("cancelDetails");
+        this.vetViewFlow.setFlowStateList();
+        return JSF_PAGE;
     }
 
     @Override
@@ -151,40 +96,24 @@ public class VetViewImpl implements VetView {
     }
 
     @Override
+    public String cancelNew() {
+        log.info("cancelNew");
+        this.vetViewFlow.setFlowStateDetails();
+        return JSF_PAGE;
+    }
+
+    @Override
     public String saveNew() {
         log.info("saveNew");
         this.saveNewEntity();
-        this.vetViewFlow.setFlowStateList();
+        this.vetViewFlow.setFlowStateDetails();
         return JSF_PAGE;
-    }
-
-    @Override
-    public String cancelNew() {
-        log.info("cancelNew");
-        this.vetViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public List<Vet> getList() {
-        if (this.vetViewFlow.isFlowStateSearchResult()) {
-            this.performSearch();
-        } else {
-            this.loadList();
-        }
-        this.flashMessagesView.flashTheMessages();
-        return this.list;
-    }
-
-    @Override
-    public void setList(List<Vet> list) {
-        this.list = list;
     }
 
     @Override
     public String showEditForm() {
         log.info("showEditForm");
-        if (this.reloadEntityFromSelected()) {
+        if (this.entity != null) {
             this.resetSpecialtiesPickList();
             this.vetViewFlow.setFlowStateEdit();
         } else {
@@ -194,28 +123,35 @@ public class VetViewImpl implements VetView {
     }
 
     @Override
-    public String saveEdited() {
-        log.info("saveEdited");
-        this.saveEditedEntity();
-        this.vetViewFlow.setFlowStateList();
+    public String cancelEdited() {
+        log.info("cancelEdited");
+        this.vetViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
     @Override
-    public String cancelEdited() {
-        log.info("cancelEdited");
-        this.vetViewFlow.setFlowStateList();
+    public String saveEdited() {
+        log.info("saveEdited");
+        this.saveEditedEntity();
+        this.vetViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
     @Override
     public String showDeleteForm() {
         log.info("showDeleteForm");
-        if (this.reloadEntityFromSelected()) {
+        if (this.entity != null) {
             this.vetViewFlow.setFlowStateDelete();
         } else {
             this.vetViewFlow.setFlowStateList();
         }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String cancelDelete() {
+        log.info("cancelDelete");
+        this.vetViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
@@ -225,23 +161,6 @@ public class VetViewImpl implements VetView {
         this.deleteSelectedEntity();
         this.vetViewFlow.setFlowStateList();
         return JSF_PAGE;
-    }
-
-    @Override
-    public String cancelDelete() {
-        log.info("cancelDelete");
-        this.vetViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String getSearchterm() {
-        return searchterm;
-    }
-
-    @Override
-    public void setSearchterm(String searchterm) {
-        this.searchterm = searchterm;
     }
 
     @Override
@@ -257,6 +176,87 @@ public class VetViewImpl implements VetView {
         log.info("search");
         this.performSearch();
         return JSF_PAGE;
+    }
+
+
+    @Override
+    public void loadList() {
+        this.list = this.entityService.getAll();
+    }
+
+    @Override
+    public void newEntity() {
+        log.info("newEntity");
+        this.entity = new Vet();
+    }
+
+    @Override
+    public void saveNewEntity() {
+        log.info("saveNewEntity");
+        try {
+            log.info("try to save New: " + this.entity.toString());
+            this.entity.removeSpecialties();
+            this.entity.setUuid(UUID.randomUUID());
+            this.entity = entityService.addNew(this.entity);
+            this.entity = entityService.findById(this.entity.getId());
+            log.info("nr source: " + this.specialtiesPickList.getSource().size());
+            log.info("nr target: " + this.specialtiesPickList.getTarget().size());
+            for (Specialty specialtyTransient : this.specialtiesPickList.getTarget()) {
+                Specialty specialty = specialtyService.findSpecialtyByName(specialtyTransient.getName());
+                this.entity.addSpecialty(specialty);
+            }
+            this.entity = entityService.update(this.entity);
+            log.info("saved New: " + this.entity.toString());
+            String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.addNew.done";
+            String summary = this.provider.getBundle().getString(summaryKey);
+            flashMessagesView.addInfoMessage(summary, this.entity);
+        } catch (EJBException e) {
+            log.info(e.getMessage() + this.entity.toString());
+            flashMessagesView.addWarnMessage(e, this.entity);
+        }
+    }
+
+    @Override
+    public void saveEditedEntity() {
+        log.info("saveEditedEntity");
+        try {
+            this.entity.removeSpecialties();
+            for (Specialty specialtyTransient : this.specialtiesPickList.getTarget()) {
+                log.info(" added transient via saveEditedEntity: " + specialtyTransient.getPrimaryKeyWithId());
+                Specialty specialty = specialtyService.findSpecialtyByName(specialtyTransient.getName());
+                this.entity.addSpecialty(specialty);
+            }
+            this.entity = entityService.update(this.entity);
+            String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.edit.done";
+            String summary = this.provider.getBundle().getString(summaryKey);
+            flashMessagesView.addInfoMessage(summary, this.entity);
+        } catch (EJBException e) {
+            log.info(e.getMessage() + this.entity.toString());
+            flashMessagesView.addWarnMessage(e, this.entity);
+        }
+    }
+
+    @Override
+    public void deleteSelectedEntity() {
+        log.info("deleteSelectedEntity");
+        try {
+            if (this.entity != null) {
+                String msgInfo = this.entity.getPrimaryKey();
+                long id = this.entity.getId();
+                entityService.delete(id);
+                this.entity = null;
+                String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.delete.done";
+                String summary = this.provider.getBundle().getString(summaryKey);
+                flashMessagesView.addInfoMessage(summary, msgInfo);
+            }
+            loadList();
+        } catch (EJBTransactionRolledbackException e) {
+            String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.delete.denied";
+            String summary = this.provider.getBundle().getString(summaryKey);
+            flashMessagesView.addWarnMessage(summary, this.entity);
+        } catch (EJBException e) {
+            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
+        }
     }
 
     @Override
@@ -281,133 +281,51 @@ public class VetViewImpl implements VetView {
         }
     }
 
-    @Override
-    public LanguageView getLanguageView() {
-        return this.languageView;
+    public void initSpecialtiesPickList() {
+        log.info("initSpecialtiesPickList");
+        List<Specialty> srcList = specialtyService.getAll();
+        List<Specialty> targetList = new ArrayList<>();
+        this.specialtiesPickList = new DualListModel<Specialty>(srcList, targetList);
+    }
+
+    public void resetSpecialtiesPickList() {
+        log.info("resetSpecialtiesPickList");
+        List<Specialty> srcList = new ArrayList<>();
+        List<Specialty> targetList = new ArrayList<>();
+        for (Specialty specialty : this.entity.getSpecialties()) {
+            targetList.add(specialty);
+        }
+        for (Specialty specialty : this.specialtyService.getAll()) {
+            if (!targetList.contains(specialty)) {
+                srcList.add(specialty);
+            }
+        }
+        this.specialtiesPickList = new DualListModel<>(srcList, targetList);
     }
 
     @Override
-    public void setLanguageView(LanguageView languageView) {
-        this.languageView = languageView;
-    }
-
-    @Override
-    @PreDestroy
-    public void preDestroy() {
-        log.info("preDestroy");
-    }
-
-    @Override
-    public boolean reloadEntityFromSelected() {
-        log.info("reloadEntityFromSelected");
-        if (this.selected != null) {
-            this.entity = entityService.findById(this.selected.getId());
-            this.selected = this.entity;
-            return true;
+    public List<Vet> getList() {
+        if (this.vetViewFlow.isFlowStateSearchResult()) {
+            this.performSearch();
         } else {
-            String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.list.choose.summary";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            String detailKey = "org.woehlke.jakartaee.petclinic.veterinarian.list.choose.detail";
-            String detail = this.provider.getBundle().getString(detailKey);
-            flashMessagesView.addWarnMessage(summary, detail);
-            return false;
+            this.loadList();
         }
+        this.flashMessagesView.flashTheMessages();
+        return this.list;
     }
 
     @Override
-    public void loadList() {
-        this.list = this.entityService.getAll();
+    public Specialty findSpecialtyByName(String name) {
+        return specialtyService.findSpecialtyByName(name);
     }
 
     @Override
-    public void saveNewEntity() {
-        log.info("saveNewEntity");
-        try {
-            log.info("try to save New: " + this.entity.toString());
-            this.entity.removeSpecialties();
-            this.entity.setUuid(UUID.randomUUID());
-            this.entity = entityService.addNew(this.entity);
-            this.entity = entityService.findById(this.entity.getId());
-            log.info("nr source: " + this.specialtiesPickList.getSource().size());
-            log.info("nr target: " + this.specialtiesPickList.getTarget().size());
-            for (Specialty specialtyTransient : this.specialtiesPickList.getTarget()) {
-                Specialty specialty = specialtyService.findSpecialtyByName(specialtyTransient.getName());
-                this.entity.addSpecialty(specialty);
-            }
-            this.entity = entityService.update(this.entity);
-            log.info("saved New: " + this.entity.toString());
-            this.selected = this.entity;
-            String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.addNew.done";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            flashMessagesView.addInfoMessage(summary, this.entity);
-        } catch (EJBException e) {
-            log.info(e.getMessage() + this.entity.toString());
-            flashMessagesView.addWarnMessage(e, this.entity);
-        }
+    public ResourceBundle getMsg() {
+        return this.provider.getBundle();
     }
 
-    @Override
-    public void saveEditedEntity() {
-        log.info("saveEditedEntity");
-        try {
-            this.entity.removeSpecialties();
-            for (Specialty specialtyTransient : this.specialtiesPickList.getTarget()) {
-                log.info(" added transient via saveEditedEntity: " + specialtyTransient.getPrimaryKeyWithId());
-                Specialty specialty = specialtyService.findSpecialtyByName(specialtyTransient.getName());
-                this.entity.addSpecialty(specialty);
-            }
-            this.entity = entityService.update(this.entity);
-            this.selected = this.entity;
-            String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.edit.done";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            flashMessagesView.addInfoMessage(summary, this.entity);
-        } catch (EJBException e) {
-            log.info(e.getMessage() + this.entity.toString());
-            flashMessagesView.addWarnMessage(e, this.entity);
-        }
+    public void setMsg(ResourceBundle msg) {
     }
-
-    @Override
-    public void deleteSelectedEntity() {
-        log.info("deleteSelectedEntity");
-        try {
-            if (this.selected != null) {
-                String msgInfo = this.selected.getPrimaryKey();
-                boolean same = (this.selected.compareTo(this.entity) == 0);
-                long id = this.selected.getId();
-                entityService.delete(id);
-                if (same) {
-                    this.entity = null;
-                }
-                this.selected = null;
-                String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.delete.done";
-                String summary = this.provider.getBundle().getString(summaryKey);
-                flashMessagesView.addInfoMessage(summary, msgInfo);
-            }
-            loadList();
-        } catch (EJBTransactionRolledbackException e) {
-            String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.delete.denied";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            flashMessagesView.addWarnMessage(summary, this.selected);
-        } catch (EJBException e) {
-            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
-        }
-    }
-
-    @Override
-    public void newEntity() {
-        log.info("newEntity");
-        this.entity = new Vet();
-    }
-
-    public VetViewFlowImpl getVetViewFlow() {
-        return vetViewFlow;
-    }
-
-    public void setVetViewFlow(VetViewFlowImpl vetViewFlow) {
-        this.vetViewFlow = vetViewFlow;
-    }
-
 
     @Override
     @PostConstruct
@@ -417,5 +335,11 @@ public class VetViewImpl implements VetView {
         this.vetViewFlow.setFlowStateList();
         loadList();
         initSpecialtiesPickList();
+    }
+
+    @Override
+    @PreDestroy
+    public void preDestroy() {
+        log.info("preDestroy");
     }
 }

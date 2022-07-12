@@ -15,6 +15,7 @@ import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.woehlke.jakartaee.petclinic.specialty.SpecialtyView;
 
 import java.util.List;
 import java.util.ResourceBundle;
@@ -33,12 +34,9 @@ public class SpecialtyViewImpl implements SpecialtyView {
 
     private static final long serialVersionUID = 9080853875975855082L;
 
-    private final static String JSF_PAGE = "specialty.jsf";
-
     private MessageProvider provider;
 
     private Specialty entity;
-    private Specialty selected;
     private List<Specialty> list;
 
     private String searchterm;
@@ -53,23 +51,113 @@ public class SpecialtyViewImpl implements SpecialtyView {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private SpecialtyViewFlowImpl specialtyViewFlow;
+    private SpecialtyFlowView specialtyViewFlow;
 
     @Override
-    public boolean reloadEntityFromSelected() {
-        log.info("reloadEntityFromSelected");
-        if (this.selected != null) {
-            this.selected = entityService.findById(this.selected.getId());
-            this.entity = this.selected;
-            return true;
+    public String showDetailsForm(Specialty o) {
+        log.info("showDetailsForm");;
+        if (o != null) {
+            this.entity = entityService.findById(o.getId());
+            this.specialtyViewFlow.setFlowStateDetails();
         } else {
-            String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.list.choose.summary";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            String detailKey = "org.woehlke.jakartaee.petclinic.specialty.list.choose.detail";
-            String detail = this.provider.getBundle().getString(detailKey);
-            flashMessagesView.addWarnMessage(summary, detail);
-            return false;
+            this.specialtyViewFlow.setFlowStateList();
         }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public  String cancelDetails(){
+        log.info("cancelDetails");
+        this.specialtyViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String showNewForm() {
+        log.info("showNewForm");
+        this.newEntity();
+        this.specialtyViewFlow.setFlowStateNew();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String cancelNew() {
+        log.info("cancelNew");
+        this.specialtyViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String saveNew() {
+        log.info("saveNew");
+        this.saveNewEntity();
+        this.specialtyViewFlow.setFlowStateDetails();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String showEditForm() {
+        log.info("showEditForm");
+        if ( this.entity != null) {
+            this.specialtyViewFlow.setFlowStateEdit();
+        } else {
+            this.specialtyViewFlow.setFlowStateList();
+        }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String cancelEdited() {
+        log.info("cancelEdited");
+        this.specialtyViewFlow.setFlowStateDetails();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String saveEdited() {
+        log.info("saveEdited");
+        this.saveEditedEntity();
+        this.specialtyViewFlow.setFlowStateDetails();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String showDeleteForm() {
+        log.info("showDeleteForm");
+        if ( this.entity != null) {
+            this.specialtyViewFlow.setFlowStateDelete();
+        } else {
+            this.specialtyViewFlow.setFlowStateList();
+        }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String cancelDelete() {
+        log.info("cancelDelete");
+        this.specialtyViewFlow.setFlowStateDetails();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String performDelete() {
+        log.info("performDelete");
+        deleteSelectedEntity();
+        this.specialtyViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String search() {
+        this.performSearch();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String clearSearchterm(){
+        log.info("clearSearchterm");
+        this.searchterm = null;
+        return JSF_PAGE;
     }
 
     @Override
@@ -78,11 +166,17 @@ public class SpecialtyViewImpl implements SpecialtyView {
     }
 
     @Override
+    public void newEntity() {
+        log.info("newEntity");
+        String name = "add new name";
+        this.entity = new Specialty();
+    }
+
+    @Override
     public void saveNewEntity() {
         log.info("saveNewEntity");
         try {
             this.entity = entityService.addNew(this.entity);
-            this.selected = this.entity;
             this.specialtyViewFlow.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.search.done";
             String summary = this.provider.getBundle().getString(summaryKey);
@@ -98,7 +192,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
         log.info("saveEditedEntity");
         try {
             this.entity = this.entityService.update(this.entity);
-            this.selected = this.entity;
             this.specialtyViewFlow.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.edit.done";
             String summary = this.provider.getBundle().getString(summaryKey);
@@ -113,13 +206,10 @@ public class SpecialtyViewImpl implements SpecialtyView {
     public void deleteSelectedEntity() {
         log.info("deleteSelectedEntity");
         try {
-            if (this.selected != null) {
-                String details = this.selected.getPrimaryKey();
-                entityService.delete(this.selected.getId());
-                if (this.selected.compareTo(this.entity) == 0) {
-                    this.entity = null;
-                }
-                this.selected = null;
+            if (this.entity != null) {
+                String details = this.entity.getPrimaryKey();
+                entityService.delete(this.entity.getId());
+                this.entity = null;
                 this.specialtyViewFlow.setFlowStateList();
                 String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.delete.done";
                 String summary = this.provider.getBundle().getString(summaryKey);
@@ -129,100 +219,11 @@ public class SpecialtyViewImpl implements SpecialtyView {
             this.specialtyViewFlow.setFlowStateDelete();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.delete.denied";
             String summary = this.provider.getBundle().getString(summaryKey);
-            flashMessagesView.addWarnMessage(summary, this.selected);
+            flashMessagesView.addWarnMessage(summary, this.entity);
         } catch (EJBException e) {
             this.specialtyViewFlow.setFlowStateDelete();
-            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
+            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
         }
-    }
-
-    @Override
-    public void newEntity() {
-        log.info("newEntity");
-        String name = "add new name";
-        this.entity = new Specialty();
-    }
-
-    @Override
-    public String showEditForm() {
-        log.info("showEditForm");
-        if (this.reloadEntityFromSelected()) {
-            this.specialtyViewFlow.setFlowStateEdit();
-        } else {
-            this.specialtyViewFlow.setFlowStateList();
-        }
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String showNewForm() {
-        log.info("showNewForm");
-        this.newEntity();
-        this.specialtyViewFlow.setFlowStateNew();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String saveNew() {
-        log.info("saveNew");
-        this.saveNewEntity();
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String saveEdited() {
-        log.info("saveEdited");
-        this.saveEditedEntity();
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String cancelEdited() {
-        log.info("cancelEdited");
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String cancelNew() {
-        log.info("cancelNew");
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String showDeleteForm() {
-        log.info("showDeleteForm");
-        if (this.reloadEntityFromSelected()) {
-            this.specialtyViewFlow.setFlowStateDelete();
-        } else {
-            this.specialtyViewFlow.setFlowStateList();
-        }
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String performDelete() {
-        log.info("performDelete");
-        deleteSelectedEntity();
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String cancelDelete() {
-        log.info("cancelDelete");
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String search() {
-        log.info("search");
-        this.specialtyViewFlow.setFlowStateSearchResult();
-        return JSF_PAGE;
     }
 
     @Override
@@ -237,8 +238,8 @@ public class SpecialtyViewImpl implements SpecialtyView {
             flashMessagesView.addInfoMessage(summary, detail);
         } else {
             try {
-                this.specialtyViewFlow.setFlowStateSearchResult();
                 this.list = entityService.search(searchterm);
+                this.specialtyViewFlow.setFlowStateSearchResult();
                 String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
                 String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
                 String found = this.provider.getBundle().getString(foundKey);
@@ -250,13 +251,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
                 flashMessagesView.addWarnMessage(e.getLocalizedMessage(), searchterm);
             }
         }
-    }
-
-    @Override
-    public String clearSearchterm(){
-        log.info("clearSearchterm");
-        this.searchterm = null;
-        return JSF_PAGE;
     }
 
     @Override
@@ -295,16 +289,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
     @Override
     public void setEntity(Specialty entity) {
         this.entity = entity;
-    }
-
-    @Override
-    public Specialty getSelected() {
-        return selected;
-    }
-
-    @Override
-    public void setSelected(Specialty selected) {
-        this.selected = selected;
     }
 
     @Override

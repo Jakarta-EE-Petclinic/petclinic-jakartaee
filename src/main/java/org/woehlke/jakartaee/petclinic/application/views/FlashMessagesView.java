@@ -1,6 +1,6 @@
 package org.woehlke.jakartaee.petclinic.application.views;
 
-import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import java.io.Serializable;
 

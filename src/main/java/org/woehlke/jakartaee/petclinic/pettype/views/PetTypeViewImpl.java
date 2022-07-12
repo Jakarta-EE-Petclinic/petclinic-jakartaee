@@ -18,6 +18,8 @@ import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.woehlke.jakartaee.petclinic.pettype.PetTypeView;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import java.util.List;
 import java.util.ResourceBundle;
@@ -38,8 +40,6 @@ public class PetTypeViewImpl implements PetTypeView {
 
     private static final long serialVersionUID = -528406859430949031L;
 
-    private final static String JSF_PAGE = "petType.jsf";
-
     private MessageProvider provider;
 
     @EJB
@@ -52,28 +52,38 @@ public class PetTypeViewImpl implements PetTypeView {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private PetTypeViewFlowImpl petTypeViewFlow;
+    private PetTypeFlowViewImpl petTypeViewFlow;
+
 
     private PetType entity;
-    private PetType selected;
     private List<PetType> list;
     private String searchterm;
 
+
+    @Override
+    public String showDetailsForm(PetType o) {
+        log.info("showDetailsForm");;
+        if (o != null) {
+            this.entity = entityService.findById(o.getId());
+            this.petTypeViewFlow.setFlowStateDetails();
+        } else {
+            this.petTypeViewFlow.setFlowStateList();
+        }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public  String cancelDetails(){
+        log.info("cancelDetails");
+        this.petTypeViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
 
     @Override
     public String showNewForm() {
         log.info("showNewForm");
         this.newEntity();
         this.petTypeViewFlow.setFlowStateNew();
-        return JSF_PAGE;
-    }
-
-
-    @Override
-    public String saveNew() {
-        log.info("saveNew");
-        this.saveNewEntity();
-        this.petTypeViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
 
@@ -85,9 +95,17 @@ public class PetTypeViewImpl implements PetTypeView {
     }
 
     @Override
+    public String saveNew() {
+        log.info("saveNew");
+        this.saveNewEntity();
+        this.petTypeViewFlow.setFlowStateDetails();
+        return JSF_PAGE;
+    }
+
+    @Override
     public String showEditForm() {
         log.info("showEditForm");
-        if (this.reloadEntityFromSelected()) {
+        if (this.entity != null) {
             this.petTypeViewFlow.setFlowStateEdit();
         } else {
             this.petTypeViewFlow.setFlowStateList();
@@ -96,28 +114,35 @@ public class PetTypeViewImpl implements PetTypeView {
     }
 
     @Override
-    public String saveEdited() {
-        log.info("saveEdited");
-        this.saveEditedEntity();
-        this.petTypeViewFlow.setFlowStateList();
+    public String cancelEdited() {
+        log.info("cancelEdited");
+        this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
     @Override
-    public String cancelEdited() {
-        log.info("cancelEdited");
-        this.petTypeViewFlow.setFlowStateList();
+    public String saveEdited() {
+        log.info("saveEdited");
+        this.saveEditedEntity();
+        this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
     @Override
     public String showDeleteForm() {
         log.info("showDeleteForm");
-        if (this.reloadEntityFromSelected()) {
+        if (this.entity != null) {
             this.petTypeViewFlow.setFlowStateDelete();
         } else {
             this.petTypeViewFlow.setFlowStateList();
         }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String cancelDelete() {
+        log.info("cancelDelete");
+        this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
@@ -130,16 +155,90 @@ public class PetTypeViewImpl implements PetTypeView {
     }
 
     @Override
-    public String cancelDelete() {
-        log.info("cancelDelete");
-        this.petTypeViewFlow.setFlowStateList();
+    public String search() {
+        this.performSearch();
         return JSF_PAGE;
     }
 
     @Override
-    public String search() {
-        this.performSearch();
+    public String clearSearchterm(){
+        log.info("clearSearchterm");
+        this.searchterm = null;
         return JSF_PAGE;
+    }
+
+    @Override
+    public PetType getEntity() {
+        if (entity == null) {
+            newEntity();
+        }
+        return entity;
+    }
+
+    @Override
+    public void newEntity() {
+        log.info("newEntity");
+        this.entity = new PetType();
+    }
+
+    @Override
+    public void saveNewEntity() {
+        log.info("saveNewEntity");
+        try {
+            log.info((this.entity != null) ? this.entity.toString() : "null");
+            this.entity = this.entityService.addNew(this.entity);
+            log.info((this.entity != null) ? this.entity.toString() : "null");
+            this.petTypeViewFlow.setFlowStateDetails();
+            String summaryKey = "org.woehlke.jakartaee.petclinic.petType.addNew.done";
+            String summary = this.provider.getBundle().getString(summaryKey);
+            flashMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
+        } catch (EJBException e) {
+            this.petTypeViewFlow.setFlowStateNew();
+            log.info(e.getMessage() + this.entity.toString());
+            flashMessagesView.addWarnMessage(e, this.entity);
+        }
+    }
+
+    @Override
+    public void saveEditedEntity() {
+        log.info("saveEditedEntity");
+        try {
+            log.info((this.entity != null) ? this.entity.toString() : "null");
+            this.entity = this.entityService.update(this.entity);
+            log.info((this.entity != null) ? this.entity.toString() : "null");
+            this.petTypeViewFlow.setFlowStateDetails();
+            String summaryKey = "org.woehlke.jakartaee.petclinic.petType.edit.done";
+            String summary = this.provider.getBundle().getString(summaryKey);
+            flashMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
+        } catch (EJBException e) {
+            this.petTypeViewFlow.setFlowStateEdit();
+            log.info(e.getMessage() + this.entity.toString());
+        }
+    }
+
+    @Override
+    public void deleteSelectedEntity() {
+        log.info("deleteSelectedEntity");
+        try {
+            if (this.entity != null) {
+                String msgInfo = this.entity.getPrimaryKey();
+                entityService.delete(this.entity.getId());
+                this.entity = null;
+                String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.done";
+                String summary = this.provider.getBundle().getString(summaryKey);
+                flashMessagesView.addInfoMessage(summary, msgInfo);
+                this.petTypeViewFlow.setFlowStateList();
+            }
+            this.petTypeViewFlow.setFlowStateList();
+        } catch (EJBTransactionRolledbackException e) {
+            this.petTypeViewFlow.setFlowStateDelete();
+            String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.denied";
+            String summary = this.provider.getBundle().getString(summaryKey);
+            flashMessagesView.addWarnMessage(summary, this.entity);
+        } catch (EJBException e) {
+            this.petTypeViewFlow.setFlowStateDelete();
+            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
+        }
     }
 
     @Override
@@ -163,36 +262,6 @@ public class PetTypeViewImpl implements PetTypeView {
         }
     }
 
-    @Override
-    public String clearSearchterm(){
-        log.info("clearSearchterm");
-        this.searchterm = null;
-        return JSF_PAGE;
-    }
-
-    @Override
-    public PetType getEntity() {
-        if (entity == null) {
-            newEntity();
-        }
-        return entity;
-    }
-
-    @Override
-    public void setSelected(PetType selected) {
-        this.selected = selected;
-        if (this.selected != null) {
-            this.entity = entityService.findById(this.selected.getId());
-        }
-    }
-
-    public ResourceBundle getMsg() {
-        return this.provider.getBundle();
-    }
-
-    public void setMsg(ResourceBundle msg) {
-    }
-
     public List<PetType> getList() {
         if (this.petTypeViewFlow.isFlowStateSearchResult()) {
             performSearch();
@@ -204,97 +273,16 @@ public class PetTypeViewImpl implements PetTypeView {
     }
 
     @Override
-    public boolean reloadEntityFromSelected() {
-        if (this.selected != null) {
-            this.entity = entityService.findById(this.selected.getId());
-            this.selected = this.entity;
-            return true;
-        } else {
-            String summaryKey = "org.woehlke.jakartaee.petclinic.petType.list.choose.summary";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            String detailKey = "org.woehlke.jakartaee.petclinic.petType.list.choose.detail";
-            String detail = this.provider.getBundle().getString(detailKey);
-            flashMessagesView.addWarnMessage(summary, detail);
-            return false;
-        }
-    }
-
-    @Override
     public void loadList() {
         this.list = this.entityService.getAll();
     }
 
-    @Override
-    public void saveNewEntity() {
-        log.info("saveNewEntity");
-        try {
-            log.info((this.entity != null) ? this.entity.toString() : "null");
-            log.info((this.selected != null) ? this.selected.toString() : "null");
-            this.selected = this.entityService.addNew(this.entity);
-            this.entity = this.selected;
-            log.info((this.entity != null) ? this.entity.toString() : "null");
-            log.info((this.selected != null) ? this.selected.toString() : "null");
-            this.petTypeViewFlow.setFlowStateList();
-            String summaryKey = "org.woehlke.jakartaee.petclinic.petType.addNew.done";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            flashMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
-        } catch (EJBException e) {
-            this.petTypeViewFlow.setFlowStateNew();
-            log.info(e.getMessage() + this.entity.toString());
-            flashMessagesView.addWarnMessage(e, this.entity);
-        }
+
+    public ResourceBundle getMsg() {
+        return this.provider.getBundle();
     }
 
-    @Override
-    public void saveEditedEntity() {
-        log.info("saveEditedEntity");
-        try {
-            log.info((this.entity != null) ? this.entity.toString() : "null");
-            log.info((this.selected != null) ? this.selected.toString() : "null");
-            this.entity = this.entityService.update(this.entity);
-            log.info((this.entity != null) ? this.entity.toString() : "null");
-            log.info((this.selected != null) ? this.selected.toString() : "null");
-            this.petTypeViewFlow.setFlowStateList();
-            String summaryKey = "org.woehlke.jakartaee.petclinic.petType.edit.done";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            flashMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
-        } catch (EJBException e) {
-            this.petTypeViewFlow.setFlowStateEdit();
-            log.info(e.getMessage() + this.entity.toString());
-        }
-    }
-
-    @Override
-    public void deleteSelectedEntity() {
-        log.info("deleteSelectedEntity");
-        try {
-            if (this.selected != null) {
-                String msgInfo = this.selected.getPrimaryKey();
-                if (this.selected.compareTo(this.entity) == 0) {
-                    this.entity = null;
-                }
-                entityService.delete(this.selected.getId());
-                this.selected = null;
-                String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.done";
-                String summary = this.provider.getBundle().getString(summaryKey);
-                flashMessagesView.addInfoMessage(summary, msgInfo);
-            }
-            this.petTypeViewFlow.setFlowStateList();
-        } catch (EJBTransactionRolledbackException e) {
-            this.petTypeViewFlow.setFlowStateDelete();
-            String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.denied";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            flashMessagesView.addWarnMessage(summary, this.selected);
-        } catch (EJBException e) {
-            this.petTypeViewFlow.setFlowStateDelete();
-            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
-        }
-    }
-
-    @Override
-    public void newEntity() {
-        log.info("newEntity");
-        this.entity = new PetType();
+    public void setMsg(ResourceBundle msg) {
     }
 
     @Override

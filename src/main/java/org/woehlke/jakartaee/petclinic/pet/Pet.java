@@ -3,10 +3,10 @@ package org.woehlke.jakartaee.petclinic.pet;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBase;
-import org.woehlke.jakartaee.petclinic.application.framework.entity.EntityBaseObject;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
+import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
-import org.woehlke.jakartaee.petclinic.pet.impl.PetListener;
+import org.woehlke.jakartaee.petclinic.pet.db.PetListener;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
