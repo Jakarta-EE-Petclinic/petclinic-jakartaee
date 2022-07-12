@@ -19,6 +19,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.woehlke.jakartaee.petclinic.pettype.PetTypeView;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import java.util.List;
 import java.util.ResourceBundle;
@@ -61,12 +62,21 @@ public class PetTypeViewImpl implements PetTypeView {
 
     @Override
     public String showDetailsForm(PetType o) {
-        return null;
+        log.info("showDetailsForm");;
+        if (o != null) {
+            this.entity = entityService.findById(o.getId());
+            this.petTypeViewFlow.setFlowStateDetails();
+        } else {
+            this.petTypeViewFlow.setFlowStateList();
+        }
+        return JSF_PAGE;
     }
 
     @Override
-    public String cancelDetails() {
-        return null;
+    public  String cancelDetails(){
+        log.info("cancelDetails");
+        this.petTypeViewFlow.setFlowStateList();
+        return JSF_PAGE;
     }
 
     @Override
@@ -88,7 +98,7 @@ public class PetTypeViewImpl implements PetTypeView {
     public String saveNew() {
         log.info("saveNew");
         this.saveNewEntity();
-        this.petTypeViewFlow.setFlowStateList();
+        this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
@@ -106,7 +116,7 @@ public class PetTypeViewImpl implements PetTypeView {
     @Override
     public String cancelEdited() {
         log.info("cancelEdited");
-        this.petTypeViewFlow.setFlowStateList();
+        this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
@@ -132,7 +142,7 @@ public class PetTypeViewImpl implements PetTypeView {
     @Override
     public String cancelDelete() {
         log.info("cancelDelete");
-        this.petTypeViewFlow.setFlowStateList();
+        this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 

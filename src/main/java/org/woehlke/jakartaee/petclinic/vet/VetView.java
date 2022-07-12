@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.vet.views;
+package org.woehlke.jakartaee.petclinic.vet;
 
 import org.primefaces.model.DualListModel;
 import org.woehlke.jakartaee.petclinic.application.framework.views.CrudView;

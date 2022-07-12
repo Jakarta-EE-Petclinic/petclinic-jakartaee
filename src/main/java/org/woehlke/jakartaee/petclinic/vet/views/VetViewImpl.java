@@ -20,6 +20,7 @@ import jakarta.ejb.EJBTransactionRolledbackException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.woehlke.jakartaee.petclinic.vet.VetView;
 
 import java.util.ArrayList;
 import java.util.List;
