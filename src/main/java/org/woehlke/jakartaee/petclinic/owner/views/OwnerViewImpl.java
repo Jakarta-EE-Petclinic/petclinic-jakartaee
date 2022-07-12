@@ -10,6 +10,7 @@ import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
+import org.woehlke.jakartaee.petclinic.owner.OwnerView;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
