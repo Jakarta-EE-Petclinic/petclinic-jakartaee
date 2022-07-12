@@ -237,10 +237,10 @@ public class OwnerViewImpl implements OwnerView {
     }
 
     @Override
-    public String showOwnerPetEditForm() {
+    public String showOwnerPetEditForm(Pet pet) {
         log.info("showOwnerPetEditForm");
-        if (this.pet != null) {
-            this.pet = petService.findById(this.pet.getId());
+        if (pet != null) {
+            this.pet = petService.findById(pet.getId());
             this.ownerFlowView.setFlowStateEditPet();
         } else {
             this.ownerFlowView.setFlowStateDetails();

@@ -14,15 +14,12 @@ public interface OwnersPetView extends Serializable {
     String cancelOwnerPetNew();
     String saveOwnerPetNew();
 
-    String showOwnerPetEditForm();
+    String showOwnerPetEditForm(Pet pet);
     String cancelOwnerPetEdit();
     String saveOwnerPetEdit();
 
     Pet getPet();
     void setPet(Pet pet);
-
-    //Pet getPetSelected();
-    //void setPetSelected(Pet petSelected);
 
     long getPetTypeId();
     void setPetTypeId(long petTypeId);
