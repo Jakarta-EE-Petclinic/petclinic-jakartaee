@@ -235,15 +235,17 @@
 						</p:messages>
 						<div class="ui-g">
 							<div class="ui-g-2">
-								<p:outputLabel value="#{msg['org.woehlke.jakartaee.petclinic.entities.petType.name']}"
-											   for="detailsPetTypeName"/>
+								<p:outputLabel
+										value="#{msg['org.woehlke.jakartaee.petclinic.entities.petType.name']}"
+										for="detailsPetTypeName"/>
 							</div>
 							<div class="ui-g-10">
-								<p:inputText id="detailsPetTypeName"
-											 styleClass="tw-form-control"
-											 value="#{petTypeView.entity.name}"
-											 required="true"
-											 readonly="true" size="100">
+								<p:inputText
+										id="detailsPetTypeName"
+										styleClass="tw-form-control"
+										value="#{petTypeView.entity.name}"
+										required="true"
+										readonly="true" size="100">
 									<f:validateLength minimum="3"/>
 								</p:inputText>
 								<p:message for="deletePetTypeName" display="icon"/>

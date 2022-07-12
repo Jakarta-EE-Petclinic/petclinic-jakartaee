@@ -438,10 +438,11 @@
 										action="#{vetView.search}"
 										ajax="false"
 										icon="fa fa-fw fa-search"/>
-								<p:inputText id="inputTextSearchterm"
-											 styleClass="tw-form-control"
-											 value="#{vetView.searchterm}"
-											 placeholder="#{msg['org.woehlke.jakartaee.petclinic.veterinarian.search']}"/>
+								<p:inputText
+										id="inputTextSearchterm"
+										styleClass="tw-form-control"
+										value="#{vetView.searchterm}"
+										 placeholder="#{msg['org.woehlke.jakartaee.petclinic.veterinarian.search']}"/>
 								<p:commandButton
 										id="clearSearchButton"
 										styleClass="searchButton"
@@ -463,8 +464,6 @@
 									styleClass="entityDataTable"
 									value="#{vetView.list}"
 									var="vet"
-									selectionMode="single"
-									selection="#{vetView.selected}"
 									rowKey="#{vet.id}"
 									paginator="true" rows="5"
 									paginatorPosition="bottom"
@@ -496,6 +495,14 @@
 										styleClass="entityDataTableCell"
 										value="#{vet.specialtiesAsString}"/>
 								</p:column>
+								<p:column id="columnEntityId">
+									<p:commandButton
+											id="showDetailsFormButton"
+											styleClass="showDetailsFormButton"
+											action="#{vetView.showDetailsForm(vet)}"
+											ajax="false"
+											icon="fa fa-solid fa-chevron-right"/>
+								</p:column>
 							</p:dataTable>
 						</div>
 					</div>
@@ -524,7 +531,7 @@
 							</p:link>
 						</div>
 					</div>
-					<p:defaultCommand target="showEditFormButton" />
+					<p:defaultCommand target="showNewFormButton" />
 				</h:form>
 			</p:panel>
 		</div>

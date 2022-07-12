@@ -124,7 +124,7 @@ public class PetTypeViewImpl implements PetTypeView {
     public String saveEdited() {
         log.info("saveEdited");
         this.saveEditedEntity();
-        this.petTypeViewFlow.setFlowStateList();
+        this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
@@ -227,6 +227,7 @@ public class PetTypeViewImpl implements PetTypeView {
                 String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.done";
                 String summary = this.provider.getBundle().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, msgInfo);
+                this.petTypeViewFlow.setFlowStateList();
             }
             this.petTypeViewFlow.setFlowStateList();
         } catch (EJBTransactionRolledbackException e) {
