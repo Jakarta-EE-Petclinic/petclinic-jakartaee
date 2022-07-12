@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
-import org.woehlke.jakartaee.petclinic.pettype.impl.PetTypeListener;
+import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeListener;
 
 import jakarta.persistence.*;
 

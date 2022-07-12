@@ -18,6 +18,7 @@ import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.woehlke.jakartaee.petclinic.pettype.PetTypeView;
 
 import java.util.List;
 import java.util.ResourceBundle;
@@ -34,11 +35,9 @@ import java.util.ResourceBundle;
 @SessionScoped
 @Getter
 @Setter
-public class PetTypeCrudViewImpl implements PetTypeCrudView {
+public class PetTypeViewImpl implements PetTypeView {
 
     private static final long serialVersionUID = -528406859430949031L;
-
-    private final static String JSF_PAGE = "petType.jsf";
 
     private MessageProvider provider;
 
@@ -54,6 +53,7 @@ public class PetTypeCrudViewImpl implements PetTypeCrudView {
     @Inject
     private PetTypeFlowViewImpl petTypeViewFlow;
 
+
     private PetType entity;
     private PetType selected;
     private List<PetType> list;
@@ -68,18 +68,17 @@ public class PetTypeCrudViewImpl implements PetTypeCrudView {
         return JSF_PAGE;
     }
 
-
     @Override
-    public String saveNew() {
-        log.info("saveNew");
-        this.saveNewEntity();
+    public String cancelNew() {
+        log.info("cancelNew");
         this.petTypeViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
 
     @Override
-    public String cancelNew() {
-        log.info("cancelNew");
+    public String saveNew() {
+        log.info("saveNew");
+        this.saveNewEntity();
         this.petTypeViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
@@ -96,16 +95,16 @@ public class PetTypeCrudViewImpl implements PetTypeCrudView {
     }
 
     @Override
-    public String saveEdited() {
-        log.info("saveEdited");
-        this.saveEditedEntity();
+    public String cancelEdited() {
+        log.info("cancelEdited");
         this.petTypeViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
 
     @Override
-    public String cancelEdited() {
-        log.info("cancelEdited");
+    public String saveEdited() {
+        log.info("saveEdited");
+        this.saveEditedEntity();
         this.petTypeViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
@@ -122,6 +121,13 @@ public class PetTypeCrudViewImpl implements PetTypeCrudView {
     }
 
     @Override
+    public String cancelDelete() {
+        log.info("cancelDelete");
+        this.petTypeViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
+
+    @Override
     public String performDelete() {
         log.info("performDelete");
         this.deleteSelectedEntity();
@@ -130,37 +136,9 @@ public class PetTypeCrudViewImpl implements PetTypeCrudView {
     }
 
     @Override
-    public String cancelDelete() {
-        log.info("cancelDelete");
-        this.petTypeViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
     public String search() {
         this.performSearch();
         return JSF_PAGE;
-    }
-
-    @Override
-    public void performSearch() {
-        String summaryKey = "org.woehlke.jakartaee.petclinic.petType.search.done";
-        String summary = this.provider.getBundle().getString(summaryKey);
-        if (searchterm == null || searchterm.isEmpty()) {
-            this.petTypeViewFlow.setFlowStateList();
-            String missingKey = "org.woehlke.jakartaee.petclinic.list.searchterm.missing";
-            String detail = this.provider.getBundle().getString(missingKey);
-            flashMessagesView.addInfoMessage(summary, detail);
-        } else {
-            this.petTypeViewFlow.setFlowStateSearchResult();
-            this.list = entityService.search(searchterm);
-            String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
-            String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
-            String found = this.provider.getBundle().getString(foundKey);
-            String results = this.provider.getBundle().getString(resultsKey);
-            String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
-            flashMessagesView.addInfoMessage(summary, detail);
-        }
     }
 
     @Override
@@ -220,6 +198,12 @@ public class PetTypeCrudViewImpl implements PetTypeCrudView {
     @Override
     public void loadList() {
         this.list = this.entityService.getAll();
+    }
+
+    @Override
+    public void newEntity() {
+        log.info("newEntity");
+        this.entity = new PetType();
     }
 
     @Override
@@ -290,15 +274,30 @@ public class PetTypeCrudViewImpl implements PetTypeCrudView {
     }
 
     @Override
-    public void newEntity() {
-        log.info("newEntity");
-        this.entity = new PetType();
+    public void performSearch() {
+        String summaryKey = "org.woehlke.jakartaee.petclinic.petType.search.done";
+        String summary = this.provider.getBundle().getString(summaryKey);
+        if (searchterm == null || searchterm.isEmpty()) {
+            this.petTypeViewFlow.setFlowStateList();
+            String missingKey = "org.woehlke.jakartaee.petclinic.list.searchterm.missing";
+            String detail = this.provider.getBundle().getString(missingKey);
+            flashMessagesView.addInfoMessage(summary, detail);
+        } else {
+            this.petTypeViewFlow.setFlowStateSearchResult();
+            this.list = entityService.search(searchterm);
+            String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
+            String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
+            String found = this.provider.getBundle().getString(foundKey);
+            String results = this.provider.getBundle().getString(resultsKey);
+            String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
+            flashMessagesView.addInfoMessage(summary, detail);
+        }
     }
 
     @Override
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: " + PetTypeCrudViewImpl.class.getSimpleName());
+        log.info("postConstruct: " + PetTypeViewImpl.class.getSimpleName());
         this.provider = new MessageProvider();
         this.petTypeViewFlow.setFlowStateList();
     }

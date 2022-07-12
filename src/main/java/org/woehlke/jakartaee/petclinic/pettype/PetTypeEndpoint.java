@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.pettype.api;
+package org.woehlke.jakartaee.petclinic.pettype;
 
 import jakarta.ejb.EJB;
 
@@ -10,7 +10,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.xml.bind.*;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.pettype.PetTypeService;
+import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeEndpointUtil;
 
 import java.io.Serializable;
 
