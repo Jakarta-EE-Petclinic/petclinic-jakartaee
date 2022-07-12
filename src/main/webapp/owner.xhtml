@@ -18,6 +18,15 @@
                 </h1>
             </ui:fragment>
             <ui:fragment rendered="#{ownerViewFlow.flowStateNew}">
+                <h1 id="detailsEntityHeader" class="contentTitleHeadline">
+                    <i class="fas fa-user-tie contentTitleHeadlineIcon"/>
+                    <h:outputText
+                            id="detailsEntityHeaderId"
+                            value="#{msg['org.woehlke.jakartaee.petclinic.owner']}"
+                            styleClass="contentTitleHeadlineText"/>
+                </h1>
+            </ui:fragment>
+            <ui:fragment rendered="#{ownerViewFlow.flowStateNew}">
                 <h1 id="newEntityHeader" class="contentTitleHeadline">
                     <i class="fas fa-user-tie contentTitleHeadlineIcon"/>
                     <h:outputText
@@ -854,8 +863,6 @@
                                         value="#{ownerView.list}"
                                         var="owner"
                                         rowKey="#{owner.id}"
-                                        selection="#{ownerView.selected}"
-                                        selectionMode="single"
                                         paginator="true" rows="5"
                                         paginatorPosition="bottom"
                                         paginatorAlwaysVisible="false">
@@ -881,6 +888,14 @@
                                             id="cityInList"
                                             styleClass="entityDataTableCell"
                                             value="#{owner.city}"/>
+                                    </p:column>
+                                    <p:column id="columnEntityId">
+                                        <p:commandButton
+                                                id="showDetailsFormButton"
+                                                styleClass="showDetailsFormButton"
+                                                action="#{ownerView.showDetailsForm(owner)}"
+                                                ajax="false"
+                                                icon="fa fa-solid fa-chevron-right"/>
                                     </p:column>
                                 </p:dataTable>
                             </div>

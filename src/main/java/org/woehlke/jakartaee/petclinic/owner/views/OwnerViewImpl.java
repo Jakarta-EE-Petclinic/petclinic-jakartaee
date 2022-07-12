@@ -13,6 +13,7 @@ import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.owner.OwnerView;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.owner.OwnerService;
 import org.woehlke.jakartaee.petclinic.pet.PetService;
@@ -84,7 +85,7 @@ public class OwnerViewImpl implements OwnerView {
     public void saveNewEntity() {
         log.info("saveNewEntity");
         try {
-            this.ownerFlowView.setFlowStateList();
+            this.ownerFlowView.setFlowStateDetails();
             if (this.entity != null) {
                 this.entity = this.entityService.addNew(this.entity);
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
@@ -103,7 +104,7 @@ public class OwnerViewImpl implements OwnerView {
     public void saveEditedEntity() {
         log.info("saveEditedEntity");
         try {
-            this.ownerFlowView.setFlowStateList();
+            this.ownerFlowView.setFlowStateDetails();
             if (this.entity != null) {
                 this.entity = entityService.update(this.entity);
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.edit.done";
@@ -182,9 +183,6 @@ public class OwnerViewImpl implements OwnerView {
         return JSF_PAGE;
     }
 
-
-
-
     @Override
     public String clearSearchterm(){
         log.info("clearSearchterm");
@@ -195,12 +193,21 @@ public class OwnerViewImpl implements OwnerView {
 
     @Override
     public String showDetailsForm(Owner o) {
-        return null;
+        log.info("showDetailsForm");
+        if (o != null) {
+            this.entity = entityService.findById(o.getId());
+            this.ownerFlowView.setFlowStateDetails();
+        } else {
+            this.ownerFlowView.setFlowStateList();
+        }
+        return JSF_PAGE;
     }
 
     @Override
-    public String cancelDetails() {
-        return null;
+    public  String cancelDetails(){
+        log.info("cancelDetails");
+        this.ownerFlowView.setFlowStateList();
+        return JSF_PAGE;
     }
 
     @Override
@@ -215,7 +222,7 @@ public class OwnerViewImpl implements OwnerView {
     public String saveNew() {
         log.info("saveNew");
         this.saveNewEntity();
-        this.ownerFlowView.setFlowStateList();
+        this.ownerFlowView.setFlowStateDetails();
         return JSF_PAGE;
     }
 
