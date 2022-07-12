@@ -9,7 +9,7 @@ import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import jakarta.persistence.*;
-import org.woehlke.jakartaee.petclinic.vet.impl.VetListener;
+import org.woehlke.jakartaee.petclinic.vet.db.VetListener;
 
 import java.util.*;
 
