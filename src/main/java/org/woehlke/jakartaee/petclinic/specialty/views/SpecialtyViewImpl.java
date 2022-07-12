@@ -66,6 +66,13 @@ public class SpecialtyViewImpl implements SpecialtyView {
     }
 
     @Override
+    public  String cancelDetails(){
+        log.info("cancelDetails");
+        this.specialtyViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
+
+    @Override
     public String showNewForm() {
         log.info("showNewForm");
         this.newEntity();
