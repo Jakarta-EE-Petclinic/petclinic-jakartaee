@@ -477,7 +477,7 @@
                                 <p:commandButton
                                         id="cancelDetailsOwner"
                                         type="cancel"
-                                        action="#{ownerView.cancelEdited}"
+                                        action="#{ownerView.cancelDetails}"
                                         ajax="false"
                                         icon="fa fa-solid fa-chevron-left"
                                         styleClass="cancelButton"
@@ -908,7 +908,17 @@
                             </div>
                             <p:separator/>
                             <div class="ui-g">
-                                <div class="ui-g-2"></div>
+                                <div class="ui-g-2">
+                                    <p:commandButton
+                                            id="cancelAddNewOwnersPetVisit"
+                                            type="cancel"
+                                            action="#{ownerView.cancelOwnerPetVisitNew}"
+                                            immediate="true"
+                                            ajax="false"
+                                            icon="fa fa-solid fa-chevron-left"
+                                            styleClass="cancelButton"
+                                            includeViewParams="true"/>
+                                </div>
                                 <div class="ui-g-3">
                                     <p:commandButton
                                         id="saveAddNewOwnersPetVisit"
@@ -920,15 +930,6 @@
                                         styleClass="saveButton"/>
                                 </div>
                                 <div class="ui-g-3">
-                                    <p:commandButton
-                                        id="cancelAddNewOwnersPetVisit"
-                                        type="cancel"
-                                        action="#{ownerView.cancelOwnerPetVisitNew}"
-                                        immediate="true"
-                                        ajax="false"
-                                        icon="fa fa-solid fa-chevron-left"
-                                        styleClass="cancelButton"
-                                        includeViewParams="true"/>
                                 </div>
                                 <div class="ui-g-4"></div>
                             </div>

@@ -79,46 +79,55 @@ public class OwnerFlowViewImpl implements OwnerFlowView, Serializable {
     @Override
     public void setFlowStateNewVisit() {
         this.flowState = OwnerFlowState.NEW_VISIT;
+        logFlowState();
     }
 
     @Override
     public void setFlowStateNewPet() {
         this.flowState = OwnerFlowState.NEW_PET;
+        logFlowState();
     }
 
     @Override
     public void setFlowStateEditPet() {
         this.flowState = OwnerFlowState.EDIT_PET;
+        logFlowState();
     }
 
     @Override
     public void setFlowStateList() {
         this.flowState = OwnerFlowState.LIST;
+        logFlowState();
     }
 
     @Override
     public void setFlowStateDetails() {
         this.flowState = OwnerFlowState.DETAILS;
+        logFlowState();
     }
 
     @Override
     public void setFlowStateNew() {
         this.flowState = OwnerFlowState.NEW_OWNER;
+        logFlowState();
     }
 
     @Override
     public void setFlowStateEdit() {
         this.flowState = OwnerFlowState.EDIT_OWNER;
+        logFlowState();
     }
 
     @Override
     public void setFlowStateDelete() {
         this.flowState = OwnerFlowState.DELETE_OWNER;
+        logFlowState();
     }
 
     @Override
     public void setFlowStateSearchResult() {
         this.flowState = OwnerFlowState.LIST_SEARCH_RESULT;
+        logFlowState();
     }
 
     public boolean isRenderPanelDetailsOwner() {
