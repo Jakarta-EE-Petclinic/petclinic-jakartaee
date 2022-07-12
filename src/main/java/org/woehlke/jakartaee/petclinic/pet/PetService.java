@@ -1,6 +1,6 @@
 package org.woehlke.jakartaee.petclinic.pet;
 
-import org.woehlke.jakartaee.petclinic.application.framework.impl.CrudService;
+import org.woehlke.jakartaee.petclinic.application.framework.db.CrudService;
 
 import java.io.Serializable;
 

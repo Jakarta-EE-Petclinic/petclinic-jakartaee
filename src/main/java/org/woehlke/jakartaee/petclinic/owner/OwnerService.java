@@ -2,8 +2,8 @@ package org.woehlke.jakartaee.petclinic.owner;
 
 import jakarta.validation.constraints.NotNull;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
-import org.woehlke.jakartaee.petclinic.application.framework.impl.CrudService;
-import org.woehlke.jakartaee.petclinic.application.framework.impl.SearchableService;
+import org.woehlke.jakartaee.petclinic.application.framework.db.CrudService;
+import org.woehlke.jakartaee.petclinic.application.framework.db.SearchableService;
 
 /**
  * Created by tw on 10.03.14.

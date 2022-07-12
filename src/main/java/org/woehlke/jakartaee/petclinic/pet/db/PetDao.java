@@ -1,6 +1,6 @@
 package org.woehlke.jakartaee.petclinic.pet.db;
 
-import org.woehlke.jakartaee.petclinic.application.framework.impl.CrudDao;
+import org.woehlke.jakartaee.petclinic.application.framework.db.CrudDao;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 /**

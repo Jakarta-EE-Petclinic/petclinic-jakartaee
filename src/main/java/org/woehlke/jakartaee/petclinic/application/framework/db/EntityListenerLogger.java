@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.framework.impl;
+package org.woehlke.jakartaee.petclinic.application.framework.db;
 
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;

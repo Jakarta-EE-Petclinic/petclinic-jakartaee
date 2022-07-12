@@ -1,7 +1,7 @@
 package org.woehlke.jakartaee.petclinic.specialty.db;
 
 import jakarta.validation.constraints.NotNull;
-import org.woehlke.jakartaee.petclinic.application.framework.impl.CrudDao;
+import org.woehlke.jakartaee.petclinic.application.framework.db.CrudDao;
 import org.woehlke.jakartaee.petclinic.application.framework.SearchableEntity;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 

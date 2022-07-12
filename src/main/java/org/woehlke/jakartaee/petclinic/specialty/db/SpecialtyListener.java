@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 
-import static org.woehlke.jakartaee.petclinic.application.framework.impl.EntityListenerLogger.logIt;
+import static org.woehlke.jakartaee.petclinic.application.framework.db.EntityListenerLogger.logIt;
 
 @Log
 public class SpecialtyListener implements Serializable {
