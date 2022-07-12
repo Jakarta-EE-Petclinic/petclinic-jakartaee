@@ -8,7 +8,7 @@ import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import jakarta.persistence.*;
-import org.woehlke.jakartaee.petclinic.visit.impl.VisitListener;
+import org.woehlke.jakartaee.petclinic.visit.db.VisitListener;
 
 import java.util.Date;
 import java.util.UUID;

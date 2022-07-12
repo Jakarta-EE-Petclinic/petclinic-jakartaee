@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.visit.api;
+package org.woehlke.jakartaee.petclinic.visit;
 
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -10,6 +10,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.visit.VisitService;
+import org.woehlke.jakartaee.petclinic.visit.api.VisitEndpointUtil;
 
 import java.io.Serializable;
 

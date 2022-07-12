@@ -6,7 +6,7 @@ import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pet.impl.PetDao;
-import org.woehlke.jakartaee.petclinic.visit.impl.VisitDao;
+import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;

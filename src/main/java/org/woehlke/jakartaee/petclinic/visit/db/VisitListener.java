@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.visit.impl;
+package org.woehlke.jakartaee.petclinic.visit.db;
 
 
 import lombok.extern.java.Log;
