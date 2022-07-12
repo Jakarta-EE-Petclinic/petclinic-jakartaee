@@ -226,7 +226,7 @@
 			</ui:fragment>
 
 
-			<ui:fragment rendered="#{petTypeViewFlow.flowStateDelete}">
+			<ui:fragment rendered="#{petTypeViewFlow.flowStateDetails}">
 				<h:form id="detailsEntityForm" styleClass="detailsEntityForm">
 					<p:panel id="detailsEntityFormPanel" styleClass="contentPanel"
 							 header="#{msg['org.woehlke.jakartaee.petclinic.petType']}">
@@ -245,10 +245,11 @@
 										styleClass="tw-form-control"
 										value="#{petTypeView.entity.name}"
 										required="true"
+										disabled="true"
 										readonly="true" size="100">
 									<f:validateLength minimum="3"/>
 								</p:inputText>
-								<p:message for="deletePetTypeName" display="icon"/>
+								<p:message for="detailsPetTypeName" display="icon"/>
 							</div>
 						</div>
 						<div class="ui-g">

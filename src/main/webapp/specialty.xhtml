@@ -230,17 +230,19 @@
 						</p:messages>
 						<div class="ui-g">
 							<div class="ui-g-2 tw-form-group">
-								<p:outputLabel for="nameDetails"
-											   value="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
+								<p:outputLabel
+										for="nameDetails"
+										value="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
 							</div>
 							<div class="ui-g-10 tw-form-group">
-								<p:inputText id="nameDetails"
-											 styleClass="tw-form-control"
-											 value="#{specialtyView.entity.name}"
-											 required="true"
-											 readonly="true"
-											 size="100"
-											 label="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
+								<p:inputText
+										id="nameDetails"
+										styleClass="tw-form-control"
+										value="#{specialtyView.entity.name}"
+										required="true"
+										disabled="true"
+										size="100"
+										label="#{msg['org.woehlke.jakartaee.petclinic.entities.specialty.name']}"/>
 								<p:message for="nameDetails" display="icon"/>
 							</div>
 						</div>

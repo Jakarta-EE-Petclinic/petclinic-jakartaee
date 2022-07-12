@@ -327,8 +327,7 @@
 				</h:form>
 			</ui:fragment>
 
-
-			<ui:fragment rendered="#{vetViewFlow.flowStateDelete}">
+			<ui:fragment rendered="#{vetViewFlow.flowStateDetails}">
 				<h:form id="detailsEntityForm" styleClass="detailsEntityForm">
 					<p:panel id="detailsEntityFormPanel" styleClass="contentPanel"
 							 header="#{msg['org.woehlke.jakartaee.petclinic.veterinarian']}">
@@ -346,7 +345,9 @@
 										id="firstNameDetails"
 										styleClass="tw-form-control"
 										value="#{vetView.entity.firstName}"
-										readonly="true" size="50"/>
+										disabled="true"
+										readonly="true"
+										size="50"/>
 								<p:message for="firstNameDetails" display="icon"/>
 							</div>
 						</div>
@@ -361,7 +362,9 @@
 										id="lastNameDetails"
 										styleClass="tw-form-control"
 										value="#{vetView.entity.lastName}"
-										readonly="true" size="50"/>
+										disabled="true"
+										readonly="true"
+										size="50"/>
 								<p:message for="lastNameDetails" display="icon"/>
 							</div>
 						</div>
@@ -369,7 +372,7 @@
 							<div class="ui-g-2">
 								<p:outputLabel
 										value="#{msg['org.woehlke.jakartaee.petclinic.entities.veterinarian.specialties']}"
-										for="selectedSpecialtiesPickListDelete"/>
+										for="selectedSpecialtiesPickListDetails"/>
 							</div>
 							<div class="ui-g-10">
 								<p:pickList
@@ -377,7 +380,7 @@
 										value="#{vetView.specialtiesPickList}"
 										var="specialty"
 										converter="specialtyConverter"
-										readonly="true"
+										disabled="true"
 										itemValue="#{specialty}"
 										itemLabel="#{specialty.name}"/>
 							</div>
@@ -442,7 +445,7 @@
 										id="inputTextSearchterm"
 										styleClass="tw-form-control"
 										value="#{vetView.searchterm}"
-										 placeholder="#{msg['org.woehlke.jakartaee.petclinic.veterinarian.search']}"/>
+										placeholder="#{msg['org.woehlke.jakartaee.petclinic.veterinarian.search']}"/>
 								<p:commandButton
 										id="clearSearchButton"
 										styleClass="searchButton"
