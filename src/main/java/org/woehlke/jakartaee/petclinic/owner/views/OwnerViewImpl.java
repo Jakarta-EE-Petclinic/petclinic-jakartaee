@@ -176,6 +176,7 @@ public class OwnerViewImpl implements OwnerView {
     @Override
     public String performDelete() {
         log.info("performDelete");
+        this.ownerFlowView.setFlowStateDelete();
         try {
             long id = this.entity.getId();
             String uuid = this.entity.getUuid().toString();
@@ -186,8 +187,8 @@ public class OwnerViewImpl implements OwnerView {
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
             String summary = this.messageProvider.getBundle().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, selectedPrimaryKey);
+            this.ownerFlowView.setFlowStateList();
         } catch (EJBException e) {
-            this.ownerFlowView.setFlowStateDelete();
             flashMessagesView.addWarnMessage(e, this.entity);
         }
         return JSF_PAGE;
