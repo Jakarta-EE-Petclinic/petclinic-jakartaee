@@ -55,10 +55,19 @@ public class PetTypeViewImpl implements PetTypeView {
 
 
     private PetType entity;
-    private PetType selected;
     private List<PetType> list;
     private String searchterm;
 
+
+    @Override
+    public String showDetailsForm(PetType o) {
+        return null;
+    }
+
+    @Override
+    public String cancelDetails() {
+        return null;
+    }
 
     @Override
     public String showNewForm() {
@@ -86,7 +95,7 @@ public class PetTypeViewImpl implements PetTypeView {
     @Override
     public String showEditForm() {
         log.info("showEditForm");
-        if (this.reloadEntityFromSelected()) {
+        if (this.entity != null) {
             this.petTypeViewFlow.setFlowStateEdit();
         } else {
             this.petTypeViewFlow.setFlowStateList();
@@ -112,7 +121,7 @@ public class PetTypeViewImpl implements PetTypeView {
     @Override
     public String showDeleteForm() {
         log.info("showDeleteForm");
-        if (this.reloadEntityFromSelected()) {
+        if (this.entity != null) {
             this.petTypeViewFlow.setFlowStateDelete();
         } else {
             this.petTypeViewFlow.setFlowStateList();
@@ -156,50 +165,6 @@ public class PetTypeViewImpl implements PetTypeView {
         return entity;
     }
 
-    public void setSelected(PetType selected) {
-        this.selected = selected;
-        if (this.selected != null) {
-            this.entity = entityService.findById(this.selected.getId());
-        }
-    }
-
-    public ResourceBundle getMsg() {
-        return this.provider.getBundle();
-    }
-
-    public void setMsg(ResourceBundle msg) {
-    }
-
-    public List<PetType> getList() {
-        if (this.petTypeViewFlow.isFlowStateSearchResult()) {
-            performSearch();
-        } else {
-            loadList();
-        }
-        this.flashMessagesView.flashTheMessages();
-        return list;
-    }
-
-    public boolean reloadEntityFromSelected() {
-        if (this.selected != null) {
-            this.entity = entityService.findById(this.selected.getId());
-            this.selected = this.entity;
-            return true;
-        } else {
-            String summaryKey = "org.woehlke.jakartaee.petclinic.petType.list.choose.summary";
-            String summary = this.provider.getBundle().getString(summaryKey);
-            String detailKey = "org.woehlke.jakartaee.petclinic.petType.list.choose.detail";
-            String detail = this.provider.getBundle().getString(detailKey);
-            flashMessagesView.addWarnMessage(summary, detail);
-            return false;
-        }
-    }
-
-    @Override
-    public void loadList() {
-        this.list = this.entityService.getAll();
-    }
-
     @Override
     public void newEntity() {
         log.info("newEntity");
@@ -211,12 +176,9 @@ public class PetTypeViewImpl implements PetTypeView {
         log.info("saveNewEntity");
         try {
             log.info((this.entity != null) ? this.entity.toString() : "null");
-            log.info((this.selected != null) ? this.selected.toString() : "null");
-            this.selected = this.entityService.addNew(this.entity);
-            this.entity = this.selected;
+            this.entity = this.entityService.addNew(this.entity);
             log.info((this.entity != null) ? this.entity.toString() : "null");
-            log.info((this.selected != null) ? this.selected.toString() : "null");
-            this.petTypeViewFlow.setFlowStateList();
+            this.petTypeViewFlow.setFlowStateDetails();
             String summaryKey = "org.woehlke.jakartaee.petclinic.petType.addNew.done";
             String summary = this.provider.getBundle().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
@@ -232,11 +194,9 @@ public class PetTypeViewImpl implements PetTypeView {
         log.info("saveEditedEntity");
         try {
             log.info((this.entity != null) ? this.entity.toString() : "null");
-            log.info((this.selected != null) ? this.selected.toString() : "null");
             this.entity = this.entityService.update(this.entity);
             log.info((this.entity != null) ? this.entity.toString() : "null");
-            log.info((this.selected != null) ? this.selected.toString() : "null");
-            this.petTypeViewFlow.setFlowStateList();
+            this.petTypeViewFlow.setFlowStateDetails();
             String summaryKey = "org.woehlke.jakartaee.petclinic.petType.edit.done";
             String summary = this.provider.getBundle().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
@@ -250,13 +210,10 @@ public class PetTypeViewImpl implements PetTypeView {
     public void deleteSelectedEntity() {
         log.info("deleteSelectedEntity");
         try {
-            if (this.selected != null) {
-                String msgInfo = this.selected.getPrimaryKey();
-                if (this.selected.compareTo(this.entity) == 0) {
-                    this.entity = null;
-                }
-                entityService.delete(this.selected.getId());
-                this.selected = null;
+            if (this.entity != null) {
+                String msgInfo = this.entity.getPrimaryKey();
+                entityService.delete(this.entity.getId());
+                this.entity = null;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.done";
                 String summary = this.provider.getBundle().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, msgInfo);
@@ -266,10 +223,10 @@ public class PetTypeViewImpl implements PetTypeView {
             this.petTypeViewFlow.setFlowStateDelete();
             String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.denied";
             String summary = this.provider.getBundle().getString(summaryKey);
-            flashMessagesView.addWarnMessage(summary, this.selected);
+            flashMessagesView.addWarnMessage(summary, this.entity);
         } catch (EJBException e) {
             this.petTypeViewFlow.setFlowStateDelete();
-            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
+            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
         }
     }
 
@@ -292,6 +249,29 @@ public class PetTypeViewImpl implements PetTypeView {
             String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
             flashMessagesView.addInfoMessage(summary, detail);
         }
+    }
+
+    public List<PetType> getList() {
+        if (this.petTypeViewFlow.isFlowStateSearchResult()) {
+            performSearch();
+        } else {
+            loadList();
+        }
+        this.flashMessagesView.flashTheMessages();
+        return list;
+    }
+
+    @Override
+    public void loadList() {
+        this.list = this.entityService.getAll();
+    }
+
+
+    public ResourceBundle getMsg() {
+        return this.provider.getBundle();
+    }
+
+    public void setMsg(ResourceBundle msg) {
     }
 
     @Override

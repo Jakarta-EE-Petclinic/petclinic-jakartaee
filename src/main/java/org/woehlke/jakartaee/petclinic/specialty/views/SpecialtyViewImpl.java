@@ -91,7 +91,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
     public String saveNew() {
         log.info("saveNew");
         this.saveNewEntity();
-        this.specialtyViewFlow.setFlowStateList();
+        this.specialtyViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
@@ -117,7 +117,7 @@ public class SpecialtyViewImpl implements SpecialtyView {
     public String saveEdited() {
         log.info("saveEdited");
         this.saveEditedEntity();
-        this.specialtyViewFlow.setFlowStateList();
+        this.specialtyViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 

@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface VetCrudView extends CrudView<Vet>,
+public interface VetView extends CrudView<Vet>,
         LanguageChangeableView,
         SearchableView,
         CrudView2Model,

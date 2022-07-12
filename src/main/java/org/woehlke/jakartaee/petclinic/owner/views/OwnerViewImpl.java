@@ -44,8 +44,6 @@ public class OwnerViewImpl implements OwnerView {
 
     private static final long serialVersionUID = -4809817472969005481L;
 
-    private final static String JSF_PAGE = "owner.jsf";
-
     private MessageProvider messageProvider;
 
     @EJB
@@ -67,33 +65,15 @@ public class OwnerViewImpl implements OwnerView {
     private FlashMessagesView flashMessagesView;
 
     @Inject
-    private OwnerFlowViewImpl ownerFlowViewImpl;
+    private OwnerFlowView ownerFlowView;
 
     private String searchterm;
     private List<Owner> list;
     private Owner entity;
-    private Owner selected;
     private Pet pet;
-    private Pet petSelected;
     private List<PetType> petTypeList;
     private long petTypeId;
     private Visit visit;
-
-    public boolean reloadEntityFromSelected() {
-        log.info("reloadEntityFromSelected");
-        if (this.selected != null) {
-            this.entity = entityService.findById(this.selected.getId());
-            this.selected = this.entity;
-            return true;
-        } else {
-            String summaryKey = "org.woehlke.jakartaee.petclinic.owner.list.choose.summary";
-            String summary = this.messageProvider.getBundle().getString(summaryKey);
-            String detailKey = "org.woehlke.jakartaee.petclinic.owner.list.choose.detail";
-            String detail = this.messageProvider.getBundle().getString(detailKey);
-            flashMessagesView.addWarnMessage(summary, detail);
-            return false;
-        }
-    }
 
     @Override
     public void loadList() {
@@ -104,10 +84,9 @@ public class OwnerViewImpl implements OwnerView {
     public void saveNewEntity() {
         log.info("saveNewEntity");
         try {
-            this.ownerFlowViewImpl.setFlowStateList();
+            this.ownerFlowView.setFlowStateList();
             if (this.entity != null) {
                 this.entity = this.entityService.addNew(this.entity);
-                this.selected = this.entity;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
                 String summary = this.messageProvider.getBundle().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, this.entity);
@@ -115,7 +94,7 @@ public class OwnerViewImpl implements OwnerView {
                 this.newEntity();
             }
         } catch (EJBException e) {
-            this.ownerFlowViewImpl.setFlowStateNew();
+            this.ownerFlowView.setFlowStateNew();
             flashMessagesView.addWarnMessage(e, this.entity);
         }
     }
@@ -124,16 +103,15 @@ public class OwnerViewImpl implements OwnerView {
     public void saveEditedEntity() {
         log.info("saveEditedEntity");
         try {
-            this.ownerFlowViewImpl.setFlowStateList();
+            this.ownerFlowView.setFlowStateList();
             if (this.entity != null) {
                 this.entity = entityService.update(this.entity);
-                this.selected = this.entity;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.edit.done";
                 String summary = this.messageProvider.getBundle().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, this.entity);
             }
         } catch (EJBException e) {
-            this.ownerFlowViewImpl.setFlowStateEdit();
+            this.ownerFlowView.setFlowStateEdit();
             flashMessagesView.addWarnMessage(e, this.entity);
         }
     }
@@ -142,29 +120,26 @@ public class OwnerViewImpl implements OwnerView {
     public void deleteSelectedEntity() {
         log.info("deleteSelectedEntity");
         try {
-            if (this.reloadEntityFromSelected()) {
-                String msgInfo = this.selected.getPrimaryKey();
-                if (this.selected.compareTo(this.entity) == 0) {
-                    this.entity = null;
-                }
-                entityService.delete(this.selected.getId());
-                this.selected = null;
-                this.ownerFlowViewImpl.setFlowStateList();
+            if (this.entity != null) {
+                String msgInfo = this.entity.getPrimaryKey();
+                entityService.delete(this.entity.getId());
+                this.entity = null;
+                this.ownerFlowView.setFlowStateList();
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
                 String summary = this.messageProvider.getBundle().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, msgInfo);
-                this.ownerFlowViewImpl.setFlowStateDelete();
+                this.ownerFlowView.setFlowStateDelete();
             } else {
-                this.ownerFlowViewImpl.setFlowStateList();
+                this.ownerFlowView.setFlowStateList();
             }
         } catch (EJBTransactionRolledbackException e) {
-            this.ownerFlowViewImpl.setFlowStateDelete();
+            this.ownerFlowView.setFlowStateDelete();
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.denied";
             String summary = this.messageProvider.getBundle().getString(summaryKey);
-            flashMessagesView.addWarnMessage(summary, this.selected);
+            flashMessagesView.addWarnMessage(summary, this.entity);
         } catch (EJBException e) {
-            this.ownerFlowViewImpl.setFlowStateDelete();
-            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.selected);
+            this.ownerFlowView.setFlowStateDelete();
+            flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
         }
     }
 
@@ -193,7 +168,7 @@ public class OwnerViewImpl implements OwnerView {
             String missingKey = "org.woehlke.jakartaee.petclinic.list.searchterm.missing";
             String detail = this.messageProvider.getBundle().getString(missingKey);
             flashMessagesView.addInfoMessage(summary, detail);
-            this.ownerFlowViewImpl.setFlowStateList();
+            this.ownerFlowView.setFlowStateList();
         } else {
             this.performSearch();
             String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
@@ -202,31 +177,37 @@ public class OwnerViewImpl implements OwnerView {
             String results = this.messageProvider.getBundle().getString(resultsKey);
             String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
             flashMessagesView.addInfoMessage(summary, detail);
-            this.ownerFlowViewImpl.setFlowStateSearchResult();
+            this.ownerFlowView.setFlowStateSearchResult();
         }
         return JSF_PAGE;
     }
 
-    @Override
-    public void performSearch() {
-        log.info("performSearch");
-        this.list = entityService.search(this.searchterm);
-    }
+
 
 
     @Override
     public String clearSearchterm(){
         log.info("clearSearchterm");
         this.searchterm = null;
-        this.ownerFlowViewImpl.setFlowStateList();
+        this.ownerFlowView.setFlowStateList();
         return JSF_PAGE;
+    }
+
+    @Override
+    public String showDetailsForm(Owner o) {
+        return null;
+    }
+
+    @Override
+    public String cancelDetails() {
+        return null;
     }
 
     @Override
     public String showNewForm() {
         log.info("showNewForm");
         this.newEntity();
-        this.ownerFlowViewImpl.setFlowStateNew();
+        this.ownerFlowView.setFlowStateNew();
         return JSF_PAGE;
     }
 
@@ -234,32 +215,31 @@ public class OwnerViewImpl implements OwnerView {
     public String saveNew() {
         log.info("saveNew");
         this.saveNewEntity();
-        this.ownerFlowViewImpl.setFlowStateList();
+        this.ownerFlowView.setFlowStateList();
         return JSF_PAGE;
     }
 
     @Override
     public String cancelNew() {
         log.info("cancelNew");
-        this.ownerFlowViewImpl.setFlowStateList();
+        this.ownerFlowView.setFlowStateList();
         return JSF_PAGE;
     }
 
     @Override
     public String cancelOwnerPetVisitNew() {
         log.info("cancelOwnerPetVisitNew");
-        this.reloadEntityFromSelected();
-        this.ownerFlowViewImpl.setFlowStateEdit();
+        this.ownerFlowView.setFlowStateEdit();
         return JSF_PAGE;
     }
 
     @Override
     public String showOwnerEditForm() {
         log.info("showOwnerEditForm");
-        if (this.reloadEntityFromSelected()) {
-            this.ownerFlowViewImpl.setFlowStateEdit();
+        if (this.entity != null) {
+            this.ownerFlowView.setFlowStateEdit();
         } else {
-            this.ownerFlowViewImpl.setFlowStateList();
+            this.ownerFlowView.setFlowStateList();
         }
         return JSF_PAGE;
     }
@@ -267,15 +247,14 @@ public class OwnerViewImpl implements OwnerView {
     @Override
     public String showEditForm() {
         log.info("showEditForm");
-        this.reloadEntityFromSelected();
-        this.ownerFlowViewImpl.setFlowStateEdit();
+        this.ownerFlowView.setFlowStateEdit();
         return JSF_PAGE;
     }
 
     @Override
     public String cancelEdited() {
         log.info("cancelEdited");
-        this.ownerFlowViewImpl.setFlowStateList();
+        this.ownerFlowView.setFlowStateList();
         return JSF_PAGE;
     }
 
@@ -283,17 +262,17 @@ public class OwnerViewImpl implements OwnerView {
     public String saveEdited() {
         log.info("saveEdited");
         this.saveEditedEntity();
-        this.ownerFlowViewImpl.setFlowStateList();
+        this.ownerFlowView.setFlowStateList();
         return JSF_PAGE;
     }
 
     @Override
     public String showDeleteForm() {
         log.info("showDeleteForm");
-        if (this.reloadEntityFromSelected()) {
-            this.ownerFlowViewImpl.setFlowStateDelete();
+        if (this.entity != null) {
+            this.ownerFlowView.setFlowStateDelete();
         } else {
-            this.ownerFlowViewImpl.setFlowStateList();
+            this.ownerFlowView.setFlowStateList();
         }
         return JSF_PAGE;
     }
@@ -301,7 +280,7 @@ public class OwnerViewImpl implements OwnerView {
     @Override
     public String cancelDelete() {
         log.info("cancelDelete");
-        this.ownerFlowViewImpl.setFlowStateList();
+        this.ownerFlowView.setFlowStateList();
         return JSF_PAGE;
     }
 
@@ -309,19 +288,18 @@ public class OwnerViewImpl implements OwnerView {
     public String performDelete() {
         log.info("performDelete");
         try {
-            long id = this.selected.getId();
-            String uuid = this.selected.getUuid().toString();
-            String selectedPrimaryKey = this.selected.getPrimaryKey() + "(" + id + "," + uuid + ")";
+            long id = this.entity.getId();
+            String uuid = this.entity.getUuid().toString();
+            String selectedPrimaryKey = this.entity.getPrimaryKey() + "(" + id + "," + uuid + ")";
             entityService.delete(id);
-            this.selected = null;
             this.entity = null;
-            this.ownerFlowViewImpl.setFlowStateList();
+            this.ownerFlowView.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
             String summary = this.messageProvider.getBundle().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, selectedPrimaryKey);
         } catch (EJBException e) {
-            this.ownerFlowViewImpl.setFlowStateDelete();
-            flashMessagesView.addWarnMessage(e, this.selected);
+            this.ownerFlowView.setFlowStateDelete();
+            flashMessagesView.addWarnMessage(e, this.entity);
         }
         return JSF_PAGE;
     }
@@ -335,7 +313,7 @@ public class OwnerViewImpl implements OwnerView {
     public String showOwnerPetNewForm() {
         log.info("showOwnerPetNewForm");
         this.pet = new Pet();
-        this.ownerFlowViewImpl.setFlowStateNewPet();
+        this.ownerFlowView.setFlowStateNewPet();
         return JSF_PAGE;
     }
 
@@ -352,9 +330,9 @@ public class OwnerViewImpl implements OwnerView {
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
             String summary = this.messageProvider.getBundle().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.pet);
-            this.ownerFlowViewImpl.setFlowStateEdit();
+            this.ownerFlowView.setFlowStateEdit();
         } catch (EJBException e) {
-            this.ownerFlowViewImpl.setFlowStateNewPet();
+            this.ownerFlowView.setFlowStateNewPet();
             flashMessagesView.addWarnMessage(e, this.pet);
         }
         return JSF_PAGE;
@@ -363,17 +341,16 @@ public class OwnerViewImpl implements OwnerView {
     @Override
     public String cancelOwnerPetNew() {
         log.info("cancelOwnerPetNew");
-        this.ownerFlowViewImpl.setFlowStateEdit();
-        this.reloadEntityFromSelected();
+        this.ownerFlowView.setFlowStateEdit();
         return JSF_PAGE;
     }
 
     @Override
     public String showOwnerPetEditForm() {
         log.info("showOwnerPetEditForm");
-        if (this.petSelected != null) {
-            this.pet = petService.findById(this.petSelected.getId());
-            this.ownerFlowViewImpl.setFlowStateEditPet();
+        if (this.pet != null) {
+            this.pet = petService.findById(this.pet.getId());
+            this.ownerFlowView.setFlowStateEditPet();
             return JSF_PAGE;
         } else {
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.choose.summary";
@@ -381,7 +358,7 @@ public class OwnerViewImpl implements OwnerView {
             String msgKey = "org.woehlke.jakartaee.petclinic.owner.pet.choose.detail";
             String msg = this.messageProvider.getBundle().getString(msgKey);
             flashMessagesView.addWarnMessage(summary, msg);
-            this.ownerFlowViewImpl.setFlowStateEdit();
+            this.ownerFlowView.setFlowStateEdit();
             return JSF_PAGE;
         }
     }
@@ -395,13 +372,12 @@ public class OwnerViewImpl implements OwnerView {
             petService.update(this.pet);
             long ownerId = this.entity.getId();
             this.entity = this.entityService.findById(ownerId);
-            this.selected = this.entity;
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.edit.done";
             String summary = this.messageProvider.getBundle().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.pet);
-            this.ownerFlowViewImpl.setFlowStateEdit();
+            this.ownerFlowView.setFlowStateEdit();
         } catch (EJBException e) {
-            this.ownerFlowViewImpl.setFlowStateEditPet();
+            this.ownerFlowView.setFlowStateEditPet();
             flashMessagesView.addWarnMessage(e, this.pet);
         }
         return JSF_PAGE;
@@ -410,19 +386,18 @@ public class OwnerViewImpl implements OwnerView {
     @Override
     public String cancelOwnerPetEdit() {
         log.info("cancelOwnerPetEdit");
-        this.reloadEntityFromSelected();
-        this.ownerFlowViewImpl.setFlowStateEdit();
+        this.ownerFlowView.setFlowStateEdit();
         return JSF_PAGE;
     }
 
     @Override
     public String editOwnerPetVisitNewForm() {
         log.info("editOwnerPetVisitNewForm");
-        if (this.petSelected != null) {
-            this.pet = petService.findById(this.petSelected.getId());
+        if (this.pet != null) {
+            this.pet = petService.findById(this.pet.getId());
             this.petTypeId = this.pet.getType().getId();
             this.visit = new Visit();
-            this.ownerFlowViewImpl.setFlowStateNewVisit();
+            this.ownerFlowView.setFlowStateNewVisit();
             return JSF_PAGE;
         } else {
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.choose.summary";
@@ -430,7 +405,7 @@ public class OwnerViewImpl implements OwnerView {
             String msgKey = "org.woehlke.jakartaee.petclinic.owner.pet.choose.detail";
             String msg = this.messageProvider.getBundle().getString(msgKey);
             flashMessagesView.addWarnMessage(summary, msg);
-            this.ownerFlowViewImpl.setFlowStateEdit();
+            this.ownerFlowView.setFlowStateEdit();
             return JSF_PAGE;
         }
     }
@@ -439,15 +414,14 @@ public class OwnerViewImpl implements OwnerView {
     public String saveOwnerPetVisitNew() {
         log.info("saveOwnerPetVisitNew");
         try {
-            if (this.petSelected != null) {
-                this.pet = petService.findById(this.petSelected.getId());
+            if (this.pet != null) {
+                this.pet = petService.findById(this.pet.getId());
                 this.visit.setPet(this.pet);
                 this.pet.addVisit(this.visit);
                 this.visit = this.entityService.addNewVisit(this.visit);
                 log.info("owner1: " + this.entity.toString());
                 long ownerId = this.entity.getId();
                 this.entity = this.entityService.findById(ownerId);
-                this.selected = this.entity;
                 log.info("owner2: " + this.entity.toString());
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.done";
                 String summary = this.messageProvider.getBundle().getString(summaryKey);
@@ -459,25 +433,24 @@ public class OwnerViewImpl implements OwnerView {
                 String msg = this.messageProvider.getBundle().getString(msgKey);
                 flashMessagesView.addWarnMessage(summary, msg);
             }
-            this.reloadEntityFromSelected();
-            this.ownerFlowViewImpl.setFlowStateEdit();
+            this.ownerFlowView.setFlowStateEdit();
             return JSF_PAGE;
         } catch (EJBException e) {
-            this.ownerFlowViewImpl.setFlowStateNewVisit();
+            this.ownerFlowView.setFlowStateNewVisit();
             flashMessagesView.addWarnMessage(e, this.visit);
             return JSF_PAGE;
         }
     }
 
     @Override
-    @PreDestroy
-    public void preDestroy() {
-        log.info("preDestroy");
+    public void performSearch() {
+        log.info("performSearch");
+        this.list = entityService.search(this.searchterm);
     }
 
     @Override
     public List<Owner> getList() {
-        if (this.ownerFlowViewImpl.isFlowStateSearchResult()) {
+        if (this.ownerFlowView.isFlowStateSearchResult()) {
             performSearch();
         } else {
             loadList();
@@ -498,6 +471,12 @@ public class OwnerViewImpl implements OwnerView {
     public void postConstruct() {
         log.info("postConstruct: " + OwnerViewImpl.class.getSimpleName());
         this.messageProvider = new MessageProvider();
-        this.ownerFlowViewImpl.setFlowStateList();
+        this.ownerFlowView.setFlowStateList();
+    }
+
+    @Override
+    @PreDestroy
+    public void preDestroy() {
+        log.info("preDestroy");
     }
 }

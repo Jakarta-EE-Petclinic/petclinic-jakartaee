@@ -11,31 +11,23 @@ public interface OwnersPetView extends Serializable {
     long serialVersionUID = 889970231263134104L;
 
     String showOwnerPetNewForm();
-
+    String cancelOwnerPetNew();
     String saveOwnerPetNew();
 
-    String cancelOwnerPetNew();
-
     String showOwnerPetEditForm();
-
+    String cancelOwnerPetEdit();
     String saveOwnerPetEdit();
 
-    String cancelOwnerPetEdit();
-
     Pet getPet();
-
     void setPet(Pet pet);
 
-    Pet getPetSelected();
-
-    void setPetSelected(Pet petSelected);
+    //Pet getPetSelected();
+    //void setPetSelected(Pet petSelected);
 
     long getPetTypeId();
-
     void setPetTypeId(long petTypeId);
 
     List<PetType> getPetTypeList();
-
     void setPetTypeList(List<PetType> petTypeList);
 
     List<PetType> getAllPetTypes();

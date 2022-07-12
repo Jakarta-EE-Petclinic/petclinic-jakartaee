@@ -13,6 +13,9 @@ public interface CrudView<T extends EntityBase> extends SearchableView, Language
 
     long serialVersionUID = -4976697275728754000L;
 
+    String showDetailsForm(T o);
+    String cancelDetails();
+
     String showNewForm();
     String cancelNew();
     String saveNew();

@@ -18,9 +18,5 @@ public interface SpecialtyView extends CrudView<Specialty>,
 
     String JSF_PAGE = "specialty.jsf";
 
-    String showDetailsForm(Specialty o);
-
-    String cancelDetails();
-
     long serialVersionUID = -3557696335568559475L;
 }
