@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.pet.impl;
+package org.woehlke.jakartaee.petclinic.pet.db;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

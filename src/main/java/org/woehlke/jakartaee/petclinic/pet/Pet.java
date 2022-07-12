@@ -6,7 +6,7 @@ import lombok.*;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
-import org.woehlke.jakartaee.petclinic.pet.impl.PetListener;
+import org.woehlke.jakartaee.petclinic.pet.db.PetListener;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
