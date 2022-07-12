@@ -54,8 +54,115 @@ public class SpecialtyViewImpl implements SpecialtyView {
     private SpecialtyFlowView specialtyViewFlow;
 
     @Override
+    public String showDetailsForm(Specialty o) {
+        log.info("showDetailsForm");;
+        if (o != null) {
+            this.entity = entityService.findById(o.getId());
+            this.specialtyViewFlow.setFlowStateDetails();
+        } else {
+            this.specialtyViewFlow.setFlowStateList();
+        }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String showNewForm() {
+        log.info("showNewForm");
+        this.newEntity();
+        this.specialtyViewFlow.setFlowStateNew();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String cancelNew() {
+        log.info("cancelNew");
+        this.specialtyViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String saveNew() {
+        log.info("saveNew");
+        this.saveNewEntity();
+        this.specialtyViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String showEditForm() {
+        log.info("showEditForm");
+        if ( this.entity != null) {
+            this.specialtyViewFlow.setFlowStateEdit();
+        } else {
+            this.specialtyViewFlow.setFlowStateList();
+        }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String cancelEdited() {
+        log.info("cancelEdited");
+        this.specialtyViewFlow.setFlowStateDetails();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String saveEdited() {
+        log.info("saveEdited");
+        this.saveEditedEntity();
+        this.specialtyViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String showDeleteForm() {
+        log.info("showDeleteForm");
+        if ( this.entity != null) {
+            this.specialtyViewFlow.setFlowStateDelete();
+        } else {
+            this.specialtyViewFlow.setFlowStateList();
+        }
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String cancelDelete() {
+        log.info("cancelDelete");
+        this.specialtyViewFlow.setFlowStateDetails();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String performDelete() {
+        log.info("performDelete");
+        deleteSelectedEntity();
+        this.specialtyViewFlow.setFlowStateList();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String search() {
+        this.performSearch();
+        return JSF_PAGE;
+    }
+
+    @Override
+    public String clearSearchterm(){
+        log.info("clearSearchterm");
+        this.searchterm = null;
+        return JSF_PAGE;
+    }
+
+    @Override
     public void loadList() {
         this.list = entityService.getAll();
+    }
+
+    @Override
+    public void newEntity() {
+        log.info("newEntity");
+        String name = "add new name";
+        this.entity = new Specialty();
     }
 
     @Override
@@ -113,107 +220,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
     }
 
     @Override
-    public void newEntity() {
-        log.info("newEntity");
-        String name = "add new name";
-        this.entity = new Specialty();
-    }
-
-    @Override
-    public String showDetailsForm(Specialty o) {
-        log.info("showDetailsForm");;
-        if (o != null) {
-            this.entity = entityService.findById(o.getId());
-            this.specialtyViewFlow.setFlowStateDetails();
-        } else {
-            this.specialtyViewFlow.setFlowStateList();
-        }
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String showEditForm() {
-        log.info("showEditForm");
-        if ( this.entity != null) {
-            this.specialtyViewFlow.setFlowStateEdit();
-        } else {
-            this.specialtyViewFlow.setFlowStateList();
-        }
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String showNewForm() {
-        log.info("showNewForm");
-        this.newEntity();
-        this.specialtyViewFlow.setFlowStateNew();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String saveNew() {
-        log.info("saveNew");
-        this.saveNewEntity();
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String saveEdited() {
-        log.info("saveEdited");
-        this.saveEditedEntity();
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String cancelEdited() {
-        log.info("cancelEdited");
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String cancelNew() {
-        log.info("cancelNew");
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String showDeleteForm() {
-        log.info("showDeleteForm");
-        if ( this.entity != null) {
-            this.specialtyViewFlow.setFlowStateDelete();
-        } else {
-            this.specialtyViewFlow.setFlowStateList();
-        }
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String performDelete() {
-        log.info("performDelete");
-        deleteSelectedEntity();
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String cancelDelete() {
-        log.info("cancelDelete");
-        this.specialtyViewFlow.setFlowStateList();
-        return JSF_PAGE;
-    }
-
-    @Override
-    public String search() {
-        log.info("search");
-        this.specialtyViewFlow.setFlowStateSearchResult();
-        return JSF_PAGE;
-    }
-
-    @Override
     public void performSearch() {
         log.info("performSearch");
         String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.search.done";
@@ -225,8 +231,8 @@ public class SpecialtyViewImpl implements SpecialtyView {
             flashMessagesView.addInfoMessage(summary, detail);
         } else {
             try {
-                this.specialtyViewFlow.setFlowStateSearchResult();
                 this.list = entityService.search(searchterm);
+                this.specialtyViewFlow.setFlowStateSearchResult();
                 String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
                 String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
                 String found = this.provider.getBundle().getString(foundKey);
@@ -238,13 +244,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
                 flashMessagesView.addWarnMessage(e.getLocalizedMessage(), searchterm);
             }
         }
-    }
-
-    @Override
-    public String clearSearchterm(){
-        log.info("clearSearchterm");
-        this.searchterm = null;
-        return JSF_PAGE;
     }
 
     @Override
