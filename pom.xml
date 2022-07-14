@@ -35,10 +35,10 @@
 		<system>GitHub</system>
 	</issueManagement>
 	<distributionManagement>
-		<site>
+		<repository>
 			<id>localhost</id>
 			<url>file:///${user.home}/public_html/p/jakartaee-petclinic</url>
-		</site>
+		</repository>
 	</distributionManagement>
 
 	<properties>
@@ -56,6 +56,10 @@
 		<skipIntegrationTests>false</skipIntegrationTests>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 		<root.dir>${project.basedir}</root.dir>
+
+		<!-- plantuml -->
+		<version.plantuml-maven-plugin>1.5.2</version.plantuml-maven-plugin>
+		<version.net.sourceforge.plantuml>1.2022.6</version.net.sourceforge.plantuml>
 
 		<!-- general -->
 		<version.log4j>2.17.2</version.log4j>
@@ -3488,13 +3492,13 @@
 					<dependency>
 						<groupId>com.github.funthomas424242</groupId>
 						<artifactId>plantuml-maven-plugin</artifactId>
-						<version>1.5.2</version>
+						<version>${version.plantuml-maven-plugin}</version>
 						<type>maven-plugin</type>
 					</dependency>
 					<dependency>
 						<groupId>net.sourceforge.plantuml</groupId>
 						<artifactId>plantuml</artifactId>
-						<version>1.2020.19</version>
+						<version>${version.net.sourceforge.plantuml}</version>
 						<scope>runtime</scope>
 					</dependency>
 				</dependencies>
@@ -3517,7 +3521,7 @@
 					<plugin>
 						<groupId>com.github.funthomas424242</groupId>
 						<artifactId>plantuml-maven-plugin</artifactId>
-						<version>1.5.2</version>
+						<version>${version.plantuml-maven-plugin}</version>
 						<configuration>
 							<truncatePattern>src/main/*</truncatePattern>
 							<sourceFiles>
@@ -3531,7 +3535,7 @@
 							<dependency>
 								<groupId>net.sourceforge.plantuml</groupId>
 								<artifactId>plantuml</artifactId>
-								<version>1.2022.6</version>
+								<version>${version.net.sourceforge.plantuml}</version>
 								<scope>runtime</scope>
 							</dependency>
 						</dependencies>
