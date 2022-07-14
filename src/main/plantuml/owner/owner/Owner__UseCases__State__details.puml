@@ -1,0 +1,58 @@
+@startuml
+
+title Owner Use Case State Diagram of Pet and Visits
+
+'https://plantuml.com/state-diagram
+
+left to right direction
+'top to bottom direction
+
+scale 1200 width
+
+state OWNER_DETAILS {
+
+    [*] --> OWNER_PET_NEW: button_addNew_pet()
+    state OWNER_PET_NEW {
+        OWNER_PET_NEW --> OWNER_PET_NEW : pet_addNew() not OK, invalid
+    }
+    OWNER_PET_NEW --> [*] : pet_addNew() OK
+
+
+    [*] --> OWNER_PET_EDIT: button_edit_pet()
+    state OWNER_PET_EDIT {
+        OWNER_PET_EDIT --> OWNER_PET_EDIT : pet_update() not OK, invalid
+    }
+    OWNER_PET_EDIT --> [*] : pet_update() OK
+
+
+    [*] --> OWNER_PET_DELETE: button_delete_pet()
+    state OWNER_PET_DELETE {
+        OWNER_PET_DELETE --> OWNER_PET_DELETE: pet_delete() not OK, invalid
+    }
+    OWNER_PET_DELETE --> [*]: pet_delete() OK
+
+
+    [*] --> OWNER_PET_VISIT_NEW: button_addNew_visit()
+    state OWNER_PET_VISIT_NEW {
+        OWNER_PET_VISIT_NEW --> OWNER_PET_VISIT_NEW : visit_addNew() not OK, invalid
+    }
+    OWNER_PET_VISIT_NEW --> [*] : pet_visit_addNew() OK
+
+
+    [*] --> OWNER_PET_VISIT_EDIT: button_edit_visit()
+    state OWNER_PET_VISIT_EDIT {
+        OWNER_PET_VISIT_EDIT --> OWNER_PET_VISIT_EDIT : visit_update() not OK, invalid
+    }
+    OWNER_PET_VISIT_EDIT --> [*] : pet_visit_update() OK
+
+
+    [*] --> OWNER_PET_VISIT_DELETE: button_delete_visit()
+    state OWNER_PET_VISIT_DELETE {
+        OWNER_PET_VISIT_DELETE --> OWNER_PET_VISIT_DELETE: visit_delete() not OK, invalid
+    }
+    OWNER_PET_VISIT_DELETE --> [*]: pet_visit_delete() OK
+}
+
+
+
+@enduml

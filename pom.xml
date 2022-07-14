@@ -3481,6 +3481,65 @@
 			</build>
 		</profile>
 
+		<profile>
+			<id>uml</id>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>com.github.funthomas424242</groupId>
+						<artifactId>plantuml-maven-plugin</artifactId>
+						<version>1.5.2</version>
+						<type>maven-plugin</type>
+					</dependency>
+					<dependency>
+						<groupId>net.sourceforge.plantuml</groupId>
+						<artifactId>plantuml</artifactId>
+						<version>1.2020.19</version>
+						<scope>runtime</scope>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+			<dependencies>
+				<dependency>
+					<groupId>com.github.funthomas424242</groupId>
+					<artifactId>plantuml-maven-plugin</artifactId>
+					<type>maven-plugin</type>
+				</dependency>
+				<dependency>
+					<groupId>net.sourceforge.plantuml</groupId>
+					<artifactId>plantuml</artifactId>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<defaultGoal>clean com.github.funthomas424242:plantuml-maven-plugin:generate</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>com.github.funthomas424242</groupId>
+						<artifactId>plantuml-maven-plugin</artifactId>
+						<version>1.5.2</version>
+						<configuration>
+							<truncatePattern>src/main/*</truncatePattern>
+							<sourceFiles>
+								<directory>${basedir}</directory>
+								<includes>
+									<include>src/main/plantuml/**/*.puml</include>
+								</includes>
+							</sourceFiles>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>net.sourceforge.plantuml</groupId>
+								<artifactId>plantuml</artifactId>
+								<version>1.2022.6</version>
+								<scope>runtime</scope>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 	</profiles>
 
 </project>
