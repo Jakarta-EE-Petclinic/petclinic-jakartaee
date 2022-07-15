@@ -10,9 +10,14 @@ scale 1200 width
 
 class VetView {
 
+    - String searchterm
+
     - VetState currentState
     - Vet entity
     - Vet[] list
+
+    search(): OwnerState
+    clearSearchterm(): OwnerState
 
     showDetailsForm(Vet): VetState
     cancelDetails(): VetState
@@ -38,9 +43,14 @@ class VetView {
 
 class SpecialtyView {
 
+    - String searchterm
+
     - SpecialtyState currentState
     - Specialty entity
     - Specialty[] list
+
+    search(): OwnerState
+    clearSearchterm(): OwnerState
 
     showDetailsForm(Specialty): SpecialtyState
     cancelDetails(): SpecialtyState

@@ -61,9 +61,14 @@ class OwnerView {
 
 class PetTypeView {
 
+    - String searchterm
+
     - PetTypeState currentState
     - PetType entity
     - PetType[] list
+
+    search(): OwnerState
+    clearSearchterm(): OwnerState
 
     showDetailsForm(PetType): PetTypeState
     cancelDetails(): PetTypeState
