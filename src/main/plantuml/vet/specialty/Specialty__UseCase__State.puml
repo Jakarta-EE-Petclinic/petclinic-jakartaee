@@ -9,32 +9,32 @@ left to right direction
 
 scale 1200 width
 
-[*] -> SPECIALTY_LIST: button_list_dialog(
+[*] -> SPECIALTY_LIST
 
-SPECIALTY_LIST --> SPECIALTY_NEW : button_addNew_dialog()
-SPECIALTY_NEW --> SPECIALTY_LIST: button_cancel_and_back()
+SPECIALTY_LIST --> SPECIALTY_NEW : showNewForm()
+SPECIALTY_NEW --> SPECIALTY_LIST: cancelNew()
 state SPECIALTY_NEW {
-    SPECIALTY_NEW --> SPECIALTY_NEW : button_addNew_perform() not OK, invalid
+    SPECIALTY_NEW --> SPECIALTY_NEW : saveNew() not OK, invalid
 }
-SPECIALTY_NEW -> SPECIALTY_DETAILS: button_addNew_perform() OK
+SPECIALTY_NEW -> SPECIALTY_DETAILS: saveNew() OK
 
 
-SPECIALTY_LIST -> SPECIALTY_DETAILS: button_detail_dialog()
-SPECIALTY_DETAILS --> SPECIALTY_LIST: button_back_to_list()
+SPECIALTY_LIST -> SPECIALTY_DETAILS: showDetailsForm(Specialty)
+SPECIALTY_DETAILS --> SPECIALTY_LIST: cancelDetails()
 
-SPECIALTY_DETAILS --> SPECIALTY_EDIT: button_edit_dialog()
-SPECIALTY_EDIT --> SPECIALTY_DETAILS: button_cancel_and_back()
+SPECIALTY_DETAILS --> SPECIALTY_EDIT: showEditForm()
+SPECIALTY_EDIT --> SPECIALTY_DETAILS: cancelEdited()
 state SPECIALTY_EDIT {
-    SPECIALTY_EDIT --> SPECIALTY_EDIT: button_update_perform() not OK, invalid
+    SPECIALTY_EDIT --> SPECIALTY_EDIT: saveEdited() not OK, invalid
 }
-SPECIALTY_EDIT --> SPECIALTY_DETAILS: button_update_perform() OK
+SPECIALTY_EDIT --> SPECIALTY_DETAILS: saveEdited() OK
 
-SPECIALTY_DETAILS --> SPECIALTY_DELETE: button_delete_dialog()
-SPECIALTY_DELETE --> SPECIALTY_DETAILS: button_acancel_and_back()
+SPECIALTY_DETAILS --> SPECIALTY_DELETE: showDeleteForm()
+SPECIALTY_DELETE --> SPECIALTY_DETAILS: cancelDelete()
 state SPECIALTY_DELETE {
-    SPECIALTY_DELETE --> SPECIALTY_DELETE: button_delete_perform() not OK, invalid
+    SPECIALTY_DELETE --> SPECIALTY_DELETE: performDelete() not OK, invalid
 }
-SPECIALTY_DELETE --> SPECIALTY_DETAILS: button_delete_perform() OK
+SPECIALTY_DELETE --> SPECIALTY_DETAILS: performDelete() OK
 
 SPECIALTY_LIST -> [*]
 SPECIALTY_DETAILS -> [*]
