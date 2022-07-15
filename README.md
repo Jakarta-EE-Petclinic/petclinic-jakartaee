@@ -201,29 +201,29 @@ Object Oriented Design
 
 #### PetType State Table
 
-| PetType Use Cases | Actions                              | Frontend to View              | View to Backend (DB) | outcome             | precondition                   | postcondition                                |
-|-------------------|--------------------------------------|-------------------------------|----------------------|---------------------|--------------------------------|----------------------------------------------|
-| PetType.list      | PetTypeView.button_list_dialog()     | x, calls: PetType.load_list() |                      | change state        | length(list(PetType)) == 0     | PETTYPE_LIST_EMPTY                           |
-| PetType.list      | PetTypeView.button_list_dialog()     | x, calls: PetType.load_list() |                      | change state        | length(list(PetType)) > 0      | PETTYPE_LIST                                 |
-| PetType.list      | PetType View.loadList()              |                               | x                    | list(PetType)       | length(list(PetType)) == 0     | PETTYPE_LIST_EMPTY                           |
-| PetType.list      | PetType View.loadList()              |                               | x                    | list(PetType)       | length(list(PetType)) > 0      | PETTYPE_LIST                                 |
-| PetType.addNew    | PetTypeView.button_addNew_dialog()   | x                             |                      | change state        | PETTYPE_LIST                   | PETTYPE_NEW                                  |
-| PetType.addNew    | PetTypeView.button_cancel_and_back() | x                             |                      | change state        | PETTYPE_NEW                    | PETTYPE_LIST                                 |
-| PetType.addNew    | PetTypeView.saveNew()                | x, calls: PetType.db_addNew() |                      | if OK: change state | PETTYPE_NEW                    | PETTYPE_DETAILS                              |
-| PetType.addNew    | PetTypeView.db_addNew()              |                               | x                    | OK                  | length(list(PetType)) = n      | length(list(PetType)) = n+1                  |
-| PetType.addNew    | PetTypeView.db_addNew()              |                               | x                    | not OK, invalid     | length(list(PetType)) = n      | display cause as flash message               |
-| PetType.details   | PetTypeView.button_detail_dialog()   | x                             |                      | change state        | PETTYPE_LIST                   | PETTYPE_DETAILS                              |
-| PetType.details   | PetTypeView.button_detail_dialog()   | x                             |                      | change state        | PETTYPE_LIST_EMPTY             | PETTYPE_DETAILS                              |
-| PetType.edit      | PetTypeView.button_edit_dialog()     | x                             |                      | change state        | PETTYPE_DETAILS                | PETTYPE_EDIT                                 |
-| PetType.edit      | PetTypeView.button_cancel_and_back() | x                             |                      | change state        | PETTYPE_EDIT                   | PETTYPE_LIST                                 |
-| PetType.edit      | PetTypeView.button_update_perform()  | x, calls: PetType.db_update() |                      | if OK: change state | PETTYPE_EDIT                   | PETTYPE_DETAILS                              |
-| PetType.edit      | PetTypeView.db_update()              |                               | x                    | OK                  | length(list(PetType)) = n > 0  | length(list(PetType)) = n; 1 element changed |
-| PetType.edit      | PetTypeView.db_update()              |                               | x                    | not OK, invalid     | length(list(PetType)) = n >= 0 | display cause as flash message               |
-| PetType.delete    | PetTypeView.button_delete_dialog()   | x                             |                      | change state        | PETTYPE_DETAILS                | PETTYPE_DELETE                               |
-| PetType.delete    | PetTypeView.button_cancel_and_back() | x                             |                      | change state        | PETTYPE_DELETE                 | PETTYPE_LIST                                 |
-| PetType.delete    | PetTypeView.button_delete_perform()  | x, calls: PetType.db_delete() |                      | if OK: change state | PETTYPE_DELETE                 | PETTYPE_DETAILS                              |
-| PetType.delete    | PetTypeView.db_delete()              |                               | x                    | OK                  | length(list(PetType)) = n > 0  | length(list(PetType)) = n-1                  |
-| PetType.delete    | PetTypeView.db_delete()              |                               | x                    | not OK, invalid     | length(list(PetType)) = n >= 0 | display cause as flash message               |
+| PetType Use Cases | Actions                              | Frontend to View                     | View to Backend (DB) | outcome             | precondition                   | postcondition                                |
+|-------------------|--------------------------------------|--------------------------------------|----------------------|---------------------|--------------------------------|----------------------------------------------|
+| PetType.list      | PetTypeView.button_list_dialog()     | x, calls: PetType.loadList()         |                      | change state        | length(list(PetType)) == 0     | PETTYPE_LIST_EMPTY                           |
+| PetType.list      | PetTypeView.button_list_dialog()     | x, calls: PetType.loadList()         |                      | change state        | length(list(PetType)) > 0      | PETTYPE_LIST                                 |
+| PetType.list      | PetTypeView.loadList()               |                                      | x                    | list(PetType)       | length(list(PetType)) == 0     | PETTYPE_LIST_EMPTY                           |
+| PetType.list      | PetTypeView.loadList()               |                                      | x                    | list(PetType)       | length(list(PetType)) > 0      | PETTYPE_LIST                                 |
+| PetType.addNew    | PetTypeView.showNewForm()            | x                                    |                      | change state        | PETTYPE_LIST                   | PETTYPE_NEW                                  |
+| PetType.addNew    | PetTypeView.cancelNew()              | x                                    |                      | change state        | PETTYPE_NEW                    | PETTYPE_LIST                                 |
+| PetType.addNew    | PetTypeView.saveNew()                | x, calls: PetType.saveNewEntity()    |                      | if OK: change state | PETTYPE_NEW                    | PETTYPE_DETAILS                              |
+| PetType.addNew    | PetTypeView.saveNewEntity()          |                                      | x                    | OK                  | length(list(PetType)) = n      | length(list(PetType)) = n+1                  |
+| PetType.addNew    | PetTypeView.saveNewEntity()          |                                      | x                    | not OK, invalid     | length(list(PetType)) = n      | display cause as flash message               |
+| PetType.details   | PetTypeView.showDetailsForm(PetType) | x                                    |                      | change state        | PETTYPE_LIST                   | PETTYPE_DETAILS                              |
+| PetType.details   | PetTypeView.cancelDetails()          | x                                    |                      | change state        | PETTYPE_LIST_EMPTY             | PETTYPE_DETAILS                              |
+| PetType.edit      | PetTypeView.showEditForm()           | x                                    |                      | change state        | PETTYPE_DETAILS                | PETTYPE_EDIT                                 |
+| PetType.edit      | PetTypeView.cancelEdited()           | x                                    |                      | change state        | PETTYPE_EDIT                   | PETTYPE_LIST                                 |
+| PetType.edit      | PetTypeView.saveEdited()             | x, calls: PetType.saveEditedEntity() |                      | if OK: change state | PETTYPE_EDIT                   | PETTYPE_DETAILS                              |
+| PetType.edit      | PetTypeView.saveEditedEntity()       |                                      | x                    | OK                  | length(list(PetType)) = n > 0  | length(list(PetType)) = n; 1 element changed |
+| PetType.edit      | PetTypeView.saveEditedEntity()       |                                      | x                    | not OK, invalid     | length(list(PetType)) = n >= 0 | display cause as flash message               |
+| PetType.delete    | PetTypeView.showDeleteForm()         | x                                    |                      | change state        | PETTYPE_DETAILS                | PETTYPE_DELETE                               |
+| PetType.delete    | PetTypeView.cancelDelete()           | x                                    |                      | change state        | PETTYPE_DELETE                 | PETTYPE_LIST                                 |
+| PetType.delete    | PetTypeView.cancelDelete()           | x, calls: PetType.performDelete()    |                      | if OK: change state | PETTYPE_DELETE                 | PETTYPE_DETAILS                              |
+| PetType.delete    | PetTypeView.performDelete()          |                                      | x                    | OK                  | length(list(PetType)) = n > 0  | length(list(PetType)) = n-1                  |
+| PetType.delete    | PetTypeView.performDelete()          |                                      | x                    | not OK, invalid     | length(list(PetType)) = n >= 0 | display cause as flash message               |
 
 
 ### Owner
