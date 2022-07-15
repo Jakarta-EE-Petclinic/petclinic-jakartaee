@@ -46,7 +46,7 @@ class OwnerView {
     cancelOwnerPetEdit(): OwnerState
     saveOwnerPetEdit(): OwnerState
 
-    editOwnerPetVisitNewForm(): OwnerState
+    showOwnerPetVisitNewForm(): OwnerState
     cancelOwnerPetVisitNew(): OwnerState
     saveOwnerPetVisitNew(): OwnerState
 
