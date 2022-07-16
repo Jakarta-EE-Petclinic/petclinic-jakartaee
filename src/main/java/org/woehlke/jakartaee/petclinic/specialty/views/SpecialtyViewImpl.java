@@ -3,6 +3,8 @@ package org.woehlke.jakartaee.petclinic.specialty.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
@@ -30,6 +32,8 @@ import java.util.ResourceBundle;
 @Log
 @Named("specialtyView")
 @SessionScoped
+@Getter
+@Setter
 public class SpecialtyViewImpl implements SpecialtyView {
 
     private static final long serialVersionUID = 9080853875975855082L;
@@ -254,44 +258,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
     }
 
     @Override
-    public LanguageView getLanguageView() {
-        return languageView;
-    }
-
-    @Override
-    public void setLanguageView(LanguageView languageView) {
-        this.languageView = languageView;
-    }
-
-    public FlashMessagesView getFrontendMessagesView() {
-        return flashMessagesView;
-    }
-
-    public void setFrontendMessagesView(FlashMessagesView flashMessagesView) {
-        this.flashMessagesView = flashMessagesView;
-    }
-
-    @Override
-    public String getSearchterm() {
-        return searchterm;
-    }
-
-    @Override
-    public void setSearchterm(String searchterm) {
-        this.searchterm = searchterm;
-    }
-
-    @Override
-    public Specialty getEntity() {
-        return entity;
-    }
-
-    @Override
-    public void setEntity(Specialty entity) {
-        this.entity = entity;
-    }
-
-    @Override
     public ResourceBundle getMsg() {
         return this.provider.getBundle();
     }
@@ -308,11 +274,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
         }
         this.flashMessagesView.flashTheMessages();
         return this.list;
-    }
-
-    @Override
-    public void setList(List<Specialty> list) {
-        this.list = list;
     }
 
     @Override

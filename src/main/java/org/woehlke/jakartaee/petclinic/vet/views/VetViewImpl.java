@@ -283,9 +283,7 @@ public class VetViewImpl implements VetView {
 
     public void initSpecialtiesPickList() {
         log.info("initSpecialtiesPickList");
-        List<Specialty> srcList = specialtyService.getAll();
-        List<Specialty> targetList = new ArrayList<>();
-        this.specialtiesPickList = new DualListModel<Specialty>(srcList, targetList);
+        this.resetSpecialtiesPickList();
     }
 
     public void resetSpecialtiesPickList() {
