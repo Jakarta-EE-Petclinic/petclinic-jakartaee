@@ -38,7 +38,7 @@ cd petclinic-jakartaee
 ./mvnw -Pwildfly
 ```
 
-### IBM OpenLiberty JakartEE 9.1 (22.0.0.6) 
+### IBM OpenLiberty JakartEE 9.1 (22.0.0.7) 
 
 ```
 ./mvnw -Pliberty
