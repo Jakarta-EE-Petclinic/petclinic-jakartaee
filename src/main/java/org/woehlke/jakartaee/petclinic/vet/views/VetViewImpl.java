@@ -69,6 +69,7 @@ public class VetViewImpl implements VetView {
         log.info("showDetailsForm");;
         if (o != null) {
             this.entity = entityService.findById(o.getId());
+            this.resetSpecialtiesPickList();
             this.vetViewFlow.setFlowStateDetails();
         } else {
             this.vetViewFlow.setFlowStateList();
