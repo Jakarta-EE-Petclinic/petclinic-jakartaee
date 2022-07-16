@@ -9,14 +9,14 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Test;
-import org.woehlke.jakartaee.petclinic.application.api.AbstractEntityEndpoint;
+import org.woehlke.jakartaee.petclinic.application.api.AbstractEndpointTest;
 
 import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Log
-public class PetTypeEndpointIT extends AbstractEntityEndpoint {
+public class PetTypeEndpointIT extends AbstractEndpointTest {
 
   @Test
   public void testGetListJson() {

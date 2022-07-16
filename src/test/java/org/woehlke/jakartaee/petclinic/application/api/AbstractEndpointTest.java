@@ -5,7 +5,7 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 
-public class AbstractEntityEndpoint {
+public class AbstractEndpointTest {
 
     protected static final Jsonb jsonb = JsonbBuilder.create();
     protected Client client = ClientBuilder.newClient();
