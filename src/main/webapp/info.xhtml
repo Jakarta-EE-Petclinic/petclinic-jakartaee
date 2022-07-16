@@ -91,23 +91,25 @@
 			</p:panel>
 			<br/>
 
-			<p:panel id="panelDomainClassModell"
+			<p:accordionPanel>
+
+			<p:tab id="panelDomainClassModell"
 					 styleClass="contentPanel"
-					 header="#{msg['org.woehlke.jakartaee.petclinic.info.uml.DomainClassModell']}">
+				   title="#{msg['org.woehlke.jakartaee.petclinic.info.uml.DomainClassModell']}">
 				<p:graphicImage value="/img/Petclinic__Domain_Class_Modell.png" />
-			</p:panel>
+			</p:tab>
 			<br/>
 
-			<p:panel id="panelUseCases"
+			<p:tab id="panelUseCases"
 					 styleClass="contentPanel"
-					 header="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCases']}">
+				   title="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCases']}">
 				<p:graphicImage value="/img/Petclinic__Use_Cases.png" />
-			</p:panel>
+			</p:tab>
 			<br/>
 
-			<p:panel id="panelUseCasesOwner"
+			<p:tab id="panelUseCasesOwner"
 					 styleClass="contentPanel"
-					 header="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesOwner']}">
+				   title="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesOwner']}">
 				<h3>Owner Use Case Diagram</h3>
 				<p>
 					<p:graphicImage value="/img/Owner__UseCases.png" />
@@ -124,12 +126,12 @@
 				<p>
 					<p:graphicImage value="/img/Owner__DB__class.png" />
 				</p>
-			</p:panel>
+			</p:tab>
 			<br/>
 
-			<p:panel id="panelUseCasesPetType"
+			<p:tab id="panelUseCasesPetType"
 					 styleClass="contentPanel"
-					 header="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesPetType']}">
+				   title="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesPetType']}">
 				<h3>PetType Use Case Diagram</h3>
 				<p>
 					<p:graphicImage value="/img/PetType__UseCase.png" />
@@ -146,12 +148,12 @@
 				<p>
 					<p:graphicImage value="/img/Owner__DB__class.png" />
 				</p>
-			</p:panel>
+			</p:tab>
 			<br/>
 
-			<p:panel id="panelUseCasesVet"
+			<p:tab id="panelUseCasesVet"
 					 styleClass="contentPanel"
-					 header="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesVet']}">
+				   title="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesVet']}">
 				<h3>Vet Use Case Diagram</h3>
 				<p>
 					<p:graphicImage value="/img/Vet__UseCase.png" />
@@ -168,12 +170,12 @@
 				<p>
 					<p:graphicImage value="/img/Vet__DB__Class.png" />
 				</p>
-			</p:panel>
+			</p:tab>
 			<br/>
 
-			<p:panel id="panelUseCasesSpecialty"
+			<p:tab id="panelUseCasesSpecialty"
 					 styleClass="contentPanel"
-					 header="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesSpecialty']}">
+				   title="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesSpecialty']}">
 				<h3>Specialty Use Case Diagram</h3>
 				<p>
 					<p:graphicImage value="/img/Specialty__UseCase.png" />
@@ -190,17 +192,19 @@
 				<p>
 					<p:graphicImage value="/img/Vet__DB__Class.png" />
 				</p>
-			</p:panel>
+			</p:tab>
 			<br/>
 
-			<p:panel id="panelUseCasesApplication"
+			<p:tab id="panelUseCasesApplication"
 					 styleClass="contentPanel"
-					 header="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesApplication']}">
+				   title="#{msg['org.woehlke.jakartaee.petclinic.info.uml.UseCasesApplication']}">
 				<h3>Application Use Case Diagram</h3>
 				<p>
 					<p:graphicImage value="/img/Application__UseCases.png" />
 				</p>
-			</p:panel>
+			</p:tab>
+
+			</p:accordionPanel>
 		</div>
 	</ui:define>
 
