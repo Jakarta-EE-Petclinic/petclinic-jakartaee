@@ -7,6 +7,7 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyEndpointUtil;
 import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyListDto;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
@@ -15,6 +16,7 @@ import java.io.Serializable;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Log
 public class VetEndpointUtil implements Serializable {
@@ -29,8 +31,13 @@ public class VetEndpointUtil implements Serializable {
         dto.setUuid(vet.getUuid());
         dto.setFirstName(vet.getFirstName());
         dto.setLastName(vet.getLastName());
-        SpecialtyListDto specialtyList = this.specialtyEndpointUtil.dtoListFactory(vet.getSpecialties());
-        dto.setSpecialtyList(specialtyList);
+        Set<Specialty> specialties = vet.getSpecialties();
+        List<Specialty> specialtyList = new ArrayList<>();
+        for(Specialty specialty:specialties ){
+            specialtyList.add(specialty);
+        }
+        SpecialtyListDto specialtyDtoList = this.specialtyEndpointUtil.dtoListFactory(specialtyList);
+        dto.setSpecialtyList(specialtyDtoList);
         return dto;
     }
 

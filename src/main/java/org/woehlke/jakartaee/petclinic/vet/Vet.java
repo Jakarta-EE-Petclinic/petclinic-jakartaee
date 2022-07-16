@@ -99,27 +99,6 @@ public class Vet extends EntityBaseObject implements EntityBase {
     }
 
     @Transient
-    protected Set<Specialty> getSpecialtiesInternal() {
-        if (this.specialties == null) {
-            this.specialties = new HashSet<>();
-        }
-        return this.specialties;
-    }
-
-    public List<Specialty> getSpecialties() {
-        List<Specialty> list = new ArrayList<Specialty>();
-        for (Specialty s : getSpecialtiesInternal()) {
-            list.add(s);
-        }
-        Collections.sort(list);
-        return list;
-    }
-
-    public void setSpecialties(Set<Specialty> specialties) {
-        this.specialties = specialties;
-    }
-
-    @Transient
     public String getSpecialtiesAsString() {
         StringBuilder stringBuilder = new StringBuilder();
         if (getNrOfSpecialties() == 0) {
@@ -133,16 +112,27 @@ public class Vet extends EntityBaseObject implements EntityBase {
         return stringBuilder.toString();
     }
 
+    @Transient
+    public List<Specialty> getSpecialtiesAsList() {
+        List<Specialty> listSpecialty = new ArrayList<>();
+        Set<Specialty> setSpecialty = this.getSpecialties();
+        for(Specialty specialty: setSpecialty){
+            listSpecialty.add(specialty);
+        }
+        Collections.sort(listSpecialty);
+        return listSpecialty;
+    }
+
     public int getNrOfSpecialties() {
-        return getSpecialtiesInternal().size();
+        return this.specialties.size();
     }
 
     public void addSpecialty(Specialty specialty) {
-        getSpecialtiesInternal().add(specialty);
+        this.specialties.add(specialty);
     }
 
     public void removeSpecialties() {
-        this.specialties = new HashSet<>();
+        this.specialties.clear();
     }
 
     @Transient

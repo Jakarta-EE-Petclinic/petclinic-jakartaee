@@ -22,10 +22,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.woehlke.jakartaee.petclinic.vet.VetView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -286,7 +283,8 @@ public class VetViewImpl implements VetView {
         List<Specialty> srcList = new ArrayList<>();
         List<Specialty> targetList = new ArrayList<>();
         if(this.entity != null) {
-            targetList.addAll(this.entity.getSpecialties());
+            this.entity = this.entityService.findById(this.entity.getId());
+            targetList.addAll(this.entity.getSpecialtiesAsList());
             for (Specialty specialty : this.specialtyService.getAll()) {
                 if (!targetList.contains(specialty)) {
                     srcList.add(specialty);
