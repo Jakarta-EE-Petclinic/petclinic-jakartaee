@@ -3,30 +3,14 @@ package org.woehlke.jakartaee.petclinic.vet;
 import junit.framework.Assert;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Test;
+import org.woehlke.jakartaee.petclinic.application.api.AbstractEntityTest;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import java.util.*;
 
 @Log
-public class VetTest {
+public class VetTest extends AbstractEntityTest {
 
-    private static final String specialties[] = {
-            "Surgeon", "Radiologist", "Neurosurgeon", "Dentist", "Cardiologist", "Impostor", "Faith Healer"
-    };
-
-    private static List<Specialty> specialtyList = new ArrayList<>();
-
-    private static Set<Specialty> specialtySet = new HashSet<>();
-
-    static {
-        for (String specialtyName : specialties){
-            Specialty specialty = new Specialty();
-            specialty.setName(specialtyName);
-            specialty.setUuid(UUID.randomUUID());
-            specialtyList.add(specialty);
-            specialtySet.add(specialty);
-        }
-    }
 
     @Test
     public void testGetSpecialtiesAsList01(){
@@ -42,7 +26,7 @@ public class VetTest {
         log.info("testGetSpecialtiesAsList02");
         int expectedSize  = 1;
         Vet entity = new Vet();
-        String specialtyName =  specialties[0];
+        String specialtyName = AbstractEntityTest.specialtyName[0];
         Assert.assertEquals("Surgeon",specialtyName);
         Specialty specialty = new Specialty();
         specialty.setName(specialtyName);
@@ -56,7 +40,7 @@ public class VetTest {
     public void testGetSpecialtiesAsList03(){
         log.info("testGetSpecialtiesAsList03");
         Vet entity = new Vet();
-        String specialtyName =  specialties[0];
+        String specialtyName =  AbstractEntityTest.specialtyName[0];
         Assert.assertEquals("Surgeon",specialtyName);
         Specialty specialty = new Specialty();
         specialty.setName(specialtyName);
