@@ -17,9 +17,11 @@
 	<ui:define name="content">
 		<div class="container">
 
-			<p:panel id="panelInformation"
+		<p:accordionPanel>
+
+			<p:tab id="panelInformation"
 					 styleClass="contentPanel"
-					 header="#{msg['org.woehlke.jakartaee.petclinic.info']}">
+					 title="#{msg['org.woehlke.jakartaee.petclinic.info']}">
 				<h3>Petclinic JakartaEE</h3>
 
 				This Demo Application is planned to be a "Rosetta Stone" for comparing OOP Web Application Frameworks
@@ -88,10 +90,8 @@
 					<li><a href="https://jakarta-ee-petclinic.github.io/petclinic-jakartaee/">This Document</a></li>
 					<li><a href="https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee">github repository</a></li>
 				</ul>
-			</p:panel>
+			</p:tab>
 			<br/>
-
-			<p:accordionPanel>
 
 			<p:tab id="panelDomainClassModell"
 					 styleClass="contentPanel"
