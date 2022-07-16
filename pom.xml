@@ -3489,9 +3489,6 @@
 				<cargo.hostname>localhost</cargo.hostname>
 				<cargo.servlet.port>8080</cargo.servlet.port>
 				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
-				<tomee.domainDir>
-					${project.build.directory}/glassfish-${glassfish.version}/glassfish6/glassfish/domains/domain1
-				</tomee.domainDir>
 			</properties>
 			<dependencyManagement>
 				<dependencies>
@@ -4016,7 +4013,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/main/glassfish/resources/META-INF</directory>
+											<directory>src/main/tomee/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -4041,7 +4038,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/main/glassfish/resources</directory>
+											<directory>src/main/tomee/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -4080,7 +4077,6 @@
 							<configuration>
 								<!-- the configuration used to deploy -->
 								<!--<home>${project.build.directory}/glassfish6x-home</home>-->
-								<home>${tomee.domainDir}</home>
 								<properties>
 									<cargo.hostname>${cargo.hostname}</cargo.hostname>
 									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
@@ -4093,6 +4089,8 @@
 										cargo.datasource.username=petclinic_jakartaee|
 										cargo.datasource.password=petclinic_jakartaeepwd
 									</cargo.datasource.datasource.postgresql>
+									<cargo.tomee.appsDirectory>apps	</cargo.tomee.appsDirectory>
+									<cargo.tomcat.webappsDirectory>webapps</cargo.tomcat.webappsDirectory>
 								</properties>
 							</configuration>
 						</configuration>
