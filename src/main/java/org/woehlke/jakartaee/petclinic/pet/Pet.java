@@ -53,7 +53,7 @@ import java.util.*;
         )
 })
 @EntityListeners(PetListener.class)
-public class Pet extends EntityBaseObject implements EntityBase {
+public class Pet extends EntityBaseObject implements EntityBase  {
 
     public final static String TABLENAME = "owner_pet";
     public final static String COL_ID = "id";
@@ -105,7 +105,7 @@ public class Pet extends EntityBaseObject implements EntityBase {
 
     @Transient
     public String getPrimaryKey() {
-        return "" + this.getName() + " ( " + this.getType().getName() + ")";
+        return "" + this.getBirthDate().toGMTString() +  " ( " +  this.getName() + ")";
     }
 
     @Transient
@@ -128,6 +128,20 @@ public class Pet extends EntityBaseObject implements EntityBase {
 
     public void setVisits(Set<Visit> visits) {
         this.visits = visits;
+    }
+
+    @Override
+    public int compareTo(EntityBaseObject other) {
+        Pet o = (Pet) other;
+        Long thisBirthdate =  this.getBirthDate().toInstant().getEpochSecond();
+        Long otherBirthdate = o.getBirthDate().toInstant().getEpochSecond();
+        int compared = thisBirthdate.compareTo(otherBirthdate);
+        if(compared != 0){
+            return compared;
+        } else {
+          //  compared = this.getName().compareTo(o.getName());
+        }
+        return compared;
     }
 
 }

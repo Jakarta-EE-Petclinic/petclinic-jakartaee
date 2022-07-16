@@ -75,26 +75,40 @@ public class AbstractEntityTest {
             "Chicken"
     };
 
+    protected static List<Date> dateOfBirthList = new ArrayList<>();
+
     protected static List<Pet> petList = new ArrayList<>();
 
     static {
-        int year=2021;
-        int month=11;
-        int day=15;
+        int year = 2021;
+        int month = 1;
+        int day = 5;
+        for (String petTypeName : petTypeName) {
+            Date dob = new Date(year, month, day);
+            dateOfBirthList.add(dob);
+            year++;
+            month++;
+            day++;
+        }
+    }
+
+    static {
         int i=0;
+        int k=0;
         for (String petTypeName : petTypeName){
-            Date dob = new Date(year,month,day);
+            Date dob = dateOfBirthList.get(k);
             Pet o = new Pet();
             o.setName(petTypeName);
             o.setBirthDate(dob);
             o.setUuid(UUID.randomUUID());
             o.setType(petTypeList.get(i));
             petList.add(o);
-            year--;
-            month--;
-            day--;
             i++;
             i %= petTypeList.size();
+            k++;
         }
     }
+
+    protected Date dob01 = new Date(2021,6,14);
+    protected Date dob02 = new Date(2020,5,12);
 }

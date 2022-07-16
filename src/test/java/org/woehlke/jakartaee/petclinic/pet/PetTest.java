@@ -19,10 +19,12 @@ public class PetTest extends AbstractEntityTest {
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
+        o01.setBirthDate(dob01);
         o01.setName(name01);
         o01.setUuid(uuid01);
         Pet o02 = new Pet();
         o02.setType(petType);
+        o02.setBirthDate(dob01);
         o02.setName(name01);
         o02.setUuid(uuid02);
         Assert.assertTrue(o01.compareTo(o02)==0);
@@ -36,11 +38,13 @@ public class PetTest extends AbstractEntityTest {
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
+        o01.setBirthDate(dob01);
         o01.setName(name01);
         o01.setId(id01);
         o01.setUuid(uuid01);
         Pet o02 = new Pet();
         o02.setType(petType);
+        o02.setBirthDate(dob01);
         o02.setName(name01);
         o02.setUuid(uuid02);
         o02.setId(id02);
@@ -54,10 +58,12 @@ public class PetTest extends AbstractEntityTest {
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
+        o01.setBirthDate(dob01);
         o01.setName(name01);
         o01.setUuid(uuid01);
         Pet o02 = new Pet();
         o02.setType(petType);
+        o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid02);
         Assert.assertFalse(o01.compareTo(o02)==0);
@@ -71,11 +77,13 @@ public class PetTest extends AbstractEntityTest {
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
+        o01.setBirthDate(dob01);
         o01.setName(name01);
         o01.setId(id01);
         o01.setUuid(uuid01);
         Pet o02 = new Pet();
         o02.setType(petType);
+        o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid02);
         o02.setId(id02);
@@ -88,10 +96,12 @@ public class PetTest extends AbstractEntityTest {
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
+        o01.setBirthDate(dob01);
         o01.setName(name01);
         o01.setUuid(uuid);
         Pet o02 = new Pet();
         o02.setType(petType);
+        o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid);
         Assert.assertFalse(o01.compareTo(o02)==0);
@@ -103,11 +113,13 @@ public class PetTest extends AbstractEntityTest {
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
+        o01.setBirthDate(dob01);
         o01.setName(name01);
         o01.setId(id);
         o01.setUuid(uuid);
         Pet o02 = new Pet();
         o02.setType(petType);
+        o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid);
         o02.setId(id);
@@ -124,6 +136,7 @@ public class PetTest extends AbstractEntityTest {
         while(i.hasNext()){
             Pet secondEntity = i.next();
             int compared = secondEntity.compareTo(firstEntity);
+            //log.info("runRntityTest99: "+ compared);
             Assert.assertTrue(compared > 0);
             firstEntity = secondEntity;
         }
