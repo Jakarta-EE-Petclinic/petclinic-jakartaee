@@ -50,11 +50,20 @@ cd petclinic-jakartaee
 ./mvnw -Pglassfish
 ```
 
+### Payara Server (5.2022.2)
+
+```
+./mvnw -Ppayara
+```
+
+
+
 ### Apache TomEE (9.0)
 
 ```
 ./mvnw -Ptomee
 ```
+
 
 
 ## Functional Requirements
