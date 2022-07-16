@@ -12,7 +12,7 @@
 
 	<applicationMonitor updateTrigger="mbean" />
 
-	<httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="9080" httpsPort="9443">
+	<httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="8080" httpsPort="8443">
 		<accessLogging filepath="${server.output.dir}/logs/http_defaultEndpoint_access.log"
 					   logFormat='%h %i %u %t "%r" %s %b %D %{R}W' />
 	</httpEndpoint>
