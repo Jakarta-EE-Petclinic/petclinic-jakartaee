@@ -78,19 +78,18 @@ public class VetTest {
     @Test
     public void testGetSpecialtiesAsList05() {
         log.info("testGetSpecialtiesAsList05");
-        String msg = "\n";
-        for(Specialty specialty: specialtySet){
-            msg += specialty.getName() +  "\n";
-        }
-        log.info(msg);
         Vet entity = new Vet();
         entity.setSpecialties(specialtySet);
         List<Specialty> listSpecialty = entity.getSpecialtiesAsList();
         Assert.assertEquals(specialtySet.size(), listSpecialty.size());
-        msg = "\n";
-        for(Specialty specialty: listSpecialty){
-            msg += specialty.getName() +  "\n";
+        Assert.assertTrue(listSpecialty.size() > 2);
+        Iterator<Specialty> i =  listSpecialty.iterator();
+        Specialty firstSpecialty = i.next();
+        while(i.hasNext()){
+            Specialty secondSpecialty = i.next();
+            int compared = secondSpecialty.compareTo(firstSpecialty);
+            Assert.assertTrue(compared > 0);
+            firstSpecialty = secondSpecialty;
         }
-        log.info(msg);
     }
 }

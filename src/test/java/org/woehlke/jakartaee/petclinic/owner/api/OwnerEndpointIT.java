@@ -11,21 +11,17 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Test;
+import org.woehlke.jakartaee.petclinic.application.api.AbstractEntityEndpoint;
 
 import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Log
-public class OwnerEndpointIT {
-
-  private static final Jsonb JSONB = JsonbBuilder.create();
+public class OwnerEndpointIT extends AbstractEntityEndpoint {
 
   @Test
   public void testGetListJson() {
-    String port = "9080";
-    String context = "petclinic";
-    String url = "http://localhost:" + port + "/" + context;
     String endpoint = url + "/rest" + "/owner" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
@@ -33,8 +29,11 @@ public class OwnerEndpointIT {
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertEquals(Response.Status.OK.getStatusCode(), response.getStatus(),
-                 "Incorrect response code from " + endpoint);
+    assertEquals(
+            Response.Status.OK.getStatusCode(),
+            response.getStatus(),
+            "Unexpected response code from " + endpoint
+    );
     String json = response.readEntity(String.class);
     OwnerListDto stoList = JSONB.fromJson(json, OwnerListDto.class);
     for(OwnerDto dto: stoList.getOwner()){
@@ -48,18 +47,17 @@ public class OwnerEndpointIT {
 
   @Test
   public void testGetListXml() throws JAXBException {
-    String port = "9080";
-    String context = "petclinic";
-    String url = "http://localhost:" + port + "/" + context;
     String endpoint = url + "/rest" + "/owner" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
-    Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertEquals(Response.Status.OK.getStatusCode(), response.getStatus(),
-                 "Incorrect response code from " + endpoint);
+    assertEquals(
+            Response.Status.OK.getStatusCode(),
+            response.getStatus(),
+            "Incorrect response code from " + endpoint
+    );
     String xml = response.readEntity(String.class);
     JAXBContext jc = JAXBContext.newInstance(OwnerListDto.class);
     Unmarshaller m = jc.createUnmarshaller();
@@ -73,6 +71,5 @@ public class OwnerEndpointIT {
     response.close();
     client.close();
   }
-
 
 }

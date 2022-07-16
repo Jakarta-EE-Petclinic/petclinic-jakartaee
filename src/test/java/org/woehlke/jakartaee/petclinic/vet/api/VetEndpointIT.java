@@ -1,7 +1,5 @@
 package org.woehlke.jakartaee.petclinic.vet.api;
 
-import jakarta.json.bind.Jsonb;
-import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
@@ -11,15 +9,14 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Test;
+import org.woehlke.jakartaee.petclinic.application.api.AbstractEntityEndpoint;
 
 import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Log
-public class VetEndpointIT {
-
-  private static final Jsonb JSONB = JsonbBuilder.create();
+public class VetEndpointIT extends AbstractEntityEndpoint {
 
   @Test
   public void testGetListJson() {
@@ -33,8 +30,11 @@ public class VetEndpointIT {
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertEquals(Response.Status.OK.getStatusCode(), response.getStatus(),
-                 "Incorrect response code from " + endpoint);
+    assertEquals(
+            Response.Status.OK.getStatusCode(),
+            response.getStatus(),
+            "Unexpected response code from " + endpoint
+    );
     String json = response.readEntity(String.class);
     VetListDto petTypeListDto = JSONB.fromJson(json, VetListDto.class);
     for(VetDto dto: petTypeListDto.getVetList()){
@@ -58,8 +58,11 @@ public class VetEndpointIT {
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertEquals(Response.Status.OK.getStatusCode(), response.getStatus(),
-                 "Incorrect response code from " + endpoint);
+    assertEquals(
+            Response.Status.OK.getStatusCode(),
+            response.getStatus(),
+            "Unexpected response code from " + endpoint
+    );
     String xml = response.readEntity(String.class);
     JAXBContext jc = JAXBContext.newInstance(VetListDto.class);
     Unmarshaller m = jc.createUnmarshaller();
