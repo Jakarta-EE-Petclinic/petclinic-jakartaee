@@ -12,3 +12,4 @@ buildNumber.properties
 .idea
 /petclinic-jakartaee.iml
 /src/main/resources/META-INF/persistence.xml
+/installs/
