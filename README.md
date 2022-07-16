@@ -44,6 +44,11 @@ cd petclinic-jakartaee
 ./mvnw -Pliberty
 ```
 
+### Eclipse GlassFish (6.2.5)
+
+```
+./mvnw -Pglassfish
+```
 
 ## Functional Requirements
 
