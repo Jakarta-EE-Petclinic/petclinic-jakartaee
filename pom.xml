@@ -6054,7 +6054,7 @@
 									<cargo.datasource.datasource.postgresql>
 										cargo.datasource.driver=org.postgresql.Driver|
 										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_liberty|
-										cargo.datasource.jndi=jdbc/datasources/PostgreSQLDS|
+										cargo.datasource.jndi=jdbc/PostgreSQLDS|
 										cargo.datasource.username=petclinic_jakartaee|
 										cargo.datasource.password=petclinic_jakartaeepwd
 									</cargo.datasource.datasource.postgresql>
