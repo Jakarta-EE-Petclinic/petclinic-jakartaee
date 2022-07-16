@@ -4796,11 +4796,12 @@
 		</profile>
 
 		<profile>
-			<id>wildfly</id>
+			<id>payara</id>
 			<properties>
 				<cargo.hostname>localhost</cargo.hostname>
 				<cargo.servlet.port>8080</cargo.servlet.port>
 				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
+				<cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
 			</properties>
 			<dependencyManagement>
 				<dependencies>
@@ -5367,7 +5368,7 @@
 						<artifactId>cargo-maven3-plugin</artifactId>
 						<configuration>
 							<container>
-								<containerId>wildfly26x</containerId>
+								<containerId>payara</containerId>
 								<zipUrlInstaller>
 									<url>https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/5.2022.2/payara-5.2022.2.zip</url>
 									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
@@ -5388,19 +5389,20 @@
 							</container>
 							<configuration>
 								<!-- the configuration used to deploy -->
+								<!--<home>${project.build.directory}/glassfish6x-home</home>-->
 								<properties>
 									<cargo.hostname>${cargo.hostname}</cargo.hostname>
 									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
-									<cargo.remote.username>payara</cargo.remote.username>
-									<cargo.remote.password>payarapwd</cargo.remote.password>
+									<cargo.glassfish.admin.port>${cargo.glassfish.admin.port}</cargo.glassfish.admin.port>
+									<cargo.remote.username>admin</cargo.remote.username>
+									<cargo.remote.password>adminadmin</cargo.remote.password>
 									<cargo.datasource.datasource.postgresql>
 										cargo.datasource.driver=org.postgresql.Driver|
-										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_payara
-										cargo.datasource.jndi=jboss/datasources/PostgreSQLDS|
+										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_payara|
+										cargo.datasource.jndi=jdbc/PostgreSQLDS|
 										cargo.datasource.username=petclinic_jakartaee|
 										cargo.datasource.password=petclinic_jakartaeepwd
 									</cargo.datasource.datasource.postgresql>
-									<cargo.jboss.configuration>standalone</cargo.jboss.configuration>
 								</properties>
 							</configuration>
 						</configuration>
