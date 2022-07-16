@@ -21,23 +21,10 @@ public interface VetView extends CrudView<Vet>,
 
     String JSF_PAGE = "veterinarian.jsf";
 
-    /**
-     * @param name
-     * @return specialty
-     */
     Specialty findSpecialtyByName(String name);
 
-    /**
-     * @return specialtiesPickList
-     */
     DualListModel<Specialty> getSpecialtiesPickList();
-
-    /**
-     * @param specialtiesPickList
-     */
     void setSpecialtiesPickList(DualListModel<Specialty> specialtiesPickList);
-
-
 
     long serialVersionUID = -4141782100256382881L;
 }

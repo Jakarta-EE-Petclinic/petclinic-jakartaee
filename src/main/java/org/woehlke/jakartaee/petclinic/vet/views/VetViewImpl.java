@@ -90,7 +90,7 @@ public class VetViewImpl implements VetView {
     public String showNewForm() {
         log.info("showNewForm");
         this.newEntity();
-        this.initSpecialtiesPickList();
+        this.resetSpecialtiesPickList();
         this.vetViewFlow.setFlowStateNew();
         return JSF_PAGE;
     }
@@ -281,17 +281,14 @@ public class VetViewImpl implements VetView {
         }
     }
 
-    public void initSpecialtiesPickList() {
-        log.info("initSpecialtiesPickList");
-        this.resetSpecialtiesPickList();
-    }
-
     public void resetSpecialtiesPickList() {
         log.info("resetSpecialtiesPickList");
         List<Specialty> srcList = new ArrayList<>();
         List<Specialty> targetList = new ArrayList<>();
-        for (Specialty specialty : this.entity.getSpecialties()) {
-            targetList.add(specialty);
+        if( this.entity != null) {
+            for (Specialty specialty : this.entity.getSpecialties()) {
+                targetList.add(specialty);
+            }
         }
         for (Specialty specialty : this.specialtyService.getAll()) {
             if (!targetList.contains(specialty)) {
@@ -331,8 +328,8 @@ public class VetViewImpl implements VetView {
         log.info("postConstruct: " + VetViewImpl.class.getSimpleName());
         this.provider = new MessageProvider();
         this.vetViewFlow.setFlowStateList();
-        loadList();
-        initSpecialtiesPickList();
+        this.loadList();
+        this.resetSpecialtiesPickList();
     }
 
     @Override
