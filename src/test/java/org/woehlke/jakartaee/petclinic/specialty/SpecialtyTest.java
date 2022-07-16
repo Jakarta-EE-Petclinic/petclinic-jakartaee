@@ -7,133 +7,107 @@ import org.woehlke.jakartaee.petclinic.application.api.AbstractEntityTest;
 
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.UUID;
 
 
 @Log
 public class SpecialtyTest extends AbstractEntityTest {
 
     @Test
-    void runSpecialtyTest01(){
-        log.info("runSpecialtyTest01");
-        String name = "wooollooomooollooo";
-        UUID uuid01 = UUID.randomUUID();
-        UUID uuid02 = UUID.randomUUID();
+    void runRntityTest01(){
+        log.info("runRntityTest01");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
-        Specialty specialty01 = new Specialty();
-        specialty01.setName(name);
-        specialty01.setUuid(uuid01);
-        Specialty specialty02 = new Specialty();
-        specialty02.setName(name);
-        specialty02.setUuid(uuid02);
-        Assert.assertTrue(specialty01.compareTo(specialty02)==0);
+        Specialty o01 = new Specialty();
+        o01.setName(name01);
+        o01.setUuid(uuid01);
+        Specialty o02 = new Specialty();
+        o02.setName(name01);
+        o02.setUuid(uuid02);
+        Assert.assertTrue(o01.compareTo(o02)==0);
     }
 
     @Test
-    void runSpecialtyTest02(){
-        log.info("runSpecialtyTest02");
-        String name = "wooollooomooollooo";
-        UUID uuid01 = UUID.randomUUID();
-        UUID uuid02 = UUID.randomUUID();
+    void runRntityTest02(){
+        log.info("runRntityTest02");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
-        Long id01 = 1L;
-        Long id02 = 2L;
         Assert.assertFalse(id01.compareTo(id02)==0);
-        Specialty specialty01 = new Specialty();
-        specialty01.setName(name);
-        specialty01.setId(id01);
-        specialty01.setUuid(uuid01);
-        Specialty specialty02 = new Specialty();
-        specialty02.setName(name);
-        specialty02.setUuid(uuid02);
-        specialty02.setId(id02);
-        Assert.assertTrue(specialty01.compareTo(specialty02)==0);
+        Specialty o01 = new Specialty();
+        o01.setName(name01);
+        o01.setId(id01);
+        o01.setUuid(uuid01);
+        Specialty o02 = new Specialty();
+        o02.setName(name01);
+        o02.setUuid(uuid02);
+        o02.setId(id02);
+        Assert.assertTrue(o01.compareTo(o02)==0);
     }
 
     @Test
-    void runSpecialtyTest11(){
-        log.info("runSpecialtyTest11");
-        String name01 = "wooollooomooollooo";
-        String name02 = "huulluuumuuulluuu";
-        UUID uuid01 = UUID.randomUUID();
-        UUID uuid02 = UUID.randomUUID();
+    void runRntityTest11(){
+        log.info("runRntityTest11");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
-        Specialty specialty01 = new Specialty();
-        specialty01.setName(name01);
-        specialty01.setUuid(uuid01);
-        Specialty specialty02 = new Specialty();
-        specialty02.setName(name02);
-        specialty02.setUuid(uuid02);
-        Assert.assertFalse(specialty01.compareTo(specialty02)==0);
+        Specialty o01 = new Specialty();
+        o01.setName(name01);
+        o01.setUuid(uuid01);
+        Specialty o02 = new Specialty();
+        o02.setName(name02);
+        o02.setUuid(uuid02);
+        Assert.assertFalse(o01.compareTo(o02)==0);
     }
 
     @Test
-    void runSpecialtyTest12(){
-        log.info("runSpecialtyTest12");
-        String name01 = "wooollooomooollooo";
-        String name02 = "huulluuumuuulluuu";
-        UUID uuid01 = UUID.randomUUID();
-        UUID uuid02 = UUID.randomUUID();
+    void runRntityTest12(){
+        log.info("runRntityTest12");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
-        Long id01 = 1L;
-        Long id02 = 2L;
         Assert.assertFalse(id01.compareTo(id02)==0);
-        Specialty specialty01 = new Specialty();
-        specialty01.setName(name01);
-        specialty01.setId(id01);
-        specialty01.setUuid(uuid01);
-        Specialty specialty02 = new Specialty();
-        specialty02.setName(name02);
-        specialty02.setUuid(uuid02);
-        specialty02.setId(id02);
-        Assert.assertFalse(specialty01.compareTo(specialty02)==0);
+        Specialty o01 = new Specialty();
+        o01.setName(name01);
+        o01.setId(id01);
+        o01.setUuid(uuid01);
+        Specialty o02 = new Specialty();
+        o02.setName(name02);
+        o02.setUuid(uuid02);
+        o02.setId(id02);
+        Assert.assertFalse(o01.compareTo(o02)==0);
     }
 
     @Test
-    void runSpecialtyTest21(){
-        log.info("runSpecialtyTest11");
-        String name01 = "wooollooomooollooo";
-        String name02 = "huulluuumuuulluuu";
-        UUID uuid = UUID.randomUUID();
-        Specialty specialty01 = new Specialty();
-        specialty01.setName(name01);
-        specialty01.setUuid(uuid);
-        Specialty specialty02 = new Specialty();
-        specialty02.setName(name02);
-        specialty02.setUuid(uuid);
-        Assert.assertFalse(specialty01.compareTo(specialty02)==0);
+    void runRntityTest21(){
+        log.info("runRntityTest21");
+        Specialty o01 = new Specialty();
+        o01.setName(name01);
+        o01.setUuid(uuid);
+        Specialty o02 = new Specialty();
+        o02.setName(name02);
+        o02.setUuid(uuid);
+        Assert.assertFalse(o01.compareTo(o02)==0);
     }
 
     @Test
-    void runSpecialtyTest22(){
-        log.info("runSpecialtyTest12");
-        String name01 = "wooollooomooollooo";
-        String name02 = "huulluuumuuulluuu";
-        UUID uuid = UUID.randomUUID();
-        Long id = 1L;
-        Specialty specialty01 = new Specialty();
-        specialty01.setName(name01);
-        specialty01.setId(id);
-        specialty01.setUuid(uuid);
-        Specialty specialty02 = new Specialty();
-        specialty02.setName(name02);
-        specialty02.setUuid(uuid);
-        specialty02.setId(id);
-        Assert.assertFalse(specialty01.compareTo(specialty02)==0);
+    void runRntityTest22(){
+        log.info("runRntityTest22");
+        Specialty o01 = new Specialty();
+        o01.setName(name01);
+        o01.setId(id);
+        o01.setUuid(uuid);
+        Specialty o02 = new Specialty();
+        o02.setName(name02);
+        o02.setUuid(uuid);
+        o02.setId(id);
+        Assert.assertFalse(o01.compareTo(o02)==0);
     }
 
     @Test
-    void runSpecialtyTest99(){
-        log.info("runSpecialtyTest100");
+    void runRntityTest99(){
+        log.info("runRntityTest99");
         Collections.sort(specialtyList);
         Assert.assertTrue(specialtyList.size() > 2);
         Iterator<Specialty> i =  specialtyList.iterator();
-        Specialty firstSpecialty = i.next();
+        Specialty firstEntity = i.next();
         while(i.hasNext()){
-            Specialty secondSpecialty = i.next();
-            int compared = secondSpecialty.compareTo(firstSpecialty);
+            Specialty secondEntity = i.next();
+            int compared = secondEntity.compareTo(firstEntity);
             Assert.assertTrue(compared > 0);
-            firstSpecialty = secondSpecialty;
+            firstEntity = secondEntity;
         }
     }
 }
