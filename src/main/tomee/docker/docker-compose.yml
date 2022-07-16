@@ -11,7 +11,7 @@ services:
     environment:
       POSTGRES_USER: petclinic_jakartaee
       POSTGRES_PASSWORD: petclinic_jakartaeepwd
-      POSTGRES_DB: petclinic_jakartaee_payara
+      POSTGRES_DB: petclinic_jakartaee_tomee
       CHARSET: UTF8
       PGPORT: 5432
 
