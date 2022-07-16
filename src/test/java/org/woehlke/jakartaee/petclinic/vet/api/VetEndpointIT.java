@@ -1,7 +1,5 @@
 package org.woehlke.jakartaee.petclinic.vet.api;
 
-import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
 import jakarta.xml.bind.JAXBContext;
@@ -20,14 +18,10 @@ public class VetEndpointIT extends AbstractEntityEndpoint {
 
   @Test
   public void testGetListJson() {
-    String port = "9080";
-    String context = "petclinic";
-    String url = "http://localhost:" + port + "/" + context;
     String endpoint = url + "/rest" + "/vet" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
-    Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
     assertEquals(
@@ -48,14 +42,10 @@ public class VetEndpointIT extends AbstractEntityEndpoint {
 
   @Test
   public void testGetListXml() throws JAXBException {
-    String port = "9080";
-    String context = "petclinic";
-    String url = "http://localhost:" + port + "/" + context;
     String endpoint = url + "/rest" + "/vet" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
-    Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
     assertEquals(
