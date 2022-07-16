@@ -285,15 +285,15 @@ public class VetViewImpl implements VetView {
         log.info("resetSpecialtiesPickList");
         List<Specialty> srcList = new ArrayList<>();
         List<Specialty> targetList = new ArrayList<>();
-        if( this.entity != null) {
-            for (Specialty specialty : this.entity.getSpecialties()) {
-                targetList.add(specialty);
+        if(this.entity != null) {
+            targetList.addAll(this.entity.getSpecialties());
+            for (Specialty specialty : this.specialtyService.getAll()) {
+                if (!targetList.contains(specialty)) {
+                    srcList.add(specialty);
+                }
             }
-        }
-        for (Specialty specialty : this.specialtyService.getAll()) {
-            if (!targetList.contains(specialty)) {
-                srcList.add(specialty);
-            }
+        } else {
+            srcList.addAll(this.specialtyService.getAll());
         }
         this.specialtiesPickList = new DualListModel<>(srcList, targetList);
     }
@@ -329,7 +329,6 @@ public class VetViewImpl implements VetView {
         this.provider = new MessageProvider();
         this.vetViewFlow.setFlowStateList();
         this.loadList();
-        this.resetSpecialtiesPickList();
     }
 
     @Override
