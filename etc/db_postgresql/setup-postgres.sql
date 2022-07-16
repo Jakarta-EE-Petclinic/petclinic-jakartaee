@@ -48,3 +48,9 @@ CREATE DATABASE petclinic_jakartaee_glassfish
     ENCODING = 'UTF8'
     TABLESPACE = tablespace_petclinic_jakartaee
     CONNECTION LIMIT = -1;
+
+CREATE DATABASE petclinic_jakartaee_tomee
+    WITH OWNER = petclinic_jakartaee
+    ENCODING = 'UTF8'
+    TABLESPACE = tablespace_petclinic_jakartaee
+    CONNECTION LIMIT = -1;
