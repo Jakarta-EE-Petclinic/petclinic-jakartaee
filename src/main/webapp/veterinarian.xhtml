@@ -256,7 +256,9 @@
 										id="firstNameDelete"
 									    styleClass="tw-form-control"
 									    value="#{vetView.entity.firstName}"
-										readonly="true" size="50"/>
+										readonly="true"
+										disabled="true"
+										size="50"/>
 									<p:message
 										for="firstNameDelete" display="icon"/>
 								</div>
@@ -272,7 +274,9 @@
 										id="lastNameDelete"
 									    styleClass="tw-form-control"
 									    value="#{vetView.entity.lastName}"
-										readonly="true" size="50"/>
+										readonly="true"
+										disabled="true"
+										size="50"/>
 									<p:message for="lastNameDelete" display="icon"/>
 								</div>
 						</div>
@@ -289,6 +293,7 @@
 										var="specialty"
 										converter="specialtyConverter"
 										readonly="true"
+										disabled="true"
 										itemValue="#{specialty}"
 										itemLabel="#{specialty.name}"/>
 							</div>
