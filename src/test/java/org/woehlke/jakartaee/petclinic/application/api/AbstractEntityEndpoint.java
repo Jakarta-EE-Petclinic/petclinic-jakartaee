@@ -7,10 +7,14 @@ import jakarta.ws.rs.client.ClientBuilder;
 
 public class AbstractEntityEndpoint {
 
-    protected static final Jsonb JSONB = JsonbBuilder.create();
-
-    protected String port = "8080";
-    protected String context = "petclinic";
-    protected String url = "http://localhost:" + port + "/" + context;
+    protected static final Jsonb jsonb = JsonbBuilder.create();
     protected Client client = ClientBuilder.newClient();
+
+    private String port = "8080";
+    private String context = "petclinic";
+    private String host = "localhost";
+    private String protocol = "http";
+
+    protected String url = protocol + "://"+ host +":" + port + "/" + context;
+
 }

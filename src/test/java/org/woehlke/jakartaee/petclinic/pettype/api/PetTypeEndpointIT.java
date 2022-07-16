@@ -33,7 +33,7 @@ public class PetTypeEndpointIT extends AbstractEntityEndpoint {
             "Unexpected response code from " + endpoint
     );
     String json = response.readEntity(String.class);
-    PetTypeListDto petTypeListDto = JSONB.fromJson(json, PetTypeListDto.class);
+    PetTypeListDto petTypeListDto = jsonb.fromJson(json, PetTypeListDto.class);
     for(PetTypeDto dto: petTypeListDto.getPetType()){
       log.info("fetched dto: "+dto.toString());
     }

@@ -1,7 +1,5 @@
 package org.woehlke.jakartaee.petclinic.owner.api;
 
-import jakarta.json.bind.Jsonb;
-import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
@@ -35,7 +33,7 @@ public class OwnerEndpointIT extends AbstractEntityEndpoint {
             "Unexpected response code from " + endpoint
     );
     String json = response.readEntity(String.class);
-    OwnerListDto stoList = JSONB.fromJson(json, OwnerListDto.class);
+    OwnerListDto stoList = jsonb.fromJson(json, OwnerListDto.class);
     for(OwnerDto dto: stoList.getOwner()){
       log.info("fetched dto: "+dto.toString());
     }

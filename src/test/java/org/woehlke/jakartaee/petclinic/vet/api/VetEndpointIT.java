@@ -30,7 +30,7 @@ public class VetEndpointIT extends AbstractEntityEndpoint {
             "Unexpected response code from " + endpoint
     );
     String json = response.readEntity(String.class);
-    VetListDto petTypeListDto = JSONB.fromJson(json, VetListDto.class);
+    VetListDto petTypeListDto = jsonb.fromJson(json, VetListDto.class);
     for(VetDto dto: petTypeListDto.getVetList()){
       log.info("fetched dto: "+dto.toString());
     }
