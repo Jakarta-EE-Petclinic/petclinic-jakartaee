@@ -8,7 +8,6 @@
 	<persistence-unit name="petclinicPersistenceUnit" transaction-type="JTA">
 
 		<!-- Wildfly -->
-
 		<jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
 
 		<class>org.woehlke.jakartaee.petclinic.owner.Owner</class>
