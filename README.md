@@ -50,6 +50,13 @@ cd petclinic-jakartaee
 ./mvnw -Pglassfish
 ```
 
+### Apache TomEE (9.0)
+
+```
+./mvnw -Ptomee
+```
+
+
 ## Functional Requirements
 
 Object Oriented Design
