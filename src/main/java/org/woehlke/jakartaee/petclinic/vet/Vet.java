@@ -47,7 +47,7 @@ import java.util.*;
 @NamedQueries({
         @NamedQuery(
                 name = "Vet.getAll",
-                query = "select s from Vet s"
+                query = "select s from Vet s order by s.lastName, s.firstName"
         )
 })
 @EntityListeners(VetListener.class)

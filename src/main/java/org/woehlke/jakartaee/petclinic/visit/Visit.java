@@ -49,7 +49,7 @@ import java.util.UUID;
 @NamedQueries({
         @NamedQuery(
                 name = "Visit.getAll",
-                query = "select s from Visit s"
+                query = "select s from Visit s order by s.date"
         )
 })
 @EntityListeners(VisitListener.class)

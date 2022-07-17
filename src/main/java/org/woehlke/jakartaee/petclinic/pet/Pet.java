@@ -49,7 +49,7 @@ import java.util.*;
 @NamedQueries({
         @NamedQuery(
                 name = "Pet.getAll",
-                query = "select p from Pet p order by p.name"
+                query = "select p from Pet p order by p.birthDate, p.name"
         )
 })
 @EntityListeners(PetListener.class)

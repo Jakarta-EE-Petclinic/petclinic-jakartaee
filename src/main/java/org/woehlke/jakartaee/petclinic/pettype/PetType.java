@@ -45,7 +45,7 @@ import java.util.UUID;
 @NamedQueries({
         @NamedQuery(
                 name = "PetType.getAll",
-                query = "select pt from PetType pt order by pt.name"
+                query = "select p from PetType p order by p.name"
         )
 })
 @EntityListeners(PetTypeListener.class)
