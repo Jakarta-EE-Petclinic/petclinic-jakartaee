@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Iterator;
 
 @Log
-public class PetTest extends AbstractEntityTest {
+public class PetUnitTest extends AbstractEntityTest {
 
     @Test
     void runEntityTest01(){

@@ -9,7 +9,7 @@ import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import java.util.*;
 
 @Log
-public class VetTest extends AbstractEntityTest {
+public class VetUnitTest extends AbstractEntityTest {
 
     @Test
     void runEntityTest01(){
