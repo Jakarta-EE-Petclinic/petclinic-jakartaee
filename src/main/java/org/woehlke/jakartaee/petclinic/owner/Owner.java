@@ -22,7 +22,6 @@ import java.util.*;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(

@@ -25,7 +25,6 @@ import java.util.*;
 @Getter
 @Setter
 @ToString(exclude = {"owner"})
-@EqualsAndHashCode(exclude = {"owner"}, callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(
