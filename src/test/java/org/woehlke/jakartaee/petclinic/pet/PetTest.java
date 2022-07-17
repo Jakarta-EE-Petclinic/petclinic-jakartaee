@@ -13,8 +13,8 @@ import java.util.Iterator;
 public class PetTest extends AbstractEntityTest {
 
     @Test
-    void runRntityTest01(){
-        log.info("runRntityTest01");
+    void runEntityTest01(){
+        log.info("runEntityTest01");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
@@ -31,8 +31,8 @@ public class PetTest extends AbstractEntityTest {
     }
 
     @Test
-    void runRntityTest02(){
-        log.info("runRntityTest02");
+    void runEntityTest02(){
+        log.info("runEntityTest02");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
         Assert.assertFalse(id01.compareTo(id02)==0);
         PetType petType = petTypeList.get(2);
@@ -52,8 +52,8 @@ public class PetTest extends AbstractEntityTest {
     }
 
     @Test
-    void runRntityTest11(){
-        log.info("runRntityTest11");
+    void runEntityTest11(){
+        log.info("runEntityTest11");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
@@ -70,8 +70,8 @@ public class PetTest extends AbstractEntityTest {
     }
 
     @Test
-    void runRntityTest12(){
-        log.info("runRntityTest12");
+    void runEntityTest12(){
+        log.info("runEntityTest12");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
         Assert.assertFalse(id01.compareTo(id02)==0);
         PetType petType = petTypeList.get(2);
@@ -91,8 +91,8 @@ public class PetTest extends AbstractEntityTest {
     }
 
     @Test
-    void runRntityTest21(){
-        log.info("runRntityTest21");
+    void runEntityTest21(){
+        log.info("runEntityTest21");
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
@@ -108,8 +108,8 @@ public class PetTest extends AbstractEntityTest {
     }
 
     @Test
-    void runRntityTest22(){
-        log.info("runRntityTest22");
+    void runEntityTest22(){
+        log.info("runEntityTest22");
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
@@ -127,8 +127,8 @@ public class PetTest extends AbstractEntityTest {
     }
 
     @Test
-    void runRntityTest99(){
-        log.info("runRntityTest99");
+    void runEntityTest99(){
+        log.info("runEntityTest99");
         Collections.sort(petTypeList);
         Assert.assertTrue(petList.size() > 2);
         Iterator<Pet> i =  petList.iterator();
@@ -136,7 +136,7 @@ public class PetTest extends AbstractEntityTest {
         while(i.hasNext()){
             Pet secondEntity = i.next();
             int compared = secondEntity.compareTo(firstEntity);
-            //log.info("runRntityTest99: "+ compared);
+            //log.info("runEntityTest99: "+ compared);
             Assert.assertTrue(compared > 0);
             firstEntity = secondEntity;
         }

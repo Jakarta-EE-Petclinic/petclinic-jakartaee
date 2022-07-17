@@ -3,6 +3,7 @@ package org.woehlke.jakartaee.petclinic.application.api;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
+import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import java.util.*;
 
@@ -111,4 +112,34 @@ public class AbstractEntityTest {
 
     protected Date dob01 = new Date(2021,6,14);
     protected Date dob02 = new Date(2020,5,12);
+
+    protected static Map<String,String> vetNames = new HashMap<>();
+
+    static {
+        vetNames.put("von Kos","Hippokrates");
+        vetNames.put("Koch","Robert");
+        vetNames.put("Fleming","Alexander");
+        vetNames.put("Virchow","Rudolf");
+        vetNames.put("Freud","Sigmund");
+        vetNames.put("Stertinius Xenophon","Gaius");
+        vetNames.put("von Behring","Emil");
+        vetNames.put("Ehrlich","Paul");
+        vetNames.put("Shibasaburō","Kitasato");
+        vetNames.put("Hispalensis","Isidorus");
+        vetNames.put("Schweitzer","Albert");
+        vetNames.put("Montessori","Maria Tecla Artemisia");
+    }
+
+    protected static List<Vet> vetList = new ArrayList<>();
+
+    static {
+        for(Map.Entry<String,String> vetName:vetNames.entrySet()){
+            Vet v = new Vet();
+            v.setLastName(vetName.getKey());
+            v.setFirstName(vetName.getValue());
+            v.setUuid(UUID.randomUUID());
+            v.setSpecialties(specialtySet);
+            vetList.add(v);
+        }
+    }
 }
