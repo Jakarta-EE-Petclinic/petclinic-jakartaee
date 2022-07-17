@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.*;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -47,7 +48,7 @@ import java.util.UUID;
                 query = "select s from Specialty s order by s.name"
         )
 })
-public class Specialty extends EntityBaseObject implements EntityBase {
+public class Specialty extends EntityBaseObject implements EntityBase,Comparable<Specialty> {
 
     public final static String TABLENAME = "specialty";
     public final static String COL_ID = "id";
@@ -90,4 +91,21 @@ public class Specialty extends EntityBaseObject implements EntityBase {
         return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Specialty)) return false;
+        Specialty specialty = (Specialty) o;
+        return getName().equals(specialty.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
+    }
+
+    @Override
+    public int compareTo(Specialty o) {
+        return this.name.compareTo(o.name);
+    }
 }

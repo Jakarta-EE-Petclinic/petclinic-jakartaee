@@ -11,8 +11,8 @@ import jakarta.persistence.*;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitListener;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.UUID;
-//import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,7 +25,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString(exclude = {"pet"})
-@EqualsAndHashCode(exclude = {"pet"}, callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(
@@ -54,7 +53,7 @@ import java.util.UUID;
         )
 })
 @EntityListeners(VisitListener.class)
-public class Visit extends EntityBaseObject implements EntityBase {
+public class Visit extends EntityBaseObject implements EntityBase,Comparable<Visit> {
 
     public final static String TABLENAME = "owner_pet_visit";
     public final static String COL_ID = "id";
@@ -107,4 +106,21 @@ public class Visit extends EntityBaseObject implements EntityBase {
         return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Visit)) return false;
+        Visit visit = (Visit) o;
+        return getDate().equals(visit.getDate()) && getDescription().equals(visit.getDescription()) && getPet().equals(visit.getPet());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDate(), getDescription(), getPet());
+    }
+
+    @Override
+    public int compareTo(Visit o) {
+        return this.date.compareTo(o.date);
+    }
 }

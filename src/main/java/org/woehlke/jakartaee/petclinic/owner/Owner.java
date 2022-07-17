@@ -161,4 +161,16 @@ public class Owner extends EntityBaseObject implements EntityBase {
         return list;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Owner)) return false;
+        Owner owner = (Owner) o;
+        return getFirstName().equals(owner.getFirstName()) && getLastName().equals(owner.getLastName()) && Objects.equals(getAddress(), owner.getAddress()) && Objects.equals(getHouseNumber(), owner.getHouseNumber()) && Objects.equals(getAddressInfo(), owner.getAddressInfo()) && Objects.equals(getCity(), owner.getCity()) && Objects.equals(getZipCode(), owner.getZipCode()) && getPhoneNumber().equals(owner.getPhoneNumber()) && getEmail().equals(owner.getEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName(), getAddress(), getHouseNumber(), getAddressInfo(), getCity(), getZipCode(), getPhoneNumber(), getEmail());
+    }
 }

@@ -24,7 +24,6 @@ import java.util.*;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(
@@ -52,7 +51,7 @@ import java.util.*;
         )
 })
 @EntityListeners(VetListener.class)
-public class Vet extends EntityBaseObject implements EntityBase {
+public class Vet extends EntityBaseObject implements EntityBase, Comparable<Vet> {
 
     private static final long serialVersionUID = 6749793465861123385L;
 
@@ -96,6 +95,11 @@ public class Vet extends EntityBaseObject implements EntityBase {
         this.specialties = new HashSet<>();
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    @Transient
+    public String getFullname(){
+        return this.lastName +", "+this.firstName;
     }
 
     @Transient
@@ -153,4 +157,21 @@ public class Vet extends EntityBaseObject implements EntityBase {
         return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Vet)) return false;
+        Vet vet = (Vet) o;
+        return getFirstName().equals(vet.getFirstName()) && getLastName().equals(vet.getLastName()) && getSpecialties().equals(vet.getSpecialties());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName(), getSpecialties());
+    }
+
+    @Override
+    public int compareTo(Vet o) {
+        return this.getFullname().compareTo(o.getFullname());
+    }
 }

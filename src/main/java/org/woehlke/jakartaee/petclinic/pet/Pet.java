@@ -53,7 +53,7 @@ import java.util.*;
         )
 })
 @EntityListeners(PetListener.class)
-public class Pet extends EntityBaseObject implements EntityBase  {
+public class Pet extends EntityBaseObject implements EntityBase,Comparable<Pet>  {
 
     public final static String TABLENAME = "owner_pet";
     public final static String COL_ID = "id";
@@ -118,12 +118,12 @@ public class Pet extends EntityBaseObject implements EntityBase  {
     }
 
     public List<Visit> getVisits() {
-        List<Visit> list = new ArrayList<>();
+        List<Visit> listVisit = new ArrayList<>();
         for (Visit visit : visits) {
-            list.add(visit);
+            listVisit.add(visit);
         }
-        Collections.sort(list);
-        return list;
+        Collections.sort(listVisit);
+        return listVisit;
     }
 
     public void setVisits(Set<Visit> visits) {
@@ -131,17 +131,20 @@ public class Pet extends EntityBaseObject implements EntityBase  {
     }
 
     @Override
-    public int compareTo(EntityBaseObject other) {
-        Pet o = (Pet) other;
-        Long thisBirthdate =  this.getBirthDate().toInstant().getEpochSecond();
-        Long otherBirthdate = o.getBirthDate().toInstant().getEpochSecond();
-        int compared = thisBirthdate.compareTo(otherBirthdate);
-        if(compared != 0){
-            return compared;
-        } else {
-          //  compared = this.getName().compareTo(o.getName());
-        }
-        return compared;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pet)) return false;
+        Pet pet = (Pet) o;
+        return Objects.equals(getBirthDate(), pet.getBirthDate()) && Objects.equals(getName(), pet.getName()) && Objects.equals(getType(), pet.getType()) && Objects.equals(getOwner(), pet.getOwner());
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getBirthDate(), getName(), getType(), getOwner());
+    }
+
+    @Override
+    public int compareTo(Pet o) {
+        return this.getBirthDate().compareTo(o.getBirthDate());
+    }
 }

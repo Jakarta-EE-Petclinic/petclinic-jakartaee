@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  *
  */
-public abstract class EntityBaseObject<T extends EntityBaseObject> extends Object implements EntityBase, Comparable<T> {
+public abstract class EntityBaseObject extends Object implements EntityBase {
 
     private static final long serialVersionUID = -3378330831315654285L;
 
@@ -24,8 +24,4 @@ public abstract class EntityBaseObject<T extends EntityBaseObject> extends Objec
     @Override
     public abstract String getPrimaryKeyWithId();
 
-    @Override
-    public int compareTo(T o) {
-        return this.getPrimaryKey().compareTo(o.getPrimaryKey());
-    }
 }

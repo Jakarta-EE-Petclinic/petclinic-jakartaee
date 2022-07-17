@@ -44,6 +44,7 @@ public class PetTypeTest extends AbstractEntityTest {
     void runRntityTest11(){
         log.info("runRntityTest11");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
+        Assert.assertFalse(name01.compareTo(name02)==0);
         PetType o01 = new PetType();
         o01.setName(name01);
         o01.setUuid(uuid01);

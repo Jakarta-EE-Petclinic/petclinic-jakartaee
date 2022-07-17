@@ -10,6 +10,7 @@ import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeListener;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -48,7 +49,7 @@ import java.util.UUID;
         )
 })
 @EntityListeners(PetTypeListener.class)
-public class PetType extends EntityBaseObject implements EntityBase {
+public class PetType extends EntityBaseObject implements EntityBase, Comparable<PetType> {
 
     public final static String TABLENAME = "owner_pet_type";
     public final static String COL_ID = "id";
@@ -90,4 +91,21 @@ public class PetType extends EntityBaseObject implements EntityBase {
         return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PetType)) return false;
+        PetType petType = (PetType) o;
+        return getName().equals(petType.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
+    }
+
+    @Override
+    public int compareTo(PetType o) {
+        return this.name.compareTo(o.name);
+    }
 }
