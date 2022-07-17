@@ -54,6 +54,17 @@ public class AbstractEntityTest {
             "Chicken"
     };
 
+    protected static final String petNames[] = {
+            "Jessie",
+            "Lucifer Sam",
+            "Nelly",
+            "Kitten",
+            "Benjamin",
+            "Pauline Wayne",
+            "Snowball",
+            "Gallus gallus domesticus"
+    };
+
     protected static List<PetType> petTypeList = new ArrayList<>();
 
     static {
@@ -64,17 +75,6 @@ public class AbstractEntityTest {
             petTypeList.add(o);
         }
     }
-
-    protected static final String petName[] = {
-            "Dog",
-            "Cat",
-            "Elephant",
-            "Kitten",
-            "Donkey",
-            "Cow",
-            "Pig",
-            "Chicken"
-    };
 
     protected static List<Date> dateOfBirthList = new ArrayList<>();
 
@@ -96,13 +96,13 @@ public class AbstractEntityTest {
     static {
         int i=0;
         int k=0;
-        for (String petTypeName : petTypeName){
+        for (String petName : petNames){
             Date dob = dateOfBirthList.get(k);
             Pet o = new Pet();
-            o.setName(petTypeName);
+            o.setName(petName);
             o.setBirthDate(dob);
-            o.setUuid(UUID.randomUUID());
             o.setType(petTypeList.get(i));
+            o.setUuid(UUID.randomUUID());
             petList.add(o);
             i++;
             i %= petTypeList.size();

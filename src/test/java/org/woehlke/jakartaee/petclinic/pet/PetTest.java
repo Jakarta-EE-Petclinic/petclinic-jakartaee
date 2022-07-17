@@ -129,7 +129,7 @@ public class PetTest extends AbstractEntityTest {
     @Test
     void runEntityTest99(){
         log.info("runEntityTest99");
-        Collections.sort(petTypeList);
+        Collections.sort(petList);
         Assert.assertTrue(petList.size() > 2);
         Iterator<Pet> i =  petList.iterator();
         Pet firstEntity = i.next();
