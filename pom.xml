@@ -132,6 +132,18 @@
 
 		<!-- maven DevOps Plugin Versions -->
 		<version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
+
+		<!-- Arquillian 1.7.0 adds Jakarta EE 9 and JUnit 5 support-->
+		<arquillian-bom.version>1.7.0.Alpha10</arquillian-bom.version>
+		<junit-jupiter.version>5.8.2</junit-jupiter.version>
+
+		<!-- Test Utilities -->
+		<mockito.version>4.6.1</mockito.version>
+		<json-path.version>2.7.0</json-path.version>
+		<awaitility.version>4.2.0</awaitility.version>
+		<hamcrest.version>2.2</hamcrest.version>
+		<jsonassert.version>1.5.0</jsonassert.version>
+		<assertj.version>3.23.1</assertj.version>
 	</properties>
 
 	<repositories>
@@ -403,6 +415,78 @@
 				<artifactId>jakarta.jakartaee-web-api</artifactId>
 				<version>${version.jakarta.jakartaee-api}</version>
 				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>${arquillian-bom.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+
+			<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest</artifactId>
+				<version>${hamcrest.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.skyscreamer</groupId>
+				<artifactId>jsonassert</artifactId>
+				<version>${jsonassert.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+			<dependency>
+				<groupId>org.assertj</groupId>
+				<artifactId>assertj-core</artifactId>
+				<version>${assertj.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.awaitility/awaitility -->
+			<dependency>
+				<groupId>org.awaitility</groupId>
+				<artifactId>awaitility</artifactId>
+				<version>${awaitility.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- JSON path -->
+			<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+				<artifactId>json-path</artifactId>
+				<version>${json-path.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path-assert -->
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+				<artifactId>json-path-assert</artifactId>
+				<version>${json-path.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Mockito -->
+			<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
 			</dependency>
 
 			<!-- Jakarta EE Runtime: OpenLiberty -->
@@ -740,6 +824,24 @@
 			<artifactId>myfaces-impl</artifactId>
 		</dependency>
 		-->
+
+		<dependency>
+			<groupId>org.jboss.arquillian.junit5</groupId>
+			<artifactId>arquillian-junit5-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- see: https://github.com/arquillian/arquillian-core/issues/248 -->
+		<!-- and https://github.com/arquillian/arquillian-core/pull/246/files -->
+		<dependency>
+			<groupId>org.jboss.arquillian.protocol</groupId>
+			<artifactId>arquillian-protocol-servlet-jakarta</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
@@ -748,6 +850,28 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<scope>test</scope>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
 			<scope>test</scope>
 		</dependency>
 
@@ -867,6 +991,7 @@
 			<type>maven-plugin</type>
 			<scope>provided</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-failsafe-plugin</artifactId>
@@ -879,6 +1004,7 @@
 			<type>maven-plugin</type>
 			<scope>test</scope>
 		</dependency>
+		-->
 	</dependencies>
 
 	<build>
@@ -933,6 +1059,7 @@
 					<artifactId>maven-scm-plugin</artifactId>
 					<version>${version.org.apache.maven.scm}</version>
 				</plugin>
+				<!--
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
@@ -943,6 +1070,7 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${version.maven-surefire-plugin}</version>
 				</plugin>
+				-->
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -1022,6 +1150,7 @@
 					<connectionType>developerConnection</connectionType>
 				</configuration>
 			</plugin>
+			<!--
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -1030,6 +1159,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 			</plugin>
+			-->
 		</plugins>
 	</build>
 
@@ -5457,7 +5587,6 @@
 
 
 		<profile>
-
 			<!-- An optional Arquillian testing profile that executes tests in your
                 WildFly instance -->
 			<!-- This profile will start a new WildFly instance, and execute the test,
