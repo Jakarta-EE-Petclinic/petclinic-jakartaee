@@ -25,9 +25,8 @@ import java.util.ResourceBundle;
 @Log
 @Named("petclinicApplication")
 @ApplicationScoped
-@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
+@BasicAuthenticationMechanismDefinition()
 @DatabaseIdentityStoreDefinition(
-        dataSourceLookup = "java:comp/env/jdbc/securityDS",
         callerQuery = "select password from users where username = ?",
         groupsQuery = "select GROUPNAME from groups where username = ?",
         priority=30)

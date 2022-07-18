@@ -1,8 +1,8 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
+import jakarta.faces.context.FacesContext;
+import jakarta.security.enterprise.SecurityContext;
 import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
-import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
-import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -35,12 +35,10 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 @Log
-@Named("vetView")
-@SessionScoped
 @Getter
 @Setter
-@LoginToContinue
-@RememberMe
+@Named("vetView")
+@SessionScoped
 @BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class VetViewImpl implements VetView {
 
@@ -48,6 +46,12 @@ public class VetViewImpl implements VetView {
 
     @Inject
     private PetclinicApplication petclinicApplication;
+
+    @Inject
+    private SecurityContext securityContext;
+
+    @Inject
+    private FacesContext facesContext;
 
     @Inject
     private LanguageView languageView;

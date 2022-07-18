@@ -3,9 +3,9 @@ package org.woehlke.jakartaee.petclinic.owner.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import jakarta.faces.context.FacesContext;
+import jakarta.security.enterprise.SecurityContext;
 import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
-import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
-import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -38,16 +38,32 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Log
-@Named("ownerView")
-@SessionScoped
 @Getter
 @Setter
-@LoginToContinue
-@RememberMe
+@Named("ownerView")
+@SessionScoped
 @BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class OwnerViewImpl implements OwnerView {
 
     private static final long serialVersionUID = -4809817472969005481L;
+
+    @Inject
+    private PetclinicApplication petclinicApplication;
+
+    @Inject
+    private SecurityContext securityContext;
+
+    @Inject
+    private FacesContext facesContext;
+
+    @Inject
+    private LanguageView languageView;
+
+    @Inject
+    private FlashMessagesView flashMessagesView;
+
+    @Inject
+    private OwnerFlowView ownerFlowView;
 
     @EJB
     private OwnerService entityService;
@@ -60,18 +76,6 @@ public class OwnerViewImpl implements OwnerView {
 
     @EJB
     private VisitService visitService;
-
-    @Inject
-    private PetclinicApplication petclinicApplication;
-
-    @Inject
-    private LanguageView languageView;
-
-    @Inject
-    private FlashMessagesView flashMessagesView;
-
-    @Inject
-    private OwnerFlowView ownerFlowView;
 
     private String searchterm;
     private List<Owner> list;

@@ -4,6 +4,8 @@ package org.woehlke.jakartaee.petclinic.pettype.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import jakarta.faces.context.FacesContext;
+import jakarta.security.enterprise.SecurityContext;
 import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
 import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
@@ -36,22 +38,23 @@ import java.util.ResourceBundle;
  * To change this template use File | Settings | File Templates.
  */
 @Log
-@Named("petTypeView")
-@SessionScoped
 @Getter
 @Setter
-@LoginToContinue
-@RememberMe
+@Named("petTypeView")
+@SessionScoped
 @BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class PetTypeViewImpl implements PetTypeView {
 
     private static final long serialVersionUID = -528406859430949031L;
 
-    @EJB
-    private PetTypeService entityService;
-
     @Inject
     private PetclinicApplication petclinicApplication;
+
+    @Inject
+    private SecurityContext securityContext;
+
+    @Inject
+    private FacesContext facesContext;
 
     @Inject
     private LanguageView languageView;
@@ -62,6 +65,8 @@ public class PetTypeViewImpl implements PetTypeView {
     @Inject
     private PetTypeFlowViewImpl petTypeViewFlow;
 
+    @EJB
+    private PetTypeService entityService;
 
     private PetType entity;
     private List<PetType> list;

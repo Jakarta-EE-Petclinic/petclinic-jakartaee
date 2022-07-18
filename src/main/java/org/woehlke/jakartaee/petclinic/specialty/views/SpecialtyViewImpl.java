@@ -3,14 +3,13 @@ package org.woehlke.jakartaee.petclinic.specialty.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import jakarta.faces.context.FacesContext;
+import jakarta.security.enterprise.SecurityContext;
 import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
-import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
-import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.api.PetclinicApplication;
-import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
@@ -24,7 +23,6 @@ import jakarta.inject.Named;
 import org.woehlke.jakartaee.petclinic.specialty.SpecialtyView;
 
 import java.util.List;
-import java.util.ResourceBundle;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,12 +32,10 @@ import java.util.ResourceBundle;
  * To change this template use File | Settings | File Templates.
  */
 @Log
-@Named("specialtyView")
-@SessionScoped
 @Getter
 @Setter
-@LoginToContinue
-@RememberMe
+@Named("specialtyView")
+@SessionScoped
 @BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class SpecialtyViewImpl implements SpecialtyView {
 
@@ -50,11 +46,14 @@ public class SpecialtyViewImpl implements SpecialtyView {
 
     private String searchterm;
 
-    @EJB
-    private SpecialtyService entityService;
-
     @Inject
     private PetclinicApplication petclinicApplication;
+
+    @Inject
+    private SecurityContext securityContext;
+
+    @Inject
+    private FacesContext facesContext;
 
     @Inject
     private LanguageView languageView;
@@ -64,6 +63,9 @@ public class SpecialtyViewImpl implements SpecialtyView {
 
     @Inject
     private SpecialtyFlowView specialtyViewFlow;
+
+    @EJB
+    private SpecialtyService entityService;
 
     @Override
     public String showDetailsForm(Specialty o) {
