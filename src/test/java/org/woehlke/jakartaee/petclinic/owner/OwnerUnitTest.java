@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.woehlke.jakartaee.petclinic.application.conf.AbstractEntityTest;
 
 import java.util.Collections;
-import java.util.Iterator;
 
 @Log
 public class OwnerUnitTest extends AbstractEntityTest {
