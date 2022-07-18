@@ -51,7 +51,7 @@
         <web-resource-collection>
             <web-resource-name>Faces Servlet</web-resource-name>
             <url-pattern>*.jsf</url-pattern>
-            <http-method-omission/>
+            <http-method-omission>GET</http-method-omission>
         </web-resource-collection>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
