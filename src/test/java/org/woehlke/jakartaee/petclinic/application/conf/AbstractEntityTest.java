@@ -28,6 +28,7 @@ public class AbstractEntityTest {
     protected static List<Date> dateOfBirthList = new ArrayList<>();
     protected static List<PetType> petTypeList = new ArrayList<>();
     protected static List<Pet> petList = new ArrayList<>();
+    protected static Set<Pet> petSet = new HashSet<>();
     protected static List<Owner> ownerList = new ArrayList<>();
 
     protected static final String specialtyNames[] = {
@@ -123,6 +124,7 @@ public class AbstractEntityTest {
             o.setType(petTypeList.get(i));
             o.setUuid(UUID.randomUUID());
             petList.add(o);
+            petSet.add(o);
             i++;
             i %= petTypeList.size();
             k++;
@@ -137,6 +139,65 @@ public class AbstractEntityTest {
             v.setUuid(UUID.randomUUID());
             v.setSpecialties(specialtySet);
             vetList.add(v);
+        }
+    }
+
+    static {
+        Owner o = new Owner();
+        o.setFirstName("Kurt");
+        o.setLastName("Tucholsky");
+        o.setAddress("Lübecker Straße");
+        o.setHouseNumber("13");
+        o.setCity("Berlin");
+        o.setZipCode("10559");
+        o.setPhoneNumber("+49 30 3946364");
+        o.setEmail("kurt.tucholsky@vistaberlin.de");
+        ownerList.add(o);
+        o = new Owner();
+        o.setFirstName("Heinrich");
+        o.setLastName("Heine");
+        o.setAddress("Bolkerstraße");
+        o.setHouseNumber("53");
+        o.setCity("Düsseldorf");
+        o.setZipCode("40213");
+        o.setPhoneNumber("+49 211 20054294");
+        o.setEmail("heinrich.heine@heinehaus.de");
+        ownerList.add(o);
+        o = new Owner();
+        o.setFirstName("Alan");
+        o.setLastName("Turing");
+        o.setAddress("Bletchley Park");
+        o.setHouseNumber("Block H");
+        o.setCity("Milton Keynes");
+        o.setZipCode("MK3 6EB");
+        o.setPhoneNumber("+441908374708");
+        o.setEmail("alan.turing@tnmoc.org");
+        ownerList.add(o);
+        o = new Owner();
+        o.setFirstName("Grace");
+        o.setLastName("Hopper");
+        o.setAddress("St Ronan St");
+        o.setHouseNumber("160");
+        o.setAddressInfo("Yale University");
+        o.setCity("New Haven");
+        o.setZipCode("CT 06520");
+        o.setPhoneNumber("+12034324771");
+        o.setEmail("grace.hopper@yale.edu");
+        ownerList.add(o);
+        o = new Owner();
+        o.setFirstName("Mahatma");
+        o.setLastName("Ghandi");
+        o.setAddress("Sevagram");
+        o.setHouseNumber("PMH7 H42");
+        o.setAddressInfo("Mahatma Gandhi Ashram");
+        o.setCity("Maharashtra");
+        o.setZipCode("442102");
+        o.setPhoneNumber("+91-7152-284753");
+        o.setEmail("mahatma.ghandi@gandhiashramsevagram.org");
+        ownerList.add(o);
+        for(Owner oo:ownerList){
+            oo.setUuid(UUID.randomUUID());
+            oo.setPets(petSet);
         }
     }
 

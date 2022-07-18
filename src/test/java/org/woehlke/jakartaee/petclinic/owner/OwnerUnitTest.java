@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.woehlke.jakartaee.petclinic.application.conf.AbstractEntityTest;
 
 import java.util.Collections;
+import java.util.Iterator;
 
 @Log
 public class OwnerUnitTest extends AbstractEntityTest {
@@ -116,8 +117,6 @@ public class OwnerUnitTest extends AbstractEntityTest {
     void runEntityTest99(){
         log.info("runEntityTest99");
         Collections.sort(ownerList);
-        Assert.assertTrue(ownerList.size() == 0);
-        /*
         Assert.assertTrue(ownerList.size() > 2);
         Iterator<Owner> i =  ownerList.iterator();
         Owner firstEntity = i.next();
@@ -127,7 +126,6 @@ public class OwnerUnitTest extends AbstractEntityTest {
             Assert.assertTrue(compared > 0);
             firstEntity = secondEntity;
         }
-        */
     }
 
 }
