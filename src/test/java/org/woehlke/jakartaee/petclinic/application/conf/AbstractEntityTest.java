@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.api;
+package org.woehlke.jakartaee.petclinic.application.conf;
 
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;

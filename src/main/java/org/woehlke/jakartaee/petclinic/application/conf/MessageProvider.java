@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.messages;
+package org.woehlke.jakartaee.petclinic.application.conf;
 
 import jakarta.faces.context.FacesContext;
 

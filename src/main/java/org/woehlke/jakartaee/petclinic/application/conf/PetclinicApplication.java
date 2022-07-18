@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.api;
+package org.woehlke.jakartaee.petclinic.application.conf;
 
 
 import jakarta.annotation.PostConstruct;
@@ -10,7 +10,6 @@ import jakarta.security.enterprise.identitystore.DatabaseIdentityStoreDefinition
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;

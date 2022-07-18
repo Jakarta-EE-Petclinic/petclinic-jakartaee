@@ -3,7 +3,7 @@ package org.woehlke.jakartaee.petclinic.pet;
 import junit.framework.Assert;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Test;
-import org.woehlke.jakartaee.petclinic.application.api.AbstractEntityTest;
+import org.woehlke.jakartaee.petclinic.application.conf.AbstractEntityTest;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
 import java.util.Collections;

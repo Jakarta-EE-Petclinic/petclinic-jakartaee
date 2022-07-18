@@ -7,7 +7,7 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Test;
-import org.woehlke.jakartaee.petclinic.application.api.AbstractEndpointTest;
+import org.woehlke.jakartaee.petclinic.application.conf.AbstractEndpointTest;
 
 import java.io.StringReader;
 

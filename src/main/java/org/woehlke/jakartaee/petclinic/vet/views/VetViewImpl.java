@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.primefaces.model.DualListModel;
-import org.woehlke.jakartaee.petclinic.application.api.PetclinicApplication;
+import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
