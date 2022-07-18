@@ -8,6 +8,7 @@ import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import jakarta.persistence.*;
+import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import java.util.*;
 
@@ -53,7 +54,7 @@ import java.util.*;
         )
 })
 @EntityListeners(OwnerListener.class)
-public class Owner extends EntityBaseObject implements EntityBase {
+public class Owner extends EntityBaseObject implements EntityBase, Comparable<Owner> {
 
     public final static String TABLENAME = "owner";
     public final static String COL_ID = "id";
@@ -129,6 +130,11 @@ public class Owner extends EntityBaseObject implements EntityBase {
     }
 
     @Transient
+    public String getFullname(){
+        return this.lastName +", "+this.firstName;
+    }
+
+    @Transient
     public String getTableName() {
         return TABLENAME;
     }
@@ -171,5 +177,10 @@ public class Owner extends EntityBaseObject implements EntityBase {
     @Override
     public int hashCode() {
         return Objects.hash(getFirstName(), getLastName(), getAddress(), getHouseNumber(), getAddressInfo(), getCity(), getZipCode(), getPhoneNumber(), getEmail());
+    }
+
+    @Override
+    public int compareTo(Owner o) {
+        return this.getFullname().compareTo(o.getFullname());
     }
 }

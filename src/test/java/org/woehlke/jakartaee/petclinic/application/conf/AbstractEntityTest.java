@@ -1,5 +1,7 @@
 package org.woehlke.jakartaee.petclinic.application.conf;
 
+import org.apache.velocity.util.ArrayListWrapper;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
@@ -142,4 +144,6 @@ public class AbstractEntityTest {
             vetList.add(v);
         }
     }
+
+    protected static List<Owner> ownerList = new ArrayList<>();
 }
