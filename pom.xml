@@ -499,6 +499,12 @@
 				<artifactId>jakarta.security.enterprise</artifactId>
 				<version>2.0.1</version>
 			</dependency>
+			<dependency>
+				<groupId>org.glassfish.exousia</groupId>
+				<artifactId>exousia</artifactId>
+				<version>1.0.1</version>
+			</dependency>
+
 
 			<!-- Jakarta EE Runtime: OpenLiberty -->
 
@@ -828,6 +834,10 @@
 		<dependency>
 			<groupId>org.glassfish.soteria</groupId>
 			<artifactId>jakarta.security.enterprise</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.exousia</groupId>
+			<artifactId>exousia</artifactId>
 		</dependency>
 
 		<dependency>

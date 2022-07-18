@@ -35,9 +35,6 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
     @Inject
     private SecurityContext securityContext;
 
-    @Inject
-    private FacesContext facesContext;
-
     private List<FacesMessage> messageHolder = new ArrayList<>();
 
     public void flashTheMessages(){

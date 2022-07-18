@@ -51,9 +51,6 @@ public class VetViewImpl implements VetView {
     private SecurityContext securityContext;
 
     @Inject
-    private FacesContext facesContext;
-
-    @Inject
     private LanguageView languageView;
 
     @Inject

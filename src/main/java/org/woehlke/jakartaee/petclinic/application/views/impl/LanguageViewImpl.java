@@ -46,12 +46,6 @@ public class LanguageViewImpl implements LanguageView {
     private PetclinicApplication petclinicApplication;
 
     @Inject
-    private SecurityContext securityContext;
-
-    @Inject
-    private FacesContext facesContext;
-
-    @Inject
     private FlashMessagesView flashMessagesView;
 
     private Locale locale;

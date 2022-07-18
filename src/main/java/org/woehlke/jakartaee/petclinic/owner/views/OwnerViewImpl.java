@@ -54,9 +54,6 @@ public class OwnerViewImpl implements OwnerView {
     private SecurityContext securityContext;
 
     @Inject
-    private FacesContext facesContext;
-
-    @Inject
     private LanguageView languageView;
 
     @Inject
