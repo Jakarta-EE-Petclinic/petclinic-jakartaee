@@ -7,6 +7,7 @@ import jakarta.ejb.EJBTransactionRolledbackException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.application.api.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
@@ -40,10 +41,11 @@ public class PetTypeViewImpl implements PetTypeView {
 
     private static final long serialVersionUID = -528406859430949031L;
 
-    private MessageProvider provider;
-
     @EJB
     private PetTypeService entityService;
+
+    @Inject
+    private PetclinicApplication petclinicApplication;
 
     @Inject
     private LanguageView languageView;
@@ -190,7 +192,7 @@ public class PetTypeViewImpl implements PetTypeView {
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.petTypeViewFlow.setFlowStateDetails();
             String summaryKey = "org.woehlke.jakartaee.petclinic.petType.addNew.done";
-            String summary = this.provider.getBundle().getString(summaryKey);
+            String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
         } catch (EJBException e) {
             this.petTypeViewFlow.setFlowStateNew();
@@ -208,7 +210,7 @@ public class PetTypeViewImpl implements PetTypeView {
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.petTypeViewFlow.setFlowStateDetails();
             String summaryKey = "org.woehlke.jakartaee.petclinic.petType.edit.done";
-            String summary = this.provider.getBundle().getString(summaryKey);
+            String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.entity.getPrimaryKey());
         } catch (EJBException e) {
             this.petTypeViewFlow.setFlowStateEdit();
@@ -225,7 +227,7 @@ public class PetTypeViewImpl implements PetTypeView {
                 entityService.delete(this.entity.getId());
                 this.entity = null;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.done";
-                String summary = this.provider.getBundle().getString(summaryKey);
+                String summary = this.petclinicApplication.getMsg().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, msgInfo);
                 this.petTypeViewFlow.setFlowStateList();
             }
@@ -233,7 +235,7 @@ public class PetTypeViewImpl implements PetTypeView {
         } catch (EJBTransactionRolledbackException e) {
             this.petTypeViewFlow.setFlowStateDelete();
             String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.denied";
-            String summary = this.provider.getBundle().getString(summaryKey);
+            String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addWarnMessage(summary, this.entity);
         } catch (EJBException e) {
             this.petTypeViewFlow.setFlowStateDelete();
@@ -244,19 +246,19 @@ public class PetTypeViewImpl implements PetTypeView {
     @Override
     public void performSearch() {
         String summaryKey = "org.woehlke.jakartaee.petclinic.petType.search.done";
-        String summary = this.provider.getBundle().getString(summaryKey);
+        String summary = this.petclinicApplication.getMsg().getString(summaryKey);
         if (searchterm == null || searchterm.isEmpty()) {
             this.petTypeViewFlow.setFlowStateList();
             String missingKey = "org.woehlke.jakartaee.petclinic.list.searchterm.missing";
-            String detail = this.provider.getBundle().getString(missingKey);
+            String detail = this.petclinicApplication.getMsg().getString(missingKey);
             flashMessagesView.addInfoMessage(summary, detail);
         } else {
             this.petTypeViewFlow.setFlowStateSearchResult();
             this.list = entityService.search(searchterm);
             String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
             String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
-            String found = this.provider.getBundle().getString(foundKey);
-            String results = this.provider.getBundle().getString(resultsKey);
+            String found = this.petclinicApplication.getMsg().getString(foundKey);
+            String results = this.petclinicApplication.getMsg().getString(resultsKey);
             String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
             flashMessagesView.addInfoMessage(summary, detail);
         }
@@ -277,19 +279,11 @@ public class PetTypeViewImpl implements PetTypeView {
         this.list = this.entityService.getAll();
     }
 
-
-    public ResourceBundle getMsg() {
-        return this.provider.getBundle();
-    }
-
-    public void setMsg(ResourceBundle msg) {
-    }
-
+    
     @Override
     @PostConstruct
     public void postConstruct() {
         log.info("postConstruct: " + PetTypeViewImpl.class.getSimpleName());
-        this.provider = new MessageProvider();
         this.petTypeViewFlow.setFlowStateList();
     }
 

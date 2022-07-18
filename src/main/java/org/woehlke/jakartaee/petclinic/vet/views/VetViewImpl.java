@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.primefaces.model.DualListModel;
+import org.woehlke.jakartaee.petclinic.application.api.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
@@ -40,8 +41,8 @@ public class VetViewImpl implements VetView {
 
     private static final long serialVersionUID = 2838339162976374606L;
 
-
-    private MessageProvider provider;
+    @Inject
+    private PetclinicApplication petclinicApplication;
 
     @Inject
     private LanguageView languageView;
@@ -57,6 +58,7 @@ public class VetViewImpl implements VetView {
 
     @EJB
     private VetService entityService;
+
 
     private Vet entity;
     private DualListModel<Specialty> specialtiesPickList;
@@ -206,7 +208,7 @@ public class VetViewImpl implements VetView {
             this.entity = entityService.update(this.entity);
             log.info("saved New: " + this.entity.toString());
             String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.addNew.done";
-            String summary = this.provider.getBundle().getString(summaryKey);
+            String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.entity);
         } catch (EJBException e) {
             log.info(e.getMessage() + this.entity.toString());
@@ -226,7 +228,7 @@ public class VetViewImpl implements VetView {
             }
             this.entity = entityService.update(this.entity);
             String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.edit.done";
-            String summary = this.provider.getBundle().getString(summaryKey);
+            String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.entity);
         } catch (EJBException e) {
             log.info(e.getMessage() + this.entity.toString());
@@ -244,13 +246,13 @@ public class VetViewImpl implements VetView {
                 entityService.delete(id);
                 this.entity = null;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.delete.done";
-                String summary = this.provider.getBundle().getString(summaryKey);
+                String summary = this.petclinicApplication.getMsg().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, msgInfo);
             }
             loadList();
         } catch (EJBTransactionRolledbackException e) {
             String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.delete.denied";
-            String summary = this.provider.getBundle().getString(summaryKey);
+            String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addWarnMessage(summary, this.entity);
         } catch (EJBException e) {
             flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
@@ -261,19 +263,19 @@ public class VetViewImpl implements VetView {
     public void performSearch() {
         log.info("performSearch");
         String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.search.done";
-        String summary = this.provider.getBundle().getString(summaryKey);
+        String summary = this.petclinicApplication.getMsg().getString(summaryKey);
         if (searchterm == null || searchterm.isEmpty()) {
             this.vetViewFlow.setFlowStateList();
             String missingKey = "org.woehlke.jakartaee.petclinic.frontend.web.entity.list.searchterm.missing";
-            String detail = this.provider.getBundle().getString(missingKey);
+            String detail = this.petclinicApplication.getMsg().getString(missingKey);
             flashMessagesView.addInfoMessage(summary, detail);
         } else {
             this.vetViewFlow.setFlowStateSearchResult();
             this.list = entityService.search(searchterm);
             String foundKey = "org.woehlke.jakartaee.petclinic.frontend.web.entity.list.searchterm.found";
             String resultsKey = "org.woehlke.jakartaee.petclinic.frontend.web.entity.list.searchterm.results";
-            String found = this.provider.getBundle().getString(foundKey);
-            String results = this.provider.getBundle().getString(resultsKey);
+            String found = this.petclinicApplication.getMsg().getString(foundKey);
+            String results = this.petclinicApplication.getMsg().getString(resultsKey);
             String detail = found + " " + this.list.size() + " " + results + " " + searchterm;
             flashMessagesView.addInfoMessage(summary, detail);
         }
@@ -314,18 +316,9 @@ public class VetViewImpl implements VetView {
     }
 
     @Override
-    public ResourceBundle getMsg() {
-        return this.provider.getBundle();
-    }
-
-    public void setMsg(ResourceBundle msg) {
-    }
-
-    @Override
     @PostConstruct
     public void postConstruct() {
         log.info("postConstruct: " + VetViewImpl.class.getSimpleName());
-        this.provider = new MessageProvider();
         this.vetViewFlow.setFlowStateList();
         this.loadList();
     }
