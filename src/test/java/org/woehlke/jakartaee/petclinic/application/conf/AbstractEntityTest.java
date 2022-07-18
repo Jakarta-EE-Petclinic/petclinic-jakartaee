@@ -1,6 +1,5 @@
 package org.woehlke.jakartaee.petclinic.application.conf;
 
-import org.apache.velocity.util.ArrayListWrapper;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
@@ -19,33 +18,47 @@ public class AbstractEntityTest {
     protected Long id01 = 1L;
     protected Long id02 = 2L;
     protected Long id = 3L;
+    protected Date dob01 = new Date(2021,6,14);
+    protected Date dob02 = new Date(2020,5,12);
 
-    protected static final String specialtyName[] = {
+    protected static List<Specialty> specialtyList = new ArrayList<>();
+    protected static Set<Specialty> specialtySet = new HashSet<>();
+    protected static Map<String,String> vetNames = new HashMap<>();
+    protected static List<Vet> vetList = new ArrayList<>();
+    protected static List<Date> dateOfBirthList = new ArrayList<>();
+    protected static List<PetType> petTypeList = new ArrayList<>();
+    protected static List<Pet> petList = new ArrayList<>();
+    protected static List<Owner> ownerList = new ArrayList<>();
+
+    protected static final String specialtyNames[] = {
             "Surgeon",
+            "Oncologist",
             "Radiologist",
             "Neurosurgeon",
-            "Dentist",
             "Cardiologist",
+            "Dermatologist",
+            "Orthopedist",
+            "Dentist",
             "Impostor",
             "Faith Healer"
     };
 
-    protected static List<Specialty> specialtyList = new ArrayList<>();
-
-    protected static Set<Specialty> specialtySet = new HashSet<>();
-
     static {
-        for (String specialtyName : specialtyName){
-            Specialty specialty = new Specialty();
-            specialty.setName(specialtyName);
-            specialty.setUuid(UUID.randomUUID());
-            specialtyList.add(specialty);
-            specialtySet.add(specialty);
-        }
+        vetNames.put("von Kos","Hippokrates");
+        vetNames.put("Koch","Robert");
+        vetNames.put("Fleming","Alexander");
+        vetNames.put("Virchow","Rudolf");
+        vetNames.put("Freud","Sigmund");
+        vetNames.put("Stertinius Xenophon","Gaius");
+        vetNames.put("von Behring","Emil");
+        vetNames.put("Ehrlich","Paul");
+        vetNames.put("Shibasaburō","Kitasato");
+        vetNames.put("Hispalensis","Isidorus");
+        vetNames.put("Schweitzer","Albert");
+        vetNames.put("Montessori","Maria Tecla Artemisia");
     }
 
-
-    protected static final String petTypeName[] = {
+    protected static final String petTypeNames[] = {
             "Dog",
             "Cat",
             "Elephant",
@@ -67,10 +80,18 @@ public class AbstractEntityTest {
             "Gallus gallus domesticus"
     };
 
-    protected static List<PetType> petTypeList = new ArrayList<>();
+    static {
+        for (String specialtyName : specialtyNames){
+            Specialty specialty = new Specialty();
+            specialty.setName(specialtyName);
+            specialty.setUuid(UUID.randomUUID());
+            specialtyList.add(specialty);
+            specialtySet.add(specialty);
+        }
+    }
 
     static {
-        for (String petTypeName : petTypeName){
+        for (String petTypeName : petTypeNames){
             PetType o = new PetType();
             o.setName(petTypeName);
             o.setUuid(UUID.randomUUID());
@@ -78,15 +99,11 @@ public class AbstractEntityTest {
         }
     }
 
-    protected static List<Date> dateOfBirthList = new ArrayList<>();
-
-    protected static List<Pet> petList = new ArrayList<>();
-
     static {
         int year = 2021;
         int month = 1;
         int day = 5;
-        for (String petTypeName : petTypeName) {
+        for (String petTypeName : petTypeNames) {
             Date dob = new Date(year, month, day);
             dateOfBirthList.add(dob);
             year++;
@@ -112,28 +129,6 @@ public class AbstractEntityTest {
         }
     }
 
-    protected Date dob01 = new Date(2021,6,14);
-    protected Date dob02 = new Date(2020,5,12);
-
-    protected static Map<String,String> vetNames = new HashMap<>();
-
-    static {
-        vetNames.put("von Kos","Hippokrates");
-        vetNames.put("Koch","Robert");
-        vetNames.put("Fleming","Alexander");
-        vetNames.put("Virchow","Rudolf");
-        vetNames.put("Freud","Sigmund");
-        vetNames.put("Stertinius Xenophon","Gaius");
-        vetNames.put("von Behring","Emil");
-        vetNames.put("Ehrlich","Paul");
-        vetNames.put("Shibasaburō","Kitasato");
-        vetNames.put("Hispalensis","Isidorus");
-        vetNames.put("Schweitzer","Albert");
-        vetNames.put("Montessori","Maria Tecla Artemisia");
-    }
-
-    protected static List<Vet> vetList = new ArrayList<>();
-
     static {
         for(Map.Entry<String,String> vetName:vetNames.entrySet()){
             Vet v = new Vet();
@@ -145,5 +140,4 @@ public class AbstractEntityTest {
         }
     }
 
-    protected static List<Owner> ownerList = new ArrayList<>();
 }

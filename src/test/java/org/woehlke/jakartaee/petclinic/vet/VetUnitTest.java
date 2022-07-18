@@ -142,7 +142,7 @@ public class VetUnitTest extends AbstractEntityTest {
         log.info("testGetSpecialtiesAsList02");
         int expectedSize  = 1;
         Vet entity = new Vet();
-        String specialtyName = AbstractEntityTest.specialtyName[0];
+        String specialtyName = AbstractEntityTest.specialtyNames[0];
         Assert.assertEquals("Surgeon",specialtyName);
         Specialty specialty = new Specialty();
         specialty.setName(specialtyName);
@@ -156,7 +156,7 @@ public class VetUnitTest extends AbstractEntityTest {
     public void testGetSpecialtiesAsList03(){
         log.info("testGetSpecialtiesAsList03");
         Vet entity = new Vet();
-        String specialtyName =  AbstractEntityTest.specialtyName[0];
+        String specialtyName =  AbstractEntityTest.specialtyNames[0];
         Assert.assertEquals("Surgeon",specialtyName);
         Specialty specialty = new Specialty();
         specialty.setName(specialtyName);
