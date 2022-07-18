@@ -7,6 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
 import jakarta.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
+import jakarta.security.enterprise.identitystore.IdentityStore;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 import lombok.extern.java.Log;
@@ -26,8 +27,9 @@ import java.util.ResourceBundle;
 @ApplicationScoped
 @BasicAuthenticationMechanismDefinition()
 @DatabaseIdentityStoreDefinition(
+        dataSourceLookup = "jdbc/PostgreSQLDS",
+        useFor=IdentityStore.ValidationType.VALIDATE,
         callerQuery = "select password from users where username = ?",
-        groupsQuery = "select GROUPNAME from groups where username = ?",
         priority=30)
 @ApplicationPath("/rest")
 public class PetclinicApplication extends Application implements Serializable {
