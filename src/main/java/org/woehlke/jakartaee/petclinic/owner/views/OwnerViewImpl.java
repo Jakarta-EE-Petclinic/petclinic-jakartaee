@@ -42,7 +42,6 @@ import java.util.List;
 @Setter
 @Named("ownerView")
 @SessionScoped
-@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class OwnerViewImpl implements OwnerView {
 
     private static final long serialVersionUID = -4809817472969005481L;

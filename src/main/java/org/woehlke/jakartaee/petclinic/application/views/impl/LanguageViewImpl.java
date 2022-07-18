@@ -34,7 +34,6 @@ import java.util.Map;
 @Setter
 @Named("languageView")
 @SessionScoped
-@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class LanguageViewImpl implements LanguageView {
 
     private static final long serialVersionUID = -5444922829398489233L;

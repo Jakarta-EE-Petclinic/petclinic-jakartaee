@@ -36,7 +36,6 @@ import java.util.List;
 @Setter
 @Named("specialtyView")
 @SessionScoped
-@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class SpecialtyViewImpl implements SpecialtyView {
 
     private static final long serialVersionUID = 9080853875975855082L;

@@ -39,7 +39,6 @@ import java.util.*;
 @Setter
 @Named("vetView")
 @SessionScoped
-@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class VetViewImpl implements VetView {
 
     private static final long serialVersionUID = 2838339162976374606L;

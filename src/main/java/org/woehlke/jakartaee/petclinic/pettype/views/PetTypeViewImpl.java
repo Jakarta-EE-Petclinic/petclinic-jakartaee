@@ -37,7 +37,6 @@ import java.util.List;
 @Setter
 @Named("petTypeView")
 @SessionScoped
-@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class PetTypeViewImpl implements PetTypeView {
 
     private static final long serialVersionUID = -528406859430949031L;

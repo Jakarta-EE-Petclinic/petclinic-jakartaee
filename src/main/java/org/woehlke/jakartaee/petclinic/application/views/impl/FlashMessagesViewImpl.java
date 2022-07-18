@@ -24,7 +24,6 @@ import java.util.List;
 @Log
 @Named("flashMessagesView")
 @SessionScoped
-@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class FlashMessagesViewImpl implements FlashMessagesView {
 
     private static final long serialVersionUID = -2267751568724878682L;
