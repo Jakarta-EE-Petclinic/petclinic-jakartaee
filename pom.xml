@@ -1225,7 +1225,7 @@
                         <groupId>com.dkanejs.maven.plugins</groupId>
                         <artifactId>docker-compose-maven-plugin</artifactId>
                         <configuration>
-                            <composeFile>${project.basedir}/src/main/liberty/docker/docker-compose.yml</composeFile>
+                            <composeFile>${project.basedir}/src/runtimes/liberty/docker/docker-compose.yml</composeFile>
                             <verbose>true</verbose>
                             <removeImages>true</removeImages>
                             <removeVolumes>true</removeVolumes>
@@ -1256,7 +1256,7 @@
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
 						<configuration>
-							<composeFile>${project.basedir}/src/main/wildfly/docker/docker-compose.yml</composeFile>
+							<composeFile>${project.basedir}/src/runtimes/wildfly/docker/docker-compose.yml</composeFile>
 							<verbose>true</verbose>
 							<removeImages>true</removeImages>
 							<removeVolumes>true</removeVolumes>
@@ -1287,7 +1287,7 @@
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
 						<configuration>
-							<composeFile>${project.basedir}/src/main/glassfish/docker/docker-compose.yml</composeFile>
+							<composeFile>${project.basedir}/src/runtimes/glassfish/docker/docker-compose.yml</composeFile>
 							<verbose>true</verbose>
 							<removeImages>true</removeImages>
 							<removeVolumes>true</removeVolumes>
@@ -2056,7 +2056,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/main/liberty/resources/META-INF</directory>
+											<directory>src/runtimes/liberty/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2081,7 +2081,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/main/liberty/resources</directory>
+											<directory>src/runtimes/liberty/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2755,7 +2755,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/main/wildfly/resources/META-INF</directory>
+											<directory>src/runtimes/wildfly/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2780,7 +2780,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/main/wildfly/resources</directory>
+											<directory>src/runtimes/wildfly/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -3508,7 +3508,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/main/glassfish/resources/META-INF</directory>
+											<directory>src/runtimes/glassfish/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -3533,7 +3533,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/main/glassfish/resources</directory>
+											<directory>src/runtimes/glassfish/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -4176,7 +4176,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/main/tomee/resources/META-INF</directory>
+											<directory>src/runtimes/tomee/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -4201,7 +4201,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/main/tomee/resources</directory>
+											<directory>src/runtimes/tomee/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -4252,7 +4252,7 @@
 										cargo.datasource.username=petclinic_jakartaee|
 										cargo.datasource.password=petclinic_jakartaeepwd
 									</cargo.datasource.datasource.postgresql>
-									<cargo.tomee.appsDirectory>apps	</cargo.tomee.appsDirectory>
+									<cargo.tomee.appsDirectory>apps</cargo.tomee.appsDirectory>
 									<cargo.tomcat.webappsDirectory>webapps</cargo.tomcat.webappsDirectory>
 								</properties>
 							</configuration>
@@ -4833,7 +4833,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/main/wildfly/resources/META-INF</directory>
+											<directory>src/runtimes/wildfly/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -4858,7 +4858,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/main/wildfly/resources</directory>
+											<directory>src/runtimes/wildfly/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -5489,7 +5489,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/main/payara/resources/META-INF</directory>
+											<directory>src/runtimes/payara/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -5514,7 +5514,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/main/payara/resources</directory>
+											<directory>src/runtimes/payara/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
