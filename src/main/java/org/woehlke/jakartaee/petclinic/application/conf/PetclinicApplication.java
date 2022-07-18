@@ -26,11 +26,6 @@ import java.util.ResourceBundle;
 @Named("petclinicApplication")
 @ApplicationScoped
 @BasicAuthenticationMechanismDefinition()
-@DatabaseIdentityStoreDefinition(
-        dataSourceLookup = "jdbc/PostgreSQLDS",
-        useFor=IdentityStore.ValidationType.VALIDATE,
-        callerQuery = "select password from users where username = ?",
-        priority=30)
 @ApplicationPath("/rest")
 public class PetclinicApplication extends Application implements Serializable {
 

@@ -51,19 +51,7 @@
         <web-resource-collection>
             <web-resource-name>Faces Servlet</web-resource-name>
             <url-pattern>*.jsf</url-pattern>
-            <http-method>GET</http-method>
-        </web-resource-collection>
-        <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
-
-    <security-constraint>
-        <display-name>Secured Faces Servlet</display-name>
-        <web-resource-collection>
-            <web-resource-name>Faces Servlet</web-resource-name>
-            <url-pattern>*.jsf</url-pattern>
-            <http-method>POST</http-method>
+            <http-method-omission/>
         </web-resource-collection>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
