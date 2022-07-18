@@ -490,6 +490,11 @@
 			</dependency>
 
 			<dependency>
+				<groupId>jakarta.security.enterprise</groupId>
+				<artifactId>jakarta.security.enterprise-api</artifactId>
+				<version>2.0.0</version>
+			</dependency>
+			<dependency>
 				<groupId>org.glassfish.soteria</groupId>
 				<artifactId>jakarta.security.enterprise</artifactId>
 				<version>2.0.1</version>
@@ -816,6 +821,10 @@
 			<classifier>jakarta</classifier>
 		</dependency>
 
+		<dependency>
+			<groupId>jakarta.security.enterprise</groupId>
+			<artifactId>jakarta.security.enterprise-api</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.glassfish.soteria</groupId>
 			<artifactId>jakarta.security.enterprise</artifactId>
