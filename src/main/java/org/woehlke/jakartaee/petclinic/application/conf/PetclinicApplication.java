@@ -5,7 +5,6 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
-import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 import lombok.extern.java.Log;
@@ -23,7 +22,6 @@ import java.util.ResourceBundle;
 @Log
 @Named("petclinicApplication")
 @ApplicationScoped
-@BasicAuthenticationMechanismDefinition()
 @ApplicationPath("/rest")
 public class PetclinicApplication extends Application implements Serializable {
 

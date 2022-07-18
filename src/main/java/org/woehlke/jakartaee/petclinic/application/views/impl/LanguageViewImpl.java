@@ -1,7 +1,5 @@
 package org.woehlke.jakartaee.petclinic.application.views.impl;
 
-import jakarta.security.enterprise.SecurityContext;
-import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;

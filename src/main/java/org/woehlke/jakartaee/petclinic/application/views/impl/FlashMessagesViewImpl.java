@@ -1,8 +1,6 @@
 package org.woehlke.jakartaee.petclinic.application.views.impl;
 
 import jakarta.inject.Inject;
-import jakarta.security.enterprise.SecurityContext;
-import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
@@ -30,9 +28,6 @@ public class FlashMessagesViewImpl implements FlashMessagesView {
 
     @Inject
     private PetclinicApplication petclinicApplication;
-
-    @Inject
-    private SecurityContext securityContext;
 
     private List<FacesMessage> messageHolder = new ArrayList<>();
 

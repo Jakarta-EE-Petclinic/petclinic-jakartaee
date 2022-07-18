@@ -49,9 +49,6 @@ public class SpecialtyViewImpl implements SpecialtyView {
     private PetclinicApplication petclinicApplication;
 
     @Inject
-    private SecurityContext securityContext;
-
-    @Inject
     private LanguageView languageView;
 
     @Inject

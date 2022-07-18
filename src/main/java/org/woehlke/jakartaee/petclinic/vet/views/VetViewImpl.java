@@ -47,9 +47,6 @@ public class VetViewImpl implements VetView {
     private PetclinicApplication petclinicApplication;
 
     @Inject
-    private SecurityContext securityContext;
-
-    @Inject
     private LanguageView languageView;
 
     @Inject

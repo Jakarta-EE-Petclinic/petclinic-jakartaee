@@ -50,9 +50,6 @@ public class OwnerViewImpl implements OwnerView {
     private PetclinicApplication petclinicApplication;
 
     @Inject
-    private SecurityContext securityContext;
-
-    @Inject
     private LanguageView languageView;
 
     @Inject

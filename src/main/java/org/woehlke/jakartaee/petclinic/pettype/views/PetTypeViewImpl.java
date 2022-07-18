@@ -4,9 +4,6 @@ package org.woehlke.jakartaee.petclinic.pettype.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
-import jakarta.faces.context.FacesContext;
-import jakarta.security.enterprise.SecurityContext;
-import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -43,9 +40,6 @@ public class PetTypeViewImpl implements PetTypeView {
 
     @Inject
     private PetclinicApplication petclinicApplication;
-
-    @Inject
-    private SecurityContext securityContext;
 
     @Inject
     private LanguageView languageView;

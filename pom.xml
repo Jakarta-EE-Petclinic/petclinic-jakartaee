@@ -489,26 +489,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<dependency>
-				<groupId>jakarta.security.enterprise</groupId>
-				<artifactId>jakarta.security.enterprise-api</artifactId>
-				<version>2.0.0</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.glassfish.soteria</groupId>
-				<artifactId>jakarta.security.enterprise</artifactId>
-				<version>2.0.1</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.glassfish.exousia</groupId>
-				<artifactId>exousia</artifactId>
-				<version>1.0.1</version>
-				<scope>provided</scope>
-			</dependency>
-
-
 			<!-- Jakarta EE Runtime: OpenLiberty -->
 
 			<dependency>
@@ -829,23 +809,6 @@
 			<artifactId>primefaces</artifactId>
 			<classifier>jakarta</classifier>
 		</dependency>
-
-		<dependency>
-			<groupId>jakarta.security.enterprise</groupId>
-			<artifactId>jakarta.security.enterprise-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.soteria</groupId>
-			<artifactId>jakarta.security.enterprise</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.exousia</groupId>
-			<artifactId>exousia</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
