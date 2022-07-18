@@ -3,6 +3,9 @@ package org.woehlke.jakartaee.petclinic.owner.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -39,6 +42,9 @@ import java.util.List;
 @SessionScoped
 @Getter
 @Setter
+@LoginToContinue
+@RememberMe
+@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class OwnerViewImpl implements OwnerView {
 
     private static final long serialVersionUID = -4809817472969005481L;

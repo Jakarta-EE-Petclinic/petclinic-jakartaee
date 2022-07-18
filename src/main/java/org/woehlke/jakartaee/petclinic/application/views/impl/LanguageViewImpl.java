@@ -1,5 +1,8 @@
 package org.woehlke.jakartaee.petclinic.application.views.impl;
 
+import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -31,6 +34,9 @@ import java.util.Map;
 @SessionScoped
 @Getter
 @Setter
+@LoginToContinue
+@RememberMe
+@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class LanguageViewImpl implements LanguageView {
 
     private static final long serialVersionUID = -5444922829398489233L;

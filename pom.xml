@@ -489,6 +489,12 @@
 				<scope>test</scope>
 			</dependency>
 
+			<dependency>
+				<groupId>org.glassfish.soteria</groupId>
+				<artifactId>jakarta.security.enterprise</artifactId>
+				<version>2.0.1</version>
+			</dependency>
+
 			<!-- Jakarta EE Runtime: OpenLiberty -->
 
 			<dependency>
@@ -808,6 +814,11 @@
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<classifier>jakarta</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.soteria</groupId>
+			<artifactId>jakarta.security.enterprise</artifactId>
 		</dependency>
 
 		<dependency>

@@ -1,5 +1,8 @@
 package org.woehlke.jakartaee.petclinic.application.views.impl;
 
+import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
@@ -20,6 +23,9 @@ import java.util.List;
 @Log
 @Named("flashMessagesView")
 @SessionScoped
+@LoginToContinue
+@RememberMe
+@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class FlashMessagesViewImpl implements FlashMessagesView {
 
     private static final long serialVersionUID = -2267751568724878682L;

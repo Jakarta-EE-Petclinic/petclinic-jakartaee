@@ -3,6 +3,9 @@ package org.woehlke.jakartaee.petclinic.specialty.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -35,6 +38,9 @@ import java.util.ResourceBundle;
 @SessionScoped
 @Getter
 @Setter
+@LoginToContinue
+@RememberMe
+@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class SpecialtyViewImpl implements SpecialtyView {
 
     private static final long serialVersionUID = 9080853875975855082L;

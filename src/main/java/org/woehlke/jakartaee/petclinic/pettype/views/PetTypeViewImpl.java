@@ -4,6 +4,9 @@ package org.woehlke.jakartaee.petclinic.pettype.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -37,6 +40,9 @@ import java.util.ResourceBundle;
 @SessionScoped
 @Getter
 @Setter
+@LoginToContinue
+@RememberMe
+@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class PetTypeViewImpl implements PetTypeView {
 
     private static final long serialVersionUID = -528406859430949031L;

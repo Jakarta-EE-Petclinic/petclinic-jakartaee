@@ -1,11 +1,13 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
+import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.primefaces.model.DualListModel;
 import org.woehlke.jakartaee.petclinic.application.api.PetclinicApplication;
-import org.woehlke.jakartaee.petclinic.application.messages.MessageProvider;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
@@ -37,6 +39,9 @@ import java.util.*;
 @SessionScoped
 @Getter
 @Setter
+@LoginToContinue
+@RememberMe
+@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
 public class VetViewImpl implements VetView {
 
     private static final long serialVersionUID = 2838339162976374606L;
