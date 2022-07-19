@@ -1,6 +1,6 @@
 package org.woehlke.jakartaee.petclinic.pet;
 
-import junit.framework.Assert;
+
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
