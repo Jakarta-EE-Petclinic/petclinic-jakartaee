@@ -46,6 +46,7 @@
 		<!--- Build Infrastructure -->
 		<version.maven>3.6.3</version.maven>
 		<junit.version>5.8.2</junit.version>
+		<version.junit-platform-suite-engine>1.8.2</version.junit-platform-suite-engine>
 		<version.org.seleniumhq.selenium>3.141.59</version.org.seleniumhq.selenium>
 		<version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -418,20 +419,19 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.jboss.arquillian</groupId>
-				<artifactId>arquillian-bom</artifactId>
-				<version>${arquillian-bom.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-			<dependency>
 				<groupId>org.junit</groupId>
 				<artifactId>junit-bom</artifactId>
 				<version>${junit-jupiter.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>${arquillian-bom.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
 
 			<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
 			<dependency>
@@ -842,22 +842,25 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
 			<scope>test</scope>
 		</dependency>
-		-->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
@@ -996,14 +999,12 @@
 			<type>maven-plugin</type>
 			<scope>test</scope>
 		</dependency>
-		<!--
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-failsafe-plugin</artifactId>
 			<type>maven-plugin</type>
 			<scope>test</scope>
 		</dependency>
-		-->
 	</dependencies>
 
 	<build>
@@ -1063,13 +1064,11 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${version.maven-surefire-plugin}</version>
 				</plugin>
-				<!--
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>${version.maven-failsafe-plugin}</version>
 				</plugin>
-				-->
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -1152,13 +1151,42 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<!--
+					<test>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</test>
+					-->
+					<excludes>
+						<!--
+						<exclude>**/*UnitTest</exclude>
+						-->
+						<exclude>**/*ArcIT</exclude>
+						<exclude>**/*EndpointIT</exclude>
+					</excludes>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-suite-engine</artifactId>
+						<version>${version.junit-platform-suite-engine}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.junit.jupiter</groupId>
+						<artifactId>junit-jupiter-engine</artifactId>
+						<version>${junit.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
-			<!--
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.jupiter</groupId>
+						<artifactId>junit-jupiter-engine</artifactId>
+						<version>${junit.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
-			-->
 		</plugins>
 	</build>
 
@@ -4414,6 +4442,12 @@
 						<groupId>org.junit.jupiter</groupId>
 						<artifactId>junit-jupiter-engine</artifactId>
 						<version>${junit.version}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-suite-engine</artifactId>
+						<version>${version.junit-platform-suite-engine}</version>
 						<scope>test</scope>
 					</dependency>
 					<dependency>
