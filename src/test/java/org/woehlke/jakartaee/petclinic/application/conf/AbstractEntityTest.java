@@ -5,6 +5,7 @@ import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
+import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.util.*;
 
@@ -29,6 +30,7 @@ public class AbstractEntityTest {
     protected static List<PetType> petTypeList = new ArrayList<>();
     protected static List<Pet> petList = new ArrayList<>();
     protected static Set<Pet> petSet = new HashSet<>();
+    protected static List<Visit> visitList = new ArrayList<>();
     protected static List<Owner> ownerList = new ArrayList<>();
 
     protected static final String specialtyNames[] = {
@@ -214,5 +216,20 @@ public class AbstractEntityTest {
         pet2.setType(petTypeList.get(3));
         pet2.setName(petNames[3]);
         pet2.setUuid(UUID.randomUUID());
+    }
+
+    static {
+        long i = 0;
+        Pet p = petList.get(2);
+        for(Date day : dateOfBirthList){
+            i++;
+            Visit v = new Visit();
+            v.setPet(p);
+            v.setDate(day);
+            v.setDescription("woooolloooomoooolloooo "+i);
+            v.setUuid(UUID.randomUUID());
+            v.setId(i);
+            visitList.add(v);
+        }
     }
 }
