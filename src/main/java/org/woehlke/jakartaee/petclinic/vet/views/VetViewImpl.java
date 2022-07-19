@@ -288,12 +288,17 @@ public class VetViewImpl implements VetView {
         List<Specialty> srcList = new ArrayList<>();
         List<Specialty> targetList = new ArrayList<>();
         if(this.entity != null) {
-            this.entity = this.entityService.findById(this.entity.getId());
-            targetList.addAll(this.entity.getSpecialtiesAsList());
-            for (Specialty specialty : this.specialtyService.getAll()) {
-                if (!targetList.contains(specialty)) {
-                    srcList.add(specialty);
+            Long id = this.entity.getId();
+            if (id != null) {
+                this.entity = this.entityService.findById(id);
+                targetList.addAll(this.entity.getSpecialtiesAsList());
+                for (Specialty specialty : this.specialtyService.getAll()) {
+                    if (!targetList.contains(specialty)) {
+                        srcList.add(specialty);
+                    }
                 }
+            } else {
+                srcList.addAll(this.specialtyService.getAll());
             }
         } else {
             srcList.addAll(this.specialtyService.getAll());
