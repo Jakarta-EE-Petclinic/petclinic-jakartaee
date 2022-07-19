@@ -12,6 +12,8 @@ import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import java.util.Collections;
 import java.util.Iterator;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Log
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PetUnitTest extends AbstractEntityTest {
@@ -20,7 +22,7 @@ public class PetUnitTest extends AbstractEntityTest {
     @Order(1)
     void runEntityTest01(){
         log.info("runEntityTest01");
-        Assert.assertFalse(uuid01.compareTo(uuid02)==0);
+        assertThat(uuid01.compareTo(uuid02)!=0);
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
@@ -32,15 +34,15 @@ public class PetUnitTest extends AbstractEntityTest {
         o02.setBirthDate(dob01);
         o02.setName(name01);
         o02.setUuid(uuid02);
-        Assert.assertTrue(o01.compareTo(o02)==0);
+        assertThat(o01.compareTo(o02)==0);
     }
 
     @Test
     @Order(2)
     void runEntityTest02(){
         log.info("runEntityTest02");
-        Assert.assertFalse(uuid01.compareTo(uuid02)==0);
-        Assert.assertFalse(id01.compareTo(id02)==0);
+        assertThat(uuid01.compareTo(uuid02)!=0);
+        assertThat(id01.compareTo(id02)!=0);
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
@@ -54,14 +56,14 @@ public class PetUnitTest extends AbstractEntityTest {
         o02.setName(name01);
         o02.setUuid(uuid02);
         o02.setId(id02);
-        Assert.assertTrue(o01.compareTo(o02)==0);
+        assertThat(o01.compareTo(o02)==0);
     }
 
     @Test
     @Order(3)
     void runEntityTest11(){
         log.info("runEntityTest11");
-        Assert.assertFalse(uuid01.compareTo(uuid02)==0);
+        assertThat(uuid01.compareTo(uuid02)!=0);
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
@@ -73,15 +75,15 @@ public class PetUnitTest extends AbstractEntityTest {
         o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid02);
-        Assert.assertFalse(o01.compareTo(o02)==0);
+        assertThat(o01.compareTo(o02)!=0);
     }
 
     @Test
     @Order(4)
     void runEntityTest12(){
         log.info("runEntityTest12");
-        Assert.assertFalse(uuid01.compareTo(uuid02)==0);
-        Assert.assertFalse(id01.compareTo(id02)==0);
+        assertThat(uuid01.compareTo(uuid02)!=0);
+        assertThat(id01.compareTo(id02)!=0);
         PetType petType = petTypeList.get(2);
         Pet o01 = new Pet();
         o01.setType(petType);
@@ -95,7 +97,7 @@ public class PetUnitTest extends AbstractEntityTest {
         o02.setName(name02);
         o02.setUuid(uuid02);
         o02.setId(id02);
-        Assert.assertFalse(o01.compareTo(o02)==0);
+        assertThat(o01.compareTo(o02)!=0);
     }
 
     @Test
@@ -113,7 +115,7 @@ public class PetUnitTest extends AbstractEntityTest {
         o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid);
-        Assert.assertFalse(o01.compareTo(o02)==0);
+        assertThat(o01.compareTo(o02)!=0);
     }
 
     @Test
@@ -133,7 +135,7 @@ public class PetUnitTest extends AbstractEntityTest {
         o02.setName(name02);
         o02.setUuid(uuid);
         o02.setId(id);
-        Assert.assertFalse(o01.compareTo(o02)==0);
+        assertThat(o01.compareTo(o02)!=0);
     }
 
     @Test
@@ -141,14 +143,14 @@ public class PetUnitTest extends AbstractEntityTest {
     void runEntityTest99(){
         log.info("runEntityTest99");
         Collections.sort(petList);
-        Assert.assertTrue(petList.size() > 2);
+        assertThat(petList.size() > 2);
         Iterator<Pet> i =  petList.iterator();
         Pet firstEntity = i.next();
         while(i.hasNext()){
             Pet secondEntity = i.next();
             int compared = secondEntity.compareTo(firstEntity);
             //log.info("runEntityTest99: "+ compared);
-            Assert.assertTrue(compared > 0);
+            assertThat(compared > 0);
             firstEntity = secondEntity;
         }
     }
