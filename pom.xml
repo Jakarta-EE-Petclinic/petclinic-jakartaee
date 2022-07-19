@@ -616,9 +616,33 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
+				<groupId>org.junit.vintage</groupId>
+				<artifactId>junit-vintage-engine</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-params</artifactId>
 				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-launcher</artifactId>
+				<version>${version.junit-platform-suite-engine}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-suite-engine</artifactId>
+				<version>${version.junit-platform-suite-engine}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-platform-suite</artifactId>
+				<version>${version.junit-platform-suite-engine}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
@@ -842,11 +866,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-launcher</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<scope>test</scope>
@@ -859,6 +878,21 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -4438,24 +4472,6 @@
 						<scope>test</scope>
 					</dependency>
 
-					<dependency>
-						<groupId>org.junit.jupiter</groupId>
-						<artifactId>junit-jupiter-engine</artifactId>
-						<version>${junit.version}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.junit.platform</groupId>
-						<artifactId>junit-platform-suite-engine</artifactId>
-						<version>${version.junit-platform-suite-engine}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.junit.jupiter</groupId>
-						<artifactId>junit-jupiter-params</artifactId>
-						<version>${junit.version}</version>
-						<scope>test</scope>
-					</dependency>
 					<dependency>
 						<groupId>org.jboss.resteasy</groupId>
 						<artifactId>resteasy-client</artifactId>

@@ -2,7 +2,10 @@ package org.woehlke.jakartaee.petclinic.specialty;
 
 import junit.framework.Assert;
 import lombok.extern.java.Log;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.woehlke.jakartaee.petclinic.application.conf.AbstractEntityTest;
 
 import java.util.Collections;
@@ -10,9 +13,11 @@ import java.util.Iterator;
 
 
 @Log
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SpecialtyUnitTest extends AbstractEntityTest {
 
     @Test
+    @Order(1)
     void runEntityTest01(){
         log.info("runEntityTest01");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
@@ -26,6 +31,7 @@ public class SpecialtyUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(2)
     void runEntityTest02(){
         log.info("runEntityTest02");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
@@ -42,6 +48,7 @@ public class SpecialtyUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(3)
     void runEntityTest11(){
         log.info("runEntityTest11");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
@@ -55,6 +62,7 @@ public class SpecialtyUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(4)
     void runEntityTest12(){
         log.info("runEntityTest12");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
@@ -71,6 +79,7 @@ public class SpecialtyUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(5)
     void runEntityTest21(){
         log.info("runEntityTest21");
         Specialty o01 = new Specialty();
@@ -83,6 +92,7 @@ public class SpecialtyUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(6)
     void runEntityTest22(){
         log.info("runEntityTest22");
         Specialty o01 = new Specialty();
@@ -97,6 +107,7 @@ public class SpecialtyUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(7)
     void runEntityTest99(){
         log.info("runEntityTest99");
         Collections.sort(specialtyList);

@@ -2,16 +2,18 @@ package org.woehlke.jakartaee.petclinic.vet;
 
 import junit.framework.Assert;
 import lombok.extern.java.Log;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.woehlke.jakartaee.petclinic.application.conf.AbstractEntityTest;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import java.util.*;
 
 @Log
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class VetUnitTest extends AbstractEntityTest {
 
     @Test
+    @Order(1)
     void runEntityTest01(){
         log.info("runEntityTest01");
         Assert.assertFalse(uuid01.compareTo(uuid02)==0);
@@ -28,6 +30,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(2)
     void runEntityTest02(){
         log.info("runEntityTest02");
         Assert.assertFalse(name01.compareTo(name02)==0);
@@ -47,6 +50,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(3)
     void runEntityTest11(){
         log.info("runEntityTest11");
         Assert.assertFalse(name01.compareTo(name02)==0);
@@ -63,6 +67,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(4)
     void runEntityTest12(){
         log.info("runEntityTest12");
         Assert.assertFalse(name01.compareTo(name02)==0);
@@ -82,6 +87,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(5)
     void runEntityTest21(){
         log.info("runEntityTest21");
         Assert.assertFalse(name01.compareTo(name02)==0);
@@ -97,6 +103,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(6)
     void runEntityTest22(){
         log.info("runEntityTest22");
         Assert.assertFalse(name01.compareTo(name02)==0);
@@ -114,6 +121,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(7)
     void runEntityTest99(){
         log.info("runEntityTest99");
         Collections.sort(vetList);
@@ -129,6 +137,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(8)
     public void testGetSpecialtiesAsList01(){
         log.info("testGetSpecialtiesAsList01");
         int expectedSize  = 0;
@@ -138,6 +147,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(9)
     public void testGetSpecialtiesAsList02(){
         log.info("testGetSpecialtiesAsList02");
         int expectedSize  = 1;
@@ -153,6 +163,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(10)
     public void testGetSpecialtiesAsList03(){
         log.info("testGetSpecialtiesAsList03");
         Vet entity = new Vet();
@@ -166,6 +177,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(11)
     public void testGetSpecialtiesAsList04() {
         log.info("testGetSpecialtiesAsList04");
         Vet entity = new Vet();
@@ -176,6 +188,7 @@ public class VetUnitTest extends AbstractEntityTest {
     }
 
     @Test
+    @Order(12)
     public void testGetSpecialtiesAsList05() {
         log.info("testGetSpecialtiesAsList05");
         Vet entity = new Vet();
@@ -191,5 +204,11 @@ public class VetUnitTest extends AbstractEntityTest {
             Assert.assertTrue(compared > 0);
             firstSpecialty = secondSpecialty;
         }
+    }
+
+    @Test
+    @Disabled("for demonstration purposes")
+    void skippedTest() {
+        // not executed
     }
 }
