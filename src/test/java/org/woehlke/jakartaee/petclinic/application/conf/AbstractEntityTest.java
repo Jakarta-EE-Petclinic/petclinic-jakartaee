@@ -201,4 +201,18 @@ public class AbstractEntityTest {
         }
     }
 
+
+    protected static Pet pet1 = new Pet();
+    protected static Pet pet2 = new Pet();
+
+    static {
+        pet1.setBirthDate(dateOfBirthList.get(0));
+        pet1.setType(petTypeList.get(2));
+        pet1.setName(petNames[2]);
+        pet1.setUuid(UUID.randomUUID());
+        pet2.setBirthDate(dateOfBirthList.get(1));
+        pet2.setType(petTypeList.get(3));
+        pet2.setName(petNames[3]);
+        pet2.setUuid(UUID.randomUUID());
+    }
 }
