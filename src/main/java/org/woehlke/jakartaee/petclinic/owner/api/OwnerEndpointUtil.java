@@ -36,7 +36,7 @@ public class OwnerEndpointUtil implements Serializable {
         dto.setCity(o.getCity());
         dto.setZipCode(o.getZipCode());
         dto.setPhoneNumber(o.getPhoneNumber());
-        dto.setPetList(this.petEndpointUtil.dtoListFactory(o.getPets()));
+        dto.setPetList(this.petEndpointUtil.dtoListFactory(o.getPetsAsList()));
         return dto;
     }
 

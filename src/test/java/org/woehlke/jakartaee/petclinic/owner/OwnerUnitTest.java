@@ -4,9 +4,9 @@ import junit.framework.Assert;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Test;
 import org.woehlke.jakartaee.petclinic.application.conf.AbstractEntityTest;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
 
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.*;
 
 @Log
 public class OwnerUnitTest extends AbstractEntityTest {
@@ -125,6 +125,76 @@ public class OwnerUnitTest extends AbstractEntityTest {
             int compared = secondEntity.compareTo(firstEntity);
             Assert.assertTrue(compared > 0);
             firstEntity = secondEntity;
+        }
+    }
+
+    @Test
+    public void testGetPetst01(){
+        log.info("testGetPetst01");
+        int expectedSize  = 0;
+        Owner entity = new Owner();
+        int size = entity.getPetsAsList().size();
+        Assert.assertEquals(expectedSize,size);
+    }
+
+    @Test
+    public void testGetPetst02(){
+        log.info("testGetPetst02");
+        Owner entity = ownerList.get(2);
+        String petName = AbstractEntityTest.petNames[2];
+        int expectedSize  = entity.getPetsAsList().size() + 1;
+        Assert.assertEquals("Nelly", petName);
+        Pet pet = new Pet();
+        pet.setName(petName);
+        pet.setBirthDate(new Date());
+        pet.setUuid(UUID.randomUUID());
+        entity.addPet(pet);
+        int size = entity.getPetsAsList().size();
+        Assert.assertEquals(expectedSize, size);
+    }
+
+    @Test
+    public void testGetPetst03(){
+        log.info("testGetPetst03");
+        Owner entity = ownerList.get(2);
+        String petName = AbstractEntityTest.petNames[2];
+        int expectedSize  = entity.getPetsAsList().size() + 1;
+        Assert.assertEquals("Nelly", petName);
+        Pet pet = new Pet();
+        pet.setBirthDate(new Date());
+        pet.setName(petName);
+        pet.setUuid(UUID.randomUUID());
+        entity.addPet(pet);
+        pet = entity.getPetsAsList().iterator().next();
+        Assert.assertEquals(petName, pet.getName());
+    }
+
+    @Test
+    public void testGetPetst04() {
+        log.info("testGetPetst04");
+        Owner entity = ownerList.get(3);
+        int expectedSize = petSet.size();
+        entity.setPets(petSet);
+        int size = entity.getPetsAsList().size();
+        Assert.assertEquals(expectedSize, size);
+    }
+
+    @Test
+    public void testGetPetst05() {
+        log.info("testGetPetst05");
+        Owner entity = ownerList.get(3);
+        int expectedSize = petSet.size();
+        entity.setPets(petSet);
+        int size = entity.getPetsAsList().size();
+        Assert.assertEquals(expectedSize, size);
+        Assert.assertTrue(petList.size() > 2);
+        Iterator<Pet> i =  petList.iterator();
+        Pet first = i.next();
+        while(i.hasNext()){
+            Pet second = i.next();
+            int compared = second.compareTo(first);
+            Assert.assertTrue(compared > 0);
+            first = second;
         }
     }
 

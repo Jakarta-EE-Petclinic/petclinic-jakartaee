@@ -233,7 +233,7 @@
                                 <p:dataTable
                                         id="petsAndVisitsTable"
                                         styleClass="table"
-                                        value="#{ownerView.entity.pets}"
+                                        value="#{ownerView.entity.petsAsList}"
                                         var="ownersPet"
                                         rowKey="#{ownersPet.id}"
                                         scrollable="true"
@@ -764,7 +764,7 @@
                                 <p:dataTable
                                         id="deletePetsAndVisitsTable"
                                         styleClass="table"
-                                        value="#{ownerView.entity.pets}"
+                                        value="#{ownerView.entity.petsAsList}"
                                         var="ownersPet"
                                         rowKey="#{ownersPet.id}"
                                         scrollable="true"

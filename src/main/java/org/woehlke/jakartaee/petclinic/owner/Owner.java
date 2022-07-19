@@ -8,7 +8,6 @@ import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import jakarta.persistence.*;
-import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import java.util.*;
 
@@ -157,7 +156,8 @@ public class Owner extends EntityBaseObject implements EntityBase, Comparable<Ow
         return this.lastName + ", " + this.firstName;
     }
 
-    public List<Pet> getPets() {
+    @Transient
+    public List<Pet> getPetsAsList() {
         List<Pet> list = new ArrayList<>();
         for (Pet pet : this.pets) {
             list.add(pet);

@@ -56,7 +56,7 @@ public class OwnerServiceImpl implements OwnerService {
     @Override
     public void resetSearchIndex() {
         for(Owner o: this.getAll()){
-            for(Pet p:o.getPets()){
+            for(Pet p:o.getPetsAsList()){
                 for(Visit v:p.getVisits()){
                     this.visitDao.update(v);
                 }
@@ -97,7 +97,7 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     private Owner updateSearchindex(Owner owner) {
-        for(Pet p:owner.getPets()){
+        for(Pet p:owner.getPetsAsList()){
             for(Visit v:p.getVisits()){
                 this.visitDao.update(v);
             }

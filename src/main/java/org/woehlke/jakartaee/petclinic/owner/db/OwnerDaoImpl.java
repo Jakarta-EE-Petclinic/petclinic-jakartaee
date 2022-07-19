@@ -70,7 +70,7 @@ public class OwnerDaoImpl implements OwnerDao {
 
     private Owner updateSearchindex(Owner owner) {
         List<String> l = new ArrayList<>();
-        for(Pet p: owner.getPets()){
+        for(Pet p: owner.getPetsAsList()){
             l.add(p.getSearchindex());
         }
         String x = owner.getAddressInfo();
