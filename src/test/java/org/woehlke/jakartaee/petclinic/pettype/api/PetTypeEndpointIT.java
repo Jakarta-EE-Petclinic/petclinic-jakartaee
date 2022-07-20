@@ -13,7 +13,7 @@ import org.woehlke.jakartaee.petclinic.application.conf.AbstractEndpointTest;
 
 import java.io.StringReader;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 public class PetTypeEndpointIT extends AbstractEndpointTest {
@@ -27,10 +27,9 @@ public class PetTypeEndpointIT extends AbstractEndpointTest {
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertEquals(
-            Response.Status.OK.getStatusCode(),
-            response.getStatus(),
-            "Unexpected response code from " + endpoint
+    assertThat(
+            Response.Status.OK.getStatusCode()==
+            response.getStatus()
     );
     String json = response.readEntity(String.class);
     PetTypeListDto petTypeListDto = jsonb.fromJson(json, PetTypeListDto.class);
@@ -52,10 +51,9 @@ public class PetTypeEndpointIT extends AbstractEndpointTest {
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertEquals(
-            Response.Status.OK.getStatusCode(),
-            response.getStatus(),
-            "Unexpected response code from " + endpoint
+    assertThat(
+            Response.Status.OK.getStatusCode()==
+            response.getStatus()
     );
     String xml = response.readEntity(String.class);
     JAXBContext jc = JAXBContext.newInstance(PetTypeListDto.class);
