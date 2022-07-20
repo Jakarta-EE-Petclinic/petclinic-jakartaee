@@ -1,8 +1,11 @@
 package org.woehlke.jakartaee.petclinic.visit.api;
 
 
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.extern.java.Log;
@@ -54,19 +57,28 @@ public class VisitEndpointArqIT {
     @Test
     @DisplayName("Given a name:`JakartaEE` should return `Say Hello to JakartaEE`")
     public void should_create_greeting() throws MalformedURLException {
-        log.info(" client: "+client+", baseURL: "+ base);
+        Jsonb jsonb = JsonbBuilder.create();
+        Client client = ClientBuilder.newClient();
 
+        log.info("------------------------------------------------------------");
+        log.info(" client: "+client+", baseURL: "+ base);
+        log.info("------------------------------------------------------------");
         String endpoint = "/rest" + "/visit" + "/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + base + endpoint);
         log.info("------------------------------------------------------------");
 
-        final var greetingTarget = this.client.target(new URL(this.base, endpoint).toExternalForm());
-        try (final Response greetingGetResponse = greetingTarget.request()
-                .accept(MediaType.APPLICATION_JSON)
-                .get()) {
-            assertThat(greetingGetResponse.getStatus()).isEqualTo(200);
-            //assertThat(greetingGetResponse.readEntity(GreetingMessage.class).getMessage()).startsWith("Say Hello to JakartaEE");
+        WebTarget target = client.target(endpoint);
+        Response response = target.request().accept(MediaType.APPLICATION_JSON).get();
+        assertThat(response.getStatus()).isEqualTo(Response.Status.OK.getStatusCode());
+        String json = response.readEntity(String.class);
+        VisitListDto petTypeListDto = jsonb.fromJson(json, VisitListDto.class);
+        for(VisitDto dto: petTypeListDto.getVisit()){
+            log.info("fetched dto: "+dto.toString());
         }
+        json = "\n\n" + json +  "\n\n";
+        log.info(json);
+        response.close();
+        client.close();
     }
 }
