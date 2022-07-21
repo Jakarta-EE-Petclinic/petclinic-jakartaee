@@ -1171,25 +1171,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<test>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</test>
-					<excludes>
-						<exclude>**/*UnitTest</exclude>
-						<exclude>**/*ArcIT</exclude>
-						<exclude>**/*EndpointIT</exclude>
-					</excludes>
+
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.junit.platform</groupId>
-						<artifactId>junit-platform-suite-engine</artifactId>
-						<version>${version.junit-platform-suite-engine}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.junit.jupiter</groupId>
-						<artifactId>junit-jupiter-engine</artifactId>
-						<version>${junit.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 
 			<plugin>
@@ -1198,6 +1181,14 @@
 				<version>${version.maven-surefire-plugin}</version>
 				<configuration>
 					<skipTests>${skip.unit.tests}</skipTests>
+					<!--
+					<test>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</test>
+					<excludes>
+						<exclude>**/*UnitTest</exclude>
+						<exclude>**/*ArcIT</exclude>
+						<exclude>**/*EndpointIT</exclude>
+					</excludes>
+					-->
 				</configuration>
 				<executions>
 					<execution>
@@ -1213,6 +1204,18 @@
 						</configuration>
 					</execution>
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-suite-engine</artifactId>
+						<version>${version.junit-platform-suite-engine}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.junit.jupiter</groupId>
+						<artifactId>junit-jupiter-engine</artifactId>
+						<version>${junit.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -1236,11 +1239,6 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<!--
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
 				<dependencies>
 					<dependency>
 						<groupId>org.junit.jupiter</groupId>
@@ -1249,7 +1247,6 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			-->
 		</plugins>
 	</build>
 
