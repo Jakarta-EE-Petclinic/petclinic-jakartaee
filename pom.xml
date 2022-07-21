@@ -1754,6 +1754,7 @@
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
+
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
