@@ -5571,6 +5571,7 @@
 				</dependency>
 			</dependencies>
 			<build>
+				<finalName>petclinic</finalName>
 				<testResources>
 					<testResource>
 						<directory>src/test/arq-liberty-managed</directory>
