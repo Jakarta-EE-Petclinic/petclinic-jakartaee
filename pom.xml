@@ -853,8 +853,6 @@
 			<artifactId>arquillian-junit5-container</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- see: https://github.com/arquillian/arquillian-core/issues/248 -->
-		<!-- and https://github.com/arquillian/arquillian-core/pull/246/files -->
 		<dependency>
 			<groupId>org.jboss.arquillian.protocol</groupId>
 			<artifactId>arquillian-protocol-servlet-jakarta</artifactId>
@@ -1338,6 +1336,7 @@
 						<type>pom</type>
 						<scope>import</scope>
 					</dependency>
+
 					<dependency>
 						<groupId>io.openliberty</groupId>
 						<artifactId>openliberty-runtime</artifactId>
@@ -1345,7 +1344,6 @@
 						<type>zip</type>
 						<scope>test</scope>
 					</dependency>
-
 					<dependency>
 						<groupId>io.openliberty.features</groupId>
 						<artifactId>jakartaee-9.1</artifactId>
@@ -1359,220 +1357,15 @@
 						<type>esa</type>
 					</dependency>
 					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>springBoot-2.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>restfulWSClient-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
+						<groupId>io.openliberty.arquillian</groupId>
+						<artifactId>arquillian-liberty-support-jakarta</artifactId>
+						<version>2.0.2</version>
+						<classifier>feature</classifier>
+						<type>zip</type>
 					</dependency>
 					<dependency>
 						<groupId>io.openliberty.features</groupId>
-						<artifactId>restfulWS-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>jsonp-2.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>jsonb-2.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>servlet-5.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>faces-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>pages-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>expressionLanguage-4.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>websocket-2.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>concurrent-2.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>cdi-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>messaging-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>persistence-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>beanValidation-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>enterpriseBeans-4.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>mail-2.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>batch-2.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>appSecurity-4.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>jdbc-4.1</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>xmlWS-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>xmlBinding-3.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>sessionDatabase-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>com.ibm.websphere.appserver.appmanager-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>com.ibm.websphere.appserver.internal.slf4j-1.7</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>socialLogin-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>audit-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>passwordUtilities-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>webCache-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>batchManagement-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>jwtSso-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>jwt-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>eventLogging-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>adminCenter-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>wasJmsServer-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>jmsMdb-3.2</artifactId>
+						<artifactId>localConnector-1.0</artifactId>
 						<version>${version.openliberty-runtime}</version>
 						<type>esa</type>
 					</dependency>
@@ -1581,49 +1374,6 @@
 						<groupId>org.postgresql</groupId>
 						<artifactId>postgresql</artifactId>
 						<version>${version.postgresql.driver}</version>
-					</dependency>
-
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-providers-standard</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<type>pom</type>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-svnexe</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-svn-commons</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-gitexe</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-git-commons</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-manager-plexus</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-client</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
 					</dependency>
 
 					<!-- Frontend webjars for HTML, CSS and JS -->
@@ -1720,6 +1470,7 @@
 						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
+
 					<!-- Java utility classes -->
 					<dependency>
 						<groupId>org.apache.commons</groupId>
@@ -1816,21 +1567,50 @@
 					</dependency>
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
-						<version>${version.maven-failsafe-plugin}</version>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${version.maven-surefire-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${version.maven-surefire-plugin}</version>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${version.maven-failsafe-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
+				<!-- Jakarta EE Runtime: OpenLiberty -->
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>jakartaee-9.1</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>microProfile-5.0</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>localConnector-1.0</artifactId>
+					<version>${version.openliberty-runtime}</version>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.arquillian</groupId>
+					<artifactId>arquillian-liberty-support-jakarta</artifactId>
+					<classifier>feature</classifier>
+					<type>zip</type>
+				</dependency>
+
+				<dependency>
+					<groupId>org.postgresql</groupId>
+					<artifactId>postgresql</artifactId>
+				</dependency>
+
 				<!-- Frontend webjars for HTML, CSS and JS -->
 				<dependency>
 					<groupId>org.webjars</groupId>
@@ -1858,21 +1638,7 @@
 					<classifier>jakarta</classifier>
 				</dependency>
 
-				<dependency>
-					<groupId>io.openliberty.features</groupId>
-					<artifactId>jakartaee-9.1</artifactId>
-					<type>esa</type>
-				</dependency>
-				<dependency>
-					<groupId>io.openliberty.features</groupId>
-					<artifactId>microProfile-5.0</artifactId>
-					<type>esa</type>
-				</dependency>
 
-				<dependency>
-					<groupId>org.postgresql</groupId>
-					<artifactId>postgresql</artifactId>
-				</dependency>
 
 				<dependency>
 					<groupId>org.junit.jupiter</groupId>
@@ -1905,12 +1671,12 @@
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
+
 				<!-- Java utility classes -->
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
 				</dependency>
-
 				<!-- Maven Build -->
 				<dependency>
 					<groupId>org.projectlombok</groupId>
@@ -2159,6 +1925,19 @@
 							<preparationGoals>clean</preparationGoals>
 							<autoVersionSubmodules>true</autoVersionSubmodules>
 							<goals>package</goals>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>io.openliberty.tools</groupId>
+						<artifactId>liberty-maven-plugin</artifactId>
+						<configuration>
+							<runtimeArtifact>
+								<groupId>io.openliberty</groupId>
+								<artifactId>openliberty-runtime</artifactId>
+								<version>${version.openliberty-runtime}</version>
+							</runtimeArtifact>
+							<!--<installDirectory>D:/appsvr/wlp</installDirectory>-->
+							<!--<installDirectory>${project.build.directory}/liberty/wlp</installDirectory>-->
 						</configuration>
 					</plugin>
 					<plugin>
