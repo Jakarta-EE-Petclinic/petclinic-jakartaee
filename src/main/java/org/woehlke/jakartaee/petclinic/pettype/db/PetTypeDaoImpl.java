@@ -110,14 +110,4 @@ public class PetTypeDaoImpl implements PetTypeDao {
     public void preDestroy() {
         log.info("preDestroy: "+PetTypeDaoImpl.class.getSimpleName());
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+PetTypeDaoImpl.class.getSimpleName());
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+PetTypeDaoImpl.class.getSimpleName());
-    }
 }

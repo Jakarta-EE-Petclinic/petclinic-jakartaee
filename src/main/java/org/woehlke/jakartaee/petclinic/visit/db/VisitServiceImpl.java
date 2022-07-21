@@ -64,14 +64,4 @@ public class VisitServiceImpl implements VisitService {
     public void preDestroy() {
         log.info("preDestroy: "+VisitServiceImpl.class.getSimpleName());
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+VisitServiceImpl.class.getSimpleName());
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+VisitServiceImpl.class.getSimpleName());
-    }
 }

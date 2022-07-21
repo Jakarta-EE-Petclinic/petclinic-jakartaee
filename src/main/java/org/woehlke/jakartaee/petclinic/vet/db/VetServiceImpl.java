@@ -85,14 +85,4 @@ public class VetServiceImpl implements VetService {
     public void preDestroy() {
         log.info("preDestroy: "+VetServiceImpl.class.getCanonicalName() );
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+VetServiceImpl.class.getCanonicalName() );
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+VetServiceImpl.class.getCanonicalName() );
-    }
 }

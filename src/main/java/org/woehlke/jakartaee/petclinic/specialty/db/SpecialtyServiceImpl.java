@@ -79,14 +79,4 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     public void preDestroy() {
         log.info("preDestroy: "+SpecialtyServiceImpl.class.getSimpleName());
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+SpecialtyServiceImpl.class.getSimpleName());
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+SpecialtyServiceImpl.class.getSimpleName());
-    }
 }

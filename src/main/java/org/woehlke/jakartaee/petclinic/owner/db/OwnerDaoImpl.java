@@ -120,14 +120,4 @@ public class OwnerDaoImpl implements OwnerDao {
     public void preDestroy() {
         log.info("preDestroy: "+OwnerDaoImpl.class.getSimpleName());
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+OwnerDaoImpl.class.getSimpleName());
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+OwnerDaoImpl.class.getSimpleName());
-    }
 }

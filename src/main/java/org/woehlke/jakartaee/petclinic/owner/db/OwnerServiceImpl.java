@@ -120,14 +120,4 @@ public class OwnerServiceImpl implements OwnerService {
     public void preDestroy() {
         log.info("preDestroy: "+OwnerServiceImpl.class.getSimpleName());
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+OwnerServiceImpl.class.getSimpleName());
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+OwnerServiceImpl.class.getSimpleName());
-    }
 }

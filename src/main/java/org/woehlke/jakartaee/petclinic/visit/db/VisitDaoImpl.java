@@ -94,14 +94,4 @@ public class VisitDaoImpl implements VisitDao {
     public void preDestroy() {
         log.info("preDestroy: "+VisitDaoImpl.class.getSimpleName());
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+VisitDaoImpl.class.getSimpleName());
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+VisitDaoImpl.class.getSimpleName());
-    }
 }

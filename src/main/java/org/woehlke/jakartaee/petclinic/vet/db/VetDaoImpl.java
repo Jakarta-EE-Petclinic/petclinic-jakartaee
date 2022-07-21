@@ -118,14 +118,4 @@ public class VetDaoImpl implements VetDao {
     public void preDestroy() {
         log.info("preDestroy: "+VetDaoImpl.class.getSimpleName());
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+VetDaoImpl.class.getSimpleName());
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+VetDaoImpl.class.getSimpleName());
-    }
 }

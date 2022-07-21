@@ -117,14 +117,4 @@ public class SpecialtyDaoImpl implements SpecialtyDao {
     public void preDestroy() {
         log.info("preDestroy: "+SpecialtyDaoImpl.class.getSimpleName());
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+SpecialtyDaoImpl.class.getSimpleName());
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+SpecialtyDaoImpl.class.getSimpleName());
-    }
 }

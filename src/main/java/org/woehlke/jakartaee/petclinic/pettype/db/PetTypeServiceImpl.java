@@ -80,14 +80,4 @@ public class PetTypeServiceImpl implements PetTypeService {
     public void preDestroy() {
         log.info("preDestroy: "+PetTypeServiceImpl.class.getSimpleName());
     }
-
-    @PrePassivate
-    public void prePassivate() {
-        log.info("prePassivate: "+PetTypeServiceImpl.class.getSimpleName());
-    }
-
-    @PostActivate
-    public void postActivate() {
-        log.info("postActivate: "+PetTypeServiceImpl.class.getSimpleName());
-    }
 }
