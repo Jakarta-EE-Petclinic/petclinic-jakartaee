@@ -1171,15 +1171,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${version.maven-surefire-plugin}</version>
-				<configuration>
 					<skipTests>${skip.unit.tests}</skipTests>
 					<!--
 					<test>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</test>
@@ -4415,15 +4406,15 @@
 					</dependency>
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
-						<version>${version.maven-failsafe-plugin}</version>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${version.maven-surefire-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${version.maven-surefire-plugin}</version>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${version.maven-failsafe-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
@@ -4574,13 +4565,13 @@
 				</dependency>
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-failsafe-plugin</artifactId>
+					<artifactId>maven-surefire-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
+					<artifactId>maven-failsafe-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>test</scope>
 				</dependency>
@@ -4596,6 +4587,7 @@
 				<defaultGoal>clean verify org.codehaus.cargo:cargo-maven3-plugin:run</defaultGoal>
 				<pluginManagement>
 					<plugins>
+						<!--
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-assembly-plugin</artifactId>
@@ -4606,6 +4598,7 @@
 							<artifactId>maven-antrun-plugin</artifactId>
 							<version>3.1.0</version>
 						</plugin>
+						-->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-resources-plugin</artifactId>
