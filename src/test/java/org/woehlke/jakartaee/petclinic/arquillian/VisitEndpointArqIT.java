@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.visit.api;
+package org.woehlke.jakartaee.petclinic.arquillian;
 
 
 import jakarta.json.bind.Jsonb;
@@ -19,6 +19,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.woehlke.jakartaee.petclinic.visit.api.VisitDto;
+import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;
 
 import java.net.MalformedURLException;
 import java.net.URL;
