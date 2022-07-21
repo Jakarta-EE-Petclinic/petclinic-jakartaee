@@ -2,8 +2,6 @@
 <server description="defaultServer">
 	<featureManager>
 		<feature>jakartaee-9.1</feature>
-		<feature>usr:arquillian-support-jakarta-2.0</feature>
-		<feature>localConnector-1.0</feature>
 	</featureManager>
 
 	<include location="userRegistry.xml"/>
