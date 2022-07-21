@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.application.conf;
+package org.woehlke.jakartaee.petclinic.it;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;

@@ -2,12 +2,12 @@ package org.woehlke.jakartaee.petclinic;
 
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
-import org.woehlke.jakartaee.petclinic.owner.api.OwnerEndpointIT;
-import org.woehlke.jakartaee.petclinic.pet.api.PetEndpointIT;
-import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeEndpointIT;
-import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyEndpointIT;
-import org.woehlke.jakartaee.petclinic.vet.api.VetEndpointIT;
-import org.woehlke.jakartaee.petclinic.visit.api.VisitEndpointIT;
+import org.woehlke.jakartaee.petclinic.it.OwnerEndpointIT;
+import org.woehlke.jakartaee.petclinic.it.PetEndpointIT;
+import org.woehlke.jakartaee.petclinic.it.PetTypeEndpointIT;
+import org.woehlke.jakartaee.petclinic.it.SpecialtyEndpointIT;
+import org.woehlke.jakartaee.petclinic.it.VetEndpointIT;
+import org.woehlke.jakartaee.petclinic.it.VisitEndpointIT;
 
 @Suite
 @SelectClasses({

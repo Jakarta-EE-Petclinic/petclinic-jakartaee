@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.visit.api;
+package org.woehlke.jakartaee.petclinic.it;
 
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -9,18 +9,20 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Test;
-import org.woehlke.jakartaee.petclinic.application.conf.AbstractEndpointTest;
+import org.woehlke.jakartaee.petclinic.it.AbstractEndpointTest;
+import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeDto;
+import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeListDto;
 
 import java.io.StringReader;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
-public class VisitEndpointIT extends AbstractEndpointTest {
+public class PetTypeEndpointIT extends AbstractEndpointTest {
 
   @Test
   public void testGetListJson() {
-    String endpoint = url + "/rest" + "/visit" + "/list";
+    String endpoint = url + "/rest" + "/petType" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
@@ -32,8 +34,8 @@ public class VisitEndpointIT extends AbstractEndpointTest {
             response.getStatus()
     );
     String json = response.readEntity(String.class);
-    VisitListDto petTypeListDto = jsonb.fromJson(json, VisitListDto.class);
-    for(VisitDto dto: petTypeListDto.getVisit()){
+    PetTypeListDto petTypeListDto = jsonb.fromJson(json, PetTypeListDto.class);
+    for(PetTypeDto dto: petTypeListDto.getPetType()){
       log.info("fetched dto: "+dto.toString());
     }
     json = "\n\n" + json +  "\n\n";
@@ -44,7 +46,7 @@ public class VisitEndpointIT extends AbstractEndpointTest {
 
   @Test
   public void testGetListXml() throws JAXBException {
-    String endpoint = url + "/rest" + "/visit" + "/xml/list";
+    String endpoint = url + "/rest" + "/petType" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
@@ -56,11 +58,11 @@ public class VisitEndpointIT extends AbstractEndpointTest {
             response.getStatus()
     );
     String xml = response.readEntity(String.class);
-    JAXBContext jc = JAXBContext.newInstance(VisitListDto.class);
+    JAXBContext jc = JAXBContext.newInstance(PetTypeListDto.class);
     Unmarshaller m = jc.createUnmarshaller();
     StringReader r  = new StringReader(xml);
-    VisitListDto o = (VisitListDto) m.unmarshal(r);
-    for(VisitDto dto: o.getVisit()){
+    PetTypeListDto o = (PetTypeListDto) m.unmarshal(r);
+    for(PetTypeDto dto: o.getPetType()){
       log.info("fetched dto: "+dto.toString());
     }
     xml = "\n\n" + xml +  "\n\n";
@@ -68,5 +70,4 @@ public class VisitEndpointIT extends AbstractEndpointTest {
     response.close();
     client.close();
   }
-
 }

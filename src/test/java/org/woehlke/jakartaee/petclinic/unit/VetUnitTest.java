@@ -1,10 +1,10 @@
-package org.woehlke.jakartaee.petclinic.vet;
+package org.woehlke.jakartaee.petclinic.unit;
 
 
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.*;
-import org.woehlke.jakartaee.petclinic.application.conf.AbstractEntityTest;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
+import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import java.util.*;
 

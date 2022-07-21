@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.specialty;
+package org.woehlke.jakartaee.petclinic.unit;
 
 
 import lombok.extern.java.Log;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.woehlke.jakartaee.petclinic.application.conf.AbstractEntityTest;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import java.util.Collections;
 import java.util.Iterator;
