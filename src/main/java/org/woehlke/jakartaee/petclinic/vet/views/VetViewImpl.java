@@ -25,6 +25,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.woehlke.jakartaee.petclinic.vet.VetView;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -39,7 +40,7 @@ import java.util.*;
 @Setter
 @Named("vetView")
 @SessionScoped
-public class VetViewImpl implements VetView {
+public class VetViewImpl implements VetView, Serializable {
 
     private static final long serialVersionUID = 2838339162976374606L;
 
