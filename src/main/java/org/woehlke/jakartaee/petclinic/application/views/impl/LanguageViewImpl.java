@@ -33,7 +33,7 @@ import java.util.Map;
 @Setter
 @Named("languageView")
 @SessionScoped
-public class LanguageViewImpl implements LanguageView , Serializable {
+public class LanguageViewImpl implements LanguageView, Serializable {
 
     private static final long serialVersionUID = -5444922829398489233L;
 

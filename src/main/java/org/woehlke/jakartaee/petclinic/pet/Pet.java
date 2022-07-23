@@ -53,7 +53,7 @@ import java.util.*;
         )
 })
 @EntityListeners(PetListener.class)
-public class Pet extends EntityBaseObject implements EntityBase,Comparable<Pet> , Serializable {
+public class Pet extends EntityBaseObject implements EntityBase,Comparable<Pet>, Serializable {
 
     public final static String TABLENAME = "owner_pet";
     public final static String COL_ID = "id";

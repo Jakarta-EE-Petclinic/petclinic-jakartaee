@@ -1,11 +1,12 @@
 package org.woehlke.jakartaee.petclinic.application.framework;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  *
  */
-public abstract class EntityBaseObject extends Object implements EntityBase {
+public abstract class EntityBaseObject extends Object implements EntityBase, Serializable {
 
     private static final long serialVersionUID = -3378330831315654285L;
 
