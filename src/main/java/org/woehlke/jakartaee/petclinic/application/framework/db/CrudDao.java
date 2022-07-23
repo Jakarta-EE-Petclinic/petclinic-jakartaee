@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @param <T>
  */
-public interface CrudDao<T extends EntityBase> extends Serializable {
+public interface CrudDao<T extends EntityBase> {
 
     long serialVersionUID = 5140497751059102450L;
 

@@ -8,7 +8,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
-import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.UUID;

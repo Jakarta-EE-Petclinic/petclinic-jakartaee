@@ -11,6 +11,7 @@ import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @Log
 @Stateless
-public class VisitServiceImpl implements VisitService {
+public class VisitServiceImpl implements VisitService, Serializable {
 
     private static final long serialVersionUID = 4560958540651968289L;
 

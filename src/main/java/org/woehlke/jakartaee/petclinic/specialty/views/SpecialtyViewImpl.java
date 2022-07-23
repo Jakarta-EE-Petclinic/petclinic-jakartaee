@@ -22,6 +22,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.woehlke.jakartaee.petclinic.specialty.SpecialtyView;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ import java.util.List;
 @Setter
 @Named("specialtyView")
 @SessionScoped
-public class SpecialtyViewImpl implements SpecialtyView {
+public class SpecialtyViewImpl implements SpecialtyView, Serializable {
 
     private static final long serialVersionUID = 9080853875975855082L;
 

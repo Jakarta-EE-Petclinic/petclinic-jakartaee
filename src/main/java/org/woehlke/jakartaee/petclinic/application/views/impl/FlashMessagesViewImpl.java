@@ -13,6 +13,7 @@ import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import java.util.List;
 @Log
 @Named("flashMessagesView")
 @SessionScoped
-public class FlashMessagesViewImpl implements FlashMessagesView {
+public class FlashMessagesViewImpl implements FlashMessagesView , Serializable {
 
     private static final long serialVersionUID = -2267751568724878682L;
 

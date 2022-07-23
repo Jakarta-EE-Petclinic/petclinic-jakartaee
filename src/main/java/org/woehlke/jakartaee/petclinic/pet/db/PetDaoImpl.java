@@ -12,6 +12,7 @@ import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ import java.util.UUID;
  */
 @Log
 @Stateless
-public class PetDaoImpl implements PetDao {
+public class PetDaoImpl implements PetDao , Serializable {
 
     private static final long serialVersionUID = -9149391932558758266L;
 

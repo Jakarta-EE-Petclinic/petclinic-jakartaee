@@ -12,6 +12,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.persistence.TypedQuery;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ import java.util.UUID;
  */
 @Log
 @Stateless
-public class SpecialtyDaoImpl implements SpecialtyDao {
+public class SpecialtyDaoImpl implements SpecialtyDao, Serializable {
 
     private static final long serialVersionUID = 1355422039564914705L;
 
