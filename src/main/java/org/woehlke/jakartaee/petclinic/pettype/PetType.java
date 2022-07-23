@@ -10,6 +10,7 @@ import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeListener;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -48,7 +49,7 @@ import java.util.UUID;
         )
 })
 @EntityListeners(PetTypeListener.class)
-public class PetType extends EntityBaseObject implements EntityBase, Comparable<PetType> {
+public class PetType extends EntityBaseObject implements EntityBase, Comparable<PetType>, Serializable {
 
     public final static String TABLENAME = "owner_pet_type";
     public final static String COL_ID = "id";

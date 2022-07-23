@@ -8,7 +8,7 @@ import java.io.Serializable;
  *
  */
 @Log
-public abstract class CrudFlowViewImpl implements CrudFlowView {
+public abstract class CrudFlowViewImpl implements CrudFlowView, Serializable {
 
     private CrudFlowState flowState;
 
