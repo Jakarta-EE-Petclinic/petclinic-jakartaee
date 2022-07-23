@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  *
  */
-public enum OwnerFlowState implements Serializable {
+public enum OwnerFlowState {
     LIST,
     LIST_SEARCH_RESULT,
     DETAILS,

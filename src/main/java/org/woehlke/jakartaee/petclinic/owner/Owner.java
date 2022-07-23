@@ -53,7 +53,7 @@ import java.util.*;
         )
 })
 @EntityListeners(OwnerListener.class)
-public class Owner extends EntityBaseObject implements EntityBase, Comparable<Owner> {
+public class Owner extends EntityBaseObject implements Comparable<Owner> {
 
     public final static String TABLENAME = "owner";
     public final static String COL_ID = "id";

@@ -13,11 +13,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface VetView extends CrudView<Vet>,
-        LanguageChangeableView,
-        SearchableView,
-        CrudView2Model,
-        Serializable {
+public interface VetView extends CrudView<Vet>, CrudView2Model {
 
     String JSF_PAGE = "veterinarian.jsf";
 

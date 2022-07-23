@@ -19,9 +19,16 @@ public class AbstractEntityTest {
     protected Long id01 = 1L;
     protected Long id02 = 2L;
     protected Long id = 3L;
-    protected Date dob01 = new Date(2021,6,14);
-    protected Date dob02 = new Date(2020,5,12);
+    protected static Date dob01;
+    protected static Date dob02;
 
+    static {
+    	GregorianCalendar gc1 = new GregorianCalendar(121, 6, 14);
+    	GregorianCalendar gc2 = new GregorianCalendar(121, 5, 12);
+    	dob01 = Date.from(gc1.toInstant());
+    	dob02 = Date.from(gc2.toInstant());
+    }
+    
     protected static List<Specialty> specialtyList = new ArrayList<>();
     protected static Set<Specialty> specialtySet = new HashSet<>();
     protected static Map<String,String> vetNames = new HashMap<>();
@@ -103,11 +110,12 @@ public class AbstractEntityTest {
     }
 
     static {
-        int year = 2021;
+        int year = 121;
         int month = 1;
         int day = 5;
         for (String petTypeName : petTypeNames) {
-            Date dob = new Date(year, month, day);
+            GregorianCalendar gc = new GregorianCalendar(year,month,day);
+            Date dob = Date.from(gc.toInstant());
             dateOfBirthList.add(dob);
             year++;
             month++;

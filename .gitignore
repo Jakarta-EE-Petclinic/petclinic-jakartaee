@@ -13,3 +13,7 @@ buildNumber.properties
 /petclinic-jakartaee.iml
 /src/main/resources/META-INF/persistence.xml
 /installs/
+/.classpath
+/.factorypath
+/.project
+/.settings/

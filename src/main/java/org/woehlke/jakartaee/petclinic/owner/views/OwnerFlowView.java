@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface OwnerFlowView extends CrudFlowView, Serializable {
+public interface OwnerFlowView extends CrudFlowView {
 
     long serialVersionUID = 6654391340545426308L;
 

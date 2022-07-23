@@ -13,6 +13,6 @@ import java.io.Serializable;
  */
 @Named("specialtyViewFlow")
 @SessionScoped
-public class SpecialtyFlowViewImpl extends CrudFlowViewImpl implements SpecialtyFlowView, Serializable {
+public class SpecialtyFlowViewImpl extends CrudFlowViewImpl implements SpecialtyFlowView , Serializable {
     private static final long serialVersionUID = -621000271002202654L;
 }

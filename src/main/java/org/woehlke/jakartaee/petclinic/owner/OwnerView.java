@@ -17,10 +17,7 @@ public interface OwnerView extends CrudView<Owner>,
         OwnersPetView,
         OwnersPetVisitView,
         Owner2Model,
-        OwnersPet2Model,
-        LanguageChangeableView,
-        SearchableView,
-        Serializable {
+        OwnersPet2Model {
 
 
     String JSF_PAGE = "owner.jsf";

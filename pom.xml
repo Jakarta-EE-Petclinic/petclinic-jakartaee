@@ -501,11 +501,7 @@
 				<artifactId>postgresql</artifactId>
 				<version>${version.postgresql.driver}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.mariadb.jdbc</groupId>
-				<artifactId>mariadb-java-client</artifactId>
-				<version>3.0.6</version>
-			</dependency>
+			
 
 			<dependency>
 				<groupId>org.apache.maven.scm</groupId>
@@ -696,7 +692,6 @@
 				<type>maven-plugin</type>
 				<scope>provided</scope>
 			</dependency>
-			<!--
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -704,7 +699,6 @@
 				<type>maven-plugin</type>
 				<scope>provided</scope>
 			</dependency>
-			-->
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -832,10 +826,6 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
 		</dependency>
 		<!--
 		<dependency>
@@ -1036,13 +1026,11 @@
 					<artifactId>lombok-maven-plugin</artifactId>
 					<version>${version.lombok-maven-plugin}</version>
 				</plugin>
-				<!--
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
 					<version>${version.maven-war-plugin}</version>
 				</plugin>
-				-->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -1516,7 +1504,6 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
-					<!--
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-war-plugin</artifactId>
@@ -1524,7 +1511,6 @@
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
-					-->
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
@@ -1797,13 +1783,13 @@
 							<artifactId>lombok-maven-plugin</artifactId>
 							<version>${version.lombok-maven-plugin}</version>
 						</plugin>
-						<!--
+					
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-war-plugin</artifactId>
 							<version>${version.maven-war-plugin}</version>
 						</plugin>
-						-->
+					
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-resources-plugin</artifactId>

@@ -2,16 +2,13 @@ package org.woehlke.jakartaee.petclinic.application.framework.views;
 
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
-import java.io.Serializable;
 import java.util.List;
-import java.util.ResourceBundle;
+
 
 /**
  * @param <T>
  */
-public interface CrudView<T extends EntityBase> extends SearchableView, LanguageChangeableView, Serializable {
-
-    long serialVersionUID = -4976697275728754000L;
+public interface CrudView<T extends EntityBase> extends SearchableView, LanguageChangeableView {
 
     String showDetailsForm(T o);
     String cancelDetails();

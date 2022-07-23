@@ -1,11 +1,9 @@
 package org.woehlke.jakartaee.petclinic.application.framework.views;
 
-import java.io.Serializable;
-
 /**
  *
  */
-public enum CrudFlowState implements Serializable {
+public enum CrudFlowState {
     LIST,
     DETAILS,
     NEW,

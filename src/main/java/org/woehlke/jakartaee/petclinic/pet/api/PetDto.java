@@ -5,10 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.woehlke.jakartaee.petclinic.owner.Owner;
-import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeDto;
-import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import jakarta.xml.bind.annotation.*;
 import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;

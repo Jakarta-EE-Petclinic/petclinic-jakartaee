@@ -5,6 +5,6 @@ import org.woehlke.jakartaee.petclinic.application.framework.db.SearchableServic
 
 import java.io.Serializable;
 
-public interface VetService extends CrudService<Vet>, SearchableService<Vet>, Serializable {
+public interface VetService extends CrudService<Vet>, SearchableService<Vet> {
     long serialVersionUID = 6211608636423556157L;
 }

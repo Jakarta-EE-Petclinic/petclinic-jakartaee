@@ -1,13 +1,10 @@
 package org.woehlke.jakartaee.petclinic.application.framework.views;
 
-import java.io.Serializable;
 
 /**
  *
  */
-public interface CrudView2Model extends Serializable {
-
-    long serialVersionUID = 6750797521381818959L;
+public interface CrudView2Model {
 
     void loadList();
     void newEntity();

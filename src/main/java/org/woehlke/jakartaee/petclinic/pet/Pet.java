@@ -12,6 +12,7 @@ import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -52,7 +53,7 @@ import java.util.*;
         )
 })
 @EntityListeners(PetListener.class)
-public class Pet extends EntityBaseObject implements EntityBase,Comparable<Pet>  {
+public class Pet extends EntityBaseObject implements EntityBase,Comparable<Pet> , Serializable {
 
     public final static String TABLENAME = "owner_pet";
     public final static String COL_ID = "id";

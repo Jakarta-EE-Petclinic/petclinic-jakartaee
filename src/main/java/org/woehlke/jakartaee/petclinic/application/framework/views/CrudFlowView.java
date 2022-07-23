@@ -1,11 +1,10 @@
 package org.woehlke.jakartaee.petclinic.application.framework.views;
 
-import java.io.Serializable;
 
 /**
  *
  */
-public interface CrudFlowView extends Serializable {
+public interface CrudFlowView {
 
     long serialVersionUID = -2732706731385890693L;
 
