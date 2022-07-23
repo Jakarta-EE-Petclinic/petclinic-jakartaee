@@ -1871,7 +1871,6 @@
 							<execution>
 								<id>default-resources</id>
 								<configuration>
-									<propertiesEncoding>UTF-8</propertiesEncoding>
 									<resources>
 										<resource>
 											<directory>src/main/resources</directory>
