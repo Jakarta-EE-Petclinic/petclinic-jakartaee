@@ -2910,7 +2910,6 @@
 										cargo.datasource.username=petclinic_jakartaee|
 										cargo.datasource.password=petclinic_jakartaeepwd
 									</cargo.datasource.datasource.postgresql>
-									<cargo.tomee.appsDirectory>apps</cargo.tomee.appsDirectory>
 									<cargo.tomcat.webappsDirectory>webapps</cargo.tomcat.webappsDirectory>
 								</properties>
 							</configuration>
