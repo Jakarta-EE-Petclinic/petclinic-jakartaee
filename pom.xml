@@ -95,6 +95,7 @@
 		<version.infinispan-jcache-remote>12.1.7.Final</version.infinispan-jcache-remote>
 		<version.arquillian-liberty-jakarta>2.0.2</version.arquillian-liberty-jakarta>
 		<liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
+		<version.arquillian-liberty-support-jakarta>2.0.2</version.arquillian-liberty-support-jakarta>
 
 		<!-- Wildfly -->
 		<version.wildfly-runtime>26.1.1.Final</version.wildfly-runtime>
@@ -1361,87 +1362,17 @@
 						<type>esa</type>
 					</dependency>
 					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>microProfile-5.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
-					</dependency>
-					<dependency>
 						<groupId>io.openliberty.arquillian</groupId>
 						<artifactId>arquillian-liberty-support-jakarta</artifactId>
-						<version>2.0.2</version>
+						<version>${version.arquillian-liberty-support-jakarta}</version>
 						<classifier>feature</classifier>
 						<type>zip</type>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.features</groupId>
-						<artifactId>localConnector-1.0</artifactId>
-						<version>${version.openliberty-runtime}</version>
-						<type>esa</type>
 					</dependency>
 
 					<dependency>
 						<groupId>org.postgresql</groupId>
 						<artifactId>postgresql</artifactId>
 						<version>${version.postgresql.driver}</version>
-					</dependency>
-
-					<!-- Frontend webjars for HTML, CSS and JS -->
-					<dependency>
-						<groupId>org.webjars</groupId>
-						<artifactId>jquery</artifactId>
-						<version>${version.webjars.jquery}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.webjars</groupId>
-						<artifactId>popper.js</artifactId>
-						<version>${version.webjars.popper.js}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.webjars</groupId>
-						<artifactId>bootstrap</artifactId>
-						<version>${version.webjars.bootstrap}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.webjars</groupId>
-						<artifactId>font-awesome</artifactId>
-						<version>${version.webjars.font-awesome}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.webjars.npm</groupId>
-						<artifactId>primeflex</artifactId>
-						<version>${version.webjars.primeflex}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces</artifactId>
-						<version>${version.org.primefaces}</version>
-						<classifier>jakarta</classifier>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces-selenium-core</artifactId>
-						<version>${version.org.primefaces}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces-selenium-components</artifactId>
-						<version>${version.org.primefaces}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces-integration-tests</artifactId>
-						<version>${version.org.primefaces}</version>
-						<type>war</type>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces-cli</artifactId>
-						<version>${version.org.primefaces}</version>
-						<scope>test</scope>
 					</dependency>
 
 					<dependency>
@@ -1488,35 +1419,6 @@
 						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
 
-					<!-- Maven Build -->
-					<dependency>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok</artifactId>
-						<version>${version.org.projectlombok.lombok}</version>
-						<scope>provided</scope>
-					</dependency>
-
-					<dependency>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok-maven-plugin</artifactId>
-						<version>${version.lombok-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-war-plugin</artifactId>
-						<version>${version.maven-war-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<version>${version.maven-dependency-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
@@ -1526,36 +1428,8 @@
 					</dependency>
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>${version.maven-compiler-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>${version.maven-javadoc-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-project-info-reports-plugin</artifactId>
-						<version>${version.maven-project-info-reports-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-site-plugin</artifactId>
-						<version>${version.maven-site-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-release-plugin</artifactId>
-						<version>${version.maven-release-plugin}</version>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<version>${version.maven-deploy-plugin}</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
@@ -1563,13 +1437,6 @@
 						<groupId>io.openliberty.tools</groupId>
 						<artifactId>liberty-maven-plugin</artifactId>
 						<version>${version.liberty-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-scm-plugin</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
 						<type>maven-plugin</type>
 						<scope>provided</scope>
 					</dependency>
@@ -1597,17 +1464,6 @@
 					<type>esa</type>
 				</dependency>
 				<dependency>
-					<groupId>io.openliberty.features</groupId>
-					<artifactId>microProfile-5.0</artifactId>
-					<type>esa</type>
-				</dependency>
-				<dependency>
-					<groupId>io.openliberty.features</groupId>
-					<artifactId>localConnector-1.0</artifactId>
-					<version>${version.openliberty-runtime}</version>
-					<type>esa</type>
-				</dependency>
-				<dependency>
 					<groupId>io.openliberty.arquillian</groupId>
 					<artifactId>arquillian-liberty-support-jakarta</artifactId>
 					<classifier>feature</classifier>
@@ -1617,33 +1473,6 @@
 				<dependency>
 					<groupId>org.postgresql</groupId>
 					<artifactId>postgresql</artifactId>
-				</dependency>
-
-				<!-- Frontend webjars for HTML, CSS and JS -->
-				<dependency>
-					<groupId>org.webjars</groupId>
-					<artifactId>jquery</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.webjars</groupId>
-					<artifactId>popper.js</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.webjars</groupId>
-					<artifactId>bootstrap</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.webjars</groupId>
-					<artifactId>font-awesome</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.webjars.npm</groupId>
-					<artifactId>primeflex</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.primefaces</groupId>
-					<artifactId>primefaces</artifactId>
-					<classifier>jakarta</classifier>
 				</dependency>
 
 				<dependency>
@@ -1678,38 +1507,11 @@
 					<scope>test</scope>
 				</dependency>
 
-				<!-- Java utility classes -->
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
 				</dependency>
-				<!-- Maven Build -->
-				<dependency>
-					<groupId>org.projectlombok</groupId>
-					<artifactId>lombok</artifactId>
-					<scope>provided</scope>
-				</dependency>
 
-				<dependency>
-					<groupId>org.projectlombok</groupId>
-					<artifactId>lombok-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				-->
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -1718,33 +1520,8 @@
 				</dependency>
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${version.maven-deploy-plugin}</version>
 				</dependency>
 				<dependency>
 					<groupId>io.openliberty.tools</groupId>
@@ -1752,13 +1529,6 @@
 					<type>maven-plugin</type>
 					<scope>provided</scope>
 				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-scm-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
@@ -1778,31 +1548,9 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok-maven-plugin</artifactId>
-							<version>${version.lombok-maven-plugin}</version>
-						</plugin>
-					
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-war-plugin</artifactId>
-							<version>${version.maven-war-plugin}</version>
-						</plugin>
-					
-						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-resources-plugin</artifactId>
 							<version>${version.maven-resources-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-compiler-plugin</artifactId>
-							<version>${version.maven-compiler-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>${version.maven-javadoc-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -1810,29 +1558,9 @@
 							<version>${version.maven-deploy-plugin}</version>
 						</plugin>
 						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-project-info-reports-plugin</artifactId>
-							<version>${version.maven-project-info-reports-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-site-plugin</artifactId>
-							<version>${version.maven-site-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-release-plugin</artifactId>
-							<version>${version.maven-release-plugin}</version>
-						</plugin>
-						<plugin>
 							<groupId>io.openliberty.tools</groupId>
 							<artifactId>liberty-maven-plugin</artifactId>
 							<version>${version.liberty-maven-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-scm-plugin</artifactId>
-							<version>${version.org.apache.maven.scm}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -1893,47 +1621,6 @@
 						</executions>
 					</plugin>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<configuration>
-							<source>${java.version}</source>
-							<target>${java.version}</target>
-							<verbose>true</verbose>
-							<fork>true</fork>
-							<showWarnings>true</showWarnings>
-							<useIncrementalCompilation>false</useIncrementalCompilation>
-							<compilerArgs>
-								<arg>-Xlint:all</arg>
-							</compilerArgs>
-							<compilerArgument>-Xlint:all</compilerArgument>
-							<annotationProcessorPaths>
-								<path>
-									<groupId>org.projectlombok</groupId>
-									<artifactId>lombok</artifactId>
-									<version>${version.org.projectlombok.lombok}</version>
-								</path>
-							</annotationProcessorPaths>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok-maven-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-release-plugin</artifactId>
-						<configuration>
-							<tagNameFormat>v@{project.version}</tagNameFormat>
-							<preparationGoals>clean</preparationGoals>
-							<autoVersionSubmodules>true</autoVersionSubmodules>
-							<goals>package</goals>
-						</configuration>
-					</plugin>
-					<plugin>
 						<groupId>io.openliberty.tools</groupId>
 						<artifactId>liberty-maven-plugin</artifactId>
 						<configuration>
@@ -1944,21 +1631,6 @@
 							</runtimeArtifact>
 							<!--<installDirectory>D:/appsvr/wlp</installDirectory>-->
 							<!--<installDirectory>${project.build.directory}/liberty/wlp</installDirectory>-->
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-project-info-reports-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-site-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-scm-plugin</artifactId>
-						<configuration>
-							<connectionType>developerConnection</connectionType>
 						</configuration>
 					</plugin>
 					<plugin>
