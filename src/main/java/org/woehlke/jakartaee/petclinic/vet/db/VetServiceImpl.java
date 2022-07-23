@@ -13,6 +13,7 @@ import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ import java.util.UUID;
  */
 @Log
 @Stateless
-public class VetServiceImpl implements VetService {
+public class VetServiceImpl implements VetService, Serializable {
 
     private static final long serialVersionUID = 2698313227542867286L;
 

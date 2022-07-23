@@ -12,6 +12,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ import java.util.UUID;
  */
 @Log
 @Stateless
-public class VisitDaoImpl implements VisitDao {
+public class VisitDaoImpl implements VisitDao, Serializable {
 
     private static final long serialVersionUID = 892248114140040519L;
 

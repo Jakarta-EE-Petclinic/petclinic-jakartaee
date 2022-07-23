@@ -15,6 +15,7 @@ import org.woehlke.jakartaee.petclinic.owner.OwnerService;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ import java.util.List;
  */
 @Log
 @Stateless
-public class OwnerServiceImpl implements OwnerService {
+public class OwnerServiceImpl implements OwnerService, Serializable  {
 
     private static final long serialVersionUID = -553095693269912269L;
 

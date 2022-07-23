@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  *
  */
-public interface PetTypeService extends CrudService<PetType>, SearchableService<PetType>, Serializable {
+public interface PetTypeService extends CrudService<PetType>, SearchableService<PetType> {
 
     long serialVersionUID = 6637453269836393L;
 

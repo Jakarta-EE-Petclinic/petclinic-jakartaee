@@ -15,6 +15,7 @@ import jakarta.faces.model.SelectItem;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -32,7 +33,7 @@ import java.util.Map;
 @Setter
 @Named("languageView")
 @SessionScoped
-public class LanguageViewImpl implements LanguageView {
+public class LanguageViewImpl implements LanguageView , Serializable {
 
     private static final long serialVersionUID = -5444922829398489233L;
 

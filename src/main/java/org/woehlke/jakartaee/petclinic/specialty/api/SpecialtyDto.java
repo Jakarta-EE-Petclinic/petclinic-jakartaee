@@ -7,9 +7,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.*;
-import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import java.io.Serializable;
 import java.util.UUID;

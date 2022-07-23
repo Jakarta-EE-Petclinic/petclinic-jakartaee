@@ -12,6 +12,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.persistence.TypedQuery;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ import java.util.UUID;
  */
 @Log
 @Stateless
-public class PetTypeDaoImpl implements PetTypeDao {
+public class PetTypeDaoImpl implements PetTypeDao , Serializable {
 
     private static final long serialVersionUID = -7332614951852278897L;
 

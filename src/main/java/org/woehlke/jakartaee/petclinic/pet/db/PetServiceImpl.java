@@ -11,6 +11,7 @@ import org.woehlke.jakartaee.petclinic.pet.PetService;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @Log
 @Stateless
-public class PetServiceImpl implements PetService {
+public class PetServiceImpl implements PetService, Serializable  {
 
     private static final long serialVersionUID = -2093524918552358722L;
 

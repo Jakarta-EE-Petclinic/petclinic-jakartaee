@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @param <T>
  */
-public interface SearchableService<T extends EntityBase> extends Serializable {
+public interface SearchableService<T extends EntityBase> {
 
     long serialVersionUID = -1893303126489909752L;
 

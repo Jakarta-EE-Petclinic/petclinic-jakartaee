@@ -11,6 +11,7 @@ import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import jakarta.persistence.*;
 import org.woehlke.jakartaee.petclinic.vet.db.VetListener;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -51,7 +52,7 @@ import java.util.*;
         )
 })
 @EntityListeners(VetListener.class)
-public class Vet extends EntityBaseObject implements EntityBase, Comparable<Vet> {
+public class Vet extends EntityBaseObject implements EntityBase, Comparable<Vet>, Serializable {
 
     private static final long serialVersionUID = 6749793465861123385L;
 

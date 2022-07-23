@@ -14,6 +14,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
+import java.io.Serializable;
 import java.util.*;
 
 
@@ -26,7 +27,7 @@ import java.util.*;
  */
 @Log
 @Stateless
-public class OwnerDaoImpl implements OwnerDao {
+public class OwnerDaoImpl implements OwnerDao , Serializable {
 
     private static final long serialVersionUID = 1313423542L;
 
