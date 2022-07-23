@@ -9,6 +9,7 @@ import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -53,7 +54,7 @@ import java.util.*;
         )
 })
 @EntityListeners(OwnerListener.class)
-public class Owner extends EntityBaseObject implements Comparable<Owner> {
+public class Owner extends EntityBaseObject implements Comparable<Owner>, Serializable {
 
     public final static String TABLENAME = "owner";
     public final static String COL_ID = "id";

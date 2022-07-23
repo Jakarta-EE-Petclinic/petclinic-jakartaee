@@ -28,6 +28,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -42,7 +43,7 @@ import java.util.List;
 @Setter
 @Named("ownerView")
 @SessionScoped
-public class OwnerViewImpl implements OwnerView {
+public class OwnerViewImpl implements OwnerView, Serializable {
 
     private static final long serialVersionUID = -4809817472969005481L;
 

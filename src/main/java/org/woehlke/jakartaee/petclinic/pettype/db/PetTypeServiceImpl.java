@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Log
 @Stateless
-public class PetTypeServiceImpl implements PetTypeService , Serializable  {
+public class PetTypeServiceImpl implements PetTypeService, Serializable  {
 
     private static final long serialVersionUID = -6242995649030237034L;
 

@@ -20,6 +20,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.woehlke.jakartaee.petclinic.pettype.PetTypeView;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ import java.util.List;
 @Setter
 @Named("petTypeView")
 @SessionScoped
-public class PetTypeViewImpl implements PetTypeView {
+public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     private static final long serialVersionUID = -528406859430949031L;
 

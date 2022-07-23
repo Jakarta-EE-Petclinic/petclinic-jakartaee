@@ -1,8 +1,6 @@
 package org.woehlke.jakartaee.petclinic.pet.db;
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.PostActivate;
-import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pet.Pet;

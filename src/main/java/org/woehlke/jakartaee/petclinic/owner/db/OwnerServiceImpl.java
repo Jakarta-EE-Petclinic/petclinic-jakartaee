@@ -1,8 +1,6 @@
 package org.woehlke.jakartaee.petclinic.owner.db;
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.PostActivate;
-import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
@@ -23,7 +21,7 @@ import java.util.List;
  */
 @Log
 @Stateless
-public class OwnerServiceImpl implements OwnerService, Serializable  {
+public class OwnerServiceImpl implements OwnerService, Serializable {
 
     private static final long serialVersionUID = -553095693269912269L;
 

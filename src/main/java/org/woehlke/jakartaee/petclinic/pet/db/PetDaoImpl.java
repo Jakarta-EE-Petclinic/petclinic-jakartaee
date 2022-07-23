@@ -25,7 +25,7 @@ import java.util.UUID;
  */
 @Log
 @Stateless
-public class PetDaoImpl implements PetDao , Serializable {
+public class PetDaoImpl implements PetDao, Serializable {
 
     private static final long serialVersionUID = -9149391932558758266L;
 

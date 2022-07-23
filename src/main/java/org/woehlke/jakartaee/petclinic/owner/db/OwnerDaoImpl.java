@@ -27,7 +27,7 @@ import java.util.*;
  */
 @Log
 @Stateless
-public class OwnerDaoImpl implements OwnerDao , Serializable {
+public class OwnerDaoImpl implements OwnerDao, Serializable {
 
     private static final long serialVersionUID = 1313423542L;
 
