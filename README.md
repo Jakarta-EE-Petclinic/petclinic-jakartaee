@@ -67,9 +67,9 @@ cd petclinic-jakartaee
 ## Jakarta EE Runtimes
 * [Wildfly](https://github.com/wildfly/wildfly)
 * [Open Liberty](https://github.com/OpenLiberty/open-liberty)
-* [Eclipse GlassFish]()
-* [Payara Server]()
-* [Apache TomEE]() 
+* [Eclipse GlassFish](https://github.com/eclipse-ee4j/glassfish)
+* [Payara Server](https://github.com/payara/Payara)
+* [Apache TomEE](https://github.com/apache/tomee) 
 
 ## JSF Java Server Faces
 * [Primefaces](https://github.com/primefaces/primefaces)
@@ -77,7 +77,6 @@ cd petclinic-jakartaee
 ## Functional Requirements
 
 Object Oriented Design
-
 
 ## Petclinic Overview
 
@@ -87,8 +86,6 @@ Object Oriented Design
 ### Petclinic Use Case Diagram
 
 ![Figure Uses Cases Petclinic](etc/uml/Petclinic__Use_Cases.png)
-
-
 
 ## Application
 
