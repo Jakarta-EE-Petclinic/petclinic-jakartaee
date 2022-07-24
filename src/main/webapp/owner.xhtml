@@ -1250,12 +1250,12 @@
                                             styleClass="entityDataTableCell"
                                             value="#{owner.lastName}"/>
                                     </p:column>
-                                    <p:column headerText="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.city']}"
+                                    <p:column headerText="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.list']}"
                                               sortBy="#{owner.city}">
                                         <h:outputText
                                             id="cityInList"
                                             styleClass="entityDataTableCell"
-                                            value="#{owner.city}"/>
+                                            value="#{owner.getPetsAsString()}"/>
                                     </p:column>
                                     <p:column id="columnEntityId">
                                         <p:commandButton

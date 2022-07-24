@@ -167,6 +167,18 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
         return list;
     }
 
+    @Transient
+    public String getPetsAsString() {
+        StringBuilder s = new StringBuilder();
+        for (Pet pet : this.pets) {
+          s.append(pet.getName())
+          .append(" (")
+          .append(pet.getType().getName())
+          .append(") ");
+        }
+        return s.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
