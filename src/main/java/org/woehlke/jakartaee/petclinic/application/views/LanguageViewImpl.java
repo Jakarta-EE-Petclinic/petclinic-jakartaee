@@ -1,11 +1,9 @@
-package org.woehlke.jakartaee.petclinic.application.views.impl;
+package org.woehlke.jakartaee.petclinic.application.views;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
-import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
-import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

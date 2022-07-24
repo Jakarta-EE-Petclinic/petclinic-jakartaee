@@ -1,9 +1,8 @@
-package org.woehlke.jakartaee.petclinic.application.views.impl;
+package org.woehlke.jakartaee.petclinic.application.views;
 
 import jakarta.inject.Inject;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
-import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import jakarta.annotation.PostConstruct;

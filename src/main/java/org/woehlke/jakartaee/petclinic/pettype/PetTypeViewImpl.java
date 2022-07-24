@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.pettype.views;
+package org.woehlke.jakartaee.petclinic.pettype;
 
 
 import jakarta.ejb.EJB;
@@ -10,7 +10,6 @@ import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
-import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeService;
 
 import jakarta.annotation.PostConstruct;
@@ -18,7 +17,7 @@ import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import org.woehlke.jakartaee.petclinic.pettype.PetTypeView;
+import org.woehlke.jakartaee.petclinic.pettype.views.PetTypeFlowViewImpl;
 
 import java.io.Serializable;
 import java.util.List;

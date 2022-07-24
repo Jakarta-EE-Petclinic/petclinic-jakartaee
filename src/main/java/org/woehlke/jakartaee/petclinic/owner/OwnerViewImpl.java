@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.owner.views;
+package org.woehlke.jakartaee.petclinic.owner;
 
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
@@ -9,8 +9,7 @@ import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
-import org.woehlke.jakartaee.petclinic.owner.Owner;
-import org.woehlke.jakartaee.petclinic.owner.OwnerView;
+import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowView;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.visit.Visit;

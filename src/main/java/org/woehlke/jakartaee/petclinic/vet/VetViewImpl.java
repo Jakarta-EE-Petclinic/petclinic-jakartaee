@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.vet.views;
+package org.woehlke.jakartaee.petclinic.vet;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,6 @@ import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.vet.Vet;
 import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyService;
 import org.woehlke.jakartaee.petclinic.vet.db.VetService;
 
@@ -20,7 +19,7 @@ import jakarta.ejb.EJBTransactionRolledbackException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import org.woehlke.jakartaee.petclinic.vet.VetView;
+import org.woehlke.jakartaee.petclinic.vet.views.VetFlowViewImpl;
 
 import java.io.Serializable;
 import java.util.*;

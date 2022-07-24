@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.specialty.views;
+package org.woehlke.jakartaee.petclinic.specialty;
 
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
@@ -9,7 +9,6 @@ import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
-import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyService;
 
 import jakarta.annotation.PostConstruct;
@@ -17,7 +16,7 @@ import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import org.woehlke.jakartaee.petclinic.specialty.SpecialtyView;
+import org.woehlke.jakartaee.petclinic.specialty.views.SpecialtyFlowView;
 
 import java.io.Serializable;
 import java.util.List;
