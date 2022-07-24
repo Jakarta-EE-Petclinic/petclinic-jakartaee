@@ -1,8 +1,5 @@
 package org.woehlke.jakartaee.petclinic.vet.views;
 
-import jakarta.faces.context.FacesContext;
-import jakarta.security.enterprise.SecurityContext;
-import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -12,8 +9,8 @@ import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
-import org.woehlke.jakartaee.petclinic.specialty.SpecialtyService;
-import org.woehlke.jakartaee.petclinic.vet.VetService;
+import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyService;
+import org.woehlke.jakartaee.petclinic.vet.db.VetService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

@@ -1,12 +1,9 @@
 package org.woehlke.jakartaee.petclinic.pettype.db;
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.PostActivate;
-import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
-import org.woehlke.jakartaee.petclinic.pettype.PetTypeService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

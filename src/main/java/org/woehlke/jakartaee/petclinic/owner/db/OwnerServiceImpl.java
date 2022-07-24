@@ -8,7 +8,6 @@ import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
-import org.woehlke.jakartaee.petclinic.owner.OwnerService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

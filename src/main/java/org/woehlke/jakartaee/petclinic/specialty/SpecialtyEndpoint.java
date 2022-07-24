@@ -11,6 +11,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyEndpointUtil;
+import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyService;
 
 import java.io.Serializable;
 

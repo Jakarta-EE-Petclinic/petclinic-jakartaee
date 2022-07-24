@@ -11,7 +11,7 @@ import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
-import org.woehlke.jakartaee.petclinic.pettype.PetTypeService;
+import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

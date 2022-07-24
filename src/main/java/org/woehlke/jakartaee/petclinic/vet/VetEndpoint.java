@@ -9,7 +9,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.vet.VetService;
+import org.woehlke.jakartaee.petclinic.vet.db.VetService;
 import org.woehlke.jakartaee.petclinic.vet.api.VetEndpointUtil;
 
 

@@ -1,7 +1,8 @@
-package org.woehlke.jakartaee.petclinic.vet;
+package org.woehlke.jakartaee.petclinic.vet.db;
 
 import org.woehlke.jakartaee.petclinic.application.framework.db.CrudService;
 import org.woehlke.jakartaee.petclinic.application.framework.db.SearchableService;
+import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import java.io.Serializable;
 

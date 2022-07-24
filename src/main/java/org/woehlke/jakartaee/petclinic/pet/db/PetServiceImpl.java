@@ -4,7 +4,6 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
-import org.woehlke.jakartaee.petclinic.pet.PetService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

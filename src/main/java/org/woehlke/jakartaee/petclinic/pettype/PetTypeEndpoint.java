@@ -11,6 +11,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.xml.bind.*;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeEndpointUtil;
+import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeService;
 
 import java.io.Serializable;
 

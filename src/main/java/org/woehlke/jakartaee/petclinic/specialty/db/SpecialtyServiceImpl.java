@@ -1,17 +1,13 @@
 package org.woehlke.jakartaee.petclinic.specialty.db;
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.PostActivate;
-import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.specialty.SpecialtyService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Log

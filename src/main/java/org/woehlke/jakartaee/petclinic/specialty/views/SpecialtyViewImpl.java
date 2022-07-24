@@ -3,9 +3,6 @@ package org.woehlke.jakartaee.petclinic.specialty.views;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
-import jakarta.faces.context.FacesContext;
-import jakarta.security.enterprise.SecurityContext;
-import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -13,7 +10,7 @@ import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.specialty.SpecialtyService;
+import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

@@ -2,13 +2,10 @@ package org.woehlke.jakartaee.petclinic.visit.db;
 
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
-import org.woehlke.jakartaee.petclinic.visit.VisitService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.ejb.EJB;
-import jakarta.ejb.PostActivate;
-import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 
 import java.io.Serializable;
