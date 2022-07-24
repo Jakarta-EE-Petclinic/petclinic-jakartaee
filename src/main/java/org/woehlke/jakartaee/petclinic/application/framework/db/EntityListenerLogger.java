@@ -16,7 +16,7 @@ public class EntityListenerLogger implements Serializable {
     public static void logIt(String event, EntityBaseObject domainObject) {
         String[] infos = {
                 event + " TableName  " + domainObject.getTableName(),
-                event + " PrimaryKey " + domainObject.getPrimaryKey(),
+                //event + " PrimaryKey " + domainObject.getPrimaryKey(),
                 event + " Id         " + domainObject.getId(),
                 event + " Uuid       " + domainObject.getUuid(),
                 event + " toString   " + domainObject.toString()
