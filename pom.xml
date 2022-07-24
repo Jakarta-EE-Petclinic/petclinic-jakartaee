@@ -48,7 +48,7 @@
 		<junit.version>5.8.2</junit.version>
 		<version.junit-platform-suite-engine>1.8.2</version.junit-platform-suite-engine>
 		<version.org.seleniumhq.selenium>3.141.59</version.org.seleniumhq.selenium>
-		<version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
+		<version.org.apache.maven.scm>2.0.0-M1</version.org.apache.maven.scm>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -127,7 +127,7 @@
 		<version.maven-clean-plugin>3.2.0</version.maven-clean-plugin>
 		<version.maven-install-plugin>3.0.0</version.maven-install-plugin>
 		<version.maven-deploy-plugin>3.0.0</version.maven-deploy-plugin>
-		<version.maven-release-plugin>3.0.0-M6</version.maven-release-plugin>
+		<version.maven-release-plugin>3.0.0-M4</version.maven-release-plugin>
 		<version.maven-failsafe-plugin>3.0.0-M7</version.maven-failsafe-plugin>
 		<version.maven-surefire-plugin>3.0.0-M7</version.maven-surefire-plugin>
 		<version.maven-site-plugin>3.12.0</version.maven-site-plugin>
