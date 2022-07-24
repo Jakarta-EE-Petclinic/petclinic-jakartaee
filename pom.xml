@@ -667,6 +667,7 @@
 				<version>${version.org.projectlombok.lombok}</version>
 				<scope>provided</scope>
 			</dependency>
+			<!--
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok-maven-plugin</artifactId>
@@ -779,6 +780,7 @@
 				<type>maven-plugin</type>
 				<scope>test</scope>
 			</dependency>
+			-->
 			<!--
 			<dependency>
 				<groupId>org.apache.maven.scm</groupId>
@@ -945,6 +947,7 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok-maven-plugin</artifactId>
@@ -1041,6 +1044,7 @@
 			<type>maven-plugin</type>
 			<scope>test</scope>
 		</dependency>
+		-->
 	</dependencies>
 
 	<build>
