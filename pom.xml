@@ -402,29 +402,12 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!--
-			<dependency>
-				<groupId>org.eclipse.microprofile</groupId>
-				<artifactId>microprofile</artifactId>
-				<version>${version.org.eclipse.microprofile}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			-->
 			<dependency>
 				<groupId>jakarta.platform</groupId>
 				<artifactId>jakarta.jakartaee-api</artifactId>
 				<version>${version.jakarta.jakartaee-api}</version>
 				<scope>provided</scope>
 			</dependency>
-			<!--
-			<dependency>
-				<groupId>jakarta.platform</groupId>
-				<artifactId>jakarta.jakartaee-web-api</artifactId>
-				<version>${version.jakarta.jakartaee-api}</version>
-				<scope>provided</scope>
-			</dependency>
-			-->
 			<dependency>
 				<groupId>org.junit</groupId>
 				<artifactId>junit-bom</artifactId>
@@ -667,146 +650,6 @@
 				<version>${version.org.projectlombok.lombok}</version>
 				<scope>provided</scope>
 			</dependency>
-			<!--
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok-maven-plugin</artifactId>
-				<version>${version.lombok-maven-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${version.maven-war-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>${version.maven-dependency-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.cargo</groupId>
-				<artifactId>cargo-maven3-plugin</artifactId>
-				<version>${version.cargo-maven3-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>${version.maven-resources-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${version.maven-compiler-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>${version.maven-javadoc-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>${version.maven-clean-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<version>${version.maven-install-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>${version.maven-deploy-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>${version.maven-project-info-reports-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>${version.maven-site-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>${version.maven-release-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-plugin</artifactId>
-				<version>${version.org.apache.maven.scm}</version>
-				<type>maven-plugin</type>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${version.maven-surefire-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${version.maven-failsafe-plugin}</version>
-				<type>maven-plugin</type>
-				<scope>test</scope>
-			</dependency>
-			-->
-			<!--
-			<dependency>
-				<groupId>org.apache.maven.scm</groupId>
-				<artifactId>features</artifactId>
-				<version>1.13.0</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.shrinkwrap</groupId>
-				<artifactId>features</artifactId>
-				<version>1.2.6</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.shrinkwrap.resolver</groupId>
-				<artifactId>features</artifactId>
-				<version>3.1.4</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.shrinkwrap.descriptors</groupId>
-				<artifactId>features</artifactId>
-				<version>2.0.0</version>
-				<scope>test</scope>
-			</dependency>
-			-->
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -815,14 +658,6 @@
 			<artifactId>jakarta.jakartaee-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<!--
-		<dependency>
-			<groupId>jakarta.platform</groupId>
-			<artifactId>jakarta.jakartaee-web-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		-->
-		<!-- Frontend webjars for HTML, CSS and JS -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
@@ -947,104 +782,6 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<!--
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok-maven-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-war-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-dependency-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.cargo</groupId>
-			<artifactId>cargo-maven3-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-resources-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-javadoc-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-clean-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-install-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-deploy-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-project-info-reports-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-site-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-release-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-scm-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-surefire-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-failsafe-plugin</artifactId>
-			<type>maven-plugin</type>
-			<scope>test</scope>
-		</dependency>
-		-->
 	</dependencies>
 
 	<build>
@@ -1714,22 +1451,6 @@
 			</properties>
 			<dependencyManagement>
 				<dependencies>
-					<!--
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-assembly-plugin</artifactId>
-						<version>3.4.1</version>
-						<type>maven-plugin</type>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<version>3.1.0</version>
-						<type>maven-plugin</type>
-						<scope>test</scope>
-					</dependency>
-					-->
 					<dependency>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-jar-maven-plugin</artifactId>
@@ -1766,72 +1487,6 @@
 						<artifactId>postgresql</artifactId>
 						<version>${version.postgresql.driver}</version>
 					</dependency>
-					<!--
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-providers-standard</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<type>pom</type>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-svnexe</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-svn-commons</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-gitexe</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-git-commons</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-manager-plexus</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-client</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<scope>provided</scope>
-					</dependency>
-					-->
-					<!--
-					<dependency>
-						<groupId>org.webjars</groupId>
-						<artifactId>jquery</artifactId>
-						<version>${version.webjars.jquery}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.webjars</groupId>
-						<artifactId>popper.js</artifactId>
-						<version>${version.webjars.popper.js}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.webjars</groupId>
-						<artifactId>bootstrap</artifactId>
-						<version>${version.webjars.bootstrap}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.webjars</groupId>
-						<artifactId>font-awesome</artifactId>
-						<version>${version.webjars.font-awesome}</version>
-					</dependency>
-					-->
 					<dependency>
 						<groupId>org.webjars.npm</groupId>
 						<artifactId>primeflex</artifactId>
@@ -1909,99 +1564,12 @@
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
-					<!-- Maven Build -->
 					<dependency>
 						<groupId>org.projectlombok</groupId>
 						<artifactId>lombok</artifactId>
 						<version>${version.org.projectlombok.lombok}</version>
 						<scope>provided</scope>
 					</dependency>
-					<!--
-					<dependency>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok-maven-plugin</artifactId>
-						<version>${version.lombok-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<version>${version.maven-dependency-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-resources-plugin</artifactId>
-						<version>${version.maven-resources-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>${version.maven-compiler-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>${version.maven-javadoc-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-project-info-reports-plugin</artifactId>
-						<version>${version.maven-project-info-reports-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-site-plugin</artifactId>
-						<version>${version.maven-site-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-release-plugin</artifactId>
-						<version>${version.maven-release-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>io.openliberty.tools</groupId>
-						<artifactId>liberty-maven-plugin</artifactId>
-						<version>${version.liberty-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-scm-plugin</artifactId>
-						<version>${version.org.apache.maven.scm}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
-						<version>${version.maven-failsafe-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${version.maven-surefire-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>test</scope>
-					</dependency>
-					-->
 					<dependency>
 						<groupId>io.netty</groupId>
 						<artifactId>netty-transport-native-kqueue</artifactId>
@@ -2024,20 +1592,6 @@
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
-				<!--
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-antrun-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>test</scope>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>org.wildfly.plugins</groupId>
 					<artifactId>wildfly-jar-maven-plugin</artifactId>
@@ -2049,13 +1603,6 @@
 					<artifactId>jakarta.jakartaee-api</artifactId>
 					<scope>provided</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>jakarta.platform</groupId>
-					<artifactId>jakarta.jakartaee-web-api</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-preview-feature-pack</artifactId>
@@ -2114,80 +1661,11 @@
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
 				</dependency>
-				<!-- Maven Build -->
 				<dependency>
 					<groupId>org.projectlombok</groupId>
 					<artifactId>lombok</artifactId>
 					<scope>provided</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.projectlombok</groupId>
-					<artifactId>lombok-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-scm-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-failsafe-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>test</scope>
-				</dependency>
-				-->
 				<!--
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
@@ -2205,18 +1683,6 @@
 				<defaultGoal>clean package wildfly-jar:dev-watch</defaultGoal>
 				<pluginManagement>
 					<plugins>
-						<!--
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-assembly-plugin</artifactId>
-							<version>3.4.1</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-antrun-plugin</artifactId>
-							<version>3.1.0</version>
-						</plugin>
-						-->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-resources-plugin</artifactId>
@@ -3323,18 +2789,15 @@
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
-
 				<dependency>
 					<groupId>org.jboss.logmanager</groupId>
 					<artifactId>jboss-logmanager</artifactId>
 					<scope>test</scope>
 				</dependency>
-
 				<dependency>
 					<groupId>org.postgresql</groupId>
 					<artifactId>postgresql</artifactId>
 				</dependency>
-
 				<dependency>
 					<groupId>org.jboss.resteasy</groupId>
 					<artifactId>resteasy-client</artifactId>
@@ -3355,12 +2818,10 @@
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
-				<!-- Java utility classes -->
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
 				</dependency>
-
 				<!--
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
@@ -3652,7 +3113,6 @@
 				<!--It seems OpenLiberty 21.0.0.1 beta switched to use Resteasy as Jakarta Restful WS provider.
                 But there is no official public version for Jakarta EE 9 in the Maven central repository.
                 Use Jersey Client in the test codes here.-->
-
 				<dependency>
 					<groupId>org.glassfish.jersey.media</groupId>
 					<artifactId>jersey-media-json-binding</artifactId>
@@ -3665,7 +3125,6 @@
 					<version>${jersey.version}</version>
 					<scope>test</scope>
 				</dependency>
-
 				<dependency>
 					<groupId>org.glassfish.jersey.core</groupId>
 					<artifactId>jersey-client</artifactId>
