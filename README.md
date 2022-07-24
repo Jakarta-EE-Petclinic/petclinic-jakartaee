@@ -24,13 +24,15 @@ And Update from Java EE 7 Petclinic
 ### Spring Petclinic
 * Github: [https://github.com/spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic)
 
-## dev, build and run
+## dev, build ...
 
 ```
 git clone git@github.com:Jakarta-EE-Petclinic/petclinic-jakartaee.git
 cd petclinic-jakartaee
 ./mvnw
 ```
+
+## ... and run
 
 ### JBoss Wildfly JakartEE 9.1 Preview (26.1.1) 
 
@@ -56,15 +58,21 @@ cd petclinic-jakartaee
 ./mvnw -Ppayara
 ```
 
-
-
 ### Apache TomEE (9.0)
 
 ```
 ./mvnw -Ptomee
 ```
 
+## Jakarta EE Runtimes
+* [Wildfly](https://github.com/wildfly/wildfly)
+* [Open Liberty](https://github.com/OpenLiberty/open-liberty)
+* [Eclipse GlassFish]()
+* [Payara Server]()
+* [Apache TomEE]() 
 
+## JSF Java Server Faces
+* [Primefaces](https://github.com/primefaces/primefaces)
 
 ## Functional Requirements
 
