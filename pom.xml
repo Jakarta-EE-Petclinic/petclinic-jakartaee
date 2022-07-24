@@ -1049,7 +1049,7 @@
 
 	<build>
 		<finalName>petclinic</finalName>
-		<defaultGoal>clean install</defaultGoal>
+		<defaultGoal>clean dependency:tree install</defaultGoal>
 		<pluginManagement>
 			<plugins>
 				<plugin>
