@@ -182,11 +182,11 @@ Object Oriented Design
 
 ### VetView and SpecialtyView Class Diagram
 
-![Figure View Class](etc/uml/vet/View__Class.png)
+![Figure View Class](etc/uml/vet/Vet__View__Class.png)
 
 ### Specialty and Vet DB Backend: vet.oodm
 
-![Figure DB Class](etc/uml/vet/DB__Class.png)
+![Figure DB Class](etc/uml/vet/Vet__DB__Class.png)
 
 
 
