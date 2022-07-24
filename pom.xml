@@ -395,7 +395,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- Jakarta EE 9 API -->
 			<dependency>
 				<groupId>jakarta.platform</groupId>
 				<artifactId>jakarta.jakartaee-bom</artifactId>
@@ -403,6 +402,7 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<!--
 			<dependency>
 				<groupId>org.eclipse.microprofile</groupId>
 				<artifactId>microprofile</artifactId>
@@ -410,19 +410,21 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			-->
 			<dependency>
 				<groupId>jakarta.platform</groupId>
 				<artifactId>jakarta.jakartaee-api</artifactId>
 				<version>${version.jakarta.jakartaee-api}</version>
 				<scope>provided</scope>
 			</dependency>
+			<!--
 			<dependency>
 				<groupId>jakarta.platform</groupId>
 				<artifactId>jakarta.jakartaee-web-api</artifactId>
 				<version>${version.jakarta.jakartaee-api}</version>
 				<scope>provided</scope>
 			</dependency>
-
+			-->
 			<dependency>
 				<groupId>org.junit</groupId>
 				<artifactId>junit-bom</artifactId>
@@ -438,46 +440,36 @@
 				<type>pom</type>
 			</dependency>
 
-			<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
 			<dependency>
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest</artifactId>
 				<version>${hamcrest.version}</version>
 				<scope>test</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>org.skyscreamer</groupId>
 				<artifactId>jsonassert</artifactId>
 				<version>${jsonassert.version}</version>
 				<scope>test</scope>
 			</dependency>
-
-			<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
 			<dependency>
 				<groupId>org.assertj</groupId>
 				<artifactId>assertj-core</artifactId>
 				<version>${assertj.version}</version>
 				<scope>test</scope>
 			</dependency>
-
-			<!-- https://mvnrepository.com/artifact/org.awaitility/awaitility -->
 			<dependency>
 				<groupId>org.awaitility</groupId>
 				<artifactId>awaitility</artifactId>
 				<version>${awaitility.version}</version>
 				<scope>test</scope>
 			</dependency>
-
-			<!-- JSON path -->
-			<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
 			<dependency>
 				<groupId>com.jayway.jsonpath</groupId>
 				<artifactId>json-path</artifactId>
 				<version>${json-path.version}</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path-assert -->
 			<dependency>
 				<groupId>com.jayway.jsonpath</groupId>
 				<artifactId>json-path-assert</artifactId>
@@ -486,7 +478,6 @@
 			</dependency>
 
 			<!-- Mockito -->
-			<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
@@ -494,14 +485,11 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- Jakarta EE Runtime: OpenLiberty -->
-
 			<dependency>
 				<groupId>org.postgresql</groupId>
 				<artifactId>postgresql</artifactId>
 				<version>${version.postgresql.driver}</version>
 			</dependency>
-			
 
 			<dependency>
 				<groupId>org.apache.maven.scm</groupId>
@@ -684,7 +672,7 @@
 				<version>${version.org.projectlombok.lombok}</version>
 				<scope>provided</scope>
 			</dependency>
-
+			<!--
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok-maven-plugin</artifactId>
@@ -797,6 +785,7 @@
 				<type>maven-plugin</type>
 				<scope>test</scope>
 			</dependency>
+			-->
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -805,12 +794,13 @@
 			<artifactId>jakarta.jakartaee-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>jakarta.platform</groupId>
 			<artifactId>jakarta.jakartaee-web-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+		-->
 		<!-- Frontend webjars for HTML, CSS and JS -->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -941,13 +931,14 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+		<!--
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok-maven-plugin</artifactId>
 			<type>maven-plugin</type>
 			<scope>provided</scope>
 		</dependency>
+		-->
 		<!--
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -956,6 +947,7 @@
 			<scope>provided</scope>
 		</dependency>
 		-->
+		<!--
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-dependency-plugin</artifactId>
@@ -1040,6 +1032,7 @@
 			<type>maven-plugin</type>
 			<scope>test</scope>
 		</dependency>
+		-->
 	</dependencies>
 
 	<build>
