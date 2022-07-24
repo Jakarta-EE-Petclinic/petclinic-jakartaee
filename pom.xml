@@ -759,6 +759,7 @@
 				<type>maven-plugin</type>
 				<scope>provided</scope>
 			</dependency>
+			-->
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-scm-plugin</artifactId>
@@ -766,6 +767,7 @@
 				<type>maven-plugin</type>
 				<scope>provided</scope>
 			</dependency>
+			<!--
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -1030,12 +1032,14 @@
 			<type>maven-plugin</type>
 			<scope>provided</scope>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-scm-plugin</artifactId>
 			<type>maven-plugin</type>
 			<scope>provided</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-surefire-plugin</artifactId>
