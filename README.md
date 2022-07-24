@@ -64,16 +64,6 @@ cd petclinic-jakartaee
 ./mvnw -Ptomee
 ```
 
-## Jakarta EE Runtimes
-* [Wildfly](https://github.com/wildfly/wildfly)
-* [Open Liberty](https://github.com/OpenLiberty/open-liberty)
-* [Eclipse GlassFish](https://github.com/eclipse-ee4j/glassfish)
-* [Payara Server](https://github.com/payara/Payara)
-* [Apache TomEE](https://github.com/apache/tomee) 
-
-## JSF Java Server Faces
-* [Primefaces](https://github.com/primefaces/primefaces)
-
 ## Functional Requirements
 
 Object Oriented Design
@@ -326,7 +316,6 @@ Object Oriented Design
 ![Figure DB Class](etc/uml/owner/Owner__DB__class.png)
 
 
-
 ## User: First Steps to do
 * add some PetTypes like dog,cat,mouse,...
 * add some Specialties for Vetinarians like dentist, anesthetist, radiology,...
@@ -336,24 +325,28 @@ Object Oriented Design
 ## visit Spring Petclinic
 * [https://github.com/spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic)
 
-## More Developer Info
-#### Java and Jakarta EE
+#### Development
+* [ToDo](etc/TODO.md)
+
+## References
+
+### Jakarta EE Runtimes 
+* [Wildfly](https://github.com/wildfly/wildfly)
+* [Open Liberty](https://github.com/OpenLiberty/open-liberty)
+* [Eclipse GlassFish](https://github.com/eclipse-ee4j/glassfish)
+* [Payara Server](https://github.com/payara/Payara)
+* [Apache TomEE](https://github.com/apache/tomee)
+
+### JSF Java Server Faces
+* [Primefaces](https://github.com/primefaces/primefaces)
+
+### Java and Jakarta EE
 * [Jakarta EE 9.1](etc/docs/JARTKARTA_EE.md)
 * [Java jdk and jvm](etc/docs/JAVA_JDK_AND_JVM.md)
 * [Java Server Faces JSF](etc/docs/JSF_PRIMEFACES.md)
-* [Maven Plugins](etc/docs/MAVEN.md)
-#### Development
-* [Software Design](etc/docs/Software_Design.md)
-* [Maven Profiles and Git Branches](etc/docs/PROFILES_AND_BRANCHES.md)
-* [ToDo](etc/TODO.md)
-* [Testing](etc/docs/TESTING.md)
-* [Source on Github](etc/docs/SOURCE.md)
-#### Jakarta EE Runtimes
-* [OpenLiberty](etc/docs/RUNTIME_OPEN_LIBERTY.md)
-* [Wildfly](etc/docs/RUNTIME_WILDFLY.md)
-* [Glassfish](etc/docs/RUNTIME_GLASSFISH.md)
-#### Cloud
-* [Openshift](etc/docs/CLOUD.md)
+
+## Other Ressources used in the Technology Demo
+* [jakartaee9-starter-boilerplate by hantsy](https://github.com/hantsy/jakartaee9-starter-boilerplate)
 
 ## Imprint
 * [(c) 2022 Thomas Woehlke](https://github.com/thomaswoehlke)
