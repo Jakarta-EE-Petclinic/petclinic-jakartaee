@@ -105,7 +105,7 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
 
     @Transient
     public String getPrimaryKey() {
-        return "" + this.getBirthDate().toGMTString() +  " ( " +  this.getName() + ")";
+        return "" + this.getBirthDate().toInstant().toString() +  " ( " +  this.getName() + ")";
     }
 
     @Transient

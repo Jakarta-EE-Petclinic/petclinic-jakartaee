@@ -147,6 +147,7 @@ public class PetUnitTest extends AbstractEntityTest {
         Iterator<Pet> i =  petList.iterator();
         Pet firstEntity = i.next();
         while(i.hasNext()){
+            log.info(firstEntity.getPrimaryKey());
             Pet secondEntity = i.next();
             int compared = secondEntity.compareTo(firstEntity);
             //log.info("runEntityTest99: "+ compared);

@@ -105,7 +105,7 @@ public class AbstractEntityTest {
     }
 
     static {
-        int year = 121;
+        int year = 2010;
         int month = 1;
         int day = 5;
         for (String petTypeName : petTypeNames) {
