@@ -533,8 +533,6 @@
 				<version>${version.org.apache.maven.scm}</version>
 				<scope>provided</scope>
 			</dependency>
-
-			<!-- Frontend webjars for HTML, CSS and JS -->
 			<dependency>
 				<groupId>org.webjars</groupId>
 				<artifactId>jquery</artifactId>
@@ -658,14 +656,11 @@
 				<version>${version.jakarta.json}</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- Java utility classes -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>${version.apache.commons.commons-lang3}</version>
 			</dependency>
-
-			<!-- Maven Build -->
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
@@ -786,6 +781,32 @@
 				<scope>test</scope>
 			</dependency>
 			-->
+			<!--
+			<dependency>
+				<groupId>org.apache.maven.scm</groupId>
+				<artifactId>features</artifactId>
+				<version>1.13.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.shrinkwrap</groupId>
+				<artifactId>features</artifactId>
+				<version>1.2.6</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.shrinkwrap.resolver</groupId>
+				<artifactId>features</artifactId>
+				<version>3.1.4</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.shrinkwrap.descriptors</groupId>
+				<artifactId>features</artifactId>
+				<version>2.0.0</version>
+				<scope>test</scope>
+			</dependency>
+			-->
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -897,7 +918,6 @@
 			<artifactId>assertj-core</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-client</artifactId>
@@ -918,14 +938,10 @@
 			<artifactId>jakarta.json</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- Java utility classes -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
-
-
-		<!-- Maven Build -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
