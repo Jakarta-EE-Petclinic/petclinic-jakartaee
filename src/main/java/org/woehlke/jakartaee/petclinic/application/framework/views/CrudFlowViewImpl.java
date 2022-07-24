@@ -10,6 +10,8 @@ import java.io.Serializable;
 @Log
 public abstract class CrudFlowViewImpl implements CrudFlowView, Serializable {
 
+    private static long serialVersionUID = -143286438L;
+
     private CrudFlowState flowState;
 
     protected CrudFlowState getFlowState() {

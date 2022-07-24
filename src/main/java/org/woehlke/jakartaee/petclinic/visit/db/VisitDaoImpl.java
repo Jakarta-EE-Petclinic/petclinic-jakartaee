@@ -46,7 +46,7 @@ public class VisitDaoImpl implements VisitDao, Serializable {
     }
 
     private Visit updateSearchindex(Visit visit) {
-        String element1[] = visit.getDate().toLocaleString().split("\\W");
+        String element1[] = visit.getDate().toInstant().toString().split("\\W");
         String element2[] = visit.getDescription().split("\\W");
         StringBuilder b = new StringBuilder();
         for(String e: element1){
