@@ -106,17 +106,18 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
         return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Visit)) return false;
         Visit visit = (Visit) o;
-        return getDate().equals(visit.getDate()) && getDescription().equals(visit.getDescription()) && getPet().equals(visit.getPet());
+        return Objects.equals(getDate(), visit.getDate()) && Objects.equals(getDescription(), visit.getDescription()) && Objects.equals(getPet(), visit.getPet());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getDate(), getDescription(), getPet());
+        return Objects.hash(getDate(), getDescription());
     }
 
     @Override

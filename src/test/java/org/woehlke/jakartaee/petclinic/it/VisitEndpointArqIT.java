@@ -66,13 +66,12 @@ public class VisitEndpointArqIT {
         Client client = ClientBuilder.newClient();
 
         log.info("------------------------------------------------------------");
-        log.info(" client: "+client+", baseURL: "+ base);
+        log.info(" client: "+client+", baseURL: " + base);
         log.info("------------------------------------------------------------");
-        String endpoint = "/rest" + "/visit" + "/list";
+        String endpoint = base + "/rest" + "/visit" + "/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + base + endpoint);
         log.info("------------------------------------------------------------");
-
         WebTarget target = client.target(endpoint);
         Response response = target.request().accept(MediaType.APPLICATION_JSON).get();
         assertThat(response.getStatus()).isEqualTo(Response.Status.OK.getStatusCode());
