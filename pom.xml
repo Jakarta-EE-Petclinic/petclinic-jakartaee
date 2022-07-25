@@ -114,6 +114,7 @@
 
 		<!-- Glassfish -->
 		<glassfish.version>6.2.5</glassfish.version>
+		<version.arquillian-glassfish6>1.0.0.Alpha1</version.arquillian-glassfish6>
 
 		<!-- maven Plugin Versions -->
 		<version.org.projectlombok.lombok>1.18.24</version.org.projectlombok.lombok>
@@ -3272,6 +3273,114 @@
 								<java.util.logging.config.file>${project.build.testOutputDirectory}/logging.properties
 								</java.util.logging.config.file>
 							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>arq-glassfish-managed</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>false</skip.integration.tests>
+			</properties>
+
+			<dependencies>
+				<!-- Jersey -->
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-sse</artifactId>
+					<version>${jersey.version}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-json-binding</artifactId>
+					<version>${jersey.version}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-multipart</artifactId>
+					<version>${jersey.version}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.inject</groupId>
+					<artifactId>jersey-hk2</artifactId>
+					<version>${jersey.version}</version>
+					<scope>test</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.glassfish.jersey.core</groupId>
+					<artifactId>jersey-client</artifactId>
+					<version>${jersey.version}</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- WebSocket client dependencies -->
+				<!--<dependency>
+                    <groupId>org.glassfish.tyrus</groupId>
+                    <artifactId>tyrus-client</artifactId>
+                    <version>1.13.1</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.tyrus</groupId>
+                    <artifactId>tyrus-container-grizzly-client</artifactId>
+                    <version>1.13.1</version>
+                    <scope>test</scope>
+                </dependency>-->
+				<dependency>
+					<groupId>org.jboss.arquillian.container</groupId>
+					<artifactId>arquillian-glassfish-managed-6</artifactId>
+					<version>${version.arquillian-glassfish6}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<testResources>
+					<testResource>
+						<directory>src/test/resources-arquillian/arq-glassfish-managed</directory>
+					</testResource>
+				</testResources>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>${version.maven-dependency-plugin}</version>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.glassfish.main.distributions</groupId>
+											<artifactId>glassfish</artifactId>
+											<version>${glassfish.version}</version>
+											<type>zip</type>
+											<overWrite>false</overWrite>
+											<outputDirectory>${project.build.directory}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${version.maven-failsafe-plugin}</version>
+						<configuration>
+							<environmentVariables>
+								<GLASSFISH_HOME>${project.build.directory}/glassfish6</GLASSFISH_HOME>
+							</environmentVariables>
 						</configuration>
 					</plugin>
 				</plugins>
