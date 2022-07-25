@@ -64,6 +64,15 @@ cd petclinic-jakartaee
 ./mvnw -Ptomee
 ```
 
+## Integration Tests
+
+### JBoss Wildfly JakartEE 9.1 Preview (26.1.1)
+
+```
+./mvnw -Parq-wildfly-managed
+```
+
+
 ## Functional Requirements
 
 Object Oriented Design
