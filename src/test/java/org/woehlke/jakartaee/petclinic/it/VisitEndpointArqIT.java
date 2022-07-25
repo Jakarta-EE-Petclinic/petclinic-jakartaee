@@ -76,10 +76,12 @@ public class VisitEndpointArqIT {
         Response response = target.request().accept(MediaType.APPLICATION_JSON).get();
         assertThat(response.getStatus()).isEqualTo(Response.Status.OK.getStatusCode());
         String json = response.readEntity(String.class);
+        /*
         VisitListDto petTypeListDto = jsonb.fromJson(json, VisitListDto.class);
         for(VisitDto dto: petTypeListDto.getVisit()){
             log.info("fetched dto: "+dto.toString());
         }
+        */
         json = "\n\n" + json +  "\n\n";
         log.info(json);
         response.close();

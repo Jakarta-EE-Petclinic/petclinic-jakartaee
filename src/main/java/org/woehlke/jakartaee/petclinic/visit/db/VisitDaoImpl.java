@@ -34,7 +34,7 @@ public class VisitDaoImpl implements VisitDao, Serializable {
 
     @Override
     public List<Visit> getAll() {
-        String qlString = "select p from Visit p order by p.date";
+        String qlString = "select p from Visit p";
         TypedQuery<Visit> q = entityManager.createQuery(qlString, Visit.class);
         List<Visit> list = q.getResultList();
         return list;
