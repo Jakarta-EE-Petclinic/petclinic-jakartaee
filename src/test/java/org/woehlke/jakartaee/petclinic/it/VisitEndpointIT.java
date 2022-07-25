@@ -6,7 +6,6 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
-import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -19,7 +18,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.woehlke.jakartaee.petclinic.visit.api.VisitDto;
@@ -27,14 +25,13 @@ import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;
 
 import java.io.File;
 import java.io.StringReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @ExtendWith(ArquillianExtension.class)
-public class VisitEndpointArqIT {
+public class VisitEndpointIT {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
