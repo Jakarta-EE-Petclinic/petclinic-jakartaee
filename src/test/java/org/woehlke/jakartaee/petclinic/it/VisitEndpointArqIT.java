@@ -8,6 +8,9 @@ import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit5.ArquillianExtension;
@@ -23,6 +26,7 @@ import org.woehlke.jakartaee.petclinic.visit.api.VisitDto;
 import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;
 
 import java.io.File;
+import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -48,7 +52,6 @@ public class VisitEndpointArqIT {
     public void setup() {
         log.info("call BeforeEach");
         this.client = ClientBuilder.newClient();
-        //removed the Jackson json provider registry, due to OpenLiberty 21.0.0.1 switched to use Resteasy.
     }
 
     @AfterEach
@@ -60,21 +63,19 @@ public class VisitEndpointArqIT {
     }
 
     @Test
-    @DisplayName("Given a name:`JakartaEE` should return `Say Hello to JakartaEE`")
-    public void should_create_greeting() throws MalformedURLException {
-        Jsonb jsonb = JsonbBuilder.create();
-        Client client = ClientBuilder.newClient();
-
-        log.info("------------------------------------------------------------");
-        log.info(" client: "+client+", baseURL: " + base);
-        log.info("------------------------------------------------------------");
+    public void testGetListJson() {
         String endpoint = base + "/rest" + "/visit" + "/list";
         log.info("------------------------------------------------------------");
-        log.info(" endpoint URL: " + base + endpoint);
+        log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
+        Jsonb jsonb = JsonbBuilder.create();
+        Client client = ClientBuilder.newClient();
         WebTarget target = client.target(endpoint);
-        Response response = target.request().accept(MediaType.APPLICATION_JSON).get();
-        assertThat(response.getStatus()).isEqualTo(Response.Status.OK.getStatusCode());
+        Response response = target.request().get();
+        assertThat(
+                Response.Status.OK.getStatusCode()==
+                        response.getStatus()
+        );
         String json = response.readEntity(String.class);
         /*
         VisitListDto petTypeListDto = jsonb.fromJson(json, VisitListDto.class);
@@ -84,6 +85,33 @@ public class VisitEndpointArqIT {
         */
         json = "\n\n" + json +  "\n\n";
         log.info(json);
+        response.close();
+        client.close();
+    }
+
+    @Test
+    public void testGetListXml() throws JAXBException {
+        String endpoint =  base + "/rest" + "/visit" + "/xml/list";
+        log.info("------------------------------------------------------------");
+        log.info(" endpoint URL: " + endpoint);
+        log.info("------------------------------------------------------------");
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(endpoint);
+        Response response = target.request().get();
+        assertThat(
+                Response.Status.OK.getStatusCode()==
+                        response.getStatus()
+        );
+        String xml = response.readEntity(String.class);
+        JAXBContext jc = JAXBContext.newInstance(VisitListDto.class);
+        Unmarshaller m = jc.createUnmarshaller();
+        StringReader r  = new StringReader(xml);
+        VisitListDto o = (VisitListDto) m.unmarshal(r);
+        for(VisitDto dto: o.getVisit()){
+            log.info("fetched dto: "+dto.toString());
+        }
+        xml = "\n\n" + xml +  "\n\n";
+        log.info(xml);
         response.close();
         client.close();
     }
