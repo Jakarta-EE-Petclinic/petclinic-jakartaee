@@ -5,6 +5,7 @@
 
     <engine>
         <property name="deploymentExportPath">target/</property>
+        <property name="serverStartTimeout">300</property>
     </engine>
 
     <container qualifier="liberty-managed">

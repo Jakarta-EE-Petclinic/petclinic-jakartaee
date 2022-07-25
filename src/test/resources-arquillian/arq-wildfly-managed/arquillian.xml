@@ -14,5 +14,4 @@
             <property name="serverConfig">standalone-full.xml</property>
         </configuration>
     </container>
-
 </arquillian>

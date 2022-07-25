@@ -22,6 +22,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.woehlke.jakartaee.petclinic.visit.api.VisitDto;
 import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -33,7 +34,9 @@ public class VisitEndpointArqIT {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
-        return ShrinkWrap.create(WebArchive.class);
+        String archiveName = "target" + File.separator+ "petclinic.war";
+        File archive = new File(archiveName);
+        return ShrinkWrap.createFromZipFile(WebArchive.class,archive);
     }
 
     @ArquillianResource
