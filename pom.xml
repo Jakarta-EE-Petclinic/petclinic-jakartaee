@@ -3065,6 +3065,7 @@
 				</dependency>
 			</dependencies>
 			<build>
+				<finalName>petclinic</finalName>
 				<defaultGoal>clean verify</defaultGoal>
 				<testResources>
 					<testResource>
@@ -3104,6 +3105,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
+						<version>${version.maven-resources-plugin}</version>
 						<executions>
 							<execution>
 								<id>id-persistence-xml</id>
@@ -3203,6 +3205,7 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
+				<defaultGoal>clean verify</defaultGoal>
 				<testResources>
 					<testResource>
 						<directory>src/test/resources-arquillian/arq-liberty-managed</directory>
@@ -3284,10 +3287,9 @@
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>false</skip.integration.tests>
+				<enableDerby>false</enableDerby>
 			</properties>
-
 			<dependencies>
-				<!-- Jersey -->
 				<dependency>
 					<groupId>org.glassfish.jersey.media</groupId>
 					<artifactId>jersey-media-sse</artifactId>
@@ -3312,14 +3314,12 @@
 					<version>${jersey.version}</version>
 					<scope>test</scope>
 				</dependency>
-
 				<dependency>
 					<groupId>org.glassfish.jersey.core</groupId>
 					<artifactId>jersey-client</artifactId>
 					<version>${jersey.version}</version>
 					<scope>test</scope>
 				</dependency>
-
 				<!-- WebSocket client dependencies -->
 				<!--<dependency>
                     <groupId>org.glassfish.tyrus</groupId>
@@ -3338,9 +3338,25 @@
 					<artifactId>arquillian-glassfish-managed-6</artifactId>
 					<version>${version.arquillian-glassfish6}</version>
 					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>org.glassfish.jersey.core</groupId>
+							<artifactId>jersey-client</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.glassfish.jersey.inject</groupId>
+							<artifactId>jersey-hk2</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.glassfish.jersey.media</groupId>
+							<artifactId>jersey-media-multipart</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 			</dependencies>
 			<build>
+				<finalName>petclinic</finalName>
+				<defaultGoal>clean verify</defaultGoal>
 				<testResources>
 					<testResource>
 						<directory>src/test/resources-arquillian/arq-glassfish-managed</directory>
@@ -3370,6 +3386,53 @@
 										</artifactItem>
 									</artifactItems>
 								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>${version.maven-resources-plugin}</version>
+						<executions>
+							<execution>
+								<id>id-persistence-xml</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/runtimes/glassfish/resources/META-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>src/main/resources/META-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>clean</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>default-resources</id>
+								<configuration>
+									<propertiesEncoding>UTF-8</propertiesEncoding>
+									<resources>
+										<resource>
+											<directory>src/main/resources</directory>
+											<includes>
+												<include>**/Messages.properties</include>
+												<include>**/Messages_de.properties</include>
+												<include>**/Messages_en.properties</include>
+											</includes>
+										</resource>
+										<resource>
+											<directory>src/runtimes/glassfish/resources</directory>
+										</resource>
+									</resources>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>resources</goal>
+								</goals>
 							</execution>
 						</executions>
 					</plugin>
