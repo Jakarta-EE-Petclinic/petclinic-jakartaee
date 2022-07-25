@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.arquillian;
+package org.woehlke.jakartaee.petclinic.it;
 
 
 import jakarta.json.bind.Jsonb;

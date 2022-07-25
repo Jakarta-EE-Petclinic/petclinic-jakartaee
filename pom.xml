@@ -148,8 +148,8 @@
 		<jsonassert.version>1.5.0</jsonassert.version>
 		<assertj.version>3.23.1</assertj.version>
 
-		<skip.unit.tests>false</skip.unit.tests>
-		<skip.integration.tests>true</skip.integration.tests>
+		<skip.unit.tests>true</skip.unit.tests>
+		<skip.integration.tests>false</skip.integration.tests>
 	</properties>
 
 	<repositories>
@@ -3203,10 +3203,6 @@
 								</java.util.logging.config.file>
 							</systemPropertyVariables>
 						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
 					</plugin>
 				</plugins>
 			</build>
