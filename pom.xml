@@ -1034,9 +1034,12 @@
 	</build>
 
 	<profiles>
-
 		<profile>
 			<id>war</id>
+			<properties>
+				<skip.unit.tests>false</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
+			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -1045,9 +1048,12 @@
 				<defaultGoal>clean install</defaultGoal>
 			</build>
 		</profile>
-
 		<profile>
 			<id>liberty-docker</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
+			</properties>
 			<build>
 				<finalName>petclinic</finalName>
 				<defaultGoal>clean install</defaultGoal>
@@ -1079,6 +1085,10 @@
 
 		<profile>
 			<id>wildfly-docker</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
+			</properties>
 			<build>
 				<finalName>petclinic</finalName>
 				<defaultGoal>clean install</defaultGoal>
@@ -1110,6 +1120,10 @@
 
 		<profile>
 			<id>glassfish-docker</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
+			</properties>
 			<build>
 				<finalName>petclinic</finalName>
 				<defaultGoal>clean install</defaultGoal>
@@ -1141,6 +1155,10 @@
 
 		<profile>
 			<id>liberty</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
+			</properties>
 			<dependencyManagement>
 				<dependencies>
 					<!-- Jakarta EE Runtime: OpenLiberty -->
@@ -1448,6 +1466,8 @@
 		<profile>
 			<id>mywildfly</id>
 			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
 				<wildfly.provisioning.overwrite-provisioned-server>true</wildfly.provisioning.overwrite-provisioned-server>
 			</properties>
 			<dependencyManagement>
@@ -1922,6 +1942,10 @@
 
 		<profile>
 			<id>uml</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
+			</properties>
 			<dependencyManagement>
 				<dependencies>
 					<dependency>
@@ -1983,6 +2007,8 @@
 		<profile>
 			<id>glassfish</id>
 			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
 				<cargo.hostname>localhost</cargo.hostname>
 				<cargo.servlet.port>8080</cargo.servlet.port>
 				<cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
@@ -2244,6 +2270,8 @@
 		<profile>
 			<id>tomee</id>
 			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
 				<cargo.hostname>localhost</cargo.hostname>
 				<cargo.servlet.port>8080</cargo.servlet.port>
 				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
@@ -2489,6 +2517,8 @@
 		<profile>
 			<id>wildfly</id>
 			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
 				<cargo.hostname>localhost</cargo.hostname>
 				<cargo.servlet.port>8080</cargo.servlet.port>
 				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
@@ -2733,6 +2763,8 @@
 		<profile>
 			<id>payara</id>
 			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
 				<cargo.hostname>localhost</cargo.hostname>
 				<cargo.servlet.port>8080</cargo.servlet.port>
 				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
