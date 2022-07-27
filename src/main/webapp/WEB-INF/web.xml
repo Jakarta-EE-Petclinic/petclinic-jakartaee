@@ -46,12 +46,4 @@
         <param-value>true</param-value>
     </context-param>
 
-    <data-source>
-        <name>jdbc/PostgreSQLDS</name>
-        <class-name>org.postgresql.Driver</class-name>
-        <url>jdbc:postgresql://localhost:5432/petclinic_jakartaee</url>
-        <user>petclinic_jakartaeepwd</user>
-        <password>petclinic_jakartaee</password>
-    </data-source>
-
 </web-app>
