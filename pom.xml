@@ -110,7 +110,9 @@
 
 		<!-- Payara -->
 		<version.payara-runtime>5.2021.5</version.payara-runtime>
+		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
+		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
 
 		<!-- Glassfish -->
 		<glassfish.version>6.2.5</glassfish.version>
@@ -1048,8 +1050,72 @@
 				<defaultGoal>clean install</defaultGoal>
 			</build>
 		</profile>
+
 		<profile>
-			<id>liberty-docker</id>
+			<id>uml</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
+			</properties>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>com.github.funthomas424242</groupId>
+						<artifactId>plantuml-maven-plugin</artifactId>
+						<version>${version.plantuml-maven-plugin}</version>
+						<type>maven-plugin</type>
+					</dependency>
+					<dependency>
+						<groupId>net.sourceforge.plantuml</groupId>
+						<artifactId>plantuml</artifactId>
+						<version>${version.net.sourceforge.plantuml}</version>
+						<scope>runtime</scope>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+			<dependencies>
+				<dependency>
+					<groupId>com.github.funthomas424242</groupId>
+					<artifactId>plantuml-maven-plugin</artifactId>
+					<type>maven-plugin</type>
+				</dependency>
+				<dependency>
+					<groupId>net.sourceforge.plantuml</groupId>
+					<artifactId>plantuml</artifactId>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<defaultGoal>clean com.github.funthomas424242:plantuml-maven-plugin:generate</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>com.github.funthomas424242</groupId>
+						<artifactId>plantuml-maven-plugin</artifactId>
+						<version>${version.plantuml-maven-plugin}</version>
+						<configuration>
+							<truncatePattern>src/main/*</truncatePattern>
+							<sourceFiles>
+								<directory>${basedir}</directory>
+								<includes>
+									<include>src/main/plantuml/**/*.puml</include>
+								</includes>
+							</sourceFiles>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>net.sourceforge.plantuml</groupId>
+								<artifactId>plantuml</artifactId>
+								<version>${version.net.sourceforge.plantuml}</version>
+								<scope>runtime</scope>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>docker-liberty</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -1059,32 +1125,32 @@
 				<defaultGoal>clean install</defaultGoal>
 				<pluginManagement>
 					<plugins>
-                        <plugin>
-                            <groupId>com.dkanejs.maven.plugins</groupId>
-                            <artifactId>docker-compose-maven-plugin</artifactId>
-                            <version>${version.docker-compose-maven-plugin}</version>
-                        </plugin>
+						<plugin>
+							<groupId>com.dkanejs.maven.plugins</groupId>
+							<artifactId>docker-compose-maven-plugin</artifactId>
+							<version>${version.docker-compose-maven-plugin}</version>
+						</plugin>
 					</plugins>
 				</pluginManagement>
 				<plugins>
-                    <plugin>
-                        <groupId>com.dkanejs.maven.plugins</groupId>
-                        <artifactId>docker-compose-maven-plugin</artifactId>
-                        <configuration>
-                            <composeFile>${project.basedir}/src/runtimes/liberty/docker/docker-compose.yml</composeFile>
-                            <verbose>true</verbose>
-                            <removeImages>true</removeImages>
-                            <removeVolumes>true</removeVolumes>
-                            <ignorePullFailures>true</ignorePullFailures>
-                            <detachedMode>true</detachedMode>
-                        </configuration>
-                    </plugin>
+					<plugin>
+						<groupId>com.dkanejs.maven.plugins</groupId>
+						<artifactId>docker-compose-maven-plugin</artifactId>
+						<configuration>
+							<composeFile>${project.basedir}/src/runtimes/liberty/docker/docker-compose.yml</composeFile>
+							<verbose>true</verbose>
+							<removeImages>true</removeImages>
+							<removeVolumes>true</removeVolumes>
+							<ignorePullFailures>true</ignorePullFailures>
+							<detachedMode>true</detachedMode>
+						</configuration>
+					</plugin>
 				</plugins>
 			</build>
 		</profile>
 
 		<profile>
-			<id>wildfly-docker</id>
+			<id>docker-wildfly</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -1119,7 +1185,7 @@
 		</profile>
 
 		<profile>
-			<id>glassfish-docker</id>
+			<id>docker-glassfish</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -1154,7 +1220,7 @@
 		</profile>
 
 		<profile>
-			<id>liberty</id>
+			<id>run-liberty</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -1464,39 +1530,16 @@
 		</profile>
 
 		<profile>
-			<id>mywildfly</id>
+			<id>run-wildfly</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
-				<wildfly.provisioning.overwrite-provisioned-server>true</wildfly.provisioning.overwrite-provisioned-server>
+				<cargo.hostname>localhost</cargo.hostname>
+				<cargo.servlet.port>8080</cargo.servlet.port>
+				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
 			</properties>
 			<dependencyManagement>
 				<dependencies>
-					<dependency>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-jar-maven-plugin</artifactId>
-						<version>${version.wildfly-jar-maven-plugin}</version>
-						<type>maven-plugin</type>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-preview-feature-pack</artifactId>
-						<version>${version.wildfly-runtime}</version>
-						<type>zip</type>
-					</dependency>
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-dist</artifactId>
-						<version>${version.wildfly-runtime}</version>
-						<type>zip</type>
-					</dependency>
-					<dependency>
-						<groupId>org.wildfly</groupId>
-						<artifactId>wildfly-galleon-pack</artifactId>
-						<version>${version.wildfly-runtime}</version>
-						<type>zip</type>
-					</dependency>
 					<dependency>
 						<groupId>org.jboss.logmanager</groupId>
 						<artifactId>jboss-logmanager</artifactId>
@@ -1507,54 +1550,6 @@
 						<groupId>org.postgresql</groupId>
 						<artifactId>postgresql</artifactId>
 						<version>${version.postgresql.driver}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.webjars.npm</groupId>
-						<artifactId>primeflex</artifactId>
-						<version>${version.webjars.primeflex}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces</artifactId>
-						<version>${version.org.primefaces}</version>
-						<classifier>jakarta</classifier>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces-selenium-core</artifactId>
-						<version>${version.org.primefaces}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces-selenium-components</artifactId>
-						<version>${version.org.primefaces}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces-integration-tests</artifactId>
-						<version>${version.org.primefaces}</version>
-						<type>war</type>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.primefaces</groupId>
-						<artifactId>primefaces-cli</artifactId>
-						<version>${version.org.primefaces}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.junit.jupiter</groupId>
-						<artifactId>junit-jupiter-engine</artifactId>
-						<version>${junit.version}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.junit.jupiter</groupId>
-						<artifactId>junit-jupiter-params</artifactId>
-						<version>${junit.version}</version>
-						<scope>test</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.jboss.resteasy</groupId>
@@ -1585,18 +1580,6 @@
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
-					<dependency>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok</artifactId>
-						<version>${version.org.projectlombok.lombok}</version>
-						<scope>provided</scope>
-					</dependency>
-					<dependency>
-						<groupId>io.netty</groupId>
-						<artifactId>netty-transport-native-kqueue</artifactId>
-						<version>4.1.78.Final</version>
-						<scope>provided</scope>
-					</dependency>
 					<!--
 					<dependency>
 						<groupId>org.apache.myfaces.core</groupId>
@@ -1604,41 +1587,9 @@
 						<version>3.0.1</version>
 					</dependency>
 					-->
-					<dependency>
-						<groupId>org.wildfly.core</groupId>
-						<artifactId>wildfly-core-galleon-pack</artifactId>
-						<version>18.1.1.Final</version>
-						<type>pom</type>
-					</dependency>
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
-				<dependency>
-					<groupId>org.wildfly.plugins</groupId>
-					<artifactId>wildfly-jar-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>jakarta.platform</groupId>
-					<artifactId>jakarta.jakartaee-api</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-preview-feature-pack</artifactId>
-					<type>zip</type>
-				</dependency>
-				<dependency>
-					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-dist</artifactId>
-					<type>zip</type>
-				</dependency>
-				<dependency>
-					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-galleon-pack</artifactId>
-					<type>zip</type>
-				</dependency>
 				<dependency>
 					<groupId>org.jboss.logmanager</groupId>
 					<artifactId>jboss-logmanager</artifactId>
@@ -1647,16 +1598,6 @@
 				<dependency>
 					<groupId>org.postgresql</groupId>
 					<artifactId>postgresql</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.junit.jupiter</groupId>
-					<artifactId>junit-jupiter-engine</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.junit.jupiter</groupId>
-					<artifactId>junit-jupiter-params</artifactId>
-					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.jboss.resteasy</groupId>
@@ -1682,26 +1623,16 @@
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
 				</dependency>
-				<dependency>
-					<groupId>org.projectlombok</groupId>
-					<artifactId>lombok</artifactId>
-					<scope>provided</scope>
-				</dependency>
 				<!--
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
 					<artifactId>myfaces-impl</artifactId>
 				</dependency>
 				-->
-				<dependency>
-					<groupId>io.netty</groupId>
-					<artifactId>netty-transport-native-kqueue</artifactId>
-					<scope>provided</scope>
-				</dependency>
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean package wildfly-jar:dev-watch</defaultGoal>
+				<defaultGoal>clean verify org.codehaus.cargo:cargo-maven3-plugin:run</defaultGoal>
 				<pluginManagement>
 					<plugins>
 						<plugin>
@@ -1710,54 +1641,14 @@
 							<version>${version.maven-resources-plugin}</version>
 						</plugin>
 						<plugin>
-							<groupId>org.wildfly.plugins</groupId>
-							<artifactId>wildfly-jar-maven-plugin</artifactId>
-							<version>${version.wildfly-jar-maven-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok-maven-plugin</artifactId>
-							<version>${version.lombok-maven-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-war-plugin</artifactId>
-							<version>${version.maven-war-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-compiler-plugin</artifactId>
-							<version>${version.maven-compiler-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>${version.maven-javadoc-plugin}</version>
+							<groupId>org.codehaus.cargo</groupId>
+							<artifactId>cargo-maven3-plugin</artifactId>
+							<version>${version.cargo-maven3-plugin}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-deploy-plugin</artifactId>
 							<version>${version.maven-deploy-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-project-info-reports-plugin</artifactId>
-							<version>${version.maven-project-info-reports-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-site-plugin</artifactId>
-							<version>${version.maven-site-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-release-plugin</artifactId>
-							<version>${version.maven-release-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-scm-plugin</artifactId>
-							<version>${version.org.apache.maven.scm}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -1819,183 +1710,66 @@
 						</executions>
 					</plugin>
 					<plugin>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-jar-maven-plugin</artifactId>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven3-plugin</artifactId>
 						<configuration>
-							<context-root>false</context-root>
-							<feature-packs>
-								<feature-pack>
-									<location>wildfly-preview@maven(org.jboss.universe:community-universe)#${version.wildfly-runtime}</location>
-								</feature-pack>
-								<feature-pack>
-									<groupId>org.wildfly</groupId>
-									<artifactId>wildfly-datasources-preview-galleon-pack</artifactId>
-									<version>2.2.2.Final</version>
-								</feature-pack>
-							</feature-packs>
-							<layers>
-								<layer>datasources-web-server</layer>
-								<layer>jaxrs-server</layer>
-								<layer>cloud-server</layer>
-								<layer>bean-validation</layer>
-								<layer>cdi</layer>
-								<layer>core-management</layer>
-								<layer>core-tools</layer>
-								<layer>datasources</layer>
-								<layer>discovery</layer>
-								<layer>ee</layer>
-								<layer>ee-security</layer>
-								<layer>ejb</layer>
-								<layer>ejb-dist-cache</layer>
-								<layer>ejb-local-cache</layer>
-								<layer>elytron</layer>
-								<layer>io</layer>
-								<layer>jaxrs</layer>
-								<layer>jdr</layer>
-								<layer>jms-activemq</layer>
-								<layer>jmx</layer>
-								<layer>jmx-remoting</layer>
-								<layer>jpa</layer>
-								<layer>jsf</layer>
-								<layer>jsonb</layer>
-								<layer>jsonp</layer>
-								<layer>logging</layer>
-								<layer>mail</layer>
-								<layer>management</layer>
-								<layer>messaging-activemq</layer>
-								<layer>naming</layer>
-								<layer>pojo</layer>
-								<layer>remote-activemq</layer>
-								<layer>remoting</layer>
-								<layer>request-controller</layer>
-								<layer>resource-adapters</layer>
-								<layer>sar</layer>
-								<layer>security-manager</layer>
-								<layer>transactions</layer>
-								<layer>undertow</layer>
-								<layer>undertow-load-balancer</layer>
-								<layer>web-clustering</layer>
-								<layer>web-console</layer>
-								<layer>web-server</layer>
-								<layer>webservices</layer>
-								<layer>datasources-web-server</layer>
-								<layer>postgresql-datasource</layer>
-							</layers>
-							<excluded-layers>
-								<layer>deployment-scanner</layer>
-							</excluded-layers>
-							<plugin-options>
-								<jboss-fork-embedded>${plugin.fork.embedded}</jboss-fork-embedded>
-							</plugin-options>
+							<container>
+								<containerId>wildfly26x</containerId>
+								<zipUrlInstaller>
+									<url>https://github.com/wildfly/wildfly/releases/download/26.1.1.Final/wildfly-preview-26.1.1.Final.zip</url>
+									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
+									<extractDir>${project.build.directory}</extractDir>
+								</zipUrlInstaller>
+								<!-- or use artifactInstaller-->
+								<!--<artifactInstaller>
+                                    <groupId>org.glassfish.main.distributions</groupId>
+                                    <artifactId>glassfish</artifactId>
+                                    <version>${glassfish.version}</version>
+                                </artifactInstaller>-->
+								<dependencies>
+									<dependency>
+										<groupId>org.postgresql</groupId>
+										<artifactId>postgresql</artifactId>
+									</dependency>
+								</dependencies>
+							</container>
+							<configuration>
+								<!-- the configuration used to deploy -->
+								<properties>
+									<cargo.hostname>${cargo.hostname}</cargo.hostname>
+									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
+									<cargo.remote.username>wildfly</cargo.remote.username>
+									<cargo.remote.password>wildflypwd</cargo.remote.password>
+									<!--
+									<cargo.datasource.datasource.postgresql>
+										cargo.datasource.driver=org.postgresql.Driver|
+										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_wildfly
+										cargo.datasource.jndi=jboss/datasources/PostgreSQLDS|
+										cargo.datasource.username=petclinic_jakartaee|
+										cargo.datasource.password=petclinic_jakartaeepwd
+									</cargo.datasource.datasource.postgresql>
+									-->
+									<cargo.jboss.configuration>standalone</cargo.jboss.configuration>
+								</properties>
+							</configuration>
 						</configuration>
-						<executions>
-							<execution>
-								<goals>
-									<goal>package</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok-maven-plugin</artifactId>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-war-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-project-info-reports-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-site-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-release-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-scm-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
+						<artifactId>maven-deploy-plugin</artifactId>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
 					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>uml</id>
-			<properties>
-				<skip.unit.tests>true</skip.unit.tests>
-				<skip.integration.tests>true</skip.integration.tests>
-			</properties>
-			<dependencyManagement>
-				<dependencies>
-					<dependency>
-						<groupId>com.github.funthomas424242</groupId>
-						<artifactId>plantuml-maven-plugin</artifactId>
-						<version>${version.plantuml-maven-plugin}</version>
-						<type>maven-plugin</type>
-					</dependency>
-					<dependency>
-						<groupId>net.sourceforge.plantuml</groupId>
-						<artifactId>plantuml</artifactId>
-						<version>${version.net.sourceforge.plantuml}</version>
-						<scope>runtime</scope>
-					</dependency>
-				</dependencies>
-			</dependencyManagement>
-			<dependencies>
-				<dependency>
-					<groupId>com.github.funthomas424242</groupId>
-					<artifactId>plantuml-maven-plugin</artifactId>
-					<type>maven-plugin</type>
-				</dependency>
-				<dependency>
-					<groupId>net.sourceforge.plantuml</groupId>
-					<artifactId>plantuml</artifactId>
-					<scope>runtime</scope>
-				</dependency>
-			</dependencies>
-			<build>
-				<defaultGoal>clean com.github.funthomas424242:plantuml-maven-plugin:generate</defaultGoal>
-				<plugins>
 					<plugin>
-						<groupId>com.github.funthomas424242</groupId>
-						<artifactId>plantuml-maven-plugin</artifactId>
-						<version>${version.plantuml-maven-plugin}</version>
-						<configuration>
-							<truncatePattern>src/main/*</truncatePattern>
-							<sourceFiles>
-								<directory>${basedir}</directory>
-								<includes>
-									<include>src/main/plantuml/**/*.puml</include>
-								</includes>
-							</sourceFiles>
-						</configuration>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
 						<dependencies>
 							<dependency>
-								<groupId>net.sourceforge.plantuml</groupId>
-								<artifactId>plantuml</artifactId>
-								<version>${version.net.sourceforge.plantuml}</version>
-								<scope>runtime</scope>
+								<groupId>org.junit.jupiter</groupId>
+								<artifactId>junit-jupiter-engine</artifactId>
+								<version>${junit.version}</version>
 							</dependency>
 						</dependencies>
 					</plugin>
@@ -2003,9 +1777,8 @@
 			</build>
 		</profile>
 
-
 		<profile>
-			<id>glassfish</id>
+			<id>run-glassfish</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -2268,502 +2041,7 @@
 		</profile>
 
 		<profile>
-			<id>tomee</id>
-			<properties>
-				<skip.unit.tests>true</skip.unit.tests>
-				<skip.integration.tests>true</skip.integration.tests>
-				<cargo.hostname>localhost</cargo.hostname>
-				<cargo.servlet.port>8080</cargo.servlet.port>
-				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
-			</properties>
-			<dependencyManagement>
-				<dependencies>
-					<dependency>
-						<groupId>org.jboss.logmanager</groupId>
-						<artifactId>jboss-logmanager</artifactId>
-						<version>${version.jboss-logmanager}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.postgresql</groupId>
-						<artifactId>postgresql</artifactId>
-						<version>${version.postgresql.driver}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.jboss.resteasy</groupId>
-						<artifactId>resteasy-client</artifactId>
-						<version>${version.org.jboss.resteasy}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.jboss.resteasy</groupId>
-						<artifactId>resteasy-json-binding-provider</artifactId>
-						<version>${version.org.jboss.resteasy}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.jboss.resteasy</groupId>
-						<artifactId>resteasy-jaxb-provider</artifactId>
-						<version>${version.org.jboss.resteasy}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.glassfish</groupId>
-						<artifactId>jakarta.json</artifactId>
-						<version>${version.jakarta.json}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.commons</groupId>
-						<artifactId>commons-lang3</artifactId>
-						<version>${version.apache.commons.commons-lang3}</version>
-					</dependency>
-					<!--
-					<dependency>
-						<groupId>org.apache.myfaces.core</groupId>
-						<artifactId>myfaces-impl</artifactId>
-						<version>3.0.1</version>
-					</dependency>
-					-->
-				</dependencies>
-			</dependencyManagement>
-			<dependencies>
-				<dependency>
-					<groupId>org.jboss.logmanager</groupId>
-					<artifactId>jboss-logmanager</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.postgresql</groupId>
-					<artifactId>postgresql</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-client</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-json-binding-provider</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-jaxb-provider</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.glassfish</groupId>
-					<artifactId>jakarta.json</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.commons</groupId>
-					<artifactId>commons-lang3</artifactId>
-				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.apache.myfaces.core</groupId>
-					<artifactId>myfaces-impl</artifactId>
-				</dependency>
-				-->
-			</dependencies>
-			<build>
-				<finalName>petclinic</finalName>
-				<defaultGoal>clean verify org.codehaus.cargo:cargo-maven3-plugin:run</defaultGoal>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-resources-plugin</artifactId>
-							<version>${version.maven-resources-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.codehaus.cargo</groupId>
-							<artifactId>cargo-maven3-plugin</artifactId>
-							<version>${version.cargo-maven3-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-deploy-plugin</artifactId>
-							<version>${version.maven-deploy-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-failsafe-plugin</artifactId>
-							<version>${version.maven-failsafe-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-surefire-plugin</artifactId>
-							<version>${version.maven-surefire-plugin}</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-resources-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>id-persistence-xml</id>
-								<configuration>
-									<resources>
-										<resource>
-											<directory>src/runtimes/tomee/resources/META-INF</directory>
-										</resource>
-									</resources>
-									<outputDirectory>src/main/resources/META-INF</outputDirectory>
-									<overwrite>true</overwrite>
-								</configuration>
-								<phase>clean</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>default-resources</id>
-								<configuration>
-									<propertiesEncoding>UTF-8</propertiesEncoding>
-									<resources>
-										<resource>
-											<directory>src/main/resources</directory>
-											<includes>
-												<include>**/Messages.properties</include>
-												<include>**/Messages_de.properties</include>
-												<include>**/Messages_en.properties</include>
-											</includes>
-										</resource>
-										<resource>
-											<directory>src/runtimes/tomee/resources</directory>
-										</resource>
-									</resources>
-									<overwrite>true</overwrite>
-								</configuration>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>resources</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven3-plugin</artifactId>
-						<configuration>
-							<container>
-								<containerId>tomee9x</containerId>
-								<zipUrlInstaller>
-									<url>https://dlcdn.apache.org/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-plume.zip</url>
-									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
-									<extractDir>${project.build.directory}</extractDir>
-								</zipUrlInstaller>
-								<!-- or use artifactInstaller-->
-								<!--<artifactInstaller>
-                                    <groupId>org.glassfish.main.distributions</groupId>
-                                    <artifactId>glassfish</artifactId>
-                                    <version>${glassfish.version}</version>
-                                </artifactInstaller>-->
-								<dependencies>
-									<dependency>
-										<groupId>org.postgresql</groupId>
-										<artifactId>postgresql</artifactId>
-									</dependency>
-								</dependencies>
-							</container>
-							<configuration>
-								<!-- the configuration used to deploy -->
-								<!--<home>${project.build.directory}/glassfish6x-home</home>-->
-								<properties>
-									<cargo.hostname>${cargo.hostname}</cargo.hostname>
-									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
-									<cargo.remote.username>tomee</cargo.remote.username>
-									<cargo.remote.password>tomeepwd</cargo.remote.password>
-									<cargo.datasource.datasource.postgresql>
-										cargo.datasource.driver=org.postgresql.Driver|
-										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_tomee|
-										cargo.datasource.jndi=jdbc/PostgreSQLDS|
-										cargo.datasource.username=petclinic_jakartaee|
-										cargo.datasource.password=petclinic_jakartaeepwd
-									</cargo.datasource.datasource.postgresql>
-									<cargo.tomcat.webappsDirectory>webapps</cargo.tomcat.webappsDirectory>
-								</properties>
-							</configuration>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-deploy-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
-						<dependencies>
-							<dependency>
-								<groupId>org.junit.jupiter</groupId>
-								<artifactId>junit-jupiter-engine</artifactId>
-								<version>${junit.version}</version>
-							</dependency>
-						</dependencies>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>wildfly</id>
-			<properties>
-				<skip.unit.tests>true</skip.unit.tests>
-				<skip.integration.tests>true</skip.integration.tests>
-				<cargo.hostname>localhost</cargo.hostname>
-				<cargo.servlet.port>8080</cargo.servlet.port>
-				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
-			</properties>
-			<dependencyManagement>
-				<dependencies>
-					<dependency>
-						<groupId>org.jboss.logmanager</groupId>
-						<artifactId>jboss-logmanager</artifactId>
-						<version>${version.jboss-logmanager}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.postgresql</groupId>
-						<artifactId>postgresql</artifactId>
-						<version>${version.postgresql.driver}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.jboss.resteasy</groupId>
-						<artifactId>resteasy-client</artifactId>
-						<version>${version.org.jboss.resteasy}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.jboss.resteasy</groupId>
-						<artifactId>resteasy-json-binding-provider</artifactId>
-						<version>${version.org.jboss.resteasy}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.jboss.resteasy</groupId>
-						<artifactId>resteasy-jaxb-provider</artifactId>
-						<version>${version.org.jboss.resteasy}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.glassfish</groupId>
-						<artifactId>jakarta.json</artifactId>
-						<version>${version.jakarta.json}</version>
-						<scope>test</scope>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.commons</groupId>
-						<artifactId>commons-lang3</artifactId>
-						<version>${version.apache.commons.commons-lang3}</version>
-					</dependency>
-					<!--
-					<dependency>
-						<groupId>org.apache.myfaces.core</groupId>
-						<artifactId>myfaces-impl</artifactId>
-						<version>3.0.1</version>
-					</dependency>
-					-->
-				</dependencies>
-			</dependencyManagement>
-			<dependencies>
-				<dependency>
-					<groupId>org.jboss.logmanager</groupId>
-					<artifactId>jboss-logmanager</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.postgresql</groupId>
-					<artifactId>postgresql</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-client</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-json-binding-provider</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-jaxb-provider</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.glassfish</groupId>
-					<artifactId>jakarta.json</artifactId>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.commons</groupId>
-					<artifactId>commons-lang3</artifactId>
-				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.apache.myfaces.core</groupId>
-					<artifactId>myfaces-impl</artifactId>
-				</dependency>
-				-->
-			</dependencies>
-			<build>
-				<finalName>petclinic</finalName>
-				<defaultGoal>clean verify org.codehaus.cargo:cargo-maven3-plugin:run</defaultGoal>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-resources-plugin</artifactId>
-							<version>${version.maven-resources-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.codehaus.cargo</groupId>
-							<artifactId>cargo-maven3-plugin</artifactId>
-							<version>${version.cargo-maven3-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-deploy-plugin</artifactId>
-							<version>${version.maven-deploy-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-failsafe-plugin</artifactId>
-							<version>${version.maven-failsafe-plugin}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-surefire-plugin</artifactId>
-							<version>${version.maven-surefire-plugin}</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-resources-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>id-persistence-xml</id>
-								<configuration>
-									<resources>
-										<resource>
-											<directory>src/runtimes/wildfly/resources/META-INF</directory>
-										</resource>
-									</resources>
-									<outputDirectory>src/main/resources/META-INF</outputDirectory>
-									<overwrite>true</overwrite>
-								</configuration>
-								<phase>clean</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>default-resources</id>
-								<configuration>
-									<propertiesEncoding>UTF-8</propertiesEncoding>
-									<resources>
-										<resource>
-											<directory>src/main/resources</directory>
-											<includes>
-												<include>**/Messages.properties</include>
-												<include>**/Messages_de.properties</include>
-												<include>**/Messages_en.properties</include>
-											</includes>
-										</resource>
-										<resource>
-											<directory>src/runtimes/wildfly/resources</directory>
-										</resource>
-									</resources>
-									<overwrite>true</overwrite>
-								</configuration>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>resources</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven3-plugin</artifactId>
-						<configuration>
-							<container>
-								<containerId>wildfly26x</containerId>
-								<zipUrlInstaller>
-									<url>https://github.com/wildfly/wildfly/releases/download/26.1.1.Final/wildfly-preview-26.1.1.Final.zip</url>
-									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
-									<extractDir>${project.build.directory}</extractDir>
-								</zipUrlInstaller>
-								<!-- or use artifactInstaller-->
-								<!--<artifactInstaller>
-                                    <groupId>org.glassfish.main.distributions</groupId>
-                                    <artifactId>glassfish</artifactId>
-                                    <version>${glassfish.version}</version>
-                                </artifactInstaller>-->
-								<dependencies>
-									<dependency>
-										<groupId>org.postgresql</groupId>
-										<artifactId>postgresql</artifactId>
-									</dependency>
-								</dependencies>
-							</container>
-							<configuration>
-								<!-- the configuration used to deploy -->
-								<properties>
-									<cargo.hostname>${cargo.hostname}</cargo.hostname>
-									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
-									<cargo.remote.username>wildfly</cargo.remote.username>
-									<cargo.remote.password>wildflypwd</cargo.remote.password>
-									<!--
-									<cargo.datasource.datasource.postgresql>
-										cargo.datasource.driver=org.postgresql.Driver|
-										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_wildfly
-										cargo.datasource.jndi=jboss/datasources/PostgreSQLDS|
-										cargo.datasource.username=petclinic_jakartaee|
-										cargo.datasource.password=petclinic_jakartaeepwd
-									</cargo.datasource.datasource.postgresql>
-									-->
-									<cargo.jboss.configuration>standalone</cargo.jboss.configuration>
-								</properties>
-							</configuration>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-deploy-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
-						<dependencies>
-							<dependency>
-								<groupId>org.junit.jupiter</groupId>
-								<artifactId>junit-jupiter-engine</artifactId>
-								<version>${junit.version}</version>
-							</dependency>
-						</dependencies>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>payara</id>
+			<id>run-payara</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -3010,6 +2288,367 @@
 			</build>
 		</profile>
 
+		<profile>
+			<id>run-tomee</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>true</skip.integration.tests>
+				<cargo.hostname>localhost</cargo.hostname>
+				<cargo.servlet.port>8080</cargo.servlet.port>
+				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
+			</properties>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>org.jboss.logmanager</groupId>
+						<artifactId>jboss-logmanager</artifactId>
+						<version>${version.jboss-logmanager}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.postgresql</groupId>
+						<artifactId>postgresql</artifactId>
+						<version>${version.postgresql.driver}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.resteasy</groupId>
+						<artifactId>resteasy-client</artifactId>
+						<version>${version.org.jboss.resteasy}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.resteasy</groupId>
+						<artifactId>resteasy-json-binding-provider</artifactId>
+						<version>${version.org.jboss.resteasy}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.resteasy</groupId>
+						<artifactId>resteasy-jaxb-provider</artifactId>
+						<version>${version.org.jboss.resteasy}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish</groupId>
+						<artifactId>jakarta.json</artifactId>
+						<version>${version.jakarta.json}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.commons</groupId>
+						<artifactId>commons-lang3</artifactId>
+						<version>${version.apache.commons.commons-lang3}</version>
+					</dependency>
+					<!--
+					<dependency>
+						<groupId>org.apache.myfaces.core</groupId>
+						<artifactId>myfaces-impl</artifactId>
+						<version>3.0.1</version>
+					</dependency>
+					-->
+				</dependencies>
+			</dependencyManagement>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.logmanager</groupId>
+					<artifactId>jboss-logmanager</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.postgresql</groupId>
+					<artifactId>postgresql</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.resteasy</groupId>
+					<artifactId>resteasy-client</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.resteasy</groupId>
+					<artifactId>resteasy-json-binding-provider</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.resteasy</groupId>
+					<artifactId>resteasy-jaxb-provider</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish</groupId>
+					<artifactId>jakarta.json</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.commons</groupId>
+					<artifactId>commons-lang3</artifactId>
+				</dependency>
+				<!--
+				<dependency>
+					<groupId>org.apache.myfaces.core</groupId>
+					<artifactId>myfaces-impl</artifactId>
+				</dependency>
+				-->
+			</dependencies>
+			<build>
+				<finalName>petclinic</finalName>
+				<defaultGoal>clean verify org.codehaus.cargo:cargo-maven3-plugin:run</defaultGoal>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-resources-plugin</artifactId>
+							<version>${version.maven-resources-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.codehaus.cargo</groupId>
+							<artifactId>cargo-maven3-plugin</artifactId>
+							<version>${version.cargo-maven3-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-deploy-plugin</artifactId>
+							<version>${version.maven-deploy-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-failsafe-plugin</artifactId>
+							<version>${version.maven-failsafe-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<version>${version.maven-surefire-plugin}</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>id-persistence-xml</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/runtimes/tomee/resources/META-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>src/main/resources/META-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>clean</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>default-resources</id>
+								<configuration>
+									<propertiesEncoding>UTF-8</propertiesEncoding>
+									<resources>
+										<resource>
+											<directory>src/main/resources</directory>
+											<includes>
+												<include>**/Messages.properties</include>
+												<include>**/Messages_de.properties</include>
+												<include>**/Messages_en.properties</include>
+											</includes>
+										</resource>
+										<resource>
+											<directory>src/runtimes/tomee/resources</directory>
+										</resource>
+									</resources>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>resources</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven3-plugin</artifactId>
+						<configuration>
+							<container>
+								<containerId>tomee9x</containerId>
+								<zipUrlInstaller>
+									<url>https://dlcdn.apache.org/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-plume.zip</url>
+									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
+									<extractDir>${project.build.directory}</extractDir>
+								</zipUrlInstaller>
+								<!-- or use artifactInstaller-->
+								<!--<artifactInstaller>
+                                    <groupId>org.glassfish.main.distributions</groupId>
+                                    <artifactId>glassfish</artifactId>
+                                    <version>${glassfish.version}</version>
+                                </artifactInstaller>-->
+								<dependencies>
+									<dependency>
+										<groupId>org.postgresql</groupId>
+										<artifactId>postgresql</artifactId>
+									</dependency>
+								</dependencies>
+							</container>
+							<configuration>
+								<!-- the configuration used to deploy -->
+								<!--<home>${project.build.directory}/glassfish6x-home</home>-->
+								<properties>
+									<cargo.hostname>${cargo.hostname}</cargo.hostname>
+									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
+									<cargo.remote.username>tomee</cargo.remote.username>
+									<cargo.remote.password>tomeepwd</cargo.remote.password>
+									<cargo.datasource.datasource.postgresql>
+										cargo.datasource.driver=org.postgresql.Driver|
+										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_tomee|
+										cargo.datasource.jndi=jdbc/PostgreSQLDS|
+										cargo.datasource.username=petclinic_jakartaee|
+										cargo.datasource.password=petclinic_jakartaeepwd
+									</cargo.datasource.datasource.postgresql>
+									<cargo.tomcat.webappsDirectory>webapps</cargo.tomcat.webappsDirectory>
+								</properties>
+							</configuration>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-deploy-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<dependencies>
+							<dependency>
+								<groupId>org.junit.jupiter</groupId>
+								<artifactId>junit-jupiter-engine</artifactId>
+								<version>${junit.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<!-- Run with: mvn clean verify -Parq-liberty-managed -->
+			<id>it-liberty</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>false</skip.integration.tests>
+				<serverStartTimeout>240</serverStartTimeout>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>io.openliberty.arquillian</groupId>
+					<artifactId>arquillian-liberty-managed-jakarta</artifactId>
+					<version>${version.arquillian-liberty-jakarta}</version>
+				</dependency>
+				<!--It seems OpenLiberty 21.0.0.1 beta switched to use Resteasy as Jakarta Restful WS provider.
+                But there is no official public version for Jakarta EE 9 in the Maven central repository.
+                Use Jersey Client in the test codes here.-->
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-json-binding</artifactId>
+					<version>${jersey.version}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.inject</groupId>
+					<artifactId>jersey-hk2</artifactId>
+					<version>${jersey.version}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.core</groupId>
+					<artifactId>jersey-client</artifactId>
+					<version>${jersey.version}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<finalName>petclinic</finalName>
+				<defaultGoal>clean verify</defaultGoal>
+				<testResources>
+					<testResource>
+						<directory>src/test/resources-arquillian/arq-liberty-managed</directory>
+						<includes>
+							<include>*</include>
+						</includes>
+						<excludes>
+							<exclude>server.xml</exclude>
+						</excludes>
+					</testResource>
+					<testResource>
+						<directory>src/test/resources-arquillian/arq-liberty-managed</directory>
+						<includes>
+							<include>server.xml</include>
+						</includes>
+						<targetPath>
+							${project.build.directory}/wlp/usr/servers/defaultServer
+						</targetPath>
+					</testResource>
+				</testResources>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>${version.maven-dependency-plugin}</version>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>io.openliberty</groupId>
+											<artifactId>openliberty-runtime</artifactId>
+											<version>${liberty.runtime.version}</version>
+											<type>zip</type>
+											<overWrite>false</overWrite>
+											<outputDirectory>${project.build.directory}</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>io.openliberty.arquillian</groupId>
+											<artifactId>arquillian-liberty-support-jakarta</artifactId>
+											<version>${version.arquillian-liberty-jakarta}</version>
+											<type>zip</type>
+											<classifier>feature</classifier>
+											<overWrite>false</overWrite>
+											<outputDirectory>${project.build.directory}/wlp/usr</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${version.maven-failsafe-plugin}</version>
+						<configuration>
+							<environmentVariables>
+								<!-- WLP_HOME is not picked by arquillian liberty -->
+								<!--<WLP_HOME>${project.build.directory}/wlp</WLP_HOME>-->
+							</environmentVariables>
+							<systemPropertyVariables>
+								<arquillian.launch>liberty-managed</arquillian.launch>
+								<java.util.logging.config.file>${project.build.testOutputDirectory}/logging.properties
+								</java.util.logging.config.file>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
 		<profile>
 			<!-- An optional Arquillian testing profile that executes tests in your
@@ -3017,7 +2656,7 @@
 			<!-- This profile will start a new WildFly instance, and execute the test,
                 shutting it down when done -->
 			<!-- Run with: mvn clean verify -Parq-wildfly-managed -->
-			<id>arq-wildfly-managed</id>
+			<id>it-wildfly</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>false</skip.integration.tests>
@@ -3202,122 +2841,7 @@
 		</profile>
 
 		<profile>
-			<!-- Run with: mvn clean verify -Parq-liberty-managed -->
-			<id>arq-liberty-managed</id>
-			<properties>
-				<skip.unit.tests>true</skip.unit.tests>
-				<skip.integration.tests>false</skip.integration.tests>
-				<serverStartTimeout>240</serverStartTimeout>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>io.openliberty.arquillian</groupId>
-					<artifactId>arquillian-liberty-managed-jakarta</artifactId>
-					<version>${version.arquillian-liberty-jakarta}</version>
-				</dependency>
-				<!--It seems OpenLiberty 21.0.0.1 beta switched to use Resteasy as Jakarta Restful WS provider.
-                But there is no official public version for Jakarta EE 9 in the Maven central repository.
-                Use Jersey Client in the test codes here.-->
-				<dependency>
-					<groupId>org.glassfish.jersey.media</groupId>
-					<artifactId>jersey-media-json-binding</artifactId>
-					<version>${jersey.version}</version>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.glassfish.jersey.inject</groupId>
-					<artifactId>jersey-hk2</artifactId>
-					<version>${jersey.version}</version>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.glassfish.jersey.core</groupId>
-					<artifactId>jersey-client</artifactId>
-					<version>${jersey.version}</version>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-			<build>
-				<finalName>petclinic</finalName>
-				<defaultGoal>clean verify</defaultGoal>
-				<testResources>
-					<testResource>
-						<directory>src/test/resources-arquillian/arq-liberty-managed</directory>
-						<includes>
-							<include>*</include>
-						</includes>
-						<excludes>
-							<exclude>server.xml</exclude>
-						</excludes>
-					</testResource>
-					<testResource>
-						<directory>src/test/resources-arquillian/arq-liberty-managed</directory>
-						<includes>
-							<include>server.xml</include>
-						</includes>
-						<targetPath>
-							${project.build.directory}/wlp/usr/servers/defaultServer
-						</targetPath>
-					</testResource>
-				</testResources>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<version>${version.maven-dependency-plugin}</version>
-						<executions>
-							<execution>
-								<id>unpack</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>unpack</goal>
-								</goals>
-								<configuration>
-									<artifactItems>
-										<artifactItem>
-											<groupId>io.openliberty</groupId>
-											<artifactId>openliberty-runtime</artifactId>
-											<version>${liberty.runtime.version}</version>
-											<type>zip</type>
-											<overWrite>false</overWrite>
-											<outputDirectory>${project.build.directory}</outputDirectory>
-										</artifactItem>
-										<artifactItem>
-											<groupId>io.openliberty.arquillian</groupId>
-											<artifactId>arquillian-liberty-support-jakarta</artifactId>
-											<version>${version.arquillian-liberty-jakarta}</version>
-											<type>zip</type>
-											<classifier>feature</classifier>
-											<overWrite>false</overWrite>
-											<outputDirectory>${project.build.directory}/wlp/usr</outputDirectory>
-										</artifactItem>
-									</artifactItems>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
-						<version>${version.maven-failsafe-plugin}</version>
-						<configuration>
-							<environmentVariables>
-								<!-- WLP_HOME is not picked by arquillian liberty -->
-								<!--<WLP_HOME>${project.build.directory}/wlp</WLP_HOME>-->
-							</environmentVariables>
-							<systemPropertyVariables>
-								<arquillian.launch>liberty-managed</arquillian.launch>
-								<java.util.logging.config.file>${project.build.testOutputDirectory}/logging.properties
-								</java.util.logging.config.file>
-							</systemPropertyVariables>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>arq-glassfish-managed</id>
+			<id>it-glassfish</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>false</skip.integration.tests>
@@ -3483,6 +3007,76 @@
 				</plugins>
 			</build>
 		</profile>
+
+		<profile>
+			<id>it-payara</id>
+			<properties>
+				<skip.unit.tests>true</skip.unit.tests>
+				<skip.integration.tests>false</skip.integration.tests>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>payara-client-ee9</artifactId>
+					<version>${version.arquillian-payara}</version>
+					<scope>test</scope>
+				</dependency>
+				<!-- Payara Server Container adaptor -->
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>arquillian-payara-server-managed</artifactId>
+					<version>${version.arquillian-payara}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<testResources>
+					<testResource>
+						<directory>src/test/arq-payara-managed</directory>
+					</testResource>
+				</testResources>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>${version.maven-dependency-plugin}</version>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>fish.payara.distributions</groupId>
+											<artifactId>payara</artifactId>
+											<version>${version.payara}</version>
+											<type>zip</type>
+											<overWrite>false</overWrite>
+											<outputDirectory>${project.build.directory}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${version.maven-failsafe-plugin}</version>
+						<configuration>
+							<systemPropertyVariables>
+								<payara.home>${project.build.directory}/payara6</payara.home>
+								<arquillian.launch>payara-managed</arquillian.launch>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 	</profiles>
 
 </project>
