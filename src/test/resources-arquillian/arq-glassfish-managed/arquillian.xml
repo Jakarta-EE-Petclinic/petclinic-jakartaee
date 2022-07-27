@@ -7,7 +7,7 @@
         <property name="deploymentExportPath">target/</property>
     </engine>
 
-    <container qualifier="arq-glassfish-managed">
+    <container qualifier="glassfish-managed">
         <configuration>
             <property name="allowConnectingToRunningServer">false</property>
             <!--<property name="glassFishHome">target/${glassfish.home}</property>-->

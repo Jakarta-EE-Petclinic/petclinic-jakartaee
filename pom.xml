@@ -109,7 +109,7 @@
 		<wildfly-arquillian.version>5.0.0.Alpha3</wildfly-arquillian.version>
 
 		<!-- Payara -->
-		<version.payara-runtime>5.2021.5</version.payara-runtime>
+		<version.payara-runtime>5.2022.2</version.payara-runtime>
 		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
 		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
@@ -3000,7 +3000,7 @@
 						<version>${version.maven-failsafe-plugin}</version>
 						<configuration>
 							<environmentVariables>
-								<GLASSFISH_HOME>${project.build.directory}/glassfish6</GLASSFISH_HOME>
+								<GLASSFISH_HOME>${project.build.directory}/glassfish5</GLASSFISH_HOME>
 							</environmentVariables>
 						</configuration>
 					</plugin>
@@ -3032,7 +3032,7 @@
 			<build>
 				<testResources>
 					<testResource>
-						<directory>src/test/arq-payara-managed</directory>
+						<directory>src/test/resources-arquillian/arq-payara-managed</directory>
 					</testResource>
 				</testResources>
 				<plugins>
@@ -3068,7 +3068,7 @@
 						<version>${version.maven-failsafe-plugin}</version>
 						<configuration>
 							<systemPropertyVariables>
-								<payara.home>${project.build.directory}/payara6</payara.home>
+								<payara.home>${project.build.directory}/payara5</payara.home>
 								<arquillian.launch>payara-managed</arquillian.launch>
 							</systemPropertyVariables>
 						</configuration>
