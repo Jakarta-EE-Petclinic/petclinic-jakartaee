@@ -3,13 +3,14 @@
 <resources>
 
     <jdbc-resource pool-name="PostgresDS"
-                   jndi-name="jdbc/PostgreSQLDS"
-                   enabled="true"/>
+                   jndi-name="java:jdbc/PostgreSQLDS"
+                   enabled="true"
+                   object-type="user"/>
 
-    <jdbc-connection-pool name="DerbyPool"
+    <jdbc-connection-pool name="PostgreSQLPool"
                           res-type="javax.sql.DataSource"
                           driver-classname="org.postgresql.Driver"
-                          datasource-classname="org.postgresql.ds.PGConnectionPoolDataSource">
+                          datasource-classname="org.postgresql.xa.PGXADataSource">
 
         <property name="url" value="jdbc:postgresql://localhost:5432/petclinic_jakartaee_payara"/>
 
