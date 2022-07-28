@@ -2669,6 +2669,7 @@
 				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
 				<cargo.remote.username>wildfly</cargo.remote.username>
 				<cargo.remote.password>wildflypwd</cargo.remote.password>
+				<!--
 				<cargo.datasource.datasource.postgresql>
 					cargo.datasource.driver=org.postgresql.Driver|
 					cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_wildfly
@@ -2676,6 +2677,7 @@
 					cargo.datasource.username=petclinic_jakartaee|
 					cargo.datasource.password=petclinic_jakartaeepwd
 				</cargo.datasource.datasource.postgresql>
+				-->
 				<cargo.jboss.configuration>standalone</cargo.jboss.configuration>
 			</properties>
 			<dependencies>
@@ -2847,7 +2849,7 @@
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>false</skip.integration.tests>
-				<enableDerby>false</enableDerby>
+				<enableDerby>true</enableDerby>
 			</properties>
 			<dependencies>
 				<dependency>
@@ -2919,7 +2921,7 @@
 				<defaultGoal>clean verify</defaultGoal>
 				<testResources>
 					<testResource>
-						<directory>src/test/resources-arquillian/arq-glassfish-managed</directory>
+						<directory>src/test/resources-arquillian/it-glassfish</directory>
 					</testResource>
 				</testResources>
 				<plugins>
@@ -3002,7 +3004,7 @@
 						<version>${version.maven-failsafe-plugin}</version>
 						<configuration>
 							<environmentVariables>
-								<GLASSFISH_HOME>${project.build.directory}/glassfish5</GLASSFISH_HOME>
+								<GLASSFISH_HOME>${project.build.directory}/glassfish6</GLASSFISH_HOME>
 							</environmentVariables>
 						</configuration>
 					</plugin>
@@ -3034,7 +3036,7 @@
 			<build>
 				<testResources>
 					<testResource>
-						<directory>src/test/resources-arquillian/arq-payara-managed</directory>
+						<directory>src/test/resources-arquillian/it-payara</directory>
 					</testResource>
 				</testResources>
 				<plugins>

@@ -2,6 +2,6 @@
 
 #./mvnw -Pglassfish docker-compose:up
 
-./mvnw -Pglassfish
+./mvnw -Prun-glassfish
 
 #./mvnw -Pglassfish docker-compose:down
