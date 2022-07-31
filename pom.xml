@@ -47,7 +47,6 @@
 		<version.maven>3.6.3</version.maven>
 		<junit.version>5.8.2</junit.version>
 		<version.junit-platform-suite-engine>1.8.2</version.junit-platform-suite-engine>
-		<version.org.seleniumhq.selenium>3.141.59</version.org.seleniumhq.selenium>
 		<version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
@@ -140,13 +139,11 @@
 		<version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
 
 		<!-- Arquillian 1.7.0 adds Jakarta EE 9 and JUnit 5 support-->
-		<arquillian-bom.version>1.7.0.Alpha10</arquillian-bom.version>
-		<arquillian-drone-bom.version>2.5.5</arquillian-drone-bom.version>
-		<graphene-webdriver.version>2.5.4</graphene-webdriver.version>
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
-		<version.arquillian.core>1.7.0.Alpha1</version.arquillian.core>
-
-		<version.selenium>3.141.59</version.selenium>
+		<selenium.version>4.1.2</selenium.version>
+		<version.arquillian.core>1.7.0.Alpha11</version.arquillian.core>
+		<arquillian-drone-bom.version>3.0.0-alpha.3</arquillian-drone-bom.version>
+		<graphene-webdriver.version>3.0.0-alpha.3</graphene-webdriver.version>
 
 		<!-- Test Utilities -->
 		<mockito.version>4.6.1</mockito.version>
@@ -426,7 +423,7 @@
 			<dependency>
 				<groupId>org.jboss.arquillian</groupId>
 				<artifactId>arquillian-bom</artifactId>
-				<version>${arquillian-bom.version}</version>
+				<version>${version.arquillian.core}</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
@@ -446,22 +443,27 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.jboss.arquillian.graphene</groupId>
-				<artifactId>graphene-webdriver-ftest</artifactId>
-				<version>${graphene-webdriver.version}</version>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-drone-impl</artifactId>
+				<version>${arquillian-drone-bom.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
 				<artifactId>graphene-webdriver</artifactId>
-				<version>${graphene-webdriver.version}</version>
+				<version>3.0.0-alpha.3</version>
 				<type>pom</type>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
+				<artifactId>graphene-webdriver-api</artifactId>
+				<version>3.0.0-alpha.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.graphene</groupId>
 				<artifactId>graphene-webdriver-impl</artifactId>
-				<version>${graphene-webdriver.version}</version>
+				<version>3.0.0-alpha.3</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
@@ -651,16 +653,53 @@
 				<scope>test</scope>
 			</dependency>
 
+
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-drone-api</artifactId>
+				<version>${arquillian-drone-bom.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-java</artifactId>
+				<version>${selenium.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-remote-driver</artifactId>
+				<version>4.1.2</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-api</artifactId>
+				<version>4.1.2</version>
+				<scope>test</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-chrome-driver</artifactId>
-				<version>4.3.0</version>
+				<version>4.1.2</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-firefox-driver</artifactId>
-				<version>4.3.0</version>
+				<version>4.1.2</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-opera-driver</artifactId>
+				<version>4.1.2</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.codeborne</groupId>
+				<artifactId>phantomjsdriver</artifactId>
+				<version>1.5.0</version>
 				<scope>test</scope>
 			</dependency>
 
@@ -859,6 +898,7 @@
 			<type>pom</type>
 			<scope>test</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.jboss.arquillian.graphene</groupId>
 			<artifactId>graphene-webdriver-ftest</artifactId>
@@ -869,6 +909,7 @@
 			<artifactId>graphene-webdriver-impl</artifactId>
 			<scope>test</scope>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>org.jboss.shrinkwrap</groupId>
 			<artifactId>shrinkwrap-impl-base</artifactId>
@@ -898,9 +939,20 @@
 			<artifactId>arquillian-protocol-servlet</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-support</artifactId>
+			<artifactId>selenium-java</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -916,6 +968,11 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-opera-driver</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
 			<scope>test</scope>
 		</dependency>
 
