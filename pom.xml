@@ -436,6 +436,20 @@
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-drone-webdriver-depchain</artifactId>
+				<version>${arquillian-drone-bom.version}</version>
+				<type>pom</type>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.graphene</groupId>
+				<artifactId>graphene-webdriver-ftest</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
 				<artifactId>graphene-webdriver</artifactId>
@@ -461,7 +475,6 @@
 				<version>2.0.0</version>
 				<scope>test</scope>
 			</dependency>
-
 
 			<dependency>
 				<groupId>org.hamcrest</groupId>
@@ -872,6 +885,17 @@
 		<dependency>
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-drone-impl</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-drone-webdriver-depchain</artifactId>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.graphene</groupId>
+			<artifactId>graphene-webdriver-ftest</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

@@ -16,6 +16,6 @@
     </container>
     <extension qualifier="webdriver">
         <property name="browser">${browser:chrome}</property>
-        <property name="chromeDriverBinary">/usr/bin/chromedriver</property>
+        <property name="chromeDriverBinary">/usr/bin/google-chrome</property>
     </extension>
 </arquillian>
