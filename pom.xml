@@ -2659,8 +2659,8 @@
                 WildFly instance -->
 			<!-- This profile will start a new WildFly instance, and execute the test,
                 shutting it down when done -->
-			<!-- Run with: mvn clean verify -Parq-wildfly-managed -->
-			<id>it-wildfly</id>
+				<!-- Run with: mvn clean verify -Parq-wildfly-managed -->
+			<id>arq-wildfly-managed</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>false</skip.integration.tests>
