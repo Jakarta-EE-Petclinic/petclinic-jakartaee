@@ -4,7 +4,7 @@
 	<groupId>org.woehlke.jakartaee</groupId>
 	<artifactId>petclinic-jakartaee</artifactId>
 	<packaging>war</packaging>
-	<version>9.1.0.75</version>
+	<version>9.1.0.75-SNAPSHOT</version>
 
 	<name>Petclinic Jakarta EE 9.1</name>
 	<description>A JSF and Jakarta EE Version of Spring Petclinic and Update from Java EE 7 Petclinic.</description>
@@ -27,7 +27,7 @@
 		<connection>scm:git:git@github.com:Jakarta-EE-Petclinic/jakartaee-petclinic.git</connection>
 		<developerConnection>scm:git:git@github.com:Jakarta-EE-Petclinic/jakartaee-petclinic.git</developerConnection>
 		<url>https://github.com/Jakarta-EE-Petclinic/jakartaee-petclinic/tree/${project.scm.tag}</url>
-		<tag>v9.1.0.75</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
@@ -48,7 +48,7 @@
 		<junit.version>5.8.2</junit.version>
 		<version.junit-platform-suite-engine>1.8.2</version.junit-platform-suite-engine>
 		<version.org.seleniumhq.selenium>3.141.59</version.org.seleniumhq.selenium>
-		<version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
+		<version.org.apache.maven.scm>2.0.0-M1</version.org.apache.maven.scm>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
