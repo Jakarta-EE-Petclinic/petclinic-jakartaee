@@ -48,7 +48,7 @@
 		<junit.version>5.8.2</junit.version>
 		<version.junit-platform-suite-engine>1.8.2</version.junit-platform-suite-engine>
 		<version.org.seleniumhq.selenium>3.141.59</version.org.seleniumhq.selenium>
-		<version.org.apache.maven.scm>2.0.0-M1</version.org.apache.maven.scm>
+		<version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
