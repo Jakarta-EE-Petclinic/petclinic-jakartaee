@@ -2900,7 +2900,7 @@
 
 		<profile>
 			<!-- Run with: mvn clean verify -Parq-liberty-managed -->
-			<id>it-liberty</id>
+			<id>arq-liberty-managed</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>false</skip.integration.tests>
@@ -3214,7 +3214,7 @@
 		</profile>
 
 		<profile>
-			<id>it-glassfish</id>
+			<id>arq-glassfish-managed</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>false</skip.integration.tests>
@@ -3382,7 +3382,7 @@
 		</profile>
 
 		<profile>
-			<id>it-payara</id>
+			<id>arq-payara-managed</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>false</skip.integration.tests>
@@ -3405,7 +3405,7 @@
 			<build>
 				<testResources>
 					<testResource>
-						<directory>src/test/resources-arquillian/it-payara</directory>
+						<directory>src/test/resources-arquillian/arq-payara-managed</directory>
 					</testResource>
 				</testResources>
 				<plugins>
