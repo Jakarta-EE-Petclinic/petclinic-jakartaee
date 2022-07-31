@@ -39,27 +39,40 @@ public class SpecialtyEndpointIT {
     return ShrinkWrap.createFromZipFile(WebArchive.class,archive);
   }
 
+  @ArquillianResource
+  private URL base;
+
+  private Client client;
+
   @BeforeEach
   public void setup() {
     log.info("call BeforeEach");
+    this.client = ClientBuilder.newClient();
+    //removed the Jackson json provider registry, due to OpenLiberty 21.0.0.1 switched to use Resteasy.
   }
 
   @AfterEach
   public void teardown() {
     log.info("call AfterEach");
+    if (this.client != null) {
+      this.client.close();
+    }
   }
 
   @Test
-  public void testGetListJson(@ArquillianResource final URL url) {
-    String endpoint = url.toExternalForm() + "/rest" + "/specialty" + "/list";
+  public void testGetListJson() {
+    String endpoint = base + "/rest" + "/specialty" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
     Jsonb jsonb = JsonbBuilder.create();
-    final Client client = ClientBuilder.newBuilder().build();
-    final WebTarget target = client.target(endpoint);
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertThat(Response.Status.OK.getStatusCode() == response.getStatus() );
+    assertThat(
+            Response.Status.OK.getStatusCode()==
+            response.getStatus()
+    );
     String json = response.readEntity(String.class);
     SpecialtyListDto petTypeListDto = jsonb.fromJson(json, SpecialtyListDto.class);
     for(SpecialtyDto dto: petTypeListDto.getSpecialty()){
@@ -72,15 +85,18 @@ public class SpecialtyEndpointIT {
   }
 
   @Test
-  public void testGetListXml(@ArquillianResource final URL url) throws JAXBException {
-    String endpoint = url.toExternalForm() + "/rest" + "/specialty" + "/xml/list";
+  public void testGetListXml() throws JAXBException {
+    String endpoint = base + "/rest" + "/specialty" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
-    final Client client = ClientBuilder.newBuilder().build();
-    final WebTarget target = client.target(endpoint);
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertThat(Response.Status.OK.getStatusCode() == response.getStatus() );
+    assertThat(
+            Response.Status.OK.getStatusCode()==
+            response.getStatus()
+    );
     String xml = response.readEntity(String.class);
     JAXBContext jc = JAXBContext.newInstance(SpecialtyListDto.class);
     Unmarshaller m = jc.createUnmarshaller();
