@@ -40,39 +40,27 @@ public class PetEndpointIT {
     return ShrinkWrap.createFromZipFile(WebArchive.class,archive);
   }
 
-  @ArquillianResource
-  private URL base;
-
-  private Client client;
-
   @BeforeEach
   public void setup() {
     log.info("call BeforeEach");
-    this.client = ClientBuilder.newClient();
   }
 
   @AfterEach
   public void teardown() {
     log.info("call AfterEach");
-    if (this.client != null) {
-      this.client.close();
-    }
   }
 
   @Test
-  public void testGetListJson() {
-    String endpoint = base + "/rest" + "/pet" + "/list";
+  public void testGetListJson(@ArquillianResource final URL url) {
+    String endpoint = url.toExternalForm() + "/rest" + "/pet" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
     Jsonb jsonb = JsonbBuilder.create();
-    Client client = ClientBuilder.newClient();
-    WebTarget target = client.target(endpoint);
+    final Client client = ClientBuilder.newBuilder().build();
+    final WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertThat(
-            Response.Status.OK.getStatusCode()==
-            response.getStatus()
-    );
+    assertThat(Response.Status.OK.getStatusCode() == response.getStatus() );
     String json = response.readEntity(String.class);
     /*
     PetListDto petTypeListDto = jsonb.fromJson(json, PetListDto.class);
@@ -87,18 +75,15 @@ public class PetEndpointIT {
   }
 
   @Test
-  public void testGetListXml() throws JAXBException {
-    String endpoint = base + "/rest" + "/pet" + "/xml/list";
+  public void testGetListXml(@ArquillianResource final URL url) throws JAXBException {
+    String endpoint = url.toExternalForm() + "/rest" + "/pet" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
-    Client client = ClientBuilder.newClient();
-    WebTarget target = client.target(endpoint);
+    final Client client = ClientBuilder.newBuilder().build();
+    final WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertThat(
-            Response.Status.OK.getStatusCode()==
-            response.getStatus()
-    );
+    assertThat(Response.Status.OK.getStatusCode() == response.getStatus() );
     String xml = response.readEntity(String.class);
     JAXBContext jc = JAXBContext.newInstance(PetListDto.class);
     Unmarshaller m = jc.createUnmarshaller();

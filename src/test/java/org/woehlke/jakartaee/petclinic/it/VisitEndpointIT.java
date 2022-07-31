@@ -12,6 +12,7 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -40,39 +41,28 @@ public class VisitEndpointIT {
         return ShrinkWrap.createFromZipFile(WebArchive.class,archive);
     }
 
-    @ArquillianResource
-    private URL base;
-
-    private Client client;
-
     @BeforeEach
     public void setup() {
         log.info("call BeforeEach");
-        this.client = ClientBuilder.newClient();
     }
 
     @AfterEach
     public void teardown() {
         log.info("call AfterEach");
-        if (this.client != null) {
-            this.client.close();
-        }
     }
 
     @Test
-    public void testGetListJson() {
-        String endpoint = base + "/rest" + "/visit" + "/list";
+    @RunAsClient
+    public void testGetListJson(@ArquillianResource final URL url) {
+        String endpoint = url.toExternalForm() + "/rest" + "/visit" + "/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
         Jsonb jsonb = JsonbBuilder.create();
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(endpoint);
+        final Client client = ClientBuilder.newBuilder().build();
+        final WebTarget target = client.target(endpoint);
         Response response = target.request().get();
-        assertThat(
-                Response.Status.OK.getStatusCode()==
-                        response.getStatus()
-        );
+        assertThat(Response.Status.OK.getStatusCode() == response.getStatus() );
         String json = response.readEntity(String.class);
         /*
         VisitListDto petTypeListDto = jsonb.fromJson(json, VisitListDto.class);
@@ -87,18 +77,16 @@ public class VisitEndpointIT {
     }
 
     @Test
-    public void testGetListXml() throws JAXBException {
-        String endpoint =  base + "/rest" + "/visit" + "/xml/list";
+    @RunAsClient
+    public void testGetListXml(@ArquillianResource final URL url) throws JAXBException {
+        String endpoint =  url.toExternalForm() + "/rest" + "/visit" + "/xml/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(endpoint);
+        final Client client = ClientBuilder.newBuilder().build();
+        final WebTarget target = client.target(endpoint);
         Response response = target.request().get();
-        assertThat(
-                Response.Status.OK.getStatusCode()==
-                        response.getStatus()
-        );
+        assertThat(Response.Status.OK.getStatusCode() == response.getStatus() );
         String xml = response.readEntity(String.class);
         JAXBContext jc = JAXBContext.newInstance(VisitListDto.class);
         Unmarshaller m = jc.createUnmarshaller();

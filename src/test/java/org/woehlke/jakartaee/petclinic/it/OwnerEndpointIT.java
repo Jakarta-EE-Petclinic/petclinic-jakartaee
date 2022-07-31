@@ -39,39 +39,27 @@ public class OwnerEndpointIT {
     return ShrinkWrap.createFromZipFile(WebArchive.class,archive);
   }
 
-  @ArquillianResource
-  private URL base;
-
-  private Client client;
-
   @BeforeEach
   public void setup() {
     log.info("call BeforeEach");
-    this.client = ClientBuilder.newClient();
   }
 
   @AfterEach
   public void teardown() {
     log.info("call AfterEach");
-    if (this.client != null) {
-      this.client.close();
-    }
   }
 
   @Test
-  public void testGetListJson() {
-    String endpoint = base + "/rest" + "/owner" + "/list";
+  public void testGetListJson(@ArquillianResource final URL url) {
+    String endpoint = url.toExternalForm() + "/rest" + "/owner" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
     Jsonb jsonb = JsonbBuilder.create();
-    Client client = ClientBuilder.newClient();
-    WebTarget target = client.target(endpoint);
+    final Client client = ClientBuilder.newBuilder().build();
+    final WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertThat(
-            Response.Status.OK.getStatusCode() ==
-            response.getStatus()
-    );
+    assertThat(Response.Status.OK.getStatusCode() == response.getStatus() );
     String json = response.readEntity(String.class);
     /*
     OwnerListDto stoList = jsonb.fromJson(json, OwnerListDto.class);
@@ -86,17 +74,15 @@ public class OwnerEndpointIT {
   }
 
   @Test
-  public void testGetListXml() throws JAXBException {
-    String endpoint = base + "/rest" + "/owner" + "/xml/list";
+  public void testGetListXml(@ArquillianResource final URL url) throws JAXBException {
+    String endpoint = url.toExternalForm() + "/rest" + "/owner" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
-    WebTarget target = client.target(endpoint);
+    final Client client = ClientBuilder.newBuilder().build();
+    final WebTarget target = client.target(endpoint);
     Response response = target.request().get();
-    assertThat(
-            Response.Status.OK.getStatusCode() ==
-            response.getStatus()
-    );
+    assertThat(Response.Status.OK.getStatusCode() == response.getStatus() );
     String xml = response.readEntity(String.class);
     JAXBContext jc = JAXBContext.newInstance(OwnerListDto.class);
     Unmarshaller m = jc.createUnmarshaller();
