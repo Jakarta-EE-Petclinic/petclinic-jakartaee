@@ -145,6 +145,7 @@
 		<graphene-webdriver.version>2.5.4</graphene-webdriver.version>
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<version.arquillian.core>1.7.0.Alpha1</version.arquillian.core>
+
 		<version.selenium>3.141.59</version.selenium>
 
 		<!-- Test Utilities -->
@@ -649,52 +650,17 @@
 				<version>${version.arquillian.core}</version>
 				<scope>test</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>selenium-server</artifactId>
-				<version>${version.selenium}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>selenium-java</artifactId>
-				<version>${version.selenium}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>selenium-api</artifactId>
-				<version>${version.selenium}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>selenium-support</artifactId>
-				<version>${version.selenium}</version>
-				<scope>test</scope>
-			</dependency>
+
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-chrome-driver</artifactId>
-				<version>${version.selenium}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>selenium-ie-driver</artifactId>
-				<version>${version.selenium}</version>
+				<version>4.3.0</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-firefox-driver</artifactId>
-				<version>${version.selenium}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>selenium-remote-driver</artifactId>
-				<version>${version.selenium}</version>
+				<version>4.3.0</version>
 				<scope>test</scope>
 			</dependency>
 
@@ -934,21 +900,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-server</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -959,17 +910,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-ie-driver</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-remote-driver</artifactId>
+			<artifactId>selenium-opera-driver</artifactId>
 			<scope>test</scope>
 		</dependency>
 

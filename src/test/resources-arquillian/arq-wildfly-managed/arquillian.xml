@@ -14,8 +14,13 @@
             <property name="serverConfig">standalone-full.xml</property>
         </configuration>
     </container>
+
     <extension qualifier="webdriver">
-        <property name="browser">${browser:chrome}</property>
-        <property name="chromeDriverBinary">/usr/bin/google-chrome</property>
+        <property name="browser">opera</property>
     </extension>
+
+    <extension qualifier="drone">
+        <property name="instantiationTimeoutInSeconds">120</property>
+    </extension>
+
 </arquillian>

@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
  * Time: 17:05
  * To change this template use File | Settings | File Templates.
  */
-@Location("hello.jsf")
+@Location("home.jsf")
 public class HelloPage {
 
     @Drone
