@@ -13,16 +13,15 @@ import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.arquillian.test.api.ArquillianResource;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.woehlke.jakartaee.petclinic.it.Deployments;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerDto;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerListDto;
 
-import java.io.File;
 import java.io.StringReader;
 import java.net.URL;
 
@@ -34,9 +33,7 @@ public class OwnerEndpointIT {
 
   @Deployment(testable = false)
   public static WebArchive createDeployment() {
-    String archiveName = "target" + File.separator+ "petclinic.war";
-    File archive = new File(archiveName);
-    return ShrinkWrap.createFromZipFile(WebArchive.class,archive);
+    return Deployments.createDeployment();
   }
 
   @ArquillianResource
