@@ -11,6 +11,7 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.graphene.page.Page;
 import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -19,8 +20,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeDto;
-import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeListDto;
+import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyDto;
+import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyListDto;
 
 import java.io.File;
 import java.io.StringReader;
@@ -30,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @ExtendWith(ArquillianExtension.class)
-public class PetTypeEndpointIT {
+public class SpecialtyPageIT {
 
   @Deployment(testable = false)
   public static WebArchive createDeployment() {
@@ -44,10 +45,14 @@ public class PetTypeEndpointIT {
 
   private Client client;
 
+  @Page
+  private SpecialtyPage specialtyPage;
+
   @BeforeEach
   public void setup() {
     log.info("call BeforeEach");
     this.client = ClientBuilder.newClient();
+    //removed the Jackson json provider registry, due to OpenLiberty 21.0.0.1 switched to use Resteasy.
   }
 
   @AfterEach
@@ -60,7 +65,7 @@ public class PetTypeEndpointIT {
 
   @Test
   public void testGetListJson() {
-    String endpoint = base + "/rest" + "/petType" + "/list";
+    String endpoint = base + "/rest" + "/specialty" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
@@ -73,8 +78,8 @@ public class PetTypeEndpointIT {
             response.getStatus()
     );
     String json = response.readEntity(String.class);
-    PetTypeListDto petTypeListDto = jsonb.fromJson(json, PetTypeListDto.class);
-    for(PetTypeDto dto: petTypeListDto.getPetType()){
+    SpecialtyListDto petTypeListDto = jsonb.fromJson(json, SpecialtyListDto.class);
+    for(SpecialtyDto dto: petTypeListDto.getSpecialty()){
       log.info("fetched dto: "+dto.toString());
     }
     json = "\n\n" + json +  "\n\n";
@@ -85,7 +90,7 @@ public class PetTypeEndpointIT {
 
   @Test
   public void testGetListXml() throws JAXBException {
-    String endpoint = base + "/rest" + "/petType" + "/xml/list";
+    String endpoint = base + "/rest" + "/specialty" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
@@ -97,11 +102,11 @@ public class PetTypeEndpointIT {
             response.getStatus()
     );
     String xml = response.readEntity(String.class);
-    JAXBContext jc = JAXBContext.newInstance(PetTypeListDto.class);
+    JAXBContext jc = JAXBContext.newInstance(SpecialtyListDto.class);
     Unmarshaller m = jc.createUnmarshaller();
     StringReader r  = new StringReader(xml);
-    PetTypeListDto o = (PetTypeListDto) m.unmarshal(r);
-    for(PetTypeDto dto: o.getPetType()){
+    SpecialtyListDto o = (SpecialtyListDto) m.unmarshal(r);
+    for(SpecialtyDto dto: o.getSpecialty()){
       log.info("fetched dto: "+dto.toString());
     }
     xml = "\n\n" + xml +  "\n\n";
@@ -109,4 +114,5 @@ public class PetTypeEndpointIT {
     response.close();
     client.close();
   }
+
 }
