@@ -1579,7 +1579,7 @@
 		</profile>
 
 		<profile>
-			<id>run-liberty</id>
+			<id>liberty</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -1889,7 +1889,7 @@
 		</profile>
 
 		<profile>
-			<id>run-wildfly</id>
+			<id>wildfly</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -2137,7 +2137,7 @@
 		</profile>
 
 		<profile>
-			<id>run-glassfish</id>
+			<id>glassfish</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -2402,7 +2402,7 @@
 		</profile>
 
 		<profile>
-			<id>run-payara</id>
+			<id>payara</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
@@ -2652,7 +2652,7 @@
 		</profile>
 
 		<profile>
-			<id>run-tomee</id>
+			<id>tomee</id>
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
