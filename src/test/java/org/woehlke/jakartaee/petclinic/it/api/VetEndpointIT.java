@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.it;
+package org.woehlke.jakartaee.petclinic.it.api;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -13,16 +13,15 @@ import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.arquillian.test.api.ArquillianResource;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyDto;
-import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyListDto;
+import org.woehlke.jakartaee.petclinic.it.Deployments;
+import org.woehlke.jakartaee.petclinic.vet.api.VetDto;
+import org.woehlke.jakartaee.petclinic.vet.api.VetListDto;
 
-import java.io.File;
 import java.io.StringReader;
 import java.net.URL;
 
@@ -30,13 +29,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @ExtendWith(ArquillianExtension.class)
-public class SpecialtyEndpointIT {
+public class VetEndpointIT {
 
   @Deployment(testable = false)
   public static WebArchive createDeployment() {
-    String archiveName = "target" + File.separator+ "petclinic.war";
-    File archive = new File(archiveName);
-    return ShrinkWrap.createFromZipFile(WebArchive.class,archive);
+    return Deployments.createDeployment();
   }
 
   @ArquillianResource
@@ -48,7 +45,6 @@ public class SpecialtyEndpointIT {
   public void setup() {
     log.info("call BeforeEach");
     this.client = ClientBuilder.newClient();
-    //removed the Jackson json provider registry, due to OpenLiberty 21.0.0.1 switched to use Resteasy.
   }
 
   @AfterEach
@@ -61,21 +57,20 @@ public class SpecialtyEndpointIT {
 
   @Test
   public void testGetListJson() {
-    String endpoint = base + "/rest" + "/specialty" + "/list";
+    String endpoint = base + "/rest" + "/vet" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
     Jsonb jsonb = JsonbBuilder.create();
-    Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
     assertThat(
-            Response.Status.OK.getStatusCode()==
+            Response.Status.OK.getStatusCode() ==
             response.getStatus()
     );
     String json = response.readEntity(String.class);
-    SpecialtyListDto petTypeListDto = jsonb.fromJson(json, SpecialtyListDto.class);
-    for(SpecialtyDto dto: petTypeListDto.getSpecialty()){
+    VetListDto petTypeListDto = jsonb.fromJson(json, VetListDto.class);
+    for(VetDto dto: petTypeListDto.getVetList()){
       log.info("fetched dto: "+dto.toString());
     }
     json = "\n\n" + json +  "\n\n";
@@ -86,23 +81,22 @@ public class SpecialtyEndpointIT {
 
   @Test
   public void testGetListXml() throws JAXBException {
-    String endpoint = base + "/rest" + "/specialty" + "/xml/list";
+    String endpoint = base + "/rest" + "/vet" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
-    Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
     assertThat(
-            Response.Status.OK.getStatusCode()==
+            Response.Status.OK.getStatusCode() ==
             response.getStatus()
     );
     String xml = response.readEntity(String.class);
-    JAXBContext jc = JAXBContext.newInstance(SpecialtyListDto.class);
+    JAXBContext jc = JAXBContext.newInstance(VetListDto.class);
     Unmarshaller m = jc.createUnmarshaller();
     StringReader r  = new StringReader(xml);
-    SpecialtyListDto o = (SpecialtyListDto) m.unmarshal(r);
-    for(SpecialtyDto dto: o.getSpecialty()){
+    VetListDto o = (VetListDto) m.unmarshal(r);
+    for(VetDto dto: o.getVetList()){
       log.info("fetched dto: "+dto.toString());
     }
     xml = "\n\n" + xml +  "\n\n";
@@ -110,5 +104,4 @@ public class SpecialtyEndpointIT {
     response.close();
     client.close();
   }
-
 }
