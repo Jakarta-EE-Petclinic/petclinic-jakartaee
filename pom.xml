@@ -444,28 +444,93 @@
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.arquillian.extension</groupId>
-				<artifactId>arquillian-drone-impl</artifactId>
-				<version>${arquillian-drone-bom.version}</version>
+				<artifactId>arquillian-drone-webdriver</artifactId>
+				<version>${graphene-webdriver.version}</version>
 				<scope>test</scope>
 			</dependency>
+
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
 				<artifactId>graphene-webdriver</artifactId>
-				<version>3.0.0-alpha.3</version>
+				<version>${graphene-webdriver.version}</version>
 				<type>pom</type>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
 				<artifactId>graphene-webdriver-api</artifactId>
-				<version>3.0.0-alpha.3</version>
+				<version>${graphene-webdriver.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
 				<artifactId>graphene-webdriver-impl</artifactId>
-				<version>3.0.0-alpha.3</version>
+				<version>${graphene-webdriver.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.graphene</groupId>
+				<artifactId>arquillian-browser-screenshooter</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.graphene</groupId>
+				<artifactId>graphene-webdriver-ftest</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.graphene</groupId>
+				<artifactId>graphene-webdriver-spi</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-drone-api</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-drone-impl</artifactId>
+				<version>${arquillian-drone-bom.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-drone-spi</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-drone-configuration</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!--
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-drone-webdriver</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
+			</dependency>
+			-->
+
+			<dependency>
+				<groupId>jakarta.xml.bind</groupId>
+				<artifactId>jakarta.xml.bind-api</artifactId>
+				<version>2.3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.jaxb</groupId>
+				<artifactId>jaxb-runtime</artifactId>
+				<version>2.3.2</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.jboss.shrinkwrap</groupId>
 				<artifactId>shrinkwrap-impl-base</artifactId>
@@ -653,13 +718,6 @@
 				<scope>test</scope>
 			</dependency>
 
-
-			<dependency>
-				<groupId>org.jboss.arquillian.extension</groupId>
-				<artifactId>arquillian-drone-api</artifactId>
-				<version>${arquillian-drone-bom.version}</version>
-				<scope>test</scope>
-			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-java</artifactId>
@@ -887,6 +945,27 @@
 			<artifactId>arquillian-protocol-servlet-jakarta</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-drone-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.graphene</groupId>
+			<artifactId>graphene-webdriver-spi</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-drone-spi</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-drone-configuration</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-drone-impl</artifactId>
@@ -894,14 +973,17 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.extension</groupId>
-			<artifactId>arquillian-drone-webdriver-depchain</artifactId>
-			<type>pom</type>
+			<artifactId>arquillian-drone-webdriver</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--
 		<dependency>
 			<groupId>org.jboss.arquillian.graphene</groupId>
-			<artifactId>graphene-webdriver-ftest</artifactId>
+			<artifactId>graphene-webdriver-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.graphene</groupId>
+			<artifactId>arquillian-browser-screenshooter</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -909,7 +991,14 @@
 			<artifactId>graphene-webdriver-impl</artifactId>
 			<scope>test</scope>
 		</dependency>
-		-->
+		<dependency>
+			<groupId>org.jboss.arquillian.graphene</groupId>
+			<artifactId>graphene-webdriver-ftest</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+
 		<dependency>
 			<groupId>org.jboss.shrinkwrap</groupId>
 			<artifactId>shrinkwrap-impl-base</artifactId>
