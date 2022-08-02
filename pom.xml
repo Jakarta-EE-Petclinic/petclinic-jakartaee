@@ -1343,8 +1343,10 @@
 							<goal>test</goal>
 						</goals>
 						<configuration>
+							<includes>org/woehlke/jakartaee/petclinic/unit/**</includes>
 							<excludes>
-								<exclude>**/it/**</exclude>
+								<exclude>org/woehlke/jakartaee/petclinic/tmp/**</exclude>
+								<exclude>org/woehlke/jakartaee/petclinic/it/**</exclude>
 							</excludes>
 						</configuration>
 					</execution>
