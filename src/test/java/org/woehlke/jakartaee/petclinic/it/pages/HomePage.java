@@ -338,8 +338,7 @@ public class HomePage {
         return this;
     }
 
-
-    public void assertTitle(){
-        Assert.assertEquals("Jakarta EE 9.1 Petclinic",driver.getTitle());
+    public void assertPageIsLoaded() {
+        Assert.assertEquals("Jakarta EE 9.1 Petclinic", driver.getTitle());
     }
 }

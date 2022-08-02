@@ -6,8 +6,9 @@ Not for reuse without permission.
 
 package org.woehlke.jakartaee.petclinic.it.pages;
 
-import java.util.List;
 import java.util.Map;
+
+import org.junit.Assert;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -91,31 +92,31 @@ public class SpecialtyPage {
 
     @FindBy(id = "findEntityForm:searchButton")
     @CacheLookup
-    private WebElement uibutton2;
+    private WebElement searchButton;
 
     @FindBy(id = "findEntityForm:clearSearchButton")
     @CacheLookup
-    private WebElement uibutton3;
+    private WebElement clearSearchButton;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton4;
+    private WebElement showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton5;
+    private WebElement showDetailsFormButton1;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton6;
+    private WebElement showDetailsFormButton2;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton7;
+    private WebElement showDetailsFormButton3;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton8;
+    private WebElement showDetailsFormButton4;
 
     @FindBy(css = "a[href='veterinarian.jsf']")
     @CacheLookup
@@ -283,7 +284,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickUibutton2Button() {
-        uibutton2.click();
+        searchButton.click();
         return this;
     }
 
@@ -293,7 +294,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickUibutton3Button() {
-        uibutton3.click();
+        clearSearchButton.click();
         return this;
     }
 
@@ -303,7 +304,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickUibutton4Button() {
-        uibutton4.click();
+        showDetailsFormButton0.click();
         return this;
     }
 
@@ -313,7 +314,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickUibutton5Button() {
-        uibutton5.click();
+        showDetailsFormButton1.click();
         return this;
     }
 
@@ -323,7 +324,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickUibutton6Button() {
-        uibutton6.click();
+        showDetailsFormButton2.click();
         return this;
     }
 
@@ -333,7 +334,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickUibutton7Button() {
-        uibutton7.click();
+        showDetailsFormButton3.click();
         return this;
     }
 
@@ -343,7 +344,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickUibutton8Button() {
-        uibutton8.click();
+        showDetailsFormButton4.click();
         return this;
     }
 
@@ -512,5 +513,9 @@ public class SpecialtyPage {
             }
         });
         return this;
+    }
+
+    public void assertPageIsLoaded() {
+        Assert.assertEquals("Jakarta EE 9.1 Petclinic", driver.getTitle());
     }
 }
