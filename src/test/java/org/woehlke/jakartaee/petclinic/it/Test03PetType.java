@@ -14,7 +14,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.pages.HomePage;
 import org.woehlke.jakartaee.petclinic.it.pages.PetTypePage;
-import org.woehlke.jakartaee.petclinic.it.pages.SpecialtyPage;
 import org.woehlke.jakartaee.petclinic.tmp.Deployments;
 import org.woehlke.jakartaee.petclinic.tmp.pages.HelloPage;
 
@@ -55,15 +54,15 @@ public class Test03PetType {
     @InSequence(2)
     @RunAsClient
     public void openSpecialtyPage() {
-        goTo(SpecialtyPage.class);
+        goTo(PetTypePage.class);
         petTypePage.assertPageIsLoaded();
     }
 
     @Test
-    @InSequence(2)
+    @InSequence(3)
     @RunAsClient
     public void openSpecialtyDetailsPage() {
-        goTo(SpecialtyPage.class);
+        goTo(PetTypePage.class);
         petTypePage.assertPageIsLoaded();
     }
 

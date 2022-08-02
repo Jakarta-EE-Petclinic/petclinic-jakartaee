@@ -68,7 +68,7 @@ public class Test01Specialty {
     }
 
     @Test
-    @InSequence(2)
+    @InSequence(3)
     @RunAsClient
     public void openSpecialtyDetailsPage() {
         goTo(SpecialtyPage.class);
@@ -76,7 +76,7 @@ public class Test01Specialty {
     }
 
     @Test
-    @InSequence(3)
+    @InSequence(4)
     @RunAsClient
     public void addNewSpecialtyPage() {
         goTo(SpecialtyPage.class);
@@ -85,7 +85,7 @@ public class Test01Specialty {
 
 
     @Test
-    @InSequence(4)
+    @InSequence(5)
     @RunAsClient
     public void editSpecialtyPage() {
         goTo(SpecialtyPage.class);
@@ -93,7 +93,7 @@ public class Test01Specialty {
     }
 
     @Test
-    @InSequence(5)
+    @InSequence(6)
     @RunAsClient
     public void deleteSpecialtyPage() {
         goTo(SpecialtyPage.class);
@@ -106,7 +106,7 @@ public class Test01Specialty {
     }
 
     @Test
-    @InSequence(6)
+    @InSequence(7)
     @RunAsClient
     public void fillSpecialtyPager() {
         goTo(SpecialtyPage.class);
@@ -115,7 +115,7 @@ public class Test01Specialty {
     }
 
     @Test
-    @InSequence(7)
+    @InSequence(8)
     @RunAsClient
     public void nextAndPreviousSpecialtyPage() {
         goTo(SpecialtyPage.class);
@@ -130,7 +130,7 @@ public class Test01Specialty {
     }
 
     @Test
-    @InSequence(8)
+    @InSequence(9)
     @RunAsClient
     public void changeSortOrderSpecialtySorter() {
         goTo(SpecialtyPage.class);

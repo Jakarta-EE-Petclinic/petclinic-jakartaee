@@ -54,16 +54,16 @@ public class Test04Owner {
     @Test
     @InSequence(2)
     @RunAsClient
-    public void openSpecialtyPage() {
-        goTo(SpecialtyPage.class);
+    public void openOwnerPage() {
+        goTo(OwnerPage.class);
         ownerPage.assertPageIsLoaded();
     }
 
     @Test
-    @InSequence(2)
+    @InSequence(3)
     @RunAsClient
-    public void openSpecialtyDetailsPage() {
-        goTo(SpecialtyPage.class);
+    public void openOwnerDetailsPage() {
+        goTo(OwnerPage.class);
         ownerPage.assertPageIsLoaded();
     }
 
