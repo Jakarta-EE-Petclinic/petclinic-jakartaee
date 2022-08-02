@@ -13,7 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.pages.HomePage;
-import org.woehlke.jakartaee.petclinic.it.pages.PetTypePage;
+import org.woehlke.jakartaee.petclinic.it.pages.InformationPage;
+import org.woehlke.jakartaee.petclinic.it.pages.OwnerPage;
 import org.woehlke.jakartaee.petclinic.tmp.Deployments;
 import org.woehlke.jakartaee.petclinic.tmp.pages.HelloPage;
 
@@ -23,7 +24,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
 
 @Log
 @RunWith(Arquillian.class)
-public class Test03PetType {
+public class Test05Information {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
@@ -40,7 +41,7 @@ public class Test03PetType {
     private HomePage homePage;
 
     @Page
-    private PetTypePage petTypePage;
+    private InformationPage informationPage;
 
     @Test
     @InSequence(1)
@@ -53,17 +54,9 @@ public class Test03PetType {
     @Test
     @InSequence(2)
     @RunAsClient
-    public void openPetTypePage() {
-        goTo(PetTypePage.class);
-        petTypePage.assertPageIsLoaded();
-    }
-
-    @Test
-    @InSequence(3)
-    @RunAsClient
-    public void openPetTypeDetailsPage() {
-        goTo(PetTypePage.class);
-        petTypePage.assertPageIsLoaded();
+    public void openInformationPage() {
+        goTo(InformationPage.class);
+        informationPage.assertPageIsLoaded();
     }
 
 }

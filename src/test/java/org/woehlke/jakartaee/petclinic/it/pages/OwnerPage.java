@@ -385,6 +385,6 @@ public class OwnerPage {
 
     public void assertPageIsLoaded() {
         assertThat(pageTitle.isDisplayed());
-        assertEquals( "Specialties", pageTitle.getText() );
+        assertEquals( "Owners", pageTitle.getText() );
     }
 }

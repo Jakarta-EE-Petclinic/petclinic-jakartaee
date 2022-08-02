@@ -18,6 +18,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @Location("info.jsf")
 public class InformationPage {
     private Map<String, String> data;
@@ -480,5 +483,10 @@ public class InformationPage {
             }
         });
         return this;
+    }
+
+    public void assertPageIsLoaded() {
+        assertThat(pageTitle.isDisplayed());
+        assertEquals( "Information", pageTitle.getText() );
     }
 }

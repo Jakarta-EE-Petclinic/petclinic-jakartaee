@@ -400,6 +400,6 @@ public class VeterinarianPage {
 
     public void assertPageIsLoaded() {
         assertThat(pageTitle.isDisplayed());
-        assertEquals( "Specialties", pageTitle.getText() );
+        assertEquals( "Veterinarians", pageTitle.getText() );
     }
 }

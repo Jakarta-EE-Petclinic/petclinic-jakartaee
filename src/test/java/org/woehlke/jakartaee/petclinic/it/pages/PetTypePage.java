@@ -525,6 +525,6 @@ public class PetTypePage {
 
     public void assertPageIsLoaded() {
         assertThat(pageTitle.isDisplayed());
-        assertEquals( "Specialties", pageTitle.getText() );
+        assertEquals( "Pet Types", pageTitle.getText() );
     }
 }
