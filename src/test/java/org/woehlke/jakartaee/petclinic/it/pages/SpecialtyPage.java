@@ -8,6 +8,8 @@ package org.woehlke.jakartaee.petclinic.it.pages;
 
 import java.util.Map;
 
+import org.jboss.arquillian.drone.api.annotation.Drone;
+import org.jboss.arquillian.graphene.page.Location;
 import org.junit.Assert;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -17,8 +19,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+@Location("specialty.jsf")
 public class SpecialtyPage {
     private Map<String, String> data;
+    @Drone
     private WebDriver driver;
     private int timeout = 15;
 
