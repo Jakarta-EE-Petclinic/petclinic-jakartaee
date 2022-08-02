@@ -154,7 +154,7 @@
 		<assertj.version>3.23.1</assertj.version>
 
 		<skip.unit.tests>true</skip.unit.tests>
-		<skip.integration.tests>false</skip.integration.tests>
+		<skip.integration.tests>true</skip.integration.tests>
 	</properties>
 
 	<repositories>
