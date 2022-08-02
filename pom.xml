@@ -1993,7 +1993,7 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean verify org.codehaus.cargo:cargo-maven3-plugin:run</defaultGoal>
+				<defaultGoal>dependency:purge-local-repository clean package verify org.codehaus.cargo:cargo-maven3-plugin:run</defaultGoal>
 				<pluginManagement>
 					<plugins>
 						<plugin>
@@ -2938,7 +2938,7 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean verify</defaultGoal>
+				<defaultGoal>dependency:purge-local-repository clean verify</defaultGoal>
 				<testResources>
 					<testResource>
 						<directory>src/test/resources-arquillian/arq-liberty-managed</directory>
@@ -3114,7 +3114,7 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean verify</defaultGoal>
+				<defaultGoal>dependency:purge-local-repository clean package verify</defaultGoal>
 				<testResources>
 					<testResource>
 						<directory>src/test/resources-arquillian/arq-wildfly-managed</directory>
