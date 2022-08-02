@@ -20,6 +20,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Location("specialty.jsf")
 public class SpecialtyPage {
@@ -526,6 +527,6 @@ public class SpecialtyPage {
 
     public void assertPageIsLoaded() {
         assertThat(pageTitle.isDisplayed());
-        assertThat( "Specialties".compareTo(pageTitle.getText())==0 );
+        assertEquals( "Specialties", pageTitle.getText() );
     }
 }

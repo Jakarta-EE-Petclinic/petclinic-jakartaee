@@ -17,6 +17,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @Location("petType.jsf")
 public class PetTypePage {
     private Map<String, String> data;
@@ -518,5 +521,10 @@ public class PetTypePage {
             }
         });
         return this;
+    }
+
+    public void assertPageIsLoaded() {
+        assertThat(pageTitle.isDisplayed());
+        assertEquals( "Specialties", pageTitle.getText() );
     }
 }

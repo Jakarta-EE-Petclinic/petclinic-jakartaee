@@ -17,6 +17,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 @Location("veterinarian.jsf")
 public class VeterinarianPage {
@@ -393,5 +396,10 @@ public class VeterinarianPage {
             }
         });
         return this;
+    }
+
+    public void assertPageIsLoaded() {
+        assertThat(pageTitle.isDisplayed());
+        assertEquals( "Specialties", pageTitle.getText() );
     }
 }
