@@ -16,7 +16,7 @@
     </container>
 
     <extension qualifier="webdriver">
-        <property name="browser">opera</property>
+        <property name="browser">chrome</property>
     </extension>
 
     <extension qualifier="drone">
