@@ -67,6 +67,13 @@ public class Test01Specialty {
         specialtyPage.assertPageIsLoaded();
     }
 
+    @Test
+    @InSequence(2)
+    @RunAsClient
+    public void openSpecialtyDetailsPage() {
+        goTo(SpecialtyPage.class);
+        specialtyPage.assertPageIsLoaded();
+    }
 
     @Test
     @InSequence(3)
