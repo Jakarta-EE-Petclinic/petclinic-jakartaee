@@ -19,6 +19,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Location("home.jsf")
 public class HomePage {
 
@@ -26,6 +28,9 @@ public class HomePage {
     @Drone
     private WebDriver driver;
     private int timeout = 15;
+
+    @FindBy(css = "#listEntityHeaderId")
+    private WebElement pageTitle;
 
     @FindBy(id = "j_idt14:j_idt23_focus")
     @CacheLookup
@@ -339,6 +344,7 @@ public class HomePage {
     }
 
     public void assertPageIsLoaded() {
-        Assert.assertEquals("Jakarta EE 9.1 Petclinic", driver.getTitle());
+        assertThat(pageTitle.isDisplayed());
+        assertThat( "Specialties".compareTo(pageTitle.getText())==0 );
     }
 }

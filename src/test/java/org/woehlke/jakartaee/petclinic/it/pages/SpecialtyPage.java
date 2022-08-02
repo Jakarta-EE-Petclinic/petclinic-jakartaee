@@ -19,12 +19,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Location("specialty.jsf")
 public class SpecialtyPage {
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
     private int timeout = 15;
+
+    @FindBy(css = "#listEntityHeaderId")
+    private WebElement pageTitle;
 
     @FindBy(css = "a.ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all")
     @CacheLookup
@@ -520,6 +525,7 @@ public class SpecialtyPage {
     }
 
     public void assertPageIsLoaded() {
-        Assert.assertEquals("Jakarta EE 9.1 Petclinic", driver.getTitle());
+        assertThat(pageTitle.isDisplayed());
+        assertThat( "Specialties".compareTo(pageTitle.getText())==0 );
     }
 }
