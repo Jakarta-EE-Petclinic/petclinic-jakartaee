@@ -61,7 +61,7 @@ public class SpecialtyPage {
     }
 
     /**
-     * Click on Uibutton Button.
+     * Click on showDetailsFormButton0 Button.
      *
      * @return the SpecialtyPage class instance.
      */

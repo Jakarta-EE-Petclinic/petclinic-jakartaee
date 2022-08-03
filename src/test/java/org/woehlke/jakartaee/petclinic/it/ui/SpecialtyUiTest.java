@@ -9,6 +9,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -80,18 +81,6 @@ public class SpecialtyUiTest {
     @Test
     @InSequence(3)
     @RunAsClient
-    public void openSpecialtyDetailsPage() {
-        goTo(SpecialtyPage.class);
-        specialtyPage.assertPageIsLoaded();
-        specialtyPage.clickShowDetailsFormButton0();
-        specialtyPage.assertPageDetailsIsLoaded();
-        specialtyPage.clickCancelDetailsButton();
-        specialtyPage.assertPageIsLoaded();
-    }
-
-    @Test
-    @InSequence(4)
-    @RunAsClient
     public void addNewSpecialtyPage() {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
@@ -101,6 +90,20 @@ public class SpecialtyUiTest {
         specialtyPage.assertPageIsLoaded();
     }
 
+    @Ignore
+    @Test
+    @InSequence(4)
+    @RunAsClient
+    public void openSpecialtyDetailsPage() {
+        goTo(SpecialtyPage.class);
+        specialtyPage.assertPageIsLoaded();
+        specialtyPage.clickShowDetailsFormButton0();
+        specialtyPage.assertPageDetailsIsLoaded();
+        specialtyPage.clickCancelDetailsButton();
+        specialtyPage.assertPageIsLoaded();
+    }
+
+    @Ignore
     @Test
     @InSequence(5)
     @RunAsClient
@@ -116,6 +119,7 @@ public class SpecialtyUiTest {
         specialtyPage.assertPageIsLoaded();
     }
 
+    @Ignore
     @Test
     @InSequence(6)
     @RunAsClient
@@ -131,6 +135,7 @@ public class SpecialtyUiTest {
         specialtyPage.assertPageIsLoaded();
     }
 
+    @Ignore
     @Test
     @InSequence(7)
     @RunAsClient
@@ -142,6 +147,7 @@ public class SpecialtyUiTest {
         //specialtyPage.clickAddNewSpecialty();
     }
 
+    @Ignore
     @Test
     @InSequence(8)
     @RunAsClient
@@ -157,6 +163,7 @@ public class SpecialtyUiTest {
        */
     }
 
+    @Ignore
     @Test
     @InSequence(9)
     @RunAsClient
