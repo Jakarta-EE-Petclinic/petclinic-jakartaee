@@ -11,7 +11,6 @@ import java.util.Map;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Location;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,8 +36,8 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickAddNewSpecialtyButton() {
-       assertNotNull(addNewSpecialty);
-       Graphene.guardHttp(addNewSpecialty).click();
+       assertNotNull(showNewFormButton);
+       Graphene.guardHttp(showNewFormButton).click();
        return this;
     }
 
@@ -78,32 +77,25 @@ public class SpecialtyPage {
         return this;
     }
 
-    @FindBy(id = "addNewEntityForm:cancelNew")
-    //@CacheLookups
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form/div/div[@id='addNewEntityForm:addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='addNewEntityForm:cancelNew']")
     private CommandButton cancelNewSpecialty;
 
-    @FindBy(id="entityDataTableForm:showNewFormButton")
-    //@CacheLookups
-    private CommandButton addNewSpecialty;
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[2]/div[1]/button[@id='entityDataTableForm:showNewFormButton']")
+    private CommandButton showNewFormButton;
 
-    @FindBy(id = "detailsEntityForm:showEditFormButton")
-    //@CacheLookups
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form/div/div[@id='detailsEntityForm:detailsEntityFormPanel_content']/div[3]/div[2]/button[@id='detailsEntityForm:showEditFormButton']")
     private CommandButton editSpecialty;
 
-    @FindBy(id = "entityDataTableForm:cancelDetails")
-    //@CacheLookups
-    private CommandButton cancelDetails;
-
-    @FindBy(id = "entityDataTableForm:cancelDetails")
-    //@CacheLookups
-    private CommandButton cancelEdit;
-
-    @FindBy(id="detailsEntityForm:deleteSelectedButton")
-    //@CacheLookups
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form/div/div[@id='detailsEntityForm:detailsEntityFormPanel_content']/div[3]/div[3]/button[@id='detailsEntityForm:showEditFormButton']")
     private CommandButton showDeleteForm;
 
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form/div/div[@id='detailsEntityForm:detailsEntityFormPanel_content']/div[3]/div[1]/button[@id='detailsEntityForm:cancelDetails']")
+    private CommandButton cancelDetails;
+
+    @FindBy(id = "entityDataTableForm:cancelEdit")
+    private CommandButton cancelEdit;
+
     @FindBy(id="detailsEntityForm:canceDelete")
-    //@CacheLookups
     private CommandButton canceDelete;
 
     public void assertPageIsLoaded() {
@@ -218,7 +210,7 @@ public class SpecialtyPage {
     @FindBy(id = "findEntityForm:clearSearchButton")
     private CommandButton clearSearchButton;
 
-    @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[1]/div/div/div[1]/table/tbody/tr[1]/td[2]/button/@name")
     private CommandButton showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
