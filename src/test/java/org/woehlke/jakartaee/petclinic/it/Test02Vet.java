@@ -13,7 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.pages.HomePage;
-import org.woehlke.jakartaee.petclinic.it.pages.SpecialtyPage;
 import org.woehlke.jakartaee.petclinic.it.pages.VeterinarianPage;
 import org.woehlke.jakartaee.petclinic.tmp.Deployments;
 import org.woehlke.jakartaee.petclinic.tmp.pages.HelloPage;
