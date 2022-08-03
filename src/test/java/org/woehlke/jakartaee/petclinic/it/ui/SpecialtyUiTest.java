@@ -49,18 +49,6 @@ public class SpecialtyUiTest {
     @Page
     private SpecialtyPage specialtyPage;
 
-    @Page
-    private SpecialtyDetailsPage specialtyDetailsPage;
-
-    @Page
-    private SpecialtyEditPage specialtyEditPage;
-
-    @Page
-    private SpecialtyDeletePage specialtyDeletePage;
-
-    @Page
-    private SpecialtyNewPage specialtyNewPage;
-
     @Test
     @InSequence(1)
     @RunAsClient
@@ -78,6 +66,7 @@ public class SpecialtyUiTest {
         specialtyPage.assertPageIsLoaded();
     }
 
+    @Ignore
     @Test
     @InSequence(3)
     @RunAsClient
@@ -103,7 +92,7 @@ public class SpecialtyUiTest {
         specialtyPage.assertPageIsLoaded();
     }
 
-    @Ignore
+
     @Test
     @InSequence(5)
     @RunAsClient

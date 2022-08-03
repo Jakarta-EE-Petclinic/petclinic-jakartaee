@@ -60,17 +60,6 @@ public class SpecialtyPage {
         return this;
     }
 
-    /**
-     * Click on showDetailsFormButton0 Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickShowDetailsFormButton0() {
-        assertNotNull(showDetailsFormButton0);
-        Graphene.guardHttp(showDetailsFormButton0).click();
-        return this;
-    }
-
     public SpecialtyPage clickShowEditForm() {
         assertNotNull(editSpecialty);
         Graphene.guardHttp(editSpecialty).click();
@@ -224,31 +213,24 @@ public class SpecialtyPage {
 
 
     @FindBy(id = "findEntityForm:searchButton")
-    //@CacheLookup
     private CommandButton searchButton;
 
     @FindBy(id = "findEntityForm:clearSearchButton")
-    //@CacheLookup
     private CommandButton clearSearchButton;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
-    //@CacheLookup
     private CommandButton showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
-    //@CacheLookup
     private CommandButton showDetailsFormButton1;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
-    //@CacheLookup
     private CommandButton showDetailsFormButton2;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
-    //@CacheLookup
     private CommandButton showDetailsFormButton3;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
-    //@CacheLookup
     private CommandButton showDetailsFormButton4;
 
     public SpecialtyPage() {
@@ -395,7 +377,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickSearchButton() {
-        searchButton.click();
+        Graphene.guardHttp(searchButton).click();
         return this;
     }
 
@@ -409,7 +391,16 @@ public class SpecialtyPage {
         return this;
     }
 
-
+    /**
+     * Click on showDetailsFormButton0 Button.
+     *
+     * @return the SpecialtyPage class instance.
+     */
+    public SpecialtyPage clickShowDetailsFormButton0() {
+        assertNotNull(showDetailsFormButton0);
+        Graphene.guardHttp(showDetailsFormButton0).click();
+        return this;
+    }
 
     /**
      * Click on Uibutton Button.
@@ -417,6 +408,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton1() {
+        assertNotNull(showDetailsFormButton1);
         Graphene.guardHttp(showDetailsFormButton1).click();
         return this;
     }
@@ -427,6 +419,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton2() {
+        assertNotNull(showDetailsFormButton2);
         Graphene.guardHttp(showDetailsFormButton2).click();
         return this;
     }
@@ -437,6 +430,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton3() {
+        assertNotNull(showDetailsFormButton3);
         Graphene.guardHttp(showDetailsFormButton3).click();
         return this;
     }
@@ -447,6 +441,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton4() {
+        assertNotNull(showDetailsFormButton4);
         Graphene.guardHttp(showDetailsFormButton4).click();
         return this;
     }
@@ -487,9 +482,9 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage fill() {
-        setEnglisch1DropDownListField();
-        setEnglisch2DropDownListField();
-        setEnglisch3TextField();
+       // setEnglisch1DropDownListField();
+       // setEnglisch2DropDownListField();
+       // setEnglisch3TextField();
         return this;
     }
 
