@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.it.ui;
+package org.woehlke.jakartaee.petclinic.it.deployments;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;

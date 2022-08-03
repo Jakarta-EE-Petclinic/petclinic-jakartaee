@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.it;
+package org.woehlke.jakartaee.petclinic.it.ui;
 
 import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -12,7 +12,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.woehlke.jakartaee.petclinic.it.ui.Deployments;
+import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.PetTypePage;
 
@@ -22,7 +22,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
 
 @Log
 @RunWith(Arquillian.class)
-public class Test03PetType {
+public class PetTypeUiTest {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
