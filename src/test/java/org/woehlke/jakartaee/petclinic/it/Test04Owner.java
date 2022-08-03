@@ -14,9 +14,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.pages.HomePage;
 import org.woehlke.jakartaee.petclinic.it.pages.OwnerPage;
-import org.woehlke.jakartaee.petclinic.it.pages.SpecialtyPage;
-import org.woehlke.jakartaee.petclinic.tmp.Deployments;
-import org.woehlke.jakartaee.petclinic.tmp.pages.HelloPage;
 
 import java.net.URL;
 
@@ -47,7 +44,7 @@ public class Test04Owner {
     @InSequence(1)
     @RunAsClient
     public void openHomePage() {
-        goTo(HelloPage.class);
+        goTo(HomePage.class);
         homePage.assertPageIsLoaded();
     }
 

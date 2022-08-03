@@ -5,7 +5,6 @@ Not for reuse without permission.
 */
 
 package org.woehlke.jakartaee.petclinic.it.pages;
-import java.util.List;
 import java.util.Map;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;

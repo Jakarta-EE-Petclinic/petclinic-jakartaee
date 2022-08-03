@@ -13,8 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.pages.*;
-import org.woehlke.jakartaee.petclinic.tmp.Deployments;
-import org.woehlke.jakartaee.petclinic.tmp.pages.HelloPage;
 
 import java.net.URL;
 
@@ -65,7 +63,7 @@ public class Test01Specialty {
     @InSequence(1)
     @RunAsClient
     public void openHomePage() {
-        goTo(HelloPage.class);
+        goTo(HomePage.class);
         homePage.assertPageIsLoaded();
     }
 
