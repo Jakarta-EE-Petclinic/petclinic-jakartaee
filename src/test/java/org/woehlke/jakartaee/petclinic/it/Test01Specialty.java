@@ -12,8 +12,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.woehlke.jakartaee.petclinic.it.pages.HomePage;
-import org.woehlke.jakartaee.petclinic.it.pages.SpecialtyPage;
+import org.woehlke.jakartaee.petclinic.it.pages.*;
 import org.woehlke.jakartaee.petclinic.tmp.Deployments;
 import org.woehlke.jakartaee.petclinic.tmp.pages.HelloPage;
 
@@ -50,6 +49,18 @@ public class Test01Specialty {
     @Page
     private SpecialtyPage specialtyPage;
 
+    @Page
+    private SpecialtyDetailsPage specialtyDetailsPage;
+
+    @Page
+    private SpecialtyEditPage specialtyEditPage;
+
+    @Page
+    private SpecialtyDeletePage specialtyDeletePage;
+
+    @Page
+    private SpecialtyNewPage specialtyNewPage;
+
     @Test
     @InSequence(1)
     @RunAsClient
@@ -73,6 +84,8 @@ public class Test01Specialty {
     public void openSpecialtyDetailsPage() {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
+        specialtyPage.clickShowDetailsFormButton1();
+        specialtyDetailsPage.assertPageIsLoaded();
     }
 
     @Test
@@ -81,8 +94,9 @@ public class Test01Specialty {
     public void addNewSpecialtyPage() {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
+        // click new botton
+        // assert new page is loaded
     }
-
 
     @Test
     @InSequence(5)
@@ -90,6 +104,8 @@ public class Test01Specialty {
     public void editSpecialtyPage() {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
+        specialtyPage.clickShowDetailsFormButton1();
+        specialtyDetailsPage.assertPageIsLoaded();
     }
 
     @Test
@@ -98,6 +114,8 @@ public class Test01Specialty {
     public void deleteSpecialtyPage() {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
+        specialtyPage.clickShowDetailsFormButton1();
+        specialtyDetailsPage.assertPageIsLoaded();
         /*
         specialtyPage.clickDeleteSpecialty();
         specialtyPage.assertPageIsLoaded();
@@ -110,6 +128,8 @@ public class Test01Specialty {
     @RunAsClient
     public void fillSpecialtyPager() {
         goTo(SpecialtyPage.class);
+        specialtyPage.assertPageIsLoaded();
+        specialtyPage.clickShowDetailsFormButton1();
         specialtyPage.assertPageIsLoaded();
         //specialtyPage.clickAddNewSpecialty();
     }
