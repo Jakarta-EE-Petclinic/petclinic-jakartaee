@@ -2,6 +2,7 @@
 <server description="defaultServer">
 	<featureManager>
 		<feature>jakartaee-9.1</feature>
+		<feature>microprofile-5.0</feature>
 	</featureManager>
 
 	<httpSession idLength="56" cookieHttpOnly="false" cookieName="JSESSIONID" invalidationTimeout="8h"/>

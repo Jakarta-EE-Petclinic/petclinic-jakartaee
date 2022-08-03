@@ -5,5 +5,6 @@
     <featureManager>
 	    <!--The following features were generated based on API usage detected in your application-->
 		<feature>jakartaee-9.1</feature>
+        <feature>microprofile-5.0</feature>
     </featureManager>
 </server>
