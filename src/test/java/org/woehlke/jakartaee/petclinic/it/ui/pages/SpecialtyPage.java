@@ -36,24 +36,25 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickAddNewSpecialtyButton() {
-       assertNotNull(showNewFormButton);
+       Graphene.waitForHttp(showNewFormButton);
        Graphene.guardHttp(showNewFormButton).click();
        return this;
     }
 
     public SpecialtyPage clickCancelNewSpecialtyButton() {
-        assertNotNull(cancelNewSpecialty);
+        Graphene.waitForHttp(cancelNewSpecialty);
         Graphene.guardHttp(cancelNewSpecialty).click();
         return this;
     }
 
     public SpecialtyPage clickCancelDetailsButton() {
-        assertNotNull(cancelDetails);
+        Graphene.waitForHttp(cancelDetails);
         Graphene.guardHttp(cancelDetails).click();
         return this;
     }
 
     public SpecialtyPage clickCancelEditButton() {
+        Graphene.waitForHttp(cancelEdit);
         assertNotNull(cancelEdit);
         Graphene.guardHttp(cancelEdit).click();
         return this;
@@ -66,13 +67,13 @@ public class SpecialtyPage {
     }
 
     public SpecialtyPage clickShowDeleteForm() {
-        assertNotNull(showDeleteForm);
+        Graphene.waitForHttp(showDeleteForm);
         Graphene.guardHttp(showDeleteForm).click();
         return this;
     }
 
     public SpecialtyPage clickCancelDelete() {
-        assertNotNull(canceDelete);
+        Graphene.waitForHttp(canceDelete);
         Graphene.guardHttp(canceDelete).click();
         return this;
     }
@@ -389,7 +390,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton0() {
-        assertNotNull(showDetailsFormButton0);
+        Graphene.waitForHttp(showDetailsFormButton0);
         Graphene.guardHttp(showDetailsFormButton0).click();
         return this;
     }
@@ -400,7 +401,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton1() {
-        assertNotNull(showDetailsFormButton1);
+        Graphene.waitForHttp(showDetailsFormButton1);
         Graphene.guardHttp(showDetailsFormButton1).click();
         return this;
     }
@@ -411,7 +412,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton2() {
-        assertNotNull(showDetailsFormButton2);
+        Graphene.waitForHttp(showDetailsFormButton2);
         Graphene.guardHttp(showDetailsFormButton2).click();
         return this;
     }
@@ -422,7 +423,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton3() {
-        assertNotNull(showDetailsFormButton3);
+        Graphene.waitForHttp(showDetailsFormButton3);
         Graphene.guardHttp(showDetailsFormButton3).click();
         return this;
     }
@@ -433,7 +434,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton4() {
-        assertNotNull(showDetailsFormButton4);
+        Graphene.waitForHttp(showDetailsFormButton4);
         Graphene.guardHttp(showDetailsFormButton4).click();
         return this;
     }

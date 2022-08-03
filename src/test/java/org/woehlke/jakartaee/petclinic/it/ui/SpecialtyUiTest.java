@@ -65,6 +65,7 @@ public class SpecialtyUiTest {
         specialtyPage.assertPageIsLoaded();
     }
 
+    @Ignore
     @Test
     @InSequence(3)
     @RunAsClient
@@ -77,6 +78,7 @@ public class SpecialtyUiTest {
         specialtyPage.assertPageIsLoaded();
     }
 
+    @Ignore
     @Test
     @InSequence(4)
     @RunAsClient
