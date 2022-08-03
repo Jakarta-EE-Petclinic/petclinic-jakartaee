@@ -84,7 +84,9 @@ public class SpecialtyUiTest {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
         specialtyPage.clickShowDetailsFormButton0();
-        specialtyDetailsPage.assertPageIsLoaded();
+        specialtyPage.assertPageDetailsIsLoaded();
+        specialtyPage.clickCancelDetailsButton();
+        specialtyPage.assertPageIsLoaded();
     }
 
     @Test
@@ -94,7 +96,9 @@ public class SpecialtyUiTest {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
         specialtyPage.clickAddNewSpecialtyButton();
-        specialtyNewPage.assertPageIsLoaded();
+        specialtyPage.assertPageNewIsLoaded();
+        specialtyPage.clickCancelNewSpecialtyButton();
+        specialtyPage.assertPageIsLoaded();
     }
 
     @Test
@@ -103,8 +107,13 @@ public class SpecialtyUiTest {
     public void editSpecialtyPage() {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
-        //specialtyPage.clickShowDetailsFormButton0();
-        //specialtyDetailsPage.assertPageIsLoaded();
+        specialtyPage.clickShowDetailsFormButton0();
+        specialtyPage.assertPageDetailsIsLoaded();
+        specialtyPage.clickShowEditForm();
+        specialtyPage.assertPageEditIsLoaded();
+        specialtyPage.clickCancelEditButton();
+        specialtyPage.clickCancelDetailsButton();
+        specialtyPage.assertPageIsLoaded();
     }
 
     @Test
@@ -113,13 +122,13 @@ public class SpecialtyUiTest {
     public void deleteSpecialtyPage() {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
-       // specialtyPage.clickShowDetailsFormButton0();
-       // specialtyDetailsPage.assertPageIsLoaded();
-        /*
-        specialtyPage.clickDeleteSpecialty();
+        specialtyPage.clickShowDetailsFormButton1();
+        specialtyPage.assertPageDetailsIsLoaded();
+        specialtyPage.clickShowDeleteForm();
+        specialtyPage.assertPageDeleteIsLoaded();
+        specialtyPage.clickCancelDelete();
+        specialtyPage.clickCancelDetailsButton();
         specialtyPage.assertPageIsLoaded();
-        specialtyPage.assertDeletedContentNotFound();
-        */
     }
 
     @Test

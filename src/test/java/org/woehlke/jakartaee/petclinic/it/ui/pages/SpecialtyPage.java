@@ -15,6 +15,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.primefaces.selenium.component.CommandButton;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,7 +28,7 @@ public class SpecialtyPage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(id = "listEntityHeaderId")
+    @FindBy(xpath = "/html/body/div[1]/section[1]/div/div/div/h1/span[@class='contentTitleHeadlineText']")
     private WebElement pageTitle;
 
     /**
@@ -36,7 +37,26 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickAddNewSpecialtyButton() {
-        Graphene.guardHttp(addNewSpecialty).click();
+       assertNotNull(addNewSpecialty);
+       addNewSpecialty.click();
+       return this;
+    }
+
+    public SpecialtyPage clickCancelNewSpecialtyButton() {
+        assertNotNull(cancelNewSpecialty);
+        cancelNewSpecialty.click();
+        return this;
+    }
+
+    public SpecialtyPage clickCancelDetailsButton() {
+        assertNotNull(cancelDetails);
+        cancelDetails.click();
+        return this;
+    }
+
+    public SpecialtyPage clickCancelEditButton() {
+        assertNotNull(cancelEdit);
+        cancelEdit.click();
         return this;
     }
 
@@ -47,17 +67,79 @@ public class SpecialtyPage {
      */
     public SpecialtyPage clickShowDetailsFormButton0() {
         assertNotNull(showDetailsFormButton0);
-        Graphene.guardHttp(showDetailsFormButton0).click();
+        showDetailsFormButton0.click();
         return this;
     }
 
+    public SpecialtyPage clickShowEditForm() {
+        assertNotNull(editSpecialty);
+        editSpecialty.click();
+        return this;
+    }
+
+    public SpecialtyPage clickShowDeleteForm() {
+        assertNotNull(showDeleteForm);
+        showDeleteForm.click();
+        return this;
+    }
+
+    public SpecialtyPage clickCancelDelete() {
+        assertNotNull(canceDelete);
+        canceDelete.click();
+        return this;
+    }
+
+    @FindBy(id = "addNewEntityForm:cancelNew")
+    //@CacheLookups
+    private CommandButton cancelNewSpecialty;
+
     @FindBy(id = "entityDataTableForm:showNewFormButton")
-    //@CacheLookup
-    private WebElement addNewSpecialty;
+    //@CacheLookups
+    private CommandButton addNewSpecialty;
+
+    @FindBy(id = "detailsEntityForm:showEditFormButton")
+    //@CacheLookups
+    private CommandButton editSpecialty;
+
+    @FindBy(id = "entityDataTableForm:cancelDetails")
+    //@CacheLookups
+    private CommandButton cancelDetails;
+
+    @FindBy(id = "entityDataTableForm:cancelDetails")
+    //@CacheLookups
+    private CommandButton cancelEdit;
+
+    @FindBy(id="detailsEntityForm:deleteSelectedButton")
+    //@CacheLookups
+    private CommandButton showDeleteForm;
+
+    @FindBy(id="detailsEntityForm:canceDelete")
+    //@CacheLookups
+    private CommandButton canceDelete;
 
     public void assertPageIsLoaded() {
-        //assertThat(pageTitle.isDisplayed());
+        assertThat(pageTitle.isDisplayed());
         assertEquals( "Specialties", pageTitle.getText() );
+    }
+
+    public void assertPageNewIsLoaded() {
+        assertThat(pageTitle.isDisplayed());
+        assertEquals( "Add new Specialty", pageTitle.getText() );
+    }
+
+    public void assertPageEditIsLoaded() {
+        assertThat(pageTitle.isDisplayed());
+        assertEquals( "Edit Specialty", pageTitle.getText() );
+    }
+
+    public void assertPageDeleteIsLoaded() {
+        assertThat(pageTitle.isDisplayed());
+        assertEquals( "Delete Specialty", pageTitle.getText() );
+    }
+
+    public void assertPageDetailsIsLoaded() {
+        assertThat(pageTitle.isDisplayed());
+        assertEquals( "Specialty", pageTitle.getText() );
     }
 
     /*
@@ -143,31 +225,31 @@ public class SpecialtyPage {
 
     @FindBy(id = "findEntityForm:searchButton")
     @CacheLookup
-    private WebElement searchButton;
+    private CommandButton searchButton;
 
     @FindBy(id = "findEntityForm:clearSearchButton")
     @CacheLookup
-    private WebElement clearSearchButton;
+    private CommandButton clearSearchButton;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
     @CacheLookup
-    private WebElement showDetailsFormButton0;
+    private CommandButton showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
     @CacheLookup
-    private WebElement showDetailsFormButton1;
+    private CommandButton showDetailsFormButton1;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
     @CacheLookup
-    private WebElement showDetailsFormButton2;
+    private CommandButton showDetailsFormButton2;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
     @CacheLookup
-    private WebElement showDetailsFormButton3;
+    private CommandButton showDetailsFormButton3;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
     @CacheLookup
-    private WebElement showDetailsFormButton4;
+    private CommandButton showDetailsFormButton4;
 
     public SpecialtyPage() {
     }
@@ -335,7 +417,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton1() {
-        Graphene.guardHttp(showDetailsFormButton1).click();
+        showDetailsFormButton1.click();
         return this;
     }
 
@@ -345,7 +427,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton2() {
-        Graphene.guardHttp(showDetailsFormButton2).click();
+        showDetailsFormButton2.click();
         return this;
     }
 
@@ -355,7 +437,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton3() {
-        Graphene.guardHttp(showDetailsFormButton3).click();
+        showDetailsFormButton3.click();
         return this;
     }
 
@@ -365,7 +447,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton4() {
-        Graphene.guardHttp(showDetailsFormButton4).click();
+        showDetailsFormButton4.click();
         return this;
     }
 
@@ -539,7 +621,4 @@ public class SpecialtyPage {
         */
         return this;
     }
-
-
-
 }
