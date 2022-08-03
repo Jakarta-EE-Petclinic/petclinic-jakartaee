@@ -408,6 +408,13 @@
 				<scope>import</scope>
 			</dependency>
 			<dependency>
+				<groupId>org.eclipse.microprofile</groupId>
+				<artifactId>microprofile</artifactId>
+				<version>5.0</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
 				<groupId>jakarta.platform</groupId>
 				<artifactId>jakarta.jakartaee-api</artifactId>
 				<version>${version.jakarta.jakartaee-api}</version>
@@ -845,6 +852,21 @@
 		<dependency>
 			<groupId>jakarta.platform</groupId>
 			<artifactId>jakarta.jakartaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.microprofile.health</groupId>
+			<artifactId>microprofile-health-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.microprofile.metrics</groupId>
+			<artifactId>microprofile-metrics-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.ws.rs</groupId>
+			<artifactId>jakarta.ws.rs-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
