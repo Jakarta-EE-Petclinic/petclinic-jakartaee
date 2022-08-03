@@ -17,7 +17,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Location("specialtyNew.jsf")
+//@Location("specialtyNew.jsf")
 public class SpecialtyNewPage {
     private Map<String, String> data;
     @Drone

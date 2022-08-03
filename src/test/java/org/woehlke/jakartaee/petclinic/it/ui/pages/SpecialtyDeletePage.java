@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@Location("specialtyDelete.jsf")
+//@Location("specialtyDelete.jsf")
 public class SpecialtyDeletePage {
     private Map<String, String> data;
     @Drone

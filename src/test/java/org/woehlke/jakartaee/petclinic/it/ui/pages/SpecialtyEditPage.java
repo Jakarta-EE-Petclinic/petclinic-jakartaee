@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@Location("specialtyEdit.jsf")
+//@Location("specialtyEdit.jsf")
 public class SpecialtyEditPage {
     private Map<String, String> data;
     @Drone
