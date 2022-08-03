@@ -7,6 +7,7 @@ Not for reuse without permission.
 package org.woehlke.jakartaee.petclinic.it.pages;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
+import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -21,7 +22,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+@Location("specialtyNew.jsf")
 public class SpecialtyNewPage {
     private Map<String, String> data;
     @Drone

@@ -59,14 +59,15 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
 
     @Override
     public String showDetailsForm(Specialty o) {
-        log.info("showDetailsForm");;
+        log.info("showDetailsForm");
         if (o != null) {
             this.entity = entityService.findById(o.getId());
             this.specialtyViewFlow.setFlowStateDetails();
+            return JSF_PAGE_DETAILS;
         } else {
             this.specialtyViewFlow.setFlowStateList();
+            return JSF_PAGE;
         }
-        return JSF_PAGE;
     }
 
     @Override
@@ -81,7 +82,7 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
         log.info("showNewForm");
         this.newEntity();
         this.specialtyViewFlow.setFlowStateNew();
-        return JSF_PAGE;
+        return JSF_PAGE_NEW;
     }
 
     @Override
@@ -96,7 +97,7 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
         log.info("saveNew");
         this.saveNewEntity();
         this.specialtyViewFlow.setFlowStateDetails();
-        return JSF_PAGE;
+        return JSF_PAGE_DETAILS;
     }
 
     @Override
@@ -104,17 +105,18 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
         log.info("showEditForm");
         if ( this.entity != null) {
             this.specialtyViewFlow.setFlowStateEdit();
+            return JSF_PAGE_EDIT;
         } else {
             this.specialtyViewFlow.setFlowStateList();
+            return JSF_PAGE;
         }
-        return JSF_PAGE;
     }
 
     @Override
     public String cancelEdited() {
         log.info("cancelEdited");
         this.specialtyViewFlow.setFlowStateDetails();
-        return JSF_PAGE;
+        return JSF_PAGE_DETAILS;
     }
 
     @Override
@@ -122,7 +124,7 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
         log.info("saveEdited");
         this.saveEditedEntity();
         this.specialtyViewFlow.setFlowStateDetails();
-        return JSF_PAGE;
+        return JSF_PAGE_DETAILS;
     }
 
     @Override
@@ -130,17 +132,18 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
         log.info("showDeleteForm");
         if ( this.entity != null) {
             this.specialtyViewFlow.setFlowStateDelete();
+            return JSF_PAGE_DELETE;
         } else {
             this.specialtyViewFlow.setFlowStateList();
+            return JSF_PAGE;
         }
-        return JSF_PAGE;
     }
 
     @Override
     public String cancelDelete() {
         log.info("cancelDelete");
         this.specialtyViewFlow.setFlowStateDetails();
-        return JSF_PAGE;
+        return JSF_PAGE_DETAILS;
     }
 
     @Override

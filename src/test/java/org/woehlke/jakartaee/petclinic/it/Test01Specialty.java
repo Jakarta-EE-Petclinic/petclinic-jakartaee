@@ -84,8 +84,8 @@ public class Test01Specialty {
     public void openSpecialtyDetailsPage() {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
-        //specialtyPage.clickShowDetailsFormButton0();
-        //specialtyDetailsPage.assertPageIsLoaded();
+        specialtyPage.clickShowDetailsFormButton0();
+        specialtyDetailsPage.assertPageIsLoaded();
     }
 
     @Test
