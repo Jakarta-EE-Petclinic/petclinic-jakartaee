@@ -28,7 +28,7 @@ public class InformationPage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(css = "#listEntityHeaderId")
+    @FindBy(id = "listEntityHeaderId")
     private WebElement pageTitle;
 
     @FindBy(css = "a[href='https://github.com/thomaswoehlke']")

@@ -30,7 +30,7 @@ public class SpecialtyDetailsPage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(css = "#detailsEntityHeaderId")
+    @FindBy(id = "detailsEntityHeaderId")
     private WebElement pageTitle;
 
     /*

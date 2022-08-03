@@ -94,8 +94,8 @@ public class Test01Specialty {
     public void addNewSpecialtyPage() {
         goTo(SpecialtyPage.class);
         specialtyPage.assertPageIsLoaded();
-        // click new botton
-        // assert new page is loaded
+        specialtyPage.clickAddNewSpecialtyButton();
+        specialtyNewPage.assertPageIsLoaded();
     }
 
     @Test

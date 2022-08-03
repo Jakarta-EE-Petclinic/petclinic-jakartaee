@@ -29,7 +29,7 @@ public class SpecialtyNewPage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(css = "#newEntityHeaderId")
+    @FindBy(id = "newEntityHeaderId")
     private WebElement pageTitle;
 
     /*

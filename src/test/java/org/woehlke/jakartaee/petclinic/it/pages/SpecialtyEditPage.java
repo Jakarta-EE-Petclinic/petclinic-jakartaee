@@ -30,7 +30,7 @@ public class SpecialtyEditPage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(css = "#editEntityHeaderId")
+    @FindBy(id = "editEntityHeaderId")
     private WebElement pageTitle;
 
     @FindBy(css = "a.ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all")

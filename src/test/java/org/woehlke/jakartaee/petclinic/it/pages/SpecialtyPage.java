@@ -9,6 +9,7 @@ package org.woehlke.jakartaee.petclinic.it.pages;
 import java.util.Map;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
+import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -30,12 +31,38 @@ public class SpecialtyPage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(css = "#listEntityHeaderId")
+    @FindBy(id = "listEntityHeaderId")
     private WebElement pageTitle;
 
+    /**
+     * Click on Add New Specialty Button.
+     *
+     * @return the SpecialtyPage class instance.
+     */
+    public SpecialtyPage clickAddNewSpecialtyButton() {
+        Graphene.guardHttp(addNewSpecialty).click();
+        return this;
+    }
+
+    /**
+     * Click on Uibutton Button.
+     *
+     * @return the SpecialtyPage class instance.
+     */
+    public SpecialtyPage clickShowDetailsFormButton0() {
+        assertNotNull(showDetailsFormButton0);
+        Graphene.guardHttp(showDetailsFormButton0).click();
+        return this;
+    }
+
     @FindBy(id = "entityDataTableForm:showNewFormButton")
-    @CacheLookup
+    //@CacheLookup
     private WebElement addNewSpecialty;
+
+    public void assertPageIsLoaded() {
+        assertThat(pageTitle.isDisplayed());
+        assertEquals( "Specialties", pageTitle.getText() );
+    }
 
     /*
     @FindBy(css = "a.ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all")
@@ -164,15 +191,7 @@ public class SpecialtyPage {
         this.timeout = timeout;
     }
 
-    /**
-     * Click on Add New Specialty Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickAddNewSpecialtyButton() {
-        addNewSpecialty.click();
-        return this;
-    }
+
 
     /**
      * Click on E Link.
@@ -314,16 +333,7 @@ public class SpecialtyPage {
         return this;
     }
 
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickShowDetailsFormButton0() {
-        assertNotNull(showDetailsFormButton0);
-        showDetailsFormButton0.click();
-        return this;
-    }
+
 
     /**
      * Click on Uibutton Button.
@@ -331,7 +341,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton1() {
-        showDetailsFormButton1.click();
+        Graphene.guardHttp(showDetailsFormButton1).click();
         return this;
     }
 
@@ -341,7 +351,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton2() {
-        showDetailsFormButton2.click();
+        Graphene.guardHttp(showDetailsFormButton2).click();
         return this;
     }
 
@@ -351,7 +361,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton3() {
-        showDetailsFormButton3.click();
+        Graphene.guardHttp(showDetailsFormButton3).click();
         return this;
     }
 
@@ -361,7 +371,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton4() {
-        showDetailsFormButton4.click();
+        Graphene.guardHttp(showDetailsFormButton4).click();
         return this;
     }
 
@@ -536,9 +546,6 @@ public class SpecialtyPage {
         return this;
     }
 
-    public void assertPageIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
-        assertEquals( "Specialties", pageTitle.getText() );
-    }
+
 
 }

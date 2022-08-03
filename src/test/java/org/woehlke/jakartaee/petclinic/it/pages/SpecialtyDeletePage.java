@@ -30,9 +30,14 @@ public class SpecialtyDeletePage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(css = "#deleteEntityHeaderId")
+    @FindBy(id = "deleteEntityHeaderId")
     private WebElement pageTitle;
 
+    @FindBy(id = "entityDataTableForm:showNewFormButton")
+    @CacheLookup
+    private WebElement addNewSpecialty;
+
+    /*
     @FindBy(css = "a.ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all")
     @CacheLookup
     private WebElement _1;
@@ -41,11 +46,6 @@ public class SpecialtyDeletePage {
     @CacheLookup
     private WebElement _2;
 
-    @FindBy(id = "entityDataTableForm:showNewFormButton")
-    @CacheLookup
-    private WebElement addNewSpecialty;
-
-    /*
     @FindBy(css = "a.ui-paginator-last.ui-state-default.ui-corner-all")
     @CacheLookup
     private WebElement e;
@@ -86,9 +86,9 @@ public class SpecialtyDeletePage {
     @CacheLookup
     private WebElement p;
 */
-    private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
+    //private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
 
-    private final String pageUrl = "/petclinic/specialty.jsf";
+    //private final String pageUrl = "/petclinic/specialty.jsf";
 
 
     /*
@@ -220,7 +220,7 @@ public class SpecialtyDeletePage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyDeletePage clickLink1() {
-        _1.click();
+        //_1.click();
         return this;
     }
 
@@ -230,7 +230,7 @@ public class SpecialtyDeletePage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyDeletePage clickLink2() {
-        _2.click();
+        //_2.click();
         return this;
     }
 
@@ -509,11 +509,13 @@ public class SpecialtyDeletePage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyDeletePage verifyPageLoaded() {
+        /*
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getPageSource().contains(pageLoadedText);
             }
         });
+        */
         return this;
     }
 
@@ -522,12 +524,12 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage verifyPageUrl() {
+    public SpecialtyDeletePage verifyPageUrl() {/*
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getCurrentUrl().contains(pageUrl);
             }
-        });
+        }); */
         return this;
     }
 

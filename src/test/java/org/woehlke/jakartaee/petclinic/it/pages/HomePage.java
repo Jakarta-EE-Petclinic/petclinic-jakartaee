@@ -29,7 +29,7 @@ public class HomePage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(css = "#listEntityHeaderId")
+    @FindBy(id = "listEntityHeaderId")
     private WebElement pageTitle;
 
     @FindBy(id = "j_idt14:j_idt23_focus")
