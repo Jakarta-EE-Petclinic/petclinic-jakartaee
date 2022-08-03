@@ -77,19 +77,19 @@ public class SpecialtyPage {
         return this;
     }
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form/div/div[@id='addNewEntityForm:addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='addNewEntityForm:cancelNew']")
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='addNewEntityForm']/div/div[@id='addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelNew']")
     private CommandButton cancelNewSpecialty;
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[2]/div[1]/button[@id='entityDataTableForm:showNewFormButton']")
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[2]/div[1]/button[@id='showNewFormButton']")
     private CommandButton showNewFormButton;
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form/div/div[@id='detailsEntityForm:detailsEntityFormPanel_content']/div[3]/div[2]/button[@id='detailsEntityForm:showEditFormButton']")
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[2]/button[@id='showEditFormButton']")
     private CommandButton editSpecialty;
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form/div/div[@id='detailsEntityForm:detailsEntityFormPanel_content']/div[3]/div[3]/button[@id='detailsEntityForm:showEditFormButton']")
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[3]/button[@id='showEditFormButton']")
     private CommandButton showDeleteForm;
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form/div/div[@id='detailsEntityForm:detailsEntityFormPanel_content']/div[3]/div[1]/button[@id='detailsEntityForm:cancelDetails']")
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelDetails']")
     private CommandButton cancelDetails;
 
     @FindBy(id = "entityDataTableForm:cancelEdit")
