@@ -93,7 +93,7 @@ public class SpecialtyPage {
     //@CacheLookups
     private CommandButton cancelNewSpecialty;
 
-    @FindBy(id = "entityDataTableForm:showNewFormButton")
+    @FindBy(id="entityDataTableForm:showNewFormButton")
     //@CacheLookups
     private CommandButton addNewSpecialty;
 
@@ -224,31 +224,31 @@ public class SpecialtyPage {
 
 
     @FindBy(id = "findEntityForm:searchButton")
-    @CacheLookup
+    //@CacheLookup
     private CommandButton searchButton;
 
     @FindBy(id = "findEntityForm:clearSearchButton")
-    @CacheLookup
+    //@CacheLookup
     private CommandButton clearSearchButton;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
-    @CacheLookup
+    //@CacheLookup
     private CommandButton showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
-    @CacheLookup
+    //@CacheLookup
     private CommandButton showDetailsFormButton1;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
-    @CacheLookup
+    //@CacheLookup
     private CommandButton showDetailsFormButton2;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
-    @CacheLookup
+    //@CacheLookup
     private CommandButton showDetailsFormButton3;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
-    @CacheLookup
+    //@CacheLookup
     private CommandButton showDetailsFormButton4;
 
     public SpecialtyPage() {
