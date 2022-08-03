@@ -22,7 +22,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Location("specialty.jsf")
+
 public class SpecialtyDetailsPage {
     private Map<String, String> data;
     @Drone
@@ -527,6 +527,6 @@ public class SpecialtyDetailsPage {
 
     public void assertPageIsLoaded() {
         assertThat(pageTitle.isDisplayed());
-        assertEquals( "Specialties", pageTitle.getText() );
+        assertEquals( "Specialty", pageTitle.getText() );
     }
 }

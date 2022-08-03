@@ -21,6 +21,7 @@ import org.primefaces.selenium.component.CommandButton;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Location("specialty.jsf")
 public class SpecialtyPage {
@@ -44,6 +45,7 @@ public class SpecialtyPage {
     @CacheLookup
     private WebElement addNewSpecialty;
 
+    /*
     @FindBy(css = "a.ui-paginator-last.ui-state-default.ui-corner-all")
     @CacheLookup
     private WebElement e;
@@ -63,7 +65,9 @@ public class SpecialtyPage {
     @FindBy(css = "a.ui-paginator-first.ui-state-default.ui-corner-all.ui-state-disabled")
     @CacheLookup
     private WebElement f;
+    */
 
+/*
     @FindBy(css = "a[href='home.jsf']")
     @CacheLookup
     private WebElement home;
@@ -83,7 +87,7 @@ public class SpecialtyPage {
     @FindBy(css = "a.ui-paginator-prev.ui-state-default.ui-corner-all.ui-state-disabled")
     @CacheLookup
     private WebElement p;
-
+*/
     private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
 
     private final String pageUrl = "/petclinic/specialty.jsf";
@@ -174,7 +178,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickELink() {
-        e.click();
+        //e.click();
         return this;
     }
 
@@ -184,7 +188,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickFLink() {
-        f.click();
+        //f.click();
         return this;
     }
 
@@ -194,7 +198,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickHomeLink() {
-        home.click();
+       // home.click();
         return this;
     }
 
@@ -204,7 +208,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickInformationLink() {
-        information.click();
+       // information.click();
         return this;
     }
 
@@ -234,7 +238,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickNLink() {
-        n.click();
+       // n.click();
         return this;
     }
 
@@ -244,7 +248,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickOwnersLink() {
-        owners.click();
+        //owners.click();
         return this;
     }
 
@@ -254,7 +258,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickPLink() {
-        p.click();
+      //  p.click();
         return this;
     }
 
@@ -314,6 +318,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickShowDetailsFormButton0() {
+        assertNotNull(showDetailsFormButton0);
         showDetailsFormButton0.click();
         return this;
     }
@@ -425,7 +430,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage setEnglisch1DropDownListField(String englisch1Value) {
-        englisch1.sendKeys(englisch1Value);
+        //englisch1.sendKeys(englisch1Value);
         return this;
     }
 
@@ -444,7 +449,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage setEnglisch2DropDownListField(String englisch2Value) {
-        new Select(englisch2).selectByVisibleText(englisch2Value);
+       // new Select(englisch2).selectByVisibleText(englisch2Value);
         return this;
     }
 
@@ -463,7 +468,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage setEnglisch3TextField(String englisch3Value) {
-        englisch3.sendKeys(englisch3Value);
+        //englisch3.sendKeys(englisch3Value);
         return this;
     }
 
@@ -493,7 +498,7 @@ public class SpecialtyPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage unsetEnglisch2DropDownListField(String englisch2Value) {
-        new Select(englisch2).deselectByVisibleText(englisch2Value);
+       // new Select(englisch2).deselectByVisibleText(englisch2Value);
         return this;
     }
 
