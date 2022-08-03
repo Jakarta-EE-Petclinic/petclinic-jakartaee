@@ -4,7 +4,7 @@ Copyright (c) 2022, Thomas Woehlke. All Rights Reserved.
 Not for reuse without permission.
 */
 
-package org.woehlke.jakartaee.petclinic.it.pages;
+package org.woehlke.jakartaee.petclinic.it.ui.pages;
 import java.util.Map;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -28,7 +28,7 @@ public class VeterinarianPage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(css = "#listEntityHeaderId")
+    @FindBy(id = "listEntityHeaderId")
     private WebElement pageTitle;
 
     @FindBy(id = "entityDataTableForm:showNewFormButton")

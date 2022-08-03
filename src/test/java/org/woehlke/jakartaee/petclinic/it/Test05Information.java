@@ -12,8 +12,9 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.woehlke.jakartaee.petclinic.it.pages.HomePage;
-import org.woehlke.jakartaee.petclinic.it.pages.InformationPage;
+import org.woehlke.jakartaee.petclinic.it.ui.Deployments;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.InformationPage;
 import java.net.URL;
 
 import static org.jboss.arquillian.graphene.Graphene.goTo;

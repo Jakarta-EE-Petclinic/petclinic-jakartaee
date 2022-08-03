@@ -4,7 +4,7 @@ Copyright (c) 2022, Thomas Woehlke. All Rights Reserved.
 Not for reuse without permission.
 */
 
-package org.woehlke.jakartaee.petclinic.it.pages;
+package org.woehlke.jakartaee.petclinic.it.ui.pages;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.page.Location;
@@ -12,9 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.primefaces.selenium.component.CommandButton;
 
 import java.util.Map;
@@ -23,19 +20,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@Location("specialtyDelete.jsf")
-public class SpecialtyDeletePage {
+@Location("specialtyDetails.jsf")
+public class SpecialtyDetailsPage {
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(id = "deleteEntityHeaderId")
+    @FindBy(id = "detailsEntityHeaderId")
     private WebElement pageTitle;
-
-    @FindBy(id = "entityDataTableForm:showNewFormButton")
-    @CacheLookup
-    private WebElement addNewSpecialty;
 
     /*
     @FindBy(css = "a.ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all")
@@ -45,7 +38,13 @@ public class SpecialtyDeletePage {
     @FindBy(css = "#entityDataTableForm:entityDataTable_paginator_bottom span.ui-paginator-pages a:nth-of-type(2)")
     @CacheLookup
     private WebElement _2;
+    */
 
+    @FindBy(id = "entityDataTableForm:showNewFormButton")
+    @CacheLookup
+    private WebElement addNewSpecialty;
+
+    /*
     @FindBy(css = "a.ui-paginator-last.ui-state-default.ui-corner-all")
     @CacheLookup
     private WebElement e;
@@ -65,7 +64,9 @@ public class SpecialtyDeletePage {
     @FindBy(css = "a.ui-paginator-first.ui-state-default.ui-corner-all.ui-state-disabled")
     @CacheLookup
     private WebElement f;
+    */
 
+    /*
     @FindBy(css = "a[href='home.jsf']")
     @CacheLookup
     private WebElement home;
@@ -85,13 +86,11 @@ public class SpecialtyDeletePage {
     @FindBy(css = "a.ui-paginator-prev.ui-state-default.ui-corner-all.ui-state-disabled")
     @CacheLookup
     private WebElement p;
-*/
-    //private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
 
-    //private final String pageUrl = "/petclinic/specialty.jsf";
+    private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
 
+    private final String pageUrl = "/petclinic/specialty.jsf";
 
-    /*
     @FindBy(css = "a[href='petType.jsf']")
     @CacheLookup
     private WebElement petTypes;
@@ -103,6 +102,7 @@ public class SpecialtyDeletePage {
     @FindBy(id = "j_idt14:j_idt25")
     @CacheLookup
     private WebElement uibutton1;
+    */
 
     @FindBy(id = "findEntityForm:searchButton")
     @CacheLookup
@@ -132,6 +132,7 @@ public class SpecialtyDeletePage {
     @CacheLookup
     private CommandButton showDetailsFormButton4;
 
+    /*
     @FindBy(css = "a[href='veterinarian.jsf']")
     @CacheLookup
     private WebElement veterinarians;
@@ -143,23 +144,22 @@ public class SpecialtyDeletePage {
     @FindBy(css = "a[href='./rest/specialty/xml/list']")
     @CacheLookup
     private WebElement viewAsXml;
+    */
 
-     */
-
-    public SpecialtyDeletePage() {
+    public SpecialtyDetailsPage() {
     }
 
-    public SpecialtyDeletePage(WebDriver driver) {
+    public SpecialtyDetailsPage(WebDriver driver) {
         this();
         this.driver = driver;
     }
 
-    public SpecialtyDeletePage(WebDriver driver, Map<String, String> data) {
+    public SpecialtyDetailsPage(WebDriver driver, Map<String, String> data) {
         this(driver);
         this.data = data;
     }
 
-    public SpecialtyDeletePage(WebDriver driver, Map<String, String> data, int timeout) {
+    public SpecialtyDetailsPage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
         this.timeout = timeout;
     }
@@ -169,7 +169,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickAddNewSpecialtyButton() {
+    public SpecialtyDetailsPage clickAddNewSpecialtyButton() {
         addNewSpecialty.click();
         return this;
     }
@@ -179,7 +179,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickELink() {
+    public SpecialtyDetailsPage clickELink() {
        // e.click();
         return this;
     }
@@ -189,8 +189,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickFLink() {
-       // f.click();
+    public SpecialtyDetailsPage clickFLink() {
+        //f.click();
         return this;
     }
 
@@ -199,8 +199,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickHomeLink() {
-       // home.click();
+    public SpecialtyDetailsPage clickHomeLink() {
+        //home.click();
         return this;
     }
 
@@ -209,8 +209,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickInformationLink() {
-        //information.click();
+    public SpecialtyDetailsPage clickInformationLink() {
+       // information.click();
         return this;
     }
 
@@ -219,8 +219,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickLink1() {
-        //_1.click();
+    public SpecialtyDetailsPage clickLink1() {
+      //  _1.click();
         return this;
     }
 
@@ -229,8 +229,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickLink2() {
-        //_2.click();
+    public SpecialtyDetailsPage clickLink2() {
+      //  _2.click();
         return this;
     }
 
@@ -239,7 +239,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickNLink() {
+    public SpecialtyDetailsPage clickNLink() {
       //  n.click();
         return this;
     }
@@ -249,8 +249,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickOwnersLink() {
-      //  owners.click();
+    public SpecialtyDetailsPage clickOwnersLink() {
+       // owners.click();
         return this;
     }
 
@@ -259,7 +259,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickPLink() {
+    public SpecialtyDetailsPage clickPLink() {
        // p.click();
         return this;
     }
@@ -269,8 +269,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickPetTypesLink() {
-      //  petTypes.click();
+    public SpecialtyDetailsPage clickPetTypesLink() {
+        //petTypes.click();
         return this;
     }
 
@@ -279,8 +279,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickSpecialtiesLink() {
-      //  specialties.click();
+    public SpecialtyDetailsPage clickSpecialtiesLink() {
+       // specialties.click();
         return this;
     }
 
@@ -289,7 +289,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickUibutton1Button() {
+    public SpecialtyDetailsPage clickUibutton1Button() {
        // uibutton1.click();
         return this;
     }
@@ -299,8 +299,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickSearchButton() {
-       // searchButton.click();
+    public SpecialtyDetailsPage clickSearchButton() {
+        searchButton.click();
         return this;
     }
 
@@ -309,8 +309,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickClearSearchButton() {
-       // clearSearchButton.click();
+    public SpecialtyDetailsPage clickClearSearchButton() {
+        clearSearchButton.click();
         return this;
     }
 
@@ -319,8 +319,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickShowDetailsFormButton0() {
-       // showDetailsFormButton0.click();
+    public SpecialtyDetailsPage clickShowDetailsFormButton0() {
+        showDetailsFormButton0.click();
         return this;
     }
 
@@ -329,8 +329,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickShowDetailsFormButton1() {
-       // showDetailsFormButton1.click();
+    public SpecialtyDetailsPage clickShowDetailsFormButton1() {
+        showDetailsFormButton1.click();
         return this;
     }
 
@@ -339,8 +339,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickShowDetailsFormButton2() {
-       // showDetailsFormButton2.click();
+    public SpecialtyDetailsPage clickShowDetailsFormButton2() {
+        showDetailsFormButton2.click();
         return this;
     }
 
@@ -349,8 +349,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickShowDetailsFormButton3() {
-       // showDetailsFormButton3.click();
+    public SpecialtyDetailsPage clickShowDetailsFormButton3() {
+        showDetailsFormButton3.click();
         return this;
     }
 
@@ -359,8 +359,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickShowDetailsFormButton4() {
-        //showDetailsFormButton4.click();
+    public SpecialtyDetailsPage clickShowDetailsFormButton4() {
+        showDetailsFormButton4.click();
         return this;
     }
 
@@ -369,8 +369,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickVeterinariansLink() {
-        //veterinarians.click();
+    public SpecialtyDetailsPage clickVeterinariansLink() {
+       // veterinarians.click();
         return this;
     }
 
@@ -379,7 +379,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickViewAsJsonLink() {
+    public SpecialtyDetailsPage clickViewAsJsonLink() {
        // viewAsJson.click();
         return this;
     }
@@ -389,8 +389,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage clickViewAsXmlLink() {
-       // viewAsXml.click();
+    public SpecialtyDetailsPage clickViewAsXmlLink() {
+      //  viewAsXml.click();
         return this;
     }
 
@@ -399,7 +399,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage fill() {
+    public SpecialtyDetailsPage fill() {
         setEnglisch1DropDownListField();
         setEnglisch2DropDownListField();
         setEnglisch3TextField();
@@ -411,7 +411,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage fillAndSubmit() {
+    public SpecialtyDetailsPage fillAndSubmit() {
         fill();
         return submit();
     }
@@ -421,7 +421,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage setEnglisch1DropDownListField() {
+    public SpecialtyDetailsPage setEnglisch1DropDownListField() {
         return setEnglisch1DropDownListField(data.get("ENGLISCH_1"));
     }
 
@@ -430,8 +430,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage setEnglisch1DropDownListField(String englisch1Value) {
-        //englisch1.sendKeys(englisch1Value);
+    public SpecialtyDetailsPage setEnglisch1DropDownListField(String englisch1Value) {
+       // englisch1.sendKeys(englisch1Value);
         return this;
     }
 
@@ -440,7 +440,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage setEnglisch2DropDownListField() {
+    public SpecialtyDetailsPage setEnglisch2DropDownListField() {
         return setEnglisch2DropDownListField(data.get("ENGLISCH_2"));
     }
 
@@ -449,7 +449,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage setEnglisch2DropDownListField(String englisch2Value) {
+    public SpecialtyDetailsPage setEnglisch2DropDownListField(String englisch2Value) {
        // new Select(englisch2).selectByVisibleText(englisch2Value);
         return this;
     }
@@ -459,7 +459,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage setEnglisch3TextField() {
+    public SpecialtyDetailsPage setEnglisch3TextField() {
         return setEnglisch3TextField(data.get("ENGLISCH_3"));
     }
 
@@ -468,8 +468,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage setEnglisch3TextField(String englisch3Value) {
-        //englisch3.sendKeys(englisch3Value);
+    public SpecialtyDetailsPage setEnglisch3TextField(String englisch3Value) {
+       // englisch3.sendKeys(englisch3Value);
         return this;
     }
 
@@ -478,7 +478,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage submit() {
+    public SpecialtyDetailsPage submit() {
         // TODO
         // clickUibuttonButton();
         return this;
@@ -489,7 +489,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage unsetEnglisch2DropDownListField() {
+    public SpecialtyDetailsPage unsetEnglisch2DropDownListField() {
         return unsetEnglisch2DropDownListField(data.get("ENGLISCH_2"));
     }
 
@@ -498,8 +498,8 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage unsetEnglisch2DropDownListField(String englisch2Value) {
-        // new Select(englisch2).deselectByVisibleText(englisch2Value);
+    public SpecialtyDetailsPage unsetEnglisch2DropDownListField(String englisch2Value) {
+       // new Select(englisch2).deselectByVisibleText(englisch2Value);
         return this;
     }
 
@@ -508,7 +508,7 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage verifyPageLoaded() {
+    public SpecialtyDetailsPage verifyPageLoaded() {
         /*
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
@@ -524,18 +524,19 @@ public class SpecialtyDeletePage {
      *
      * @return the SpecialtyPage class instance.
      */
-    public SpecialtyDeletePage verifyPageUrl() {/*
+    public SpecialtyDetailsPage verifyPageUrl() {
+        /*
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getCurrentUrl().contains(pageUrl);
             }
-        }); */
+        });
+        */
         return this;
     }
 
     public void assertPageIsLoaded() {
         assertThat(pageTitle.isDisplayed());
-        assertEquals( "Delete Specialty", pageTitle.getText() );
+        assertEquals( "Specialty", pageTitle.getText() );
     }
-
 }

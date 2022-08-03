@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.tmp.api;
+package org.woehlke.jakartaee.petclinic.it.api;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -18,7 +18,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.woehlke.jakartaee.petclinic.it.Deployments;
+import org.woehlke.jakartaee.petclinic.it.ui.Deployments;
 import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeDto;
 import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeListDto;
 

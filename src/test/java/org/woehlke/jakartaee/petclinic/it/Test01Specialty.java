@@ -13,6 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.pages.*;
+import org.woehlke.jakartaee.petclinic.it.ui.Deployments;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.*;
 
 import java.net.URL;
 

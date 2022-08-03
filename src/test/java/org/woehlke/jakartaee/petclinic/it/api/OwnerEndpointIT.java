@@ -1,5 +1,4 @@
-package org.woehlke.jakartaee.petclinic.tmp.api;
-
+package org.woehlke.jakartaee.petclinic.it.api;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -19,9 +18,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.woehlke.jakartaee.petclinic.it.Deployments;
-import org.woehlke.jakartaee.petclinic.pet.api.PetDto;
-import org.woehlke.jakartaee.petclinic.pet.api.PetListDto;
+import org.woehlke.jakartaee.petclinic.it.ui.Deployments;
+import org.woehlke.jakartaee.petclinic.owner.api.OwnerDto;
+import org.woehlke.jakartaee.petclinic.owner.api.OwnerListDto;
 
 import java.io.StringReader;
 import java.net.URL;
@@ -30,7 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @ExtendWith(ArquillianExtension.class)
-public class PetEndpointIT {
+public class OwnerEndpointIT {
 
   @Deployment(testable = false)
   public static WebArchive createDeployment() {
@@ -58,7 +57,7 @@ public class PetEndpointIT {
 
   @Test
   public void testGetListJson() {
-    String endpoint = base + "/rest" + "/pet" + "/list";
+    String endpoint = base + "/rest" + "/owner" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
@@ -67,13 +66,13 @@ public class PetEndpointIT {
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
     assertThat(
-            Response.Status.OK.getStatusCode()==
+            Response.Status.OK.getStatusCode() ==
             response.getStatus()
     );
     String json = response.readEntity(String.class);
     /*
-    PetListDto petTypeListDto = jsonb.fromJson(json, PetListDto.class);
-    for(PetDto dto: petTypeListDto.getPet()){
+    OwnerListDto stoList = jsonb.fromJson(json, OwnerListDto.class);
+    for(OwnerDto dto: stoList.getOwner()){
       log.info("fetched dto: "+dto.toString());
     }
     */
@@ -85,23 +84,22 @@ public class PetEndpointIT {
 
   @Test
   public void testGetListXml() throws JAXBException {
-    String endpoint = base + "/rest" + "/pet" + "/xml/list";
+    String endpoint = base + "/rest" + "/owner" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
-    Client client = ClientBuilder.newClient();
     WebTarget target = client.target(endpoint);
     Response response = target.request().get();
     assertThat(
-            Response.Status.OK.getStatusCode()==
+            Response.Status.OK.getStatusCode() ==
             response.getStatus()
     );
     String xml = response.readEntity(String.class);
-    JAXBContext jc = JAXBContext.newInstance(PetListDto.class);
+    JAXBContext jc = JAXBContext.newInstance(OwnerListDto.class);
     Unmarshaller m = jc.createUnmarshaller();
     StringReader r  = new StringReader(xml);
-    PetListDto o = (PetListDto) m.unmarshal(r);
-    for(PetDto dto: o.getPet()){
+    OwnerListDto o = (OwnerListDto) m.unmarshal(r);
+    for(OwnerDto dto: o.getOwner()){
       log.info("fetched dto: "+dto.toString());
     }
     xml = "\n\n" + xml +  "\n\n";

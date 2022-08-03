@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyDto;
 import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyListDto;
-import org.woehlke.jakartaee.petclinic.it.Deployments;
+import org.woehlke.jakartaee.petclinic.it.ui.Deployments;
 
 import java.io.StringReader;
 import java.net.URL;

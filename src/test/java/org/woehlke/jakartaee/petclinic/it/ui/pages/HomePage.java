@@ -4,7 +4,8 @@ Copyright (c) 2022, Thomas Woehlke. All Rights Reserved.
 Not for reuse without permission.
 */
 
-package org.woehlke.jakartaee.petclinic.it.pages;
+package org.woehlke.jakartaee.petclinic.it.ui.pages;
+
 import java.util.Map;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -18,10 +19,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Location("owner.jsf")
-public class OwnerPage {
+@Location("home.jsf")
+public class HomePage {
+
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
@@ -29,10 +30,6 @@ public class OwnerPage {
 
     @FindBy(id = "listEntityHeaderId")
     private WebElement pageTitle;
-
-    @FindBy(id = "entityDataTableForm:showNewFormButton")
-    @CacheLookup
-    private WebElement addNewOwner;
 
     @FindBy(id = "j_idt14:j_idt23_focus")
     @CacheLookup
@@ -42,7 +39,7 @@ public class OwnerPage {
     @CacheLookup
     private WebElement englisch2;
 
-    @FindBy(id = "findEntityForm:inputTextSearchterm")
+    @FindBy(id = "findOwnersForm:inputTextSearchterm")
     @CacheLookup
     private WebElement englisch3;
 
@@ -50,17 +47,21 @@ public class OwnerPage {
     @CacheLookup
     private WebElement home;
 
-    @FindBy(css = "a[href='info.jsf']")
+    @FindBy(css = "#j_idt14:j_idt15 ul.ui-menu-list.ui-helper-reset li:nth-of-type(6) a.ui-menuitem-link.ui-corner-all")
     @CacheLookup
-    private WebElement information;
+    private WebElement information1;
+
+    @FindBy(css = "a.ui-link.ui-widget")
+    @CacheLookup
+    private WebElement information2;
 
     @FindBy(css = "a[href='owner.jsf']")
     @CacheLookup
     private WebElement owners;
 
-    private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
+    private final String pageLoadedText = "add some Pet Types like dog,cat,mouse,";
 
-    private final String pageUrl = "/petclinic/owner.jsf";
+    private final String pageUrl = "/petclinic/home.jsf";
 
     @FindBy(css = "a[href='petType.jsf']")
     @CacheLookup
@@ -74,64 +75,42 @@ public class OwnerPage {
     @CacheLookup
     private WebElement uibutton1;
 
-    @FindBy(id = "findEntityForm:searchButton")
+    @FindBy(id = "findOwnersForm:searchButton")
     @CacheLookup
     private WebElement uibutton2;
 
-    @FindBy(id = "findEntityForm:clearSearchButton")
+    @FindBy(id = "findOwnersForm:clearSearchButton")
     @CacheLookup
     private WebElement uibutton3;
-
-    @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
-    @CacheLookup
-    private WebElement uibutton4;
 
     @FindBy(css = "a[href='veterinarian.jsf']")
     @CacheLookup
     private WebElement veterinarians;
 
-    @FindBy(css = "a[href='./rest/owner/list']")
-    @CacheLookup
-    private WebElement viewAsJson;
-
-    @FindBy(css = "a[href='./rest/owner/xml/list']")
-    @CacheLookup
-    private WebElement viewAsXml;
-
-    public OwnerPage() {
+    public HomePage() {
     }
 
-    public OwnerPage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         this();
         this.driver = driver;
     }
 
-    public OwnerPage(WebDriver driver, Map<String, String> data) {
+    public HomePage(WebDriver driver, Map<String, String> data) {
         this(driver);
         this.data = data;
     }
 
-    public OwnerPage(WebDriver driver, Map<String, String> data, int timeout) {
+    public HomePage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
         this.timeout = timeout;
     }
 
     /**
-     * Click on Add New Owner Button.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickAddNewOwnerButton() {
-        addNewOwner.click();
-        return this;
-    }
-
-    /**
      * Click on Home Link.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage clickHomeLink() {
+    public HomePage clickHomeLink() {
         home.click();
         return this;
     }
@@ -139,19 +118,29 @@ public class OwnerPage {
     /**
      * Click on Information Link.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage clickInformationLink() {
-        information.click();
+    public HomePage clickInformation1Link() {
+        information1.click();
+        return this;
+    }
+
+    /**
+     * Click on Information Link.
+     *
+     * @return the HomePage class instance.
+     */
+    public HomePage clickInformation2Link() {
+        information2.click();
         return this;
     }
 
     /**
      * Click on Owners Link.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage clickOwnersLink() {
+    public HomePage clickOwnersLink() {
         owners.click();
         return this;
     }
@@ -159,9 +148,9 @@ public class OwnerPage {
     /**
      * Click on Pet Types Link.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage clickPetTypesLink() {
+    public HomePage clickPetTypesLink() {
         petTypes.click();
         return this;
     }
@@ -169,9 +158,9 @@ public class OwnerPage {
     /**
      * Click on Specialties Link.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage clickSpecialtiesLink() {
+    public HomePage clickSpecialtiesLink() {
         specialties.click();
         return this;
     }
@@ -179,9 +168,9 @@ public class OwnerPage {
     /**
      * Click on Uibutton Button.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage clickUibutton1Button() {
+    public HomePage clickUibutton1Button() {
         uibutton1.click();
         return this;
     }
@@ -189,9 +178,9 @@ public class OwnerPage {
     /**
      * Click on Uibutton Button.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage clickUibutton2Button() {
+    public HomePage clickUibutton2Button() {
         uibutton2.click();
         return this;
     }
@@ -199,59 +188,29 @@ public class OwnerPage {
     /**
      * Click on Uibutton Button.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage clickUibutton3Button() {
+    public HomePage clickUibutton3Button() {
         uibutton3.click();
-        return this;
-    }
-
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickUibutton4Button() {
-        uibutton4.click();
         return this;
     }
 
     /**
      * Click on Veterinarians Link.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage clickVeterinariansLink() {
+    public HomePage clickVeterinariansLink() {
         veterinarians.click();
-        return this;
-    }
-
-    /**
-     * Click on View As Json Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickViewAsJsonLink() {
-        viewAsJson.click();
-        return this;
-    }
-
-    /**
-     * Click on View As Xml Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickViewAsXmlLink() {
-        viewAsXml.click();
         return this;
     }
 
     /**
      * Fill every fields in the page.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage fill() {
+    public HomePage fill() {
         setEnglisch1DropDownListField();
         setEnglisch2DropDownListField();
         setEnglisch3TextField();
@@ -261,9 +220,9 @@ public class OwnerPage {
     /**
      * Fill every fields in the page and submit it to target page.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage fillAndSubmit() {
+    public HomePage fillAndSubmit() {
         fill();
         return submit();
     }
@@ -271,18 +230,18 @@ public class OwnerPage {
     /**
      * Set default value to Englisch Drop Down List field.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage setEnglisch1DropDownListField() {
+    public HomePage setEnglisch1DropDownListField() {
         return setEnglisch1DropDownListField(data.get("ENGLISCH_1"));
     }
 
     /**
      * Set value to Englisch Drop Down List field.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage setEnglisch1DropDownListField(String englisch1Value) {
+    public HomePage setEnglisch1DropDownListField(String englisch1Value) {
         englisch1.sendKeys(englisch1Value);
         return this;
     }
@@ -290,18 +249,18 @@ public class OwnerPage {
     /**
      * Set default value to Englisch Drop Down List field.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage setEnglisch2DropDownListField() {
+    public HomePage setEnglisch2DropDownListField() {
         return setEnglisch2DropDownListField(data.get("ENGLISCH_2"));
     }
 
     /**
      * Set value to Englisch Drop Down List field.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage setEnglisch2DropDownListField(String englisch2Value) {
+    public HomePage setEnglisch2DropDownListField(String englisch2Value) {
         new Select(englisch2).selectByVisibleText(englisch2Value);
         return this;
     }
@@ -309,18 +268,18 @@ public class OwnerPage {
     /**
      * Set default value to Englisch Text field.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage setEnglisch3TextField() {
+    public HomePage setEnglisch3TextField() {
         return setEnglisch3TextField(data.get("ENGLISCH_3"));
     }
 
     /**
      * Set value to Englisch Text field.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage setEnglisch3TextField(String englisch3Value) {
+    public HomePage setEnglisch3TextField(String englisch3Value) {
         englisch3.sendKeys(englisch3Value);
         return this;
     }
@@ -328,9 +287,9 @@ public class OwnerPage {
     /**
      * Submit the form to target page.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage submit() {
+    public HomePage submit() {
         // TODO
         // clickUibuttonButton();
         return this;
@@ -339,18 +298,18 @@ public class OwnerPage {
     /**
      * Unset default value from Englisch Drop Down List field.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage unsetEnglisch2DropDownListField() {
+    public HomePage unsetEnglisch2DropDownListField() {
         return unsetEnglisch2DropDownListField(data.get("ENGLISCH_2"));
     }
 
     /**
      * Unset value from Englisch Drop Down List field.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage unsetEnglisch2DropDownListField(String englisch2Value) {
+    public HomePage unsetEnglisch2DropDownListField(String englisch2Value) {
         new Select(englisch2).deselectByVisibleText(englisch2Value);
         return this;
     }
@@ -358,9 +317,9 @@ public class OwnerPage {
     /**
      * Verify that the page loaded completely.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage verifyPageLoaded() {
+    public HomePage verifyPageLoaded() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getPageSource().contains(pageLoadedText);
@@ -372,9 +331,9 @@ public class OwnerPage {
     /**
      * Verify that current page URL matches the expected URL.
      *
-     * @return the OwnersPage class instance.
+     * @return the HomePage class instance.
      */
-    public OwnerPage verifyPageUrl() {
+    public HomePage verifyPageUrl() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getCurrentUrl().contains(pageUrl);
@@ -385,6 +344,6 @@ public class OwnerPage {
 
     public void assertPageIsLoaded() {
         assertThat(pageTitle.isDisplayed());
-        assertEquals( "Owners", pageTitle.getText() );
+        assertThat( "Specialties".compareTo(pageTitle.getText())==0 );
     }
 }

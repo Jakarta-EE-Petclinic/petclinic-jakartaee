@@ -4,30 +4,33 @@ Copyright (c) 2022, Thomas Woehlke. All Rights Reserved.
 Not for reuse without permission.
 */
 
-package org.woehlke.jakartaee.petclinic.it.pages;
-import java.util.Map;
+package org.woehlke.jakartaee.petclinic.it.ui.pages;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.page.Location;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.primefaces.selenium.component.CommandButton;
+
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Location("petType.jsf")
-public class PetTypePage {
+
+@Location("specialtyEdit.jsf")
+public class SpecialtyEditPage {
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(id = "listEntityHeaderId")
+    @FindBy(id = "editEntityHeaderId")
     private WebElement pageTitle;
 
     @FindBy(css = "a.ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all")
@@ -40,7 +43,7 @@ public class PetTypePage {
 
     @FindBy(id = "entityDataTableForm:showNewFormButton")
     @CacheLookup
-    private WebElement addNewPetType;
+    private WebElement addNewSpecialty;
 
     @FindBy(css = "a.ui-paginator-last.ui-state-default.ui-corner-all")
     @CacheLookup
@@ -84,7 +87,7 @@ public class PetTypePage {
 
     private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
 
-    private final String pageUrl = "/petclinic/petType.jsf";
+    private final String pageUrl = "/petclinic/specialty.jsf";
 
     @FindBy(css = "a[href='petType.jsf']")
     @CacheLookup
@@ -100,78 +103,78 @@ public class PetTypePage {
 
     @FindBy(id = "findEntityForm:searchButton")
     @CacheLookup
-    private WebElement uibutton2;
+    private WebElement searchButton;
 
     @FindBy(id = "findEntityForm:clearSearchButton")
     @CacheLookup
-    private WebElement uibutton3;
+    private WebElement clearSearchButton;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton4;
+    private CommandButton showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton5;
+    private CommandButton showDetailsFormButton1;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton6;
+    private CommandButton showDetailsFormButton2;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton7;
+    private CommandButton showDetailsFormButton3;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton8;
+    private CommandButton showDetailsFormButton4;
 
     @FindBy(css = "a[href='veterinarian.jsf']")
     @CacheLookup
     private WebElement veterinarians;
 
-    @FindBy(css = "a[href='./rest/petType/list']")
+    @FindBy(css = "a[href='./rest/specialty/list']")
     @CacheLookup
     private WebElement viewAsJson;
 
-    @FindBy(css = "a[href='./rest/petType/xml/list']")
+    @FindBy(css = "a[href='./rest/specialty/xml/list']")
     @CacheLookup
     private WebElement viewAsXml;
 
-    public PetTypePage() {
+    public SpecialtyEditPage() {
     }
 
-    public PetTypePage(WebDriver driver) {
+    public SpecialtyEditPage(WebDriver driver) {
         this();
         this.driver = driver;
     }
 
-    public PetTypePage(WebDriver driver, Map<String, String> data) {
+    public SpecialtyEditPage(WebDriver driver, Map<String, String> data) {
         this(driver);
         this.data = data;
     }
 
-    public PetTypePage(WebDriver driver, Map<String, String> data, int timeout) {
+    public SpecialtyEditPage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
         this.timeout = timeout;
     }
 
     /**
-     * Click on Add New Pet Type Button.
+     * Click on Add New Specialty Button.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickAddNewPetTypeButton() {
-        addNewPetType.click();
+    public SpecialtyEditPage clickAddNewSpecialtyButton() {
+        addNewSpecialty.click();
         return this;
     }
 
     /**
      * Click on E Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickELink() {
+    public SpecialtyEditPage clickELink() {
         e.click();
         return this;
     }
@@ -179,9 +182,9 @@ public class PetTypePage {
     /**
      * Click on F Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickFLink() {
+    public SpecialtyEditPage clickFLink() {
         f.click();
         return this;
     }
@@ -189,9 +192,9 @@ public class PetTypePage {
     /**
      * Click on Home Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickHomeLink() {
+    public SpecialtyEditPage clickHomeLink() {
         home.click();
         return this;
     }
@@ -199,9 +202,9 @@ public class PetTypePage {
     /**
      * Click on Information Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickInformationLink() {
+    public SpecialtyEditPage clickInformationLink() {
         information.click();
         return this;
     }
@@ -209,9 +212,9 @@ public class PetTypePage {
     /**
      * Click on 1 Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickLink1() {
+    public SpecialtyEditPage clickLink1() {
         _1.click();
         return this;
     }
@@ -219,9 +222,9 @@ public class PetTypePage {
     /**
      * Click on 2 Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickLink2() {
+    public SpecialtyEditPage clickLink2() {
         _2.click();
         return this;
     }
@@ -229,9 +232,9 @@ public class PetTypePage {
     /**
      * Click on N Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickNLink() {
+    public SpecialtyEditPage clickNLink() {
         n.click();
         return this;
     }
@@ -239,9 +242,9 @@ public class PetTypePage {
     /**
      * Click on Owners Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickOwnersLink() {
+    public SpecialtyEditPage clickOwnersLink() {
         owners.click();
         return this;
     }
@@ -249,9 +252,9 @@ public class PetTypePage {
     /**
      * Click on P Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickPLink() {
+    public SpecialtyEditPage clickPLink() {
         p.click();
         return this;
     }
@@ -259,9 +262,9 @@ public class PetTypePage {
     /**
      * Click on Pet Types Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickPetTypesLink() {
+    public SpecialtyEditPage clickPetTypesLink() {
         petTypes.click();
         return this;
     }
@@ -269,9 +272,9 @@ public class PetTypePage {
     /**
      * Click on Specialties Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickSpecialtiesLink() {
+    public SpecialtyEditPage clickSpecialtiesLink() {
         specialties.click();
         return this;
     }
@@ -279,9 +282,9 @@ public class PetTypePage {
     /**
      * Click on Uibutton Button.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickUibutton1Button() {
+    public SpecialtyEditPage clickUibutton1Button() {
         uibutton1.click();
         return this;
     }
@@ -289,79 +292,79 @@ public class PetTypePage {
     /**
      * Click on Uibutton Button.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickUibutton2Button() {
-        uibutton2.click();
+    public SpecialtyEditPage clickSearchButton() {
+        searchButton.click();
         return this;
     }
 
     /**
      * Click on Uibutton Button.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickUibutton3Button() {
-        uibutton3.click();
+    public SpecialtyEditPage clickClearSearchButton() {
+        clearSearchButton.click();
         return this;
     }
 
     /**
      * Click on Uibutton Button.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickUibutton4Button() {
-        uibutton4.click();
+    public SpecialtyEditPage clickShowDetailsFormButton0() {
+        showDetailsFormButton0.click();
         return this;
     }
 
     /**
      * Click on Uibutton Button.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickUibutton5Button() {
-        uibutton5.click();
+    public SpecialtyEditPage clickShowDetailsFormButton1() {
+        showDetailsFormButton1.click();
         return this;
     }
 
     /**
      * Click on Uibutton Button.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickUibutton6Button() {
-        uibutton6.click();
+    public SpecialtyEditPage clickShowDetailsFormButton2() {
+        showDetailsFormButton2.click();
         return this;
     }
 
     /**
      * Click on Uibutton Button.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickUibutton7Button() {
-        uibutton7.click();
+    public SpecialtyEditPage clickShowDetailsFormButton3() {
+        showDetailsFormButton3.click();
         return this;
     }
 
     /**
      * Click on Uibutton Button.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickUibutton8Button() {
-        uibutton8.click();
+    public SpecialtyEditPage clickShowDetailsFormButton4() {
+        showDetailsFormButton4.click();
         return this;
     }
 
     /**
      * Click on Veterinarians Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickVeterinariansLink() {
+    public SpecialtyEditPage clickVeterinariansLink() {
         veterinarians.click();
         return this;
     }
@@ -369,9 +372,9 @@ public class PetTypePage {
     /**
      * Click on View As Json Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickViewAsJsonLink() {
+    public SpecialtyEditPage clickViewAsJsonLink() {
         viewAsJson.click();
         return this;
     }
@@ -379,9 +382,9 @@ public class PetTypePage {
     /**
      * Click on View As Xml Link.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage clickViewAsXmlLink() {
+    public SpecialtyEditPage clickViewAsXmlLink() {
         viewAsXml.click();
         return this;
     }
@@ -389,9 +392,9 @@ public class PetTypePage {
     /**
      * Fill every fields in the page.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage fill() {
+    public SpecialtyEditPage fill() {
         setEnglisch1DropDownListField();
         setEnglisch2DropDownListField();
         setEnglisch3TextField();
@@ -401,9 +404,9 @@ public class PetTypePage {
     /**
      * Fill every fields in the page and submit it to target page.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage fillAndSubmit() {
+    public SpecialtyEditPage fillAndSubmit() {
         fill();
         return submit();
     }
@@ -411,18 +414,18 @@ public class PetTypePage {
     /**
      * Set default value to Englisch Drop Down List field.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage setEnglisch1DropDownListField() {
+    public SpecialtyEditPage setEnglisch1DropDownListField() {
         return setEnglisch1DropDownListField(data.get("ENGLISCH_1"));
     }
 
     /**
      * Set value to Englisch Drop Down List field.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage setEnglisch1DropDownListField(String englisch1Value) {
+    public SpecialtyEditPage setEnglisch1DropDownListField(String englisch1Value) {
         englisch1.sendKeys(englisch1Value);
         return this;
     }
@@ -430,18 +433,18 @@ public class PetTypePage {
     /**
      * Set default value to Englisch Drop Down List field.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage setEnglisch2DropDownListField() {
+    public SpecialtyEditPage setEnglisch2DropDownListField() {
         return setEnglisch2DropDownListField(data.get("ENGLISCH_2"));
     }
 
     /**
      * Set value to Englisch Drop Down List field.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage setEnglisch2DropDownListField(String englisch2Value) {
+    public SpecialtyEditPage setEnglisch2DropDownListField(String englisch2Value) {
         new Select(englisch2).selectByVisibleText(englisch2Value);
         return this;
     }
@@ -449,18 +452,18 @@ public class PetTypePage {
     /**
      * Set default value to Englisch Text field.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage setEnglisch3TextField() {
+    public SpecialtyEditPage setEnglisch3TextField() {
         return setEnglisch3TextField(data.get("ENGLISCH_3"));
     }
 
     /**
      * Set value to Englisch Text field.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage setEnglisch3TextField(String englisch3Value) {
+    public SpecialtyEditPage setEnglisch3TextField(String englisch3Value) {
         englisch3.sendKeys(englisch3Value);
         return this;
     }
@@ -468,9 +471,9 @@ public class PetTypePage {
     /**
      * Submit the form to target page.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage submit() {
+    public SpecialtyEditPage submit() {
         // TODO
         // clickUibuttonButton();
         return this;
@@ -479,18 +482,18 @@ public class PetTypePage {
     /**
      * Unset default value from Englisch Drop Down List field.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage unsetEnglisch2DropDownListField() {
+    public SpecialtyEditPage unsetEnglisch2DropDownListField() {
         return unsetEnglisch2DropDownListField(data.get("ENGLISCH_2"));
     }
 
     /**
      * Unset value from Englisch Drop Down List field.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage unsetEnglisch2DropDownListField(String englisch2Value) {
+    public SpecialtyEditPage unsetEnglisch2DropDownListField(String englisch2Value) {
         new Select(englisch2).deselectByVisibleText(englisch2Value);
         return this;
     }
@@ -498,9 +501,9 @@ public class PetTypePage {
     /**
      * Verify that the page loaded completely.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage verifyPageLoaded() {
+    public SpecialtyEditPage verifyPageLoaded() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getPageSource().contains(pageLoadedText);
@@ -512,9 +515,9 @@ public class PetTypePage {
     /**
      * Verify that current page URL matches the expected URL.
      *
-     * @return the PetTypesPage class instance.
+     * @return the SpecialtyPage class instance.
      */
-    public PetTypePage verifyPageUrl() {
+    public SpecialtyEditPage verifyPageUrl() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getCurrentUrl().contains(pageUrl);
@@ -525,6 +528,7 @@ public class PetTypePage {
 
     public void assertPageIsLoaded() {
         assertThat(pageTitle.isDisplayed());
-        assertEquals( "Pet Types", pageTitle.getText() );
+        assertEquals( "Edit Specialty", pageTitle.getText() );
     }
+
 }
