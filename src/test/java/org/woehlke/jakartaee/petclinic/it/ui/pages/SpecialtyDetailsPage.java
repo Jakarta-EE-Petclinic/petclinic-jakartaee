@@ -536,7 +536,7 @@ public class SpecialtyDetailsPage {
     }
 
     public void assertPageIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
+        //assertThat(pageTitle.isDisplayed());
         assertEquals( "Specialty", pageTitle.getText() );
     }
 }

@@ -530,7 +530,7 @@ public class SpecialtyDeletePage {
     }
 
     public void assertPageIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
+        //assertThat(pageTitle.isDisplayed());
         assertEquals( "Delete Specialty", pageTitle.getText() );
     }
 

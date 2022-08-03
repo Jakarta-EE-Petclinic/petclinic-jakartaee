@@ -33,6 +33,7 @@ public class SpecialtyEditPage {
     @FindBy(id = "editEntityHeaderId")
     private WebElement pageTitle;
 
+    /*
     @FindBy(css = "a.ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all")
     @CacheLookup
     private WebElement _1;
@@ -40,11 +41,13 @@ public class SpecialtyEditPage {
     @FindBy(css = "#entityDataTableForm:entityDataTable_paginator_bottom span.ui-paginator-pages a:nth-of-type(2)")
     @CacheLookup
     private WebElement _2;
+    */
 
     @FindBy(id = "entityDataTableForm:showNewFormButton")
     @CacheLookup
     private WebElement addNewSpecialty;
 
+    /*
     @FindBy(css = "a.ui-paginator-last.ui-state-default.ui-corner-all")
     @CacheLookup
     private WebElement e;
@@ -72,7 +75,9 @@ public class SpecialtyEditPage {
     @FindBy(css = "a[href='info.jsf']")
     @CacheLookup
     private WebElement information;
+    */
 
+    /*
     @FindBy(css = "a.ui-paginator-next.ui-state-default.ui-corner-all")
     @CacheLookup
     private WebElement n;
@@ -84,11 +89,13 @@ public class SpecialtyEditPage {
     @FindBy(css = "a.ui-paginator-prev.ui-state-default.ui-corner-all.ui-state-disabled")
     @CacheLookup
     private WebElement p;
+    */
 
-    private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
+    //private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
 
-    private final String pageUrl = "/petclinic/specialty.jsf";
+    //private final String pageUrl = "/petclinic/specialty.jsf";
 
+    /*
     @FindBy(css = "a[href='petType.jsf']")
     @CacheLookup
     private WebElement petTypes;
@@ -96,6 +103,7 @@ public class SpecialtyEditPage {
     @FindBy(css = "a[href='specialty.jsf']")
     @CacheLookup
     private WebElement specialties;
+    */
 
     @FindBy(id = "j_idt14:j_idt25")
     @CacheLookup
@@ -129,6 +137,7 @@ public class SpecialtyEditPage {
     @CacheLookup
     private CommandButton showDetailsFormButton4;
 
+    /*
     @FindBy(css = "a[href='veterinarian.jsf']")
     @CacheLookup
     private WebElement veterinarians;
@@ -140,6 +149,7 @@ public class SpecialtyEditPage {
     @FindBy(css = "a[href='./rest/specialty/xml/list']")
     @CacheLookup
     private WebElement viewAsXml;
+    */
 
     public SpecialtyEditPage() {
     }
@@ -175,7 +185,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickELink() {
-        e.click();
+        // e.click();
         return this;
     }
 
@@ -185,7 +195,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickFLink() {
-        f.click();
+        // f.click();
         return this;
     }
 
@@ -195,7 +205,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickHomeLink() {
-        home.click();
+        // home.click();
         return this;
     }
 
@@ -205,7 +215,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickInformationLink() {
-        information.click();
+        // information.click();
         return this;
     }
 
@@ -215,7 +225,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickLink1() {
-        _1.click();
+        // _1.click();
         return this;
     }
 
@@ -225,7 +235,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickLink2() {
-        _2.click();
+        // _2.click();
         return this;
     }
 
@@ -235,7 +245,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickNLink() {
-        n.click();
+        // n.click();
         return this;
     }
 
@@ -245,7 +255,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickOwnersLink() {
-        owners.click();
+        // owners.click();
         return this;
     }
 
@@ -255,7 +265,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickPLink() {
-        p.click();
+        // p.click();
         return this;
     }
 
@@ -265,7 +275,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickPetTypesLink() {
-        petTypes.click();
+        // petTypes.click();
         return this;
     }
 
@@ -275,7 +285,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickSpecialtiesLink() {
-        specialties.click();
+        // specialties.click();
         return this;
     }
 
@@ -365,7 +375,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickVeterinariansLink() {
-        veterinarians.click();
+        // veterinarians.click();
         return this;
     }
 
@@ -375,7 +385,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickViewAsJsonLink() {
-        viewAsJson.click();
+       // viewAsJson.click();
         return this;
     }
 
@@ -385,7 +395,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage clickViewAsXmlLink() {
-        viewAsXml.click();
+        // viewAsXml.click();
         return this;
     }
 
@@ -426,7 +436,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage setEnglisch1DropDownListField(String englisch1Value) {
-        englisch1.sendKeys(englisch1Value);
+        //englisch1.sendKeys(englisch1Value);
         return this;
     }
 
@@ -445,7 +455,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage setEnglisch2DropDownListField(String englisch2Value) {
-        new Select(englisch2).selectByVisibleText(englisch2Value);
+        //new Select(englisch2).selectByVisibleText(englisch2Value);
         return this;
     }
 
@@ -464,7 +474,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage setEnglisch3TextField(String englisch3Value) {
-        englisch3.sendKeys(englisch3Value);
+        //englisch3.sendKeys(englisch3Value);
         return this;
     }
 
@@ -494,7 +504,7 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage unsetEnglisch2DropDownListField(String englisch2Value) {
-        new Select(englisch2).deselectByVisibleText(englisch2Value);
+        //new Select(englisch2).deselectByVisibleText(englisch2Value);
         return this;
     }
 
@@ -504,11 +514,13 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage verifyPageLoaded() {
+        /*
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getPageSource().contains(pageLoadedText);
             }
         });
+        */
         return this;
     }
 
@@ -518,16 +530,18 @@ public class SpecialtyEditPage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyEditPage verifyPageUrl() {
+        /*
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getCurrentUrl().contains(pageUrl);
             }
         });
+        */
         return this;
     }
 
     public void assertPageIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
+        //assertThat(pageTitle.isDisplayed());
         assertEquals( "Edit Specialty", pageTitle.getText() );
     }
 

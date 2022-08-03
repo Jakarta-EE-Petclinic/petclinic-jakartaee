@@ -56,7 +56,7 @@ public class SpecialtyPage {
     private WebElement addNewSpecialty;
 
     public void assertPageIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
+        //assertThat(pageTitle.isDisplayed());
         assertEquals( "Specialties", pageTitle.getText() );
     }
 
