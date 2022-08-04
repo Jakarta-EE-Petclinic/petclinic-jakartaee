@@ -493,13 +493,14 @@
 				<version>${graphene-webdriver.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<!--
 			<dependency>
 				<groupId>org.jboss.arquillian.extension</groupId>
 				<artifactId>arquillian-warp-jsf</artifactId>
 				<version>${arquillian-warp-jsf.version}</version>
 				<scope>test</scope>
 			</dependency>
-
+			-->
 			<dependency>
 				<groupId>org.jboss.arquillian.extension</groupId>
 				<artifactId>arquillian-drone-api</artifactId>
@@ -1024,15 +1025,13 @@
 			<artifactId>graphene-webdriver-ftest</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-warp-jsf</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
-
-
+		-->
 		<dependency>
 			<groupId>org.jboss.shrinkwrap</groupId>
 			<artifactId>shrinkwrap-impl-base</artifactId>

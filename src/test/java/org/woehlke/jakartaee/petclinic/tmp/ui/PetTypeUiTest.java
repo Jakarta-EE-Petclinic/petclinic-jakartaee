@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.it.ui;
+package org.woehlke.jakartaee.petclinic.tmp.ui;
 
 import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -14,7 +14,8 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
-import org.woehlke.jakartaee.petclinic.it.ui.pages.InformationPage;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.PetTypePage;
+
 import java.net.URL;
 
 import static org.jboss.arquillian.graphene.Graphene.goTo;
@@ -22,7 +23,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
 @Log
 @RunAsClient
 @RunWith(Arquillian.class)
-public class InformationUiTest {
+public class PetTypeUiTest {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
@@ -39,7 +40,7 @@ public class InformationUiTest {
     private HomePage homePage;
 
     @Page
-    private InformationPage informationPage;
+    private PetTypePage petTypePage;
 
     @Test
     @InSequence(1)
@@ -50,9 +51,16 @@ public class InformationUiTest {
 
     @Test
     @InSequence(2)
-    public void openInformationPage() {
-        goTo(InformationPage.class);
-        informationPage.assertPageIsLoaded();
+    public void openPetTypePage() {
+        goTo(PetTypePage.class);
+        petTypePage.assertPageIsLoaded();
+    }
+
+    @Test
+    @InSequence(3)
+    public void openPetTypeDetailsPage() {
+        goTo(PetTypePage.class);
+        petTypePage.assertPageIsLoaded();
     }
 
 }

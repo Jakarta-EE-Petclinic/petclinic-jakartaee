@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
+import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +23,7 @@ import org.woehlke.jakartaee.petclinic.application.framework.views.CrudFlowState
 public class SpecialtyPage implements CrudFlowStatePage {
     private Map<String, String> data;
     @Drone
-    private WebDriver driver;
+    private WebDriver browser;
     private int timeout = 15;
 
     @FindBy(xpath = "/html/body/div[1]/section[1]/div/div/div/h1/span[@class='contentTitleHeadlineText']")
@@ -67,7 +68,8 @@ public class SpecialtyPage implements CrudFlowStatePage {
     }
 
     //@FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[2]/div[1]/button[@id='showNewFormButton']")
-    @FindBy(id = "showNewFormButton")
+    // @FindBy(id = "showNewFormButton")
+    @FindByJQuery("#showNewFormButton")
     private CommandButton showNewFormButton;
 
     @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='addNewEntityForm']/div/div[@id='addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelNew']")
@@ -237,7 +239,7 @@ public class SpecialtyPage implements CrudFlowStatePage {
 
     public SpecialtyPage(WebDriver driver) {
         this();
-        this.driver = driver;
+        this.browser = driver;
     }
 
     public SpecialtyPage(WebDriver driver, Map<String, String> data) {
