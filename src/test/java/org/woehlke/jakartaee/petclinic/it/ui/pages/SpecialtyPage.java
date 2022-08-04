@@ -10,12 +10,10 @@ import java.util.Map;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
-import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.primefaces.selenium.component.CommandButton;
 import org.woehlke.jakartaee.petclinic.application.framework.views.CrudFlowState;
 
 
@@ -69,48 +67,50 @@ public class SpecialtyPage implements CrudFlowStatePage {
 
     //@FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[2]/div[1]/button[@id='showNewFormButton']")
     // @FindBy(id = "showNewFormButton")
-    @FindByJQuery("#showNewFormButton")
-    private CommandButton showNewFormButton;
+    @FindBy(id = "entityDataTableForm:showNewFormButton")
+    private WebElement showNewFormButton;
 
     //@FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='addNewEntityForm']/div/div[@id='addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelNew']")
-    @FindByJQuery("#cancelNew")
-    private CommandButton cancelNewButton;
+    @FindBy(id = "addNewEntityForm:cancelNew")
+    private WebElement cancelNewButton;
 
     @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[2]/button[@id='showEditFormButton']")
-    private CommandButton showEditFormButton;
+    private WebElement showEditFormButton;
 
     @FindBy(id = "entityDataTableForm:cancelEdit")
-    private CommandButton cancelEditButton;
+    private WebElement cancelEditButton;
 
     @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[3]/button[@id='showEditFormButton']")
-    private CommandButton showDeleteFormButton;
+    private WebElement showDeleteFormButton;
 
     @FindBy(id="detailsEntityForm:canceDelete")
-    private CommandButton canceDeleteButton;
+    private WebElement canceDeleteButton;
 
     @FindBy(id = "findEntityForm:searchButton")
-    private CommandButton searchButton;
+    private WebElement searchButton;
 
     @FindBy(id = "findEntityForm:clearSearchButton")
-    private CommandButton clearSearchButton;
+    private WebElement clearSearchButton;
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[1]/div/div/div[1]/table/tbody/tr[1]/td[2]/button/@name")
-    private CommandButton showDetailsFormButton0;
+    //@FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[1]/div/div/div[1]/table/tbody/tr[1]/td[2]/button/@name")
+    @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
+    private WebElement showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
-    private CommandButton showDetailsFormButton1;
+    private WebElement showDetailsFormButton1;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
-    private CommandButton showDetailsFormButton2;
+    private WebElement showDetailsFormButton2;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
-    private CommandButton showDetailsFormButton3;
+    private WebElement showDetailsFormButton3;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
-    private CommandButton showDetailsFormButton4;
+    private WebElement showDetailsFormButton4;
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelDetails']")
-    private CommandButton cancelDetailsButton;
+    //@FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelDetails']")
+    @FindBy(id="detailsEntityForm:cancelDetails")
+    private WebElement cancelDetailsButton;
 
 
     public SpecialtyPage clickSearchButton() {
