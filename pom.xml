@@ -142,7 +142,6 @@
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<selenium.version>4.1.2</selenium.version>
 		<version.arquillian.core>1.7.0.Alpha11</version.arquillian.core>
-		<arquillian-warp.version>1.0.0</arquillian-warp.version>
 		<arquillian-drone-bom.version>3.0.0-alpha.3</arquillian-drone-bom.version>
 		<graphene-webdriver.version>3.0.0-alpha.3</graphene-webdriver.version>
 
@@ -517,56 +516,12 @@
 				<version>${graphene-webdriver.version}</version>
 				<scope>test</scope>
 			</dependency>
-
-			<!--
-			<dependency>
-				<groupId>org.jboss.arquillian.extension</groupId>
-				<artifactId>arquillian-warp</artifactId>
-				<version>${arquillian-warp.version}</version>
-				<type>pom</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.arquillian.extension</groupId>
-				<artifactId>arquillian-warp-api</artifactId>
-				<version>${arquillian-warp.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.arquillian.extension</groupId>
-				<artifactId>arquillian-warp-impl</artifactId>
-				<version>${arquillian-warp.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.arquillian.extension</groupId>
-				<artifactId>arquillian-warp-spi</artifactId>
-				<version>${arquillian-warp.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.arquillian.extension</groupId>
-				<artifactId>arquillian-warp-jsf</artifactId>
-				<version>${arquillian-warp.version}</version>
-				<scope>test</scope>
-			</dependency>
-			-->
-
 			<dependency>
 				<groupId>org.jboss.arquillian.extension</groupId>
 				<artifactId>arquillian-phantom-driver</artifactId>
 				<version>1.2.1.1</version>
 				<scope>test</scope>
 			</dependency>
-
-			<!--
-			<dependency>
-				<groupId>org.jboss.arquillian.extension</groupId>
-				<artifactId>arquillian-drone-webdriver</artifactId>
-				<version>${graphene-webdriver.version}</version>
-				<scope>test</scope>
-			</dependency>
-			-->
 
 			<dependency>
 				<groupId>jakarta.xml.bind</groupId>
@@ -1039,36 +994,6 @@
 			<artifactId>arquillian-drone-webdriver</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!--
-		<dependency>
-			<groupId>org.jboss.arquillian.extension</groupId>
-			<artifactId>arquillian-warp</artifactId>
-			<type>pom</type>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.extension</groupId>
-			<artifactId>arquillian-warp-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.extension</groupId>
-			<artifactId>arquillian-warp-impl</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.extension</groupId>
-			<artifactId>arquillian-warp-spi</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.extension</groupId>
-			<artifactId>arquillian-warp-jsf</artifactId>
-			<scope>test</scope>
-		</dependency>
-		-->
-
 		<dependency>
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-phantom-driver</artifactId>
