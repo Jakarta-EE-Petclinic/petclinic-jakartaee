@@ -111,7 +111,6 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(5)
     public void editSpecialtyPage() {
@@ -133,7 +132,6 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(6)
     public void deleteSpecialtyPage() {

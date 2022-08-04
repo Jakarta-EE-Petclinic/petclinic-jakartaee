@@ -22,13 +22,50 @@ public class SpecialtyPage implements CrudFlowStatePage {
     private Map<String, String> data;
     @Drone
     private WebDriver browser;
-    private int timeout = 15;
-
-    @FindBy(xpath = "/html/body/div[1]/section[1]/div/div/div/h1/span[@class='contentTitleHeadlineText']")
-    private WebElement pageTitle;
 
     @FindBy(id="specialtyViewFlowFlowState")
     private WebElement crudFlowState;
+    @FindBy(id = "entityDataTableForm:showNewFormButton")
+    private WebElement showNewFormButton;
+
+    @FindBy(id = "addNewEntityForm:cancelNew")
+    private WebElement cancelNewButton;
+
+    @FindBy(id = "detailsEntityForm:showEditFormButton")
+    private WebElement showEditFormButton;
+
+    @FindBy(id = "editEntityForm:cancelEdit")
+    private WebElement cancelEditButton;
+
+    @FindBy(id = "detailsEntityForm:deleteSelectedButton")
+    private WebElement showDeleteFormButton;
+
+    @FindBy(id="deleteEntityForm:cancelDelete")
+    private WebElement canceDeleteButton;
+
+    @FindBy(id = "findEntityForm:searchButton")
+    private WebElement searchButton;
+
+    @FindBy(id = "findEntityForm:clearSearchButton")
+    private WebElement clearSearchButton;
+
+    @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
+    private WebElement showDetailsFormButton0;
+
+    @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
+    private WebElement showDetailsFormButton1;
+
+    @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
+    private WebElement showDetailsFormButton2;
+
+    @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
+    private WebElement showDetailsFormButton3;
+
+    @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
+    private WebElement showDetailsFormButton4;
+
+   @FindBy(id="detailsEntityForm:cancelDetails")
+    private WebElement cancelDetailsButton;
 
     /**
      * Click on Add New Specialty Button.
@@ -36,8 +73,8 @@ public class SpecialtyPage implements CrudFlowStatePage {
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickAddNewSpecialtyButton() {
-       Graphene.guardHttp(showNewFormButton).click();
-       return this;
+        Graphene.guardHttp(showNewFormButton).click();
+        return this;
     }
 
     public SpecialtyPage clickCancelNewSpecialtyButton() {
@@ -64,51 +101,6 @@ public class SpecialtyPage implements CrudFlowStatePage {
         Graphene.guardHttp(canceDeleteButton).click();
         return this;
     }
-
-    @FindBy(id = "entityDataTableForm:showNewFormButton")
-    private WebElement showNewFormButton;
-
-    @FindBy(id = "addNewEntityForm:cancelNew")
-    private WebElement cancelNewButton;
-
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[2]/button[@id='showEditFormButton']")
-    private WebElement showEditFormButton;
-
-    @FindBy(id = "entityDataTableForm:cancelEdit")
-    private WebElement cancelEditButton;
-
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[3]/button[@id='showEditFormButton']")
-    private WebElement showDeleteFormButton;
-
-    @FindBy(id="detailsEntityForm:canceDelete")
-    private WebElement canceDeleteButton;
-
-    @FindBy(id = "findEntityForm:searchButton")
-    private WebElement searchButton;
-
-    @FindBy(id = "findEntityForm:clearSearchButton")
-    private WebElement clearSearchButton;
-
-    //@FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[1]/div/div/div[1]/table/tbody/tr[1]/td[2]/button/@name")
-    @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
-    private WebElement showDetailsFormButton0;
-
-    @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
-    private WebElement showDetailsFormButton1;
-
-    @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
-    private WebElement showDetailsFormButton2;
-
-    @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
-    private WebElement showDetailsFormButton3;
-
-    @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
-    private WebElement showDetailsFormButton4;
-
-    //@FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelDetails']")
-    @FindBy(id="detailsEntityForm:cancelDetails")
-    private WebElement cancelDetailsButton;
-
 
     public SpecialtyPage clickSearchButton() {
         Graphene.guardHttp(searchButton).click();
@@ -245,8 +237,4 @@ public class SpecialtyPage implements CrudFlowStatePage {
         this.data = data;
     }
 
-    public SpecialtyPage(WebDriver driver, Map<String, String> data, int timeout) {
-        this(driver, data);
-        this.timeout = timeout;
-    }
 }
