@@ -25,6 +25,7 @@ public class SpecialtyPage implements CrudFlowStatePage {
 
     @FindBy(id="specialtyViewFlowFlowState")
     private WebElement crudFlowState;
+
     @FindBy(id = "entityDataTableForm:showNewFormButton")
     private WebElement showNewFormButton;
 
