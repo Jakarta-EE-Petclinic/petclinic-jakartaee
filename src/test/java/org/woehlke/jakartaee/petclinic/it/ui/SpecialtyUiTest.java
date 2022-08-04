@@ -85,9 +85,9 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
-        specialtyPage.clickAddNewSpecialtyButton();
+        specialtyPage.clickAddNewEntityButton();
         Assert.assertTrue(specialtyPage.isFlowStateNew());
-        specialtyPage.clickCancelNewSpecialtyButton();
+        specialtyPage.clickCancelNewEntityButton();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewSpecialtyPage DONE ");

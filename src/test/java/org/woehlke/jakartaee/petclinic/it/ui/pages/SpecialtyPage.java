@@ -69,12 +69,12 @@ public class SpecialtyPage implements CrudFlowStatePage {
     private WebElement cancelDetailsButton;
 
 
-    public SpecialtyPage clickAddNewSpecialtyButton() {
+    public SpecialtyPage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
         return this;
     }
 
-    public SpecialtyPage clickCancelNewSpecialtyButton() {
+    public SpecialtyPage clickCancelNewEntityButton() {
         Graphene.guardHttp(cancelNewButton).click();
         return this;
     }
