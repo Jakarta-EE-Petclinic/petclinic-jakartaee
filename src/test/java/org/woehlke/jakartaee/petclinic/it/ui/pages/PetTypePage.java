@@ -527,4 +527,59 @@ public class PetTypePage {
         assertThat(pageTitle.isDisplayed());
         assertEquals( "Pet Types", pageTitle.getText() );
     }
+
+    public boolean isFlowStateList() {
+        return true;
+    }
+
+    public void clickAddNewEntityButton() {
+
+    }
+
+    public boolean isFlowStateNew() {
+        return false;
+    }
+
+    public void clickCancelNewEntityButton() {
+    }
+
+    public void clickShowDetailsFormButton0() {
+
+    }
+
+    public boolean isFlowStateDetails() {
+        return false;
+    }
+
+    public void clickCancelDetailsButton() {
+
+    }
+
+    public void clickShowEditForm() {
+
+    }
+
+    public boolean isFlowStateEdit() {
+        return false;
+    }
+
+    public void clickCancelEditButton() {
+
+    }
+
+    public boolean isFlowStateDelete() {
+        return false;
+    }
+
+    public void clickShowDetailsFormButton1() {
+
+    }
+
+    public void clickShowDeleteForm() {
+
+    }
+
+    public void clickCancelDeleteButton() {
+
+    }
 }
