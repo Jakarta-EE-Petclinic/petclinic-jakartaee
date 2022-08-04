@@ -65,12 +65,9 @@ public class SpecialtyPage implements CrudFlowStatePage {
         return this;
     }
 
-    //@FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[2]/div[1]/button[@id='showNewFormButton']")
-    // @FindBy(id = "showNewFormButton")
     @FindBy(id = "entityDataTableForm:showNewFormButton")
     private WebElement showNewFormButton;
 
-    //@FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='addNewEntityForm']/div/div[@id='addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelNew']")
     @FindBy(id = "addNewEntityForm:cancelNew")
     private WebElement cancelNewButton;
 

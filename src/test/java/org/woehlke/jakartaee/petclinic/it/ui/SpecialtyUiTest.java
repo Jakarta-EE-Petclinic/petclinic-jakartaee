@@ -94,7 +94,6 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(4)
     public void openSpecialtyDetailsPage() {
