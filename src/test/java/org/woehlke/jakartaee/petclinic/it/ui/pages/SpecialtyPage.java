@@ -72,7 +72,8 @@ public class SpecialtyPage implements CrudFlowStatePage {
     @FindByJQuery("#showNewFormButton")
     private CommandButton showNewFormButton;
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='addNewEntityForm']/div/div[@id='addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelNew']")
+    //@FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='addNewEntityForm']/div/div[@id='addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelNew']")
+    @FindByJQuery("#cancelNew")
     private CommandButton cancelNewButton;
 
     @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[2]/button[@id='showEditFormButton']")
