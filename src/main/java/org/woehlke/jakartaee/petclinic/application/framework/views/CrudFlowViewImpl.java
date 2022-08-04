@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.application.framework.views;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 
 import java.io.Serializable;
@@ -14,7 +15,7 @@ public abstract class CrudFlowViewImpl implements CrudFlowView, Serializable {
 
     private CrudFlowState flowState;
 
-    protected CrudFlowState getFlowState() {
+    public CrudFlowState getFlowState() {
         if (this.flowState == null) {
             this.flowState = CrudFlowState.LIST;
         }

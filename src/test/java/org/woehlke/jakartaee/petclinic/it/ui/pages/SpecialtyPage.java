@@ -15,13 +15,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.primefaces.selenium.component.CommandButton;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudFlowState;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Location("specialty.jsf")
-public class SpecialtyPage {
+public class SpecialtyPage implements CrudFlowStatePage {
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
@@ -30,180 +28,62 @@ public class SpecialtyPage {
     @FindBy(xpath = "/html/body/div[1]/section[1]/div/div/div/h1/span[@class='contentTitleHeadlineText']")
     private WebElement pageTitle;
 
+    @FindBy(id="specialtyViewFlowFlowState")
+    private WebElement crudFlowState;
+
     /**
      * Click on Add New Specialty Button.
      *
      * @return the SpecialtyPage class instance.
      */
     public SpecialtyPage clickAddNewSpecialtyButton() {
-       Graphene.waitForHttp(showNewFormButton);
        Graphene.guardHttp(showNewFormButton).click();
        return this;
     }
 
     public SpecialtyPage clickCancelNewSpecialtyButton() {
-        Graphene.waitForHttp(cancelNewSpecialty);
         Graphene.guardHttp(cancelNewSpecialty).click();
         return this;
     }
 
-    public SpecialtyPage clickCancelDetailsButton() {
-        Graphene.waitForHttp(cancelDetails);
-        Graphene.guardHttp(cancelDetails).click();
+    public SpecialtyPage clickShowEditForm() {
+        Graphene.guardHttp(showEditFormButton).click();
         return this;
     }
 
     public SpecialtyPage clickCancelEditButton() {
-        Graphene.waitForHttp(cancelEdit);
-        assertNotNull(cancelEdit);
-        Graphene.guardHttp(cancelEdit).click();
-        return this;
-    }
-
-    public SpecialtyPage clickShowEditForm() {
-        assertNotNull(editSpecialty);
-        Graphene.guardHttp(editSpecialty).click();
+        Graphene.guardHttp(cancelEditButton).click();
         return this;
     }
 
     public SpecialtyPage clickShowDeleteForm() {
-        Graphene.waitForHttp(showDeleteForm);
-        Graphene.guardHttp(showDeleteForm).click();
+        Graphene.guardHttp(showDeleteFormButton).click();
         return this;
     }
 
-    public SpecialtyPage clickCancelDelete() {
-        Graphene.waitForHttp(canceDelete);
-        Graphene.guardHttp(canceDelete).click();
+    public SpecialtyPage clickCancelDeleteButton() {
+        Graphene.guardHttp(canceDeleteButton).click();
         return this;
     }
 
     @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='addNewEntityForm']/div/div[@id='addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelNew']")
     private CommandButton cancelNewSpecialty;
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[2]/div[1]/button[@id='showNewFormButton']")
+    //@FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[2]/div[1]/button[@id='showNewFormButton']")
+    @FindBy(id = "showNewFormButton")
     private CommandButton showNewFormButton;
 
     @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[2]/button[@id='showEditFormButton']")
-    private CommandButton editSpecialty;
-
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[3]/button[@id='showEditFormButton']")
-    private CommandButton showDeleteForm;
-
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelDetails']")
-    private CommandButton cancelDetails;
+    private CommandButton showEditFormButton;
 
     @FindBy(id = "entityDataTableForm:cancelEdit")
-    private CommandButton cancelEdit;
+    private CommandButton cancelEditButton;
+
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[3]/button[@id='showEditFormButton']")
+    private CommandButton showDeleteFormButton;
 
     @FindBy(id="detailsEntityForm:canceDelete")
-    private CommandButton canceDelete;
-
-    public void assertPageIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
-        assertEquals( "Specialties", pageTitle.getText() );
-    }
-
-    public void assertPageNewIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
-        assertEquals( "Add new Specialty", pageTitle.getText() );
-    }
-
-    public void assertPageEditIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
-        assertEquals( "Edit Specialty", pageTitle.getText() );
-    }
-
-    public void assertPageDeleteIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
-        assertEquals( "Delete Specialty", pageTitle.getText() );
-    }
-
-    public void assertPageDetailsIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
-        assertEquals( "Specialty", pageTitle.getText() );
-    }
-
-    /*
-    @FindBy(css = "a.ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all")
-    @CacheLookup
-    private WebElement _1;
-
-    @FindBy(css = "#entityDataTableForm:entityDataTable_paginator_bottom span.ui-paginator-pages a:nth-of-type(2)")
-    @CacheLookup
-    private WebElement _2;
-
-    @FindBy(css = "a.ui-paginator-last.ui-state-default.ui-corner-all")
-    @CacheLookup
-    private WebElement e;
-
-    @FindBy(id = "j_idt14:j_idt23_focus")
-    @CacheLookup
-    private WebElement englisch1;
-
-    @FindBy(id = "j_idt14:j_idt23_input")
-    @CacheLookup
-    private WebElement englisch2;
-
-    @FindBy(id = "findEntityForm:inputTextSearchterm")
-    @CacheLookup
-    private WebElement englisch3;
-
-    @FindBy(css = "a.ui-paginator-first.ui-state-default.ui-corner-all.ui-state-disabled")
-    @CacheLookup
-    private WebElement f;
-    */
-
-    /*
-    @FindBy(css = "a[href='home.jsf']")
-    @CacheLookup
-    private WebElement home;
-
-    @FindBy(css = "a[href='info.jsf']")
-    @CacheLookup
-    private WebElement information;
-
-    @FindBy(css = "a.ui-paginator-next.ui-state-default.ui-corner-all")
-    @CacheLookup
-    private WebElement n;
-
-    @FindBy(css = "a[href='owner.jsf']")
-    @CacheLookup
-    private WebElement owners;
-
-    @FindBy(css = "a[href='veterinarian.jsf']")
-    @CacheLookup
-    private WebElement veterinarians;
-
-    @FindBy(css = "a[href='petType.jsf']")
-    @CacheLookup
-    private WebElement petTypes;
-
-    @FindBy(css = "a[href='specialty.jsf']")
-    @CacheLookup
-    private WebElement specialties;
-
-    @FindBy(css = "a.ui-paginator-prev.ui-state-default.ui-corner-all.ui-state-disabled")
-    @CacheLookup
-    private WebElement p;
-
-    @FindBy(css = "a[href='./rest/specialty/list']")
-    @CacheLookup
-    private WebElement viewAsJson;
-
-    @FindBy(css = "a[href='./rest/specialty/xml/list']")
-    @CacheLookup
-    private WebElement viewAsXml;
-
-    @FindBy(id = "j_idt14:j_idt25")
-    @CacheLookup
-    private WebElement uibutton1;
-    */
-
-    //private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
-
-    //private final String pageUrl = "/petclinic/specialty.jsf";
-
+    private CommandButton canceDeleteButton;
 
     @FindBy(id = "findEntityForm:searchButton")
     private CommandButton searchButton;
@@ -226,226 +106,47 @@ public class SpecialtyPage {
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
     private CommandButton showDetailsFormButton4;
 
-    public SpecialtyPage() {
-    }
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelDetails']")
+    private CommandButton cancelDetailsButton;
 
-    public SpecialtyPage(WebDriver driver) {
-        this();
-        this.driver = driver;
-    }
 
-    public SpecialtyPage(WebDriver driver, Map<String, String> data) {
-        this(driver);
-        this.data = data;
-    }
-
-    public SpecialtyPage(WebDriver driver, Map<String, String> data, int timeout) {
-        this(driver, data);
-        this.timeout = timeout;
-    }
-
-    /**
-     * Click on E Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickELink() {
-        //e.click();
-        return this;
-    }
-
-    /**
-     * Click on F Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickFLink() {
-        //f.click();
-        return this;
-    }
-
-    /**
-     * Click on Home Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickHomeLink() {
-       // home.click();
-        return this;
-    }
-
-    /**
-     * Click on Information Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickInformationLink() {
-       // information.click();
-        return this;
-    }
-
-    /**
-     * Click on 1 Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickLink1() {
-      //  _1.click();
-        return this;
-    }
-
-    /**
-     * Click on 2 Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickLink2() {
-       // _2.click();
-        return this;
-    }
-
-    /**
-     * Click on N Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickNLink() {
-       // n.click();
-        return this;
-    }
-
-    /**
-     * Click on Owners Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickOwnersLink() {
-        //owners.click();
-        return this;
-    }
-
-    /**
-     * Click on P Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickPLink() {
-      //  p.click();
-        return this;
-    }
-
-    /**
-     * Click on Pet Types Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickPetTypesLink() {
-       // petTypes.click();
-        return this;
-    }
-
-    /**
-     * Click on Specialties Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickSpecialtiesLink() {
-      //  specialties.click();
-        return this;
-    }
-
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickUibutton1Button() {
-       // uibutton1.click();
-        return this;
-    }
-
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
     public SpecialtyPage clickSearchButton() {
         Graphene.guardHttp(searchButton).click();
         return this;
     }
 
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
     public SpecialtyPage clickClearSearchButton() {
         Graphene.guardHttp(clearSearchButton).click();
         return this;
     }
 
-    /**
-     * Click on showDetailsFormButton0 Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
     public SpecialtyPage clickShowDetailsFormButton0() {
-        Graphene.waitForHttp(showDetailsFormButton0);
         Graphene.guardHttp(showDetailsFormButton0).click();
         return this;
     }
 
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
     public SpecialtyPage clickShowDetailsFormButton1() {
-        Graphene.waitForHttp(showDetailsFormButton1);
         Graphene.guardHttp(showDetailsFormButton1).click();
         return this;
     }
 
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
     public SpecialtyPage clickShowDetailsFormButton2() {
-        Graphene.waitForHttp(showDetailsFormButton2);
         Graphene.guardHttp(showDetailsFormButton2).click();
         return this;
     }
 
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
     public SpecialtyPage clickShowDetailsFormButton3() {
-        Graphene.waitForHttp(showDetailsFormButton3);
         Graphene.guardHttp(showDetailsFormButton3).click();
         return this;
     }
 
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
     public SpecialtyPage clickShowDetailsFormButton4() {
-        Graphene.waitForHttp(showDetailsFormButton4);
         Graphene.guardHttp(showDetailsFormButton4).click();
         return this;
     }
 
-    /**
-     * Click on Veterinarians Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickVeterinariansLink() {
-        // veterinarians.click();
+    public SpecialtyPage clickCancelDetailsButton() {
+        Graphene.guardHttp(cancelDetailsButton).click();
         return this;
     }
 
@@ -466,115 +167,6 @@ public class SpecialtyPage {
      */
     public SpecialtyPage clickViewAsXmlLink() {
         // viewAsXml.click();
-        return this;
-    }
-
-    /**
-     * Fill every fields in the page.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage fill() {
-       // setEnglisch1DropDownListField();
-       // setEnglisch2DropDownListField();
-       // setEnglisch3TextField();
-        return this;
-    }
-
-    /**
-     * Fill every fields in the page and submit it to target page.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage fillAndSubmit() {
-        fill();
-        return submit();
-    }
-
-    /**
-     * Set default value to Englisch Drop Down List field.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage setEnglisch1DropDownListField() {
-        return setEnglisch1DropDownListField(data.get("ENGLISCH_1"));
-    }
-
-    /**
-     * Set value to Englisch Drop Down List field.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage setEnglisch1DropDownListField(String englisch1Value) {
-        //englisch1.sendKeys(englisch1Value);
-        return this;
-    }
-
-    /**
-     * Set default value to Englisch Drop Down List field.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage setEnglisch2DropDownListField() {
-        return setEnglisch2DropDownListField(data.get("ENGLISCH_2"));
-    }
-
-    /**
-     * Set value to Englisch Drop Down List field.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage setEnglisch2DropDownListField(String englisch2Value) {
-       // new Select(englisch2).selectByVisibleText(englisch2Value);
-        return this;
-    }
-
-    /**
-     * Set default value to Englisch Text field.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage setEnglisch3TextField() {
-        return setEnglisch3TextField(data.get("ENGLISCH_3"));
-    }
-
-    /**
-     * Set value to Englisch Text field.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage setEnglisch3TextField(String englisch3Value) {
-        //englisch3.sendKeys(englisch3Value);
-        return this;
-    }
-
-    /**
-     * Submit the form to target page.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage submit() {
-        // TODO
-        // clickUibuttonButton();
-        return this;
-    }
-
-    /**
-     * Unset default value from Englisch Drop Down List field.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage unsetEnglisch2DropDownListField() {
-        return unsetEnglisch2DropDownListField(data.get("ENGLISCH_2"));
-    }
-
-    /**
-     * Unset value from Englisch Drop Down List field.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage unsetEnglisch2DropDownListField(String englisch2Value) {
-       // new Select(englisch2).deselectByVisibleText(englisch2Value);
         return this;
     }
 
@@ -608,5 +200,53 @@ public class SpecialtyPage {
         });
         */
         return this;
+    }
+
+    @Override
+    public boolean isFlowStateList() {
+        return CrudFlowState.LIST.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateDetails() {
+        return CrudFlowState.DETAILS.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateNew() {
+        return CrudFlowState.NEW.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateEdit() {
+        return CrudFlowState.EDIT.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateDelete() {
+        return CrudFlowState.DELETE.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateSearchResult() {
+        return CrudFlowState.LIST_SEARCH_RESULT.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    public SpecialtyPage() {
+    }
+
+    public SpecialtyPage(WebDriver driver) {
+        this();
+        this.driver = driver;
+    }
+
+    public SpecialtyPage(WebDriver driver, Map<String, String> data) {
+        this(driver);
+        this.data = data;
+    }
+
+    public SpecialtyPage(WebDriver driver, Map<String, String> data, int timeout) {
+        this(driver, data);
+        this.timeout = timeout;
     }
 }

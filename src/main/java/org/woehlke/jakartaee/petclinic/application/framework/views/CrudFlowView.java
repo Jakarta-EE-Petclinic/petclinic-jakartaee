@@ -6,7 +6,7 @@ package org.woehlke.jakartaee.petclinic.application.framework.views;
  */
 public interface CrudFlowView {
 
-    long serialVersionUID = -2732706731385890693L;
+    //long serialVersionUID = -2732706731385890693L;
 
     boolean isFlowStateList();
 

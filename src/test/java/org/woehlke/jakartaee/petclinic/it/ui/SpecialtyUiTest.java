@@ -13,6 +13,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import org.wildfly.common.Assert;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.*;
 
@@ -62,49 +63,49 @@ public class SpecialtyUiTest {
     @RunAsClient
     public void openSpecialtyPage() {
         goTo(SpecialtyPage.class);
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
     }
 
-    @Ignore
+   // @Ignore
     @Test
     @InSequence(3)
     @RunAsClient
     public void addNewSpecialtyPage() {
         goTo(SpecialtyPage.class);
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
         specialtyPage.clickAddNewSpecialtyButton();
-        specialtyPage.assertPageNewIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateNew());
         specialtyPage.clickCancelNewSpecialtyButton();
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
     }
 
-    @Ignore
+   // @Ignore
     @Test
     @InSequence(4)
     @RunAsClient
     public void openSpecialtyDetailsPage() {
         goTo(SpecialtyPage.class);
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
         specialtyPage.clickShowDetailsFormButton0();
-        specialtyPage.assertPageDetailsIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateDetails());
         specialtyPage.clickCancelDetailsButton();
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
     }
-
 
     @Test
     @InSequence(5)
     @RunAsClient
     public void editSpecialtyPage() {
         goTo(SpecialtyPage.class);
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
         specialtyPage.clickShowDetailsFormButton0();
-        specialtyPage.assertPageDetailsIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateDetails());
         specialtyPage.clickShowEditForm();
-        specialtyPage.assertPageEditIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateEdit());
         specialtyPage.clickCancelEditButton();
+        Assert.assertTrue(specialtyPage.isFlowStateDetails());
         specialtyPage.clickCancelDetailsButton();
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
     }
 
     @Test
@@ -112,14 +113,15 @@ public class SpecialtyUiTest {
     @RunAsClient
     public void deleteSpecialtyPage() {
         goTo(SpecialtyPage.class);
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
         specialtyPage.clickShowDetailsFormButton1();
-        specialtyPage.assertPageDetailsIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateDetails());
         specialtyPage.clickShowDeleteForm();
-        specialtyPage.assertPageDeleteIsLoaded();
-        specialtyPage.clickCancelDelete();
+        Assert.assertTrue(specialtyPage.isFlowStateDelete());
+        specialtyPage.clickCancelDeleteButton();
+        Assert.assertTrue(specialtyPage.isFlowStateDetails());
         specialtyPage.clickCancelDetailsButton();
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
     }
 
     @Ignore
@@ -128,7 +130,7 @@ public class SpecialtyUiTest {
     @RunAsClient
     public void fillSpecialtyPager() {
         goTo(SpecialtyPage.class);
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
        // specialtyPage.clickShowDetailsFormButton0();
        // specialtyPage.assertPageIsLoaded();
         //specialtyPage.clickAddNewSpecialty();
@@ -140,7 +142,7 @@ public class SpecialtyUiTest {
     @RunAsClient
     public void nextAndPreviousSpecialtyPage() {
         goTo(SpecialtyPage.class);
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
         /*
         specialtyPage.assertPagerNextIsLoaded();
         specialtyPage.clickPagerNext();
@@ -156,7 +158,7 @@ public class SpecialtyUiTest {
     @RunAsClient
     public void changeSortOrderSpecialtySorter() {
         goTo(SpecialtyPage.class);
-        specialtyPage.assertPageIsLoaded();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
         /*
         specialtyPage.assertSorterIsLoaded();
         specialtyPage.assertOrder();
