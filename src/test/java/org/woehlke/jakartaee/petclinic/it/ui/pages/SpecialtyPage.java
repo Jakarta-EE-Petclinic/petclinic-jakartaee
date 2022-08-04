@@ -65,14 +65,10 @@ public class SpecialtyPage implements CrudFlowStatePage {
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
     private WebElement showDetailsFormButton4;
 
-   @FindBy(id="detailsEntityForm:cancelDetails")
+    @FindBy(id="detailsEntityForm:cancelDetails")
     private WebElement cancelDetailsButton;
 
-    /**
-     * Click on Add New Specialty Button.
-     *
-     * @return the SpecialtyPage class instance.
-     */
+
     public SpecialtyPage clickAddNewSpecialtyButton() {
         Graphene.guardHttp(showNewFormButton).click();
         return this;

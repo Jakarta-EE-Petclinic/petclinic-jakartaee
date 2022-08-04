@@ -16,20 +16,18 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudFlowState;
 
 
 @Location("veterinarian.jsf")
-public class VeterinarianPage {
+public class VeterinarianPage implements CrudFlowStatePage {
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(id = "listEntityHeaderId")
-    private WebElement pageTitle;
+    @FindBy(id="veterinarianViewFlowFlowState")
+    private WebElement crudFlowState;
 
     @FindBy(id = "entityDataTableForm:showNewFormButton")
     @CacheLookup
@@ -398,21 +396,8 @@ public class VeterinarianPage {
         return this;
     }
 
-    public void assertPageIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
-        assertEquals( "Veterinarians", pageTitle.getText() );
-    }
-
-    public boolean isFlowStateList() {
-        return false;
-    }
-
     public void clickAddNewEntityButton() {
 
-    }
-
-    public boolean isFlowStateNew() {
-        return false;
     }
 
     public void clickCancelNewEntityButton() {
@@ -423,20 +408,12 @@ public class VeterinarianPage {
 
     }
 
-    public boolean isFlowStateDetails() {
-        return false;
-    }
-
     public void clickCancelDetailsButton() {
 
     }
 
     public void clickShowEditForm() {
 
-    }
-
-    public boolean isFlowStateEdit() {
-        return false;
     }
 
     public void clickCancelEditButton() {
@@ -451,11 +428,38 @@ public class VeterinarianPage {
 
     }
 
-    public boolean isFlowStateDelete() {
-        return false;
-    }
-
     public void clickCancelDeleteButton() {
 
+    }
+
+
+    @Override
+    public boolean isFlowStateList() {
+        return CrudFlowState.LIST.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateDetails() {
+        return CrudFlowState.DETAILS.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateNew() {
+        return CrudFlowState.NEW.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateEdit() {
+        return CrudFlowState.EDIT.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateDelete() {
+        return CrudFlowState.DELETE.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateSearchResult() {
+        return CrudFlowState.LIST_SEARCH_RESULT.name().compareTo(crudFlowState.getText())==0;
     }
 }
