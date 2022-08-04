@@ -8,12 +8,10 @@ package org.woehlke.jakartaee.petclinic.it.ui.pages;
 import java.util.Map;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
+import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.woehlke.jakartaee.petclinic.application.framework.views.CrudFlowState;
@@ -82,42 +80,78 @@ public class PetTypePage implements CrudFlowStatePage {
 
 
 
-
-
-    public void clickAddNewEntityButton() {
-
+    public PetTypePage clickAddNewEntityButton() {
+        Graphene.guardHttp(showNewFormButton).click();
+        return this;
     }
 
-    public void clickCancelNewEntityButton() {
+    public PetTypePage clickCancelNewEntityButton() {
+        Graphene.guardHttp(cancelNewButton).click();
+        return this;
     }
 
-    public void clickShowDetailsFormButton0() {
-
+    public PetTypePage clickShowEditForm() {
+        Graphene.guardHttp(showEditFormButton).click();
+        return this;
     }
 
-    public void clickCancelDetailsButton() {
-
+    public PetTypePage clickCancelEditButton() {
+        Graphene.guardHttp(cancelEditButton).click();
+        return this;
     }
 
-    public void clickShowEditForm() {
-
+    public PetTypePage clickShowDeleteForm() {
+        Graphene.guardHttp(showDeleteFormButton).click();
+        return this;
     }
 
-    public void clickCancelEditButton() {
-
+    public PetTypePage clickCancelDeleteButton() {
+        Graphene.guardHttp(canceDeleteButton).click();
+        return this;
     }
 
-    public void clickShowDetailsFormButton1() {
-
+    public PetTypePage clickSearchButton() {
+        Graphene.guardHttp(searchButton).click();
+        return this;
     }
 
-    public void clickShowDeleteForm() {
-
+    public PetTypePage clickClearSearchButton() {
+        Graphene.guardHttp(clearSearchButton).click();
+        return this;
     }
 
-    public void clickCancelDeleteButton() {
-
+    public PetTypePage clickShowDetailsFormButton0() {
+        Graphene.guardHttp(showDetailsFormButton0).click();
+        return this;
     }
+
+    public PetTypePage clickShowDetailsFormButton1() {
+        Graphene.guardHttp(showDetailsFormButton1).click();
+        return this;
+    }
+
+    public PetTypePage clickShowDetailsFormButton2() {
+        Graphene.guardHttp(showDetailsFormButton2).click();
+        return this;
+    }
+
+    public PetTypePage clickShowDetailsFormButton3() {
+        Graphene.guardHttp(showDetailsFormButton3).click();
+        return this;
+    }
+
+    public PetTypePage clickShowDetailsFormButton4() {
+        Graphene.guardHttp(showDetailsFormButton4).click();
+        return this;
+    }
+
+    public PetTypePage clickCancelDetailsButton() {
+        Graphene.guardHttp(cancelDetailsButton).click();
+        return this;
+    }
+
+
+
 
     @Override
     public boolean isFlowStateList() {

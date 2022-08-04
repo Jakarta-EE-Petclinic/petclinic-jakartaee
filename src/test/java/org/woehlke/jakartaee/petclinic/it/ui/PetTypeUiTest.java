@@ -16,7 +16,6 @@ import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.PetTypePage;
-import org.woehlke.jakartaee.petclinic.it.ui.pages.SpecialtyPage;
 
 import java.net.URL;
 
