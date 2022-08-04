@@ -162,9 +162,11 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
-       // specialtyPage.clickShowDetailsFormButton0();
-       // specialtyPage.assertPageIsLoaded();
-        //specialtyPage.clickAddNewSpecialty();
+        /*
+        specialtyPage.clickShowDetailsFormButton0();
+        specialtyPage.assertPageIsLoaded();
+        specialtyPage.clickAddNewSpecialty();
+        */
         log.info("------------------------------------------------------------------------------------");
         log.info(" fillSpecialtyPager DONE ");
         log.info("------------------------------------------------------------------------------------");
@@ -185,7 +187,7 @@ public class SpecialtyUiTest {
         specialtyPage.assertPagerPrevIsLoaded();
         specialtyPage.clickPagerPrev();
         specialtyPage.assertPagerNextIsLoaded();
-       */
+        */
         log.info("------------------------------------------------------------------------------------");
         log.info(" nextAndPreviousSpecialtyPage DONE ");
         log.info("------------------------------------------------------------------------------------");
@@ -208,7 +210,7 @@ public class SpecialtyUiTest {
         specialtyPage.assertSorterIsLoaded();
         specialtyPage.clickSorter();
         specialtyPage.assertOrder();
-       */
+        */
         log.info("------------------------------------------------------------------------------------");
         log.info(" changeSortOrderSpecialtySorter DONE ");
         log.info("------------------------------------------------------------------------------------");
