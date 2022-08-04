@@ -142,6 +142,7 @@
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<selenium.version>4.1.2</selenium.version>
 		<version.arquillian.core>1.7.0.Alpha11</version.arquillian.core>
+		<arquillian-warp-jsf.version>1.0.0</arquillian-warp-jsf.version>
 		<arquillian-drone-bom.version>3.0.0-alpha.3</arquillian-drone-bom.version>
 		<graphene-webdriver.version>3.0.0-alpha.3</graphene-webdriver.version>
 
@@ -492,7 +493,12 @@
 				<version>${graphene-webdriver.version}</version>
 				<scope>test</scope>
 			</dependency>
-
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-warp-jsf</artifactId>
+				<version>${arquillian-warp-jsf.version}</version>
+				<scope>test</scope>
+			</dependency>
 
 			<dependency>
 				<groupId>org.jboss.arquillian.extension</groupId>
@@ -1018,6 +1024,12 @@
 			<artifactId>graphene-webdriver-ftest</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-warp-jsf</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 
 
 

@@ -30,6 +30,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
  * To change this template use File | Settings | File Templates.
  */
 @Log
+@RunAsClient
 @RunWith(Arquillian.class)
 public class SpecialtyUiTest {
 
@@ -52,7 +53,6 @@ public class SpecialtyUiTest {
 
     @Test
     @InSequence(1)
-    @RunAsClient
     public void openHomePage() {
         goTo(HomePage.class);
         homePage.assertPageIsLoaded();
@@ -60,7 +60,6 @@ public class SpecialtyUiTest {
 
     @Test
     @InSequence(2)
-    @RunAsClient
     public void openSpecialtyPage() {
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
@@ -69,7 +68,6 @@ public class SpecialtyUiTest {
    // @Ignore
     @Test
     @InSequence(3)
-    @RunAsClient
     public void addNewSpecialtyPage() {
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
@@ -82,7 +80,6 @@ public class SpecialtyUiTest {
    // @Ignore
     @Test
     @InSequence(4)
-    @RunAsClient
     public void openSpecialtyDetailsPage() {
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
@@ -94,7 +91,6 @@ public class SpecialtyUiTest {
 
     @Test
     @InSequence(5)
-    @RunAsClient
     public void editSpecialtyPage() {
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
@@ -110,7 +106,6 @@ public class SpecialtyUiTest {
 
     @Test
     @InSequence(6)
-    @RunAsClient
     public void deleteSpecialtyPage() {
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
@@ -127,7 +122,6 @@ public class SpecialtyUiTest {
     @Ignore
     @Test
     @InSequence(7)
-    @RunAsClient
     public void fillSpecialtyPager() {
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
@@ -139,7 +133,6 @@ public class SpecialtyUiTest {
     @Ignore
     @Test
     @InSequence(8)
-    @RunAsClient
     public void nextAndPreviousSpecialtyPage() {
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
@@ -155,7 +148,6 @@ public class SpecialtyUiTest {
     @Ignore
     @Test
     @InSequence(9)
-    @RunAsClient
     public void changeSortOrderSpecialtySorter() {
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());

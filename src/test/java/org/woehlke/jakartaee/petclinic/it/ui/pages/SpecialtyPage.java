@@ -42,7 +42,7 @@ public class SpecialtyPage implements CrudFlowStatePage {
     }
 
     public SpecialtyPage clickCancelNewSpecialtyButton() {
-        Graphene.guardHttp(cancelNewSpecialty).click();
+        Graphene.guardHttp(cancelNewButton).click();
         return this;
     }
 
@@ -66,12 +66,12 @@ public class SpecialtyPage implements CrudFlowStatePage {
         return this;
     }
 
-    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='addNewEntityForm']/div/div[@id='addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelNew']")
-    private CommandButton cancelNewSpecialty;
-
     //@FindBy(xpath = "/html/body/div[1]/section[2]/div/div/div[@id='contentPanel_content']/form[@id='entityDataTableForm']/div[2]/div[1]/button[@id='showNewFormButton']")
     @FindBy(id = "showNewFormButton")
     private CommandButton showNewFormButton;
+
+    @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='addNewEntityForm']/div/div[@id='addNewEntityFormPanel_content']/div[3]/div[1]/button[@id='cancelNew']")
+    private CommandButton cancelNewButton;
 
     @FindBy(xpath = "/html/body/div[1]/section[2]/div/form[@id='detailsEntityForm']/div/div[@id='detailsEntityFormPanel_content']/div[3]/div[2]/button[@id='showEditFormButton']")
     private CommandButton showEditFormButton;

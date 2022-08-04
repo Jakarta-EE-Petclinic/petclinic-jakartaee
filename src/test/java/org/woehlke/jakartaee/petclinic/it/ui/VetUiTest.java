@@ -21,6 +21,7 @@ import java.net.URL;
 import static org.jboss.arquillian.graphene.Graphene.goTo;
 
 @Log
+@RunAsClient
 @RunWith(Arquillian.class)
 public class VetUiTest {
 
@@ -43,7 +44,6 @@ public class VetUiTest {
 
     @Test
     @InSequence(1)
-    @RunAsClient
     public void openHomePage() {
         goTo(HomePage.class);
         homePage.assertPageIsLoaded();
@@ -51,7 +51,6 @@ public class VetUiTest {
 
     @Test
     @InSequence(2)
-    @RunAsClient
     public void openVeterinarianPage() {
         goTo(VeterinarianPage.class);
         veterinarianPage.assertPageIsLoaded();
@@ -59,7 +58,6 @@ public class VetUiTest {
 
     @Test
     @InSequence(3)
-    @RunAsClient
     public void openVeterinarianDetailsPage() {
         goTo(VeterinarianPage.class);
         veterinarianPage.assertPageIsLoaded();
