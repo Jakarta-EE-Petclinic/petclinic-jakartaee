@@ -19,7 +19,7 @@ public class OwnerFlowViewImpl implements OwnerFlowView, Serializable {
 
     private OwnerFlowState flowState;
 
-    private OwnerFlowState getFlowState() {
+    public OwnerFlowState getFlowState() {
         if (this.flowState == null) {
             this.flowState = OwnerFlowState.LIST;
         }
