@@ -5,7 +5,10 @@
 		<feature>microprofile-5.0</feature>
 	</featureManager>
 
+	<include location="userRegistry.xml"/>
+
 	<httpSession idLength="56" cookieHttpOnly="false" cookieName="JSESSIONID" invalidationTimeout="8h"/>
+
 	<ltpa expiration="8h" keysFileName="${server.config.dir}/resources/security/ltpa.keys"
 		  keysPassword="{xor}KixsLS8+ZZ2="/>
 
