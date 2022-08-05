@@ -46,7 +46,6 @@ public class OwnerUiTest {
     @Page
     private OwnerPage ownerPage;
 
-    @Ignore
     @Test
     @InSequence(1)
     public void openHomePage() {
@@ -60,7 +59,6 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(2)
     public void openOwnerPage() {
@@ -74,7 +72,6 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(3)
     public void addNewOwnerPage() {
@@ -92,7 +89,6 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(4)
     public void openOwnerDetailsPage() {
@@ -110,7 +106,6 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(5)
     public void editOwnerPage() {
@@ -121,9 +116,11 @@ public class OwnerUiTest {
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton0();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
+        // ----------------------------------
         ownerPage.clickShowEditForm();
         Assert.assertTrue(ownerPage.isFlowStateEdit());
         ownerPage.clickCancelEditButton();
+        // ----------------------------------
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         ownerPage.clickCancelDetailsButton();
         Assert.assertTrue(ownerPage.isFlowStateList());
@@ -132,7 +129,6 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(6)
     public void deleteOwnerPage() {
@@ -143,9 +139,11 @@ public class OwnerUiTest {
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton1();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
+        // ----------------------------------
         ownerPage.clickShowDeleteForm();
         Assert.assertTrue(ownerPage.isFlowStateDelete());
         ownerPage.clickCancelDeleteButton();
+        // ----------------------------------
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         ownerPage.clickCancelDetailsButton();
         Assert.assertTrue(ownerPage.isFlowStateList());
@@ -154,7 +152,6 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(7)
     public void addNewPetToOwnerPage() {
@@ -166,9 +163,11 @@ public class OwnerUiTest {
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton1();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
+        // ----------------------------------
         ownerPage.clickAddNewPetButton();
         Assert.assertTrue(ownerPage.isFlowStateNewPet());
         ownerPage.clickCancelNewPetButton();
+        // ----------------------------------
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         ownerPage.clickCancelDetailsButton();
         Assert.assertTrue(ownerPage.isFlowStateList());
