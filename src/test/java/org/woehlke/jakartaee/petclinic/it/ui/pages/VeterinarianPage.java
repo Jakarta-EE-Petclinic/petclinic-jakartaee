@@ -78,8 +78,6 @@ public class VeterinarianPage implements CrudFlowStatePage {
     private WebElement cancelDetailsButton;
 
 
-
-
     public VeterinarianPage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
         return this;

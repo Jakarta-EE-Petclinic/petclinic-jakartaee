@@ -139,57 +139,6 @@ public class SpecialtyPage implements CrudFlowStatePage {
         return this;
     }
 
-    /**
-     * Click on View As Json Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickViewAsJsonLink() {
-        // viewAsJson.click();
-        return this;
-    }
-
-    /**
-     * Click on View As Xml Link.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage clickViewAsXmlLink() {
-        // viewAsXml.click();
-        return this;
-    }
-
-    /**
-     * Verify that the page loaded completely.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage verifyPageLoaded() {
-        /*
-        (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getPageSource().contains(pageLoadedText);
-            }
-        });
-        */
-        return this;
-    }
-
-    /**
-     * Verify that current page URL matches the expected URL.
-     *
-     * @return the SpecialtyPage class instance.
-     */
-    public SpecialtyPage verifyPageUrl() {
-        /*
-        (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getCurrentUrl().contains(pageUrl);
-            }
-        });
-        */
-        return this;
-    }
 
     @Override
     public boolean isFlowStateList() {

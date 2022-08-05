@@ -17,7 +17,7 @@ import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowState;
 
 
 @Location("owner.jsf")
-public class OwnerPage implements CrudFlowStatePage {
+public class OwnerPage implements OwnerFlowStatePage {
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
@@ -168,6 +168,21 @@ public class OwnerPage implements CrudFlowStatePage {
     @Override
     public boolean isFlowStateSearchResult() {
         return OwnerFlowState.LIST_SEARCH_RESULT.name().compareTo(ownerFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateNewPet() {
+        return OwnerFlowState.NEW_PET.name().compareTo(ownerFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateEditPet() {
+        return OwnerFlowState.EDIT_PET.name().compareTo(ownerFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateNewVisit() {
+        return OwnerFlowState.NEW_VISIT.name().compareTo(ownerFlowState.getText())==0;
     }
 
     public OwnerPage() {
