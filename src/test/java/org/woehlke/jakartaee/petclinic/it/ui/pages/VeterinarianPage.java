@@ -150,8 +150,6 @@ public class VeterinarianPage implements CrudFlowStatePage {
         return this;
     }
 
-
-
     @Override
     public boolean isFlowStateList() {
         return CrudFlowState.LIST.name().compareTo(crudFlowState.getText())==0;
