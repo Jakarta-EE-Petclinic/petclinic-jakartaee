@@ -97,7 +97,7 @@ public class VetViewImpl implements VetView, Serializable {
     @Override
     public String cancelNew() {
         log.info("cancelNew");
-        this.vetViewFlow.setFlowStateDetails();
+        this.vetViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
 
