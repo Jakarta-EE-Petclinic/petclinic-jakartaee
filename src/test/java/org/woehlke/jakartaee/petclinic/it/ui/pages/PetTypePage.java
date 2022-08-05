@@ -32,13 +32,13 @@ public class PetTypePage implements CrudFlowStatePage {
     @FindBy(id = "entityDataTableForm:showNewFormButton")
     private WebElement showNewFormButton;
 
-    @FindBy(id = "addNewEntityForm:cancelNew")
+    @FindBy(id = "addEntityForm:cancelNew")
     private WebElement cancelNewButton;
 
     @FindBy(id = "detailsEntityForm:showEditFormButton")
     private WebElement showEditFormButton;
 
-    @FindBy(id = "editEntityForm:cancelEdit")
+    @FindBy(id = "editPetTypeForm:cancelEdit")
     private WebElement cancelEditButton;
 
     @FindBy(id = "detailsEntityForm:deleteSelectedButton")
@@ -149,8 +149,6 @@ public class PetTypePage implements CrudFlowStatePage {
         Graphene.guardHttp(cancelDetailsButton).click();
         return this;
     }
-
-
 
 
     @Override
