@@ -69,6 +69,11 @@ public class OwnerPage implements OwnerFlowStatePage {
     @FindBy(id="detailsOwnerForm:cancelDetailsOwner")
     private WebElement cancelDetailsButton;
 
+    @FindBy(id="detailsFFFFFOwnerForm:cancelDetailsOwner")
+    private WebElement addNewPetButton;
+
+    @FindBy(id="detailsFFFFFOwnerForm:cancelDetailsOwner")
+    private WebElement cancelNewPetButton;
 
     public OwnerPage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
@@ -137,6 +142,16 @@ public class OwnerPage implements OwnerFlowStatePage {
 
     public OwnerPage clickCancelDetailsButton() {
         Graphene.guardHttp(cancelDetailsButton).click();
+        return this;
+    }
+
+    public OwnerPage clickAddNewPetButton() {
+        Graphene.guardHttp(addNewPetButton).click();
+        return this;
+    }
+
+    public OwnerPage clickCancelNewPetButton() {
+        Graphene.guardHttp(cancelNewPetButton).click();
         return this;
     }
 

@@ -2,7 +2,7 @@ package org.woehlke.jakartaee.petclinic;
 
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
-import org.woehlke.jakartaee.petclinic.it.api.*;
+import org.woehlke.jakartaee.petclinic.tmp.api.*;
 
 @Suite
 @SelectClasses({

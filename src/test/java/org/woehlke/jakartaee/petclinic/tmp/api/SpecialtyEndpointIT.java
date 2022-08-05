@@ -1,5 +1,4 @@
-package org.woehlke.jakartaee.petclinic.it.api;
-
+package org.woehlke.jakartaee.petclinic.tmp.api;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -19,9 +18,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyDto;
+import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyListDto;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
-import org.woehlke.jakartaee.petclinic.pet.api.PetDto;
-import org.woehlke.jakartaee.petclinic.pet.api.PetListDto;
 
 import java.io.StringReader;
 import java.net.URL;
@@ -30,7 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @ExtendWith(ArquillianExtension.class)
-public class PetEndpointIT {
+public class SpecialtyEndpointIT {
 
   @Deployment(testable = false)
   public static WebArchive createDeployment() {
@@ -46,6 +45,7 @@ public class PetEndpointIT {
   public void setup() {
     log.info("call BeforeEach");
     this.client = ClientBuilder.newClient();
+    //removed the Jackson json provider registry, due to OpenLiberty 21.0.0.1 switched to use Resteasy.
   }
 
   @AfterEach
@@ -58,7 +58,7 @@ public class PetEndpointIT {
 
   @Test
   public void testGetListJson() {
-    String endpoint = base + "/rest" + "/pet" + "/list";
+    String endpoint = base + "/rest" + "/specialty" + "/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
@@ -71,12 +71,10 @@ public class PetEndpointIT {
             response.getStatus()
     );
     String json = response.readEntity(String.class);
-    /*
-    PetListDto petTypeListDto = jsonb.fromJson(json, PetListDto.class);
-    for(PetDto dto: petTypeListDto.getPet()){
+    SpecialtyListDto petTypeListDto = jsonb.fromJson(json, SpecialtyListDto.class);
+    for(SpecialtyDto dto: petTypeListDto.getSpecialty()){
       log.info("fetched dto: "+dto.toString());
     }
-    */
     json = "\n\n" + json +  "\n\n";
     log.info(json);
     response.close();
@@ -85,7 +83,7 @@ public class PetEndpointIT {
 
   @Test
   public void testGetListXml() throws JAXBException {
-    String endpoint = base + "/rest" + "/pet" + "/xml/list";
+    String endpoint = base + "/rest" + "/specialty" + "/xml/list";
     log.info("------------------------------------------------------------");
     log.info(" endpoint URL: " + endpoint);
     log.info("------------------------------------------------------------");
@@ -97,11 +95,11 @@ public class PetEndpointIT {
             response.getStatus()
     );
     String xml = response.readEntity(String.class);
-    JAXBContext jc = JAXBContext.newInstance(PetListDto.class);
+    JAXBContext jc = JAXBContext.newInstance(SpecialtyListDto.class);
     Unmarshaller m = jc.createUnmarshaller();
     StringReader r  = new StringReader(xml);
-    PetListDto o = (PetListDto) m.unmarshal(r);
-    for(PetDto dto: o.getPet()){
+    SpecialtyListDto o = (SpecialtyListDto) m.unmarshal(r);
+    for(SpecialtyDto dto: o.getSpecialty()){
       log.info("fetched dto: "+dto.toString());
     }
     xml = "\n\n" + xml +  "\n\n";

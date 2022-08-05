@@ -147,4 +147,26 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Test
+    @InSequence(7)
+    public void addNewPetToOwnerPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewPetToOwnerPage ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(OwnerPage.class);
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        ownerPage.clickShowDetailsFormButton1();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+
+        ownerPage.clickAddNewPetButton();
+        Assert.assertTrue(ownerPage.isFlowStateNewPet());
+        ownerPage.clickCancelNewPetButton();
+
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        ownerPage.clickCancelDetailsButton();
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewPetToOwnerPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
 }
