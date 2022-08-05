@@ -10,6 +10,7 @@ import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -86,6 +87,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(4)
     public void openVeterinarianDetailsPage() {
@@ -103,6 +105,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(5)
     public void editVeterinarianPage() {
@@ -124,6 +127,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(6)
     public void deleteVeterinarianPage() {
