@@ -277,10 +277,10 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     }
 
     @Override
-    public String editOwnerPetVisitNewForm() {
+    public String editOwnerPetVisitNewForm(Pet rowPet) {
         log.info("editOwnerPetVisitNewForm");
-        if (this.pet != null) {
-            this.pet = petService.findById(this.pet.getId());
+        if (rowPet != null) {
+            this.pet = petService.findById(rowPet.getId());
             this.petTypeId = this.pet.getType().getId();
             this.visit = new Visit();
             this.ownerFlowView.setFlowStateNewVisit();
