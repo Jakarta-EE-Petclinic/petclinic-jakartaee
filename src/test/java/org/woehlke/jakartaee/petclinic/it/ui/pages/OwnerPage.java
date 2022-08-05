@@ -77,7 +77,7 @@ public class OwnerPage implements OwnerFlowStatePage {
     private WebElement cancelNewPetButton;
 
     @FindBy(id="detailsOwnerForm:petsAndVisitsTable:0:addVisitButton")
-    private WebElement addNewVisitButton;
+    private WebElement addVisitButton;
 
     @FindBy(id="addVisitForm:cancelAddNewOwnersPetVisit")
     private WebElement cancelNewVisitButton;
@@ -193,8 +193,9 @@ public class OwnerPage implements OwnerFlowStatePage {
         //Graphene.waitModel(driver).until().element(addNewVisitButton).is().enabled();
         //Actions action = new Actions(driver);
         //action.moveToElement(addNewVisitButton).pause(1000).perform();
-        addNewVisitButton.sendKeys(Keys.DOWN);
-        addNewVisitButton.sendKeys(Keys.ENTER);
+        addVisitButton.sendKeys(Keys.DOWN);
+        addVisitButton.sendKeys(Keys.END);
+        addVisitButton.sendKeys(Keys.ENTER);
         //Graphene.guardHttp(addNewVisitButton).click();
         fullscreen();
         return this;
