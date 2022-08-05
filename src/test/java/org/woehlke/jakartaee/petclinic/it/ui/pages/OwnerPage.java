@@ -10,11 +10,10 @@ import java.util.Map;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Location;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.woehlke.jakartaee.petclinic.application.framework.views.CrudFlowState;
+import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowState;
 
 
 @Location("owner.jsf")
@@ -25,24 +24,24 @@ public class OwnerPage implements CrudFlowStatePage {
     private int timeout = 15;
 
     @FindBy(id="ownerViewFlowFlowState")
-    private WebElement crudFlowState;
+    private WebElement ownerFlowState;
 
     @FindBy(id = "entityDataTableForm:showNewFormButton")
     private WebElement showNewFormButton;
 
-    @FindBy(id = "addNewEntityForm:cancelNew")
+    @FindBy(id = "addNewOwnerForm:cancelAddNewOwner")
     private WebElement cancelNewButton;
 
-    @FindBy(id = "detailsEntityForm:showEditFormButton")
+    @FindBy(id = "detailsOwnerForm:showEditFormButtonInList")
     private WebElement showEditFormButton;
 
-    @FindBy(id = "editEntityForm:cancelEdit")
+    @FindBy(id = "editOwnerForm:cancelEditOwner")
     private WebElement cancelEditButton;
 
-    @FindBy(id = "detailsEntityForm:deleteSelectedButton")
+    @FindBy(id = "detailsOwnerForm:deleteSelectedButton")
     private WebElement showDeleteFormButton;
 
-    @FindBy(id="deleteEntityForm:cancelDelete")
+    @FindBy(id="deleteOwnerForm:cancelDeleteOwner")
     private WebElement canceDeleteButton;
 
     @FindBy(id = "findEntityForm:searchButton")
@@ -53,26 +52,21 @@ public class OwnerPage implements CrudFlowStatePage {
 
 
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton1;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton2;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton3;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton4;
 
-    @FindBy(id="detailsEntityForm:cancelDetails")
+    @FindBy(id="detailsOwnerForm:cancelDetailsOwner")
     private WebElement cancelDetailsButton;
 
 
@@ -148,32 +142,32 @@ public class OwnerPage implements CrudFlowStatePage {
 
     @Override
     public boolean isFlowStateList() {
-        return CrudFlowState.LIST.name().compareTo(crudFlowState.getText())==0;
+        return OwnerFlowState.LIST.name().compareTo(ownerFlowState.getText())==0;
     }
 
     @Override
     public boolean isFlowStateDetails() {
-        return CrudFlowState.DETAILS.name().compareTo(crudFlowState.getText())==0;
+        return OwnerFlowState.DETAILS.name().compareTo(ownerFlowState.getText())==0;
     }
 
     @Override
     public boolean isFlowStateNew() {
-        return CrudFlowState.NEW.name().compareTo(crudFlowState.getText())==0;
+        return OwnerFlowState.NEW_OWNER.name().compareTo(ownerFlowState.getText())==0;
     }
 
     @Override
     public boolean isFlowStateEdit() {
-        return CrudFlowState.EDIT.name().compareTo(crudFlowState.getText())==0;
+        return OwnerFlowState.EDIT_OWNER.name().compareTo(ownerFlowState.getText())==0;
     }
 
     @Override
     public boolean isFlowStateDelete() {
-        return CrudFlowState.DELETE.name().compareTo(crudFlowState.getText())==0;
+        return OwnerFlowState.DELETE_OWNER.name().compareTo(ownerFlowState.getText())==0;
     }
 
     @Override
     public boolean isFlowStateSearchResult() {
-        return CrudFlowState.LIST_SEARCH_RESULT.name().compareTo(crudFlowState.getText())==0;
+        return OwnerFlowState.LIST_SEARCH_RESULT.name().compareTo(ownerFlowState.getText())==0;
     }
 
     public OwnerPage() {
