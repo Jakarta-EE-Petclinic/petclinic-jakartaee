@@ -8,95 +8,173 @@ package org.woehlke.jakartaee.petclinic.it.ui.pages;
 import java.util.Map;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
+import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.woehlke.jakartaee.petclinic.application.framework.views.CrudFlowState;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Location("owner.jsf")
-public class OwnerPage {
+public class OwnerPage implements CrudFlowStatePage {
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(id = "listEntityHeaderId")
-    private WebElement pageTitle;
+    @FindBy(id="ownerViewFlowFlowState")
+    private WebElement crudFlowState;
 
     @FindBy(id = "entityDataTableForm:showNewFormButton")
-    @CacheLookup
-    private WebElement addNewOwner;
+    private WebElement showNewFormButton;
 
-    @FindBy(id = "j_idt14:j_idt23_focus")
-    @CacheLookup
-    private WebElement englisch1;
+    @FindBy(id = "addNewEntityForm:cancelNew")
+    private WebElement cancelNewButton;
 
-    @FindBy(id = "j_idt14:j_idt23_input")
-    @CacheLookup
-    private WebElement englisch2;
+    @FindBy(id = "detailsEntityForm:showEditFormButton")
+    private WebElement showEditFormButton;
 
-    @FindBy(id = "findEntityForm:inputTextSearchterm")
-    @CacheLookup
-    private WebElement englisch3;
+    @FindBy(id = "editEntityForm:cancelEdit")
+    private WebElement cancelEditButton;
 
-    @FindBy(css = "a[href='home.jsf']")
-    @CacheLookup
-    private WebElement home;
+    @FindBy(id = "detailsEntityForm:deleteSelectedButton")
+    private WebElement showDeleteFormButton;
 
-    @FindBy(css = "a[href='info.jsf']")
-    @CacheLookup
-    private WebElement information;
-
-    @FindBy(css = "a[href='owner.jsf']")
-    @CacheLookup
-    private WebElement owners;
-
-    private final String pageLoadedText = "© 2019-2022 Thomas Wöhlke";
-
-    private final String pageUrl = "/petclinic/owner.jsf";
-
-    @FindBy(css = "a[href='petType.jsf']")
-    @CacheLookup
-    private WebElement petTypes;
-
-    @FindBy(css = "a[href='specialty.jsf']")
-    @CacheLookup
-    private WebElement specialties;
-
-    @FindBy(id = "j_idt14:j_idt25")
-    @CacheLookup
-    private WebElement uibutton1;
+    @FindBy(id="deleteEntityForm:cancelDelete")
+    private WebElement canceDeleteButton;
 
     @FindBy(id = "findEntityForm:searchButton")
-    @CacheLookup
-    private WebElement uibutton2;
+    private WebElement searchButton;
 
     @FindBy(id = "findEntityForm:clearSearchButton")
-    @CacheLookup
-    private WebElement uibutton3;
+    private WebElement clearSearchButton;
+
 
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
     @CacheLookup
-    private WebElement uibutton4;
+    private WebElement showDetailsFormButton0;
 
-    @FindBy(css = "a[href='veterinarian.jsf']")
+    @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
     @CacheLookup
-    private WebElement veterinarians;
+    private WebElement showDetailsFormButton1;
 
-    @FindBy(css = "a[href='./rest/owner/list']")
+    @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
     @CacheLookup
-    private WebElement viewAsJson;
+    private WebElement showDetailsFormButton2;
 
-    @FindBy(css = "a[href='./rest/owner/xml/list']")
+    @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
     @CacheLookup
-    private WebElement viewAsXml;
+    private WebElement showDetailsFormButton3;
+
+    @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
+    @CacheLookup
+    private WebElement showDetailsFormButton4;
+
+    @FindBy(id="detailsEntityForm:cancelDetails")
+    private WebElement cancelDetailsButton;
+
+
+    public OwnerPage clickAddNewEntityButton() {
+        Graphene.guardHttp(showNewFormButton).click();
+        return this;
+    }
+
+    public OwnerPage clickCancelNewEntityButton() {
+        Graphene.guardHttp(cancelNewButton).click();
+        return this;
+    }
+
+    public OwnerPage clickShowEditForm() {
+        Graphene.guardHttp(showEditFormButton).click();
+        return this;
+    }
+
+    public OwnerPage clickCancelEditButton() {
+        Graphene.guardHttp(cancelEditButton).click();
+        return this;
+    }
+
+    public OwnerPage clickShowDeleteForm() {
+        Graphene.guardHttp(showDeleteFormButton).click();
+        return this;
+    }
+
+    public OwnerPage clickCancelDeleteButton() {
+        Graphene.guardHttp(canceDeleteButton).click();
+        return this;
+    }
+
+    public OwnerPage clickSearchButton() {
+        Graphene.guardHttp(searchButton).click();
+        return this;
+    }
+
+    public OwnerPage clickClearSearchButton() {
+        Graphene.guardHttp(clearSearchButton).click();
+        return this;
+    }
+
+    public OwnerPage clickShowDetailsFormButton0() {
+        Graphene.guardHttp(showDetailsFormButton0).click();
+        return this;
+    }
+
+    public OwnerPage clickShowDetailsFormButton1() {
+        Graphene.guardHttp(showDetailsFormButton1).click();
+        return this;
+    }
+
+    public OwnerPage clickShowDetailsFormButton2() {
+        Graphene.guardHttp(showDetailsFormButton2).click();
+        return this;
+    }
+
+    public OwnerPage clickShowDetailsFormButton3() {
+        Graphene.guardHttp(showDetailsFormButton3).click();
+        return this;
+    }
+
+    public OwnerPage clickShowDetailsFormButton4() {
+        Graphene.guardHttp(showDetailsFormButton4).click();
+        return this;
+    }
+
+    public OwnerPage clickCancelDetailsButton() {
+        Graphene.guardHttp(cancelDetailsButton).click();
+        return this;
+    }
+
+    @Override
+    public boolean isFlowStateList() {
+        return CrudFlowState.LIST.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateDetails() {
+        return CrudFlowState.DETAILS.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateNew() {
+        return CrudFlowState.NEW.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateEdit() {
+        return CrudFlowState.EDIT.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateDelete() {
+        return CrudFlowState.DELETE.name().compareTo(crudFlowState.getText())==0;
+    }
+
+    @Override
+    public boolean isFlowStateSearchResult() {
+        return CrudFlowState.LIST_SEARCH_RESULT.name().compareTo(crudFlowState.getText())==0;
+    }
 
     public OwnerPage() {
     }
@@ -114,277 +192,5 @@ public class OwnerPage {
     public OwnerPage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
         this.timeout = timeout;
-    }
-
-    /**
-     * Click on Add New Owner Button.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickAddNewOwnerButton() {
-        addNewOwner.click();
-        return this;
-    }
-
-    /**
-     * Click on Home Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickHomeLink() {
-        home.click();
-        return this;
-    }
-
-    /**
-     * Click on Information Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickInformationLink() {
-        information.click();
-        return this;
-    }
-
-    /**
-     * Click on Owners Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickOwnersLink() {
-        owners.click();
-        return this;
-    }
-
-    /**
-     * Click on Pet Types Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickPetTypesLink() {
-        petTypes.click();
-        return this;
-    }
-
-    /**
-     * Click on Specialties Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickSpecialtiesLink() {
-        specialties.click();
-        return this;
-    }
-
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickUibutton1Button() {
-        uibutton1.click();
-        return this;
-    }
-
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickUibutton2Button() {
-        uibutton2.click();
-        return this;
-    }
-
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickUibutton3Button() {
-        uibutton3.click();
-        return this;
-    }
-
-    /**
-     * Click on Uibutton Button.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickUibutton4Button() {
-        uibutton4.click();
-        return this;
-    }
-
-    /**
-     * Click on Veterinarians Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickVeterinariansLink() {
-        veterinarians.click();
-        return this;
-    }
-
-    /**
-     * Click on View As Json Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickViewAsJsonLink() {
-        viewAsJson.click();
-        return this;
-    }
-
-    /**
-     * Click on View As Xml Link.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage clickViewAsXmlLink() {
-        viewAsXml.click();
-        return this;
-    }
-
-    /**
-     * Fill every fields in the page.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage fill() {
-        setEnglisch1DropDownListField();
-        setEnglisch2DropDownListField();
-        setEnglisch3TextField();
-        return this;
-    }
-
-    /**
-     * Fill every fields in the page and submit it to target page.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage fillAndSubmit() {
-        fill();
-        return submit();
-    }
-
-    /**
-     * Set default value to Englisch Drop Down List field.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage setEnglisch1DropDownListField() {
-        return setEnglisch1DropDownListField(data.get("ENGLISCH_1"));
-    }
-
-    /**
-     * Set value to Englisch Drop Down List field.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage setEnglisch1DropDownListField(String englisch1Value) {
-        englisch1.sendKeys(englisch1Value);
-        return this;
-    }
-
-    /**
-     * Set default value to Englisch Drop Down List field.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage setEnglisch2DropDownListField() {
-        return setEnglisch2DropDownListField(data.get("ENGLISCH_2"));
-    }
-
-    /**
-     * Set value to Englisch Drop Down List field.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage setEnglisch2DropDownListField(String englisch2Value) {
-        new Select(englisch2).selectByVisibleText(englisch2Value);
-        return this;
-    }
-
-    /**
-     * Set default value to Englisch Text field.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage setEnglisch3TextField() {
-        return setEnglisch3TextField(data.get("ENGLISCH_3"));
-    }
-
-    /**
-     * Set value to Englisch Text field.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage setEnglisch3TextField(String englisch3Value) {
-        englisch3.sendKeys(englisch3Value);
-        return this;
-    }
-
-    /**
-     * Submit the form to target page.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage submit() {
-        // TODO
-        // clickUibuttonButton();
-        return this;
-    }
-
-    /**
-     * Unset default value from Englisch Drop Down List field.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage unsetEnglisch2DropDownListField() {
-        return unsetEnglisch2DropDownListField(data.get("ENGLISCH_2"));
-    }
-
-    /**
-     * Unset value from Englisch Drop Down List field.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage unsetEnglisch2DropDownListField(String englisch2Value) {
-        new Select(englisch2).deselectByVisibleText(englisch2Value);
-        return this;
-    }
-
-    /**
-     * Verify that the page loaded completely.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage verifyPageLoaded() {
-        (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getPageSource().contains(pageLoadedText);
-            }
-        });
-        return this;
-    }
-
-    /**
-     * Verify that current page URL matches the expected URL.
-     *
-     * @return the OwnersPage class instance.
-     */
-    public OwnerPage verifyPageUrl() {
-        (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getCurrentUrl().contains(pageUrl);
-            }
-        });
-        return this;
-    }
-
-    public void assertPageIsLoaded() {
-        assertThat(pageTitle.isDisplayed());
-        assertEquals( "Owners", pageTitle.getText() );
     }
 }

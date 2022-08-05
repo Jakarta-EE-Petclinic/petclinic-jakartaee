@@ -24,7 +24,7 @@ public class VeterinarianPage implements CrudFlowStatePage {
     private WebDriver driver;
     private int timeout = 15;
 
-    @FindBy(id="veterinarianViewFlowFlowState")
+    @FindBy(id="vetViewFlowFlowState")
     private WebElement crudFlowState;
 
 
