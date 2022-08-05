@@ -10,6 +10,8 @@ import java.util.Map;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Location;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,7 +52,6 @@ public class OwnerPage implements OwnerFlowStatePage {
     @FindBy(id = "findEntityForm:clearSearchButton")
     private WebElement clearSearchButton;
 
-
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
     private WebElement showDetailsFormButton0;
 
@@ -69,89 +70,140 @@ public class OwnerPage implements OwnerFlowStatePage {
     @FindBy(id="detailsOwnerForm:cancelDetailsOwner")
     private WebElement cancelDetailsButton;
 
-    @FindBy(id="detailsFFFFFOwnerForm:cancelDetailsOwner")
+    @FindBy(id="detailsOwnerForm:addNewPetButton")
     private WebElement addNewPetButton;
 
-    @FindBy(id="detailsFFFFFOwnerForm:cancelDetailsOwner")
+    @FindBy(id="addNewPetForm:cancelButtonAddNewOwnersPet")
     private WebElement cancelNewPetButton;
+
+    @FindBy(id="detailsOwnerForm:petsAndVisitsTable:0:addVisitButton")
+    private WebElement addNewVisitButton;
+
+    @FindBy(id="addVisitForm:cancelAddNewOwnersPetVisit")
+    private WebElement cancelNewVisitButton;
+
 
     public OwnerPage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickCancelNewEntityButton() {
         Graphene.guardHttp(cancelNewButton).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickShowEditForm() {
         Graphene.guardHttp(showEditFormButton).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickCancelEditButton() {
         Graphene.guardHttp(cancelEditButton).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickShowDeleteForm() {
         Graphene.guardHttp(showDeleteFormButton).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickCancelDeleteButton() {
         Graphene.guardHttp(canceDeleteButton).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickSearchButton() {
         Graphene.guardHttp(searchButton).click();
+        fullscreen();
         return this;
     }
 
-    public OwnerPage clickClearSearchButton() {
+    public OwnerPage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 clickClearSearchButton() {
         Graphene.guardHttp(clearSearchButton).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickShowDetailsFormButton0() {
         Graphene.guardHttp(showDetailsFormButton0).click();
+        fullscreen();
         return this;
+    }
+
+    public void fullscreen(){
+        driver.manage().window().fullscreen();
     }
 
     public OwnerPage clickShowDetailsFormButton1() {
         Graphene.guardHttp(showDetailsFormButton1).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickShowDetailsFormButton2() {
         Graphene.guardHttp(showDetailsFormButton2).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickShowDetailsFormButton3() {
         Graphene.guardHttp(showDetailsFormButton3).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickShowDetailsFormButton4() {
         Graphene.guardHttp(showDetailsFormButton4).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickCancelDetailsButton() {
         Graphene.guardHttp(cancelDetailsButton).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickAddNewPetButton() {
-        Graphene.guardHttp(addNewPetButton).click();
+        //Graphene.waitModel(driver).until().element(addNewPetButton).is().enabled();
+        //Actions action = new Actions(driver);
+        //action.moveToElement(addNewPetButton).pause(1000).perform();
+        addNewPetButton.sendKeys(Keys.DOWN);
+        addNewPetButton.sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(addNewPetButton).click();
+        fullscreen();
         return this;
     }
 
     public OwnerPage clickCancelNewPetButton() {
+        //Graphene.waitModel(driver).until().element(cancelNewPetButton).is().enabled();
         Graphene.guardHttp(cancelNewPetButton).click();
+        fullscreen();
+        return this;
+    }
+
+    public OwnerPage clickAddNewVisitButton() {
+        //Graphene.waitModel(driver).until().element(addNewVisitButton).is().enabled();
+        //Actions action = new Actions(driver);
+        //action.moveToElement(addNewVisitButton).pause(1000).perform();
+        addNewVisitButton.sendKeys(Keys.DOWN);
+        addNewVisitButton.sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(addNewVisitButton).click();
+        fullscreen();
+        return this;
+    }
+
+    public OwnerPage clickCancelNewVisitButton() {
+        //Graphene.waitModel(driver).until().element(cancelNewVisitButton).is().enabled();
+        Graphene.guardHttp(cancelNewVisitButton).click();
+        fullscreen();
         return this;
     }
 

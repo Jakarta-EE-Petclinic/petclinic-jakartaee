@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.it.ui;
 
+import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -14,6 +15,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.OwnerPage;
@@ -33,10 +35,10 @@ public class OwnerUiTest {
     }
 
     @Drone
-    WebDriver driver;
+    private WebDriver driver;
 
     @ArquillianResource
-    URL deploymentUrl;
+    private URL deploymentUrl;
 
     @Page
     private HomePage homePage;
@@ -44,7 +46,7 @@ public class OwnerUiTest {
     @Page
     private OwnerPage ownerPage;
 
-
+    @Ignore
     @Test
     @InSequence(1)
     public void openHomePage() {
@@ -58,6 +60,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(2)
     public void openOwnerPage() {
@@ -71,6 +74,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(3)
     public void addNewOwnerPage() {
@@ -88,6 +92,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(4)
     public void openOwnerDetailsPage() {
@@ -105,6 +110,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(5)
     public void editOwnerPage() {
@@ -126,6 +132,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(6)
     public void deleteOwnerPage() {
@@ -154,6 +161,7 @@ public class OwnerUiTest {
         log.info(" addNewPetToOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
         goTo(OwnerPage.class);
+        ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton1();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
@@ -167,6 +175,30 @@ public class OwnerUiTest {
         Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetToOwnerPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(8)
+    public void addNewVisitToOwnersFirstPetPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewVisitToOwnersFirstPetPage ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(OwnerPage.class);
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        ownerPage.clickShowDetailsFormButton1();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+
+        ownerPage.clickAddNewVisitButton();
+        Assert.assertTrue(ownerPage.isFlowStateNewVisit());
+        ownerPage.clickCancelNewVisitButton();
+
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        ownerPage.clickCancelDetailsButton();
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewVisitToOwnersFirstPetPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 }

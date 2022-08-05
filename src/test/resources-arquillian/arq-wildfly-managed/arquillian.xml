@@ -23,4 +23,11 @@
         <property name="instantiationTimeoutInSeconds">120</property>
     </extension>
 
+    <extension qualifier="screenshooter">
+        <property name="takeOnEveryAction">true</property>
+        <property name="takeBeforeTest">true</property>
+        <property name="takeAfterTest">true</property>
+        <property name="takeWhenTestFailed">true</property>
+    </extension>
+
 </arquillian>
