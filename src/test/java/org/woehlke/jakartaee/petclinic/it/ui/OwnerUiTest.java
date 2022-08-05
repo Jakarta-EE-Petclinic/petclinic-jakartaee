@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
-import org.woehlke.jakartaee.petclinic.it.ui.pages.VeterinarianPage;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.OwnerPage;
 
 import java.net.URL;
 
@@ -25,7 +25,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
 @Log
 @RunAsClient
 @RunWith(Arquillian.class)
-public class VetUiTest {
+public class OwnerUiTest {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
@@ -42,7 +42,8 @@ public class VetUiTest {
     private HomePage homePage;
 
     @Page
-    private VeterinarianPage veterinarianPage;
+    private OwnerPage ownerPage;
+
 
     @Test
     @InSequence(1)
@@ -59,93 +60,94 @@ public class VetUiTest {
 
     @Test
     @InSequence(2)
-    public void openVeterinarianPage() {
+    public void openOwnerPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openVeterinarianPage ");
+        log.info(" openOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        goTo(OwnerPage.class);
+        Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openVeterinarianPage DONE ");
+        log.info(" openOwnerPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(3)
-    public void addNewVeterinarianPage() {
+    public void addNewOwnerPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewVeterinarianPage ");
+        log.info(" addNewOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
-        veterinarianPage.clickAddNewEntityButton();
-        Assert.assertTrue(veterinarianPage.isFlowStateNew());
-        veterinarianPage.clickCancelNewEntityButton();
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        goTo(OwnerPage.class);
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        ownerPage.clickAddNewEntityButton();
+        Assert.assertTrue(ownerPage.isFlowStateNew());
+        ownerPage.clickCancelNewEntityButton();
+        Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewVeterinarianPage DONE ");
+        log.info(" addNewOwnerPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Ignore
     @Test
     @InSequence(4)
-    public void openVeterinarianDetailsPage() {
+    public void openOwnerDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openVeterinarianDetailsPage ");
+        log.info(" openOwnerDetailsPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
-        veterinarianPage.clickShowDetailsFormButton0();
-        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
-        veterinarianPage.clickCancelDetailsButton();
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        goTo(OwnerPage.class);
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        ownerPage.clickShowDetailsFormButton0();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        ownerPage.clickCancelDetailsButton();
+        Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openVeterinarianDetailsPage DONE ");
+        log.info(" openOwnerDetailsPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Ignore
     @Test
     @InSequence(5)
-    public void editVeterinarianPage() {
+    public void editOwnerPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editVeterinarianPage ");
+        log.info(" editOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
-        veterinarianPage.clickShowDetailsFormButton0();
-        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
-        veterinarianPage.clickShowEditForm();
-        Assert.assertTrue(veterinarianPage.isFlowStateEdit());
-        veterinarianPage.clickCancelEditButton();
-        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
-        veterinarianPage.clickCancelDetailsButton();
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        goTo(OwnerPage.class);
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        ownerPage.clickShowDetailsFormButton0();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        ownerPage.clickShowEditForm();
+        Assert.assertTrue(ownerPage.isFlowStateEdit());
+        ownerPage.clickCancelEditButton();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        ownerPage.clickCancelDetailsButton();
+        Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editVeterinarianPage DONE ");
+        log.info(" editOwnerPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Ignore
     @Test
     @InSequence(6)
-    public void deleteVeterinarianPage() {
+    public void deleteOwnerPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteVeterinarianPage ");
+        log.info(" deleteOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
-        veterinarianPage.clickShowDetailsFormButton1();
-        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
-        veterinarianPage.clickShowDeleteForm();
-        Assert.assertTrue(veterinarianPage.isFlowStateDelete());
-        veterinarianPage.clickCancelDeleteButton();
-        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
-        veterinarianPage.clickCancelDetailsButton();
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        goTo(OwnerPage.class);
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        ownerPage.clickShowDetailsFormButton1();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        ownerPage.clickShowDeleteForm();
+        Assert.assertTrue(ownerPage.isFlowStateDelete());
+        ownerPage.clickCancelDeleteButton();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        ownerPage.clickCancelDetailsButton();
+        Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteVeterinarianPage DONE ");
+        log.info(" deleteOwnerPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
+
 }
