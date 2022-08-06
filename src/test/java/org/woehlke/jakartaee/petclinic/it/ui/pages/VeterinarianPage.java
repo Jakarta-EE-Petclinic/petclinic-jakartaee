@@ -10,7 +10,6 @@ import java.util.Map;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Location;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,13 +26,20 @@ public class VeterinarianPage implements CrudFlowStatePage {
     @FindBy(id="vetViewFlowFlowState")
     private WebElement crudFlowState;
 
-
-
     @FindBy(id = "entityDataTableForm:showNewFormButton")
     private WebElement showNewFormButton;
 
     @FindBy(id = "addNewEntityForm:cancelNew")
     private WebElement cancelNewButton;
+
+    @FindBy(id = "addNewEntityForm:firstNameAddNew")
+    private WebElement newSurameInput;
+
+    @FindBy(id = "addNewEntityForm:lastNameAddNew")
+    private WebElement newLastrameInput;
+
+    @FindBy(id = "addNewEntityForm:saveNewButton")
+    private WebElement saveNewButton;
 
     @FindBy(id = "detailsEntityForm:showEditFormButton")
     private WebElement showEditFormButton;
@@ -41,11 +47,23 @@ public class VeterinarianPage implements CrudFlowStatePage {
     @FindBy(id = "editEntityForm:cancelEdit")
     private WebElement cancelEditButton;
 
+    @FindBy(id = "editEntityForm:firstNameEdit")
+    private WebElement editSurameInput;
+
+    @FindBy(id = "editEntityForm:lastNameEdit")
+    private WebElement editLastrameInput;
+
+    @FindBy(id = "editEntityForm:saveEditButton")
+    private WebElement saveEditButton;
+
     @FindBy(id = "detailsEntityForm:deleteSelectedButton")
     private WebElement showDeleteFormButton;
 
     @FindBy(id="deleteEntityForm:cancelDelete")
     private WebElement canceDeleteButton;
+
+    @FindBy(id = "deleteEntityForm:saveDeleteButton")
+    private WebElement saveDeleteButton;
 
     @FindBy(id = "findEntityForm:searchButton")
     private WebElement searchButton;
@@ -55,28 +73,33 @@ public class VeterinarianPage implements CrudFlowStatePage {
 
 
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton1;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton2;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton3;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
-    @CacheLookup
     private WebElement showDetailsFormButton4;
 
     @FindBy(id="detailsEntityForm:cancelDetails")
     private WebElement cancelDetailsButton;
 
+    public void clickShowDetailsFormButton(int i) {
+        switch (i){
+            case 0: clickShowDetailsFormButton0(); break;
+            case 1: clickShowDetailsFormButton1(); break;
+            case 2: clickShowDetailsFormButton2(); break;
+            case 3: clickShowDetailsFormButton3(); break;
+            case 4: clickShowDetailsFormButton4(); break;
+            default: break;
+        }
+    }
 
     public VeterinarianPage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
@@ -85,6 +108,13 @@ public class VeterinarianPage implements CrudFlowStatePage {
 
     public VeterinarianPage clickCancelNewEntityButton() {
         Graphene.guardHttp(cancelNewButton).click();
+        return this;
+    }
+
+    public VeterinarianPage addNewEntity(String surname, String lastname) {
+        newSurameInput.sendKeys(surname);
+        newLastrameInput.sendKeys(lastname);
+        Graphene.guardHttp(saveNewButton).click();
         return this;
     }
 
@@ -98,6 +128,17 @@ public class VeterinarianPage implements CrudFlowStatePage {
         return this;
     }
 
+    public VeterinarianPage editNameAddString() {
+        String surname=editSurameInput.getText();
+        String lastname=editLastrameInput.getText();
+        surname += " TEST";
+        lastname += " TEST";
+        editSurameInput.sendKeys(surname);
+        editLastrameInput.sendKeys(lastname);
+        Graphene.guardHttp(saveEditButton).click();
+        return this;
+    }
+
     public VeterinarianPage clickShowDeleteForm() {
         Graphene.guardHttp(showDeleteFormButton).click();
         return this;
@@ -105,6 +146,11 @@ public class VeterinarianPage implements CrudFlowStatePage {
 
     public VeterinarianPage clickCancelDeleteButton() {
         Graphene.guardHttp(canceDeleteButton).click();
+        return this;
+    }
+
+    public VeterinarianPage clickSaveDeleteButton() {
+        Graphene.guardHttp(saveDeleteButton).click();
         return this;
     }
 

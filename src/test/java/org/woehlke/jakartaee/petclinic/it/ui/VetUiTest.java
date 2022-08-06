@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.SpecialtyPage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.VeterinarianPage;
 
 import java.net.URL;
@@ -72,7 +73,7 @@ public class VetUiTest {
 
     @Test
     @InSequence(3)
-    public void addNewVeterinarianPage() {
+    public void addNewVeterinarianPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewVeterinarianPage ");
         log.info("------------------------------------------------------------------------------------");
@@ -87,8 +88,36 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    private final String vetNames[][] = {
+        {"A Hippocrates 1", "A of Kos 1"},
+        {"A Hippocrates 2", "A of Kos 2"},
+        {"A Hippocrates 3", "A of Kos 3"}
+    };
+
+
     @Test
     @InSequence(4)
+    public void addNewVeterinarianPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewSpecialtyPageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(VeterinarianPage.class);
+        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        for(String name[]:vetNames){
+            veterinarianPage.clickAddNewEntityButton();
+            Assert.assertTrue(veterinarianPage.isFlowStateNew());
+            veterinarianPage.addNewEntity(name[0],name[1]);
+            Assert.assertTrue(veterinarianPage.isFlowStateDetails());
+            veterinarianPage.clickCancelDetailsButton();
+            Assert.assertTrue(veterinarianPage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewSpecialtyPageWithSave DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(5)
     public void openVeterinarianDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openVeterinarianDetailsPage ");
@@ -106,7 +135,7 @@ public class VetUiTest {
 
     @Test
     @InSequence(5)
-    public void editVeterinarianPage() {
+    public void editVeterinarianPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editVeterinarianPage ");
         log.info("------------------------------------------------------------------------------------");
@@ -126,8 +155,32 @@ public class VetUiTest {
     }
 
     @Test
-    @InSequence(6)
-    public void deleteVeterinarianPage() {
+    @InSequence(7)
+    public void editVeterinarianPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editSpecialtyPage ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(VeterinarianPage.class);
+        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        for(int i=0; i<3; i++){
+            log.info(" "+i);
+            veterinarianPage.clickShowDetailsFormButton(i);
+            Assert.assertTrue(veterinarianPage.isFlowStateDetails());
+            veterinarianPage.clickShowEditForm();
+            Assert.assertTrue(veterinarianPage.isFlowStateEdit());
+            veterinarianPage.editNameAddString();
+            Assert.assertTrue(veterinarianPage.isFlowStateDetails());
+            veterinarianPage.clickCancelDetailsButton();
+            Assert.assertTrue(veterinarianPage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editSpecialtyPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(8)
+    public void deleteVeterinarianPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteVeterinarianPage ");
         log.info("------------------------------------------------------------------------------------");
@@ -143,6 +196,27 @@ public class VetUiTest {
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteVeterinarianPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(9)
+    public void deleteVeterinarianPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteSpecialtyPageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(VeterinarianPage.class);
+        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        for(int i=0; i<3; i++) {
+            veterinarianPage.clickShowDetailsFormButton0();
+            Assert.assertTrue(veterinarianPage.isFlowStateDetails());
+            veterinarianPage.clickShowDeleteForm();
+            Assert.assertTrue(veterinarianPage.isFlowStateDelete());
+            veterinarianPage.clickSaveDeleteButton();
+            Assert.assertTrue(veterinarianPage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteSpecialtyPageWithSave DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 }
