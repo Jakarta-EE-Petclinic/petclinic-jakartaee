@@ -57,6 +57,9 @@ public class PetTypePage implements CrudFlowStatePage {
     @FindBy(id="deleteEntityForm:cancelDelete")
     private WebElement canceDeleteButton;
 
+    @FindBy(id="deleteEntityForm:deleteButton")
+    private WebElement saveDeleteButton;
+
     @FindBy(id = "findEntityForm:searchButton")
     private WebElement searchButton;
 
@@ -83,6 +86,17 @@ public class PetTypePage implements CrudFlowStatePage {
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
     @CacheLookup
     private WebElement showDetailsFormButton4;
+
+    public void clickShowDetailsFormButton(int i) {
+        switch (i){
+            case 0: clickShowDetailsFormButton0(); break;
+            case 1: clickShowDetailsFormButton1(); break;
+            case 2: clickShowDetailsFormButton2(); break;
+            case 3: clickShowDetailsFormButton3(); break;
+            case 4: clickShowDetailsFormButton4(); break;
+            default: break;
+        }
+    }
 
     @FindBy(id="detailsEntityForm:cancelDetails")
     private WebElement cancelDetailsButton;
@@ -114,7 +128,7 @@ public class PetTypePage implements CrudFlowStatePage {
         return this;
     }
 
-    public PetTypePage editEntity() {
+    public PetTypePage editNameAddString() {
         String name = editEntityNameInput.getText();
         name += " Test";
         editEntityNameInput.sendKeys(name);
@@ -129,6 +143,11 @@ public class PetTypePage implements CrudFlowStatePage {
 
     public PetTypePage clickCancelDeleteButton() {
         Graphene.guardHttp(canceDeleteButton).click();
+        return this;
+    }
+
+    public PetTypePage clickSaveDeleteButton() {
+        Graphene.guardHttp(saveDeleteButton).click();
         return this;
     }
 

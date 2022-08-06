@@ -92,11 +92,11 @@ public class PetTypeUiTest {
 
     @Test
     @InSequence(4)
-    public void addNewSpecialtyPageWithSave() {
+    public void addNewPetTypePageWithSave() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewSpecialtyPageWithSave ");
+        log.info(" addNewPetTypePageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(SpecialtyPage.class);
+        goTo(PetTypePage.class);
         Assert.assertTrue(petTypePage.isFlowStateList());
         for(String name:names){
             petTypePage.clickAddNewEntityButton();
@@ -107,13 +107,12 @@ public class PetTypeUiTest {
             Assert.assertTrue(petTypePage.isFlowStateList());
         }
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewSpecialtyPageWithSave DONE ");
+        log.info(" addNewPetTypePageWithSave DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
-    @InSequence(4)
+    @InSequence(5)
     public void openPetTypeDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openPetTypeDetailsPage ");
@@ -131,45 +130,94 @@ public class PetTypeUiTest {
 
     @Ignore
     @Test
-    @InSequence(5)
-    public void editPetTypePage() {
+    @InSequence(6)
+    public void editPetTypePageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editPetTypePage ");
+        log.info(" editPetTypePageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
         goTo(PetTypePage.class);
         Assert.assertTrue(petTypePage.isFlowStateList());
-        petTypePage.clickShowDetailsFormButton0();
-        Assert.assertTrue(petTypePage.isFlowStateDetails());
-        petTypePage.clickShowEditForm();
-        Assert.assertTrue(petTypePage.isFlowStateEdit());
-        petTypePage.clickCancelEditButton();
-        Assert.assertTrue(petTypePage.isFlowStateDetails());
-        petTypePage.clickCancelDetailsButton();
-        Assert.assertTrue(petTypePage.isFlowStateList());
+        for(int i=0; i<3; i++) {
+            log.info(" " + i);
+            petTypePage.clickShowDetailsFormButton(i);
+            Assert.assertTrue(petTypePage.isFlowStateDetails());
+            petTypePage.clickShowEditForm();
+            Assert.assertTrue(petTypePage.isFlowStateEdit());
+            petTypePage.clickCancelEditButton();
+            Assert.assertTrue(petTypePage.isFlowStateDetails());
+            petTypePage.clickCancelDetailsButton();
+            Assert.assertTrue(petTypePage.isFlowStateList());
+        }
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editPetTypePage DONE ");
+        log.info(" editPetTypePageWithCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(7)
+    public void editSpecialtyPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editSpecialtyPageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        Assert.assertTrue(petTypePage.isFlowStateList());
+        for(int i=0; i<3; i++){
+            log.info(" "+i);
+            petTypePage.clickShowDetailsFormButton(i);
+            Assert.assertTrue(petTypePage.isFlowStateDetails());
+            petTypePage.clickShowEditForm();
+            Assert.assertTrue(petTypePage.isFlowStateEdit());
+            petTypePage.editNameAddString();
+            Assert.assertTrue(petTypePage.isFlowStateDetails());
+            petTypePage.clickCancelDetailsButton();
+            Assert.assertTrue(petTypePage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editSpecialtyPageWithSave DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Ignore
     @Test
-    @InSequence(6)
-    public void deletePetTypePage() {
+    @InSequence(8)
+    public void deletePetTypePageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deletePetTypePage ");
+        log.info(" deletePetTypePageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
         goTo(PetTypePage.class);
         Assert.assertTrue(petTypePage.isFlowStateList());
-        petTypePage.clickShowDetailsFormButton1();
-        Assert.assertTrue(petTypePage.isFlowStateDetails());
-        petTypePage.clickShowDeleteForm();
-        Assert.assertTrue(petTypePage.isFlowStateDelete());
-        petTypePage.clickCancelDeleteButton();
-        Assert.assertTrue(petTypePage.isFlowStateDetails());
-        petTypePage.clickCancelDetailsButton();
-        Assert.assertTrue(petTypePage.isFlowStateList());
+        for(int i=0; i<3; i++) {
+            petTypePage.clickShowDetailsFormButton0();
+            Assert.assertTrue(petTypePage.isFlowStateDetails());
+            petTypePage.clickShowDeleteForm();
+            Assert.assertTrue(petTypePage.isFlowStateDelete());
+            petTypePage.clickCancelDeleteButton();
+            Assert.assertTrue(petTypePage.isFlowStateDetails());
+            petTypePage.clickCancelDetailsButton();
+            Assert.assertTrue(petTypePage.isFlowStateList());
+        }
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deletePetTypePage DONE ");
+        log.info(" deletePetTypePageWithCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(9)
+    public void deletePetTypePageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deletePetTypePageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(SpecialtyPage.class);
+        Assert.assertTrue(petTypePage.isFlowStateList());
+        for(int i=0; i<3; i++) {
+            petTypePage.clickShowDetailsFormButton0();
+            Assert.assertTrue(petTypePage.isFlowStateDetails());
+            petTypePage.clickShowDeleteForm();
+            Assert.assertTrue(petTypePage.isFlowStateDelete());
+            petTypePage.clickSaveDeleteButton();
+            Assert.assertTrue(petTypePage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deletePetTypePageWithSave DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
