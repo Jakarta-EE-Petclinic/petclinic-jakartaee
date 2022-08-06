@@ -111,7 +111,6 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(5)
     public void openPetTypeDetailsPage() {
