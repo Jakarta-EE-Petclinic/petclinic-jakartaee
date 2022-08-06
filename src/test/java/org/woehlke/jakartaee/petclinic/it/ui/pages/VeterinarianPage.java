@@ -33,10 +33,10 @@ public class VeterinarianPage implements CrudFlowStatePage {
     private WebElement cancelNewButton;
 
     @FindBy(id = "addNewEntityForm:firstNameAddNew")
-    private WebElement newSurameInput;
+    private WebElement newSurnameInput;
 
     @FindBy(id = "addNewEntityForm:lastNameAddNew")
-    private WebElement newLastrameInput;
+    private WebElement newLastnameInput;
 
     @FindBy(id = "addNewEntityForm:saveNewButton")
     private WebElement saveNewButton;
@@ -48,10 +48,10 @@ public class VeterinarianPage implements CrudFlowStatePage {
     private WebElement cancelEditButton;
 
     @FindBy(id = "editEntityForm:firstNameEdit")
-    private WebElement editSurameInput;
+    private WebElement editSurnameInput;
 
     @FindBy(id = "editEntityForm:lastNameEdit")
-    private WebElement editLastrameInput;
+    private WebElement editLastnameInput;
 
     @FindBy(id = "editEntityForm:saveEditButton")
     private WebElement saveEditButton;
@@ -112,8 +112,8 @@ public class VeterinarianPage implements CrudFlowStatePage {
     }
 
     public VeterinarianPage addNewEntity(String surname, String lastname) {
-        newSurameInput.sendKeys(surname);
-        newLastrameInput.sendKeys(lastname);
+        newSurnameInput.sendKeys(surname);
+        newLastnameInput.sendKeys(lastname);
         Graphene.guardHttp(saveNewButton).click();
         return this;
     }
@@ -129,12 +129,12 @@ public class VeterinarianPage implements CrudFlowStatePage {
     }
 
     public VeterinarianPage editNameAddString() {
-        String surname=editSurameInput.getText();
-        String lastname=editLastrameInput.getText();
+        String surname= editSurnameInput.getText();
+        String lastname= editLastnameInput.getText();
         surname += " TEST";
         lastname += " TEST";
-        editSurameInput.sendKeys(surname);
-        editLastrameInput.sendKeys(lastname);
+        editSurnameInput.sendKeys(surname);
+        editLastnameInput.sendKeys(lastname);
         Graphene.guardHttp(saveEditButton).click();
         return this;
     }
