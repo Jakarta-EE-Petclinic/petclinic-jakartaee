@@ -88,7 +88,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    private final String names[] = { "A Animal 1 Fever", "A Animal 2 Fever", "A Animal 3 Fever" };
+    private final String names[] = { "A Animal 1 Farm", "A Animal 2 Farm", "A Animal 3 Farm" };
 
     @Test
     @InSequence(4)
@@ -128,7 +128,6 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(6)
     public void editPetTypePageWithCancel() {
@@ -153,7 +152,6 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(7)
     public void editSpecialtyPageWithSave() {
@@ -178,7 +176,6 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(8)
     public void deletePetTypePageWithCancel() {
@@ -202,7 +199,6 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(9)
     public void deletePetTypePageWithSave() {
