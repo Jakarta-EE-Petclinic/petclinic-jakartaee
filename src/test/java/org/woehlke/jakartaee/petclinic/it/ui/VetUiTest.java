@@ -115,7 +115,6 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(5)
     public void openVeterinarianDetailsPage() {
@@ -133,7 +132,6 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(5)
     public void editVeterinarianPageWithCancel() {
@@ -155,7 +153,6 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(7)
     public void editVeterinarianPageWithSave() {
@@ -180,7 +177,6 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(8)
     public void deleteVeterinarianPageWithCancel() {
@@ -202,7 +198,6 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(9)
     public void deleteVeterinarianPageWithSave() {
