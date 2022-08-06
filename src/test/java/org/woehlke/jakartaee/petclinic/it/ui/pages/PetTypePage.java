@@ -27,19 +27,29 @@ public class PetTypePage implements CrudFlowStatePage {
     @FindBy(id="petTypeViewFlowFlowState")
     private WebElement crudFlowState;
 
-
-
     @FindBy(id = "entityDataTableForm:showNewFormButton")
     private WebElement showNewFormButton;
 
     @FindBy(id = "addEntityForm:cancelNew")
     private WebElement cancelNewButton;
 
+    @FindBy(id = "addEntityForm:newPetTypeName")
+    private WebElement newEntityNameInput;
+
+    @FindBy(id = "addEntityForm:saveNewButton")
+    private WebElement saveNewButton;
+
     @FindBy(id = "detailsEntityForm:showEditFormButton")
     private WebElement showEditFormButton;
 
     @FindBy(id = "editPetTypeForm:cancelEdit")
     private WebElement cancelEditButton;
+
+    @FindBy(id = "editPetTypeForm:editPetTypeName")
+    private WebElement editEntityNameInput;
+
+    @FindBy(id = "editPetTypeForm:saveEditButton")
+    private WebElement saveEditButton;
 
     @FindBy(id = "detailsEntityForm:deleteSelectedButton")
     private WebElement showDeleteFormButton;
@@ -78,8 +88,6 @@ public class PetTypePage implements CrudFlowStatePage {
     private WebElement cancelDetailsButton;
 
 
-
-
     public PetTypePage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
         return this;
@@ -90,6 +98,12 @@ public class PetTypePage implements CrudFlowStatePage {
         return this;
     }
 
+    public PetTypePage addNewEntity(String name) {
+        newEntityNameInput.sendKeys(name);
+        Graphene.guardHttp(saveNewButton).click();
+        return this;
+    }
+
     public PetTypePage clickShowEditForm() {
         Graphene.guardHttp(showEditFormButton).click();
         return this;
@@ -97,6 +111,14 @@ public class PetTypePage implements CrudFlowStatePage {
 
     public PetTypePage clickCancelEditButton() {
         Graphene.guardHttp(cancelEditButton).click();
+        return this;
+    }
+
+    public PetTypePage editEntity() {
+        String name = editEntityNameInput.getText();
+        name += " Test";
+        editEntityNameInput.sendKeys(name);
+        Graphene.guardHttp(saveEditButton).click();
         return this;
     }
 
@@ -198,5 +220,4 @@ public class PetTypePage implements CrudFlowStatePage {
         this(driver, data);
         this.timeout = timeout;
     }
-
 }

@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.tmp.ui;
+package org.woehlke.jakartaee.petclinic.it.ui;
 
 import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -10,12 +10,14 @@ import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.PetTypePage;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.SpecialtyPage;
 
 import java.net.URL;
 
@@ -86,7 +88,30 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    private final String names[] = {"Animal Fever 1", "Animal Fever 2", "Animal Fever 3" };
 
+    @Test
+    @InSequence(4)
+    public void addNewSpecialtyPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewSpecialtyPageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(SpecialtyPage.class);
+        Assert.assertTrue(petTypePage.isFlowStateList());
+        for(String name:names){
+            petTypePage.clickAddNewEntityButton();
+            Assert.assertTrue(petTypePage.isFlowStateNew());
+            petTypePage.addNewEntity(name);
+            Assert.assertTrue(petTypePage.isFlowStateDetails());
+            petTypePage.clickCancelDetailsButton();
+            Assert.assertTrue(petTypePage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewSpecialtyPageWithSave DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Ignore
     @Test
     @InSequence(4)
     public void openPetTypeDetailsPage() {
@@ -104,6 +129,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(5)
     public void editPetTypePage() {
@@ -125,6 +151,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(6)
     public void deletePetTypePage() {
