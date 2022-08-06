@@ -1,4 +1,4 @@
-package org.woehlke.jakartaee.petclinic.tmp.api;
+package org.woehlke.jakartaee.petclinic.tmp.ui;
 
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
