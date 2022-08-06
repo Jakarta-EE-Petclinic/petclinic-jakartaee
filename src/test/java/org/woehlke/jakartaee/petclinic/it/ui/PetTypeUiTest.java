@@ -73,9 +73,9 @@ public class PetTypeUiTest {
 
     @Test
     @InSequence(3)
-    public void addNewPetTypePage() {
+    public void addNewPetTypePageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewPetTypePage ");
+        log.info(" addNewPetTypePageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
         goTo(PetTypePage.class);
         Assert.assertTrue(petTypePage.isFlowStateList());
@@ -84,11 +84,11 @@ public class PetTypeUiTest {
         petTypePage.clickCancelNewEntityButton();
         Assert.assertTrue(petTypePage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewPetTypePage DONE ");
+        log.info(" addNewPetTypePageWithCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
-    private final String names[] = {"Animal Fever 1", "Animal Fever 2", "Animal Fever 3" };
+    private final String names[] = { "A Animal 1 Fever", "A Animal 2 Fever", "A Animal 3 Fever" };
 
     @Test
     @InSequence(4)
@@ -111,6 +111,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(5)
     public void openPetTypeDetailsPage() {
@@ -153,12 +154,14 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(7)
     public void editSpecialtyPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editSpecialtyPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
+        goTo(PetTypePage.class);
         Assert.assertTrue(petTypePage.isFlowStateList());
         for(int i=0; i<3; i++){
             log.info(" "+i);
@@ -200,13 +203,14 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(9)
     public void deletePetTypePageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deletePetTypePageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(SpecialtyPage.class);
+        goTo(PetTypePage.class);
         Assert.assertTrue(petTypePage.isFlowStateList());
         for(int i=0; i<3; i++) {
             petTypePage.clickShowDetailsFormButton0();
