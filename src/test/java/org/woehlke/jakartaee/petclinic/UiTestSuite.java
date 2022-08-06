@@ -6,7 +6,7 @@ import org.woehlke.jakartaee.petclinic.tmp.ui.InformationUiTest;
 import org.woehlke.jakartaee.petclinic.tmp.ui.OwnerUiTest;
 import org.woehlke.jakartaee.petclinic.it.ui.PetTypeUiTest;
 import org.woehlke.jakartaee.petclinic.tmp.ui.VetUiTest;
-import org.woehlke.jakartaee.petclinic.it.ui.SpecialtyUiTest;
+import org.woehlke.jakartaee.petclinic.tmp.ui.SpecialtyUiTest;
 
 @Suite
 @SelectClasses({
