@@ -102,7 +102,7 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
-        String names[] = {"A Dummkopf 1", "A Dummkopf 2", "A Dummkopf 3" };
+        String names[] = {"A Hippocrates 1", "A Hippocrates 2", "A Hippocrates 3" };
         for(String name:names){
             specialtyPage.clickAddNewEntityButton();
             Assert.assertTrue(specialtyPage.isFlowStateNew());
@@ -217,8 +217,6 @@ public class SpecialtyUiTest {
             specialtyPage.clickShowDeleteForm();
             Assert.assertTrue(specialtyPage.isFlowStateDelete());
             specialtyPage.clickSaveDeleteButton();
-            //Assert.assertTrue(specialtyPage.isFlowStateDetails());
-            //specialtyPage.clickCancelDetailsButton();
             Assert.assertTrue(specialtyPage.isFlowStateList());
         }
         log.info("------------------------------------------------------------------------------------");
