@@ -94,6 +94,8 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    private final String names[] = {"A Hippocrates 1", "A Hippocrates 2", "A Hippocrates 3" };
+
     @Test
     @InSequence(4)
     public void addNewSpecialtyPageWithSave() {
@@ -102,7 +104,6 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
-        String names[] = {"A Hippocrates 1", "A Hippocrates 2", "A Hippocrates 3" };
         for(String name:names){
             specialtyPage.clickAddNewEntityButton();
             Assert.assertTrue(specialtyPage.isFlowStateNew());
