@@ -32,17 +32,32 @@ public class SpecialtyPage implements CrudFlowStatePage {
     @FindBy(id = "addNewEntityForm:cancelNew")
     private WebElement cancelNewButton;
 
+    @FindBy(id = "addNewEntityForm:saveNewButton")
+    private WebElement saveNewButton;
+
+    @FindBy(id = "addNewEntityForm:specialtyNameNew")
+    private WebElement specialtyNameNewInput;
+
     @FindBy(id = "detailsEntityForm:showEditFormButton")
     private WebElement showEditFormButton;
 
     @FindBy(id = "editEntityForm:cancelEdit")
     private WebElement cancelEditButton;
 
+    @FindBy(id = "editEntityForm:specialtyNameEdit")
+    private WebElement specialtyNameEditInput;
+
+    @FindBy(id = "editEntityForm:saveEditButton")
+    private WebElement saveEditButton;
+
     @FindBy(id = "detailsEntityForm:deleteSelectedButton")
     private WebElement showDeleteFormButton;
 
     @FindBy(id="deleteEntityForm:cancelDelete")
     private WebElement canceDeleteButton;
+
+    @FindBy(id = "deleteEntityForm:deleteButton")
+    private WebElement saveDeleteButton;
 
     @FindBy(id = "findEntityForm:searchButton")
     private WebElement searchButton;
@@ -99,6 +114,11 @@ public class SpecialtyPage implements CrudFlowStatePage {
         return this;
     }
 
+    public SpecialtyPage clickSaveDeleteButton() {
+        Graphene.guardHttp(saveDeleteButton).click();
+        return this;
+    }
+
     public SpecialtyPage clickSearchButton() {
         Graphene.guardHttp(searchButton).click();
         return this;
@@ -134,11 +154,35 @@ public class SpecialtyPage implements CrudFlowStatePage {
         return this;
     }
 
+    public void clickShowDetailsFormButton(int i) {
+        switch (i){
+            case 0: clickShowDetailsFormButton0(); break;
+            case 1: clickShowDetailsFormButton1(); break;
+            case 2: clickShowDetailsFormButton2(); break;
+            case 3: clickShowDetailsFormButton3(); break;
+            case 4: clickShowDetailsFormButton4(); break;
+            default: break;
+        }
+    }
+
     public SpecialtyPage clickCancelDetailsButton() {
         Graphene.guardHttp(cancelDetailsButton).click();
         return this;
     }
 
+    public SpecialtyPage addNewEntity(String name) {
+        specialtyNameNewInput.sendKeys(name);
+        Graphene.guardHttp(saveNewButton).click();
+        return this;
+    }
+
+    public SpecialtyPage editNameAddString() {
+        String name = specialtyNameEditInput.getText();
+        name += " TEST";
+        specialtyNameEditInput.sendKeys(name);
+        Graphene.guardHttp(saveEditButton).click();
+        return this;
+    }
 
     @Override
     public boolean isFlowStateList() {
@@ -182,5 +226,4 @@ public class SpecialtyPage implements CrudFlowStatePage {
         this(driver);
         this.data = data;
     }
-
 }

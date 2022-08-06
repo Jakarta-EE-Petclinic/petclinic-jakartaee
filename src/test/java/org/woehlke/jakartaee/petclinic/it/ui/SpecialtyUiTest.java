@@ -79,9 +79,9 @@ public class SpecialtyUiTest {
 
     @Test
     @InSequence(3)
-    public void addNewSpecialtyPage() {
+    public void addNewSpecialtyPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewSpecialtyPage ");
+        log.info(" addNewSpecialtyPageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
@@ -90,12 +90,34 @@ public class SpecialtyUiTest {
         specialtyPage.clickCancelNewEntityButton();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewSpecialtyPage DONE ");
+        log.info(" addNewSpecialtyPageWithCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(4)
+    public void addNewSpecialtyPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewSpecialtyPageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(SpecialtyPage.class);
+        Assert.assertTrue(specialtyPage.isFlowStateList());
+        String names[] = {"A Dummkopf 1", "A Dummkopf 2", "A Dummkopf 3" };
+        for(String name:names){
+            specialtyPage.clickAddNewEntityButton();
+            Assert.assertTrue(specialtyPage.isFlowStateNew());
+            specialtyPage.addNewEntity(name);
+            Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            specialtyPage.clickCancelDetailsButton();
+            Assert.assertTrue(specialtyPage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewSpecialtyPageWithSave DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(5)
     public void openSpecialtyDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openSpecialtyDetailsPage ");
@@ -112,50 +134,101 @@ public class SpecialtyUiTest {
     }
 
     @Test
-    @InSequence(5)
-    public void editSpecialtyPage() {
+    @InSequence(6)
+    public void editSpecialtyPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editSpecialtyPage ");
         log.info("------------------------------------------------------------------------------------");
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
-        specialtyPage.clickShowDetailsFormButton0();
-        Assert.assertTrue(specialtyPage.isFlowStateDetails());
-        specialtyPage.clickShowEditForm();
-        Assert.assertTrue(specialtyPage.isFlowStateEdit());
-        specialtyPage.clickCancelEditButton();
-        Assert.assertTrue(specialtyPage.isFlowStateDetails());
-        specialtyPage.clickCancelDetailsButton();
-        Assert.assertTrue(specialtyPage.isFlowStateList());
+        for(int i=0; i<3; i++){
+            log.info(" "+i);
+            specialtyPage.clickShowDetailsFormButton(i);
+            Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            specialtyPage.clickShowEditForm();
+            Assert.assertTrue(specialtyPage.isFlowStateEdit());
+            specialtyPage.clickCancelEditButton();
+            Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            specialtyPage.clickCancelDetailsButton();
+            Assert.assertTrue(specialtyPage.isFlowStateList());
+        }
         log.info("------------------------------------------------------------------------------------");
         log.info(" editSpecialtyPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
-    @InSequence(6)
-    public void deleteSpecialtyPage() {
+    @InSequence(7)
+    public void editSpecialtyPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteSpecialtyPage ");
+        log.info(" editSpecialtyPage ");
+        log.info("------------------------------------------------------------------------------------");
+        Assert.assertTrue(specialtyPage.isFlowStateList());
+        for(int i=0; i<3; i++){
+            log.info(" "+i);
+            specialtyPage.clickShowDetailsFormButton(i);
+            Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            specialtyPage.clickShowEditForm();
+            Assert.assertTrue(specialtyPage.isFlowStateEdit());
+            specialtyPage.editNameAddString();
+            Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            specialtyPage.clickCancelDetailsButton();
+            Assert.assertTrue(specialtyPage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editSpecialtyPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(8)
+    public void deleteSpecialtyPageWithCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteSpecialtyPageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
         goTo(SpecialtyPage.class);
         Assert.assertTrue(specialtyPage.isFlowStateList());
-        specialtyPage.clickShowDetailsFormButton1();
-        Assert.assertTrue(specialtyPage.isFlowStateDetails());
-        specialtyPage.clickShowDeleteForm();
-        Assert.assertTrue(specialtyPage.isFlowStateDelete());
-        specialtyPage.clickCancelDeleteButton();
-        Assert.assertTrue(specialtyPage.isFlowStateDetails());
-        specialtyPage.clickCancelDetailsButton();
-        Assert.assertTrue(specialtyPage.isFlowStateList());
+        for(int i=0; i<3; i++) {
+            specialtyPage.clickShowDetailsFormButton(i);
+            Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            specialtyPage.clickShowDeleteForm();
+            Assert.assertTrue(specialtyPage.isFlowStateDelete());
+            specialtyPage.clickCancelDeleteButton();
+            Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            specialtyPage.clickCancelDetailsButton();
+            Assert.assertTrue(specialtyPage.isFlowStateList());
+        }
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteSpecialtyPage DONE ");
+        log.info(" deleteSpecialtyPageWithCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(9)
+    public void deleteSpecialtyPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteSpecialtyPageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(SpecialtyPage.class);
+        Assert.assertTrue(specialtyPage.isFlowStateList());
+        for(int i=0; i<3; i++) {
+            specialtyPage.clickShowDetailsFormButton0();
+            Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            specialtyPage.clickShowDeleteForm();
+            Assert.assertTrue(specialtyPage.isFlowStateDelete());
+            specialtyPage.clickSaveDeleteButton();
+            //Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            //specialtyPage.clickCancelDetailsButton();
+            Assert.assertTrue(specialtyPage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteSpecialtyPageWithSave DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Ignore
     @Test
-    @InSequence(7)
+    @InSequence(10)
     public void fillSpecialtyPager() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" fillSpecialtyPager ");
@@ -174,7 +247,7 @@ public class SpecialtyUiTest {
 
     @Ignore
     @Test
-    @InSequence(8)
+    @InSequence(11)
     public void nextAndPreviousSpecialtyPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" nextAndPreviousSpecialtyPage ");
@@ -195,7 +268,7 @@ public class SpecialtyUiTest {
 
     @Ignore
     @Test
-    @InSequence(9)
+    @InSequence(12)
     public void changeSortOrderSpecialtySorter() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" changeSortOrderSpecialtySorter ");
