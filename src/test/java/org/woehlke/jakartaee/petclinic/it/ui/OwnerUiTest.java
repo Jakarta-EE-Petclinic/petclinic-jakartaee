@@ -510,6 +510,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(16)
     public void deleteOneOwnerPageWithSave() {
