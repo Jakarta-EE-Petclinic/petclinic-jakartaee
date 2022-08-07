@@ -301,50 +301,6 @@ public class OwnerUiTest {
 
     @Test
     @InSequence(8)
-    public void deleteOwnerPageWithCancel() {
-        log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOwnerPageWithCancel ");
-        log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
-        Assert.assertTrue(ownerPage.isFlowStateList());
-        ownerPage.clickShowDetailsFormButton1();
-        Assert.assertTrue(ownerPage.isFlowStateDetails());
-        // ----------------------------------
-        ownerPage.clickShowDeleteForm();
-        Assert.assertTrue(ownerPage.isFlowStateDelete());
-        ownerPage.clickCancelDeleteButton();
-        // ----------------------------------
-        Assert.assertTrue(ownerPage.isFlowStateDetails());
-        ownerPage.clickCancelDetailsButton();
-        Assert.assertTrue(ownerPage.isFlowStateList());
-        log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOwnerPageWithCancel DONE ");
-        log.info("------------------------------------------------------------------------------------");
-    }
-
-    @Test
-    @InSequence(9)
-    public void deleteOwnerPageWithSave() {
-        log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOwnerPageWithSave ");
-        log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
-        Assert.assertTrue(ownerPage.isFlowStateList());
-        for(int i=0; i<(ownerList.size()-1); i++) {
-            ownerPage.clickShowDetailsFormButton0();
-            Assert.assertTrue(ownerPage.isFlowStateDetails());
-            ownerPage.clickShowDeleteForm();
-            Assert.assertTrue(ownerPage.isFlowStateDelete());
-            ownerPage.clickSaveDeleteButton();
-            Assert.assertTrue(ownerPage.isFlowStateList());
-        }
-        log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOwnerPageWithSave DONE ");
-        log.info("------------------------------------------------------------------------------------");
-    }
-
-    @Test
-    @InSequence(10)
     public void addNewPetToOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetToOwnerPage ");
@@ -368,7 +324,7 @@ public class OwnerUiTest {
     }
 
     @Test
-    @InSequence(11)
+    @InSequence(9)
     public void addNewPetToOwnerPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetToOwnerPageWithSave ");
@@ -378,7 +334,7 @@ public class OwnerUiTest {
         Assert.assertTrue(ownerPage.isFlowStateList());
         // ----------------------------------
         for(Pet pet:petList){
-            ownerPage.clickShowDetailsFormButton1();
+            ownerPage.clickShowDetailsFormButton2();
             Assert.assertTrue(ownerPage.isFlowStateDetails());
             ownerPage.clickAddNewPetButton();
             Assert.assertTrue(ownerPage.isFlowStateNewPet());
@@ -396,7 +352,7 @@ public class OwnerUiTest {
 
     @Ignore
     @Test
-    @InSequence(12)
+    @InSequence(10)
     public void editPetOfOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editPetOfOwnerPageWithCancel ");
@@ -421,7 +377,7 @@ public class OwnerUiTest {
 
     @Ignore // TODO
     @Test
-    @InSequence(13)
+    @InSequence(11)
     public void editPetOfOwnerPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editPetOfOwnerPageWithSave ");
@@ -445,7 +401,7 @@ public class OwnerUiTest {
     }
 
     @Test
-    @InSequence(14)
+    @InSequence(12)
     public void addNewVisitToOwnersFirstPetPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editNewVisitToOwnersFirstPetPageWithCancel ");
@@ -453,7 +409,7 @@ public class OwnerUiTest {
         goTo(OwnerPage.class);
         ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateList());
-        ownerPage.clickShowDetailsFormButton1();
+        ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         // ----------------------------------
         ownerPage.clickAddNewVisitButton();
@@ -485,7 +441,7 @@ public class OwnerUiTest {
     }
 
     @Test
-    @InSequence(15)
+    @InSequence(13)
     public void addNewVisitToOwnersFirstPetPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editNewVisitToOwnersFirstPetPageWithSave ");
@@ -493,7 +449,7 @@ public class OwnerUiTest {
         goTo(OwnerPage.class);
         ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateList());
-        ownerPage.clickShowDetailsFormButton1();
+        ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         // ----------------------------------
         for(Visit v: visitList){
@@ -510,23 +466,49 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
+
     @Test
-    @InSequence(16)
-    public void deleteOneOwnerPageWithSave() {
+    @InSequence(14)
+    public void deleteOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOneOwnerPageWithSave ");
+        log.info(" deleteOwnerPageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
         goTo(OwnerPage.class);
         Assert.assertTrue(ownerPage.isFlowStateList());
-        ownerPage.clickShowDetailsFormButton0();
+        ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
+        // ----------------------------------
         ownerPage.clickShowDeleteForm();
         Assert.assertTrue(ownerPage.isFlowStateDelete());
-        ownerPage.clickSaveDeleteButton();
+        ownerPage.clickCancelDeleteButton();
+        // ----------------------------------
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        ownerPage.clickCancelDetailsButton();
         Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOneOwnerPageWithSave DONE ");
+        log.info(" deleteOwnerPageWithCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Ignore
+    @Test
+    @InSequence(15)
+    public void deleteOwnerPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteOwnerPageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(OwnerPage.class);
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        for(int i=0; i<ownerList.size(); i++) {
+            ownerPage.clickShowDetailsFormButton0();
+            Assert.assertTrue(ownerPage.isFlowStateDetails());
+            ownerPage.clickShowDeleteForm();
+            Assert.assertTrue(ownerPage.isFlowStateDelete());
+            ownerPage.clickSaveDeleteButton();
+            Assert.assertTrue(ownerPage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteOwnerPageWithSave DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 }
