@@ -350,7 +350,6 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(10)
     public void editPetOfOwnerPageWithCancel() {
@@ -360,7 +359,7 @@ public class OwnerUiTest {
         goTo(OwnerPage.class);
         ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateList());
-        ownerPage.clickShowDetailsFormButton1();
+        ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         // ----------------------------------
         ownerPage.clickAddNewPetButton();
@@ -490,6 +489,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(15)
     public void deleteOwnerPageWithSave() {
