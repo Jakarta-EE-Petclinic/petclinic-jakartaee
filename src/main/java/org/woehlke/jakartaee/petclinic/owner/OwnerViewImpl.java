@@ -218,9 +218,8 @@ public class OwnerViewImpl implements OwnerView, Serializable {
             this.pet.setUuid(UUID.randomUUID());
             this.pet.setType(petType);
             this.entity.addPet(this.pet);
-            this.pet = petService.addNew(this.pet);
             this.pet.setOwner(this.entity);
-            this.entity = entityService.update(this.entity);
+            this.pet = petService.addNew(this.pet);
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
             String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.pet);
