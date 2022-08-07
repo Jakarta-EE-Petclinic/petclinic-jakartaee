@@ -82,7 +82,6 @@ public class OwnerPage implements OwnerFlowStatePage {
     @FindBy(id="addVisitForm:cancelAddNewOwnersPetVisit")
     private WebElement cancelNewVisitButton;
 
-
     public OwnerPage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
         fullscreen();
@@ -162,6 +161,18 @@ public class OwnerPage implements OwnerFlowStatePage {
     public OwnerPage clickShowDetailsFormButton4() {
         Graphene.guardHttp(showDetailsFormButton4).click();
         fullscreen();
+        return this;
+    }
+
+    public OwnerPage clickShowDetailsFormButton(int i) {
+        switch (i){
+            case 0: clickShowDetailsFormButton0(); break;
+            case 1: clickShowDetailsFormButton1(); break;
+            case 2: clickShowDetailsFormButton2(); break;
+            case 3: clickShowDetailsFormButton3(); break;
+            case 4: clickShowDetailsFormButton4(); break;
+            default: break;
+        }
         return this;
     }
 
@@ -303,7 +314,7 @@ public class OwnerPage implements OwnerFlowStatePage {
     @FindBy(id="addNewOwnerForm:saveAddNewOwner")
     private WebElement newOwnerSaveButton;
 
-    public void addNewEntity(Owner o) {
+    public OwnerPage addNewEntity(Owner o) {
         if(null != o.getAddressInfo()){
             newOwnerInputAddressInfo.sendKeys(o.getAddressInfo());
         }
@@ -316,34 +327,77 @@ public class OwnerPage implements OwnerFlowStatePage {
         newOwnerPhoneNumber.sendKeys(o.getPhoneNumber());
         newOwnerEmail.sendKeys(o.getEmail());
         Graphene.guardHttp(newOwnerSaveButton).click();
+        return this;
     }
 
-    /*
-    @FindBy(id="")
+    @FindBy(id="editOwnerForm:firstNameEditOwner")
     private WebElement editOwnerInputFirstName;
 
-    @FindBy(id="")
+    @FindBy(id="editOwnerForm:lastNameEditOwner")
     private WebElement editOwnerInputLastName;
 
-    @FindBy(id="")
+    @FindBy(id="editOwnerForm:addressEditOwner")
     private WebElement editOwnerInputAddress;
 
-    @FindBy(id="")
+    @FindBy(id="editOwnerForm:houseNumberEditOwner")
     private WebElement editOwnerInputHouseNumber;
 
-    @FindBy(id="")
+    @FindBy(id="editOwnerForm:addressInfoEditOwner")
     private WebElement editOwnerInputAddressInfo;
 
-    @FindBy(id="")
+    @FindBy(id="editOwnerForm:cityEditOwner")
     private WebElement editOwnerInputCity;
 
-    @FindBy(id="")
+    @FindBy(id="editOwnerForm:zipCodeEditOwner")
     private WebElement editOwnerZipCode;
 
-    @FindBy(id="")
+    @FindBy(id="editOwnerForm:phoneNumberEditOwner")
     private WebElement editOwnerPhoneNumber;
 
-    @FindBy(id="")
+    @FindBy(id="editOwnerForm:emailEditOwner")
     private WebElement editOwnerEmail;
-     */
+
+    @FindBy(id="editOwnerForm:saveEditOwner")
+    private WebElement editOwnerSaveButton;
+
+    public OwnerPage editNameAddString() {
+        String firstName = editOwnerInputFirstName.getText();
+        String lastName = editOwnerInputLastName.getText();
+        String address = editOwnerInputAddress.getText();
+        String houseNumber = editOwnerInputHouseNumber.getText();
+        String addressInfo = editOwnerInputAddressInfo.getText();
+        String city = editOwnerInputCity.getText();
+        String zipCode = editOwnerZipCode.getText();
+        String phoneNumber = editOwnerPhoneNumber.getText();
+        String email = editOwnerEmail.getText();
+        firstName += "Test";
+        lastName += "TEST";
+        address += " XY";
+        houseNumber += " 33";
+        if(null != addressInfo){
+            addressInfo += " TeST";
+            editOwnerInputAddressInfo.sendKeys(addressInfo);
+        }
+        city += " ZZ";
+        zipCode += "99";
+        phoneNumber += "77";
+        editOwnerInputFirstName.sendKeys(firstName);
+        editOwnerInputLastName.sendKeys(lastName);
+        editOwnerInputAddress.sendKeys(address);
+        editOwnerInputHouseNumber.sendKeys(houseNumber);
+        editOwnerInputCity.sendKeys(city);
+        editOwnerZipCode.sendKeys(zipCode);
+        editOwnerPhoneNumber.sendKeys(phoneNumber);
+        editOwnerEmail.sendKeys(email);
+        Graphene.guardHttp(editOwnerSaveButton).click();
+        return this;
+    }
+
+    @FindBy(id="deleteOwnerForm:confirmDeleteButton")
+    private WebElement deleteOwnerSaveButton;
+
+    public OwnerPage clickSaveDeleteButton() {
+        Graphene.guardHttp(deleteOwnerSaveButton).click();
+        return this;
+    }
 }
