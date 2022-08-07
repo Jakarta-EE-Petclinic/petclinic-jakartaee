@@ -126,7 +126,7 @@ public class OwnerUiTest {
         }
     }
     static {
-        int year = 2010;
+        int year = 2001;
         int month = 1;
         int day = 5;
         for (String petName : petNames){
