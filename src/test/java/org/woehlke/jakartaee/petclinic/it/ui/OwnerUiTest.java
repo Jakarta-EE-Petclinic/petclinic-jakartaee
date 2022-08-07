@@ -385,8 +385,7 @@ public class OwnerUiTest {
         ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateList());
         // ----------------------------------
-        Pet pet = petList.get(0);
-        //for(Pet pet:petList){
+        for(Pet pet:petList){
             ownerPage.clickShowDetailsFormButton1();
             Assert.assertTrue(ownerPage.isFlowStateDetails());
             ownerPage.clickAddNewPetButton();
@@ -396,7 +395,7 @@ public class OwnerUiTest {
             Assert.assertTrue(ownerPage.isFlowStateDetails());
             ownerPage.clickCancelDetailsButton();
             Assert.assertTrue(ownerPage.isFlowStateList());
-        //}
+        }
         // ----------------------------------
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetToOwnerPageWithSave DONE ");
