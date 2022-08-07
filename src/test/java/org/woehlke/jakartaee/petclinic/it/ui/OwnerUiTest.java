@@ -427,7 +427,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
+    @Ignore // TODO
     @Test
     @InSequence(13)
     public void editPetOfOwnerPageWithSave() {
@@ -477,7 +477,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
+    @Ignore // TODO
     @Test
     @InSequence(15)
     public void addNewVisitToOwnersFirstPetPageWithSave() {
