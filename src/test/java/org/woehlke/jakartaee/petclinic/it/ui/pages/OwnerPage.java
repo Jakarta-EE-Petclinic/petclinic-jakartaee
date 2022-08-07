@@ -5,82 +5,88 @@ Not for reuse without permission.
 */
 
 package org.woehlke.jakartaee.petclinic.it.ui.pages;
+import java.text.DateFormat;
+import java.util.Locale;
 import java.util.Map;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
+import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowState;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
+
+import static java.text.DateFormat.SHORT;
 
 
 @Location("owner.jsf")
 public class OwnerPage implements OwnerFlowStatePage {
-    private Map<String, String> data;
+
     @Drone
     private WebDriver driver;
-    private int timeout = 15;
 
     @FindBy(id="ownerViewFlowFlowState")
-    private WebElement ownerFlowState;
+    private GrapheneElement ownerFlowState;
 
     @FindBy(id = "entityDataTableForm:showNewFormButton")
-    private WebElement showNewFormButton;
+    private GrapheneElement showNewFormButton;
 
     @FindBy(id = "addNewOwnerForm:cancelAddNewOwner")
-    private WebElement cancelNewButton;
+    private GrapheneElement cancelNewButton;
 
     @FindBy(id = "detailsOwnerForm:showEditFormButtonInList")
-    private WebElement showEditFormButton;
+    private GrapheneElement showEditFormButton;
 
     @FindBy(id = "editOwnerForm:cancelEditOwner")
-    private WebElement cancelEditButton;
+    private GrapheneElement cancelEditButton;
 
     @FindBy(id = "detailsOwnerForm:deleteSelectedButton")
-    private WebElement showDeleteFormButton;
+    private GrapheneElement showDeleteFormButton;
 
     @FindBy(id="deleteOwnerForm:cancelDeleteOwner")
-    private WebElement canceDeleteButton;
+    private GrapheneElement canceDeleteButton;
 
     @FindBy(id = "findEntityForm:searchButton")
-    private WebElement searchButton;
+    private GrapheneElement searchButton;
 
     @FindBy(id = "findEntityForm:clearSearchButton")
-    private WebElement clearSearchButton;
+    private GrapheneElement clearSearchButton;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:0:showDetailsFormButton")
-    private WebElement showDetailsFormButton0;
+    private GrapheneElement showDetailsFormButton0;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:1:showDetailsFormButton")
-    private WebElement showDetailsFormButton1;
+    private GrapheneElement showDetailsFormButton1;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:2:showDetailsFormButton")
-    private WebElement showDetailsFormButton2;
+    private GrapheneElement showDetailsFormButton2;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:3:showDetailsFormButton")
-    private WebElement showDetailsFormButton3;
+    private GrapheneElement showDetailsFormButton3;
 
     @FindBy(id = "entityDataTableForm:entityDataTable:4:showDetailsFormButton")
-    private WebElement showDetailsFormButton4;
+    private GrapheneElement showDetailsFormButton4;
 
     @FindBy(id="detailsOwnerForm:cancelDetailsOwner")
-    private WebElement cancelDetailsButton;
+    private GrapheneElement cancelDetailsButton;
 
     @FindBy(id="detailsOwnerForm:addNewPetButton")
-    private WebElement addNewPetButton;
+    private GrapheneElement addNewPetButton;
 
     @FindBy(id="addNewPetForm:cancelButtonAddNewOwnersPet")
-    private WebElement cancelNewPetButton;
+    private GrapheneElement cancelNewPetButton;
 
     @FindBy(id="detailsOwnerForm:petsAndVisitsTable:0:addVisitButton")
-    private WebElement addVisitButton;
+    private GrapheneElement addVisitButton;
 
     @FindBy(id="addVisitForm:cancelAddNewOwnersPetVisit")
-    private WebElement cancelNewVisitButton;
+    private GrapheneElement cancelNewVisitButton;
 
     public OwnerPage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
@@ -273,46 +279,36 @@ public class OwnerPage implements OwnerFlowStatePage {
         this();
         this.driver = driver;
     }
-
-    public OwnerPage(WebDriver driver, Map<String, String> data) {
-        this(driver);
-        this.data = data;
-    }
-
-    public OwnerPage(WebDriver driver, Map<String, String> data, int timeout) {
-        this(driver, data);
-        this.timeout = timeout;
-    }
-
+    
     @FindBy(id="addNewOwnerForm:firstNameAddNewOwner")
-    private WebElement newOwnerInputFirstName;
+    private GrapheneElement newOwnerInputFirstName;
 
     @FindBy(id="addNewOwnerForm:lastNameAddNewOwner")
-    private WebElement newOwnerInputLastName;
+    private GrapheneElement newOwnerInputLastName;
 
     @FindBy(id="addNewOwnerForm:addressAddNewOwner")
-    private WebElement newOwnerInputAddress;
+    private GrapheneElement newOwnerInputAddress;
 
     @FindBy(id="addNewOwnerForm:houseNumberAddNewOwner")
-    private WebElement newOwnerInputHouseNumber;
+    private GrapheneElement newOwnerInputHouseNumber;
 
     @FindBy(id="addNewOwnerForm:addressInfoAddNewOwner")
-    private WebElement newOwnerInputAddressInfo;
+    private GrapheneElement newOwnerInputAddressInfo;
 
     @FindBy(id="addNewOwnerForm:cityAddNewOwner")
-    private WebElement newOwnerInputCity;
+    private GrapheneElement newOwnerInputCity;
 
     @FindBy(id="addNewOwnerForm:zipCodeAddNewOwner")
-    private WebElement newOwnerZipCode;
+    private GrapheneElement newOwnerZipCode;
 
     @FindBy(id="addNewOwnerForm:phoneNumberAddNewOwner")
-    private WebElement newOwnerPhoneNumber;
+    private GrapheneElement newOwnerPhoneNumber;
 
     @FindBy(id="addNewOwnerForm:emailAddNewOwner")
-    private WebElement newOwnerEmail;
+    private GrapheneElement newOwnerEmail;
 
     @FindBy(id="addNewOwnerForm:saveAddNewOwner")
-    private WebElement newOwnerSaveButton;
+    private GrapheneElement newOwnerSaveButton;
 
     public OwnerPage addNewEntity(Owner o) {
         if(null != o.getAddressInfo()){
@@ -331,34 +327,34 @@ public class OwnerPage implements OwnerFlowStatePage {
     }
 
     @FindBy(id="editOwnerForm:firstNameEditOwner")
-    private WebElement editOwnerInputFirstName;
+    private GrapheneElement editOwnerInputFirstName;
 
     @FindBy(id="editOwnerForm:lastNameEditOwner")
-    private WebElement editOwnerInputLastName;
+    private GrapheneElement editOwnerInputLastName;
 
     @FindBy(id="editOwnerForm:addressEditOwner")
-    private WebElement editOwnerInputAddress;
+    private GrapheneElement editOwnerInputAddress;
 
     @FindBy(id="editOwnerForm:houseNumberEditOwner")
-    private WebElement editOwnerInputHouseNumber;
+    private GrapheneElement editOwnerInputHouseNumber;
 
     @FindBy(id="editOwnerForm:addressInfoEditOwner")
-    private WebElement editOwnerInputAddressInfo;
+    private GrapheneElement editOwnerInputAddressInfo;
 
     @FindBy(id="editOwnerForm:cityEditOwner")
-    private WebElement editOwnerInputCity;
+    private GrapheneElement editOwnerInputCity;
 
     @FindBy(id="editOwnerForm:zipCodeEditOwner")
-    private WebElement editOwnerZipCode;
+    private GrapheneElement editOwnerZipCode;
 
     @FindBy(id="editOwnerForm:phoneNumberEditOwner")
-    private WebElement editOwnerPhoneNumber;
+    private GrapheneElement editOwnerPhoneNumber;
 
     @FindBy(id="editOwnerForm:emailEditOwner")
-    private WebElement editOwnerEmail;
+    private GrapheneElement editOwnerEmail;
 
     @FindBy(id="editOwnerForm:saveEditOwner")
-    private WebElement editOwnerSaveButton;
+    private GrapheneElement editOwnerSaveButton;
 
     public OwnerPage editNameAddString() {
         String firstName = editOwnerInputFirstName.getText();
@@ -394,14 +390,39 @@ public class OwnerPage implements OwnerFlowStatePage {
     }
 
     @FindBy(id="deleteOwnerForm:confirmDeleteButton")
-    private WebElement deleteOwnerSaveButton;
+    private GrapheneElement deleteOwnerSaveButton;
 
     public OwnerPage clickSaveDeleteButton() {
         Graphene.guardHttp(deleteOwnerSaveButton).click();
         return this;
     }
 
-    public OwnerPage clickAddAndSaveNewPet() {
+    @FindBy(id="addNewPetForm:petNameAddNewOwnersPet")
+    private GrapheneElement petNameAddNewOwnersPetInput;
+
+    @FindBy(id="addNewPetForm:petBirthDateAddNewOwnersPet_input")
+    private GrapheneElement petBirthDateAddNewOwnersPetInput;
+
+    @FindBy(id="addNewPetForm:petTypeAddNewOwnersPet")
+    private WebElement petTypeAddNewOwnersPetDiv;
+
+    @FindBy(id="addNewPetForm:petTypeAddNewOwnersPet_input")
+    private Select petTypeAddNewOwnersPetInput;
+
+    @FindBy(id="addNewPetForm:saveButtonAddNewOwnersPet")
+    private GrapheneElement newOwnersPetSaveButton;
+
+    public OwnerPage clickAddAndSaveNewPet(Pet pet) {
+        int option = 1;
+        DateFormat df = DateFormat.getDateInstance(SHORT, Locale.US);
+        petTypeAddNewOwnersPetDiv.click();
+        petNameAddNewOwnersPetInput.sendKeys(pet.getName());
+        petBirthDateAddNewOwnersPetInput.sendKeys(df.format(pet.getBirthDate()));
+        petTypeAddNewOwnersPetInput.selectByIndex(option);
+        newOwnersPetSaveButton.sendKeys(Keys.DOWN);
+        newOwnersPetSaveButton.sendKeys(Keys.END);
+        //newOwnersPetSaveButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(newOwnersPetSaveButton).click();
         return this;
     }
 }
