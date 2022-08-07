@@ -6,6 +6,7 @@ Not for reuse without permission.
 
 package org.woehlke.jakartaee.petclinic.it.ui.pages;
 import java.text.DateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
@@ -412,9 +413,10 @@ public class OwnerPage implements OwnerFlowStatePage {
     @FindBy(id="addNewPetForm:saveButtonAddNewOwnersPet")
     private GrapheneElement newOwnersPetSaveButton;
 
+    private final DateFormat df = DateFormat.getDateInstance(SHORT, Locale.US);
+
     public OwnerPage clickAddAndSaveNewPet(Pet pet) {
         int option = 1;
-        DateFormat df = DateFormat.getDateInstance(SHORT, Locale.US);
         petTypeAddNewOwnersPetDiv.click();
         petNameAddNewOwnersPetInput.sendKeys(pet.getName());
         petBirthDateAddNewOwnersPetInput.sendKeys(df.format(pet.getBirthDate()));
@@ -423,6 +425,22 @@ public class OwnerPage implements OwnerFlowStatePage {
         newOwnersPetSaveButton.sendKeys(Keys.END);
         newOwnersPetSaveButton.sendKeys(Keys.ENTER);
         //Graphene.guardHttp(newOwnersPetSaveButton).click();
+        return this;
+    }
+
+    @FindBy(id="addVisitForm:visitDate_input")
+    private WebElement newVisitDateInput;
+
+    @FindBy(id="addVisitForm:visitDescription")
+    private WebElement newVisitDescriptionInput;
+
+    @FindBy(id="addVisitForm:saveAddNewOwnersPetVisit")
+    private GrapheneElement newVisitSaveButton;
+
+    public OwnerPage clickAddAndSaveNewVisitButton(Date datum, String description) {
+        newVisitDateInput.sendKeys(df.format(datum));
+        newVisitDescriptionInput.sendKeys(description);
+        newVisitSaveButton.click();
         return this;
     }
 }
