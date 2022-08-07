@@ -511,7 +511,7 @@ public class OwnerUiTest {
     }
 
     @Test
-    @InSequence(9)
+    @InSequence(16)
     public void deleteOneOwnerPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOneOwnerPageWithSave ");
