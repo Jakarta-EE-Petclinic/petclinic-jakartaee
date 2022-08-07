@@ -381,9 +381,9 @@ public class OwnerUiTest {
         ownerPage.clickShowDetailsFormButton1();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         // ----------------------------------
-        //ownerPage.clickAddNewPetButton();
-        //Assert.assertTrue(ownerPage.isFlowStateNewPet());
-        //ownerPage.clickCancelNewPetButton();
+        ownerPage.clickAddNewPetButton();
+        Assert.assertTrue(ownerPage.isFlowStateNewPet());
+        ownerPage.clickAddAndSaveNewPet();
         // ----------------------------------
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         ownerPage.clickCancelDetailsButton();
@@ -393,7 +393,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-
+    @Ignore
     @Test
     @InSequence(12)
     public void editPetOfOwnerPageWithCancel() {
@@ -418,6 +418,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(13)
     public void editPetOfOwnerPageWithSave() {
@@ -442,6 +443,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(14)
     public void addNewVisitToOwnersFirstPetPageWithCancel() {
@@ -466,6 +468,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(15)
     public void addNewVisitToOwnersFirstPetPageWithSave() {

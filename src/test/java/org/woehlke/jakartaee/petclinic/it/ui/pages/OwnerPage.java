@@ -400,4 +400,8 @@ public class OwnerPage implements OwnerFlowStatePage {
         Graphene.guardHttp(deleteOwnerSaveButton).click();
         return this;
     }
+
+    public OwnerPage clickAddAndSaveNewPet() {
+        return this;
+    }
 }

@@ -1,7 +1,7 @@
 # petclinic-jakartaee
-Petclinic Jakarta EE - a JSF and Jakarta EE 9.1 Version of Spring Petclinic. 
+* Petclinic Jakarta EE - a JSF and Jakarta EE 9.1 Version of Spring Petclinic. 
 
-And Update from Java EE 7 Petclinic
+* An Update of Java EE 7 Petclinic
 
 ## What is this?
 * JSF and Jakarta EE 9.1 Version of [Spring Petclinic](https://github.com/spring-projects/spring-petclinic)
@@ -20,6 +20,12 @@ And Update from Java EE 7 Petclinic
 * The Domain Classes show all relationships like one-to-many (1:n), many-to-one (n:1) and many-to-many (n:m)
 * It is simple enough but yet it shows more than just the CRUD Use Cases (Create, Read, Update, Delete) of most Demos and Training Examples.
 * You can think of it as smallest complete Web App with the usual things to solve.
+
+## About Java EE 7 Petclinic
+* [github.com/Jakarta-EE-Petclinic/petclinic-javaee7](https://github.com/Jakarta-EE-Petclinic/petclinic-javaee7)
+* [Thomas Woehlke: Java EE 7 Petclinic](https://thomas-woehlke.blogspot.com/2014/02/java-ee-7-petclinic.html)
+* [Stefan Hildebrandt: Was eine QS-Abetilung immer wollte. Mit automatisierten Tests zum Ziel](https://consulting.hildebrandt.tk/vortraege/integrierteAkzeptanztests/slides/index.html#/)
+* [Reza Rahman: Migrating the Spring Pet Clinic to Java EE 7](https://dzone.com/articles/migrating-spring-pet-clinic)
 
 ### Spring Petclinic
 * Github: [https://github.com/spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic)
