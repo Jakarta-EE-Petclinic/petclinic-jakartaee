@@ -442,7 +442,6 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(14)
     public void addNewVisitToOwnersFirstPetPageWithCancel() {
@@ -467,7 +466,6 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(15)
     public void addNewVisitToOwnersFirstPetPageWithSave() {
