@@ -443,4 +443,32 @@ public class OwnerPage implements OwnerFlowStatePage {
         newVisitSaveButton.click();
         return this;
     }
+
+    @FindBy(id="editPetForm:petNameEditOwnersPet")
+    private GrapheneElement petNameAddEditedOwnersPetInput;
+
+    @FindBy(id="editPetForm:petBirthDateEditOwnersPet_input")
+    private GrapheneElement petBirthDateAddEditedOwnersPetInput;
+
+    @FindBy(id="editPetForm:petTypeEditOwnersPet")
+    private WebElement petTypeAddEditedOwnersPetDiv;
+
+    @FindBy(id="editPetForm:petTypeEditOwnersPet_input")
+    private Select petTypeAddEditedOwnersPetInput;
+
+    @FindBy(id="editPetForm:saveButtonEditOwnersPet")
+    private GrapheneElement editOwnersPetSaveButton;
+
+    public OwnerPage clickSaveEditPetButton() {
+        String name = petNameAddEditedOwnersPetInput.getText();
+        name += " TeST";
+        petTypeAddEditedOwnersPetDiv.click();
+        petNameAddEditedOwnersPetInput.sendKeys(name);
+        //petBirthDateAddEditedOwnersPetInput.sendKeys(df.format());
+        //petTypeAddEditedOwnersPetInput.selectByIndex(option);
+        editOwnersPetSaveButton.sendKeys(Keys.DOWN);
+        editOwnersPetSaveButton.sendKeys(Keys.END);
+        editOwnersPetSaveButton.sendKeys(Keys.ENTER);
+        return this;
+    }
 }
