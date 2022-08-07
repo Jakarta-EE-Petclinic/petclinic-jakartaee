@@ -14,6 +14,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowState;
 
 
@@ -165,7 +166,9 @@ public class OwnerPage implements OwnerFlowStatePage {
     }
 
     public OwnerPage clickCancelDetailsButton() {
-        Graphene.guardHttp(cancelDetailsButton).click();
+        //Graphene.guardHttp(cancelDetailsButton).click();
+        cancelDetailsButton.sendKeys(Keys.DOWN);
+        cancelDetailsButton.sendKeys(Keys.ENTER);
         fullscreen();
         return this;
     }
@@ -269,4 +272,78 @@ public class OwnerPage implements OwnerFlowStatePage {
         this(driver, data);
         this.timeout = timeout;
     }
+
+    @FindBy(id="addNewOwnerForm:firstNameAddNewOwner")
+    private WebElement newOwnerInputFirstName;
+
+    @FindBy(id="addNewOwnerForm:lastNameAddNewOwner")
+    private WebElement newOwnerInputLastName;
+
+    @FindBy(id="addNewOwnerForm:addressAddNewOwner")
+    private WebElement newOwnerInputAddress;
+
+    @FindBy(id="addNewOwnerForm:houseNumberAddNewOwner")
+    private WebElement newOwnerInputHouseNumber;
+
+    @FindBy(id="addNewOwnerForm:addressInfoAddNewOwner")
+    private WebElement newOwnerInputAddressInfo;
+
+    @FindBy(id="addNewOwnerForm:cityAddNewOwner")
+    private WebElement newOwnerInputCity;
+
+    @FindBy(id="addNewOwnerForm:zipCodeAddNewOwner")
+    private WebElement newOwnerZipCode;
+
+    @FindBy(id="addNewOwnerForm:phoneNumberAddNewOwner")
+    private WebElement newOwnerPhoneNumber;
+
+    @FindBy(id="addNewOwnerForm:emailAddNewOwner")
+    private WebElement newOwnerEmail;
+
+    @FindBy(id="addNewOwnerForm:saveAddNewOwner")
+    private WebElement newOwnerSaveButton;
+
+    public void addNewEntity(Owner o) {
+        if(null != o.getAddressInfo()){
+            newOwnerInputAddressInfo.sendKeys(o.getAddressInfo());
+        }
+        newOwnerInputFirstName.sendKeys(o.getFirstName());
+        newOwnerInputLastName.sendKeys(o.getLastName());
+        newOwnerInputAddress.sendKeys(o.getAddress());
+        newOwnerInputHouseNumber.sendKeys(o.getHouseNumber());
+        newOwnerInputCity.sendKeys(o.getCity());
+        newOwnerZipCode.sendKeys(o.getZipCode());
+        newOwnerPhoneNumber.sendKeys(o.getPhoneNumber());
+        newOwnerEmail.sendKeys(o.getEmail());
+        Graphene.guardHttp(newOwnerSaveButton).click();
+    }
+
+    /*
+    @FindBy(id="")
+    private WebElement editOwnerInputFirstName;
+
+    @FindBy(id="")
+    private WebElement editOwnerInputLastName;
+
+    @FindBy(id="")
+    private WebElement editOwnerInputAddress;
+
+    @FindBy(id="")
+    private WebElement editOwnerInputHouseNumber;
+
+    @FindBy(id="")
+    private WebElement editOwnerInputAddressInfo;
+
+    @FindBy(id="")
+    private WebElement editOwnerInputCity;
+
+    @FindBy(id="")
+    private WebElement editOwnerZipCode;
+
+    @FindBy(id="")
+    private WebElement editOwnerPhoneNumber;
+
+    @FindBy(id="")
+    private WebElement editOwnerEmail;
+     */
 }

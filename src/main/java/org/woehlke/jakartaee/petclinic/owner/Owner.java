@@ -106,13 +106,13 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
 
     @Column(name = COL_ZIPCODE, nullable = false)
     @NotEmpty
-    @Digits(fraction = 0, integer = 5)
-    @Pattern(regexp = "[0-9]{5}", message = "{invalid.zipCode}")
+    //@Digits(fraction = 0, integer = 5)
+    @Pattern(regexp = "\\w{1,7}\\s{0,1}\\w{1,7}\\s{0,1}\\w{1,7}", message = "{invalid.zipCode}")
     private String zipCode;
 
     @Column(name = COL_PHONENUMBER, nullable = false)
     @NotEmpty
-    @Pattern(regexp = "\\+[1-9][0-9]{9,14}",
+    @Pattern(regexp = "\\+[1-9][0-9]\\s{0,1}[0-9]{0,5}\\s{0,1}[0-9]{4,16}",
             message = "{invalid.phoneNumber}")
     private String phoneNumber;
 

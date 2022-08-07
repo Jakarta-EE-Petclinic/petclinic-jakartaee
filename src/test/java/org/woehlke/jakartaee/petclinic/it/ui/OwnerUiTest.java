@@ -19,8 +19,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.OwnerPage;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.VeterinarianPage;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
+import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
 import java.net.URL;
+import java.util.*;
 
 import static org.jboss.arquillian.graphene.Graphene.goTo;
 
@@ -74,7 +79,7 @@ public class OwnerUiTest {
 
     @Test
     @InSequence(3)
-    public void addNewOwnerPage() {
+    public void addNewOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
@@ -89,8 +94,152 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    protected static List<Pet> petList = new ArrayList<>();
+    protected static List<Date> dateOfBirthList = new ArrayList<>();
+    protected static List<PetType> petTypeList = new ArrayList<>();
+    protected static Set<Pet> petSet = new HashSet<>();
+    protected static final String petTypeNames[] = {
+            "A Dog",
+            "A Cat",
+            "A Elephant",
+            "A Kitten",
+            "A Donkey",
+            "A Cow",
+            "A Pig",
+            "A Chicken"
+    };
+    protected static final String petNames[] = {
+            "A Jessie",
+            "A Lucifer Sam",
+            "A Nelly",
+            "A Kitten",
+            "A Benjamin",
+            "A Pauline Wayne",
+            "A Snowball",
+            "A Gallus gallus domesticus"
+    };
+    static {
+        for (String petTypeName : petTypeNames){
+            PetType o = new PetType();
+            o.setName(petTypeName);
+            o.setUuid(UUID.randomUUID());
+            petTypeList.add(o);
+        }
+    }
+    static {
+        int year = 2010;
+        int month = 1;
+        int day = 5;
+        for (String petTypeName : petTypeNames) {
+            GregorianCalendar gc = new GregorianCalendar(year,month,day);
+            Date dob = Date.from(gc.toInstant());
+            dateOfBirthList.add(dob);
+            year++;
+            month++;
+            day++;
+        }
+    }
+    static {
+        int i=0;
+        int k=0;
+        for (String petName : petNames){
+            Date dob = dateOfBirthList.get(k);
+            Pet o = new Pet();
+            o.setName(petName);
+            o.setBirthDate(dob);
+            o.setType(petTypeList.get(i));
+            o.setUuid(UUID.randomUUID());
+            petList.add(o);
+            petSet.add(o);
+            i++;
+            i %= petTypeList.size();
+            k++;
+        }
+    }
+    protected static List<Owner> ownerList = new ArrayList<>();
+    static {
+        Owner o = new Owner();
+        o.setFirstName("A1 Kurt");
+        o.setLastName("A1 Tucholsky");
+        o.setAddress("Lübecker Straße");
+        o.setHouseNumber("13");
+        o.setCity("Berlin");
+        o.setZipCode("10559");
+        o.setPhoneNumber("+49 30 3946364");
+        o.setEmail("kurt.tucholsky@vistaberlin.de");
+        ownerList.add(o);
+        o = new Owner();
+        o.setFirstName("A2 Heinrich");
+        o.setLastName("A2 Heine");
+        o.setAddress("Bolkerstraße");
+        o.setHouseNumber("53");
+        o.setCity("Düsseldorf");
+        o.setZipCode("40213");
+        o.setPhoneNumber("+4921120054294");
+        o.setEmail("heinrich.heine@heinehaus.de");
+        ownerList.add(o);
+        o = new Owner();
+        o.setFirstName("A3 Alan");
+        o.setLastName("A3 Turing");
+        o.setAddress("Bletchley Park");
+        o.setHouseNumber("Block H");
+        o.setCity("Milton Keynes");
+        o.setZipCode("MK3 6EB");
+        o.setPhoneNumber("+441908374708");
+        o.setEmail("alan.turing@tnmoc.org");
+        ownerList.add(o);
+        o = new Owner();
+        o.setFirstName("A4 Grace");
+        o.setLastName("A4 Hopper");
+        o.setAddress("St Ronan St");
+        o.setHouseNumber("160");
+        o.setAddressInfo("Yale University");
+        o.setCity("New Haven");
+        o.setZipCode("CT 06520");
+        o.setPhoneNumber("+12034324771");
+        o.setEmail("grace.hopper@yale.edu");
+        ownerList.add(o);
+        o = new Owner();
+        o.setFirstName("A5 Mahatma");
+        o.setLastName("A5 Ghandi");
+        o.setAddress("Sevagram");
+        o.setHouseNumber("PMH7 H42");
+        o.setAddressInfo("Mahatma Gandhi Ashram");
+        o.setCity("Maharashtra");
+        o.setZipCode("442102");
+        o.setPhoneNumber("+91 7152 284753");
+        o.setEmail("mahatma.ghandi@gandhiashramsevagram.org");
+        ownerList.add(o);
+        for(Owner oo:ownerList){
+            oo.setUuid(UUID.randomUUID());
+            oo.setPets(petSet);
+        }
+    }
+
     @Test
     @InSequence(4)
+    public void addNewOwnerPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewOwnerPageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goTo(OwnerPage.class);
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        for(Owner oo:ownerList){
+            ownerPage.clickAddNewEntityButton();
+            Assert.assertTrue(ownerPage.isFlowStateNew());
+            ownerPage.addNewEntity(oo);
+            Assert.assertTrue(ownerPage.isFlowStateDetails());
+            ownerPage.clickCancelDetailsButton();
+            Assert.assertTrue(ownerPage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewOwnerPageWithSave DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Ignore
+    @Test
+    @InSequence(5)
     public void openOwnerDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openOwnerDetailsPage ");
@@ -106,9 +255,10 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
-    @InSequence(5)
-    public void editOwnerPage() {
+    @InSequence(6)
+    public void editOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
@@ -129,9 +279,10 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
-    @InSequence(6)
-    public void deleteOwnerPage() {
+    @InSequence(8)
+    public void deleteOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
@@ -152,9 +303,10 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
-    @InSequence(7)
-    public void addNewPetToOwnerPage() {
+    @InSequence(10)
+    public void addNewPetToOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetToOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
@@ -176,9 +328,10 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
-    @InSequence(8)
-    public void addNewVisitToOwnersFirstPetPage() {
+    @InSequence(12)
+    public void addNewVisitToOwnersFirstPetPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewVisitToOwnersFirstPetPage ");
         log.info("------------------------------------------------------------------------------------");
