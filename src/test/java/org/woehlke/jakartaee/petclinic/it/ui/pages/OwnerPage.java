@@ -279,7 +279,7 @@ public class OwnerPage implements OwnerFlowStatePage {
         this();
         this.driver = driver;
     }
-    
+
     @FindBy(id="addNewOwnerForm:firstNameAddNewOwner")
     private GrapheneElement newOwnerInputFirstName;
 
@@ -421,8 +421,8 @@ public class OwnerPage implements OwnerFlowStatePage {
         petTypeAddNewOwnersPetInput.selectByIndex(option);
         newOwnersPetSaveButton.sendKeys(Keys.DOWN);
         newOwnersPetSaveButton.sendKeys(Keys.END);
-        //newOwnersPetSaveButton.sendKeys(Keys.ENTER);
-        Graphene.guardHttp(newOwnersPetSaveButton).click();
+        newOwnersPetSaveButton.sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(newOwnersPetSaveButton).click();
         return this;
     }
 }

@@ -26,6 +26,7 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
@@ -214,10 +215,11 @@ public class OwnerViewImpl implements OwnerView, Serializable {
         log.info("saveOwnerPetNew");
         try {
             PetType petType = petTypeService.findById(this.petTypeId);
+            this.pet.setUuid(UUID.randomUUID());
             this.pet.setType(petType);
-            this.pet.setOwner(this.entity);
-            this.pet = petService.addNew(this.pet);
             this.entity.addPet(this.pet);
+            this.pet = petService.addNew(this.pet);
+            this.pet.setOwner(this.entity);
             this.entity = entityService.update(this.entity);
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
             String summary = this.petclinicApplication.getMsg().getString(summaryKey);
