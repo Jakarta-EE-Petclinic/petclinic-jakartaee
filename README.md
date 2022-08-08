@@ -1,10 +1,8 @@
 # petclinic-jakartaee
 
+![Jakarta EE Compatible](src/main/webapp/img/logos/home_logo_jakartaee.png)
+
 Petclinic Jakarta EE - a Jakarta EE 9.1 Version of Spring Petclinic using PrimeFaces JSF.
-
-![aaa](src/main/webapp/img/logos/home_logo_jakartaee.png)
-
-![bbb](src/main/webapp/img/logos/home_logo_microprofile.png)
 
 ## What is this?
 * JSF and Jakarta EE 9.1 Version of [Spring Petclinic](https://github.com/spring-projects/spring-petclinic)
