@@ -1402,10 +1402,6 @@
 							<includes>
 								<include>org.woehlke.jakartaee.petclinic.EndpointTestSuite</include>
 								<include>org.woehlke.jakartaee.petclinic.UiTestSuite</include>
-								<!--
-								<include>org/woehlke/jakartaee/petclinic/EndpointTestSuite.java</include>
-								<include>org/woehlke/jakartaee/petclinic/UiTestSuite.java</include>
-								-->
 							</includes>
 						</configuration>
 					</execution>
