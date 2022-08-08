@@ -12,7 +12,8 @@ import org.woehlke.jakartaee.petclinic.unit.VisitUnitTest;
 @Suite
 @SelectClasses({
         SpecialtyUnitTest.class,  VetUnitTest.class,
-        PetTypeUnitTest.class, PetUnitTest.class, VisitUnitTest.class, OwnerUnitTest.class
+        PetTypeUnitTest.class, PetUnitTest.class,
+        VisitUnitTest.class, OwnerUnitTest.class
 })
 public class EntityUnitTestSuite {
 }

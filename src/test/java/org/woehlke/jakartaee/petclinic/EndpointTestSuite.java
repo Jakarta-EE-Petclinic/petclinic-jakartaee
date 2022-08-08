@@ -7,7 +7,8 @@ import org.woehlke.jakartaee.petclinic.it.api.*;
 @Suite
 @SelectClasses({
     SpecialtyEndpointIT.class, VetEndpointIT.class,
-    PetTypeEndpointIT.class, PetEndpointIT.class, VisitEndpointIT.class, OwnerEndpointIT.class
+    PetTypeEndpointIT.class, PetEndpointIT.class,
+    VisitEndpointIT.class, OwnerEndpointIT.class
 })
 public class EndpointTestSuite {
 }

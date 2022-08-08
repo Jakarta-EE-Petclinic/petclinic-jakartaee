@@ -26,10 +26,10 @@ import java.net.URL;
 import static org.jboss.arquillian.graphene.Graphene.goTo;
 
 @Log
+@RunAsClient
 @RunWith(Arquillian.class)
 public class OwnerUiTest extends TestData {
 
-    @RunAsClient
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         return Deployments.createDeployment();

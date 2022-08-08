@@ -30,6 +30,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
  * To change this template use File | Settings | File Templates.
  */
 @Log
+@RunAsClient
 @RunWith(Arquillian.class)
 public class SpecialtyUiTest extends TestData {
 
