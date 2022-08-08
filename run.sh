@@ -19,7 +19,7 @@ function doSetup() {
     $MY_MVN -glassfish $DEPS $SITE cargo:uberwar
     $MY_MVN -Ppayara $DEPS $SITE cargo:uberwar
     $MY_MVN -Ptomee $DEPS $SITE cargo:uberwar
-    $MY_MVN -Parc-wildfly-managed $DEPS $SITE site:deploy
+    $MY_MVN -Parc-wildfly-managed $DEPS $SITE
 }
 
 function doRun() {
