@@ -15,7 +15,7 @@ Petclinic Jakarta EE - a Jakarta EE 9.1 Version of Spring Petclinic using PrimeF
 
 ## Motivation
 * Some experimental Work with JSF, Jakarta EE 9.1 and Java EE 
-* These Demo Application is planned to be the first in a series of “Rosetta Stone” to compare OOP Web Application Frameworks
+* This Demo Application is planned to be the first in a series of “Rosetta Stone” to compare OOP Web Application Frameworks
 
 ## Why Petclinic?
 * The Domain Classes show all relationships like one-to-many (1:n), many-to-one (n:1) and many-to-many (n:m)
