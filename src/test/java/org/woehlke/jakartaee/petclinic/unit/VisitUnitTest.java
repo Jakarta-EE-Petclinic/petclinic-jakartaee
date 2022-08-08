@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.unit;
 
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.*;
+import org.woehlke.jakartaee.petclinic.deployments.AbstractEntityTest;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 

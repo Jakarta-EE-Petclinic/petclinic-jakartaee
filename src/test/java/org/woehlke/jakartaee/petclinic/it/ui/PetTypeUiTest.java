@@ -10,16 +10,13 @@ import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
-import org.woehlke.jakartaee.petclinic.it.deployments.TestData;
+import org.woehlke.jakartaee.petclinic.deployments.Deployments;
+import org.woehlke.jakartaee.petclinic.deployments.TestData;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
-import org.woehlke.jakartaee.petclinic.it.ui.pages.OwnerPage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.PetTypePage;
-import org.woehlke.jakartaee.petclinic.it.ui.pages.SpecialtyPage;
 
 import java.net.URL;
 

@@ -18,7 +18,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
+import org.woehlke.jakartaee.petclinic.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerDto;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerListDto;
 
