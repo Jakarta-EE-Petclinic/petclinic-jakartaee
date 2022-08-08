@@ -2,7 +2,7 @@
 
 ![Jakarta EE Compatible](src/main/webapp/img/logos/home_logo_jakartaee.png)
 
-Petclinic Jakarta EE - a Jakarta EE 9.1 Version of Spring Petclinic using PrimeFaces JSF.
+Petclinic Jakarta EE - a Jakarta EE 9.1 Version of Spring Petclinic demo application using PrimeFaces JSF.
 
 ## What is this?
 * JSF and Jakarta EE 9.1 Version of [Spring Petclinic](https://github.com/spring-projects/spring-petclinic)
@@ -332,28 +332,31 @@ Object Oriented Design
 
 
 ## User: First Steps to do
-* add some PetTypes like dog,cat,mouse,...
-* add some Specialties for Vetinarians like dentist, anesthetist, radiology,...
-* add a Vetinarian
-* add an Owner, add him am a Pet and his Pet a visit.
+* add some PetTypes like dog,cat,mouse,lion,frog,elephant,spider,...
+* add some Specialties for Vetinarians like dentist, anesthetist, surgeon, neurosurgeon, oncologist, radiologist,...
+* add a Vetinarian and choose his/her Specialties
+* add an Owner, add her a Pet and book a visit for her Pet 
 
-## visit Spring Petclinic
+## Software-Architect: review Spring Petclinic
 * [https://github.com/spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic)
-
-#### Development
-* [ToDo](etc/TODO.md)
 
 ## References
 
 ### Jakarta EE Runtimes 
+* [Wildfly](https://www.wildfly.org/)
+* [Open Liberty](https://openliberty.io/)
+* [Eclipse GlassFish](https://glassfish.org/h)
+* [Payara Server](https://www.payara.fish/)
+* [Apache TomEE](https://tomee.apache.org/)
+* [JSF Java Server Faces: Primefaces](https://www.primefaces.org/)
+
+### Jakarta EE Runtimes on Github
 * [Wildfly](https://github.com/wildfly/wildfly)
 * [Open Liberty](https://github.com/OpenLiberty/open-liberty)
 * [Eclipse GlassFish](https://github.com/eclipse-ee4j/glassfish)
 * [Payara Server](https://github.com/payara/Payara)
 * [Apache TomEE](https://github.com/apache/tomee)
-
-### JSF Java Server Faces
-* [Primefaces](https://github.com/primefaces/primefaces)
+* [JSF Java Server Faces: Primefaces](https://github.com/primefaces/primefaces)
 
 ### Java and Jakarta EE
 * [Jakarta EE 9.1](etc/docs/JARTKARTA_EE.md)
