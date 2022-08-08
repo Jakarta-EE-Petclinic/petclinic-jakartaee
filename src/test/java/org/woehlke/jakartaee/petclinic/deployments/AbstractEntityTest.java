@@ -9,7 +9,7 @@ import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.util.*;
 
-public class AbstractEntityTest {
+public abstract class AbstractEntityTest {
 
     protected String name01 = "wooollooomooollooo";
     protected String name02 = "huulluuumuuulluuu";
