@@ -210,7 +210,7 @@ public class OwnerPage implements OwnerFlowStatePage {
         return this;
     }
 
-    public OwnerPage clickAddNewVisitButton() {
+    public OwnerPage clickAddNewVisitToPet0Button() {
         //Graphene.waitModel(driver).until().element(addNewVisitButton).is().enabled();
         //Actions action = new Actions(driver);
         //action.moveToElement(addNewVisitButton).pause(1000).perform();

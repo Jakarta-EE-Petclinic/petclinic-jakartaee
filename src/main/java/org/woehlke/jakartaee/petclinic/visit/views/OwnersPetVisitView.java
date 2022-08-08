@@ -14,7 +14,7 @@ public interface OwnersPetVisitView extends Serializable {
 
     String editOwnerPetVisitNewForm(Pet rowPet);
     String cancelOwnerPetVisitNew();
-    String saveOwnerPetVisitNew();
+    String saveOwnerPetVisitNew(Pet rowPet);
 
     Visit getVisit();
     void setVisit(Visit visit);

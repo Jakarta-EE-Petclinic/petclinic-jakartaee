@@ -416,7 +416,7 @@ public class OwnerUiTest {
         ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         // ----------------------------------
-        ownerPage.clickAddNewVisitButton();
+        ownerPage.clickAddNewVisitToPet0Button();
         Assert.assertTrue(ownerPage.isFlowStateNewVisit());
         ownerPage.clickCancelNewVisitButton();
         // ----------------------------------
@@ -456,7 +456,7 @@ public class OwnerUiTest {
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         // ----------------------------------
         for(Visit v: visitList){
-            ownerPage.clickAddNewVisitButton();
+            ownerPage.clickAddNewVisitToPet0Button();
             Assert.assertTrue(ownerPage.isFlowStateNewVisit());
             ownerPage.clickAddAndSaveNewVisitButton(v.getDate(),v.getDescription());
             Assert.assertTrue(ownerPage.isFlowStateDetails());

@@ -298,21 +298,21 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     }
 
     @Override
-    public String saveOwnerPetVisitNew() {
+    public String saveOwnerPetVisitNew(Pet rowPet) {
         log.info("saveOwnerPetVisitNew");
         try {
-            if (this.pet != null) {
-                this.pet = petService.findById(this.pet.getId());
+            if (rowPet != null) {
+                this.pet = petService.findById(rowPet.getId());
+                this.petTypeId = this.pet.getType().getId();
                 this.visit.setPet(this.pet);
                 this.pet.addVisit(this.visit);
-                this.visit = this.entityService.addNewVisit(this.visit);
-                log.info("owner1: " + this.entity.toString());
-                long ownerId = this.entity.getId();
-                this.entity = this.entityService.findById(ownerId);
-                log.info("owner2: " + this.entity.toString());
+                this.visit = this.visitService.addNew(this.visit);
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, this.visit);
+                //reload View Data to display changes
+                this.pet = petService.findById(rowPet.getId());
+                this.entity = entityService.findById(this.entity.getId());
             } else {
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
