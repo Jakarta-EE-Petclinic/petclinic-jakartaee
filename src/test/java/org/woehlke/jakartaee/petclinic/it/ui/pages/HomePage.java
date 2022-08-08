@@ -346,4 +346,8 @@ public class HomePage {
         assertThat(pageTitle.isDisplayed());
         assertThat( "Specialties".compareTo(pageTitle.getText())==0 );
     }
+
+    public void fullscreen(){
+        driver.manage().window().fullscreen();
+    }
 }

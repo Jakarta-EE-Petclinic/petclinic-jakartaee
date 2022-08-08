@@ -222,6 +222,10 @@ public class PetTypePage implements CrudFlowStatePage {
         return CrudFlowState.LIST_SEARCH_RESULT.name().compareTo(crudFlowState.getText())==0;
     }
 
+    public void fullscreen(){
+        driver.manage().window().fullscreen();
+    }
+
     public PetTypePage() {
     }
 

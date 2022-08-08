@@ -32,6 +32,9 @@ public class InformationPage {
         assertEquals( "Information", pageTitle.getText() );
     }
 
+    public void fullscreen(){
+        driver.manage().window().fullscreen();
+    }
 
     public InformationPage() {
     }

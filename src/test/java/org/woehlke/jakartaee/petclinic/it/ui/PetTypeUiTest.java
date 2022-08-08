@@ -15,7 +15,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
+import org.woehlke.jakartaee.petclinic.it.deployments.TestData;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.OwnerPage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.PetTypePage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.SpecialtyPage;
 
@@ -26,7 +28,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
 @Log
 @RunAsClient
 @RunWith(Arquillian.class)
-public class PetTypeUiTest {
+public class PetTypeUiTest extends TestData {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
@@ -44,6 +46,12 @@ public class PetTypeUiTest {
 
     @Page
     private PetTypePage petTypePage;
+
+    private void goToPetTypePage(){
+        goTo(PetTypePage.class);
+        petTypePage.fullscreen();
+        Assert.assertTrue(petTypePage.isFlowStateList());
+    }
 
     @Test
     @InSequence(1)
@@ -64,7 +72,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openPetTypePage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(PetTypePage.class);
+        goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" openPetTypePage DONE ");
@@ -77,7 +85,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetTypePageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(PetTypePage.class);
+        goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
         petTypePage.clickAddNewEntityButton();
         Assert.assertTrue(petTypePage.isFlowStateNew());
@@ -88,17 +96,15 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    private final String names[] = { "A Animal 1 Farm", "A Animal 2 Farm", "A Animal 3 Farm" };
-
     @Test
     @InSequence(4)
     public void addNewPetTypePageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetTypePageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(PetTypePage.class);
+        goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
-        for(String name:names){
+        for(String name:petTypeNameArray){
             petTypePage.clickAddNewEntityButton();
             Assert.assertTrue(petTypePage.isFlowStateNew());
             petTypePage.addNewEntity(name);
@@ -117,7 +123,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openPetTypeDetailsPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(PetTypePage.class);
+        goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
         petTypePage.clickShowDetailsFormButton0();
         Assert.assertTrue(petTypePage.isFlowStateDetails());
@@ -134,7 +140,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editPetTypePageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(PetTypePage.class);
+        goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
         for(int i=0; i<3; i++) {
             log.info(" " + i);
@@ -158,7 +164,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editSpecialtyPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(PetTypePage.class);
+        goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
         for(int i=0; i<3; i++){
             log.info(" "+i);
@@ -182,7 +188,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deletePetTypePageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(PetTypePage.class);
+        goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
         for(int i=0; i<3; i++) {
             petTypePage.clickShowDetailsFormButton0();
@@ -205,7 +211,7 @@ public class PetTypeUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deletePetTypePageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(PetTypePage.class);
+        goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
         for(int i=0; i<3; i++) {
             petTypePage.clickShowDetailsFormButton0();

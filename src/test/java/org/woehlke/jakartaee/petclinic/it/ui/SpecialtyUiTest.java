@@ -10,11 +10,11 @@ import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
+import org.woehlke.jakartaee.petclinic.it.deployments.TestData;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.*;
 
 import java.net.URL;
@@ -32,7 +32,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
 @Log
 @RunAsClient
 @RunWith(Arquillian.class)
-public class SpecialtyUiTest {
+public class SpecialtyUiTest extends TestData {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
@@ -50,6 +50,12 @@ public class SpecialtyUiTest {
 
     @Page
     private SpecialtyPage specialtyPage;
+
+    private void goToSpecialtyPage(){
+        goTo(SpecialtyPage.class);
+        specialtyPage.fullscreen();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
+    }
 
     @Test
     @InSequence(1)
@@ -70,7 +76,7 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openSpecialtyPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(SpecialtyPage.class);
+        goToSpecialtyPage();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" openSpecialtyPage DONE ");
@@ -83,7 +89,7 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewSpecialtyPageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(SpecialtyPage.class);
+        goToSpecialtyPage();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         specialtyPage.clickAddNewEntityButton();
         Assert.assertTrue(specialtyPage.isFlowStateNew());
@@ -94,17 +100,15 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    private final String names[] = {"A Hippocrates 1", "A Hippocrates 2", "A Hippocrates 3" };
-
     @Test
     @InSequence(4)
     public void addNewSpecialtyPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewSpecialtyPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(SpecialtyPage.class);
+        goToSpecialtyPage();
         Assert.assertTrue(specialtyPage.isFlowStateList());
-        for(String name:names){
+        for(String name:specialtyNameArray){
             specialtyPage.clickAddNewEntityButton();
             Assert.assertTrue(specialtyPage.isFlowStateNew());
             specialtyPage.addNewEntity(name);
@@ -123,7 +127,7 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openSpecialtyDetailsPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(SpecialtyPage.class);
+        goToSpecialtyPage();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         specialtyPage.clickShowDetailsFormButton0();
         Assert.assertTrue(specialtyPage.isFlowStateDetails());
@@ -140,7 +144,7 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editSpecialtyPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(SpecialtyPage.class);
+        goToSpecialtyPage();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         for(int i=0; i<3; i++){
             log.info(" "+i);
@@ -164,6 +168,7 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editSpecialtyPage ");
         log.info("------------------------------------------------------------------------------------");
+        goToSpecialtyPage();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         for(int i=0; i<3; i++){
             log.info(" "+i);
@@ -187,7 +192,7 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteSpecialtyPageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(SpecialtyPage.class);
+        goToSpecialtyPage();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         for(int i=0; i<3; i++) {
             specialtyPage.clickShowDetailsFormButton(i);
@@ -210,7 +215,7 @@ public class SpecialtyUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteSpecialtyPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(SpecialtyPage.class);
+        goToSpecialtyPage();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         for(int i=0; i<3; i++) {
             specialtyPage.clickShowDetailsFormButton0();

@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.it.deployments.Deployments;
+import org.woehlke.jakartaee.petclinic.it.deployments.TestData;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.SpecialtyPage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.VeterinarianPage;
@@ -26,7 +27,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
 @Log
 @RunAsClient
 @RunWith(Arquillian.class)
-public class VetUiTest {
+public class VetUiTest extends TestData {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
@@ -44,6 +45,12 @@ public class VetUiTest {
 
     @Page
     private VeterinarianPage veterinarianPage;
+
+    private void goToVeterinarianPage(){
+        goTo(VeterinarianPage.class);
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateList());
+    }
 
     @Test
     @InSequence(1)
@@ -64,7 +71,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openVeterinarianPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
+        goToVeterinarianPage();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" openVeterinarianPage DONE ");
@@ -77,7 +84,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewVeterinarianPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
+        goToVeterinarianPage();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         veterinarianPage.clickAddNewEntityButton();
         Assert.assertTrue(veterinarianPage.isFlowStateNew());
@@ -88,19 +95,13 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    private final String vetNames[][] = {
-        {"A Hippocrates 1", "A of Kos 1"},
-        {"A Hippocrates 2", "A of Kos 2"},
-        {"A Hippocrates 3", "A of Kos 3"}
-    };
-
     @Test
     @InSequence(4)
     public void addNewVeterinarianPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewSpecialtyPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
+        goToVeterinarianPage();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         for(String name[]:vetNames){
             veterinarianPage.clickAddNewEntityButton();
@@ -121,7 +122,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openVeterinarianDetailsPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
+        goToVeterinarianPage();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         veterinarianPage.clickShowDetailsFormButton0();
         Assert.assertTrue(veterinarianPage.isFlowStateDetails());
@@ -138,7 +139,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editVeterinarianPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
+        goToVeterinarianPage();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         veterinarianPage.clickShowDetailsFormButton0();
         Assert.assertTrue(veterinarianPage.isFlowStateDetails());
@@ -159,7 +160,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editSpecialtyPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
+        goToVeterinarianPage();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         for(int i=0; i<3; i++){
             log.info(" "+i);
@@ -183,7 +184,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteVeterinarianPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
+        goToVeterinarianPage();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         veterinarianPage.clickShowDetailsFormButton1();
         Assert.assertTrue(veterinarianPage.isFlowStateDetails());
@@ -204,7 +205,7 @@ public class VetUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteSpecialtyPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(VeterinarianPage.class);
+        goToVeterinarianPage();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         for(int i=0; i<3; i++) {
             veterinarianPage.clickShowDetailsFormButton0();

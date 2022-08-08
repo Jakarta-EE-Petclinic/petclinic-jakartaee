@@ -214,6 +214,10 @@ public class SpecialtyPage implements CrudFlowStatePage {
         return CrudFlowState.LIST_SEARCH_RESULT.name().compareTo(crudFlowState.getText())==0;
     }
 
+    public void fullscreen(){
+        browser.manage().window().fullscreen();
+    }
+
     public SpecialtyPage() {
     }
 
