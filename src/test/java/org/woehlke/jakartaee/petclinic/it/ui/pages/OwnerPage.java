@@ -8,7 +8,7 @@ package org.woehlke.jakartaee.petclinic.it.ui.pages;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Map;
+import java.util.NoSuchElementException;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
@@ -84,7 +84,7 @@ public class OwnerPage implements OwnerFlowStatePage {
     private GrapheneElement cancelNewPetButton;
 
     @FindBy(id="detailsOwnerForm:petsAndVisitsTable:0:addVisitButton")
-    private GrapheneElement addVisitButton;
+    private GrapheneElement addVisitToPet0Button;
 
     @FindBy(id="addVisitForm:cancelAddNewOwnersPetVisit")
     private GrapheneElement cancelNewVisitButton;
@@ -180,6 +180,7 @@ public class OwnerPage implements OwnerFlowStatePage {
             case 4: clickShowDetailsFormButton4(); break;
             default: break;
         }
+        fullscreen();
         return this;
     }
 
@@ -213,9 +214,9 @@ public class OwnerPage implements OwnerFlowStatePage {
         //Graphene.waitModel(driver).until().element(addNewVisitButton).is().enabled();
         //Actions action = new Actions(driver);
         //action.moveToElement(addNewVisitButton).pause(1000).perform();
-        addVisitButton.sendKeys(Keys.DOWN);
-        addVisitButton.sendKeys(Keys.END);
-        addVisitButton.sendKeys(Keys.ENTER);
+        addVisitToPet0Button.sendKeys(Keys.DOWN);
+        addVisitToPet0Button.sendKeys(Keys.END);
+        addVisitToPet0Button.sendKeys(Keys.ENTER);
         //Graphene.guardHttp(addNewVisitButton).click();
         fullscreen();
         return this;
@@ -324,6 +325,7 @@ public class OwnerPage implements OwnerFlowStatePage {
         newOwnerPhoneNumber.sendKeys(o.getPhoneNumber());
         newOwnerEmail.sendKeys(o.getEmail());
         Graphene.guardHttp(newOwnerSaveButton).click();
+        fullscreen();
         return this;
     }
 
@@ -387,6 +389,7 @@ public class OwnerPage implements OwnerFlowStatePage {
         editOwnerPhoneNumber.sendKeys(phoneNumber);
         editOwnerEmail.sendKeys(email);
         Graphene.guardHttp(editOwnerSaveButton).click();
+        fullscreen();
         return this;
     }
 
@@ -395,6 +398,7 @@ public class OwnerPage implements OwnerFlowStatePage {
 
     public OwnerPage clickSaveDeleteButton() {
         Graphene.guardHttp(deleteOwnerSaveButton).click();
+        fullscreen();
         return this;
     }
 
@@ -425,6 +429,7 @@ public class OwnerPage implements OwnerFlowStatePage {
         newOwnersPetSaveButton.sendKeys(Keys.END);
         newOwnersPetSaveButton.sendKeys(Keys.ENTER);
         //Graphene.guardHttp(newOwnersPetSaveButton).click();
+        fullscreen();
         return this;
     }
 
@@ -438,11 +443,38 @@ public class OwnerPage implements OwnerFlowStatePage {
     private GrapheneElement newVisitSaveButton;
 
     public OwnerPage clickAddAndSaveNewVisitButton(Date datum, String description) {
+        newVisitDateInput.sendKeys(Keys.DOWN);
+        newVisitDateInput.sendKeys(Keys.END);
         newVisitDateInput.sendKeys(df.format(datum));
         newVisitDescriptionInput.sendKeys(description);
-        newVisitSaveButton.click();
+        Graphene.guardHttp(newVisitSaveButton).click();
+        fullscreen();
         return this;
     }
+
+    @FindBy(id="detailsOwnerForm:petsAndVisitsTable:0:editPetButton")
+    private GrapheneElement editOwnersPetShowFormButton0;
+
+    @FindBy(id="detailsOwnerForm:petsAndVisitsTable:1:editPetButton")
+    private GrapheneElement editOwnersPetShowFormButton1;
+
+    @FindBy(id="detailsOwnerForm:petsAndVisitsTable:2:editPetButton")
+    private GrapheneElement editOwnersPetShowFormButton2;
+
+    @FindBy(id="detailsOwnerForm:petsAndVisitsTable:3:editPetButton")
+    private GrapheneElement editOwnersPetShowFormButton3;
+
+    @FindBy(id="detailsOwnerForm:petsAndVisitsTable:4:editPetButton")
+    private GrapheneElement editOwnersPetShowFormButton4;
+
+    @FindBy(id="detailsOwnerForm:petsAndVisitsTable:5:editPetButton")
+    private GrapheneElement editOwnersPetShowFormButton5;
+
+    @FindBy(id="detailsOwnerForm:petsAndVisitsTable:6:editPetButton")
+    private GrapheneElement editOwnersPetShowFormButton6;
+
+    @FindBy(id="detailsOwnerForm:petsAndVisitsTable:7:editPetButton")
+    private GrapheneElement editOwnersPetShowFormButton7;
 
     @FindBy(id="editPetForm:petNameEditOwnersPet")
     private GrapheneElement petNameAddEditedOwnersPetInput;
@@ -459,6 +491,9 @@ public class OwnerPage implements OwnerFlowStatePage {
     @FindBy(id="editPetForm:saveButtonEditOwnersPet")
     private GrapheneElement editOwnersPetSaveButton;
 
+    @FindBy(id="editPetForm:cancelButtonEditOwnersPet")
+    private GrapheneElement editOwnersPetCancelButton;
+
     public OwnerPage clickSaveEditPetButton() {
         String name = petNameAddEditedOwnersPetInput.getText();
         name += " TeST";
@@ -469,6 +504,68 @@ public class OwnerPage implements OwnerFlowStatePage {
         editOwnersPetSaveButton.sendKeys(Keys.DOWN);
         editOwnersPetSaveButton.sendKeys(Keys.END);
         editOwnersPetSaveButton.sendKeys(Keys.ENTER);
+        fullscreen();
+        return this;
+    }
+
+    public OwnerPage clickCancelEditedPetButton() {
+        Graphene.guardHttp(editOwnersPetCancelButton).click();
+        return this;
+    }
+
+    public OwnerPage clickShowEditPetForm(int i) {
+        switch(i){
+            case 0:
+                editOwnersPetShowFormButton0.sendKeys(Keys.DOWN);
+                editOwnersPetShowFormButton0.sendKeys(Keys.END);
+                editOwnersPetShowFormButton0.sendKeys(Keys.ENTER);
+                //Graphene.guardHttp(editOwnersPetShowFormButton0).click();
+                break;
+            case 1:
+                editOwnersPetShowFormButton1.sendKeys(Keys.DOWN);
+                editOwnersPetShowFormButton1.sendKeys(Keys.END);
+                editOwnersPetShowFormButton1.sendKeys(Keys.ENTER);
+                //Graphene.guardHttp(editOwnersPetShowFormButton1).click();
+                break;
+            case 2:
+                editOwnersPetShowFormButton2.sendKeys(Keys.DOWN);
+                editOwnersPetShowFormButton2.sendKeys(Keys.END);
+                editOwnersPetShowFormButton2.sendKeys(Keys.ENTER);
+                //Graphene.guardHttp(editOwnersPetShowFormButton2).click();
+                break;
+            case 3:
+                editOwnersPetShowFormButton3.sendKeys(Keys.DOWN);
+                editOwnersPetShowFormButton3.sendKeys(Keys.END);
+                editOwnersPetShowFormButton3.sendKeys(Keys.ENTER);
+                //Graphene.guardHttp(editOwnersPetShowFormButton3).click();
+                break;
+            case 4:
+                editOwnersPetShowFormButton4.sendKeys(Keys.DOWN);
+                editOwnersPetShowFormButton4.sendKeys(Keys.END);
+                editOwnersPetShowFormButton4.sendKeys(Keys.ENTER);
+                //Graphene.guardHttp(editOwnersPetShowFormButton4).click();
+                break;
+            case 5:
+                editOwnersPetShowFormButton5.sendKeys(Keys.DOWN);
+                editOwnersPetShowFormButton5.sendKeys(Keys.END);
+                editOwnersPetShowFormButton5.sendKeys(Keys.ENTER);
+                //Graphene.guardHttp(editOwnersPetShowFormButton4).click();
+                break;
+            case 6:
+                editOwnersPetShowFormButton6.sendKeys(Keys.DOWN);
+                editOwnersPetShowFormButton6.sendKeys(Keys.END);
+                editOwnersPetShowFormButton6.sendKeys(Keys.ENTER);
+                //Graphene.guardHttp(editOwnersPetShowFormButton4).click();
+                break;
+            case 7:
+                editOwnersPetShowFormButton7.sendKeys(Keys.DOWN);
+                editOwnersPetShowFormButton7.sendKeys(Keys.END);
+                editOwnersPetShowFormButton7.sendKeys(Keys.ENTER);
+                //Graphene.guardHttp(editOwnersPetShowFormButton4).click();
+                break;
+            default: throw new NoSuchElementException();
+        }
+        fullscreen();
         return this;
     }
 }

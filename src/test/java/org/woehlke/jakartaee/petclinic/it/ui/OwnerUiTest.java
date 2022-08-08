@@ -68,7 +68,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" openOwnerPage DONE ");
@@ -81,7 +81,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickAddNewEntityButton();
         Assert.assertTrue(ownerPage.isFlowStateNew());
@@ -220,7 +220,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewOwnerPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         for(Owner oo:ownerList){
             ownerPage.clickAddNewEntityButton();
@@ -241,7 +241,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openOwnerDetailsPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton0();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
@@ -258,7 +258,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editOwnerPageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton0();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
@@ -281,7 +281,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editOwnerPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         for(int i=0; i<ownerList.size(); i++){
             log.info(" "+i);
@@ -305,8 +305,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetToOwnerPage ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
-        ownerPage.fullscreen();
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton1();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
@@ -329,8 +328,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetToOwnerPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
-        ownerPage.fullscreen();
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         // ----------------------------------
         for(Pet pet:petList){
@@ -350,22 +348,23 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(10)
     public void editPetOfOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editPetOfOwnerPageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
-        ownerPage.fullscreen();
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         // ----------------------------------
-        ownerPage.clickShowEditForm();
-        Assert.assertTrue(ownerPage.isFlowStateEdit());
-        ownerPage.clickCancelNewPetButton();
+        int j= Math.min(petList.size(), 8);
+        for(int i=0;i<j;i++) {
+            ownerPage.clickShowEditPetForm(i);
+            Assert.assertTrue(ownerPage.isFlowStateEditPet());
+            ownerPage.clickCancelEditedPetButton();
+        }
         // ----------------------------------
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         ownerPage.clickCancelDetailsButton();
@@ -375,22 +374,28 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
+    private void goToOwnerPage(){
+        goTo(OwnerPage.class);
+        ownerPage.fullscreen();
+    }
+
     @Test
     @InSequence(11)
     public void editPetOfOwnerPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editPetOfOwnerPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
-        ownerPage.fullscreen();
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         // ----------------------------------
-        ownerPage.clickShowEditForm();
-        Assert.assertTrue(ownerPage.isFlowStateEdit());
-        ownerPage.clickSaveEditPetButton();
+        int j= Math.min(petList.size(), 8);
+        for(int i=0;i<j;i++) {
+            ownerPage.clickShowEditPetForm(i);
+            Assert.assertTrue(ownerPage.isFlowStateEditPet());
+            ownerPage.clickSaveEditPetButton();
+        }
         // ----------------------------------
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         ownerPage.clickCancelDetailsButton();
@@ -400,15 +405,13 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(12)
     public void addNewVisitToOwnersFirstPetPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editNewVisitToOwnersFirstPetPageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
-        ownerPage.fullscreen();
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
@@ -441,15 +444,13 @@ public class OwnerUiTest {
         }
     }
 
-    @Ignore
     @Test
     @InSequence(13)
     public void addNewVisitToOwnersFirstPetPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editNewVisitToOwnersFirstPetPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
-        ownerPage.fullscreen();
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
@@ -475,7 +476,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOwnerPageWithCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.clickShowDetailsFormButton2();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
@@ -499,7 +500,7 @@ public class OwnerUiTest {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOwnerPageWithSave ");
         log.info("------------------------------------------------------------------------------------");
-        goTo(OwnerPage.class);
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         for(int i=0; i<ownerList.size(); i++) {
             ownerPage.clickShowDetailsFormButton0();
