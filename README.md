@@ -360,7 +360,7 @@ Object Oriented Design
 * [Java jdk and jvm](etc/docs/JAVA_JDK_AND_JVM.md)
 * [Java Server Faces JSF](etc/docs/JSF_PRIMEFACES.md)
 
-## Other Ressources used in the Technology Demo
+## Other Ressources used in this Technology Demo
 * [jakartaee9-starter-boilerplate by hantsy](https://github.com/hantsy/jakartaee9-starter-boilerplate)
 
 ## Imprint
