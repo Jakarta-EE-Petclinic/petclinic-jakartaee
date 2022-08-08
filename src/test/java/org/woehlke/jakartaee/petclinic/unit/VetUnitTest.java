@@ -207,9 +207,4 @@ public class VetUnitTest extends AbstractEntityTest {
         }
     }
 
-    @Test
-    @Disabled("for demonstration purposes")
-    void skippedTest() {
-        // not executed
-    }
 }
