@@ -1400,7 +1400,12 @@
 						</goals>
 						<configuration>
 							<includes>
-								<include>**/it/**</include>
+								<include>org.woehlke.jakartaee.petclinic.EndpointTestSuite</include>
+								<include>org.woehlke.jakartaee.petclinic.UiTestSuite</include>
+								<!--
+								<include>org/woehlke/jakartaee/petclinic/EndpointTestSuite.java</include>
+								<include>org/woehlke/jakartaee/petclinic/UiTestSuite.java</include>
+								-->
 							</includes>
 						</configuration>
 					</execution>
@@ -3118,14 +3123,6 @@
 					<version>${jersey.version}</version>
 					<scope>test</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.wildfly.arquillian</groupId>
-					<artifactId>wildfly-arquillian-container-managed</artifactId>
-					<version>${wildfly-arquillian.version}</version>
-					<scope>test</scope>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>org.postgresql</groupId>
 					<artifactId>postgresql</artifactId>

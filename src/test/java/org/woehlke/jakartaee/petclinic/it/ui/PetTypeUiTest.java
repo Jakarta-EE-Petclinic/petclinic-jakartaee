@@ -23,7 +23,6 @@ import java.net.URL;
 import static org.jboss.arquillian.graphene.Graphene.goTo;
 
 @Log
-@RunAsClient
 @RunWith(Arquillian.class)
 public class PetTypeUiTest extends TestData {
 
