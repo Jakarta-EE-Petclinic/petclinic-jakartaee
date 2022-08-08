@@ -11,7 +11,6 @@ function dockerDown() {
 }
 
 function doSetup() {
-
     $MY_MVN dependency:purge-local-repository clean dependency:resolve dependency:resolve-plugins dependency:tree dependency:sources dependency:analyze-dep-mgt dependency:analyze-report install
     $MY_MVN -Pliberty dependency:purge-local-repository clean dependency:resolve dependency:resolve-plugins dependency:tree dependency:sources dependency:analyze-dep-mgt dependency:analyze-report install site site:deploy liberty:help
     $MY_MVN -Pwildfly dependency:purge-local-repository clean dependency:resolve dependency:resolve-plugins dependency:tree dependency:sources dependency:analyze-dep-mgt dependency:analyze-report install site site:deploy wildfly:help
