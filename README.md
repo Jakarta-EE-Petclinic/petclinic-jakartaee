@@ -39,18 +39,18 @@ cd petclinic-jakartaee
 ./mvnw
 ```
 
-## ... and run
+## ... deploy and run
+
+### IBM OpenLiberty JakartEE 9.1 (22.0.0.8)
+
+```
+./mvnw -Pliberty
+```
 
 ### JBoss Wildfly JakartEE 9.1 Preview (26.1.1) 
 
 ```
 ./mvnw -Pwildfly
-```
-
-### IBM OpenLiberty JakartEE 9.1 (22.0.0.7) 
-
-```
-./mvnw -Pliberty
 ```
 
 ### Eclipse GlassFish (6.2.5)
@@ -72,6 +72,8 @@ cd petclinic-jakartaee
 ```
 
 ## Integration Tests
+
+Arquillian End2End Tests for REST Endpoints and for JSF Frontend Browser Tests with Graphene and Selenium.
 
 ### JBoss Wildfly JakartEE 9.1 Preview (26.1.1)
 
@@ -105,17 +107,17 @@ Object Oriented Design
 
 #### Specialty Use Case and State Table
 
-| Specialty Use Cases  | Specialty States             | Frontend                                |
-|----------------------|------------------------------|-----------------------------------------|
-| Specialty.list       | SPECIALTY_LIST_EMPTY         | Disable Search-Button and Paging-Widget |
-| Specialty.list       | SPECIALTY_LIST               |                                         |
-| Specialty.search *   | SPECIALTY_LIST_SEARCH_RESULT |                                         |
-| Specialty.addNew     | SPECIALTY_NEW                |                                         |
-| Specialty.details    | SPECIALTY_DETAILS            |                                         |
-| Specialty.edit       | SPECIALTY_EDIT               |                                         |
-| Specialty.delete     | SPECIALTY_DELETE             |                                         | 
+| Specialty Use Cases | Specialty States             | Frontend                                |
+|---------------------|------------------------------|-----------------------------------------|
+| Specialty.list      | SPECIALTY_LIST_EMPTY         | Disable Search-Button and Paging-Widget |
+| Specialty.list      | SPECIALTY_LIST               |                                         |
+| Specialty.search    | SPECIALTY_LIST_SEARCH_RESULT |                                         |
+| Specialty.addNew    | SPECIALTY_NEW                |                                         |
+| Specialty.details   | SPECIALTY_DETAILS            |                                         |
+| Specialty.edit      | SPECIALTY_EDIT               |                                         |
+| Specialty.delete    | SPECIALTY_DELETE             |                                         | 
 
-*) TODO
+
 
 #### Specialty State Diagram
 
@@ -158,7 +160,7 @@ Object Oriented Design
 |--------------|-------------------------|-----------------------------------------|
 | Vet.list     | VET_LIST_EMPTY          | Disable Search-Button and Paging-Widget |
 | Vet.list     | VET_LIST                |                                         |
-| Vet.search * | VET_LIST_SEARCH_RESULT  |                                         |
+| Vet.search   | VET_LIST_SEARCH_RESULT  |                                         |
 | Vet.addNew   | VET_NEW                 |                                         |
 | Vet.details  | vet_DETAILS             |                                         |
 | Vet.details  | VET_DETAILS             |                                         |
@@ -220,7 +222,7 @@ Object Oriented Design
 |------------------|----------------------------|------------------------------------------|
 | PetType.list     | PETTYPE_LIST_EMPTY         | Disable Search-Button and Paging-Widget  |
 | PetType.list     | PETTYPE_LIST               |                                          |
-| PetType.search * | PETTYPE_LIST_SEARCH_RESULT |                                          |
+| PetType.search   | PETTYPE_LIST_SEARCH_RESULT |                                          |
 | PetType.addNew   | PETTYPE_NEW                |                                          |
 | PetType.details  | PETTYPE_DETAILS            |                                          |
 | PetType.edit     | PETTYPE_EDIT               |                                          |
@@ -268,9 +270,8 @@ Object Oriented Design
 
 | Use Case               | Owner States             | Frontend                                                |
 |------------------------|--------------------------|---------------------------------------------------------|
-| Owner.list *           | OWNER_LIST_EMPTY         | Disable Edit-, Delete-, Search-Button and Paging-Widget |
-| Owner.list *           | OWNER_LIST               |                                                         |
-| Owner.list *           | OWNER_LIST_SEARCH_RESULT |                                                         |
+| Owner.list             | OWNER_LIST               |                                                         |
+| Owner.list             | OWNER_LIST_SEARCH_RESULT |                                                         |
 | Owner.addNew           | OWNER_NEW                |                                                         | 
 | Owner.details          | OWNER_DETAILS            |                                                         |   
 | Owner.edit             | OWNER_EDIT               |                                                         |  
@@ -281,8 +282,6 @@ Object Oriented Design
 | Owner.Pet.Visit.addNew | OWNER_PET_VISIT_NEW      |                                                         |
 | Owner.Pet.Visit.edit   | OWNER_PET_VISIT_EDIT     |                                                         |
 | Owner.Pet.Visit.delete | OWNER_PET_VISIT_DELETE   |                                                         |
-
-*) TODO
 
 #### Owner State Diagram
 
