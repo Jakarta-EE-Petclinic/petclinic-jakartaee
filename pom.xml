@@ -1363,7 +1363,7 @@
 							<goal>test</goal>
 						</goals>
 						<configuration>
-							<includes>org/woehlke/jakartaee/petclinic/unit/**</includes>
+							<test>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</test>
 							<excludes>
 								<exclude>org/woehlke/jakartaee/petclinic/tmp/**</exclude>
 								<exclude>org/woehlke/jakartaee/petclinic/it/**</exclude>
@@ -1400,8 +1400,8 @@
 						</goals>
 						<configuration>
 							<includes>
-								<include>org.woehlke.jakartaee.petclinic.EndpointTestSuite</include>
 								<include>org.woehlke.jakartaee.petclinic.UiTestSuite</include>
+								<include>org.woehlke.jakartaee.petclinic.EndpointTestSuite</include>
 							</includes>
 						</configuration>
 					</execution>
