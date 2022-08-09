@@ -25,4 +25,5 @@ public class EndpointTestSuite {
     public void runAfterSuite(){
         log.info("DONE");
     }
+
 }
