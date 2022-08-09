@@ -16,4 +16,14 @@ import org.woehlke.jakartaee.petclinic.unit.VisitUnitTest;
         VisitUnitTest.class, OwnerUnitTest.class
 })
 public class EntityUnitTestSuite {
+
+    //@BeforeAll
+    //public void runBeforeSuite(){
+      //  log.info("START");
+    //}
+
+    //@AfterAll
+    //blic void runAfterSuite(){
+    //    log.info("DONE");
+   // }
 }

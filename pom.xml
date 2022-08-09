@@ -3265,7 +3265,7 @@
 					<scope>test</scope>
 				</dependency>
 				<!-- WebSocket client dependencies -->
-				<!--<dependency>
+				<dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-client</artifactId>
                     <version>1.13.1</version>
@@ -3276,7 +3276,7 @@
                     <artifactId>tyrus-container-grizzly-client</artifactId>
                     <version>1.13.1</version>
                     <scope>test</scope>
-                </dependency>-->
+                </dependency>
 				<dependency>
 					<groupId>org.jboss.arquillian.container</groupId>
 					<artifactId>arquillian-glassfish-managed-6</artifactId>
@@ -3413,6 +3413,11 @@
 					<artifactId>arquillian-payara-server-managed</artifactId>
 					<version>${version.arquillian-payara}</version>
 					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.postgresql</groupId>
+					<artifactId>postgresql</artifactId>
+					<version>${version.postgresql.driver}</version>
 				</dependency>
 			</dependencies>
 			<build>

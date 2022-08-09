@@ -10,12 +10,28 @@
 
     <container qualifier="payara-managed">
         <configuration>
-            <property name="allowConnectingToRunningServer">false</property>
+            <property name="allowConnectingToRunningServer">true</property>
             <property name="adminHost">localhost</property>
             <property name="adminPort">4848</property>
             <property name="enableH2">${enableH2:true}</property>
             <property name="outputToConsole">true</property>
+            <property name="adminPassword">adminadmin</property>
         </configuration>
     </container>
+
+    <extension qualifier="webdriver">
+        <property name="browser">chrome</property>
+    </extension>
+
+    <extension qualifier="drone">
+        <property name="instantiationTimeoutInSeconds">120</property>
+    </extension>
+
+    <extension qualifier="screenshooter">
+        <property name="takeOnEveryAction">true</property>
+        <property name="takeBeforeTest">true</property>
+        <property name="takeAfterTest">true</property>
+        <property name="takeWhenTestFailed">true</property>
+    </extension>
 
 </arquillian>
