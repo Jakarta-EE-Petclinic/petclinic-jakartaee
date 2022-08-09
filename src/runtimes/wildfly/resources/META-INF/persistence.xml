@@ -18,7 +18,8 @@
 		<class>org.woehlke.jakartaee.petclinic.specialty.Specialty</class>
 
 		<properties>
-			<property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="jakarta.persistence.sql-load-script-source" value="META-INF/sql/data.sql" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
 			<property name="hibernate.hbm2ddl.auto" value="update"/>
 			<property name="hibernate.show_sql" value="true"/>
