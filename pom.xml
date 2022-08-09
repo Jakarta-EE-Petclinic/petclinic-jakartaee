@@ -1609,7 +1609,6 @@
 			</properties>
 			<dependencyManagement>
 				<dependencies>
-					<!-- Jakarta EE Runtime: OpenLiberty -->
 					<dependency>
 						<groupId>io.openliberty.features</groupId>
 						<artifactId>features-bom</artifactId>
@@ -1721,7 +1720,6 @@
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
-				<!-- Jakarta EE Runtime: OpenLiberty -->
 				<dependency>
 					<groupId>io.openliberty.features</groupId>
 					<artifactId>jakartaee-9.1</artifactId>
