@@ -2638,15 +2638,13 @@
 									<cargo.glassfish.admin.port>${cargo.glassfish.admin.port}</cargo.glassfish.admin.port>
 									<cargo.remote.username>admin</cargo.remote.username>
 									<cargo.remote.password>adminadmin</cargo.remote.password>
-									<!--
 									<cargo.datasource.datasource.postgresql>
 										cargo.datasource.driver=org.postgresql.Driver|
 										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_payara|
-										cargo.datasource.jndi=jdbc/PostgreSQLDS|
+										cargo.datasource.jndi=jdbc/petclinicDS|
 										cargo.datasource.username=petclinic_jakartaee|
 										cargo.datasource.password=petclinic_jakartaeepwd
 									</cargo.datasource.datasource.postgresql>
-									-->
 								</properties>
 							</configuration>
 						</configuration>
