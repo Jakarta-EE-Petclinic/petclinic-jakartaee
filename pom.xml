@@ -3405,7 +3405,6 @@
 					<version>${version.arquillian-payara}</version>
 					<scope>test</scope>
 				</dependency>
-				<!-- Payara Server Container adaptor -->
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
 					<artifactId>arquillian-payara-server-managed</artifactId>
@@ -3429,10 +3428,16 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
 						<version>${version.maven-dependency-plugin}</version>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
 						<executions>
 							<execution>
 								<id>unpack</id>
+								<!--
 								<phase>pre-integration-test</phase>
+								-->
+								<phase>process-test-classes</phase>
 								<goals>
 									<goal>unpack</goal>
 								</goals>
@@ -3450,6 +3455,15 @@
 								</configuration>
 							</execution>
 						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<systemPropertyVariables>
+								<payara.home>${project.build.directory}/payara5</payara.home>
+							</systemPropertyVariables>
+						</configuration>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
