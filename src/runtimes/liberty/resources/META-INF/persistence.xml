@@ -17,7 +17,8 @@
 		<class>org.woehlke.jakartaee.petclinic.specialty.Specialty</class>
 
 		<properties>
-			<property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="javax.persistence.sql-load-script-source" value="META-INF/sql/data.sql" />
 			<property name="jpa.showSql" value="true"/>
 			<!--
 			<property name="openjpa.jdbc.DBDictionary" value="postgres"/>
