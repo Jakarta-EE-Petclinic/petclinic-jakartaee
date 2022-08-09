@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN"
+        "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+
+    <jdbc-connection-pool name="jdbc/petclinicPool"
+                          res-type="javax.sql.XADataSource"
+                          datasource-classname="org.postgresql.xa.PGXADataSource"
+                          driver-classname="org.postgresql.Driver"
+                          pool-resize-quantity="2"
+                          max-pool-size="64"
+                          steady-pool-size="8">
+        <property name="URL" value="jdbc:postgresql://localhost:5432/petclinic_jakartaee_wildfly"/>
+        <property name="User" value="petclinic_jakartaee"/>
+        <property name="Password" value="petclinic_jakartaeepwd"/>
+    </jdbc-connection-pool>
+
+    <jdbc-resource enabled="true" jndi-name="jdbc/petclinicDS" object-type="user" pool-name="jdbc/petclinicPool">
+        <description>Test DataSource jdbc/testDS for Connection Pool jdbc/testConnPool</description>
+    </jdbc-resource>
+
+</resources>
