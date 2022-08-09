@@ -13,3 +13,6 @@
 * Calendar for Pet.Birthday and Visit.date
 * AJAX Frontend in JSF
 * https://docs.payara.fish/community/docs/documentation/ecosystem/arquillian-containers/README.html
+
+## docker
+* https://hub.docker.com/r/payara/server-full/
