@@ -15,7 +15,7 @@ function doSetup() {
 }
 
 function doRun() {
-		./mvnw -Pliberty
+		./mvnw
 }
 
 function main() {
