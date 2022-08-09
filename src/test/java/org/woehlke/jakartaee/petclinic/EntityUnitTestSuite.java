@@ -5,19 +5,19 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
-import org.woehlke.jakartaee.petclinic.unit.OwnerUnitTest;
-import org.woehlke.jakartaee.petclinic.unit.PetUnitTest;
-import org.woehlke.jakartaee.petclinic.unit.PetTypeUnitTest;
-import org.woehlke.jakartaee.petclinic.unit.SpecialtyUnitTest;
-import org.woehlke.jakartaee.petclinic.unit.VetUnitTest;
-import org.woehlke.jakartaee.petclinic.unit.VisitUnitTest;
+import org.woehlke.jakartaee.petclinic.unit.OwnerUnitTestData;
+import org.woehlke.jakartaee.petclinic.unit.PetUnitTestData;
+import org.woehlke.jakartaee.petclinic.unit.PetTypeUnitTestData;
+import org.woehlke.jakartaee.petclinic.unit.SpecialtyUnitTestData;
+import org.woehlke.jakartaee.petclinic.unit.VetUnitTestData;
+import org.woehlke.jakartaee.petclinic.unit.VisitUnitTestData;
 
 @Log
 @Suite
 @SelectClasses({
-        SpecialtyUnitTest.class,  VetUnitTest.class,
-        PetTypeUnitTest.class, PetUnitTest.class,
-        VisitUnitTest.class, OwnerUnitTest.class
+        SpecialtyUnitTestData.class,  VetUnitTestData.class,
+        PetTypeUnitTestData.class, PetUnitTestData.class,
+        VisitUnitTestData.class, OwnerUnitTestData.class
 })
 public class EntityUnitTestSuite {
 

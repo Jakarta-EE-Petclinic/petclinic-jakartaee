@@ -3,7 +3,7 @@ package org.woehlke.jakartaee.petclinic.unit;
 
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.*;
-import org.woehlke.jakartaee.petclinic.deployments.AbstractEntityTest;
+import org.woehlke.jakartaee.petclinic.deployments.UnitTestData;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
 
@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class VetUnitTest extends AbstractEntityTest {
+public class VetUnitTestData extends UnitTestData {
 
     @Test
     @Order(1)
@@ -155,7 +155,7 @@ public class VetUnitTest extends AbstractEntityTest {
         log.info("testGetSpecialtiesAsList02");
         int expectedSize  = 1;
         Vet entity = new Vet();
-        String specialtyName = AbstractEntityTest.specialtyNames[0];
+        String specialtyName = UnitTestData.specialtyNames[0];
         assertThat("Surgeon".compareTo(specialtyName)==0);
         Specialty specialty = new Specialty();
         specialty.setName(specialtyName);
@@ -169,7 +169,7 @@ public class VetUnitTest extends AbstractEntityTest {
     public void testGetSpecialtiesAsList03(){
         log.info("testGetSpecialtiesAsList03");
         Vet entity = new Vet();
-        String specialtyName =  AbstractEntityTest.specialtyNames[0];
+        String specialtyName =  UnitTestData.specialtyNames[0];
         assertThat("Surgeon".compareTo(specialtyName)==0);
         Specialty specialty = new Specialty();
         specialty.setName(specialtyName);

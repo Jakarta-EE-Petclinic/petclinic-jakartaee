@@ -2,7 +2,7 @@ package org.woehlke.jakartaee.petclinic.unit;
 
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.*;
-import org.woehlke.jakartaee.petclinic.deployments.AbstractEntityTest;
+import org.woehlke.jakartaee.petclinic.deployments.UnitTestData;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class VisitUnitTest extends AbstractEntityTest {
+public class VisitUnitTestData extends UnitTestData {
 
 
     @Test

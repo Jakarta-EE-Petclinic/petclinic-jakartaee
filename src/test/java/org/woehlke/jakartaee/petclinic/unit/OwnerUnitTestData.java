@@ -3,7 +3,7 @@ package org.woehlke.jakartaee.petclinic.unit;
 
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.*;
-import org.woehlke.jakartaee.petclinic.deployments.AbstractEntityTest;
+import org.woehlke.jakartaee.petclinic.deployments.UnitTestData;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class OwnerUnitTest extends AbstractEntityTest {
+public class OwnerUnitTestData extends UnitTestData {
 
     @Test
     @Order(1)
@@ -154,7 +154,7 @@ public class OwnerUnitTest extends AbstractEntityTest {
     public void testGetPetst02(){
         log.info("testGetPetst02");
         Owner entity = ownerList.get(2);
-        String petName = AbstractEntityTest.petNames[2];
+        String petName = UnitTestData.petNames[2];
         int expectedSize  = entity.getPetsAsList().size() + 1;
         assertThat("Nelly".compareTo(petName)==0);
         Pet pet = new Pet();
@@ -171,7 +171,7 @@ public class OwnerUnitTest extends AbstractEntityTest {
     public void testGetPetst03(){
         log.info("testGetPetst03");
         Owner entity = ownerList.get(2);
-        String petName = AbstractEntityTest.petNames[2];
+        String petName = UnitTestData.petNames[2];
         int expectedSize  = entity.getPetsAsList().size() + 1;
         assertThat("Nelly".compareTo(petName)==0);
         Pet pet = new Pet();
