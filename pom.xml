@@ -1516,7 +1516,7 @@
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
 						<configuration>
-							<composeFile>${project.basedir}/src/runtimes/liberty/docker/docker-compose.yml</composeFile>
+							<composeFile>${project.basedir}/src/main/runtimes/liberty/docker/docker-compose.yml</composeFile>
 							<verbose>true</verbose>
 							<removeImages>true</removeImages>
 							<removeVolumes>true</removeVolumes>
@@ -1551,7 +1551,7 @@
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
 						<configuration>
-							<composeFile>${project.basedir}/src/runtimes/wildfly/docker/docker-compose.yml</composeFile>
+							<composeFile>${project.basedir}/src/main/runtimes/wildfly/docker/docker-compose.yml</composeFile>
 							<verbose>true</verbose>
 							<removeImages>true</removeImages>
 							<removeVolumes>true</removeVolumes>
@@ -1586,7 +1586,7 @@
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
 						<configuration>
-							<composeFile>${project.basedir}/src/runtimes/glassfish/docker/docker-compose.yml</composeFile>
+							<composeFile>${project.basedir}/src/main/runtimes/glassfish/docker/docker-compose.yml</composeFile>
 							<verbose>true</verbose>
 							<removeImages>true</removeImages>
 							<removeVolumes>true</removeVolumes>
@@ -1841,7 +1841,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/liberty/resources/META-INF</directory>
+											<directory>src/main/runtimes/liberty/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -1865,7 +1865,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/liberty/resources</directory>
+											<directory>src/main/runtimes/liberty/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2052,7 +2052,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/wildfly/resources/META-INF</directory>
+											<directory>src/main/runtimes/wildfly/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2077,7 +2077,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/wildfly/resources</directory>
+											<directory>src/main/runtimes/wildfly/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2306,7 +2306,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/glassfish/resources/META-INF</directory>
+											<directory>src/main/runtimes/glassfish/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2331,7 +2331,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/glassfish/resources</directory>
+											<directory>src/main/runtimes/glassfish/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2566,7 +2566,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/payara/resources/META-INF</directory>
+											<directory>src/main/runtimes/payara/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2591,7 +2591,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/payara/resources</directory>
+											<directory>src/main/runtimes/payara/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2813,7 +2813,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/tomee/resources/META-INF</directory>
+											<directory>src/main/runtimes/tomee/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2838,7 +2838,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/tomee/resources</directory>
+											<directory>src/main/runtimes/tomee/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -3169,7 +3169,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/wildfly/resources/META-INF</directory>
+											<directory>src/main/runtimes/wildfly/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -3194,7 +3194,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/wildfly/resources</directory>
+											<directory>src/main/runtimes/wildfly/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -3341,7 +3341,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/glassfish/resources/META-INF</directory>
+											<directory>src/main/runtimes/glassfish/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -3366,7 +3366,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/glassfish/resources</directory>
+											<directory>src/main/runtimes/glassfish/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
