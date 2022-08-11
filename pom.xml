@@ -2095,17 +2095,11 @@
 						<configuration>
 							<container>
 								<containerId>wildfly26x</containerId>
-								<zipUrlInstaller>
-									<url>https://github.com/wildfly/wildfly/releases/download/26.1.1.Final/wildfly-preview-26.1.1.Final.zip</url>
-									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
-									<extractDir>${project.build.directory}</extractDir>
-								</zipUrlInstaller>
-								<!-- or use artifactInstaller-->
-								<!--<artifactInstaller>
-                                    <groupId>org.glassfish.main.distributions</groupId>
-                                    <artifactId>glassfish</artifactId>
-                                    <version>${glassfish.version}</version>
-                                </artifactInstaller>-->
+								<artifactInstaller>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-preview-dist</artifactId>
+									<version>26.1.1.Final</version>
+                                </artifactInstaller>
 								<dependencies>
 									<dependency>
 										<groupId>org.postgresql</groupId>
@@ -2114,7 +2108,6 @@
 								</dependencies>
 							</container>
 							<configuration>
-								<!-- the configuration used to deploy -->
 								<properties>
 									<cargo.hostname>${cargo.hostname}</cargo.hostname>
 									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
