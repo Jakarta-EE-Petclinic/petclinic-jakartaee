@@ -100,7 +100,7 @@ public class RestEndpointIT {
 
     @Test
     public void testGetSpecialtyListXml() throws JAXBException {
-        String endpoint = base + "/rest" + "/specialty" + "/xml/list";
+        String endpoint = base + "/rest" + "/specialty" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
@@ -146,7 +146,7 @@ public class RestEndpointIT {
 
     @Test
     public void testGetPetTypeListXml() throws JAXBException {
-        String endpoint = base + "/rest" + "/petType" + "/xml/list";
+        String endpoint = base + "/rest" + "/petType" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
@@ -155,10 +155,10 @@ public class RestEndpointIT {
         Response response = target.request().get();
         assertHttpStatus200(response);
         String xml = response.readEntity(String.class);
-        JAXBContext jc = JAXBContext.newInstance(PetTypeListDto.class);
-        Unmarshaller m = jc.createUnmarshaller();
-        StringReader r  = new StringReader(xml);
-        PetTypeListDto o = (PetTypeListDto) m.unmarshal(r);
+            JAXBContext jc = JAXBContext.   newInstance(PetTypeListDto.class);
+            Unmarshaller m = jc.createUnmarshaller();
+            StringReader r  = new StringReader(xml);
+            PetTypeListDto o = (PetTypeListDto) m.unmarshal(r);
         for(PetTypeDto dto: o.getPetType()){
             log.info("fetched dto: "+dto.toString());
         }
@@ -191,7 +191,7 @@ public class RestEndpointIT {
 
     @Test
     public void testGetVetListXml() throws JAXBException {
-        String endpoint = base + "/rest" + "/vet" + "/xml/list";
+        String endpoint = base + "/rest" + "/vet" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
@@ -237,7 +237,7 @@ public class RestEndpointIT {
 
     @Test
     public void testGetVisitListXml() throws JAXBException {
-        String endpoint =  base + "/rest" + "/visit" + "/xml/list";
+        String endpoint =  base + "/rest" + "/visit" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
@@ -284,7 +284,7 @@ public class RestEndpointIT {
 
     @Test
     public void testGetPetListXml() throws JAXBException {
-        String endpoint = base + "/rest" + "/pet" + "/xml/list";
+        String endpoint = base + "/rest" + "/pet" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
@@ -322,7 +322,7 @@ public class RestEndpointIT {
 
         OwnerListDto ownerListDto = jsonb.fromJson(json, OwnerListDto.class);
         for(OwnerDto dto: ownerListDto.getOwner()){
-          log.info("fetched dto: "+dto.toString());
+            log.info("fetched dto: "+dto.toString());
         }
 
         json = "\n\n" + json +  "\n\n";
@@ -333,7 +333,7 @@ public class RestEndpointIT {
 
     @Test
     public void testGetOwnerListXml() throws JAXBException {
-        String endpoint = base + "/rest" + "/owner" + "/xml/list";
+        String endpoint = base + "/rest" + "/owner" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
