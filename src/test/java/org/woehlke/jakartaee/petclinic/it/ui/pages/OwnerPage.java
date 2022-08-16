@@ -27,7 +27,7 @@ import static java.text.DateFormat.SHORT;
 
 
 @Location("owner.jsf")
-public class OwnerPage implements OwnerFlowStatePage {
+public class OwnerPage implements CrudFlowStatePageOwner {
 
     @Drone
     private WebDriver driver;
