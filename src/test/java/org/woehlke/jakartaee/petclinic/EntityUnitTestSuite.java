@@ -15,7 +15,7 @@ import org.woehlke.jakartaee.petclinic.unit.VisitUnitTest;
 @Log
 @Suite
 @SelectClasses({
-        SpecialtyUnitTest.class,  VetUnitTest.class,
+        SpecialtyUnitTest.class, VetUnitTest.class,
         PetTypeUnitTest.class, PetUnitTest.class,
         VisitUnitTest.class, OwnerUnitTest.class
 })
