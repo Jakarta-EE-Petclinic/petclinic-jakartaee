@@ -7,8 +7,9 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.xml.bind.JAXBException;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.vet.api.VetDto;
+import org.woehlke.jakartaee.petclinic.vet.api.VetListDto;
 import org.woehlke.jakartaee.petclinic.vet.db.VetService;
 import org.woehlke.jakartaee.petclinic.vet.api.VetEndpointUtil;
 
@@ -37,33 +38,33 @@ public class VetEndpoint implements Serializable {
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getList() {
+    public VetListDto getList() {
         log.info("getList");
-        return this.vetEndpointUtil.dtoListJsonFactory(vetEndpointUtil.dtoListFactory(vetService.getAll()));
+        return this.vetEndpointUtil.dtoListFactory(vetService.getAll());
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getEntity(@PathParam("id") Long id) {
+    public VetDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.vetEndpointUtil.dtoJsonFactory(vetEndpointUtil.dtoFactory(vetService.findById(id)));
+        return this.vetEndpointUtil.dtoFactory(vetService.findById(id));
     }
 
     @GET
     @Path("/xml/list")
     @Produces(MediaType.APPLICATION_XML)
-    public String getListAsXml() throws JAXBException {
+    public VetListDto getListAsXml() {
         log.info("getListAsXml");
-        return this.vetEndpointUtil.dtoListXmlFactory(vetEndpointUtil.dtoListFactory(vetService.getAll()));
+        return this.vetEndpointUtil.dtoListFactory(vetService.getAll());
     }
 
     @GET
     @Path("/xml/{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public String getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
+    public VetDto getEntityAsXml(@PathParam("id") Long id) {
         log.info("getEntityAsXml");
-        return this.vetEndpointUtil.dtoXmlFactory(vetEndpointUtil.dtoFactory(vetService.findById(id)));
+        return this.vetEndpointUtil.dtoFactory(vetService.findById(id));
     }
 
 }

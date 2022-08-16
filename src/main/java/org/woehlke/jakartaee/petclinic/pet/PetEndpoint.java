@@ -13,6 +13,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.pet.api.PetListDto;
 import org.woehlke.jakartaee.petclinic.pet.db.PetService;
 import org.woehlke.jakartaee.petclinic.pet.api.PetDto;
 import org.woehlke.jakartaee.petclinic.pet.api.PetEndpointUtil;
@@ -42,33 +43,33 @@ public class PetEndpoint implements Serializable {
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getList() {
+    public PetListDto getList() {
         log.info("getList");
-        return this.petEndpointUtil.dtoListJsonFactory(petEndpointUtil.dtoListFactory(petService.getAll()));
+        return this.petEndpointUtil.dtoListFactory(petService.getAll());
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getEntity(@PathParam("id") Long id) {
+    public PetDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.dtoJsonFactory(petEndpointUtil.dtoFactory(petService.findById(id)));
+        return this.petEndpointUtil.dtoFactory(petService.findById(id));
     }
 
     @GET
     @Path("/xml/list")
     @Produces(MediaType.APPLICATION_XML)
-    public String getListAsXml() throws JAXBException {
+    public PetListDto getListAsXml() throws JAXBException {
         log.info("getListAsXml");
-        return this.petEndpointUtil.dtoListXmlFactory(petEndpointUtil.dtoListFactory(petService.getAll()));
+        return this.petEndpointUtil.dtoListFactory(petService.getAll());
     }
 
     @GET
     @Path("/xml/{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public String getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
+    public PetDto getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
         log.info("getEntityAsXml");
-        return this.petEndpointUtil.dtoXmlFactory(petEndpointUtil.dtoFactory(petService.findById(id)));
+        return this.petEndpointUtil.dtoFactory(petService.findById(id));
     }
 
 }
