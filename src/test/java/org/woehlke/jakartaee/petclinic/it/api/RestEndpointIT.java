@@ -80,7 +80,6 @@ public class RestEndpointIT {
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
-        //org.eclipse.yasson.YassonProperties#ZERO_TIME_PARSE_DEFAULTING.
         JsonbConfig config = new JsonbConfig().setProperty(org.eclipse.yasson.YassonConfig.ZERO_TIME_PARSE_DEFAULTING,true);
         Jsonb jsonb = JsonbBuilder.create(config);
         Client client = ClientBuilder.newClient();
@@ -319,12 +318,10 @@ public class RestEndpointIT {
         Response response = target.request().get();
         assertHttpStatus200(response);
         String json = response.readEntity(String.class);
-
         OwnerListDto ownerListDto = jsonb.fromJson(json, OwnerListDto.class);
         for(OwnerDto dto: ownerListDto.getOwner()){
             log.info("fetched dto: "+dto.toString());
         }
-
         json = "\n\n" + json +  "\n\n";
         log.info(json);
         response.close();
