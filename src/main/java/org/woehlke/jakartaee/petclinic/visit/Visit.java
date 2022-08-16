@@ -106,7 +106,6 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
         return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

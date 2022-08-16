@@ -7,7 +7,9 @@ import org.woehlke.jakartaee.petclinic.deployments.UnitTestData;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
+import java.time.Instant;
 import java.util.*;
+import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -159,7 +161,7 @@ public class OwnerUnitTest extends UnitTestData {
         assertThat("Nelly".compareTo(petName)==0);
         Pet pet = new Pet();
         pet.setName(petName);
-        pet.setBirthDate(new Date());
+        pet.setBirthDate((Date)Date.from(Instant.now()));
         pet.setUuid(UUID.randomUUID());
         entity.addPet(pet);
         int size = entity.getPetsAsList().size();
@@ -171,11 +173,11 @@ public class OwnerUnitTest extends UnitTestData {
     public void testGetPetst03(){
         log.info("testGetPetst03");
         Owner entity = ownerList.get(2);
-        String petName = UnitTestData.petNames[2];
+        String petName = petNames[2];
         int expectedSize  = entity.getPetsAsList().size() + 1;
         assertThat("Nelly".compareTo(petName)==0);
         Pet pet = new Pet();
-        pet.setBirthDate(new Date());
+        pet.setBirthDate((Date)Date.from(Instant.now()));
         pet.setName(petName);
         pet.setUuid(UUID.randomUUID());
         entity.addPet(pet);

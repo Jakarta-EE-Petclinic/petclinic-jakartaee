@@ -842,6 +842,12 @@
 				<version>${version.org.projectlombok.lombok}</version>
 				<scope>provided</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.eclipse</groupId>
+				<artifactId>yasson</artifactId>
+				 <version>2.0.4</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -1164,6 +1170,11 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -1401,7 +1412,9 @@
 						<configuration>
 							<includes>
 								<include>org.woehlke.jakartaee.petclinic.it.api.RestEndpointIT</include>
+								<!--
 								<include>org.woehlke.jakartaee.petclinic.UiTestSuite</include>
+								-->
 							</includes>
 						</configuration>
 					</execution>

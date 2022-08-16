@@ -3,6 +3,7 @@ package org.woehlke.jakartaee.petclinic.it.api;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
@@ -37,6 +38,7 @@ import java.io.StringReader;
 import java.net.URL;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.eclipse.yasson.YassonConfig.ZERO_TIME_PARSE_DEFAULTING;
 
 @Log
 @ExtendWith(ArquillianExtension.class)
@@ -78,7 +80,9 @@ public class RestEndpointIT {
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
-        Jsonb jsonb = JsonbBuilder.create();
+        //org.eclipse.yasson.YassonProperties#ZERO_TIME_PARSE_DEFAULTING.
+        JsonbConfig config = new JsonbConfig().setProperty(org.eclipse.yasson.YassonConfig.ZERO_TIME_PARSE_DEFAULTING,true);
+        Jsonb jsonb = JsonbBuilder.create(config);
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(endpoint);
         Response response = target.request().get();
@@ -214,19 +218,17 @@ public class RestEndpointIT {
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
-        Jsonb jsonb = JsonbBuilder.create();
+        JsonbConfig config = new JsonbConfig().setProperty(org.eclipse.yasson.YassonConfig.ZERO_TIME_PARSE_DEFAULTING,true);
+        Jsonb jsonb = JsonbBuilder.create(config);
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(endpoint);
         Response response = target.request().get();
         assertHttpStatus200(response);
         String json = response.readEntity(String.class);
-        /*
-        TODO
         VisitListDto visitListDto = jsonb.fromJson(json, VisitListDto.class);
         for(VisitDto dto: visitListDto.getVisit()){
             log.info("fetched dto: "+dto.toString());
         }
-        */
         json = "\n\n" + json +  "\n\n";
         log.info(json);
         response.close();
@@ -263,19 +265,17 @@ public class RestEndpointIT {
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
-        Jsonb jsonb = JsonbBuilder.create();
+        JsonbConfig config = new JsonbConfig().setProperty(org.eclipse.yasson.YassonConfig.ZERO_TIME_PARSE_DEFAULTING,true);
+        Jsonb jsonb = JsonbBuilder.create(config);
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(endpoint);
         Response response = target.request().get();
         assertHttpStatus200(response);
         String json = response.readEntity(String.class);
-        /*
-        TODO
         PetListDto petTypeListDto = jsonb.fromJson(json, PetListDto.class);
         for(PetDto dto: petTypeListDto.getPet()){
           log.info("fetched dto: "+dto.toString());
         }
-        */
         json = "\n\n" + json +  "\n\n";
         log.info(json);
         response.close();
@@ -312,19 +312,19 @@ public class RestEndpointIT {
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
         log.info("------------------------------------------------------------");
-        Jsonb jsonb = JsonbBuilder.create();
+        JsonbConfig config = new JsonbConfig().setProperty(org.eclipse.yasson.YassonConfig.ZERO_TIME_PARSE_DEFAULTING,true);
+        Jsonb jsonb = JsonbBuilder.create(config);
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(endpoint);
         Response response = target.request().get();
         assertHttpStatus200(response);
         String json = response.readEntity(String.class);
-        /*
-        TODO
+
         OwnerListDto ownerListDto = jsonb.fromJson(json, OwnerListDto.class);
         for(OwnerDto dto: ownerListDto.getOwner()){
           log.info("fetched dto: "+dto.toString());
         }
-        */
+
         json = "\n\n" + json +  "\n\n";
         log.info(json);
         response.close();

@@ -31,7 +31,7 @@ public class PetEndpointUtil implements Serializable {
         PetDto dto = new PetDto();
         dto.setId(e.getId());
         dto.setUuid(e.getUuid());
-        dto.setBirthDate(e.getBirthDate());
+        dto.setBirthDate( e.getBirthDate());
         dto.setName(e.getName());
         dto.setPetType(this.petTypeEndpointUtil.dtoFactory(e.getType()));
         dto.setVisitList(this.visitEndpointUtil.dtoListFactory(e.getVisits()));

@@ -8,6 +8,7 @@ import org.woehlke.jakartaee.petclinic.vet.Vet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.util.*;
+import java.util.Date;
 
 public abstract class UnitTestData {
 
@@ -19,10 +20,8 @@ public abstract class UnitTestData {
     protected Long id01 = 1L;
     protected Long id02 = 2L;
     protected Long id = 3L;
-    protected GregorianCalendar gc1 = new GregorianCalendar(121, 6, 14);
-    protected GregorianCalendar gc2 = new GregorianCalendar(121, 5, 12);
-    protected Date dob01 = Date.from(gc1.toInstant());
-    protected Date dob02 = Date.from(gc2.toInstant());
+    protected Date dob01 = new Date(2021, 6, 14);;
+    protected Date dob02 = new Date(2021, 5, 12);
 
     protected static Pet pet1 = new Pet();
     protected static Pet pet2 = new Pet();
@@ -139,8 +138,7 @@ public abstract class UnitTestData {
         int month = 1;
         int day = 5;
         for (String petTypeName : petTypeNames) {
-            GregorianCalendar gc = new GregorianCalendar(year,month,day);
-            Date dob = Date.from(gc.toInstant());
+            Date dob = new Date(year,month,day);
             dateOfBirthList.add(dob);
             year++;
             month++;
