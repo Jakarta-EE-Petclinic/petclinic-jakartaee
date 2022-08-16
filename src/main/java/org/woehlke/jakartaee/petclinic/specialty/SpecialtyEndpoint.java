@@ -32,7 +32,7 @@ public class SpecialtyEndpoint implements Serializable {
     private final SpecialtyEndpointUtil specialtyEndpointUtil = new SpecialtyEndpointUtil();
 
     @GET
-    @Path("/list+json")
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public SpecialtyListDto getList() {
         log.info("getList");
@@ -40,9 +40,25 @@ public class SpecialtyEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/{id}+json")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public SpecialtyDto getEntity(@PathParam("id") Long id) {
+        log.info("getEntity");
+        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id));
+    }
+
+    @GET
+    @Path("/list+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public SpecialtyListDto getListAsJson() {
+        log.info("getList");
+        return this.specialtyEndpointUtil.dtoListFactory(specialtyService.getAll());
+    }
+
+    @GET
+    @Path("/{id}+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public SpecialtyDto getEntityAsJson(@PathParam("id") Long id) {
         log.info("getEntity");
         return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id));
     }

@@ -32,7 +32,7 @@ public class OwnerEndpoint implements Serializable {
     private final OwnerEndpointUtil ownerEndpointUtil = new OwnerEndpointUtil();
 
     @GET
-    @Path("/list+json")
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public OwnerListDto getList() {
         log.info("getList");
@@ -40,9 +40,25 @@ public class OwnerEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/{id}+json")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public OwnerDto getEntity(@PathParam("id") Long id) {
+        log.info("getEntity");
+        return ownerEndpointUtil.dtoFactory(ownerService.findById(id));
+    }
+
+    @GET
+    @Path("/list+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public OwnerListDto getListAsJson() {
+        log.info("getList");
+        return ownerEndpointUtil.dtoListFactory(ownerService.getAll());
+    }
+
+    @GET
+    @Path("/{id}+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public OwnerDto getEntityAsJson(@PathParam("id") Long id) {
         log.info("getEntity");
         return ownerEndpointUtil.dtoFactory(ownerService.findById(id));
     }

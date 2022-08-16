@@ -31,7 +31,7 @@ public class VisitEndpoint implements Serializable {
     private final VisitEndpointUtil visitEndpointUtil = new VisitEndpointUtil();
 
     @GET
-    @Path("/list+json")
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public VisitListDto getList() {
         log.info("getList");
@@ -39,9 +39,25 @@ public class VisitEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/{id}+json")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public VisitDto getEntity(@PathParam("id") Long id) {
+        log.info("getEntity");
+        return this.visitEndpointUtil.dtoFactory(visitService.findById(id));
+    }
+
+    @GET
+    @Path("/list+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public VisitListDto getListAsJson() {
+        log.info("getList");
+        return this.visitEndpointUtil.dtoListFactory(visitService.getAll());
+    }
+
+    @GET
+    @Path("/{id}+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public VisitDto getEntityAsJson(@PathParam("id") Long id) {
         log.info("getEntity");
         return this.visitEndpointUtil.dtoFactory(visitService.findById(id));
     }

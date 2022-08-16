@@ -29,7 +29,7 @@ public class PetTypeEndpoint implements Serializable {
     private final PetTypeEndpointUtil petTypeEndpointUtil = new PetTypeEndpointUtil();
 
     @GET
-    @Path("/list+json")
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public PetTypeListDto getList() {
         log.info("getList");
@@ -37,9 +37,25 @@ public class PetTypeEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/{id}+json")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public PetTypeDto getEntity(@PathParam("id") Long id) {
+        log.info("getEntity");
+        return this.petTypeEndpointUtil.dtoFactory(petTypeService.findById(id));
+    }
+
+    @GET
+    @Path("/list+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public PetTypeListDto getListAsJson() {
+        log.info("getList");
+        return this.petTypeEndpointUtil.dtoListFactory(petTypeService.getAll());
+    }
+
+    @GET
+    @Path("/{id}+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public PetTypeDto getEntityAsJson(@PathParam("id") Long id) {
         log.info("getEntity");
         return this.petTypeEndpointUtil.dtoFactory(petTypeService.findById(id));
     }
