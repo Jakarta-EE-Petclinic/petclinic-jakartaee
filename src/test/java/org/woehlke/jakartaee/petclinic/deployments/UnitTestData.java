@@ -23,7 +23,10 @@ public abstract class UnitTestData {
     protected GregorianCalendar gc2 = new GregorianCalendar(121, 5, 12);
     protected Date dob01 = Date.from(gc1.toInstant());
     protected Date dob02 = Date.from(gc2.toInstant());
-	
+
+    protected static Pet pet1 = new Pet();
+    protected static Pet pet2 = new Pet();
+
     protected static List<Specialty> specialtyList = new ArrayList<>();
     protected static Set<Specialty> specialtySet = new HashSet<>();
     protected static Map<String,String> vetNames = new HashMap<>();
@@ -35,17 +38,72 @@ public abstract class UnitTestData {
     protected static List<Visit> visitList = new ArrayList<>();
     protected static List<Owner> ownerList = new ArrayList<>();
 
-    protected static final String specialtyNames[] = {
-            "Surgeon",
-            "Oncologist",
-            "Radiologist",
-            "Neurosurgeon",
-            "Cardiologist",
-            "Dermatologist",
-            "Orthopedist",
-            "Dentist",
-            "Impostor",
-            "Faith Healer"
+    protected static final String[][] vetNames1Array = {
+            {"A Hippocrates 1", "A of Kos 1"},
+            {"A Hippocrates 2", "A of Kos 2"},
+            {"A Hippocrates 3", "A of Kos 3"}
+    };
+
+    protected static final String[][] vetNames2Array = {
+            {"von Kos",             "Hippokrates"},
+            {"Koch",                "Robert"},
+            {"Fleming",             "Alexander"},
+            {"Virchow",             "Rudolf"},
+            {"Freud",               "Sigmund"},
+            {"Stertinius Xenophon", "Gaius"},
+            {"von Behring",         "Emil"},
+            {"Ehrlich",             "Paul"},
+            {"Shibasaburō",         "Kitasato"},
+            {"Hispalensis",         "Isidorus"},
+            {"Schweitzer",          "Albert"},
+            {"Montessori",          "Maria Tecla Artemisia"}
+    };
+
+    protected static final String[] specialtyNameArray = {
+            "A Hippocrates 1",
+            "A Hippocrates 2",
+            "A Hippocrates 3"
+    };
+
+    protected static final String[] specialtyNames = {
+            "A Surgeon",
+            "A Oncologist",
+            "A Radiologist",
+            "A Neurosurgeon",
+            "A Cardiologist",
+            "A Dermatologist",
+            "A Orthopedist",
+            "A Dentist",
+            "A Impostor",
+            "A Faith Healer"
+    };
+
+    protected static final String[] petTypeNameArray = {
+            "A Animal 1 Farm",
+            "A Animal 2 Farm",
+            "A Animal 3 Farm"
+    };
+
+    protected static final String[] petTypeNames = {
+            "A Dog",
+            "A Cat",
+            "A Elephant",
+            "A Kitten",
+            "A Donkey",
+            "A Cow",
+            "A Pig",
+            "A Chicken"
+    };
+
+    protected static final String[] petNames = {
+            "A Jessie",
+            "A Lucifer Sam",
+            "A Nelly",
+            "A Kitten",
+            "A Benjamin",
+            "A Pauline Wayne",
+            "A Snowball",
+            "A Gallus gallus domesticus"
     };
 
     static {
@@ -61,31 +119,7 @@ public abstract class UnitTestData {
         vetNames.put("Hispalensis","Isidorus");
         vetNames.put("Schweitzer","Albert");
         vetNames.put("Montessori","Maria Tecla Artemisia");
-    }
 
-    protected static final String petTypeNames[] = {
-            "Dog",
-            "Cat",
-            "Elephant",
-            "Kitten",
-            "Donkey",
-            "Cow",
-            "Pig",
-            "Chicken"
-    };
-
-    protected static final String petNames[] = {
-            "Jessie",
-            "Lucifer Sam",
-            "Nelly",
-            "Kitten",
-            "Benjamin",
-            "Pauline Wayne",
-            "Snowball",
-            "Gallus gallus domesticus"
-    };
-
-    static {
         for (String specialtyName : specialtyNames){
             Specialty specialty = new Specialty();
             specialty.setName(specialtyName);
@@ -93,18 +127,14 @@ public abstract class UnitTestData {
             specialtyList.add(specialty);
             specialtySet.add(specialty);
         }
-    }
 
-    static {
         for (String petTypeName : petTypeNames){
             PetType o = new PetType();
             o.setName(petTypeName);
             o.setUuid(UUID.randomUUID());
             petTypeList.add(o);
         }
-    }
 
-    static {
         int year = 2010;
         int month = 1;
         int day = 5;
@@ -116,9 +146,7 @@ public abstract class UnitTestData {
             month++;
             day++;
         }
-    }
 
-    static {
         int i=0;
         int k=0;
         for (String petName : petNames){
@@ -134,9 +162,7 @@ public abstract class UnitTestData {
             i %= petTypeList.size();
             k++;
         }
-    }
 
-    static {
         for(Map.Entry<String,String> vetName:vetNames.entrySet()){
             Vet v = new Vet();
             v.setLastName(vetName.getKey());
@@ -145,12 +171,10 @@ public abstract class UnitTestData {
             v.setSpecialties(specialtySet);
             vetList.add(v);
         }
-    }
 
-    static {
         Owner o = new Owner();
-        o.setFirstName("Kurt");
-        o.setLastName("Tucholsky");
+        o.setFirstName("A1 Kurt");
+        o.setLastName("A1 Tucholsky");
         o.setAddress("Lübecker Straße");
         o.setHouseNumber("13");
         o.setCity("Berlin");
@@ -159,18 +183,18 @@ public abstract class UnitTestData {
         o.setEmail("kurt.tucholsky@vistaberlin.de");
         ownerList.add(o);
         o = new Owner();
-        o.setFirstName("Heinrich");
-        o.setLastName("Heine");
+        o.setFirstName("A2 Heinrich");
+        o.setLastName("A2 Heine");
         o.setAddress("Bolkerstraße");
         o.setHouseNumber("53");
         o.setCity("Düsseldorf");
         o.setZipCode("40213");
-        o.setPhoneNumber("+49 211 20054294");
+        o.setPhoneNumber("+4921120054294");
         o.setEmail("heinrich.heine@heinehaus.de");
         ownerList.add(o);
         o = new Owner();
-        o.setFirstName("Alan");
-        o.setLastName("Turing");
+        o.setFirstName("A3 Alan");
+        o.setLastName("A3 Turing");
         o.setAddress("Bletchley Park");
         o.setHouseNumber("Block H");
         o.setCity("Milton Keynes");
@@ -179,8 +203,8 @@ public abstract class UnitTestData {
         o.setEmail("alan.turing@tnmoc.org");
         ownerList.add(o);
         o = new Owner();
-        o.setFirstName("Grace");
-        o.setLastName("Hopper");
+        o.setFirstName("A4 Grace");
+        o.setLastName("A4 Hopper");
         o.setAddress("St Ronan St");
         o.setHouseNumber("160");
         o.setAddressInfo("Yale University");
@@ -190,48 +214,42 @@ public abstract class UnitTestData {
         o.setEmail("grace.hopper@yale.edu");
         ownerList.add(o);
         o = new Owner();
-        o.setFirstName("Mahatma");
-        o.setLastName("Ghandi");
+        o.setFirstName("A5 Mahatma");
+        o.setLastName("A5 Ghandi");
         o.setAddress("Sevagram");
         o.setHouseNumber("PMH7 H42");
         o.setAddressInfo("Mahatma Gandhi Ashram");
         o.setCity("Maharashtra");
         o.setZipCode("442102");
-        o.setPhoneNumber("+91-7152-284753");
+        o.setPhoneNumber("+91 7152 284753");
         o.setEmail("mahatma.ghandi@gandhiashramsevagram.org");
         ownerList.add(o);
+
         for(Owner oo:ownerList){
             oo.setUuid(UUID.randomUUID());
             oo.setPets(petSet);
         }
-    }
 
-
-    protected static Pet pet1 = new Pet();
-    protected static Pet pet2 = new Pet();
-
-    static {
         pet1.setBirthDate(dateOfBirthList.get(0));
         pet1.setType(petTypeList.get(2));
         pet1.setName(petNames[2]);
         pet1.setUuid(UUID.randomUUID());
+
         pet2.setBirthDate(dateOfBirthList.get(1));
         pet2.setType(petTypeList.get(3));
         pet2.setName(petNames[3]);
         pet2.setUuid(UUID.randomUUID());
-    }
 
-    static {
-        long i = 0;
+        long index = 0;
         Pet p = petList.get(2);
-        for(Date day : dateOfBirthList){
-            i++;
+        for(Date date : dateOfBirthList){
+            index++;
             Visit v = new Visit();
             v.setPet(p);
-            v.setDate(day);
-            v.setDescription("woooolloooomoooolloooo "+i);
+            v.setDate(date);
+            v.setDescription("woooolloooomoooolloooo "+index);
             v.setUuid(UUID.randomUUID());
-            v.setId(i);
+            v.setId(index);
             visitList.add(v);
         }
     }

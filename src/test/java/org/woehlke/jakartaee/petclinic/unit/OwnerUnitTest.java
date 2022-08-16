@@ -4,8 +4,8 @@ package org.woehlke.jakartaee.petclinic.unit;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.*;
 import org.woehlke.jakartaee.petclinic.deployments.UnitTestData;
-import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.vet.Vet;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import java.util.*;
 
@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class VetUnitTestData extends UnitTestData {
+public class OwnerUnitTest extends UnitTestData {
 
     @Test
     @Order(1)
@@ -21,11 +21,11 @@ public class VetUnitTestData extends UnitTestData {
         log.info("runEntityTest01");
         assertThat(uuid01.compareTo(uuid02)!=0);
         assertThat(name01.compareTo(name02)!=0);
-        Vet o01 = new Vet();
+        Owner o01 = new Owner();
         o01.setLastName(name01);
         o01.setFirstName(name02);
         o01.setUuid(uuid01);
-        Vet o02 = new Vet();
+        Owner o02 = new Owner();
         o02.setLastName(name01);
         o02.setFirstName(name02);
         o02.setUuid(uuid02);
@@ -39,12 +39,12 @@ public class VetUnitTestData extends UnitTestData {
         assertThat(name01.compareTo(name02)!=0);
         assertThat(uuid01.compareTo(uuid02)!=0);
         assertThat(id01.compareTo(id02)!=0);
-        Vet o01 = new Vet();
+        Owner o01 = new Owner();
         o01.setLastName(name01);
         o01.setFirstName(name02);
         o01.setId(id01);
         o01.setUuid(uuid01);
-        Vet o02 = new Vet();
+        Owner o02 = new Owner();
         o02.setLastName(name01);
         o02.setFirstName(name02);
         o02.setUuid(uuid02);
@@ -58,15 +58,15 @@ public class VetUnitTestData extends UnitTestData {
         log.info("runEntityTest11");
         assertThat(name01.compareTo(name02)!=0);
         assertThat(uuid01.compareTo(uuid02)!=0);
-        Vet o01 = new Vet();
+        Owner o01 = new Owner();
         o01.setLastName(name01);
         o01.setFirstName(name01);
         o01.setUuid(uuid01);
-        Vet o02 = new Vet();
+        Owner o02 = new Owner();
         o02.setLastName(name02);
         o02.setFirstName(name02);
         o02.setUuid(uuid02);
-        assertThat(o01.compareTo(o02)!=0);
+        assertThat(o01.compareTo(o02)==0);
     }
 
     @Test
@@ -76,17 +76,17 @@ public class VetUnitTestData extends UnitTestData {
         assertThat(name01.compareTo(name02)!=0);
         assertThat(uuid01.compareTo(uuid02)!=0);
         assertThat(id01.compareTo(id02)!=0);
-        Vet o01 = new Vet();
+        Owner o01 = new Owner();
         o01.setLastName(name01);
         o01.setFirstName(name01);
         o01.setId(id01);
         o01.setUuid(uuid01);
-        Vet o02 = new Vet();
+        Owner o02 = new Owner();
         o02.setLastName(name02);
         o02.setFirstName(name02);
         o02.setUuid(uuid02);
         o02.setId(id02);
-        assertThat(o01.compareTo(o02)!=0);
+        assertThat(o01.compareTo(o02)==0);
     }
 
     @Test
@@ -94,11 +94,11 @@ public class VetUnitTestData extends UnitTestData {
     void runEntityTest21(){
         log.info("runEntityTest21");
         assertThat(name01.compareTo(name02)!=0);
-        Vet o01 = new Vet();
+        Owner o01 = new Owner();
         o01.setLastName(name01);
         o01.setFirstName(name01);
         o01.setUuid(uuid);
-        Vet o02 = new Vet();
+        Owner o02 = new Owner();
         o02.setLastName(name02);
         o02.setFirstName(name02);
         o02.setUuid(uuid);
@@ -110,12 +110,12 @@ public class VetUnitTestData extends UnitTestData {
     void runEntityTest22(){
         log.info("runEntityTest22");
         assertThat(name01.compareTo(name02)!=0);
-        Vet o01 = new Vet();
+        Owner o01 = new Owner();
         o01.setLastName(name01);
         o01.setFirstName(name01);
         o01.setId(id);
         o01.setUuid(uuid);
-        Vet o02 = new Vet();
+        Owner o02 = new Owner();
         o02.setLastName(name02);
         o02.setFirstName(name02);
         o02.setUuid(uuid);
@@ -127,12 +127,12 @@ public class VetUnitTestData extends UnitTestData {
     @Order(7)
     void runEntityTest99(){
         log.info("runEntityTest99");
-        Collections.sort(vetList);
-        assertThat(vetList.size() > 2);
-        Iterator<Vet> i =  vetList.iterator();
-        Vet firstEntity = i.next();
+        Collections.sort(ownerList);
+        assertThat(ownerList.size() > 2);
+        Iterator<Owner> i =  ownerList.iterator();
+        Owner firstEntity = i.next();
         while(i.hasNext()){
-            Vet secondEntity = i.next();
+            Owner secondEntity = i.next();
             int compared = secondEntity.compareTo(firstEntity);
             assertThat(compared > 0);
             firstEntity = secondEntity;
@@ -141,70 +141,76 @@ public class VetUnitTestData extends UnitTestData {
 
     @Test
     @Order(8)
-    public void testGetSpecialtiesAsList01(){
-        log.info("testGetSpecialtiesAsList01");
+    public void testGetPetst01(){
+        log.info("testGetPetst01");
         int expectedSize  = 0;
-        Vet entity = new Vet();
-        int size = entity.getSpecialties().size();
-        assertThat(expectedSize==size);
+        Owner entity = new Owner();
+        int size = entity.getPetsAsList().size();
+        assertThat(expectedSize == size);
     }
 
     @Test
     @Order(9)
-    public void testGetSpecialtiesAsList02(){
-        log.info("testGetSpecialtiesAsList02");
-        int expectedSize  = 1;
-        Vet entity = new Vet();
-        String specialtyName = UnitTestData.specialtyNames[0];
-        assertThat("Surgeon".compareTo(specialtyName)==0);
-        Specialty specialty = new Specialty();
-        specialty.setName(specialtyName);
-        entity.addSpecialty(specialty);
-        int size = entity.getSpecialties().size();
+    public void testGetPetst02(){
+        log.info("testGetPetst02");
+        Owner entity = ownerList.get(2);
+        String petName = UnitTestData.petNames[2];
+        int expectedSize  = entity.getPetsAsList().size() + 1;
+        assertThat("Nelly".compareTo(petName)==0);
+        Pet pet = new Pet();
+        pet.setName(petName);
+        pet.setBirthDate(new Date());
+        pet.setUuid(UUID.randomUUID());
+        entity.addPet(pet);
+        int size = entity.getPetsAsList().size();
         assertThat(expectedSize == size);
     }
 
     @Test
     @Order(10)
-    public void testGetSpecialtiesAsList03(){
-        log.info("testGetSpecialtiesAsList03");
-        Vet entity = new Vet();
-        String specialtyName =  UnitTestData.specialtyNames[0];
-        assertThat("Surgeon".compareTo(specialtyName)==0);
-        Specialty specialty = new Specialty();
-        specialty.setName(specialtyName);
-        entity.addSpecialty(specialty);
-        specialty = entity.getSpecialties().iterator().next();
-        assertThat(specialtyName == specialty.getName());
+    public void testGetPetst03(){
+        log.info("testGetPetst03");
+        Owner entity = ownerList.get(2);
+        String petName = UnitTestData.petNames[2];
+        int expectedSize  = entity.getPetsAsList().size() + 1;
+        assertThat("Nelly".compareTo(petName)==0);
+        Pet pet = new Pet();
+        pet.setBirthDate(new Date());
+        pet.setName(petName);
+        pet.setUuid(UUID.randomUUID());
+        entity.addPet(pet);
+        pet = entity.getPetsAsList().iterator().next();
+        assertThat(petName ==  pet.getName());
     }
 
     @Test
     @Order(11)
-    public void testGetSpecialtiesAsList04() {
-        log.info("testGetSpecialtiesAsList04");
-        Vet entity = new Vet();
-        int expectedSize  = specialtySet.size();
-        entity.setSpecialties(specialtySet);
-        int size = entity.getSpecialtiesAsList().size();
+    public void testGetPetst04() {
+        log.info("testGetPetst04");
+        Owner entity = ownerList.get(3);
+        int expectedSize = petSet.size();
+        entity.setPets(petSet);
+        int size = entity.getPetsAsList().size();
         assertThat(expectedSize == size);
     }
 
     @Test
     @Order(12)
-    public void testGetSpecialtiesAsList05() {
-        log.info("testGetSpecialtiesAsList05");
-        Vet entity = new Vet();
-        entity.setSpecialties(specialtySet);
-        List<Specialty> listSpecialty = entity.getSpecialtiesAsList();
-        assertThat(specialtySet.size() == listSpecialty.size());
-        assertThat(listSpecialty.size() > 2);
-        Iterator<Specialty> i =  listSpecialty.iterator();
-        Specialty firstSpecialty = i.next();
+    public void testGetPetst05() {
+        log.info("testGetPetst05");
+        Owner entity = ownerList.get(3);
+        int expectedSize = petSet.size();
+        entity.setPets(petSet);
+        int size = entity.getPetsAsList().size();
+        assertThat(expectedSize == size);
+        assertThat(petList.size() > 2);
+        Iterator<Pet> i =  petList.iterator();
+        Pet first = i.next();
         while(i.hasNext()){
-            Specialty secondSpecialty = i.next();
-            int compared = secondSpecialty.compareTo(firstSpecialty);
+            Pet second = i.next();
+            int compared = second.compareTo(first);
             assertThat(compared > 0);
-            firstSpecialty = secondSpecialty;
+            first = second;
         }
     }
 

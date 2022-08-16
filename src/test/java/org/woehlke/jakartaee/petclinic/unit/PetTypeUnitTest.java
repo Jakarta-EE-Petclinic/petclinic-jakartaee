@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class PetTypeUnitTestData extends UnitTestData {
+public class PetTypeUnitTest extends UnitTestData {
 
     @Test
     @Order(1)
