@@ -36,7 +36,7 @@ public class VetEndpoint implements Serializable {
     private final VetEndpointUtil vetEndpointUtil = new VetEndpointUtil();
 
     @GET
-    @Path("/list")
+    @Path("/list+json")
     @Produces(MediaType.APPLICATION_JSON)
     public VetListDto getList() {
         log.info("getList");
@@ -44,7 +44,7 @@ public class VetEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/{id}+json")
     @Produces(MediaType.APPLICATION_JSON)
     public VetDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
@@ -52,7 +52,7 @@ public class VetEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/xml/list")
+    @Path("/list+xml")
     @Produces(MediaType.APPLICATION_XML)
     public VetListDto getListAsXml() {
         log.info("getListAsXml");
@@ -60,7 +60,7 @@ public class VetEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/xml/{id}")
+    @Path("/{id}+xml")
     @Produces(MediaType.APPLICATION_XML)
     public VetDto getEntityAsXml(@PathParam("id") Long id) {
         log.info("getEntityAsXml");

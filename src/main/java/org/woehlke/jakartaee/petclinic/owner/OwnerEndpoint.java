@@ -32,7 +32,7 @@ public class OwnerEndpoint implements Serializable {
     private final OwnerEndpointUtil ownerEndpointUtil = new OwnerEndpointUtil();
 
     @GET
-    @Path("/list")
+    @Path("/list+json")
     @Produces(MediaType.APPLICATION_JSON)
     public OwnerListDto getList() {
         log.info("getList");
@@ -40,7 +40,7 @@ public class OwnerEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/{id}+json")
     @Produces(MediaType.APPLICATION_JSON)
     public OwnerDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
@@ -48,7 +48,7 @@ public class OwnerEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/xml/list")
+    @Path("/list+xml")
     @Produces(MediaType.APPLICATION_XML)
     public OwnerListDto getListAsXml() throws JAXBException {
         log.info("getListAsXml");
@@ -56,7 +56,7 @@ public class OwnerEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/xml/{id}")
+    @Path("/{id}+xml")
     @Produces(MediaType.APPLICATION_XML)
     public OwnerDto getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
         log.info("getEntityAsXml");

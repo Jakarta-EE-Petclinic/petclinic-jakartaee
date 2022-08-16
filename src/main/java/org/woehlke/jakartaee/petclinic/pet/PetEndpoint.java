@@ -41,7 +41,7 @@ public class PetEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/list")
+    @Path("/list+json")
     @Produces(MediaType.APPLICATION_JSON)
     public PetListDto getList() {
         log.info("getList");
@@ -49,7 +49,7 @@ public class PetEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/{id}+json")
     @Produces(MediaType.APPLICATION_JSON)
     public PetDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
@@ -57,7 +57,7 @@ public class PetEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/xml/list")
+    @Path("/list+xml")
     @Produces(MediaType.APPLICATION_XML)
     public PetListDto getListAsXml() throws JAXBException {
         log.info("getListAsXml");
@@ -65,7 +65,7 @@ public class PetEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/xml/{id}")
+    @Path("/{id}+xml")
     @Produces(MediaType.APPLICATION_XML)
     public PetDto getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
         log.info("getEntityAsXml");

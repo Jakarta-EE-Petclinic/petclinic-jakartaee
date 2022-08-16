@@ -29,7 +29,7 @@ public class PetTypeEndpoint implements Serializable {
     private final PetTypeEndpointUtil petTypeEndpointUtil = new PetTypeEndpointUtil();
 
     @GET
-    @Path("/list")
+    @Path("/list+json")
     @Produces(MediaType.APPLICATION_JSON)
     public PetTypeListDto getList() {
         log.info("getList");
@@ -37,7 +37,7 @@ public class PetTypeEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/{id}+json")
     @Produces(MediaType.APPLICATION_JSON)
     public PetTypeDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
@@ -45,7 +45,7 @@ public class PetTypeEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/xml/list")
+    @Path("/list+xml")
     @Produces(MediaType.APPLICATION_XML)
     public PetTypeListDto getListAsXml() {
         log.info("getListAsXml");
@@ -53,7 +53,7 @@ public class PetTypeEndpoint implements Serializable {
     }
 
     @GET
-    @Path("/xml/{id}")
+    @Path("/{id}+xml")
     @Produces(MediaType.APPLICATION_XML)
     public PetTypeDto getEntityAsXml(@PathParam("id") Long id) {
         log.info("getEntityAsXml");
