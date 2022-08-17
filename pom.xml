@@ -108,7 +108,7 @@
 		<wildfly-arquillian.version>5.0.0.Alpha3</wildfly-arquillian.version>
 
 		<!-- Payara -->
-		<version.payara-runtime>5.2022.2</version.payara-runtime>
+		<version.payara-runtime>5.2022.3</version.payara-runtime>
 		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
 		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
@@ -3384,6 +3384,11 @@
 						</executions>
 					</plugin>
 					<plugin>
+						<groupId>org.omnifaces.arquillian</groupId>
+						<artifactId>arquillian-glassfish-server-managed</artifactId>
+						<version>1.2</version>
+					</plugin>
+					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
 						<version>${version.maven-failsafe-plugin}</version>
@@ -3455,6 +3460,11 @@
 								</configuration>
 							</execution>
 						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.omnifaces.arquillian</groupId>
+						<artifactId>arquillian-glassfish-server-managed</artifactId>
+						<version>1.2</version>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
