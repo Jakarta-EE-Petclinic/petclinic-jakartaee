@@ -1515,9 +1515,7 @@
 							<includes>
 								<include>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</include>
 								<include>org.woehlke.jakartaee.petclinic.it.api.RestEndpointIT</include>
-								<!--
 								<include>org.woehlke.jakartaee.petclinic.UiTestSuite</include>
-								-->
 							</includes>
 						</configuration>
 					</execution>
