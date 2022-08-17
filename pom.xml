@@ -155,7 +155,6 @@
 		<skip.unit.tests>true</skip.unit.tests>
 		<skip.integration.tests>true</skip.integration.tests>
 
-
 		<cargo.hostname>localhost</cargo.hostname>
 		<cargo.servlet.port>8080</cargo.servlet.port>
 		<cargo.zipUrlInstaller.downloadDir>${project.basedir}/installs</cargo.zipUrlInstaller.downloadDir>
@@ -3444,12 +3443,14 @@
 						</exclusion>
 					</exclusions>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.omnifaces.arquillian</groupId>
 					<artifactId>arquillian-glassfish-server-managed</artifactId>
 					<version>1.2</version>
 					<scope>test</scope>
 				</dependency>
+				-->
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
@@ -3533,11 +3534,13 @@
 							</execution>
 						</executions>
 					</plugin>
+					<!--
 					<plugin>
 						<groupId>org.omnifaces.arquillian</groupId>
 						<artifactId>arquillian-glassfish-server-managed</artifactId>
 						<version>1.2</version>
 					</plugin>
+					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
@@ -3571,12 +3574,14 @@
 					<version>${version.arquillian-payara}</version>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.omnifaces.arquillian</groupId>
 					<artifactId>arquillian-glassfish-server-managed</artifactId>
 					<version>1.2</version>
 					<scope>test</scope>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>org.postgresql</groupId>
 					<artifactId>postgresql</artifactId>
@@ -3616,11 +3621,13 @@
 							</execution>
 						</executions>
 					</plugin>
+					<!--
 					<plugin>
 						<groupId>org.omnifaces.arquillian</groupId>
 						<artifactId>arquillian-glassfish-server-managed</artifactId>
 						<version>1.2</version>
 					</plugin>
+					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
