@@ -43,8 +43,7 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<!--- Build Infrastructure -->
-		<version.maven>3.6.3</version.maven>
+		<version.maven>3.8.6</version.maven>
 		<junit.version>5.8.2</junit.version>
 		<version.junit-platform-suite-engine>1.8.2</version.junit-platform-suite-engine>
 		<version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
@@ -72,10 +71,10 @@
 		<version.org.eclipse.microprofile>5.0</version.org.eclipse.microprofile>
 
 		<!-- DB -->
-		<version.postgresql.driver>42.4.0</version.postgresql.driver>
+		<version.postgresql.driver>42.4.1</version.postgresql.driver>
 
 		<!-- JAX-RS JSON -->
-		<version.org.jboss.resteasy>6.0.1.Final</version.org.jboss.resteasy>
+		<version.org.jboss.resteasy>6.1.0.Final</version.org.jboss.resteasy>
 
 		<!-- webjars Frontend -->
 		<version.webjars.jquery>3.6.0</version.webjars.jquery>
@@ -124,7 +123,7 @@
 		<version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
 		<version.maven-war-plugin>3.3.2</version.maven-war-plugin>
 		<version.maven-dependency-plugin>3.3.0</version.maven-dependency-plugin>
-		<version.maven-resources-plugin>3.2.0</version.maven-resources-plugin>
+		<version.maven-resources-plugin>3.3.0</version.maven-resources-plugin>
 		<version.maven-javadoc-plugin>3.4.0</version.maven-javadoc-plugin>
 		<version.maven-clean-plugin>3.2.0</version.maven-clean-plugin>
 		<version.maven-install-plugin>3.0.0</version.maven-install-plugin>
@@ -450,6 +449,14 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
+				<groupId>org.jboss.arquillian.graphene</groupId>
+				<artifactId>graphene-webdriver</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<type>pom</type>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
 				<groupId>org.jboss.arquillian.extension</groupId>
 				<artifactId>arquillian-drone-webdriver</artifactId>
 				<version>${graphene-webdriver.version}</version>
@@ -458,15 +465,9 @@
 
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
-				<artifactId>graphene-webdriver</artifactId>
-				<version>${graphene-webdriver.version}</version>
-				<type>pom</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.arquillian.graphene</groupId>
 				<artifactId>graphene-webdriver-api</artifactId>
 				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
@@ -527,11 +528,14 @@
 				<groupId>jakarta.xml.bind</groupId>
 				<artifactId>jakarta.xml.bind-api</artifactId>
 				<version>2.3.2</version>
+				<scope>test</scope>
 			</dependency>
+
 			<dependency>
 				<groupId>org.glassfish.jaxb</groupId>
 				<artifactId>jaxb-runtime</artifactId>
 				<version>2.3.2</version>
+				<scope>test</scope>
 			</dependency>
 
 			<dependency>
@@ -565,6 +569,14 @@
 				<version>${assertj.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<!--
+			<dependency>
+				<groupId>net.bytebuddy</groupId>
+				<artifactId>byte-buddy</artifactId>
+				<version>1.12.13</version>
+				<scope>test</scope>
+			</dependency>
+			-->
 			<dependency>
 				<groupId>org.awaitility</groupId>
 				<artifactId>awaitility</artifactId>
@@ -584,7 +596,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- Mockito -->
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
@@ -598,7 +609,6 @@
 				<version>${version.postgresql.driver}</version>
 			</dependency>
 
-			<!-- scm -->
 			<dependency>
 				<groupId>org.apache.maven.scm</groupId>
 				<artifactId>maven-scm-providers-standard</artifactId>
@@ -699,21 +709,12 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!--
-			<dependency>
-				<groupId>org.wildfly.arquillian</groupId>
-				<artifactId>wildfly-arquillian-container-managed</artifactId>
-				<version>5.0.0.Alpha3</version>
-				<scope>test</scope>
-			</dependency>
-			-->
 			<dependency>
 				<groupId>org.jboss.arquillian.junit</groupId>
 				<artifactId>arquillian-junit-container</artifactId>
 				<version>${version.arquillian.core}</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- Protocols -->
 			<dependency>
 				<groupId>org.jboss.arquillian.protocol</groupId>
 				<artifactId>arquillian-protocol-servlet</artifactId>
@@ -764,13 +765,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!--
-			<dependency>
-				<groupId>org.apache.myfaces.core</groupId>
-				<artifactId>myfaces-impl</artifactId>
-				<version>3.0.1</version>
-			</dependency>
-            -->
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-engine</artifactId>
@@ -848,6 +842,48 @@
 				 <version>2.0.4</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>2.18.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>2.18.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-ext</artifactId>
+				<version>1.7.36</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>2.0.0-beta1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>1.3.0-beta0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.2.0.redhat-00004</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-plugin-api</artifactId>
+				<version>3.8.6</version>
+				<type>maven-plugin</type>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -901,6 +937,24 @@
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces-selenium-core</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>net.bytebuddy</groupId>
+					<artifactId>byte-buddy</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.code.gson</groupId>
+					<artifactId>gson</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces</groupId>
@@ -953,12 +1007,7 @@
 			<artifactId>maven-scm-client</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<!--
-		<dependency>
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-impl</artifactId>
-		</dependency>
-		-->
+
 		<dependency>
 			<groupId>org.jboss.arquillian.junit5</groupId>
 			<artifactId>arquillian-junit5-container</artifactId>
@@ -969,7 +1018,6 @@
 			<artifactId>arquillian-protocol-servlet-jakarta</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-drone-api</artifactId>
@@ -1004,6 +1052,12 @@
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-phantom-driver</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.graphene</groupId>
@@ -1035,20 +1089,11 @@
 			<artifactId>shrinkwrap-descriptors-api-base</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!--
-		<dependency>
-			<groupId>org.wildfly.arquillian</groupId>
-			<artifactId>wildfly-arquillian-container-managed</artifactId>
-			<scope>test</scope>
-		</dependency>
-		-->
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- Protocols -->
 		<dependency>
 			<groupId>org.jboss.arquillian.protocol</groupId>
 			<artifactId>arquillian-protocol-servlet</artifactId>
@@ -1059,11 +1104,23 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-json</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-remote-driver</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.checkerframework</groupId>
+					<artifactId>checker-qual</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -1130,6 +1187,12 @@
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>net.bytebuddy</groupId>
+					<artifactId>byte-buddy</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -1140,6 +1203,12 @@
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>net.bytebuddy</groupId>
+					<artifactId>byte-buddy</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
@@ -1175,6 +1244,38 @@
 			<artifactId>yasson</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-ext</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2.0.redhat-00004</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -1455,6 +1556,12 @@
 						<artifactId>plantuml-maven-plugin</artifactId>
 						<version>${version.plantuml-maven-plugin}</version>
 						<type>maven-plugin</type>
+						<exclusions>
+							<exclusion>
+								<groupId>javax.enterprise</groupId>
+								<artifactId>cdi-api</artifactId>
+							</exclusion>
+						</exclusions>
 					</dependency>
 					<dependency>
 						<groupId>net.sourceforge.plantuml</groupId>
@@ -1733,15 +1840,21 @@
 			</dependencyManagement>
 			<dependencies>
 				<dependency>
-					<groupId>io.openliberty.features</groupId>
-					<artifactId>jakartaee-9.1</artifactId>
-					<type>esa</type>
-				</dependency>
-				<dependency>
 					<groupId>io.openliberty.arquillian</groupId>
 					<artifactId>arquillian-liberty-support-jakarta</artifactId>
 					<classifier>feature</classifier>
 					<type>zip</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>jakartaee-9.1</artifactId>
+					<type>esa</type>
+					<exclusions>
+						<exclusion>
+							<groupId>javax.enterprise</groupId>
+							<artifactId>cdi-api</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.postgresql</groupId>
@@ -1761,6 +1874,12 @@
 					<groupId>org.jboss.resteasy</groupId>
 					<artifactId>resteasy-client</artifactId>
 					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>commons-codec</groupId>
+							<artifactId>commons-codec</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.jboss.resteasy</groupId>
@@ -1771,6 +1890,12 @@
 					<groupId>org.jboss.resteasy</groupId>
 					<artifactId>resteasy-jaxb-provider</artifactId>
 					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>com.sun.activation</groupId>
+							<artifactId>jakarta.activation</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.glassfish</groupId>
@@ -1797,6 +1922,20 @@
 					<artifactId>liberty-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.commons</groupId>
+							<artifactId>commons-lang3</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>com.google.guava</groupId>
+							<artifactId>guava</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.json</groupId>
+							<artifactId>json</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -1937,6 +2076,12 @@
 						<artifactId>jboss-logmanager</artifactId>
 						<version>${version.jboss-logmanager}</version>
 						<scope>test</scope>
+						<exclusions>
+							<exclusion>
+								<groupId>org.wildfly.common</groupId>
+								<artifactId>wildfly-common</artifactId>
+							</exclusion>
+						</exclusions>
 					</dependency>
 					<dependency>
 						<groupId>org.postgresql</groupId>
@@ -2935,6 +3080,12 @@
 					<groupId>io.openliberty.arquillian</groupId>
 					<artifactId>arquillian-liberty-managed-jakarta</artifactId>
 					<version>${version.arquillian-liberty-jakarta}</version>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.httpcomponents</groupId>
+							<artifactId>httpclient</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<!--It seems OpenLiberty 21.0.0.1 beta switched to use Resteasy as Jakarta Restful WS provider.
                 But there is no official public version for Jakarta EE 9 in the Maven central repository.
@@ -3271,13 +3422,13 @@
 				<dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-client</artifactId>
-                    <version>1.13.1</version>
+                    <version>2.0.0</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-container-grizzly-client</artifactId>
-                    <version>1.13.1</version>
+					<version>2.0.0</version>
                     <scope>test</scope>
                 </dependency>
 				<dependency>
