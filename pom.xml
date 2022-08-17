@@ -43,7 +43,7 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<version.maven>3.8.6</version.maven>
+		<version.maven>3.6.3</version.maven>
 		<junit.version>5.8.2</junit.version>
 		<version.junit-platform-suite-engine>1.8.2</version.junit-platform-suite-engine>
 		<version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
@@ -70,11 +70,11 @@
 		<version.jakarta.jakartaee-api>9.1.0</version.jakarta.jakartaee-api>
 		<version.org.eclipse.microprofile>5.0</version.org.eclipse.microprofile>
 
-		<!-- DB -->
+		<!-- Database JDBC Driver -->
 		<version.postgresql.driver>42.4.1</version.postgresql.driver>
 
 		<!-- JAX-RS JSON -->
-		<version.org.jboss.resteasy>6.1.0.Final</version.org.jboss.resteasy>
+		<version.org.jboss.resteasy>6.0.1.Final</version.org.jboss.resteasy>
 
 		<!-- webjars Frontend -->
 		<version.webjars.jquery>3.6.0</version.webjars.jquery>
@@ -154,6 +154,11 @@
 
 		<skip.unit.tests>true</skip.unit.tests>
 		<skip.integration.tests>true</skip.integration.tests>
+
+
+		<cargo.hostname>localhost</cargo.hostname>
+		<cargo.servlet.port>8080</cargo.servlet.port>
+		<cargo.zipUrlInstaller.downloadDir>${project.basedir}/installs</cargo.zipUrlInstaller.downloadDir>
 	</properties>
 
 	<repositories>
@@ -842,6 +847,7 @@
 				 <version>2.0.4</version>
 				<scope>test</scope>
 			</dependency>
+			<!--
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-api</artifactId>
@@ -878,12 +884,7 @@
 				<version>1.2.0.redhat-00004</version>
 				<scope>test</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.maven</groupId>
-				<artifactId>maven-plugin-api</artifactId>
-				<version>3.8.6</version>
-				<type>maven-plugin</type>
-			</dependency>
+			-->
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -1244,7 +1245,7 @@
 			<artifactId>yasson</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<!--
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -1275,7 +1276,7 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.2.0.redhat-00004</version>
 		</dependency>
-
+		-->
 	</dependencies>
 
 	<build>
@@ -1511,10 +1512,13 @@
 							<goal>verify</goal>
 						</goals>
 						<configuration>
+							<!-- INTEGRATION TEST SUITES -->
 							<includes>
 								<include>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</include>
 								<include>org.woehlke.jakartaee.petclinic.it.api.RestEndpointIT</include>
+								<!--
 								<include>org.woehlke.jakartaee.petclinic.UiTestSuite</include>
+								-->
 							</includes>
 						</configuration>
 					</execution>
@@ -1796,11 +1800,13 @@
 						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
+					-->
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
@@ -1902,10 +1908,12 @@
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -2065,9 +2073,6 @@
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
-				<cargo.hostname>localhost</cargo.hostname>
-				<cargo.servlet.port>8080</cargo.servlet.port>
-				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
 			</properties>
 			<dependencyManagement>
 				<dependencies>
@@ -2112,16 +2117,11 @@
 						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
-					</dependency>
-					<!--
-					<dependency>
-						<groupId>org.apache.myfaces.core</groupId>
-						<artifactId>myfaces-impl</artifactId>
-						<version>3.0.1</version>
 					</dependency>
 					-->
 				</dependencies>
@@ -2156,11 +2156,11 @@
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
 				</dependency>
-				<!--
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
 					<artifactId>myfaces-impl</artifactId>
@@ -2312,10 +2312,7 @@
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
-				<cargo.hostname>localhost</cargo.hostname>
-				<cargo.servlet.port>8080</cargo.servlet.port>
 				<cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
-				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
 				<glassfish.domainDir>
 					${project.build.directory}/glassfish-${glassfish.version}/glassfish6/glassfish/domains/domain1
 				</glassfish.domainDir>
@@ -2357,16 +2354,11 @@
 						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
-					</dependency>
-					<!--
-					<dependency>
-						<groupId>org.apache.myfaces.core</groupId>
-						<artifactId>myfaces-impl</artifactId>
-						<version>3.0.1</version>
 					</dependency>
 					-->
 				</dependencies>
@@ -2377,12 +2369,6 @@
 					<artifactId>jboss-logmanager</artifactId>
 					<scope>test</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.postgresql</groupId>
-					<artifactId>postgresql</artifactId>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>org.jboss.resteasy</groupId>
 					<artifactId>resteasy-client</artifactId>
@@ -2403,14 +2389,10 @@
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
-				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.apache.myfaces.core</groupId>
-					<artifactId>myfaces-impl</artifactId>
 				</dependency>
 				-->
 			</dependencies>
@@ -2619,12 +2601,12 @@
 						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
-					<!--
 					<dependency>
 						<groupId>org.apache.myfaces.core</groupId>
 						<artifactId>myfaces-impl</artifactId>
@@ -2663,11 +2645,11 @@
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
-				</dependency>
-				<!--
+				</dependency>s
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
 					<artifactId>myfaces-impl</artifactId>
@@ -3200,11 +3182,9 @@
 				<skip.integration.tests>false</skip.integration.tests>
 				<serverProfile>standalone-full.xml</serverProfile>
 				<serverRoot>${project.build.directory}/wildfly-${wildfly.version}</serverRoot>
-				<cargo.hostname>localhost</cargo.hostname>
-				<cargo.servlet.port>8080</cargo.servlet.port>
-				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
 				<cargo.remote.username>wildfly</cargo.remote.username>
 				<cargo.remote.password>wildflypwd</cargo.remote.password>
+				<cargo.jboss.configuration>standalone</cargo.jboss.configuration>
 				<!--
 				<cargo.datasource.datasource.postgresql>
 					cargo.datasource.driver=org.postgresql.Driver|
@@ -3214,7 +3194,6 @@
 					cargo.datasource.password=petclinic_jakartaeepwd
 				</cargo.datasource.datasource.postgresql>
 				-->
-				<cargo.jboss.configuration>standalone</cargo.jboss.configuration>
 			</properties>
 			<dependencies>
 				<!--<dependency>
@@ -3451,6 +3430,12 @@
 						</exclusion>
 					</exclusions>
 				</dependency>
+				<dependency>
+					<groupId>org.omnifaces.arquillian</groupId>
+					<artifactId>arquillian-glassfish-server-managed</artifactId>
+					<version>1.2</version>
+					<scope>test</scope>
+				</dependency>
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
@@ -3566,11 +3551,16 @@
 					<version>${version.arquillian-payara}</version>
 					<scope>test</scope>
 				</dependency>
-				<!-- Payara Server Container adaptor -->
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
 					<artifactId>arquillian-payara-server-managed</artifactId>
 					<version>${version.arquillian-payara}</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.omnifaces.arquillian</groupId>
+					<artifactId>arquillian-glassfish-server-managed</artifactId>
+					<version>1.2</version>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
