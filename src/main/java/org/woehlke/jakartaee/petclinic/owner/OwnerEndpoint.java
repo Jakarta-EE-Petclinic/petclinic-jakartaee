@@ -9,6 +9,8 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.owner.api.OwnerDto;
+import org.woehlke.jakartaee.petclinic.owner.api.OwnerListDto;
 import org.woehlke.jakartaee.petclinic.owner.db.OwnerService;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerEndpointUtil;
 
@@ -32,33 +34,49 @@ public class OwnerEndpoint implements Serializable {
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getList() {
+    public OwnerListDto getList() {
         log.info("getList");
-        return ownerEndpointUtil.dtoListJsonFactory(ownerEndpointUtil.dtoListFactory(ownerService.getAll()));
+        return ownerEndpointUtil.dtoListFactory(ownerService.getAll());
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getEntity(@PathParam("id") Long id) {
+    public OwnerDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return ownerEndpointUtil.dtoJsonFactory(ownerEndpointUtil.dtoFactory(ownerService.findById(id)));
+        return ownerEndpointUtil.dtoFactory(ownerService.findById(id));
     }
 
     @GET
-    @Path("/xml/list")
+    @Path("/list+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public OwnerListDto getListAsJson() {
+        log.info("getList");
+        return ownerEndpointUtil.dtoListFactory(ownerService.getAll());
+    }
+
+    @GET
+    @Path("/{id}+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public OwnerDto getEntityAsJson(@PathParam("id") Long id) {
+        log.info("getEntity");
+        return ownerEndpointUtil.dtoFactory(ownerService.findById(id));
+    }
+
+    @GET
+    @Path("/list+xml")
     @Produces(MediaType.APPLICATION_XML)
-    public String getListAsXml() throws JAXBException {
+    public OwnerListDto getListAsXml() throws JAXBException {
         log.info("getListAsXml");
-        return ownerEndpointUtil.dtoListXmlFactory(ownerEndpointUtil.dtoListFactory(ownerService.getAll()));
+        return ownerEndpointUtil.dtoListFactory(ownerService.getAll());
     }
 
     @GET
-    @Path("/xml/{id}")
+    @Path("/{id}+xml")
     @Produces(MediaType.APPLICATION_XML)
-    public String getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
+    public OwnerDto getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
         log.info("getEntityAsXml");
-        return ownerEndpointUtil.dtoXmlFactory(ownerEndpointUtil.dtoFactory(ownerService.findById(id)));
+        return ownerEndpointUtil.dtoFactory(ownerService.findById(id));
     }
 
 }

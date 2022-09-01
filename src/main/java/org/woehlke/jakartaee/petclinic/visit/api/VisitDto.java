@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.visit.api;
 
+import jakarta.json.bind.annotation.JsonbDateFormat;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -39,6 +40,7 @@ public class VisitDto implements Serializable {
 
     @NotNull
     @JsonbProperty
+    @JsonbDateFormat(value = "yyyy-MM-dd")
     protected Date date;
 
     @NotBlank

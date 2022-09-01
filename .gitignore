@@ -18,3 +18,4 @@ buildNumber.properties
 /.project
 /.settings/
 /etc/html/
+/src/main/resources/META-INF/sql/data.sql

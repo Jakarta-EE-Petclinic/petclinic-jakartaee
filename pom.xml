@@ -4,7 +4,7 @@
 	<groupId>org.woehlke.jakartaee</groupId>
 	<artifactId>petclinic-jakartaee</artifactId>
 	<packaging>war</packaging>
-	<version>9.1.0.94-SNAPSHOT</version>
+	<version>9.1.0.98-SNAPSHOT</version>
 
 	<name>Petclinic Jakarta EE 9.1</name>
 	<description>A JSF and Jakarta EE Version of Spring Petclinic and Update from Java EE 7 Petclinic.</description>
@@ -43,7 +43,6 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<!--- Build Infrastructure -->
 		<version.maven>3.6.3</version.maven>
 		<junit.version>5.8.2</junit.version>
 		<version.junit-platform-suite-engine>1.8.2</version.junit-platform-suite-engine>
@@ -71,8 +70,8 @@
 		<version.jakarta.jakartaee-api>9.1.0</version.jakarta.jakartaee-api>
 		<version.org.eclipse.microprofile>5.0</version.org.eclipse.microprofile>
 
-		<!-- DB -->
-		<version.postgresql.driver>42.4.0</version.postgresql.driver>
+		<!-- Database JDBC Driver -->
+		<version.postgresql.driver>42.4.1</version.postgresql.driver>
 
 		<!-- JAX-RS JSON -->
 		<version.org.jboss.resteasy>6.0.1.Final</version.org.jboss.resteasy>
@@ -97,7 +96,7 @@
 		<version.arquillian-liberty-support-jakarta>2.0.2</version.arquillian-liberty-support-jakarta>
 
 		<!-- Wildfly -->
-		<version.wildfly-runtime>26.1.1.Final</version.wildfly-runtime>
+		<version.wildfly-runtime>26.1.2.Final</version.wildfly-runtime>
 		<version.wildfly-maven-plugin>4.0.0.Alpha2</version.wildfly-maven-plugin>
 		<version.wildfly-jar-maven-plugin>7.0.2.Final</version.wildfly-jar-maven-plugin>
 		<version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
@@ -108,7 +107,7 @@
 		<wildfly-arquillian.version>5.0.0.Alpha3</wildfly-arquillian.version>
 
 		<!-- Payara -->
-		<version.payara-runtime>5.2022.2</version.payara-runtime>
+		<version.payara-runtime>5.2022.3</version.payara-runtime>
 		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
 		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
@@ -124,7 +123,7 @@
 		<version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
 		<version.maven-war-plugin>3.3.2</version.maven-war-plugin>
 		<version.maven-dependency-plugin>3.3.0</version.maven-dependency-plugin>
-		<version.maven-resources-plugin>3.2.0</version.maven-resources-plugin>
+		<version.maven-resources-plugin>3.3.0</version.maven-resources-plugin>
 		<version.maven-javadoc-plugin>3.4.0</version.maven-javadoc-plugin>
 		<version.maven-clean-plugin>3.2.0</version.maven-clean-plugin>
 		<version.maven-install-plugin>3.0.0</version.maven-install-plugin>
@@ -155,6 +154,10 @@
 
 		<skip.unit.tests>true</skip.unit.tests>
 		<skip.integration.tests>true</skip.integration.tests>
+
+		<cargo.hostname>localhost</cargo.hostname>
+		<cargo.servlet.port>8080</cargo.servlet.port>
+		<cargo.zipUrlInstaller.downloadDir>${project.basedir}/installs</cargo.zipUrlInstaller.downloadDir>
 	</properties>
 
 	<repositories>
@@ -450,6 +453,14 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
+				<groupId>org.jboss.arquillian.graphene</groupId>
+				<artifactId>graphene-webdriver</artifactId>
+				<version>${graphene-webdriver.version}</version>
+				<type>pom</type>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
 				<groupId>org.jboss.arquillian.extension</groupId>
 				<artifactId>arquillian-drone-webdriver</artifactId>
 				<version>${graphene-webdriver.version}</version>
@@ -458,15 +469,9 @@
 
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
-				<artifactId>graphene-webdriver</artifactId>
-				<version>${graphene-webdriver.version}</version>
-				<type>pom</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.arquillian.graphene</groupId>
 				<artifactId>graphene-webdriver-api</artifactId>
 				<version>${graphene-webdriver.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.arquillian.graphene</groupId>
@@ -527,11 +532,14 @@
 				<groupId>jakarta.xml.bind</groupId>
 				<artifactId>jakarta.xml.bind-api</artifactId>
 				<version>2.3.2</version>
+				<scope>test</scope>
 			</dependency>
+
 			<dependency>
 				<groupId>org.glassfish.jaxb</groupId>
 				<artifactId>jaxb-runtime</artifactId>
 				<version>2.3.2</version>
+				<scope>test</scope>
 			</dependency>
 
 			<dependency>
@@ -565,6 +573,14 @@
 				<version>${assertj.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<!--
+			<dependency>
+				<groupId>net.bytebuddy</groupId>
+				<artifactId>byte-buddy</artifactId>
+				<version>1.12.13</version>
+				<scope>test</scope>
+			</dependency>
+			-->
 			<dependency>
 				<groupId>org.awaitility</groupId>
 				<artifactId>awaitility</artifactId>
@@ -584,7 +600,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- Mockito -->
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
@@ -598,7 +613,6 @@
 				<version>${version.postgresql.driver}</version>
 			</dependency>
 
-			<!-- scm -->
 			<dependency>
 				<groupId>org.apache.maven.scm</groupId>
 				<artifactId>maven-scm-providers-standard</artifactId>
@@ -699,21 +713,12 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!--
-			<dependency>
-				<groupId>org.wildfly.arquillian</groupId>
-				<artifactId>wildfly-arquillian-container-managed</artifactId>
-				<version>5.0.0.Alpha3</version>
-				<scope>test</scope>
-			</dependency>
-			-->
 			<dependency>
 				<groupId>org.jboss.arquillian.junit</groupId>
 				<artifactId>arquillian-junit-container</artifactId>
 				<version>${version.arquillian.core}</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- Protocols -->
 			<dependency>
 				<groupId>org.jboss.arquillian.protocol</groupId>
 				<artifactId>arquillian-protocol-servlet</artifactId>
@@ -764,13 +769,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!--
-			<dependency>
-				<groupId>org.apache.myfaces.core</groupId>
-				<artifactId>myfaces-impl</artifactId>
-				<version>3.0.1</version>
-			</dependency>
-            -->
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-engine</artifactId>
@@ -842,6 +840,50 @@
 				<version>${version.org.projectlombok.lombok}</version>
 				<scope>provided</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.eclipse</groupId>
+				<artifactId>yasson</artifactId>
+				 <version>2.0.4</version>
+				<scope>test</scope>
+			</dependency>
+			<!--
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>2.18.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>2.18.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-ext</artifactId>
+				<version>1.7.36</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>2.0.0-beta1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>1.3.0-beta0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.2.0.redhat-00004</version>
+				<scope>test</scope>
+			</dependency>
+			-->
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -895,6 +937,24 @@
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces-selenium-core</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>net.bytebuddy</groupId>
+					<artifactId>byte-buddy</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.code.gson</groupId>
+					<artifactId>gson</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces</groupId>
@@ -947,12 +1007,7 @@
 			<artifactId>maven-scm-client</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<!--
-		<dependency>
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-impl</artifactId>
-		</dependency>
-		-->
+
 		<dependency>
 			<groupId>org.jboss.arquillian.junit5</groupId>
 			<artifactId>arquillian-junit5-container</artifactId>
@@ -963,7 +1018,6 @@
 			<artifactId>arquillian-protocol-servlet-jakarta</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-drone-api</artifactId>
@@ -998,6 +1052,12 @@
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-phantom-driver</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.graphene</groupId>
@@ -1029,20 +1089,11 @@
 			<artifactId>shrinkwrap-descriptors-api-base</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!--
-		<dependency>
-			<groupId>org.wildfly.arquillian</groupId>
-			<artifactId>wildfly-arquillian-container-managed</artifactId>
-			<scope>test</scope>
-		</dependency>
-		-->
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- Protocols -->
 		<dependency>
 			<groupId>org.jboss.arquillian.protocol</groupId>
 			<artifactId>arquillian-protocol-servlet</artifactId>
@@ -1053,11 +1104,23 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-json</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-remote-driver</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.checkerframework</groupId>
+					<artifactId>checker-qual</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -1124,6 +1187,12 @@
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>net.bytebuddy</groupId>
+					<artifactId>byte-buddy</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -1134,6 +1203,12 @@
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>net.bytebuddy</groupId>
+					<artifactId>byte-buddy</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
@@ -1164,6 +1239,43 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-ext</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2.0.redhat-00004</version>
+		</dependency>
+		-->
 	</dependencies>
 
 	<build>
@@ -1363,7 +1475,7 @@
 							<goal>test</goal>
 						</goals>
 						<configuration>
-							<includes>org/woehlke/jakartaee/petclinic/unit/**</includes>
+							<test>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</test>
 							<excludes>
 								<exclude>org/woehlke/jakartaee/petclinic/tmp/**</exclude>
 								<exclude>org/woehlke/jakartaee/petclinic/it/**</exclude>
@@ -1399,8 +1511,10 @@
 							<goal>verify</goal>
 						</goals>
 						<configuration>
+							<!-- INTEGRATION TEST SUITES -->
 							<includes>
-								<include>org.woehlke.jakartaee.petclinic.EndpointTestSuite</include>
+								<include>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</include>
+								<include>org.woehlke.jakartaee.petclinic.it.api.RestEndpointIT</include>
 								<include>org.woehlke.jakartaee.petclinic.UiTestSuite</include>
 							</includes>
 						</configuration>
@@ -1443,6 +1557,12 @@
 						<artifactId>plantuml-maven-plugin</artifactId>
 						<version>${version.plantuml-maven-plugin}</version>
 						<type>maven-plugin</type>
+						<exclusions>
+							<exclusion>
+								<groupId>javax.enterprise</groupId>
+								<artifactId>cdi-api</artifactId>
+							</exclusion>
+						</exclusions>
 					</dependency>
 					<dependency>
 						<groupId>net.sourceforge.plantuml</groupId>
@@ -1516,7 +1636,7 @@
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
 						<configuration>
-							<composeFile>${project.basedir}/src/runtimes/liberty/docker/docker-compose.yml</composeFile>
+							<composeFile>${project.basedir}/src/main/runtimes/liberty/docker/docker-compose.yml</composeFile>
 							<verbose>true</verbose>
 							<removeImages>true</removeImages>
 							<removeVolumes>true</removeVolumes>
@@ -1551,7 +1671,7 @@
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
 						<configuration>
-							<composeFile>${project.basedir}/src/runtimes/wildfly/docker/docker-compose.yml</composeFile>
+							<composeFile>${project.basedir}/src/main/runtimes/wildfly/docker/docker-compose.yml</composeFile>
 							<verbose>true</verbose>
 							<removeImages>true</removeImages>
 							<removeVolumes>true</removeVolumes>
@@ -1586,7 +1706,7 @@
 						<groupId>com.dkanejs.maven.plugins</groupId>
 						<artifactId>docker-compose-maven-plugin</artifactId>
 						<configuration>
-							<composeFile>${project.basedir}/src/runtimes/glassfish/docker/docker-compose.yml</composeFile>
+							<composeFile>${project.basedir}/src/main/runtimes/glassfish/docker/docker-compose.yml</composeFile>
 							<verbose>true</verbose>
 							<removeImages>true</removeImages>
 							<removeVolumes>true</removeVolumes>
@@ -1677,11 +1797,13 @@
 						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
+					-->
 					<dependency>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
@@ -1721,15 +1843,21 @@
 			</dependencyManagement>
 			<dependencies>
 				<dependency>
-					<groupId>io.openliberty.features</groupId>
-					<artifactId>jakartaee-9.1</artifactId>
-					<type>esa</type>
-				</dependency>
-				<dependency>
 					<groupId>io.openliberty.arquillian</groupId>
 					<artifactId>arquillian-liberty-support-jakarta</artifactId>
 					<classifier>feature</classifier>
 					<type>zip</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>jakartaee-9.1</artifactId>
+					<type>esa</type>
+					<exclusions>
+						<exclusion>
+							<groupId>javax.enterprise</groupId>
+							<artifactId>cdi-api</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.postgresql</groupId>
@@ -1749,6 +1877,12 @@
 					<groupId>org.jboss.resteasy</groupId>
 					<artifactId>resteasy-client</artifactId>
 					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>commons-codec</groupId>
+							<artifactId>commons-codec</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.jboss.resteasy</groupId>
@@ -1759,16 +1893,24 @@
 					<groupId>org.jboss.resteasy</groupId>
 					<artifactId>resteasy-jaxb-provider</artifactId>
 					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>com.sun.activation</groupId>
+							<artifactId>jakarta.activation</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.glassfish</groupId>
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -1785,6 +1927,20 @@
 					<artifactId>liberty-maven-plugin</artifactId>
 					<type>maven-plugin</type>
 					<scope>provided</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.commons</groupId>
+							<artifactId>commons-lang3</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>com.google.guava</groupId>
+							<artifactId>guava</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.json</groupId>
+							<artifactId>json</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -1841,7 +1997,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/liberty/resources/META-INF</directory>
+											<directory>src/main/runtimes/liberty/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -1865,7 +2021,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/liberty/resources</directory>
+											<directory>src/main/runtimes/liberty/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -1914,9 +2070,6 @@
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
-				<cargo.hostname>localhost</cargo.hostname>
-				<cargo.servlet.port>8080</cargo.servlet.port>
-				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
 			</properties>
 			<dependencyManagement>
 				<dependencies>
@@ -1925,6 +2078,12 @@
 						<artifactId>jboss-logmanager</artifactId>
 						<version>${version.jboss-logmanager}</version>
 						<scope>test</scope>
+						<exclusions>
+							<exclusion>
+								<groupId>org.wildfly.common</groupId>
+								<artifactId>wildfly-common</artifactId>
+							</exclusion>
+						</exclusions>
 					</dependency>
 					<dependency>
 						<groupId>org.postgresql</groupId>
@@ -1955,16 +2114,11 @@
 						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
-					</dependency>
-					<!--
-					<dependency>
-						<groupId>org.apache.myfaces.core</groupId>
-						<artifactId>myfaces-impl</artifactId>
-						<version>3.0.1</version>
 					</dependency>
 					-->
 				</dependencies>
@@ -1999,11 +2153,11 @@
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
 				</dependency>
-				<!--
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
 					<artifactId>myfaces-impl</artifactId>
@@ -2052,7 +2206,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/wildfly/resources/META-INF</directory>
+											<directory>src/main/runtimes/wildfly/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2077,7 +2231,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/wildfly/resources</directory>
+											<directory>src/main/runtimes/wildfly/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2095,17 +2249,11 @@
 						<configuration>
 							<container>
 								<containerId>wildfly26x</containerId>
-								<zipUrlInstaller>
-									<url>https://github.com/wildfly/wildfly/releases/download/26.1.1.Final/wildfly-preview-26.1.1.Final.zip</url>
-									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
-									<extractDir>${project.build.directory}</extractDir>
-								</zipUrlInstaller>
-								<!-- or use artifactInstaller-->
-								<!--<artifactInstaller>
-                                    <groupId>org.glassfish.main.distributions</groupId>
-                                    <artifactId>glassfish</artifactId>
-                                    <version>${glassfish.version}</version>
-                                </artifactInstaller>-->
+								<artifactInstaller>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-preview-dist</artifactId>
+									<version>26.1.1.Final</version>
+                                </artifactInstaller>
 								<dependencies>
 									<dependency>
 										<groupId>org.postgresql</groupId>
@@ -2114,7 +2262,6 @@
 								</dependencies>
 							</container>
 							<configuration>
-								<!-- the configuration used to deploy -->
 								<properties>
 									<cargo.hostname>${cargo.hostname}</cargo.hostname>
 									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
@@ -2162,10 +2309,7 @@
 			<properties>
 				<skip.unit.tests>true</skip.unit.tests>
 				<skip.integration.tests>true</skip.integration.tests>
-				<cargo.hostname>localhost</cargo.hostname>
-				<cargo.servlet.port>8080</cargo.servlet.port>
 				<cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
-				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
 				<glassfish.domainDir>
 					${project.build.directory}/glassfish-${glassfish.version}/glassfish6/glassfish/domains/domain1
 				</glassfish.domainDir>
@@ -2207,16 +2351,11 @@
 						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
-					</dependency>
-					<!--
-					<dependency>
-						<groupId>org.apache.myfaces.core</groupId>
-						<artifactId>myfaces-impl</artifactId>
-						<version>3.0.1</version>
 					</dependency>
 					-->
 				</dependencies>
@@ -2227,12 +2366,6 @@
 					<artifactId>jboss-logmanager</artifactId>
 					<scope>test</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.postgresql</groupId>
-					<artifactId>postgresql</artifactId>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>org.jboss.resteasy</groupId>
 					<artifactId>resteasy-client</artifactId>
@@ -2253,14 +2386,10 @@
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
-				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.apache.myfaces.core</groupId>
-					<artifactId>myfaces-impl</artifactId>
 				</dependency>
 				-->
 			</dependencies>
@@ -2306,7 +2435,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/glassfish/resources/META-INF</directory>
+											<directory>src/main/runtimes/glassfish/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2331,7 +2460,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/glassfish/resources</directory>
+											<directory>src/main/runtimes/glassfish/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2387,7 +2516,7 @@
 									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
 									<cargo.glassfish.admin.port>${cargo.glassfish.admin.port}</cargo.glassfish.admin.port>
 									<cargo.remote.username>admin</cargo.remote.username>
-									<cargo.remote.password/>
+									<cargo.remote.password />
 									<cargo.datasource.datasource.postgresql>
 										cargo.datasource.driver=org.postgresql.Driver|
 										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_glassfish|
@@ -2469,12 +2598,12 @@
 						<version>${version.jakarta.json}</version>
 						<scope>test</scope>
 					</dependency>
+					<!--
 					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
 						<version>${version.apache.commons.commons-lang3}</version>
 					</dependency>
-					<!--
 					<dependency>
 						<groupId>org.apache.myfaces.core</groupId>
 						<artifactId>myfaces-impl</artifactId>
@@ -2513,11 +2642,11 @@
 					<artifactId>jakarta.json</artifactId>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-lang3</artifactId>
-				</dependency>
-				<!--
+				</dependency>s
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
 					<artifactId>myfaces-impl</artifactId>
@@ -2566,7 +2695,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/payara/resources/META-INF</directory>
+											<directory>src/main/runtimes/payara/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2591,7 +2720,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/payara/resources</directory>
+											<directory>src/main/runtimes/payara/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2813,7 +2942,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/tomee/resources/META-INF</directory>
+											<directory>src/main/runtimes/tomee/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -2838,7 +2967,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/tomee/resources</directory>
+											<directory>src/main/runtimes/tomee/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -2930,6 +3059,12 @@
 					<groupId>io.openliberty.arquillian</groupId>
 					<artifactId>arquillian-liberty-managed-jakarta</artifactId>
 					<version>${version.arquillian-liberty-jakarta}</version>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.httpcomponents</groupId>
+							<artifactId>httpclient</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<!--It seems OpenLiberty 21.0.0.1 beta switched to use Resteasy as Jakarta Restful WS provider.
                 But there is no official public version for Jakarta EE 9 in the Maven central repository.
@@ -3044,11 +3179,9 @@
 				<skip.integration.tests>false</skip.integration.tests>
 				<serverProfile>standalone-full.xml</serverProfile>
 				<serverRoot>${project.build.directory}/wildfly-${wildfly.version}</serverRoot>
-				<cargo.hostname>localhost</cargo.hostname>
-				<cargo.servlet.port>8080</cargo.servlet.port>
-				<cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
 				<cargo.remote.username>wildfly</cargo.remote.username>
 				<cargo.remote.password>wildflypwd</cargo.remote.password>
+				<cargo.jboss.configuration>standalone</cargo.jboss.configuration>
 				<!--
 				<cargo.datasource.datasource.postgresql>
 					cargo.datasource.driver=org.postgresql.Driver|
@@ -3058,7 +3191,6 @@
 					cargo.datasource.password=petclinic_jakartaeepwd
 				</cargo.datasource.datasource.postgresql>
 				-->
-				<cargo.jboss.configuration>standalone</cargo.jboss.configuration>
 			</properties>
 			<dependencies>
 				<!--<dependency>
@@ -3085,17 +3217,31 @@
                     <scope>test</scope>
                 </dependency>-->
 				<dependency>
+					<groupId>org.jboss.logmanager</groupId>
+					<artifactId>jboss-logmanager</artifactId>
+					<version>${version.jboss-logmanager}</version>
+					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>org.wildfly.common</groupId>
+							<artifactId>wildfly-common</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+				<dependency>
 					<groupId>org.wildfly.arquillian</groupId>
 					<artifactId>wildfly-arquillian-container-managed</artifactId>
 					<version>${wildfly-arquillian.version}</version>
 					<scope>test</scope>
 				</dependency>
+				<!--
 				<dependency>
 					<groupId>org.jboss.logmanager</groupId>
 					<artifactId>jboss-logmanager</artifactId>
 					<version>${version.jboss-logmanager}</version>
 					<scope>test</scope>
 				</dependency>
+				-->
 				<!-- use Jersey client instead -->
 				<dependency>
 					<groupId>org.glassfish.jersey.media</groupId>
@@ -3169,7 +3315,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/wildfly/resources/META-INF</directory>
+											<directory>src/main/runtimes/wildfly/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -3194,7 +3340,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/wildfly/resources</directory>
+											<directory>src/main/runtimes/wildfly/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -3266,13 +3412,13 @@
 				<dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-client</artifactId>
-                    <version>1.13.1</version>
+                    <version>2.0.0</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-container-grizzly-client</artifactId>
-                    <version>1.13.1</version>
+					<version>2.0.0</version>
                     <scope>test</scope>
                 </dependency>
 				<dependency>
@@ -3295,6 +3441,14 @@
 						</exclusion>
 					</exclusions>
 				</dependency>
+				<!--
+				<dependency>
+					<groupId>org.omnifaces.arquillian</groupId>
+					<artifactId>arquillian-glassfish-server-managed</artifactId>
+					<version>1.2</version>
+					<scope>test</scope>
+				</dependency>
+				-->
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
@@ -3341,7 +3495,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>src/runtimes/glassfish/resources/META-INF</directory>
+											<directory>src/main/runtimes/glassfish/resources/META-INF</directory>
 										</resource>
 									</resources>
 									<outputDirectory>src/main/resources/META-INF</outputDirectory>
@@ -3366,7 +3520,7 @@
 											</includes>
 										</resource>
 										<resource>
-											<directory>src/runtimes/glassfish/resources</directory>
+											<directory>src/main/runtimes/glassfish/resources</directory>
 										</resource>
 									</resources>
 									<overwrite>true</overwrite>
@@ -3378,6 +3532,13 @@
 							</execution>
 						</executions>
 					</plugin>
+					<!--
+					<plugin>
+						<groupId>org.omnifaces.arquillian</groupId>
+						<artifactId>arquillian-glassfish-server-managed</artifactId>
+						<version>1.2</version>
+					</plugin>
+					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
@@ -3411,6 +3572,14 @@
 					<version>${version.arquillian-payara}</version>
 					<scope>test</scope>
 				</dependency>
+				<!--
+				<dependency>
+					<groupId>org.omnifaces.arquillian</groupId>
+					<artifactId>arquillian-glassfish-server-managed</artifactId>
+					<version>1.2</version>
+					<scope>test</scope>
+				</dependency>
+				-->
 				<dependency>
 					<groupId>org.postgresql</groupId>
 					<artifactId>postgresql</artifactId>
@@ -3456,6 +3625,13 @@
 							</execution>
 						</executions>
 					</plugin>
+					<!--
+					<plugin>
+						<groupId>org.omnifaces.arquillian</groupId>
+						<artifactId>arquillian-glassfish-server-managed</artifactId>
+						<version>1.2</version>
+					</plugin>
+					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>

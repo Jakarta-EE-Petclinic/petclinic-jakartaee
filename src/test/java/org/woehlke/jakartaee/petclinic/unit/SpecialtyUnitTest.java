@@ -6,7 +6,7 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.woehlke.jakartaee.petclinic.deployments.AbstractEntityTest;
+import org.woehlke.jakartaee.petclinic.deployments.UnitTestData;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import java.util.Collections;
@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class SpecialtyUnitTest extends AbstractEntityTest {
+public class SpecialtyUnitTest extends UnitTestData {
 
     @Test
     @Order(1)

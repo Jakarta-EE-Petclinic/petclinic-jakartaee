@@ -7,8 +7,9 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.xml.bind.JAXBException;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.visit.api.VisitDto;
+import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitService;
 import org.woehlke.jakartaee.petclinic.visit.api.VisitEndpointUtil;
 
@@ -32,33 +33,50 @@ public class VisitEndpoint implements Serializable {
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getList() {
+    public VisitListDto getList() {
         log.info("getList");
-        return this.visitEndpointUtil.dtoListJsonFactory(visitEndpointUtil.dtoListFactory(visitService.getAll()));
+        return this.visitEndpointUtil.dtoListFactory(visitService.getAll());
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getEntity(@PathParam("id") Long id) {
+    public VisitDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.visitEndpointUtil.dtoJsonFactory(visitEndpointUtil.dtoFactory(visitService.findById(id)));
+        return this.visitEndpointUtil.dtoFactory(visitService.findById(id));
     }
 
     @GET
-    @Path("/xml/list")
+    @Path("/list+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public VisitListDto getListAsJson() {
+        log.info("getList");
+        return this.visitEndpointUtil.dtoListFactory(visitService.getAll());
+    }
+
+    @GET
+    @Path("/{id}+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public VisitDto getEntityAsJson(@PathParam("id") Long id) {
+        log.info("getEntity");
+        return this.visitEndpointUtil.dtoFactory(visitService.findById(id));
+    }
+
+
+    @GET
+    @Path("/list+xml")
     @Produces(MediaType.APPLICATION_XML)
-    public String getListAsXml() throws JAXBException {
+    public VisitListDto getListAsXml() {
         log.info("getListAsXml");
-        return this.visitEndpointUtil.dtoListXmlFactory(visitEndpointUtil.dtoListFactory(visitService.getAll()));
+        return this.visitEndpointUtil.dtoListFactory(visitService.getAll());
     }
 
     @GET
-    @Path("/xml/{id}")
+    @Path("/{id}+xml")
     @Produces(MediaType.APPLICATION_XML)
-    public String getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
+    public VisitDto getEntityAsXml(@PathParam("id") Long id) {
         log.info("getEntityAsXml");
-        return this.visitEndpointUtil.dtoXmlFactory(visitEndpointUtil.dtoFactory(visitService.findById(id)));
+        return this.visitEndpointUtil.dtoFactory(visitService.findById(id));
     }
 
 }

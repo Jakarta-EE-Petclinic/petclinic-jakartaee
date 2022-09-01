@@ -248,9 +248,9 @@
                                             <dd><h:outputText id="petsName" value="#{ownersPet.name}"/></dd>
                                             <dt><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.birthdate']}"/></dt>
                                             <dd>
-                                                <h:outputText id="petsBirthDate"
-                                                              value="#{ownersPet.birthDate}">
-                                                    <f:convertDateTime type="date" dateStyle="medium"/>
+                                                <h:outputText id="petsBirthDate" value="#{ownersPet.birthDate}">
+                                                    <!-- TODO -->
+                                                    <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
                                                 </h:outputText>
                                             </dd>
                                             <dt><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"/></dt>
@@ -285,7 +285,8 @@
                                                     <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.date']}"/>
                                                 </f:facet>
                                                 <h:outputText id="date" value="#{visit.date}">
-                                                    <f:convertDateTime type="date" dateStyle="medium"/>
+                                                    <!-- TODO -->
+                                                    <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
                                                 </h:outputText>
                                             </p:column>
                                             <p:column>
@@ -779,9 +780,9 @@
                                             <dd><h:outputText id="petsNameDelete" value="#{ownersPet.name}"/></dd>
                                             <dt><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.birthdate']}"/></dt>
                                             <dd>
-                                                <h:outputText id="petsBirthDateDelete"
-                                                              value="#{ownersPet.birthDate}">
-                                                    <f:convertDateTime type="date" dateStyle="medium"/>
+                                                <h:outputText id="petsBirthDateDelete" value="#{ownersPet.birthDate}">
+                                                    <!-- TODO -->
+                                                    <f:convertDateTime type="date" dateStyle="medium"  locale="#{languageView.locale}"/>
                                                 </h:outputText>
                                             </dd>
                                             <dt><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"/></dt>
@@ -807,7 +808,8 @@
                                                     <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.date']}"/>
                                                 </f:facet>
                                                 <h:outputText id="dateDelete" value="#{visit.date}">
-                                                    <f:convertDateTime type="date" dateStyle="medium"/>
+                                                    <!-- TODO -->
+                                                    <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
                                                 </h:outputText>
                                             </p:column>
                                             <p:column>
@@ -1073,10 +1075,9 @@
                                         value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.birthdate']}"/>
                                 </div>
                                 <div class="ui-g-10">
-                                    <h:outputText
-                                        id="petBirthDate"
-                                        value="#{ownerView.pet.birthDate}">
-                                        <f:convertDateTime type="date" dateStyle="medium"/>
+                                    <h:outputText id="petBirthDate" value="#{ownerView.pet.birthDate}">
+                                        <!-- TODO -->
+                                        <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
                                     </h:outputText>
                                 </div>
                             </div>
@@ -1164,13 +1165,9 @@
                                         <h:outputText
                                             value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.date']}"/>
                                     </f:facet>
-                                    <h:outputText
-                                            id="datePreviousVisits"
-                                            value="#{petsVisit.date}">
-                                        <f:convertDateTime
-                                            type="date"
-                                            dateStyle="medium"
-                                            locale="#{languageView.locale}"/>
+                                    <h:outputText id="datePreviousVisits" value="#{petsVisit.date}">
+                                        <!-- TODO -->
+                                        <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
                                     </h:outputText>
                                 </p:column>
                                 <p:column>
@@ -1281,7 +1278,7 @@
                             <div class="ui-g-4">
                             </div>
                             <div class="ui-g-2">
-                                <p:link href="./rest/owner/xml/list">
+                                <p:link href="./rest/owner/list+xml">
                                     <i class="fa fa-fw fa-arrow-alt-circle-right"/>
                                     <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.list.showXml']}"/>
                                 </p:link>

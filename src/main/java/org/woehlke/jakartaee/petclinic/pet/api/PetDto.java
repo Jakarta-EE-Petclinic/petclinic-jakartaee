@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.pet.api;
 
+import jakarta.json.bind.annotation.JsonbDateFormat;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -11,7 +12,9 @@ import jakarta.xml.bind.annotation.*;
 import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.UUID;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -45,6 +48,7 @@ public class PetDto implements Serializable {
 
     @NotNull
     @JsonbProperty
+    @JsonbDateFormat(value = "yyyy-MM-dd")
     private Date birthDate;
 
     @NotNull

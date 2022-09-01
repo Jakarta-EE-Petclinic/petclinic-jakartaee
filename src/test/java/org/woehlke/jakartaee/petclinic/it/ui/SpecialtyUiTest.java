@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.deployments.Deployments;
-import org.woehlke.jakartaee.petclinic.deployments.TestData;
+import org.woehlke.jakartaee.petclinic.deployments.UnitTestData;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.*;
 
 import java.net.URL;
@@ -32,7 +32,7 @@ import static org.jboss.arquillian.graphene.Graphene.goTo;
 @Log
 @RunAsClient
 @RunWith(Arquillian.class)
-public class SpecialtyUiTest extends TestData {
+public class SpecialtyUiTest extends UnitTestData {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {

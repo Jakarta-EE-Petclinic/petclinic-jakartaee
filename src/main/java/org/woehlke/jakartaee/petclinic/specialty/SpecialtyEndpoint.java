@@ -8,9 +8,10 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.xml.bind.JAXBException;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyDto;
 import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyEndpointUtil;
+import org.woehlke.jakartaee.petclinic.specialty.api.SpecialtyListDto;
 import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyService;
 
 import java.io.Serializable;
@@ -33,32 +34,48 @@ public class SpecialtyEndpoint implements Serializable {
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getList() {
+    public SpecialtyListDto getList() {
         log.info("getList");
-        return this.specialtyEndpointUtil.dtoListJsonFactory(specialtyEndpointUtil.dtoListFactory(specialtyService.getAll()));
+        return this.specialtyEndpointUtil.dtoListFactory(specialtyService.getAll());
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getEntity(@PathParam("id") Long id) {
+    public SpecialtyDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.specialtyEndpointUtil.dtoJsonFactory(specialtyEndpointUtil.dtoFactory(specialtyService.findById(id)));
+        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id));
     }
 
     @GET
-    @Path("/xml/list")
+    @Path("/list+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public SpecialtyListDto getListAsJson() {
+        log.info("getList");
+        return this.specialtyEndpointUtil.dtoListFactory(specialtyService.getAll());
+    }
+
+    @GET
+    @Path("/{id}+json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public SpecialtyDto getEntityAsJson(@PathParam("id") Long id) {
+        log.info("getEntity");
+        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id));
+    }
+
+    @GET
+    @Path("/list+xml")
     @Produces(MediaType.APPLICATION_XML)
-    public String getListAsXml() throws JAXBException {
+    public SpecialtyListDto getListAsXml() {
         log.info("getListAsXml");
-        return this.specialtyEndpointUtil.dtoListXmlFactory(specialtyEndpointUtil.dtoListFactory(specialtyService.getAll()));
+        return this.specialtyEndpointUtil.dtoListFactory(specialtyService.getAll());
     }
 
     @GET
-    @Path("/xml/{id}")
+    @Path("/{id}+xml")
     @Produces(MediaType.APPLICATION_XML)
-    public String getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
+    public SpecialtyDto getEntityAsXml(@PathParam("id") Long id) {
         log.info("getEntityAsXml");
-        return this.specialtyEndpointUtil.dtoXmlFactory(specialtyEndpointUtil.dtoFactory(specialtyService.findById(id)));
+        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id));
     }
 }
