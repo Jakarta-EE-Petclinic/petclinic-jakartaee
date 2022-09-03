@@ -208,7 +208,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         log.info(" specialtyDeleteFormCancel ");
         log.info("------------------------------------------------------------------------------------");
-        specialtyPage.clickShowDeleteForm();
+        specialtyPage.clickCancelDeleteButton();
         specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
@@ -222,7 +222,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         log.info(" specialtyDetailsFormCancel ");
         log.info("------------------------------------------------------------------------------------");
-        specialtyPage.clickShowDetailsFormButton0();
+        specialtyPage.clickCancelDetailsButton();
         specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
