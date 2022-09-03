@@ -426,8 +426,6 @@ public class TellTheStoryUiTest  extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
-
-
     @Test
     @InSequence(25)
     public void openOwnerPage() {
@@ -438,6 +436,105 @@ public class TellTheStoryUiTest  extends UnitTestData {
         Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" openOwnerPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(26)
+    public void addNewOwnerPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewOwnerPage ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickAddNewEntityButton();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateNew());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewOwnerPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(27)
+    public void addNewOwnerPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewOwnerPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickCancelNewEntityButton();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewOwnerPageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+
+    @Test
+    @InSequence(28)
+    public void detailsOwnerPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" detailsOwnerPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickShowDetailsFormButton0();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" detailsOwnerPageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(29)
+    public void editOwnerPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editOwnerPage ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickShowEditForm();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateEdit());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editOwnerPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(30)
+    public void editOwnerPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editOwnerPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickCancelEditButton();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editOwnerPageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(31)
+    public void deleteOwnerPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteOwnerPage ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickShowDeleteForm();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateDelete());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteOwnerPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(32)
+    public void deleteOwnerPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteOwnerPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickCancelDeleteButton();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteOwnerPageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
