@@ -210,7 +210,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         specialtyPage.clickShowDeleteForm();
         specialtyPage.fullscreen();
-        Assert.assertTrue(specialtyPage.isFlowStateDelete());
+        Assert.assertTrue(specialtyPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
         log.info(" specialtyDeleteFormCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
@@ -224,7 +224,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         specialtyPage.clickShowDetailsFormButton0();
         specialtyPage.fullscreen();
-        Assert.assertTrue(specialtyPage.isFlowStateDetails());
+        Assert.assertTrue(specialtyPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" specialtyDetailsFormCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
@@ -347,9 +347,9 @@ public class TellTheStoryUiTest  extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         log.info(" petTypeDetailsPageCancel ");
         log.info("------------------------------------------------------------------------------------");
-        petTypePage.clickShowDetailsFormButton0();
+        petTypePage.clickCancelDetailsButton();
         petTypePage.fullscreen();
-        Assert.assertTrue(petTypePage.isFlowStateDetails());
+        Assert.assertTrue(petTypePage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
         log.info(" petTypeDetailsPageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
@@ -398,7 +398,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
 
 
     @Test
-    @InSequence(21)
+    @InSequence(24)
     public void veterinarianDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" veterinarianDetailsPage ");
@@ -412,7 +412,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(22)
+    @InSequence(25)
     public void veterinarianEditPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" veterinarianEditPage ");
@@ -426,7 +426,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(23)
+    @InSequence(26)
     public void veterinarianEditPageCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" veterinarianEditPageCancel ");
@@ -440,7 +440,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(24)
+    @InSequence(27)
     public void veterinarianDeletePage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" veterinarianDeletePage ");
@@ -454,7 +454,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(25)
+    @InSequence(28)
     public void veterinarianDeletePageCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" veterinarianDeletePageCancel ");
@@ -468,7 +468,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(26)
+    @InSequence(29)
     public void veterinarianDetailsPageCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" veterinarianDetailsPageCancel ");
@@ -482,7 +482,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(27)
+    @InSequence(30)
     public void ownerPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerPage ");
@@ -495,7 +495,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(28)
+    @InSequence(31)
     public void ownerAddNewPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerAddNewPage ");
@@ -509,7 +509,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(29)
+    @InSequence(32)
     public void ownerAddNewPageCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerAddNewPageCancel ");
@@ -523,7 +523,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(30)
+    @InSequence(33)
     public void ownerDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerDetailsPage ");
@@ -537,7 +537,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(31)
+    @InSequence(34)
     public void ownerEditPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerEditPage ");
@@ -551,7 +551,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(32)
+    @InSequence(35)
     public void ownerEditPageCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerEditPageCancel ");
@@ -565,7 +565,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(33)
+    @InSequence(36)
     public void ownerDeletePage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerDeletePage ");
@@ -579,7 +579,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(34)
+    @InSequence(37)
     public void ownerDeletePageCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerDeletePageCancel ");
@@ -593,7 +593,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
     }
 
     @Test
-    @InSequence(29)
+    @InSequence(38)
     public void ownerDetailsPageCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerDetailsPageCancel ");
