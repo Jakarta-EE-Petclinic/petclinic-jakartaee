@@ -81,460 +81,528 @@ public class TellTheStoryUiTest  extends UnitTestData {
 
     @Test
     @InSequence(1)
-    public void openHomePage() {
+    public void homePage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openHomePage ");
+        log.info(" homePage ");
         log.info("------------------------------------------------------------------------------------");
         goTo(HomePage.class);
         homePage.assertPageIsLoaded();
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openHomePage DONE ");
+        log.info(" homePage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(2)
-    public void openInformationPage() {
+    public void informationPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openInformationPage ");
+        log.info(" informationPage ");
         log.info("------------------------------------------------------------------------------------");
         goTo(InformationPage.class);
         informationPage.assertPageIsLoaded();
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openInformationPage DONE ");
+        log.info(" informationPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(3)
-    public void openSpecialtyPage() {
+    public void specialtyPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openSpecialtyPage ");
+        log.info(" specialtyPage ");
         log.info("------------------------------------------------------------------------------------");
         goToSpecialtyPage();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openSpecialtyPage DONE ");
+        log.info(" specialtyPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(4)
-    public void addNewSpecialtyForm() {
+    public void specialtyAddNewForm() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewSpecialtyForm ");
+        log.info(" specialtyAddNewForm ");
         log.info("------------------------------------------------------------------------------------");
         specialtyPage.clickAddNewEntityButton();
         specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateNew());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewSpecialtyForm DONE ");
+        log.info(" specialtyAddNewForm DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(5)
-    public void addNewSpecialtyFormCancel() {
+    public void specialtyAddNewFormCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewSpecialtyFormCancel ");
+        log.info(" specialtyAddNewFormCancel ");
         log.info("------------------------------------------------------------------------------------");
         specialtyPage.clickCancelNewEntityButton();
         specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewSpecialtyFormCancel DONE ");
+        log.info(" specialtyAddNewFormCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(6)
-    public void detailsSpecialtyForm() {
+    public void specialtyDetailsForm() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editSpecialtyForm ");
+        log.info(" specialtyDetailsForm ");
         log.info("------------------------------------------------------------------------------------");
         specialtyPage.clickShowDetailsFormButton0();
         specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editSpecialtyForm DONE ");
+        log.info(" specialtyDetailsForm DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(7)
-    public void editSpecialtyForm() {
+    public void specialtyEditForm() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editSpecialtyForm ");
+        log.info(" specialtyEditForm ");
         log.info("------------------------------------------------------------------------------------");
         specialtyPage.clickShowEditForm();
         specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateEdit());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editSpecialtyForm DONE ");
+        log.info(" specialtyEditForm DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(8)
-    public void editSpecialtyFormCancel() {
+    public void specialtyEditFormCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editSpecialtyFormCancel ");
+        log.info(" specialtyEditFormCancel ");
         log.info("------------------------------------------------------------------------------------");
         specialtyPage.clickCancelEditButton();
         specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editSpecialtyFormCancel DONE ");
+        log.info(" specialtyEditFormCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(9)
-    public void deleteSpecialtyForm() {
+    public void specialtyDeleteForm() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteSpecialtyForm ");
+        log.info(" specialtyDeleteForm ");
         log.info("------------------------------------------------------------------------------------");
         specialtyPage.clickShowDeleteForm();
         specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateDelete());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteSpecialtyForm DONE ");
+        log.info(" specialtyDeleteForm DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(10)
-    public void openPetTypePage() {
+    public void specialtyDeleteFormCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openPetTypePage ");
+        log.info(" specialtyDeleteFormCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goToPetTypePage();
-        Assert.assertTrue(petTypePage.isFlowStateList());
+        specialtyPage.clickShowDeleteForm();
+        specialtyPage.fullscreen();
+        Assert.assertTrue(specialtyPage.isFlowStateDelete());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openPetTypePage DONE ");
+        log.info(" specialtyDeleteFormCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(11)
-    public void addNewPetTypePage() {
+    public void specialtyDetailsFormCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewPetTypePage ");
+        log.info(" specialtyDetailsFormCancel ");
         log.info("------------------------------------------------------------------------------------");
-        petTypePage.clickAddNewEntityButton();
-        petTypePage.fullscreen();
-        Assert.assertTrue(petTypePage.isFlowStateNew());
+        specialtyPage.clickShowDetailsFormButton0();
+        specialtyPage.fullscreen();
+        Assert.assertTrue(specialtyPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewPetTypePage DONE ");
+        log.info(" specialtyDetailsFormCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(12)
-    public void addNewPetTypePageCancel() {
+    public void petTypePage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewPetTypePageCancel ");
+        log.info(" petTypePage ");
         log.info("------------------------------------------------------------------------------------");
-        petTypePage.clickCancelNewEntityButton();
-        petTypePage.fullscreen();
+        goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewPetTypePageCancel DONE ");
+        log.info(" petTypePage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
-
     @Test
     @InSequence(13)
-    public void detailsPetTypePageCancel() {
+    public void petTypeAddNewPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" detailsPetTypePageCancel ");
+        log.info(" petTypeAddNewPage ");
         log.info("------------------------------------------------------------------------------------");
-        petTypePage.clickShowDetailsFormButton0();
+        petTypePage.clickAddNewEntityButton();
         petTypePage.fullscreen();
-        Assert.assertTrue(petTypePage.isFlowStateDetails());
+        Assert.assertTrue(petTypePage.isFlowStateNew());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" detailsPetTypePageCancel DONE ");
+        log.info(" petTypeAddNewPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(14)
-    public void editPetTypePage() {
+    public void petTypeAddNewPageCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editPetTypePage ");
+        log.info(" petTypeAddNewPageCancel ");
         log.info("------------------------------------------------------------------------------------");
-        petTypePage.clickShowEditForm();
+        petTypePage.clickCancelNewEntityButton();
         petTypePage.fullscreen();
-        Assert.assertTrue(petTypePage.isFlowStateEdit());
+        Assert.assertTrue(petTypePage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editPetTypePage DONE ");
+        log.info(" petTypeAddNewPageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(15)
-    public void editPetTypePageCancel() {
+    public void petTypeDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editPetTypePageCancel ");
+        log.info(" petTypeDetailsPage ");
         log.info("------------------------------------------------------------------------------------");
-        petTypePage.clickCancelEditButton();
+        petTypePage.clickShowDetailsFormButton0();
         petTypePage.fullscreen();
         Assert.assertTrue(petTypePage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editPetTypePageCancel DONE ");
+        log.info(" petTypeDetailsPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(16)
-    public void deletePetTypePage() {
+    public void petTypeEditPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deletePetTypePage ");
+        log.info(" petTypeEditPage ");
         log.info("------------------------------------------------------------------------------------");
-        petTypePage.clickShowDeleteForm();
+        petTypePage.clickShowEditForm();
         petTypePage.fullscreen();
-        Assert.assertTrue(petTypePage.isFlowStateDelete());
+        Assert.assertTrue(petTypePage.isFlowStateEdit());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deletePetTypePage DONE ");
+        log.info(" petTypeEditPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(17)
-    public void deletePetTypePageCancel() {
+    public void petTypeEditPageCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deletePetTypePageCancel ");
+        log.info(" petTypeEditPageCancel ");
         log.info("------------------------------------------------------------------------------------");
-        petTypePage.clickCancelDeleteButton();
+        petTypePage.clickCancelEditButton();
         petTypePage.fullscreen();
         Assert.assertTrue(petTypePage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deletePetTypePageCancel DONE ");
+        log.info(" petTypeEditPageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(18)
-    public void openVeterinarianPage() {
+    public void petTypeDeletePage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openVeterinarianPage ");
+        log.info(" petTypeDeletePage ");
         log.info("------------------------------------------------------------------------------------");
-        goToVeterinarianPage();
-        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        petTypePage.clickShowDeleteForm();
+        petTypePage.fullscreen();
+        Assert.assertTrue(petTypePage.isFlowStateDelete());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openVeterinarianPage DONE ");
+        log.info(" petTypeDeletePage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(19)
-    public void addNewVeterinarianPage() {
+    public void petTypeDeletePageCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewVeterinarianPage ");
+        log.info(" petTypeDeletePageCancel ");
         log.info("------------------------------------------------------------------------------------");
-        veterinarianPage.clickAddNewEntityButton();
-        veterinarianPage.fullscreen();
-        Assert.assertTrue(veterinarianPage.isFlowStateNew());
+        petTypePage.clickCancelDeleteButton();
+        petTypePage.fullscreen();
+        Assert.assertTrue(petTypePage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewVeterinarianPage DONE ");
+        log.info(" petTypeDeletePageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(20)
-    public void addNewVeterinarianPageCancel() {
+    public void petTypeDetailsPageCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewVeterinarianPageCancel ");
+        log.info(" petTypeDetailsPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        petTypePage.clickShowDetailsFormButton0();
+        petTypePage.fullscreen();
+        Assert.assertTrue(petTypePage.isFlowStateDetails());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" petTypeDetailsPageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(21)
+    public void veterinarianPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" veterinarianPage ");
+        log.info("------------------------------------------------------------------------------------");
+        goToVeterinarianPage();
+        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" veterinarianPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(22)
+    public void veterinariaAddNewPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" veterinariaAddNewPage ");
+        log.info("------------------------------------------------------------------------------------");
+        veterinarianPage.clickAddNewEntityButton();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateNew());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" veterinariaAddNewPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(23)
+    public void veterinariaAddNewPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" veterinariaAddNewPageCancel ");
         log.info("------------------------------------------------------------------------------------");
         veterinarianPage.clickCancelNewEntityButton();
         veterinarianPage.fullscreen();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewVeterinarianPageCancel DONE ");
+        log.info(" veterinariaAddNewPageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
 
     @Test
     @InSequence(21)
-    public void detailsVeterinarianPageCancel() {
+    public void veterinarianDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" detailsVeterinarianPageCancel ");
+        log.info(" veterinarianDetailsPage ");
         log.info("------------------------------------------------------------------------------------");
         veterinarianPage.clickShowDetailsFormButton0();
         veterinarianPage.fullscreen();
         Assert.assertTrue(veterinarianPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" detailsVeterinarianPageCancel DONE ");
+        log.info(" veterinarianDetailsPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(22)
-    public void editVeterinarianPage() {
+    public void veterinarianEditPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editVeterinarianPage ");
+        log.info(" veterinarianEditPage ");
         log.info("------------------------------------------------------------------------------------");
         veterinarianPage.clickShowEditForm();
         veterinarianPage.fullscreen();
         Assert.assertTrue(veterinarianPage.isFlowStateEdit());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editVeterinarianPage DONE ");
+        log.info(" veterinarianEditPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(23)
-    public void editVeterinarianPageCancel() {
+    public void veterinarianEditPageCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editVeterinarianPageCancel ");
+        log.info(" veterinarianEditPageCancel ");
         log.info("------------------------------------------------------------------------------------");
         veterinarianPage.clickCancelEditButton();
         veterinarianPage.fullscreen();
         Assert.assertTrue(veterinarianPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editVeterinarianPageCancel DONE ");
-        log.info("------------------------------------------------------------------------------------");
-    }
-
-    @Test
-    @InSequence(23)
-    public void deleteVeterinarianPage() {
-        log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteVeterinarianPage ");
-        log.info("------------------------------------------------------------------------------------");
-        veterinarianPage.clickShowDeleteForm();
-        veterinarianPage.fullscreen();
-        Assert.assertTrue(veterinarianPage.isFlowStateDelete());
-        log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteVeterinarianPage DONE ");
+        log.info(" veterinarianEditPageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(24)
-    public void deleteVeterinarianPageCancel() {
+    public void veterinarianDeletePage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteVeterinarianPageCancel ");
+        log.info(" veterinarianDeletePage ");
         log.info("------------------------------------------------------------------------------------");
-        veterinarianPage.clickCancelDeleteButton();
+        veterinarianPage.clickShowDeleteForm();
         veterinarianPage.fullscreen();
-        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
+        Assert.assertTrue(veterinarianPage.isFlowStateDelete());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteVeterinarianPageCancel DONE ");
+        log.info(" veterinarianDeletePage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(25)
-    public void openOwnerPage() {
+    public void veterinarianDeletePageCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openOwnerPage ");
+        log.info(" veterinarianDeletePageCancel ");
         log.info("------------------------------------------------------------------------------------");
-        goToOwnerPage();
-        Assert.assertTrue(ownerPage.isFlowStateList());
+        veterinarianPage.clickCancelDeleteButton();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" openOwnerPage DONE ");
+        log.info(" veterinarianDeletePageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(26)
-    public void addNewOwnerPage() {
+    public void veterinarianDetailsPageCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewOwnerPage ");
+        log.info(" veterinarianDetailsPageCancel ");
         log.info("------------------------------------------------------------------------------------");
-        ownerPage.clickAddNewEntityButton();
-        ownerPage.fullscreen();
-        Assert.assertTrue(ownerPage.isFlowStateNew());
+        veterinarianPage.clickCancelDetailsButton();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewOwnerPage DONE ");
+        log.info(" veterinarianDetailsPageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(27)
-    public void addNewOwnerPageCancel() {
+    public void ownerPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewOwnerPageCancel ");
+        log.info(" ownerPage ");
         log.info("------------------------------------------------------------------------------------");
-        ownerPage.clickCancelNewEntityButton();
-        ownerPage.fullscreen();
+        goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" addNewOwnerPageCancel DONE ");
+        log.info(" ownerPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
-
     @Test
     @InSequence(28)
-    public void detailsOwnerPageCancel() {
+    public void ownerAddNewPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" detailsOwnerPageCancel ");
+        log.info(" ownerAddNewPage ");
         log.info("------------------------------------------------------------------------------------");
-        ownerPage.clickShowDetailsFormButton0();
+        ownerPage.clickAddNewEntityButton();
         ownerPage.fullscreen();
-        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        Assert.assertTrue(ownerPage.isFlowStateNew());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" detailsOwnerPageCancel DONE ");
+        log.info(" ownerAddNewPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(29)
-    public void editOwnerPage() {
+    public void ownerAddNewPageCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editOwnerPage ");
+        log.info(" ownerAddNewPageCancel ");
         log.info("------------------------------------------------------------------------------------");
-        ownerPage.clickShowEditForm();
+        ownerPage.clickCancelNewEntityButton();
         ownerPage.fullscreen();
-        Assert.assertTrue(ownerPage.isFlowStateEdit());
+        Assert.assertTrue(ownerPage.isFlowStateList());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editOwnerPage DONE ");
+        log.info(" ownerAddNewPageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(30)
-    public void editOwnerPageCancel() {
+    public void ownerDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editOwnerPageCancel ");
+        log.info(" ownerDetailsPage ");
         log.info("------------------------------------------------------------------------------------");
-        ownerPage.clickCancelEditButton();
+        ownerPage.clickShowDetailsFormButton0();
         ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" editOwnerPageCancel DONE ");
+        log.info(" ownerDetailsPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(31)
-    public void deleteOwnerPage() {
+    public void ownerEditPage() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOwnerPage ");
+        log.info(" ownerEditPage ");
         log.info("------------------------------------------------------------------------------------");
-        ownerPage.clickShowDeleteForm();
+        ownerPage.clickShowEditForm();
         ownerPage.fullscreen();
-        Assert.assertTrue(ownerPage.isFlowStateDelete());
+        Assert.assertTrue(ownerPage.isFlowStateEdit());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOwnerPage DONE ");
+        log.info(" ownerEditPage DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
     @Test
     @InSequence(32)
-    public void deleteOwnerPageCancel() {
+    public void ownerEditPageCancel() {
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOwnerPageCancel ");
+        log.info(" ownerEditPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickCancelEditButton();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateDetails());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" ownerEditPageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(33)
+    public void ownerDeletePage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" ownerDeletePage ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickShowDeleteForm();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateDelete());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" ownerDeletePage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(34)
+    public void ownerDeletePageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" ownerDeletePageCancel ");
         log.info("------------------------------------------------------------------------------------");
         ownerPage.clickCancelDeleteButton();
         ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateDetails());
         log.info("------------------------------------------------------------------------------------");
-        log.info(" deleteOwnerPageCancel DONE ");
+        log.info(" ownerDeletePageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(29)
+    public void ownerDetailsPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" ownerDetailsPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        ownerPage.clickCancelDetailsButton();
+        ownerPage.fullscreen();
+        Assert.assertTrue(ownerPage.isFlowStateList());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" ownerDetailsPageCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
     }
 
