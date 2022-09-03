@@ -31,6 +31,8 @@
         <property name="takeBeforeTest">true</property>
         <property name="takeAfterTest">true</property>
         <property name="takeWhenTestFailed">true</property>
+        <property name="rootDir">target</property>
+        <property name="screenshotType">PNG</property>
     </extension>
 
 </arquillian>
