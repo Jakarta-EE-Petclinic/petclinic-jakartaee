@@ -329,6 +329,107 @@ public class TellTheStoryUiTest  extends UnitTestData {
 
     @Test
     @InSequence(19)
+    public void addNewVeterinarianPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewVeterinarianPage ");
+        log.info("------------------------------------------------------------------------------------");
+        veterinarianPage.clickAddNewEntityButton();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateNew());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewVeterinarianPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(20)
+    public void addNewVeterinarianPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewVeterinarianPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        veterinarianPage.clickCancelNewEntityButton();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateList());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewVeterinarianPageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+
+    @Test
+    @InSequence(21)
+    public void detailsVeterinarianPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" detailsVeterinarianPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        veterinarianPage.clickShowDetailsFormButton0();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" detailsVeterinarianPageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(22)
+    public void editVeterinarianPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editVeterinarianPage ");
+        log.info("------------------------------------------------------------------------------------");
+        veterinarianPage.clickShowEditForm();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateEdit());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editVeterinarianPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(23)
+    public void editVeterinarianPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editVeterinarianPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        veterinarianPage.clickCancelEditButton();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" editVeterinarianPageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(23)
+    public void deleteVeterinarianPage() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteVeterinarianPage ");
+        log.info("------------------------------------------------------------------------------------");
+        veterinarianPage.clickShowDeleteForm();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateDelete());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteVeterinarianPage DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(24)
+    public void deleteVeterinarianPageCancel() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteVeterinarianPageCancel ");
+        log.info("------------------------------------------------------------------------------------");
+        veterinarianPage.clickCancelDeleteButton();
+        veterinarianPage.fullscreen();
+        Assert.assertTrue(veterinarianPage.isFlowStateDetails());
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" deleteVeterinarianPageCancel DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+
+
+    @Test
+    @InSequence(25)
     public void openOwnerPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openOwnerPage ");
