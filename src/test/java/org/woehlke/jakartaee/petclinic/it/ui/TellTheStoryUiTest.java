@@ -86,6 +86,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
         log.info(" homePage ");
         log.info("------------------------------------------------------------------------------------");
         goTo(HomePage.class);
+        homePage.fullscreen();
         homePage.assertPageIsLoaded();
         log.info("------------------------------------------------------------------------------------");
         log.info(" homePage DONE ");
@@ -99,6 +100,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
         log.info(" informationPage ");
         log.info("------------------------------------------------------------------------------------");
         goTo(InformationPage.class);
+        informationPage.fullscreen();
         informationPage.assertPageIsLoaded();
         log.info("------------------------------------------------------------------------------------");
         log.info(" informationPage DONE ");
