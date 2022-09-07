@@ -13,7 +13,7 @@ public interface CrudDao<T extends EntityBase> {
     long serialVersionUID = 5140497751059102450L;
 
     /**
-     * see src/main/resources/META-INF/persistence.xml
+     * @see src/main/resources/META-INF/persistence.xml
      */
     String PERSISTENCE_UNIT_NAME = "petclinicPersistenceUnit";
 

@@ -85,7 +85,7 @@
 		<version.org.primefaces>11.0.0</version.org.primefaces>
 
 		<!-- OpenLiberty -->
-		<version.openliberty-runtime>22.0.0.8</version.openliberty-runtime>
+		<version.openliberty-runtime>22.0.0.9</version.openliberty-runtime>
 		<version.liberty-maven-plugin>3.6.1</version.liberty-maven-plugin>
 		<generateFeatures>false</generateFeatures>
 		<runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
