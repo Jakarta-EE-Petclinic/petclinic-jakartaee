@@ -11,7 +11,9 @@
 * [First Cup of Jakarta EE Tutorial](https://eclipse-ee4j.github.io/jakartaee-firstcup/)
 * [The Jakarta® EE Tutorial - Examples](https://github.com/eclipse-ee4j/jakartaee-tutorial-examples)
 * [Cargo Tracker - Applied Domain-Driven Design Blueprints for Jakarta EE](https://eclipse-ee4j.github.io/cargotracker/)
-* 
 
-## Goodies
+## Events
+* [Monday, October 24. Jakarta EE Community Day at EclipseCon](https://www.eclipsecon.org/2022/jakarta-ee-community-day)
+
+## Java Goodies
 * [Maven Tutorial - Crash Course](https://www.youtube.com/watch?v=Xatr8AZLOsE)
