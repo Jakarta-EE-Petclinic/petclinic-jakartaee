@@ -97,8 +97,8 @@
 
 		<!-- Wildfly -->
 		<version.wildfly-runtime>27.0.0.Alpha5</version.wildfly-runtime>
-		<version.wildfly-maven-plugin>4.0.0.Alpha2</version.wildfly-maven-plugin>
-		<version.wildfly-jar-maven-plugin>7.0.2.Final</version.wildfly-jar-maven-plugin>
+		<version.wildfly-maven-plugin>4.0.0.Beta3</version.wildfly-maven-plugin>
+		<version.wildfly-jar-maven-plugin>8.0.0.Final</version.wildfly-jar-maven-plugin>
 		<version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
 		<version.jboss-logmanager>2.3.0.Alpha1</version.jboss-logmanager>
 		<plugin.fork.embedded>true</plugin.fork.embedded>
@@ -119,7 +119,7 @@
 		<!-- maven Plugin Versions -->
 		<version.org.projectlombok.lombok>1.18.24</version.org.projectlombok.lombok>
 		<version.lombok-maven-plugin>1.18.20.0</version.lombok-maven-plugin>
-		<version.cargo-maven3-plugin>1.9.13</version.cargo-maven3-plugin>
+		<version.cargo-maven3-plugin>1.10.2</version.cargo-maven3-plugin>
 		<version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
 		<version.maven-war-plugin>3.3.2</version.maven-war-plugin>
 		<version.maven-dependency-plugin>3.3.0</version.maven-dependency-plugin>
@@ -2248,7 +2248,7 @@
 						<artifactId>cargo-maven3-plugin</artifactId>
 						<configuration>
 							<container>
-								<containerId>wildfly26x</containerId>
+								<containerId>wildfly27x</containerId>
 								<artifactInstaller>
 									<groupId>org.wildfly</groupId>
 									<artifactId>wildfly-preview-dist</artifactId>
@@ -2477,7 +2477,7 @@
 						<artifactId>cargo-maven3-plugin</artifactId>
 						<configuration>
 							<container>
-								<containerId>glassfish5x</containerId>
+								<containerId>glassfish6x</containerId>
 								<zipUrlInstaller>
 									<url>
 										https://download.eclipse.org/ee4j/glassfish/glassfish-${glassfish.version}.zip
