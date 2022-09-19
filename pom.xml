@@ -107,13 +107,13 @@
 		<wildfly-arquillian.version>5.0.0.Alpha3</wildfly-arquillian.version>
 
 		<!-- Payara -->
-		<version.payara-runtime>5.2022.3</version.payara-runtime>
+		<version.payara-runtime>6.2022.1.Alpha4</version.payara-runtime>
 		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
 		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
 
 		<!-- Glassfish -->
-		<glassfish.version>7.0.0-M4</glassfish.version>
+		<glassfish.version>7.0.0-M8</glassfish.version>
 		<version.arquillian-glassfish6>1.0.0.Alpha1</version.arquillian-glassfish6>
 
 		<!-- maven Plugin Versions -->
@@ -2739,7 +2739,7 @@
 							<container>
 								<containerId>payara</containerId>
 								<zipUrlInstaller>
-									<url>https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/5.2022.2/payara-5.2022.2.zip</url>
+									<url>https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/6.2022.1.Alpha4/payara-6.2022.1.Alpha4.zip</url>
 									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
 									<extractDir>${project.build.directory}</extractDir>
 								</zipUrlInstaller>
