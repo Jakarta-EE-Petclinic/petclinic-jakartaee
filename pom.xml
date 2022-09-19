@@ -4,10 +4,10 @@
 	<groupId>org.woehlke.jakartaee</groupId>
 	<artifactId>petclinic-jakartaee</artifactId>
 	<packaging>war</packaging>
-	<version>9.1.0.100-SNAPSHOT</version>
+	<version>10.0.0-SNAPSHOT</version>
 
 	<name>Petclinic Jakarta EE 9.1</name>
-	<description>A JSF and Jakarta EE Version of Spring Petclinic and Update from Java EE 7 Petclinic.</description>
+	<description>A JSF and Jakarta EE 10 Version of Spring Petclinic and Update from Java EE 7 Petclinic.</description>
 	<url>https://jakarta-ee-petclinic.github.io/jakartaee-petclinic/</url>
 	<organization>
 		<name>Jakarta-EE-Petclinic</name>
