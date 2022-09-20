@@ -90,10 +90,9 @@
 		<generateFeatures>false</generateFeatures>
 		<runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
 		<runtime.jakartaee.server.openliberty.ServerName>petclinicServer</runtime.jakartaee.server.openliberty.ServerName>
-		<version.infinispan-jcache-remote>12.1.7.Final</version.infinispan-jcache-remote>
-		<version.arquillian-liberty-jakarta>2.0.2</version.arquillian-liberty-jakarta>
+		<version.infinispan-jcache-remote>14.0.0.CR2</version.infinispan-jcache-remote>
+		<version.arquillian-liberty-support-jakarta>2.1.0</version.arquillian-liberty-support-jakarta>
 		<liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
-		<version.arquillian-liberty-support-jakarta>2.0.2</version.arquillian-liberty-support-jakarta>
 
 		<!-- Wildfly -->
 		<version.wildfly-runtime>27.0.0.Alpha5</version.wildfly-runtime>
@@ -104,7 +103,7 @@
 		<plugin.fork.embedded>true</plugin.fork.embedded>
 		<wildfly.version>${version.wildfly-runtime}</wildfly.version>
 		<jersey.version>3.0.4</jersey.version>
-		<wildfly-arquillian.version>5.0.0.Alpha3</wildfly-arquillian.version>
+		<version.wildfly-arquillian-container-managed>5.0.0.Alpha5</version.wildfly-arquillian-container-managed>
 
 		<!-- Payara -->
 		<version.payara-runtime>6.2022.1.Alpha4</version.payara-runtime>
@@ -113,8 +112,8 @@
 		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
 
 		<!-- Glassfish -->
-		<glassfish.version>7.0.0-M8</glassfish.version>
-		<version.arquillian-glassfish6>1.0.0.Alpha1</version.arquillian-glassfish6>
+		<glassfish.version>7.0.0-M4</glassfish.version>
+		<version.arquillian-glassfish-server-managed>1.2</version.arquillian-glassfish-server-managed>
 
 		<!-- maven Plugin Versions -->
 		<version.org.projectlombok.lombok>1.18.24</version.org.projectlombok.lombok>
@@ -137,7 +136,7 @@
 		<!-- maven DevOps Plugin Versions -->
 		<version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
 
-		<!-- Arquillian 1.7.0 adds Jakarta EE 9 and JUnit 5 support-->
+		<!-- Arquillian 1.7.0 adds Jakarta EE 10 and JUnit 5 support-->
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<selenium.version>4.1.2</selenium.version>
 		<version.arquillian.core>1.7.0.Alpha11</version.arquillian.core>
@@ -884,6 +883,20 @@
 				<scope>test</scope>
 			</dependency>
 			-->
+			<dependency>
+				<groupId>org.glassfish.tyrus</groupId>
+				<artifactId>tyrus-bom</artifactId>
+				<version>2.1.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.grizzly</groupId>
+				<artifactId>grizzly-bom</artifactId>
+				<version>4.0.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -2477,7 +2490,7 @@
 						<artifactId>cargo-maven3-plugin</artifactId>
 						<configuration>
 							<container>
-								<containerId>glassfish6x</containerId>
+								<containerId>glassfish7x</containerId>
 								<zipUrlInstaller>
 									<url>
 										https://download.eclipse.org/ee4j/glassfish/glassfish-${glassfish.version}.zip
@@ -2516,7 +2529,7 @@
 									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
 									<cargo.glassfish.admin.port>${cargo.glassfish.admin.port}</cargo.glassfish.admin.port>
 									<cargo.remote.username>admin</cargo.remote.username>
-									<cargo.remote.password />
+									<cargo.remote.password>adminadmin</cargo.remote.password>
 									<cargo.datasource.datasource.postgresql>
 										cargo.datasource.driver=org.postgresql.Driver|
 										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_glassfish|
@@ -3136,7 +3149,7 @@
 										<artifactItem>
 											<groupId>io.openliberty.arquillian</groupId>
 											<artifactId>arquillian-liberty-support-jakarta</artifactId>
-											<version>${version.arquillian-liberty-jakarta}</version>
+											<version>${version.arquillian-liberty-support-jakarta}</version>
 											<type>zip</type>
 											<classifier>feature</classifier>
 											<overWrite>false</overWrite>
@@ -3377,54 +3390,97 @@
 				<skip.integration.tests>false</skip.integration.tests>
 				<enableDerby>true</enableDerby>
 			</properties>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>org.glassfish.jersey.media</groupId>
+						<artifactId>jersey-media-sse</artifactId>
+						<version>${jersey.version}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish.jersey.media</groupId>
+						<artifactId>jersey-media-json-binding</artifactId>
+						<version>${jersey.version}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish.jersey.media</groupId>
+						<artifactId>jersey-media-multipart</artifactId>
+						<version>${jersey.version}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish.jersey.inject</groupId>
+						<artifactId>jersey-hk2</artifactId>
+						<version>${jersey.version}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish.jersey.core</groupId>
+						<artifactId>jersey-client</artifactId>
+						<version>${jersey.version}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish.tyrus</groupId>
+						<artifactId>tyrus-client</artifactId>
+						<version>2.1.0</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish.tyrus</groupId>
+						<artifactId>tyrus-container-grizzly-client</artifactId>
+						<version>2.1.0</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.omnifaces.arquillian</groupId>
+						<artifactId>arquillian-glassfish-server-managed</artifactId>
+						<version>${version.arquillian-glassfish-server-managed}</version>
+						<scope>test</scope>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
 			<dependencies>
 				<dependency>
 					<groupId>org.glassfish.jersey.media</groupId>
 					<artifactId>jersey-media-sse</artifactId>
-					<version>${jersey.version}</version>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.glassfish.jersey.media</groupId>
 					<artifactId>jersey-media-json-binding</artifactId>
-					<version>${jersey.version}</version>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.glassfish.jersey.media</groupId>
 					<artifactId>jersey-media-multipart</artifactId>
-					<version>${jersey.version}</version>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.glassfish.jersey.inject</groupId>
 					<artifactId>jersey-hk2</artifactId>
-					<version>${jersey.version}</version>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.glassfish.jersey.core</groupId>
 					<artifactId>jersey-client</artifactId>
-					<version>${jersey.version}</version>
 					<scope>test</scope>
 				</dependency>
-				<!-- WebSocket client dependencies -->
 				<dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-client</artifactId>
-                    <version>2.0.0</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-container-grizzly-client</artifactId>
-					<version>2.0.0</version>
                     <scope>test</scope>
                 </dependency>
 				<dependency>
-					<groupId>org.jboss.arquillian.container</groupId>
-					<artifactId>arquillian-glassfish-managed-6</artifactId>
-					<version>${version.arquillian-glassfish6}</version>
+					<groupId>org.omnifaces.arquillian</groupId>
+					<artifactId>arquillian-glassfish-server-managed</artifactId>
 					<scope>test</scope>
 					<exclusions>
 						<exclusion>
@@ -3441,28 +3497,38 @@
 						</exclusion>
 					</exclusions>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.omnifaces.arquillian</groupId>
-					<artifactId>arquillian-glassfish-server-managed</artifactId>
-					<version>1.2</version>
-					<scope>test</scope>
-				</dependency>
-				-->
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>clean verify</defaultGoal>
+				<defaultGoal>clean install verify</defaultGoal>
 				<testResources>
 					<testResource>
 						<directory>src/test/resources-arquillian/it-glassfish</directory>
 					</testResource>
 				</testResources>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-dependency-plugin</artifactId>
+							<version>${version.maven-dependency-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-resources-plugin</artifactId>
+							<version>${version.maven-resources-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-failsafe-plugin</artifactId>
+							<version>${version.maven-failsafe-plugin}</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
-						<version>${version.maven-dependency-plugin}</version>
 						<executions>
 							<execution>
 								<id>unpack</id>
@@ -3488,7 +3554,6 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
-						<version>${version.maven-resources-plugin}</version>
 						<executions>
 							<execution>
 								<id>id-persistence-xml</id>
@@ -3542,10 +3607,9 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
-						<version>${version.maven-failsafe-plugin}</version>
 						<configuration>
 							<environmentVariables>
-								<GLASSFISH_HOME>${project.build.directory}/glassfish6</GLASSFISH_HOME>
+								<GLASSFISH_HOME>${project.build.directory}/glassfish7</GLASSFISH_HOME>
 							</environmentVariables>
 						</configuration>
 					</plugin>
