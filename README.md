@@ -1,6 +1,6 @@
 # petclinic-jakartaee
 
-![Jakarta EE Compatible](etc/JakartaEE10__Countdown_3days.jpg)
+![Jakarta EE Compatible](etc/Jakarta_10__22_09_2022.jpg)
 
 Petclinic Jakarta EE - a Jakarta EE 9.1 Version of Spring Petclinic demo application using PrimeFaces JSF.
 
