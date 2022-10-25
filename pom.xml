@@ -85,13 +85,13 @@
 		<version.org.primefaces>12.0.0-RC3</version.org.primefaces>
 
 		<!-- OpenLiberty -->
-		<version.openliberty-runtime>22.0.0.11</version.openliberty-runtime>
-		<version.liberty-maven-plugin>3.6.1</version.liberty-maven-plugin>
+		<version.openliberty-runtime>22.0.0.10</version.openliberty-runtime>
+		<version.liberty-maven-plugin>3.7.1</version.liberty-maven-plugin>
 		<generateFeatures>false</generateFeatures>
 		<runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
 		<runtime.jakartaee.server.openliberty.ServerName>petclinicServer</runtime.jakartaee.server.openliberty.ServerName>
-		<version.infinispan-jcache-remote>14.0.0.CR2</version.infinispan-jcache-remote>
-		<version.arquillian-liberty-support-jakarta>2.1.0</version.arquillian-liberty-support-jakarta>
+		<version.infinispan-jcache-remote>14.0.2.Final</version.infinispan-jcache-remote>
+		<version.arquillian-liberty-support-jakarta>2.1.1</version.arquillian-liberty-support-jakarta>
 		<liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
 
 		<!-- Wildfly -->

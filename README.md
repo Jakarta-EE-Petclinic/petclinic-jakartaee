@@ -2,12 +2,12 @@
 
 ![Jakarta EE Compatible](etc/Jakarta_10__22_09_2022.jpg)
 
-Petclinic Jakarta EE - a Jakarta EE 9.1 Version of Spring Petclinic demo application using PrimeFaces JSF.
+Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo application using PrimeFaces JSF.
 
 ![Jakarta EE Compatible](src/main/webapp/img/logos/home_logo_jakartaee.png)
 
 ## What is this?
-* JSF and Jakarta EE 9.1 Version of [Spring Petclinic](https://github.com/spring-projects/spring-petclinic)
+* JSF and Jakarta EE 10 Version of [Spring Petclinic](https://github.com/spring-projects/spring-petclinic)
 * This is an Update of [Java EE 7 Petclinic](https://jakarta-ee-petclinic.github.io/petclinic-javaee7/)
 
 ## Where is it?
@@ -16,7 +16,7 @@ Petclinic Jakarta EE - a Jakarta EE 9.1 Version of Spring Petclinic demo applica
 * Blog: [https://thomas-woehlke.blogspot.com/2014/02/java-ee-7-petclinic.html](https://thomas-woehlke.blogspot.com/2014/02/java-ee-7-petclinic.html)
 
 ## Motivation
-* Some experimental Work with JSF, Jakarta EE 9.1 and Java EE 
+* Some experimental Work with JSF, Jakarta EE 10 and Java EE 
 * This Demo Application is planned to be the first in a series of “Rosetta Stone” to compare OOP Web Application Frameworks
 
 ## Why Petclinic?
@@ -43,31 +43,31 @@ cd petclinic-jakartaee
 
 ## ... deploy and run
 
-### IBM OpenLiberty JakartEE 9.1 (22.0.0.8)
+### IBM OpenLiberty - Jakarta EE 10 (22.0.0.10)
 
 ```
 ./mvnw -Pliberty
 ```
 
-### JBoss Wildfly JakartEE 9.1 Preview (26.1.1) 
+### JBoss Wildfly - Jakarta EE 10 Preview (27.0.0.Beta1) 
 
 ```
 ./mvnw -Pwildfly
 ```
 
-### Eclipse GlassFish (6.2.5)
+### Eclipse GlassFish - Jakarta EE 10 Preview (7.0.0-M9)
 
 ```
 ./mvnw -Pglassfish
 ```
 
-### Payara Server (5.2022.2)
+### Payara Server - Jakarta EE 10 Preview (6.2022.1.Alpha4)
 
 ```
 ./mvnw -Ppayara
 ```
 
-### Apache TomEE (9.0)
+### Apache TomEE - JakartEE 9.1 (9.0)
 
 ```
 ./mvnw -Ptomee
@@ -77,7 +77,7 @@ cd petclinic-jakartaee
 
 Arquillian End2End Tests for REST Endpoints and for JSF Frontend Browser Tests with Graphene and Selenium.
 
-### JBoss Wildfly JakartEE 9.1 Preview (26.1.1)
+### JBoss Wildfly JakartEE 10 Preview (27.0.0.Beta1)
 
 ```
 ./mvnw -Parq-wildfly-managed
