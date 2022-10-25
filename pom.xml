@@ -2064,6 +2064,9 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<skipTests>${skip.unit.tests}</skipTests>
+						</configuration>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -2180,6 +2183,13 @@
 								</configuration>
 							</execution>
 						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<skipTests>${skip.unit.tests}</skipTests>
+						</configuration>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -2448,8 +2458,8 @@
 			<!-- Run with: mvn clean verify -Parq-wildfly-managed -->
 			<id>arq-wildfly-managed</id>
 			<properties>
-				<skip.unit.tests>true</skip.unit.tests>
-				<skip.integration.tests>true</skip.integration.tests>
+				<skip.unit.tests>false</skip.unit.tests>
+				<skip.integration.tests>false</skip.integration.tests>
 				<serverProfile>standalone-full.xml</serverProfile>
 				<serverRoot>${project.build.directory}/wildfly-${wildfly.version}</serverRoot>
 				<cargo.remote.username>wildfly</cargo.remote.username>
@@ -2542,7 +2552,7 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>dependency:purge-local-repository clean package verify</defaultGoal>
+				<defaultGoal>dependency:purge-local-repository clean package test verify</defaultGoal>
 				<testResources>
 					<testResource>
 						<directory>src/test/resources-arquillian/arq-wildfly-managed</directory>
@@ -2626,9 +2636,18 @@
 						</executions>
 					</plugin>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<skipTests>${skip.unit.tests}</skipTests>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
 						<version>${version.maven-failsafe-plugin}</version>
 						<configuration>
+							<skipTests>${skip.integration.tests}</skipTests>
 							<environmentVariables>
 								<JBOSS_HOME>${project.build.directory}/wildfly-preview-${wildfly.version}</JBOSS_HOME>
 							</environmentVariables>
