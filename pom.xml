@@ -85,7 +85,7 @@
 		<version.org.primefaces>12.0.0-RC3</version.org.primefaces>
 
 		<!-- OpenLiberty -->
-		<version.openliberty-runtime>22.0.0.9</version.openliberty-runtime>
+		<version.openliberty-runtime>22.0.0.11</version.openliberty-runtime>
 		<version.liberty-maven-plugin>3.6.1</version.liberty-maven-plugin>
 		<generateFeatures>false</generateFeatures>
 		<runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
@@ -95,7 +95,7 @@
 		<liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
 
 		<!-- Wildfly -->
-		<version.wildfly-runtime>27.0.0.Alpha5</version.wildfly-runtime>
+		<version.wildfly-runtime>27.0.0.Beta1</version.wildfly-runtime>
 		<version.wildfly-maven-plugin>4.0.0.Beta3</version.wildfly-maven-plugin>
 		<version.wildfly-jar-maven-plugin>8.0.0.Final</version.wildfly-jar-maven-plugin>
 		<version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
@@ -112,7 +112,7 @@
 		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
 
 		<!-- Glassfish -->
-		<glassfish.version>7.0.0-M4</glassfish.version>
+		<glassfish.version>7.0.0-M9</glassfish.version>
 		<version.arquillian-glassfish-server-managed>1.2</version.arquillian-glassfish-server-managed>
 
 		<!-- maven Plugin Versions -->
@@ -2502,7 +2502,7 @@
 				<dependency>
 					<groupId>org.wildfly.arquillian</groupId>
 					<artifactId>wildfly-arquillian-container-managed</artifactId>
-					<version>${wildfly-arquillian.version}</version>
+					<version>${version.wildfly-arquillian}</version>
 					<scope>test</scope>
 				</dependency>
 				<!--
