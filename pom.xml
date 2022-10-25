@@ -412,7 +412,7 @@
 			<dependency>
 				<groupId>org.eclipse.microprofile</groupId>
 				<artifactId>microprofile</artifactId>
-				<version>5.0</version>
+				<version>${version.org.eclipse.microprofile}</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
