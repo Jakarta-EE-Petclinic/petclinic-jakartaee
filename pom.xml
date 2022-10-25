@@ -71,7 +71,7 @@
 		<version.org.eclipse.microprofile>5.0</version.org.eclipse.microprofile>
 
 		<!-- Database JDBC Driver -->
-		<version.postgresql.driver>42.4.2</version.postgresql.driver>
+		<version.postgresql.driver>42.5.0</version.postgresql.driver>
 
 		<!-- JAX-RS JSON -->
 		<version.org.jboss.resteasy>6.0.1.Final</version.org.jboss.resteasy>
@@ -92,6 +92,7 @@
 		<runtime.jakartaee.server.openliberty.ServerName>petclinicServer</runtime.jakartaee.server.openliberty.ServerName>
 		<version.infinispan-jcache-remote>14.0.2.Final</version.infinispan-jcache-remote>
 		<version.arquillian-liberty-support-jakarta>2.1.1</version.arquillian-liberty-support-jakarta>
+		<version.arquillian-liberty-managed-jakarta>2.1.1</version.arquillian-liberty-managed-jakarta>
 		<liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
 
 		<!-- Wildfly -->
@@ -104,6 +105,7 @@
 		<wildfly.version>${version.wildfly-runtime}</wildfly.version>
 		<jersey.version>3.0.4</jersey.version>
 		<version.wildfly-arquillian-container-managed>5.0.0.Alpha5</version.wildfly-arquillian-container-managed>
+		<version.wildfly-arquillian>5.0.0.Alpha5</version.wildfly-arquillian>
 
 		<!-- Payara -->
 		<version.payara-runtime>6.2022.1.Alpha4</version.payara-runtime>

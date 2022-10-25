@@ -7,7 +7,7 @@
 
     <datasource enabled="true" jndi-name="java:jboss/datasources/PostgreSQLDS" pool-name="PostgresDS">
         <connection-url>jdbc:postgresql://localhost:5432/petclinic_jakartaee_wildfly</connection-url>
-        <driver>petclinic.war_org.postgresql.Driver_42_4</driver>
+        <driver>petclinic.war_org.postgresql.Driver_42_5</driver>
         <pool>
             <min-pool-size>4</min-pool-size>
             <max-pool-size>64</max-pool-size>
