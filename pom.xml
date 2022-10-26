@@ -2552,7 +2552,7 @@
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
-				<defaultGoal>dependency:purge-local-repository clean package test verify</defaultGoal>
+				<defaultGoal>dependency:purge-local-repository clean package verify</defaultGoal>
 				<testResources>
 					<testResource>
 						<directory>src/test/resources-arquillian/arq-wildfly-managed</directory>
