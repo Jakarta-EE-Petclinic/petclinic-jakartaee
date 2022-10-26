@@ -4,7 +4,8 @@
 
     <jdbc-resource pool-name="PostgresDS"
                    jndi-name="jdbc/petclinicDS"
-                   object-type="system-all" enabled="yes"/>
+                   object-type="system-all"
+                   enabled="yes" />
 
     <jdbc-connection-pool name="PostgresDS"
                           res-type="javax.sql.DataSource"

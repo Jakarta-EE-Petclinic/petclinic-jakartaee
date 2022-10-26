@@ -85,7 +85,7 @@
 		<version.org.primefaces>12.0.0-RC3</version.org.primefaces>
 
 		<!-- OpenLiberty -->
-		<version.openliberty-runtime>22.0.0.10</version.openliberty-runtime>
+		<version.openliberty-runtime>22.0.0.11</version.openliberty-runtime>
 		<version.liberty-maven-plugin>3.7.1</version.liberty-maven-plugin>
 		<generateFeatures>false</generateFeatures>
 		<runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
@@ -108,7 +108,7 @@
 		<version.wildfly-arquillian>5.0.0.Alpha5</version.wildfly-arquillian>
 
 		<!-- Payara -->
-		<version.payara-runtime>6.2022.1.Alpha4</version.payara-runtime>
+		<version.payara-runtime>6.2022.1.Alpha2</version.payara-runtime>
 		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
 		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
@@ -3717,12 +3717,14 @@
 				<skip.integration.tests>false</skip.integration.tests>
 			</properties>
 			<dependencies>
+				<!--
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
 					<artifactId>payara-client-ee9</artifactId>
 					<version>${version.arquillian-payara}</version>
 					<scope>test</scope>
 				</dependency>
+				-->
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
 					<artifactId>arquillian-payara-server-managed</artifactId>
@@ -3737,6 +3739,16 @@
 					<scope>test</scope>
 				</dependency>
 				-->
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>environment-setup</artifactId>
+					<version>${version.arquillian-payara}</version>
+				</dependency>
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>integration-tests</artifactId>
+					<version>${version.arquillian-payara}</version>
+				</dependency>
 				<dependency>
 					<groupId>org.postgresql</groupId>
 					<artifactId>postgresql</artifactId>
@@ -3789,7 +3801,7 @@
 						<version>${version.maven-failsafe-plugin}</version>
 						<configuration>
 							<systemPropertyVariables>
-								<payara.home>${project.build.directory}/payara5</payara.home>
+								<payara.home>${project.build.directory}/payara6</payara.home>
 								<arquillian.launch>payara-managed</arquillian.launch>
 							</systemPropertyVariables>
 						</configuration>
