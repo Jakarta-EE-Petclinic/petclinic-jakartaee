@@ -82,7 +82,7 @@
 		<version.webjars.bootstrap>5.2.0</version.webjars.bootstrap>
 		<version.webjars.font-awesome>6.1.2</version.webjars.font-awesome>
 		<version.webjars.primeflex>3.2.1</version.webjars.primeflex>
-		<version.org.primefaces>12.0.0-RC3</version.org.primefaces>
+		<version.org.primefaces>12.0.0</version.org.primefaces>
 
 		<!-- OpenLiberty -->
 		<version.openliberty-runtime>22.0.0.11</version.openliberty-runtime>
