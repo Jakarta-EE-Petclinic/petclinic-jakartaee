@@ -114,7 +114,7 @@
 		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
 
 		<!-- Glassfish -->
-		<glassfish.version>7.0.0-M9</glassfish.version>
+		<glassfish.version>7.0.0-M8</glassfish.version>
 		<version.arquillian-glassfish-server-managed>1.2</version.arquillian-glassfish-server-managed>
 
 		<!-- maven Plugin Versions -->
