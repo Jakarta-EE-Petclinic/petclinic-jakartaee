@@ -5,13 +5,11 @@
 
     <engine>
         <property name="deploymentExportPath">target/</property>
-        <property name="glassfishHome">target/glassfish-7.0.0.M8/glassfish7</property>
     </engine>
 
     <container qualifier="glassfish-managed">
         <configuration>
             <property name="allowConnectingToRunningServer">false</property>
-            <property name="glassfishHome">target/glassfish-7.0.0.M8/glassfish7</property>
             <property name="adminHost">localhost</property>
             <property name="adminPort">4848</property>
             <property name="enableDerby">${enableDerby:true}</property>
@@ -20,17 +18,14 @@
     </container>
 
     <extension qualifier="webdriver">
-        <property name="glassfishHome">target/glassfish-7.0.0.M8/glassfish7</property>
         <property name="browser">chrome</property>
     </extension>
 
     <extension qualifier="drone">
-        <property name="glassfishHome">target/glassfish-7.0.0.M8/glassfish7</property>
         <property name="instantiationTimeoutInSeconds">120</property>
     </extension>
 
     <extension qualifier="screenshooter">
-        <property name="glassfishHome">target/glassfish-7.0.0.M8/glassfish7</property>
         <property name="takeOnEveryAction">true</property>
         <property name="takeBeforeTest">true</property>
         <property name="takeAfterTest">true</property>

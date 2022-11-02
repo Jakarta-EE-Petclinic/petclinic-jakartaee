@@ -97,7 +97,7 @@
 
 		<!-- Wildfly -->
 		<version.wildfly-runtime>27.0.0.Beta1</version.wildfly-runtime>
-		<version.wildfly-maven-plugin>4.0.0.Beta3</version.wildfly-maven-plugin>
+		<version.wildfly-maven-plugin>4.0.0.Beta4</version.wildfly-maven-plugin>
 		<version.wildfly-jar-maven-plugin>8.0.0.Final</version.wildfly-jar-maven-plugin>
 		<version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
 		<version.jboss-logmanager>2.3.0.Alpha1</version.jboss-logmanager>
@@ -108,10 +108,10 @@
 		<version.wildfly-arquillian>5.0.0.Alpha5</version.wildfly-arquillian>
 
 		<!-- Payara -->
-		<version.payara-runtime>6.2022.1.Alpha2</version.payara-runtime>
+		<version.payara-runtime>6.2022.1.Alpha4</version.payara-runtime>
 		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
-		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
+		<version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
 
 		<!-- Glassfish -->
 		<glassfish.version>7.0.0-M8</glassfish.version>
@@ -1854,6 +1854,68 @@
 						<type>maven-plugin</type>
 						<scope>test</scope>
 					</dependency>
+					<!--
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>restfulWS-3.1</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>jsonb-3.0</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>jsonp-2.1</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>jsonbContainer-3.0</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>jsonpContainer-2.1</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>cdi-4.0</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>expressionLanguage-5.0</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>concurrent-3.0</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>jdbc-4.2</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					<dependency>
+						<groupId>io.openliberty.features</groupId>
+						<artifactId>web-6.0</artifactId>
+						<version>${version.openliberty-runtime}</version>
+						<type>esa</type>
+					</dependency>
+					-->
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
@@ -1969,6 +2031,58 @@
 					<type>maven-plugin</type>
 					<scope>test</scope>
 				</dependency>
+				<!--
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>restfulWS-3.1</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>jsonb-3.0</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>jsonp-2.1</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>jsonbContainer-3.0</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>jsonpContainer-2.1</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>cdi-4.0</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>expressionLanguage-5.0</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>concurrent-3.0</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>jdbc-4.2</artifactId>
+					<type>esa</type>
+				</dependency>
+				<dependency>
+					<groupId>io.openliberty.features</groupId>
+					<artifactId>web-6.0</artifactId>
+					<type>esa</type>
+				</dependency>
+				-->
 			</dependencies>
 			<build>
 				<finalName>petclinic</finalName>
@@ -3415,10 +3529,8 @@
 				<skip.integration.tests>false</skip.integration.tests>
 				<enableDerby>true</enableDerby>
 				<cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
-				<glassfish.home>${project.build.directory}/glassfish-${glassfish.version}</glassfish.home>
-				<glassfish.domainDir>
-					${project.build.directory}/glassfish-${glassfish.version}/glassfish7/glassfish/domains/domain1
-				</glassfish.domainDir>
+				<glassfish.home>target/glassfish-7.0.0.M8/glassfish7</glassfish.home>
+				<glassfish.domainDir>target/glassfish-7.0.0.M8/glassfish7/glassfish/domains/domain1</glassfish.domainDir>
 			</properties>
 			<dependencyManagement>
 				<dependencies>
