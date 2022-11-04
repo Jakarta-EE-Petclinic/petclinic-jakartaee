@@ -4,7 +4,6 @@
 
     <jdbc-resource jndi-name="jdbc/petclinicDS"
                    pool-name="petclinicPool"
-                   object-type="user"
                    enabled="yes"/>
 
     <jdbc-connection-pool name="petclinicPool"
