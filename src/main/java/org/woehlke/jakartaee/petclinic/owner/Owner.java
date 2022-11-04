@@ -159,12 +159,12 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
 
     @Transient
     public List<Pet> getPetsAsList() {
-        List<Pet> list = new ArrayList<>();
-        for (Pet pet : this.pets) {
-            list.add(pet);
+        List<Pet> listPets  = new ArrayList<>();
+        for (Pet pet : this.getPets()) {
+            listPets.add(pet);
         }
-        Collections.sort(list);
-        return list;
+        Collections.sort(listPets);
+        return listPets;
     }
 
     @Transient
