@@ -55,6 +55,7 @@ ALTER TABLE "public"."owner_pet_type" ENABLE TRIGGER ALL;
 
 ALTER TABLE "public"."owner_pet" DISABLE TRIGGER ALL;
 
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (1, '2019-03-14', 'Tom', 'Tom ', 'c83b2da6-8393-4e44-a53f-6a4d7dbbbc63', 2, 8);
 
 
 ALTER TABLE "public"."owner_pet" ENABLE TRIGGER ALL;
@@ -65,6 +66,7 @@ ALTER TABLE "public"."owner_pet" ENABLE TRIGGER ALL;
 
 ALTER TABLE "public"."owner_pet_visit" DISABLE TRIGGER ALL;
 
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (2, '2022-11-04', 'Routine', '2022 11 03T23 00 00Z Routine ', '2f8e4031-22f0-4467-9346-609b44a9d7e8', 1);
 
 
 ALTER TABLE "public"."owner_pet_visit" ENABLE TRIGGER ALL;
