@@ -6,7 +6,7 @@
 
 	<persistence-unit name="petclinicPersistenceUnit" transaction-type="JTA">
 
-		<!-- Glassfish -->
+		<!-- Payara -->
 		<jta-data-source>jdbc/petclinicDS</jta-data-source>
 
 		<class>org.woehlke.jakartaee.petclinic.owner.Owner</class>
