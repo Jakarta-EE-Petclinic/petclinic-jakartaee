@@ -3935,7 +3935,7 @@
 									<outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
 									<overwrite>true</overwrite>
 								</configuration>
-								<phase>prepare-package</phase>
+								<phase>process-resources</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
@@ -3951,7 +3951,7 @@
 									<outputDirectory>target/petclinic/WEB-INF</outputDirectory>
 									<overwrite>true</overwrite>
 								</configuration>
-								<phase>prepare-package</phase>
+								<phase>process-resources</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
