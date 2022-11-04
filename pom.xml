@@ -2479,17 +2479,33 @@
 						<artifactId>maven-resources-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>id-persistence-xml</id>
+								<id>id-runtimes-resources</id>
 								<configuration>
 									<resources>
 										<resource>
 											<directory>src/main/runtimes/wildfly/resources/META-INF</directory>
 										</resource>
 									</resources>
-									<outputDirectory>src/main/resources/META-INF</outputDirectory>
+									<outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
 									<overwrite>true</overwrite>
 								</configuration>
-								<phase>clean</phase>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>id-runtimes-webapps</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/runtimes/wildfly/webapp/WEB-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>target/petclinic/WEB-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>prepare-package</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
