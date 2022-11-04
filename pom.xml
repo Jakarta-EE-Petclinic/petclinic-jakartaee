@@ -185,6 +185,23 @@
 			</snapshots>
 		</repository>
 		<repository>
+			<id>payara-nexus-artifacts</id>
+			<url>https://nexus.payara.fish/repository/payara-artifacts</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>staged-jakarta-releases</id>
+			<url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
 			<id>jboss-releases</id>
 			<name>JBoss Releases Repository</name>
 			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
