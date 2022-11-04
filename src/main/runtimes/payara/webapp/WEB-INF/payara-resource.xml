@@ -2,11 +2,12 @@
         "http://docs.payara.fish/schemas/payara-resources_1_7.dtd">
 <resources>
 
-    <jdbc-resource pool-name="PostgresDS"
-                   jndi-name="jdbc/petclinicDS"
-                   object-type="system-all" enabled="yes"/>
+    <jdbc-resource jndi-name="jdbc/petclinicDS"
+                   pool-name="petclinicPool"
+                   object-type="user"
+                   enabled="yes"/>
 
-    <jdbc-connection-pool name="PostgresDS"
+    <jdbc-connection-pool name="petclinicPool"
                           res-type="javax.sql.DataSource"
                           driver-classname="org.postgresql.Driver"
                           datasource-classname="org.postgresql.ds.PGConnectionPoolDataSource">
