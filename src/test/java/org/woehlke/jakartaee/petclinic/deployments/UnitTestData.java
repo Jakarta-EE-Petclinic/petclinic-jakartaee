@@ -23,6 +23,8 @@ public abstract class UnitTestData {
     protected Date dob01 = new Date(2021, 6, 14);;
     protected Date dob02 = new Date(2021, 5, 12);
 
+    protected static Owner owner1 = new Owner();
+
     protected static Pet pet1 = new Pet();
     protected static Pet pet2 = new Pet();
 
@@ -145,17 +147,36 @@ public abstract class UnitTestData {
             day++;
         }
 
+        Owner o = new Owner();
+        o.setUuid(UUID.randomUUID());
+        o.setFirstName("A1 Kurt");
+        o.setLastName("A1 Tucholsky");
+        o.setAddress("Lübecker Straße");
+        o.setHouseNumber("13");
+        o.setCity("Berlin");
+        o.setZipCode("10559");
+        o.setPhoneNumber("+49 30 3946364");
+        o.setEmail("kurt.tucholsky@vistaberlin.de");
+
+        o.setPets(petSet);
+        owner1 = o;
+        for(Pet pet:petSet){
+            pet.setOwner(owner1);
+        }
+        ownerList.add(o);
+
         int i=0;
         int k=0;
         for (String petName : petNames){
             Date dob = dateOfBirthList.get(k);
-            Pet o = new Pet();
-            o.setName(petName);
-            o.setBirthDate(dob);
-            o.setType(petTypeList.get(i));
-            o.setUuid(UUID.randomUUID());
-            petList.add(o);
-            petSet.add(o);
+            Pet pet = new Pet();
+            pet.setName(petName);
+            pet.setBirthDate(dob);
+            pet.setType(petTypeList.get(i));
+            pet.setUuid(UUID.randomUUID());
+            pet.setOwner(owner1);
+            petList.add(pet);
+            petSet.add(pet);
             i++;
             i %= petTypeList.size();
             k++;
@@ -170,16 +191,7 @@ public abstract class UnitTestData {
             vetList.add(v);
         }
 
-        Owner o = new Owner();
-        o.setFirstName("A1 Kurt");
-        o.setLastName("A1 Tucholsky");
-        o.setAddress("Lübecker Straße");
-        o.setHouseNumber("13");
-        o.setCity("Berlin");
-        o.setZipCode("10559");
-        o.setPhoneNumber("+49 30 3946364");
-        o.setEmail("kurt.tucholsky@vistaberlin.de");
-        ownerList.add(o);
+
         o = new Owner();
         o.setFirstName("A2 Heinrich");
         o.setLastName("A2 Heine");
@@ -225,18 +237,20 @@ public abstract class UnitTestData {
 
         for(Owner oo:ownerList){
             oo.setUuid(UUID.randomUUID());
-            oo.setPets(petSet);
+            //oo.setPets(petSet);
         }
 
         pet1.setBirthDate(dateOfBirthList.get(0));
         pet1.setType(petTypeList.get(2));
         pet1.setName(petNames[2]);
         pet1.setUuid(UUID.randomUUID());
+        pet1.setOwner(owner1);
 
         pet2.setBirthDate(dateOfBirthList.get(1));
         pet2.setType(petTypeList.get(3));
         pet2.setName(petNames[3]);
         pet2.setUuid(UUID.randomUUID());
+        pet1.setOwner(owner1);
 
         long index = 0;
         Pet p = petList.get(2);

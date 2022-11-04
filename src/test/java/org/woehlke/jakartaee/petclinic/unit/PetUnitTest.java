@@ -71,11 +71,13 @@ public class PetUnitTest extends UnitTestData {
         o01.setBirthDate(dob01);
         o01.setName(name01);
         o01.setUuid(uuid01);
+        o01.setOwner(owner1);
         Pet o02 = new Pet();
         o02.setType(petType);
         o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid02);
+        o02.setOwner(owner1);
         assertThat(o01.compareTo(o02)!=0);
     }
 
@@ -92,12 +94,14 @@ public class PetUnitTest extends UnitTestData {
         o01.setName(name01);
         o01.setId(id01);
         o01.setUuid(uuid01);
+        o01.setOwner(owner1);
         Pet o02 = new Pet();
         o02.setType(petType);
         o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid02);
         o02.setId(id02);
+        o02.setOwner(owner1);
         assertThat(o01.compareTo(o02)!=0);
     }
 
@@ -111,11 +115,13 @@ public class PetUnitTest extends UnitTestData {
         o01.setBirthDate(dob01);
         o01.setName(name01);
         o01.setUuid(uuid);
+        o01.setOwner(owner1);
         Pet o02 = new Pet();
         o02.setType(petType);
         o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid);
+        o02.setOwner(owner1);
         assertThat(o01.compareTo(o02)!=0);
     }
 
@@ -130,12 +136,14 @@ public class PetUnitTest extends UnitTestData {
         o01.setName(name01);
         o01.setId(id);
         o01.setUuid(uuid);
+        o01.setOwner(owner1);
         Pet o02 = new Pet();
         o02.setType(petType);
         o02.setBirthDate(dob02);
         o02.setName(name02);
         o02.setUuid(uuid);
         o02.setId(id);
+        o02.setOwner(owner1);
         assertThat(o01.compareTo(o02)!=0);
     }
 

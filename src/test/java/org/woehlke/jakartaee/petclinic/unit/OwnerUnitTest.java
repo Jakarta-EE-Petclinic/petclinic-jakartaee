@@ -180,7 +180,8 @@ public class OwnerUnitTest extends UnitTestData {
         pet.setBirthDate((Date)Date.from(Instant.now()));
         pet.setName(petName);
         pet.setUuid(UUID.randomUUID());
-        entity.addPet(pet);
+        pet.setOwner(entity);
+        //entity.addPet(pet);
         pet = entity.getPetsAsList().iterator().next();
         assertThat(petName ==  pet.getName());
     }
