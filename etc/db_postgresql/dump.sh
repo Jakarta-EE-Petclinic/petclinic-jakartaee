@@ -1,0 +1,1 @@
+pg_dump --clean --if-exists --quote-all-identifiers --disable-triggers --inserts --column-inserts  -h localhost -U petclinic_jakartaee -d petclinic_jakartaee_payara > data.sql
