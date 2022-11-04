@@ -5,19 +5,14 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
-import org.woehlke.jakartaee.petclinic.it.ui.*;
+import org.woehlke.jakartaee.petclinic.it.api.RestEndpointIT;
 
 @Log
 @Suite
 @SelectClasses({
-    SpecialtyUiTest.class,
-    VetUiTest.class,
-    PetTypeUiTest.class,
-    OwnerUiTest.class,
-    InformationUiTest.class,
-    TellTheStoryUiTest.class
+        RestEndpointIT.class
 })
-public class UiTestSuite {
+public class RestEndpointSuite {
 
     @BeforeAll
     public void runBeforeSuite(){

@@ -2261,7 +2261,7 @@
 				<defaultGoal>dependency:purge-local-repository clean verify</defaultGoal>
 				<testResources>
 					<testResource>
-						<directory>src/test/resources-arquillian/arq-liberty-managed</directory>
+						<directory>src/test/runtimes/arq-liberty-managed</directory>
 						<includes>
 							<include>*</include>
 						</includes>
@@ -2270,7 +2270,7 @@
 						</excludes>
 					</testResource>
 					<testResource>
-						<directory>src/test/resources-arquillian/arq-liberty-managed</directory>
+						<directory>src/test/runtimes/arq-liberty-managed</directory>
 						<includes>
 							<include>server.xml</include>
 						</includes>
@@ -2686,7 +2686,7 @@
 				<defaultGoal>dependency:purge-local-repository clean package verify</defaultGoal>
 				<testResources>
 					<testResource>
-						<directory>src/test/resources-arquillian/arq-wildfly-managed</directory>
+						<directory>src/test/runtimes/arq-wildfly-managed</directory>
 						<includes>
 							<include>*</include>
 						</includes>
@@ -3662,7 +3662,7 @@
 				<defaultGoal>clean install verify</defaultGoal>
 				<testResources>
 					<testResource>
-						<directory>src/test/resources-arquillian/it-glassfish</directory>
+						<directory>src/test/runtimes/it-glassfish</directory>
 					</testResource>
 				</testResources>
 				<pluginManagement>
@@ -3887,7 +3887,7 @@
 			<build>
 				<testResources>
 					<testResource>
-						<directory>src/test/resources-arquillian/arq-payara-managed</directory>
+						<directory>src/test/runtimes/arq-payara-managed</directory>
 					</testResource>
 				</testResources>
 				<plugins>

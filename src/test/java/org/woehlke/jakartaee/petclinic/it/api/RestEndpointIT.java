@@ -38,7 +38,6 @@ import java.io.StringReader;
 import java.net.URL;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.eclipse.yasson.YassonConfig.ZERO_TIME_PARSE_DEFAULTING;
 
 @Log
 @ExtendWith(ArquillianExtension.class)
