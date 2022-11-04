@@ -66,20 +66,20 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
     public final static String COL_SEARCHINDEX = "searchindex";
     private static final long serialVersionUID = 1007513582768464905L;
 
-    @NotNull
-    @Column(name = COL_BIRTH_DATE, columnDefinition = "DATE", nullable = false)
-    @Temporal(TemporalType.DATE)
-    protected Date birthDate;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = COL_UUID, nullable = false, unique = true)
+    @Column(name = COL_UUID, nullable = false, unique = true, length = 36)
     private UUID uuid;
 
     @Column(name = COL_SEARCHINDEX, nullable = true)
     private String searchindex;
+
+    @NotNull
+    @Column(name = COL_BIRTH_DATE, columnDefinition = "DATE", nullable = false)
+    @Temporal(TemporalType.DATE)
+    protected Date birthDate;
 
     @NotNull
     @NotEmpty

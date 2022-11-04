@@ -108,7 +108,7 @@
 		<version.wildfly-arquillian>5.0.0.Alpha5</version.wildfly-arquillian>
 
 		<!-- Payara -->
-		<version.payara-runtime>6.2022.1.Alpha4</version.payara-runtime>
+		<version.payara-runtime>6.2022.1</version.payara-runtime>
 		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
 		<version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
@@ -3213,7 +3213,7 @@
 							<container>
 								<containerId>payara</containerId>
 								<zipUrlInstaller>
-									<url>https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/6.2022.1.Alpha4/payara-6.2022.1.Alpha4.zip</url>
+									<url>https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/6.2022.1/payara-6.2022.1.zip</url>
 									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
 									<extractDir>${project.build.directory}</extractDir>
 								</zipUrlInstaller>

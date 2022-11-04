@@ -71,7 +71,7 @@ public class Vet extends EntityBaseObject implements EntityBase, Comparable<Vet>
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = COL_UUID, nullable = false, unique = true)
+    @Column(name = COL_UUID, nullable = false, unique = true, length = 36)
     private UUID uuid;
 
     @Column(name = COL_SEARCHINDEX, nullable = true)
