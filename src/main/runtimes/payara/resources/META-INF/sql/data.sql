@@ -82,7 +82,7 @@ ALTER TABLE "public"."owner_pet_visit" ENABLE TRIGGER ALL;
 
 -- ALTER TABLE "public"."sequence" DISABLE TRIGGER ALL;
 
--- INSERT INTO "public"."sequence" ("seq_name", "seq_count") VALUES ('SEQ_GEN', 50);
+-- INSERT INTO "public"."sequence" ("seq_name", "seq_count") VALUES ('SEQ_GEN', 0);
 
 
 -- ALTER TABLE "public"."sequence" ENABLE TRIGGER ALL;
