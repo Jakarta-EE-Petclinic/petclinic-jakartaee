@@ -9,6 +9,11 @@
 -- Data for Name: owner; Type: TABLE DATA; Schema: public; Owner: petclinic_jakartaee
 --
 
+
+VACUUM ;
+
+BEGIN TRANSACTION;
+
 INSERT INTO public.owner VALUES (24, 'Glatzer Str.', '', 'Berlin', 'thomas.woehlke@gmail.com', 'Thomas', '5a', 'Wöhlke', '+493052007953', ' Thomas W hlke Glatzer Str 5a 10247 Berlin  493052007953 thomas woehlke gmail com ', '\xaced00057372000e6a6176612e7574696c2e55554944bc9903f7986d852f0200024a000c6c65617374536967426974734a000b6d6f73745369674269747378708d42fba9f1d6425ecb0fb9187b054a46', '10247');
 INSERT INTO public.owner VALUES (25, 'Hill Drive', 'Auf dem Schrottplatz von Titus Jonas', 'Rocky Beach', 'thomas.woehlke@rub.de', 'Justus', '128', 'Jonas', '+4923452007953', 'Auf dem Schrottplatz von Titus Jonas Justus Jonas Hill Drive 128 99777 Rocky Beach  4923452007953 thomas woehlke rub de ', '\xaced00057372000e6a6176612e7574696c2e55554944bc9903f7986d852f0200024a000c6c65617374536967426974734a000b6d6f7374536967426974737870a045abbabafb4ac175ca895792164357', '99777');
 
@@ -95,6 +100,7 @@ INSERT INTO public.vet_specialties VALUES (22, 21);
 INSERT INTO public.vet_specialties VALUES (22, 17);
 INSERT INTO public.vet_specialties VALUES (23, 20);
 
+COMMIT
 
 --
 -- PostgreSQL database dump complete

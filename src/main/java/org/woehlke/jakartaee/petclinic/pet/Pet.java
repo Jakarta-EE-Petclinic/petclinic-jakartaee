@@ -146,6 +146,13 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
 
     @Override
     public int compareTo(Pet o) {
-        return this.getBirthDate().compareTo(o.getBirthDate());
+       if(this.equals(o)) {
+           return 0;
+       } else {
+           return this.name.compareTo(o.name) +
+                   10 * this.birthDate.compareTo(o.birthDate) +
+                   100 * this.type.compareTo(o.type) +
+                   1000 * this.owner.compareTo(o.owner);
+       }
     }
 }
