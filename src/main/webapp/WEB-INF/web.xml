@@ -33,7 +33,7 @@
 
     <context-param>
         <param-name>org.apache.myfaces.LOG_WEB_CONTEXT_PARAMS</param-name>
-        <param-value>false</param-value>
+        <param-value>true</param-value>
     </context-param>
 
     <context-param>
@@ -42,25 +42,8 @@
     </context-param>
 
     <context-param>
-        <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+        <param-name>jakarta.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
         <param-value>true</param-value>
     </context-param>
-
-    <!--
-    <data-source>
-        <name>jdbc/petclinicDS</name>
-        <class-name>org.postgresql.Driver</class-name>
-        <transactional>true</transactional>
-        <url>jdbc:postgresql://localhost:5432/petclinic_jakartaee</url>
-        <user>petclinic_jakartaee</user>
-        <password>petclinic_jakartaeepwd</password>
-        <min-pool-size>4</min-pool-size>
-        <max-pool-size>64</max-pool-size>
-        <property>
-            <name>fish.payara.is-connection-validation-required</name>
-            <value>true</value>
-        </property>
-    </data-source>
-    -->
 
 </web-app>
