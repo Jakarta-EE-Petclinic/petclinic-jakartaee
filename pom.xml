@@ -2738,20 +2738,35 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
-						<version>${version.maven-resources-plugin}</version>
 						<executions>
 							<execution>
-								<id>id-persistence-xml</id>
+								<id>id-runtimes-resources</id>
 								<configuration>
 									<resources>
 										<resource>
 											<directory>src/main/runtimes/wildfly/resources/META-INF</directory>
 										</resource>
 									</resources>
-									<outputDirectory>src/main/resources/META-INF</outputDirectory>
+									<outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
 									<overwrite>true</overwrite>
 								</configuration>
-								<phase>clean</phase>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>id-runtimes-webapps</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/runtimes/wildfly/webapp/WEB-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>target/petclinic/WEB-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>prepare-package</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
@@ -3198,17 +3213,33 @@
 						<artifactId>maven-resources-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>id-persistence-xml</id>
+								<id>id-runtimes-resources</id>
 								<configuration>
 									<resources>
 										<resource>
 											<directory>src/main/runtimes/payara/resources/META-INF</directory>
 										</resource>
 									</resources>
-									<outputDirectory>src/main/resources/META-INF</outputDirectory>
+									<outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
 									<overwrite>true</overwrite>
 								</configuration>
-								<phase>clean</phase>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>id-runtimes-webapps</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/runtimes/payara/webapp/WEB-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>target/petclinic/WEB-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>prepare-package</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
@@ -3835,13 +3866,11 @@
 							</configuration>
 						</configuration>
 					</plugin>
-					<!--
 					<plugin>
-						<groupId>org.omnifaces.arquillian</groupId>
-						<artifactId>arquillian-glassfish-server-managed</artifactId>
-						<version>1.2</version>
+						<groupId>fish.payara.arquillian</groupId>
+						<artifactId>arquillian-payara-server-managed</artifactId>
+						<version>3.0.alpha7</version>
 					</plugin>
-					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
@@ -3862,28 +3891,12 @@
 				<skip.integration.tests>false</skip.integration.tests>
 			</properties>
 			<dependencies>
-				<!--
-				<dependency>
-					<groupId>fish.payara.arquillian</groupId>
-					<artifactId>payara-client-ee9</artifactId>
-					<version>${version.arquillian-payara}</version>
-					<scope>test</scope>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
 					<artifactId>arquillian-payara-server-managed</artifactId>
 					<version>${version.arquillian-payara}</version>
 					<scope>test</scope>
 				</dependency>
-				<!--
-				<dependency>
-					<groupId>org.omnifaces.arquillian</groupId>
-					<artifactId>arquillian-glassfish-server-managed</artifactId>
-					<version>1.2</version>
-					<scope>test</scope>
-				</dependency>
-				-->
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
 					<artifactId>environment-setup</artifactId>
@@ -3907,6 +3920,68 @@
 					</testResource>
 				</testResources>
 				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>id-runtimes-resources</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/runtimes/payara/resources/META-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>id-runtimes-webapps</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/runtimes/payara/webapp/WEB-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>target/petclinic/WEB-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>default-resources</id>
+								<configuration>
+									<propertiesEncoding>UTF-8</propertiesEncoding>
+									<resources>
+										<resource>
+											<directory>src/main/resources</directory>
+											<includes>
+												<include>**/Messages.properties</include>
+												<include>**/Messages_de.properties</include>
+												<include>**/Messages_en.properties</include>
+											</includes>
+										</resource>
+										<resource>
+											<directory>src/main/runtimes/payara/resources</directory>
+										</resource>
+									</resources>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>resources</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
@@ -3933,13 +4008,11 @@
 							</execution>
 						</executions>
 					</plugin>
-					<!--
 					<plugin>
-						<groupId>org.omnifaces.arquillian</groupId>
-						<artifactId>arquillian-glassfish-server-managed</artifactId>
-						<version>1.2</version>
+				    	<groupId>fish.payara.arquillian</groupId>
+    					<artifactId>arquillian-payara-server-managed</artifactId>
+						<version>3.0.alpha7</version>
 					</plugin>
-					-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
