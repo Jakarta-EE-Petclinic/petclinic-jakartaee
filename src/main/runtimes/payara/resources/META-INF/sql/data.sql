@@ -56,6 +56,7 @@ ALTER TABLE "public"."owner_pet_type" ENABLE TRIGGER ALL;
 ALTER TABLE "public"."owner_pet" DISABLE TRIGGER ALL;
 
 INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (1, '2019-03-14', 'Tom', 'Tom ', 'c83b2da6-8393-4e44-a53f-6a4d7dbbbc63', 2, 8);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (2, '2022-11-04', ' lkjhbjhvbghvghkvghv', ' lkjhbjhvbghvghkvghv ', 'ca9f8b19-b6bf-479c-bf9d-cb054a1e45ee', 2, 12);
 
 
 ALTER TABLE "public"."owner_pet" ENABLE TRIGGER ALL;
@@ -67,6 +68,10 @@ ALTER TABLE "public"."owner_pet" ENABLE TRIGGER ALL;
 ALTER TABLE "public"."owner_pet_visit" DISABLE TRIGGER ALL;
 
 INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (2, '2022-11-04', 'Routine', '2022 11 03T23 00 00Z Routine ', '2f8e4031-22f0-4467-9346-609b44a9d7e8', 1);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (1, '2022-11-14', 'Routine', '2022 11 13T23 00 00Z Routine ', '9ed3402d-a15c-47b9-95c4-abd2fec2a190', 1);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (3, '2022-11-13', 'Routine ASDQWER', '2022 11 12T23 00 00Z Routine ASDQWER ', '4e403885-317a-4c27-ae53-d997af99a770', 2);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (4, '2022-11-01', 'Routine KO', '2022 10 31T23 00 00Z Routine KO ', '6256900e-15ad-4700-b471-03dc8c407370', 1);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (5, '2022-08-12', 'Routine ASDQWER JOLO', '2022 08 11T22 00 00Z Routine ASDQWER JOLO ', '85bfc34a-d3b7-4c86-b672-e79da913835a', 1);
 
 
 ALTER TABLE "public"."owner_pet_visit" ENABLE TRIGGER ALL;
@@ -77,7 +82,7 @@ ALTER TABLE "public"."owner_pet_visit" ENABLE TRIGGER ALL;
 
 -- ALTER TABLE "public"."sequence" DISABLE TRIGGER ALL;
 
--- INSERT INTO "public"."sequence" ("seq_name", "seq_count") VALUES ('SEQ_GEN', 0);
+-- INSERT INTO "public"."sequence" ("seq_name", "seq_count") VALUES ('SEQ_GEN', 50);
 
 
 -- ALTER TABLE "public"."sequence" ENABLE TRIGGER ALL;
