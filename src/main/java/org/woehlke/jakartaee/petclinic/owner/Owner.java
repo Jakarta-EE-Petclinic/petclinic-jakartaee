@@ -51,6 +51,10 @@ import java.util.*;
         @NamedQuery(
                 name = "Owner.getAll",
                 query = "select o from Owner o order by o.lastName,o.firstName"
+        ),
+        @NamedQuery(
+                name = "Owner.search",
+                query = "select o from Owner o where o.searchindex like :searchterm order by o.lastName,o.firstName"
         )
 })
 @EntityListeners(OwnerListener.class)

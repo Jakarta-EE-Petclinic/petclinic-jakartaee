@@ -88,7 +88,7 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
     }
 
     @Override
-    public void delete(long id) {
+    public void deletePrepare(long id) {
         Owner owner = this.ownerDao.findById(id);
         for (Pet pet: this.getPetsAsList(owner)){
             for(Visit visit:petDao.getVisits(pet)){
@@ -97,7 +97,11 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
             petDao.delete(pet.getId());
         }
         log.info("delete Owner: " + id);
-        this.ownerDao.delete(owner.getId());
+    }
+
+    @Override
+    public void delete(long id) {
+        this.ownerDao.delete(id);
     }
 
     @Override
@@ -120,15 +124,12 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
     }
 
     private Owner updateSearchindex(Owner owner) {
-        /*
-        TODO
-        for(Pet p:owner.getPetsAsList()){
-            for(Visit v:p.getVisits()){
-                this.visitDao.update(v);
+        for(Pet pet:this.petDao.getPetsAsList(owner)){
+            for(Visit visit:visitDao.getVisits(pet)){
+                this.visitDao.update(visit);
             }
-            this.petDao.update(p);
+            this.petDao.update(pet);
         }
-         */
         return owner;
     }
 

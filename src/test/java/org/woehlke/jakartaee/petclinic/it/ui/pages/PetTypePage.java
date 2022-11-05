@@ -10,6 +10,7 @@ import java.util.Map;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Location;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
@@ -147,7 +148,10 @@ public class PetTypePage implements CrudFlowStatePage {
     }
 
     public PetTypePage clickSaveDeleteButton() {
-        Graphene.guardHttp(saveDeleteButton).click();
+        saveDeleteButton.sendKeys(Keys.DOWN);
+        saveDeleteButton.sendKeys(Keys.END);
+        saveDeleteButton.sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(saveDeleteButton).click();
         return this;
     }
 

@@ -1,8 +1,6 @@
 package org.woehlke.jakartaee.petclinic.owner.db;
 
 
-import jakarta.ejb.PostActivate;
-import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
@@ -12,7 +10,6 @@ import jakarta.annotation.PreDestroy;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import java.io.Serializable;
 import java.util.*;
@@ -36,8 +33,7 @@ public class OwnerDaoImpl implements OwnerDao, Serializable {
 
     @Override
     public List<Owner> getAll() {
-        String jpaQuery = "select o from Owner o order by o.lastName, o.firstName";
-        TypedQuery<Owner> q = entityManager.createQuery(jpaQuery, Owner.class);
+        TypedQuery<Owner> q = entityManager.createNamedQuery("Owner.getAll", Owner.class);
         return q.getResultList();
     }
 
@@ -103,8 +99,7 @@ public class OwnerDaoImpl implements OwnerDao, Serializable {
     @Override
     public List<Owner> search(String searchterm) {
         log.info("search Owner: " + searchterm);
-        String qlString = "select v from Owner v where v.searchindex like :searchterm";
-        TypedQuery<Owner> q = entityManager.createQuery(qlString, Owner.class);
+        TypedQuery<Owner> q = entityManager.createNamedQuery("Owner.search", Owner.class);
         q.setParameter("searchterm", "%" + searchterm + "%");
         List<Owner> list = q.getResultList();
         return list;

@@ -15,8 +15,8 @@ import org.woehlke.jakartaee.petclinic.it.ui.*;
     SpecialtyUiTest.class,
     VetUiTest.class,
     PetTypeUiTest.class,
-    OwnerUiTest.class,
-    InformationUiTest.class//,
+    OwnerUiTest.class//,
+    //InformationUiTest.class//,
     //TellTheStoryUiTest.class
 })
 public class UiTestSuite {

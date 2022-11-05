@@ -197,6 +197,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
             long id = this.entity.getId();
             String uuid = this.entity.getUuid().toString();
             String selectedPrimaryKey = this.entity.getPrimaryKey() + "(" + id + "," + uuid + ")";
+            entityService.deletePrepare(id);
             entityService.delete(id);
             this.entity = null;
             this.ownerFlowView.setFlowStateList();

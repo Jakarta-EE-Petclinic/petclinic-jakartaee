@@ -158,7 +158,6 @@ public abstract class UnitTestData {
         o.setPhoneNumber("+49 30 3946364");
         o.setEmail("kurt.tucholsky@vistaberlin.de");
 
-        //o.setPets(petSet);
         owner1 = o;
         for(Pet pet:petSet){
             pet.setOwner(owner1);
@@ -191,8 +190,8 @@ public abstract class UnitTestData {
             vetList.add(v);
         }
 
-
         o = new Owner();
+        o.setUuid(UUID.randomUUID());
         o.setFirstName("A2 Heinrich");
         o.setLastName("A2 Heine");
         o.setAddress("Bolkerstraße");
@@ -203,6 +202,7 @@ public abstract class UnitTestData {
         o.setEmail("heinrich.heine@heinehaus.de");
         ownerList.add(o);
         o = new Owner();
+        o.setUuid(UUID.randomUUID());
         o.setFirstName("A3 Alan");
         o.setLastName("A3 Turing");
         o.setAddress("Bletchley Park");
@@ -213,6 +213,7 @@ public abstract class UnitTestData {
         o.setEmail("alan.turing@tnmoc.org");
         ownerList.add(o);
         o = new Owner();
+        o.setUuid(UUID.randomUUID());
         o.setFirstName("A4 Grace");
         o.setLastName("A4 Hopper");
         o.setAddress("St Ronan St");
@@ -224,6 +225,7 @@ public abstract class UnitTestData {
         o.setEmail("grace.hopper@yale.edu");
         ownerList.add(o);
         o = new Owner();
+        o.setUuid(UUID.randomUUID());
         o.setFirstName("A5 Mahatma");
         o.setLastName("A5 Ghandi");
         o.setAddress("Sevagram");
@@ -234,11 +236,6 @@ public abstract class UnitTestData {
         o.setPhoneNumber("+91 7152 284753");
         o.setEmail("mahatma.ghandi@gandhiashramsevagram.org");
         ownerList.add(o);
-
-        for(Owner oo:ownerList){
-            oo.setUuid(UUID.randomUUID());
-            //oo.setPets(petSet);
-        }
 
         pet1.setBirthDate(dateOfBirthList.get(0));
         pet1.setType(petTypeList.get(2));

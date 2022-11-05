@@ -22,4 +22,5 @@ public interface OwnerService extends CrudService<Owner>, SearchableService<Owne
 
     String getPetsAsString(@NotNull Owner owner);
 
+    void deletePrepare(long id);
 }
