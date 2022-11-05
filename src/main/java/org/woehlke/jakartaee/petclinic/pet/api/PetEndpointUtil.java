@@ -12,9 +12,11 @@ import jakarta.xml.bind.Marshaller;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pet.db.PetService;
+import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeDto;
 import org.woehlke.jakartaee.petclinic.pettype.api.PetTypeEndpointUtil;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.visit.api.VisitEndpointUtil;
+import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;
 
 import java.io.Serializable;
 import java.io.StringWriter;
@@ -43,16 +45,18 @@ public class PetEndpointUtil implements Serializable {
         dto.setUuid(pet.getUuid());
         dto.setBirthDate(pet.getBirthDate());
         dto.setName(pet.getName());
-        dto.setPetType(this.petTypeEndpointUtil.dtoFactory(pet.getType()));
+        PetTypeDto oPetTypeDto =this.petTypeEndpointUtil.dtoFactory(pet.getType());
+        dto.setPetType(oPetTypeDto);
         List<Visit> visitList = petService.getVisits(pet);
-        dto.setVisitList(this.visitEndpointUtil.dtoListFactory(visitList));
+        VisitListDto oVisitListDto =this.visitEndpointUtil.dtoListFactory(visitList);
+        dto.setVisitList(oVisitListDto);
         return dto;
     }
 
     public PetListDto dtoListFactory(List<Pet> petList) {
         List<PetDto> dtoList = new ArrayList<>();
-        for (Pet e : petList) {
-            PetDto dto = this.dtoFactory(e);
+        for (Pet pet : petList) {
+            PetDto dto = this.dtoFactory(pet);
             dtoList.add(dto);
         }
         return new PetListDto(dtoList);

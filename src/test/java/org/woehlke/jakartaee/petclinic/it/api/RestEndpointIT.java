@@ -13,12 +13,11 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.extern.java.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.woehlke.jakartaee.petclinic.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerDto;
@@ -41,6 +40,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log
 @ExtendWith(ArquillianExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RestEndpointIT {
 
     @Deployment(testable = false)
@@ -56,7 +56,7 @@ public class RestEndpointIT {
     @BeforeEach
     public void setup() {
         log.info("------------------------------------------------------------");
-        log.info(" call BeforeEach");
+        log.info(" call BeforeAll");
         log.info("------------------------------------------------------------");
         this.client = ClientBuilder.newClient();
     }
@@ -64,7 +64,7 @@ public class RestEndpointIT {
     @AfterEach
     public void teardown() {
         log.info("------------------------------------------------------------");
-        log.info(" call AfterEach");
+        log.info(" call AfterAll");
         log.info("------------------------------------------------------------");
         if (this.client != null) {
             this.client.close();
@@ -77,6 +77,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(1)
     public void testGetSpecialtyListJson() {
         log.info("------------------------------------------------------------");
         log.info(" testGetSpecialtyListJson:  ");
@@ -105,6 +106,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(2)
     public void testGetSpecialtyListXml() throws JAXBException {
         log.info("------------------------------------------------------------");
         log.info(" testGetSpecialtyListXml:  ");
@@ -134,6 +136,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(3)
     public void testGetPetTypeListJson() {
         log.info("------------------------------------------------------------");
         log.info(" testGetPetTypeListJson:  ");
@@ -161,6 +164,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(4)
     public void testGetPetTypeListXml() throws JAXBException {
         log.info("------------------------------------------------------------");
         log.info(" testGetPetTypeListXml:  ");
@@ -190,6 +194,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(5)
     public void testGetVetListJson() {
         log.info("------------------------------------------------------------");
         log.info(" testGetVetListJson:  ");
@@ -216,6 +221,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(6)
     public void testGetVetListXml() throws JAXBException {
         log.info("------------------------------------------------------------");
         log.info(" testGetVetListXml:  ");
@@ -244,6 +250,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(7)
     public void testGetVisitListJson() {
         log.info("------------------------------------------------------------");
         log.info(" testGetVisitListJson:  ");
@@ -272,6 +279,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(8)
     public void testGetVisitListXml() throws JAXBException {
         log.info("------------------------------------------------------------");
         log.info(" testGetVisitListXml:  ");
@@ -301,6 +309,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(9)
     public void testGetPetListJson() {
         log.info("------------------------------------------------------------");
         log.info(" testGetPetListJson:  ");
@@ -313,14 +322,21 @@ public class RestEndpointIT {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(endpoint);
         Response response = target.request().get();
+        log.info("------------------------------------------------------------");
         assertHttpStatus200(response);
+        log.info("------------------------------------------------------------");
         String json = response.readEntity(String.class);
+        log.info("------------------------------------------------------------");
+        /*
         PetListDto petTypeListDto = jsonb.fromJson(json, PetListDto.class);
         for(PetDto dto: petTypeListDto.getPet()){
           log.info("fetched dto: "+dto.toString());
         }
+        */
         json = "\n\n" + json +  "\n\n";
+        log.info("============================================================");
         log.info(json);
+        log.info("============================================================");
         response.close();
         client.close();
         log.info("------------------------------------------------------------");
@@ -329,6 +345,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(10)
     public void testGetPetListXml() throws JAXBException {
         log.info("------------------------------------------------------------");
         log.info(" testGetPetListXml:  ");
@@ -339,17 +356,23 @@ public class RestEndpointIT {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(endpoint);
         Response response = target.request().get();
+        log.info("------------------------------------------------------------");
         assertHttpStatus200(response);
+        log.info("------------------------------------------------------------");
         String xml = response.readEntity(String.class);
+        log.info("------------------------------------------------------------");
         JAXBContext jc = JAXBContext.newInstance(PetListDto.class);
         Unmarshaller m = jc.createUnmarshaller();
         StringReader r  = new StringReader(xml);
         PetListDto o = (PetListDto) m.unmarshal(r);
+        log.info("------------------------------------------------------------");
         for(PetDto dto: o.getPet()){
             log.info("fetched dto: "+dto.toString());
         }
+        log.info("------------------------------------------------------------");
         xml = "\n\n" + xml +  "\n\n";
         log.info(xml);
+        log.info("------------------------------------------------------------");
         response.close();
         client.close();
         log.info("------------------------------------------------------------");
@@ -358,6 +381,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(10)
     public void testGetOwnerListJson() {
         log.info("------------------------------------------------------------");
         log.info(" testGetOwnerListJson:  ");
@@ -370,14 +394,20 @@ public class RestEndpointIT {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(endpoint);
         Response response = target.request().get();
+        log.info("------------------------------------------------------------");
         assertHttpStatus200(response);
+        log.info("------------------------------------------------------------");
         String json = response.readEntity(String.class);
+        log.info("------------------------------------------------------------");
         OwnerListDto ownerListDto = jsonb.fromJson(json, OwnerListDto.class);
+        log.info("------------------------------------------------------------");
         for(OwnerDto dto: ownerListDto.getOwner()){
             log.info("fetched dto: "+dto.toString());
         }
         json = "\n\n" + json +  "\n\n";
+        log.info("------------------------------------------------------------");
         log.info(json);
+        log.info("------------------------------------------------------------");
         response.close();
         client.close();
         log.info("------------------------------------------------------------");
@@ -386,6 +416,7 @@ public class RestEndpointIT {
     }
 
     @Test
+    @InSequence(11)
     public void testGetOwnerListXml() throws JAXBException {
         log.info("------------------------------------------------------------");
         log.info(" testGetOwnerListXml:  ");
@@ -396,7 +427,9 @@ public class RestEndpointIT {
         WebTarget target = client.target(endpoint);
         Response response = target.request().get();
         assertHttpStatus200(response);
+        log.info("------------------------------------------------------------");
         String xml = response.readEntity(String.class);
+        log.info("------------------------------------------------------------");
         JAXBContext jc = JAXBContext.newInstance(OwnerListDto.class);
         Unmarshaller m = jc.createUnmarshaller();
         StringReader r  = new StringReader(xml);
@@ -405,7 +438,9 @@ public class RestEndpointIT {
             log.info("fetched dto: "+dto.toString());
         }
         xml = "\n\n" + xml +  "\n\n";
+        log.info("------------------------------------------------------------");
         log.info(xml);
+        log.info("------------------------------------------------------------");
         response.close();
         client.close();
         log.info("------------------------------------------------------------");
