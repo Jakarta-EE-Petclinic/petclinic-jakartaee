@@ -765,7 +765,7 @@
                                 <p:dataTable
                                         id="deletePetsAndVisitsTable"
                                         styleClass="table"
-                                        value="#{ownerView.getPetsAsList}"
+                                        value="#{ownerView.getPetsAsList(ownerView.entity)}"
                                         var="ownersPet"
                                         rowKey="#{ownersPet.id}"
                                         scrollable="true"
