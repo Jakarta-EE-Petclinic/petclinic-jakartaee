@@ -57,7 +57,8 @@ public class Specialty extends EntityBaseObject implements EntityBase,Comparable
     private static final long serialVersionUID = -836560513920170089L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "specialty_gen")
+    @SequenceGenerator(name="specialty_gen", sequenceName="specialty_seq")
     private Long id;
 
     @Column(name = COL_UUID, nullable = false, unique = true, length = 36)

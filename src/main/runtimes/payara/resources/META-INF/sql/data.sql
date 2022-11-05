@@ -10,7 +10,7 @@ SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
--- SELECT pg_catalog.set_config('search_path', '', false);
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
@@ -45,6 +45,7 @@ INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALU
 INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (14, 'Snake', 'Snake ', '5049db12-e8ec-4478-bae8-6cc047c629f6');
 INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (15, 'Shepards Dog', 'Shepards Dog ', '3949d83e-c4a4-4396-a4ca-bf58c3737cff');
 INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (16, 'Spider', 'Spider ', 'a27347e4-eebc-4c66-b524-263ba41e4d1f');
+INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (51, '01 sdas dasdas dasda das das dsa dsa  asddasasd', '01 sdas dasdas dasda das das dsa dsa  asddasasd ', '190a408a-b341-4da8-8398-661bddf883ad');
 
 
 ALTER TABLE "public"."owner_pet_type" ENABLE TRIGGER ALL;
@@ -56,7 +57,9 @@ ALTER TABLE "public"."owner_pet_type" ENABLE TRIGGER ALL;
 ALTER TABLE "public"."owner_pet" DISABLE TRIGGER ALL;
 
 INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (1, '2019-03-14', 'Tom', 'Tom ', 'c83b2da6-8393-4e44-a53f-6a4d7dbbbc63', 2, 8);
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (2, '2022-11-04', ' lkjhbjhvbghvghkvghv', ' lkjhbjhvbghvghkvghv ', 'ca9f8b19-b6bf-479c-bf9d-cb054a1e45ee', 2, 12);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (3, '2021-01-10', 'Tom', 'Tom ', '11b50634-227d-43d4-a188-a8aafe344825', 1, 15);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (4, '2021-07-11', 'Tom', 'Tom ', '7d452b17-e8a7-4d27-8def-99a0a964acb6', 1, 12);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (2, '2022-11-04', '01  lkjhbjhvbghvghkvghv', ' lkjhbjhvbghvghkvghv ', 'ca9f8b19-b6bf-479c-bf9d-cb054a1e45ee', 2, 12);
 
 
 ALTER TABLE "public"."owner_pet" ENABLE TRIGGER ALL;
@@ -75,17 +78,6 @@ INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "sear
 
 
 ALTER TABLE "public"."owner_pet_visit" ENABLE TRIGGER ALL;
-
---
--- Data for Name: sequence; Type: TABLE DATA; Schema: public; Owner: -
---
-
--- ALTER TABLE "public"."sequence" DISABLE TRIGGER ALL;
-
--- INSERT INTO "public"."sequence" ("seq_name", "seq_count") VALUES ('SEQ_GEN', 0);
-
-
--- ALTER TABLE "public"."sequence" ENABLE TRIGGER ALL;
 
 --
 -- Data for Name: specialty; Type: TABLE DATA; Schema: public; Owner: -
@@ -133,6 +125,48 @@ INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (18, 5)
 
 
 ALTER TABLE "public"."vet_specialties" ENABLE TRIGGER ALL;
+
+--
+-- Name: owner_pet_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."owner_pet_seq"', 50, true);
+
+
+--
+-- Name: owner_pet_type_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."owner_pet_type_seq"', 100, true);
+
+
+--
+-- Name: owner_pet_visit_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."owner_pet_visit_seq"', 50, true);
+
+
+--
+-- Name: owner_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."owner_seq"', 50, false);
+
+
+--
+-- Name: specialty_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."specialty_seq"', 100, true);
+
+
+--
+-- Name: vet_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."vet_seq"', 50, true);
+
 
 --
 -- PostgreSQL database dump complete

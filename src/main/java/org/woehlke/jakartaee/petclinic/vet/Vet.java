@@ -68,7 +68,8 @@ public class Vet extends EntityBaseObject implements EntityBase, Comparable<Vet>
     public final static String COL_SEARCHINDEX = "searchindex";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vet_gen")
+    @SequenceGenerator(name="vet_gen", sequenceName="vet_seq")
     private Long id;
 
     @Column(name = COL_UUID, nullable = false, unique = true, length = 36)

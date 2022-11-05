@@ -65,7 +65,8 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
     private static final long serialVersionUID = 2357446696894656827L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "owner_pet_visit_gen")
+    @SequenceGenerator(name="owner_pet_visit_gen", sequenceName="owner_pet_visit_seq")
     private Long id;
 
     @Column(name = COL_UUID, nullable = false, unique = true, length = 36)

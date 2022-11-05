@@ -72,7 +72,8 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
     private static final long serialVersionUID = 7995827646591579744L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "owner_gen")
+    @SequenceGenerator(name="owner_gen", sequenceName="owner_seq")
     private Long id;
 
     @Column(name = COL_UUID, nullable = false, unique = true, length = 36)

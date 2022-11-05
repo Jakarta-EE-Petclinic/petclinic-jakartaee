@@ -59,7 +59,8 @@ public class PetType extends EntityBaseObject implements EntityBase, Comparable<
     private static final long serialVersionUID = -2213412509142145275L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "owner_pet_type_gen")
+    @SequenceGenerator(name="owner_pet_type_gen", sequenceName="owner_pet_type_seq")
     private Long id;
 
     @Column(name = COL_UUID, nullable = false, unique = true, length = 36)
