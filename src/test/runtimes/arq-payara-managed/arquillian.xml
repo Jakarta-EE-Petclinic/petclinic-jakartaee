@@ -15,9 +15,11 @@
             <property name="allowConnectingToRunningServer">true</property>
             <property name="adminHost">localhost</property>
             <property name="adminPort">4848</property>
-            <property name="enableH2">${enableH2:true}</property>
+            <property name="enableH2">false</property>
             <property name="outputToConsole">true</property>
+            <!--
             <property name="adminPassword">adminadmin</property>
+            -->
         </configuration>
     </container>
 
