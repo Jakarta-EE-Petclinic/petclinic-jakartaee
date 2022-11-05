@@ -13,8 +13,11 @@ import org.woehlke.jakartaee.petclinic.owner.api.OwnerDto;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerListDto;
 import org.woehlke.jakartaee.petclinic.owner.db.OwnerService;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerEndpointUtil;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
+import org.woehlke.jakartaee.petclinic.pet.api.PetEndpointUtil;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -29,7 +32,8 @@ public class OwnerEndpoint implements Serializable {
     @EJB
     private OwnerService ownerService;
 
-    private final OwnerEndpointUtil ownerEndpointUtil = new OwnerEndpointUtil();
+    @EJB
+    private OwnerEndpointUtil ownerEndpointUtil;
 
     @GET
     @Path("/list")
@@ -44,7 +48,9 @@ public class OwnerEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public OwnerDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return ownerEndpointUtil.dtoFactory(ownerService.findById(id));
+        Owner owner = ownerService.findById(id);
+        OwnerDto dto = ownerEndpointUtil.dtoFactory(owner);
+        return dto;
     }
 
     @GET

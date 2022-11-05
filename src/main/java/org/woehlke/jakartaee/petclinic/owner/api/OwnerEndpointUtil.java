@@ -1,6 +1,8 @@
 package org.woehlke.jakartaee.petclinic.owner.api;
 
 
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbException;
@@ -9,6 +11,8 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
+import org.woehlke.jakartaee.petclinic.owner.db.OwnerService;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pet.api.PetEndpointUtil;
 
 import java.io.Serializable;
@@ -18,11 +22,16 @@ import java.util.List;
 
 
 @Log
+@Stateless
 public class OwnerEndpointUtil implements Serializable {
 
     private static final long serialVersionUID = 532726561254887897L;
 
+    @EJB
     private final PetEndpointUtil petEndpointUtil = new PetEndpointUtil();
+
+    @EJB
+    private OwnerService ownerService;
 
     public OwnerDto dtoFactory(Owner o) {
         OwnerDto dto = new OwnerDto();
@@ -36,7 +45,8 @@ public class OwnerEndpointUtil implements Serializable {
         dto.setCity(o.getCity());
         dto.setZipCode(o.getZipCode());
         dto.setPhoneNumber(o.getPhoneNumber());
-        dto.setPetList(this.petEndpointUtil.dtoListFactory(o.getPetsAsList()));
+        List<Pet> petList = ownerService.getPetsAsList(o);
+        dto.setPetList(this.petEndpointUtil.dtoListFactory(petList));
         return dto;
     }
 

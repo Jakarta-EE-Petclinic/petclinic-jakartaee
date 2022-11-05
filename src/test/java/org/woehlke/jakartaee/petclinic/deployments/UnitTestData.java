@@ -158,7 +158,7 @@ public abstract class UnitTestData {
         o.setPhoneNumber("+49 30 3946364");
         o.setEmail("kurt.tucholsky@vistaberlin.de");
 
-        o.setPets(petSet);
+        //o.setPets(petSet);
         owner1 = o;
         for(Pet pet:petSet){
             pet.setOwner(owner1);

@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.specialty.api;
 
+import jakarta.ejb.Stateless;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbException;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log
+@Stateless
 public class SpecialtyEndpointUtil implements Serializable {
 
     private static final long serialVersionUID = 607664665910620584L;
@@ -35,7 +37,6 @@ public class SpecialtyEndpointUtil implements Serializable {
         }
         return new SpecialtyListDto(dtoList);
     }
-
 
     public String dtoJsonFactory(SpecialtyDto dto) throws JsonbException {
         Jsonb jsonb = JsonbBuilder.create();

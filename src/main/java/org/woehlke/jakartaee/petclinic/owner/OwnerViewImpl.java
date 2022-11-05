@@ -142,6 +142,16 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     }
 
     @Override
+    public List<Pet> getPetsAsList() {
+        return entityService.getPetsAsList(this.entity);
+    }
+
+    @Override
+    public String getPetsAsString() {
+        return entityService.getPetsAsString(this.entity);
+    }
+
+    @Override
     public String cancelEdited() {
         log.info("cancelEdited");
         this.ownerFlowView.setFlowStateDetails();
@@ -217,7 +227,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
             PetType petType = petTypeService.findById(this.petTypeId);
             this.pet.setUuid(UUID.randomUUID());
             this.pet.setType(petType);
-            this.entity.addPet(this.pet);
+            //this.entity.addPet(this.pet);
             this.pet.setOwner(this.entity);
             this.pet = petService.addNew(this.pet);
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
@@ -305,7 +315,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
                 this.pet = petService.findById(rowPet.getId());
                 this.petTypeId = this.pet.getType().getId();
                 this.visit.setPet(this.pet);
-                this.pet.addVisit(this.visit);
+                //this.pet.addVisit(this.visit);
                 this.visit = this.visitService.addNew(this.visit);
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);

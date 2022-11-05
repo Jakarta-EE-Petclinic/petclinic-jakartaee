@@ -33,7 +33,8 @@ public class VetEndpoint implements Serializable {
     @EJB
     private VetService vetService;
 
-    private final VetEndpointUtil vetEndpointUtil = new VetEndpointUtil();
+    @EJB
+    private VetEndpointUtil vetEndpointUtil;
 
     @GET
     @Path("/list")

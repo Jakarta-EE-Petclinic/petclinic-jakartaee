@@ -97,23 +97,9 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
     @JoinColumn(name = COL_OWNER_ID)
     private Owner owner;
 
+    /*
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
     private Set<Visit> visits = new HashSet<>();
-
-    @Transient
-    public String getTableName() {
-        return TABLENAME;
-    }
-
-    @Transient
-    public String getPrimaryKey() {
-        return "" + this.getBirthDate().toInstant().toString() +  " ( " +  this.getName() + ")";
-    }
-
-    @Transient
-    public String getPrimaryKeyWithId() {
-        return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
-    }
 
     public void addVisit(Visit visit) {
         visits.add(visit);
@@ -130,6 +116,22 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
 
     public void setVisits(Set<Visit> visits) {
         this.visits = visits;
+    }
+    */
+
+    @Transient
+    public String getTableName() {
+        return TABLENAME;
+    }
+
+    @Transient
+    public String getPrimaryKey() {
+        return "" + this.getBirthDate().toInstant().toString() +  " ( " +  this.getName() + ")";
+    }
+
+    @Transient
+    public String getPrimaryKeyWithId() {
+        return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
     }
 
     @Override

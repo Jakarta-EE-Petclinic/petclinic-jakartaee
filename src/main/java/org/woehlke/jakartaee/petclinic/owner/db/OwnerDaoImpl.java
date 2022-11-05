@@ -71,9 +71,12 @@ public class OwnerDaoImpl implements OwnerDao, Serializable {
 
     private Owner updateSearchindex(Owner owner) {
         List<String> l = new ArrayList<>();
+        // TODO
+        /*
         for(Pet p: owner.getPetsAsList()){
             l.add(p.getSearchindex());
         }
+        */
         String x = owner.getAddressInfo();
         if( null != x){
             l.add(x);

@@ -29,7 +29,8 @@ public class SpecialtyEndpoint implements Serializable {
     @EJB
     private SpecialtyService specialtyService;
 
-    private final SpecialtyEndpointUtil specialtyEndpointUtil = new SpecialtyEndpointUtil();
+    @EJB
+    private SpecialtyEndpointUtil specialtyEndpointUtil;
 
     @GET
     @Path("/list")

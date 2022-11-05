@@ -122,13 +122,37 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
     @Email
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.EAGER)
-    private Set<Pet> pets = new TreeSet<>();
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.EAGER)
+    //private Set<Pet> pets = new TreeSet<>();
 
+    /*
     public void addPet(Pet pet) {
         pets.add(pet);
         pet.setOwner(this);
     }
+
+    @Transient
+    public List<Pet> getPetsAsList() {
+        List<Pet> listPets  = new ArrayList<>();
+        for (Pet pet : this.getPets()) {
+            listPets.add(pet);
+        }
+        Collections.sort(listPets);
+        return listPets;
+    }
+
+    @Transient
+    public String getPetsAsString() {
+        StringBuilder s = new StringBuilder();
+        for (Pet pet : this.pets) {
+          s.append(pet.getName())
+          .append(" (")
+          .append(pet.getType().getName())
+          .append(") ");
+        }
+        return s.toString();
+    }
+    */
 
     @Transient
     public String getFullname(){
@@ -156,28 +180,6 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
     @Transient
     public String getFullName() {
         return this.lastName + ", " + this.firstName;
-    }
-
-    @Transient
-    public List<Pet> getPetsAsList() {
-        List<Pet> listPets  = new ArrayList<>();
-        for (Pet pet : this.getPets()) {
-            listPets.add(pet);
-        }
-        Collections.sort(listPets);
-        return listPets;
-    }
-
-    @Transient
-    public String getPetsAsString() {
-        StringBuilder s = new StringBuilder();
-        for (Pet pet : this.pets) {
-          s.append(pet.getName())
-          .append(" (")
-          .append(pet.getType().getName())
-          .append(") ");
-        }
-        return s.toString();
     }
 
     @Override

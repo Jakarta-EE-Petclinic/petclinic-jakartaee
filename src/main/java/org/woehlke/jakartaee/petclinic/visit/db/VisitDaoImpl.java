@@ -1,6 +1,9 @@
 package org.woehlke.jakartaee.petclinic.visit.db;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import jakarta.annotation.PostConstruct;
@@ -31,6 +34,15 @@ public class VisitDaoImpl implements VisitDao, Serializable {
 
     @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
     private EntityManager entityManager;
+
+    @Override
+    public List<Visit> getVisits(@NotNull Pet pet) {
+        String qlString = "select p from Visit p where p.pet=:pet order by p.date";
+        TypedQuery<Visit> q = entityManager.createQuery(qlString, Visit.class);
+        q.setParameter("pet", pet);
+        List<Visit> list = q.getResultList();
+        return list;
+    }
 
     @Override
     public List<Visit> getAll() {
@@ -85,7 +97,6 @@ public class VisitDaoImpl implements VisitDao, Serializable {
         entityManager.remove(visit);
     }
 
-
     @PostConstruct
     public void postConstruct() {
         log.info("postConstruct: "+VisitDaoImpl.class.getSimpleName());
@@ -95,4 +106,5 @@ public class VisitDaoImpl implements VisitDao, Serializable {
     public void preDestroy() {
         log.info("preDestroy: "+VisitDaoImpl.class.getSimpleName());
     }
+
 }

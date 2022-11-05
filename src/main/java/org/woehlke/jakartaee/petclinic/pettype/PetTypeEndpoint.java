@@ -26,7 +26,8 @@ public class PetTypeEndpoint implements Serializable {
     @EJB
     private PetTypeService petTypeService;
 
-    private final PetTypeEndpointUtil petTypeEndpointUtil = new PetTypeEndpointUtil();
+    @EJB
+    private PetTypeEndpointUtil petTypeEndpointUtil;
 
     @GET
     @Path("/list")

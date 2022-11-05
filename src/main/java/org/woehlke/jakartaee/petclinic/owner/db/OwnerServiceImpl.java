@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.owner.db;
 
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
@@ -52,15 +53,32 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
     }
 
     @Override
+    public List<Pet> getPetsAsList(@NotNull Owner owner){
+        return petDao.getPetsAsList(owner);
+    }
+
+    @Override
+    public String getPetsAsString(@NotNull Owner owner) {
+        StringBuilder s = new StringBuilder();
+        for (Pet pet : this.getPetsAsList(owner)) {
+            s.append(pet.getName())
+                    .append(" (")
+                    .append(pet.getType().getName())
+                    .append(") ");
+        }
+        return s.toString();
+    }
+
+    @Override
     public void resetSearchIndex() {
-        for(Owner o: this.getAll()){
-            for(Pet p:o.getPetsAsList()){
-                for(Visit v:p.getVisits()){
-                    this.visitDao.update(v);
+        for(Owner owner: this.getAll()){
+            for (Pet pet : this.getPetsAsList(owner)) {
+                for(Visit visit:visitDao.getVisits(pet)){
+                    this.visitDao.update(visit);
                 }
-                this.petDao.update(p);
+                this.petDao.update(pet);
             }
-            this.ownerDao.update(o);
+            this.ownerDao.update(owner);
         }
     }
 
@@ -95,12 +113,15 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
     }
 
     private Owner updateSearchindex(Owner owner) {
+        /*
+        TODO
         for(Pet p:owner.getPetsAsList()){
             for(Visit v:p.getVisits()){
                 this.visitDao.update(v);
             }
             this.petDao.update(p);
         }
+         */
         return owner;
     }
 

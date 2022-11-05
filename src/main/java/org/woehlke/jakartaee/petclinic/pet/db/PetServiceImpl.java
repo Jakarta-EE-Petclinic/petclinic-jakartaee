@@ -7,6 +7,7 @@ import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.io.Serializable;
 import java.util.List;
@@ -61,5 +62,10 @@ public class PetServiceImpl implements PetService, Serializable  {
     @PreDestroy
     public void preDestroy() {
         log.info("preDestroy: "+PetServiceImpl.class.getSimpleName());
+    }
+
+    @Override
+    public List<Visit> getVisits(Pet pet) {
+        return this.petDao.getVisits(pet);
     }
 }

@@ -28,7 +28,8 @@ public class VisitEndpoint implements Serializable {
     @EJB
     private VisitService visitService;
 
-    private final VisitEndpointUtil visitEndpointUtil = new VisitEndpointUtil();
+    @EJB
+    private VisitEndpointUtil visitEndpointUtil;
 
     @GET
     @Path("/list")

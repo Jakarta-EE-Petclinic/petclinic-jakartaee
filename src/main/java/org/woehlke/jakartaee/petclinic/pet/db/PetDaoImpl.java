@@ -3,6 +3,7 @@ package org.woehlke.jakartaee.petclinic.pet.db;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import jakarta.annotation.PostConstruct;
@@ -11,6 +12,7 @@ import jakarta.ejb.PostActivate;
 import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
+import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.io.Serializable;
 import java.util.List;
@@ -31,6 +33,22 @@ public class PetDaoImpl implements PetDao, Serializable {
 
     @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
     private EntityManager entityManager;
+
+    @Override
+    public List<Pet> getPetsAsList(Owner owner) {
+        String qlString = "select p from Pet p where p.owner=:owner order by p.name";
+        TypedQuery<Pet> q = entityManager.createQuery(qlString, Pet.class);
+        q.setParameter("owner",owner);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Visit> getVisits(Pet pet) {
+        String qlString = "select v from Visit v where v.pet=:pet order by v.date";
+        TypedQuery<Visit> q = entityManager.createQuery(qlString, Visit.class);
+        q.setParameter("pet",pet);
+        return q.getResultList();
+    }
 
     @Override
     public Pet addNew(Pet pet) {
@@ -88,4 +106,5 @@ public class PetDaoImpl implements PetDao, Serializable {
     public void preDestroy() {
         log.info("preDestroy: "+PetDaoImpl.class.getSimpleName());
     }
+
 }
