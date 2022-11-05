@@ -43,7 +43,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(ArquillianExtension.class)
 public class RestEndpointIT {
 
-
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         return Deployments.createDeployment();
@@ -56,13 +55,17 @@ public class RestEndpointIT {
 
     @BeforeEach
     public void setup() {
-        log.info("call BeforeEach");
+        log.info("------------------------------------------------------------");
+        log.info(" call BeforeEach");
+        log.info("------------------------------------------------------------");
         this.client = ClientBuilder.newClient();
     }
 
     @AfterEach
     public void teardown() {
-        log.info("call AfterEach");
+        log.info("------------------------------------------------------------");
+        log.info(" call AfterEach");
+        log.info("------------------------------------------------------------");
         if (this.client != null) {
             this.client.close();
         }
@@ -75,6 +78,8 @@ public class RestEndpointIT {
 
     @Test
     public void testGetSpecialtyListJson() {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetSpecialtyListJson:  ");
         String endpoint = base + "/rest" + "/specialty" + "/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -94,10 +99,15 @@ public class RestEndpointIT {
         log.info(json);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetSpecialtyListJson: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetSpecialtyListXml() throws JAXBException {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetSpecialtyListXml:  ");
         String endpoint = base + "/rest" + "/specialty" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -118,10 +128,15 @@ public class RestEndpointIT {
         log.info(xml);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetSpecialtyListXml: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetPetTypeListJson() {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetPetTypeListJson:  ");
         String endpoint = base + "/rest" + "/petType" + "/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -140,10 +155,15 @@ public class RestEndpointIT {
         log.info(json);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetPetTypeListJson: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetPetTypeListXml() throws JAXBException {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetPetTypeListXml:  ");
         String endpoint = base + "/rest" + "/petType" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -164,10 +184,15 @@ public class RestEndpointIT {
         log.info(xml);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetPetTypeListXml: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetVetListJson() {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetVetListJson:  ");
         String endpoint = base + "/rest" + "/vet" + "/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -185,10 +210,15 @@ public class RestEndpointIT {
         log.info(json);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetVetListJson: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetVetListXml() throws JAXBException {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetVetListXml:  ");
         String endpoint = base + "/rest" + "/vet" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -208,10 +238,15 @@ public class RestEndpointIT {
         log.info(xml);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetVetListXml: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetVisitListJson() {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetVisitListJson:  ");
         String endpoint = base + "/rest" + "/visit" + "/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -231,10 +266,15 @@ public class RestEndpointIT {
         log.info(json);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetVisitListJson: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetVisitListXml() throws JAXBException {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetVisitListXml:  ");
         String endpoint =  base + "/rest" + "/visit" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -255,10 +295,15 @@ public class RestEndpointIT {
         log.info(xml);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetVisitListXml: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetPetListJson() {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetPetListJson:  ");
         String endpoint = base + "/rest" + "/pet" + "/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -278,10 +323,15 @@ public class RestEndpointIT {
         log.info(json);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetPetListJson: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetPetListXml() throws JAXBException {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetPetListXml:  ");
         String endpoint = base + "/rest" + "/pet" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -302,10 +352,15 @@ public class RestEndpointIT {
         log.info(xml);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetPetListXml: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetOwnerListJson() {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetOwnerListJson:  ");
         String endpoint = base + "/rest" + "/owner" + "/list";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -325,10 +380,15 @@ public class RestEndpointIT {
         log.info(json);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetOwnerListJson: OK ");
+        log.info("------------------------------------------------------------");
     }
 
     @Test
     public void testGetOwnerListXml() throws JAXBException {
+        log.info("------------------------------------------------------------");
+        log.info(" testGetOwnerListXml:  ");
         String endpoint = base + "/rest" + "/owner" + "/list+xml";
         log.info("------------------------------------------------------------");
         log.info(" endpoint URL: " + endpoint);
@@ -348,6 +408,9 @@ public class RestEndpointIT {
         log.info(xml);
         response.close();
         client.close();
+        log.info("------------------------------------------------------------");
+        log.info(" testGetOwnerListXml: OK ");
+        log.info("------------------------------------------------------------");
     }
 
 }
