@@ -6,6 +6,7 @@ import org.woehlke.jakartaee.petclinic.owner.views.Owner2Model;
 import org.woehlke.jakartaee.petclinic.owner.views.OwnersPet2Model;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pet.views.OwnersPetView;
+import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.visit.views.OwnersPetVisitView;
 
 import java.util.List;
@@ -25,11 +26,11 @@ public interface OwnerView extends CrudView<Owner>,
 
     String showOwnerEditForm();
 
-    // Owner
-    List<Pet> getPetsAsList();
+    List<Pet> getPetsAsList(Owner owner);
 
-    // Owner
-    String getPetsAsString();
+    String getPetsAsString(Owner owner);
+
+    List<Visit> getVisits(Pet ownersPet);
 
     long serialVersionUID = 3691413509555926089L;
 }

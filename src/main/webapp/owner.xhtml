@@ -233,7 +233,7 @@
                                 <p:dataTable
                                         id="petsAndVisitsTable"
                                         styleClass="table"
-                                        value="#{ownerView.getPetsAsList()}"
+                                        value="#{ownerView.getPetsAsList(ownerView.entity)}"
                                         var="ownersPet"
                                         rowKey="#{ownersPet.id}"
                                         scrollable="true"
@@ -274,7 +274,7 @@
                                         </f:facet>
                                         <p:dataTable
                                                 id="visitsTable"
-                                                value="#{ownersPet.visits}"
+                                                value="#{ownerView.getVisits(ownersPet)}"
                                                 var="visit"
                                                 styleClass="table-condensed table"
                                                 style="float: right"
@@ -765,7 +765,7 @@
                                 <p:dataTable
                                         id="deletePetsAndVisitsTable"
                                         styleClass="table"
-                                        value="#{ownerView.getPetsAsList()}"
+                                        value="#{ownerView.getPetsAsList}"
                                         var="ownersPet"
                                         rowKey="#{ownersPet.id}"
                                         scrollable="true"
@@ -797,7 +797,7 @@
                                         </f:facet>
                                         <p:dataTable
                                                 id="visitsTableDelete"
-                                                value="#{ownersPet.visits}"
+                                                value="#{ownerView.getVisits(ownersPet)}"
                                                 var="visit"
                                                 styleClass="table-condensed table"
                                                 style="float: right"
@@ -1157,7 +1157,7 @@
                                  header="#{msg['org.woehlke.jakartaee.petclinic.owner.pet.visit.previousVisits']}">
                             <p:dataTable
                                         id="previousVisitsTable"
-                                        value="#{ownerView.pet.visits}"
+                                        value="#{ownerView.getVisits(ownerView.pet)}"
                                         var="petsVisit"
                                         styleClass="table table-striped">
                                 <p:column>
@@ -1252,7 +1252,7 @@
                                         <h:outputText
                                             id="cityInList"
                                             styleClass="entityDataTableCell"
-                                            value="#{owner.getPetsAsString()}"/>
+                                            value="#{ownerView.getPetsAsString(owner)}"/>
                                     </p:column>
                                     <p:column id="columnEntityId">
                                         <p:commandButton

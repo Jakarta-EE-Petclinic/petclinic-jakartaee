@@ -142,13 +142,18 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     }
 
     @Override
-    public List<Pet> getPetsAsList() {
-        return entityService.getPetsAsList(this.entity);
+    public List<Pet> getPetsAsList(Owner owner) {
+        return entityService.getPetsAsList(owner);
     }
 
     @Override
-    public String getPetsAsString() {
-        return entityService.getPetsAsString(this.entity);
+    public String getPetsAsString(Owner owner) {
+        return entityService.getPetsAsString(owner);
+    }
+
+    @Override
+    public List<Visit> getVisits(Pet ownersPet){
+        return petService.getVisits(ownersPet);
     }
 
     @Override
