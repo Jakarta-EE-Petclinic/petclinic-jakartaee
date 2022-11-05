@@ -366,6 +366,8 @@ public class OwnerUiTest extends UnitTestData {
             Assert.assertTrue(ownerPage.isFlowStateDetails());
             ownerPage.clickShowDeleteForm();
             Assert.assertTrue(ownerPage.isFlowStateDelete());
+            ownerPage.clickConfirmDeleteButton();
+            Assert.assertTrue(ownerPage.isFlowStateDelete());
             ownerPage.clickSaveDeleteButton();
             Assert.assertTrue(ownerPage.isFlowStateList());
         }

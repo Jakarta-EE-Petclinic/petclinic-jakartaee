@@ -50,6 +50,9 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     @FindBy(id = "detailsOwnerForm:deleteSelectedButton")
     private GrapheneElement showDeleteFormButton;
 
+    @FindBy(id = "detailsOwnerForm:confirmDeleteButton")
+    private GrapheneElement confirmDeleteButton;
+
     @FindBy(id="deleteOwnerForm:cancelDeleteOwner")
     private GrapheneElement canceDeleteButton;
 
@@ -115,6 +118,12 @@ public class OwnerPage implements CrudFlowStatePageOwner {
 
     public OwnerPage clickShowDeleteForm() {
         Graphene.guardHttp(showDeleteFormButton).click();
+        fullscreen();
+        return this;
+    }
+
+    public OwnerPage clickConfirmDeleteButton() {
+        Graphene.guardHttp(confirmDeleteButton).click();
         fullscreen();
         return this;
     }
@@ -568,4 +577,5 @@ public class OwnerPage implements CrudFlowStatePageOwner {
         fullscreen();
         return this;
     }
+
 }
