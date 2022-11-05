@@ -1,7 +1,5 @@
 package org.woehlke.jakartaee.petclinic.specialty.db;
 
-import jakarta.ejb.PostActivate;
-import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -34,8 +32,8 @@ public class SpecialtyDaoImpl implements SpecialtyDao, Serializable {
 
     @Override
     public List<Specialty> getAll() {
-        String qlString = "select s from Specialty s order by s.name";
-        TypedQuery<Specialty> q = entityManager.createQuery(qlString, Specialty.class);
+        //String qlString = "select s from Specialty s order by s.name";
+        TypedQuery<Specialty> q = entityManager.createNamedQuery( "Specialty.getAll", Specialty.class);
         return q.getResultList();
     }
 
@@ -47,8 +45,10 @@ public class SpecialtyDaoImpl implements SpecialtyDao, Serializable {
 
     @Override
     public Specialty findSpecialtyByName(String name) {
-        String ql = "select  s from Specialty s where s.name=:name";
-        TypedQuery<Specialty> query = entityManager.createQuery(ql, Specialty.class);
+        //String ql = "select s from Specialty s where s.name=:name";
+        TypedQuery<Specialty> query = entityManager.createNamedQuery(
+                "Specialty.findSpecialtyByName", Specialty.class
+        );
         query.setParameter("name", name);
         return query.getSingleResult();
     }
@@ -81,7 +81,6 @@ public class SpecialtyDaoImpl implements SpecialtyDao, Serializable {
     //TODO: move method to Specialty classs
     private Specialty updateSearchindex(Specialty specialty) {
         String element[] = specialty.getName().split("\\W");
-
         StringBuilder b = new StringBuilder();
         for(String e: element){
             b.append(e);
@@ -94,8 +93,8 @@ public class SpecialtyDaoImpl implements SpecialtyDao, Serializable {
     @Override
     public List<Specialty> search(String searchterm) {
         log.info("search Specialty for: " + searchterm);
-        String qlString = "select v from Specialty v where v.searchindex like :searchterm";
-        TypedQuery<Specialty> q = entityManager.createQuery(qlString, Specialty.class);
+        //String qlString = "select v from Specialty v where v.searchindex like :searchterm";
+        TypedQuery<Specialty> q = entityManager.createNamedQuery("Specialty.search", Specialty.class);
         q.setParameter("searchterm", "%" + searchterm + "%");
         List<Specialty> list = q.getResultList();
         return list;
@@ -106,8 +105,6 @@ public class SpecialtyDaoImpl implements SpecialtyDao, Serializable {
         log.info("resetSearchIndex Specialty ");
         /* TODO */
     }
-
-
 
     @PostConstruct
     public void postConstruct() {

@@ -45,6 +45,14 @@ import java.util.UUID;
         @NamedQuery(
                 name = "Specialty.getAll",
                 query = "select s from Specialty s order by s.name"
+        ),
+        @NamedQuery(
+                name = "Specialty.findSpecialtyByName",
+                query = "select s from Specialty s where s.name=:name"
+        ),
+        @NamedQuery(
+                name = "Specialty.search",
+                query = "select v from Specialty v where v.searchindex like :searchterm"
         )
 })
 public class Specialty extends EntityBaseObject implements EntityBase,Comparable<Specialty> {

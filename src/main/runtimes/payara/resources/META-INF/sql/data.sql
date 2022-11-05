@@ -10,7 +10,7 @@ SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
+-- SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
@@ -21,6 +21,8 @@ SET row_security = off;
 --
 
 SET SESSION AUTHORIZATION DEFAULT;
+
+BEGIN ;
 
 ALTER TABLE "public"."owner" DISABLE TRIGGER ALL;
 
@@ -167,6 +169,7 @@ SELECT pg_catalog.setval('"public"."specialty_seq"', 100, true);
 
 SELECT pg_catalog.setval('"public"."vet_seq"', 50, true);
 
+COMMIT
 
 --
 -- PostgreSQL database dump complete
