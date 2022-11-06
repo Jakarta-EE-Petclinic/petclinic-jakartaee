@@ -60,7 +60,9 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public String showDetailsForm(PetType o) {
+        log.info("---------------------------------------------------------------------------");
         log.info("showDetailsForm");;
+        log.info("---------------------------------------------------------------------------");
         if (o != null) {
             this.entity = entityService.findById(o.getId());
             this.petTypeViewFlow.setFlowStateDetails();
@@ -72,14 +74,18 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public  String cancelDetails(){
+        log.info("---------------------------------------------------------------------------");
         log.info("cancelDetails");
+        log.info("---------------------------------------------------------------------------");
         this.petTypeViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
 
     @Override
     public String showNewForm() {
+        log.info("---------------------------------------------------------------------------");
         log.info("showNewForm");
+        log.info("---------------------------------------------------------------------------");
         this.newEntity();
         this.petTypeViewFlow.setFlowStateNew();
         return JSF_PAGE;
@@ -87,14 +93,18 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public String cancelNew() {
+        log.info("---------------------------------------------------------------------------");
         log.info("cancelNew");
+        log.info("---------------------------------------------------------------------------");
         this.petTypeViewFlow.setFlowStateList();
         return JSF_PAGE;
     }
 
     @Override
     public String saveNew() {
+        log.info("---------------------------------------------------------------------------");
         log.info("saveNew");
+        log.info("---------------------------------------------------------------------------");
         this.saveNewEntity();
         this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
@@ -102,7 +112,9 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public String showEditForm() {
+        log.info("---------------------------------------------------------------------------");
         log.info("showEditForm");
+        log.info("---------------------------------------------------------------------------");
         if (this.entity != null) {
             this.petTypeViewFlow.setFlowStateEdit();
         } else {
@@ -113,14 +125,18 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public String cancelEdited() {
+        log.info("---------------------------------------------------------------------------");
         log.info("cancelEdited");
+        log.info("---------------------------------------------------------------------------");
         this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
 
     @Override
     public String saveEdited() {
+        log.info("---------------------------------------------------------------------------");
         log.info("saveEdited");
+        log.info("---------------------------------------------------------------------------");
         this.saveEditedEntity();
         this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
@@ -128,7 +144,9 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public String showDeleteForm() {
+        log.info("---------------------------------------------------------------------------");
         log.info("showDeleteForm");
+        log.info("---------------------------------------------------------------------------");
         if (this.entity != null) {
             this.petTypeViewFlow.setFlowStateDelete();
         } else {
@@ -139,7 +157,9 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public String cancelDelete() {
+        log.info("---------------------------------------------------------------------------");
         log.info("cancelDelete");
+        log.info("---------------------------------------------------------------------------");
         this.petTypeViewFlow.setFlowStateDetails();
         return JSF_PAGE;
     }
@@ -175,28 +195,20 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public void newEntity() {
+        log.info("---------------------------------------------------------------------------");
         log.info("newEntity");
-        this.entity = new PetType();
-    }
-
-    private PetType updateSearchindex(PetType petType) {
-        String element[] = petType.getName().split("\\W");
-
-        StringBuilder b = new StringBuilder();
-        for(String e: element){
-            b.append(e);
-            b.append(" ");
-        }
-        petType.setSearchindex(b.toString());
-        return petType;
+        log.info("---------------------------------------------------------------------------");
+            this.entity = PetType.newEntity();
     }
 
     @Override
     public void saveNewEntity() {
+        log.info("---------------------------------------------------------------------------");
         log.info("saveNewEntity");
+        log.info("---------------------------------------------------------------------------");
         try {
             log.info((this.entity != null) ? this.entity.toString() : "null");
-            this.entity = updateSearchindex(this.entity);
+            this.entity.updateSearchindex();
             this.entity = this.entityService.addNew(this.entity);
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.petTypeViewFlow.setFlowStateDetails();
@@ -212,10 +224,12 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public void saveEditedEntity() {
+        log.info("---------------------------------------------------------------------------");
         log.info("saveEditedEntity");
+        log.info("---------------------------------------------------------------------------");
         try {
             log.info((this.entity != null) ? this.entity.toString() : "null");
-            this.entity = updateSearchindex(this.entity);
+            this.entity.updateSearchindex();
             this.entity = this.entityService.update(this.entity);
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.petTypeViewFlow.setFlowStateDetails();
@@ -230,7 +244,9 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public void deleteSelectedEntity() {
+        log.info("---------------------------------------------------------------------------");
         log.info("deleteSelectedEntity");
+        log.info("---------------------------------------------------------------------------");
         try {
             if (this.entity != null) {
                 String msgInfo = this.entity.getPrimaryKey();
@@ -255,6 +271,9 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public void performSearch() {
+        log.info("---------------------------------------------------------------------------");
+        log.info("performSearch");
+        log.info("---------------------------------------------------------------------------");
         String summaryKey = "org.woehlke.jakartaee.petclinic.petType.search.done";
         String summary = this.petclinicApplication.getMsg().getString(summaryKey);
         if (searchterm == null || searchterm.isEmpty()) {
@@ -293,14 +312,18 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
     @Override
     @PostConstruct
     public void postConstruct() {
+        log.info("---------------------------------------------------------------------------");
         log.info("postConstruct: " + PetTypeViewImpl.class.getSimpleName());
+        log.info("---------------------------------------------------------------------------");
         this.petTypeViewFlow.setFlowStateList();
     }
 
     @Override
     @PreDestroy
     public void preDestroy() {
-        log.info("preDestroy");
+        log.info("---------------------------------------------------------------------------");
+        log.info("preDestroy" + PetTypeViewImpl.class.getSimpleName());
+        log.info("---------------------------------------------------------------------------");
     }
 
 }

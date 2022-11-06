@@ -20,4 +20,6 @@ public interface EntityBase {
 
     @Transient
     String getPrimaryKeyWithId();
+
+    void updateSearchindex();
 }

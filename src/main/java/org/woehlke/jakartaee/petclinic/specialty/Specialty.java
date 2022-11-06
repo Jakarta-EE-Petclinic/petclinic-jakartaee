@@ -9,6 +9,7 @@ import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.*;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
+import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -79,6 +80,32 @@ public class Specialty extends EntityBaseObject implements EntityBase,Comparable
     @XmlElement(required = true)
     @Column(name = COL_NAME, unique = true, nullable = false)
     private String name;
+
+    public static Specialty newEntity(){
+        Specialty s = new Specialty();
+        s.uuid = UUID.randomUUID();
+        s.searchindex = "";
+        s.name = "";
+        return s;
+    }
+
+    public static Specialty newEntity(@NotBlank String name){
+        Specialty s = new Specialty();
+        s.uuid = UUID.randomUUID();
+        s.searchindex = "";
+        s.name = name;
+        return s;
+    }
+
+    public void updateSearchindex() {
+        String[] element = this.getName().split("\\W");
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        this.setSearchindex(b.toString());
+    }
 
     public Specialty(@NotBlank String name) {
         this.name = name;

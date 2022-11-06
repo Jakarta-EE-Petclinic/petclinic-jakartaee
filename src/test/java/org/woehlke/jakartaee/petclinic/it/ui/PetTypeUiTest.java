@@ -107,7 +107,7 @@ public class PetTypeUiTest extends UnitTestData {
             Assert.assertTrue(petTypePage.isFlowStateNew());
             petTypePage.addNewEntity(name);
             Assert.assertTrue(petTypePage.isFlowStateDetails());
-            petTypePage.clickSaveNewButton();
+            petTypePage.clickCancelDetailsButton();
             Assert.assertTrue(petTypePage.isFlowStateList());
         }
         log.info("------------------------------------------------------------------------------------");
@@ -140,7 +140,7 @@ public class PetTypeUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<petTypeNameArray.length; i++) {
             log.info(" " + i);
             petTypePage.clickShowDetailsFormButton(i);
             Assert.assertTrue(petTypePage.isFlowStateDetails());
@@ -164,7 +164,7 @@ public class PetTypeUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
-        for(int i=0; i<3; i++){
+        for(int i=0; i<petTypeNameArray.length; i++){
             log.info(" "+i);
             petTypePage.clickShowDetailsFormButton(i);
             Assert.assertTrue(petTypePage.isFlowStateDetails());
@@ -188,7 +188,7 @@ public class PetTypeUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<petTypeNameArray.length; i++) {
             petTypePage.clickShowDetailsFormButton0();
             Assert.assertTrue(petTypePage.isFlowStateDetails());
             petTypePage.clickShowDeleteForm();
@@ -203,7 +203,6 @@ public class PetTypeUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(9)
     public void deletePetTypePageWithSave() {
@@ -212,7 +211,7 @@ public class PetTypeUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         goToPetTypePage();
         Assert.assertTrue(petTypePage.isFlowStateList());
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<petTypeNameArray.length; i++) {
             petTypePage.clickShowDetailsFormButton0();
             Assert.assertTrue(petTypePage.isFlowStateDetails());
             petTypePage.clickShowDeleteForm();

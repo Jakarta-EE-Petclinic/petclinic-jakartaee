@@ -176,7 +176,7 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
     public void newEntity() {
         log.info("newEntity");
         String name = "add new name";
-        this.entity = new Specialty();
+        this.entity = Specialty.newEntity();
     }
 
     @Override

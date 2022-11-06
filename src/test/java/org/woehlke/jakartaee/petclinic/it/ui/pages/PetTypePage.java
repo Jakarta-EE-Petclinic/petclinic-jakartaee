@@ -104,40 +104,45 @@ public class PetTypePage implements CrudFlowStatePage {
 
 
     public PetTypePage clickAddNewEntityButton() {
-        showNewFormButton.sendKeys(Keys.END);
-        showNewFormButton.sendKeys(Keys.DOWN);
-        showNewFormButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showNewFormButton).click();
+        //showNewFormButton.sendKeys(Keys.END);
+        //showNewFormButton.sendKeys(Keys.DOWN);
+        //showNewFormButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(showNewFormButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickCancelNewEntityButton() {
-        cancelNewButton.sendKeys(Keys.DOWN);
-        cancelNewButton.sendKeys(Keys.END);
-        cancelNewButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(cancelNewButton).click();
+        //cancelNewButton.sendKeys(Keys.DOWN);
+        //cancelNewButton.sendKeys(Keys.END);
+        //cancelNewButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(cancelNewButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage addNewEntity(String name) {
         newEntityNameInput.sendKeys(name);
-        saveNewButton.sendKeys(Keys.DOWN);
-        saveNewButton.sendKeys(Keys.END);
-        saveNewButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(saveNewButton).click();
+        //saveNewButton.sendKeys(Keys.DOWN);
+        //saveNewButton.sendKeys(Keys.END);
+        //saveNewButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(saveNewButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickShowEditForm() {
-        showEditFormButton.sendKeys(Keys.DOWN);
-        showEditFormButton.sendKeys(Keys.END);
-        showEditFormButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showEditFormButton).click();
+        //showEditFormButton.sendKeys(Keys.DOWN);
+        //showEditFormButton.sendKeys(Keys.END);
+        //showEditFormButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(showEditFormButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickCancelEditButton() {
         Graphene.guardHttp(cancelEditButton).click();
+        this.fullscreen();
         return this;
     }
 
@@ -145,94 +150,109 @@ public class PetTypePage implements CrudFlowStatePage {
         String name = editEntityNameInput.getText();
         name += " Test";
         editEntityNameInput.sendKeys(name);
-        saveEditButton.sendKeys(Keys.DOWN);
-        saveEditButton.sendKeys(Keys.END);
-        saveEditButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(saveEditButton).click();
+        //saveEditButton.sendKeys(Keys.DOWN);
+        //saveEditButton.sendKeys(Keys.END);
+        //saveEditButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(saveEditButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickShowDeleteForm() {
-        showDeleteFormButton.sendKeys(Keys.DOWN);
-        showDeleteFormButton.sendKeys(Keys.END);
-        showDeleteFormButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showDeleteFormButton).click();
+        //showDeleteFormButton.sendKeys(Keys.DOWN);
+        //showDeleteFormButton.sendKeys(Keys.END);
+        //showDeleteFormButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(showDeleteFormButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickCancelDeleteButton() {
-        canceDeleteButton.sendKeys(Keys.DOWN);
-        canceDeleteButton.sendKeys(Keys.END);
-        canceDeleteButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(canceDeleteButton).click();
+        //canceDeleteButton.sendKeys(Keys.DOWN);
+        //canceDeleteButton.sendKeys(Keys.END);
+        //canceDeleteButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(canceDeleteButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickSaveDeleteButton() {
-        saveDeleteButton.sendKeys(Keys.DOWN);
-        saveDeleteButton.sendKeys(Keys.END);
-        saveDeleteButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(saveDeleteButton).click();
+        //saveDeleteButton.sendKeys(Keys.DOWN);
+        //saveDeleteButton.sendKeys(Keys.END);
+        //saveDeleteButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(saveDeleteButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickSearchButton() {
         Graphene.guardHttp(searchButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickClearSearchButton() {
-        clearSearchButton.sendKeys(Keys.DOWN);
-        clearSearchButton.sendKeys(Keys.END);
-        clearSearchButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(clearSearchButton).click();
+        //clearSearchButton.sendKeys(Keys.DOWN);
+        //clearSearchButton.sendKeys(Keys.END);
+        //clearSearchButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(clearSearchButton).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickShowDetailsFormButton0() {
-        showDetailsFormButton0.sendKeys(Keys.DOWN);
-        showDetailsFormButton0.sendKeys(Keys.END);
-        showDetailsFormButton0.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showDetailsFormButton0).click();
+        //showDetailsFormButton0.sendKeys(Keys.DOWN);
+        //showDetailsFormButton0.sendKeys(Keys.END);
+        //showDetailsFormButton0.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(showDetailsFormButton0).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickShowDetailsFormButton1() {
+        //showDetailsFormButton1.sendKeys(Keys.DOWN);
+        //showDetailsFormButton1.sendKeys(Keys.END);
+        //showDetailsFormButton1.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDetailsFormButton1).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickShowDetailsFormButton2() {
+        //showDetailsFormButton2.sendKeys(Keys.DOWN);
+        //showDetailsFormButton2.sendKeys(Keys.END);
+        //showDetailsFormButton2.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDetailsFormButton2).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickShowDetailsFormButton3() {
+        //showDetailsFormButton3.sendKeys(Keys.DOWN);
+        //showDetailsFormButton3.sendKeys(Keys.END);
+        //showDetailsFormButton3.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDetailsFormButton3).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickShowDetailsFormButton4() {
+        //showDetailsFormButton4.sendKeys(Keys.DOWN);
+        //showDetailsFormButton4.sendKeys(Keys.END);
+        //showDetailsFormButton4.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDetailsFormButton4).click();
+        this.fullscreen();
         return this;
     }
 
     public PetTypePage clickCancelDetailsButton() {
-        cancelDetailsButton.sendKeys(Keys.DOWN);
-        cancelDetailsButton.sendKeys(Keys.END);
-        cancelDetailsButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(cancelDetailsButton).click();
+        //cancelDetailsButton.sendKeys(Keys.DOWN);
+        //cancelDetailsButton.sendKeys(Keys.END);
+        //cancelDetailsButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(cancelDetailsButton).click();
+        this.fullscreen();
         return this;
     }
-
-    public PetTypePage clickSaveNewButton() {
-        saveNewButton.sendKeys(Keys.DOWN);
-        saveNewButton.sendKeys(Keys.END);
-        saveNewButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(saveNewButton).click();
-        return this;
-    }
-
 
     @Override
     public boolean isFlowStateList() {

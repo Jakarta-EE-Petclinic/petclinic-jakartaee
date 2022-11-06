@@ -9,6 +9,7 @@ import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
 import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeListener;
 
 import jakarta.persistence.*;
+import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -43,7 +44,7 @@ import java.util.UUID;
 @NamedQueries({
         @NamedQuery(
                 name = "PetType.getAll",
-                query = "select p from PetType p order by p.name desc"
+                query = "select p from PetType p order by p.name ASC"
         ),
         @NamedQuery(
                 name = "PetType.findByName",
@@ -51,7 +52,7 @@ import java.util.UUID;
         ),
         @NamedQuery(
                 name = "PetType.search",
-                query = "select v from PetType v where v.searchindex like :searchterm order by v.name desc"
+                query = "select v from PetType v where v.searchindex like :searchterm order by v.name ASC"
         )
 })
 @EntityListeners(PetTypeListener.class)
@@ -78,6 +79,32 @@ public class PetType extends EntityBaseObject implements EntityBase, Comparable<
     @NotEmpty
     @Column(name = COL_NAME, nullable = false, unique = true)
     private String name;
+
+    public static PetType newEntity(){
+        PetType p = new PetType();
+        p.uuid = UUID.randomUUID();
+        p.searchindex = "";
+        p.name = "";
+        return p;
+    }
+
+    public static PetType newEntity(@NotBlank String name){
+        PetType p = new PetType();
+        p.uuid = UUID.randomUUID();
+        p.searchindex = "";
+        p.name = name;
+        return p;
+    }
+
+    public void updateSearchindex() {
+        String[] element = this.getName().split("\\W");
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        this.setSearchindex(b.toString());
+    }
 
     public PetType(@NotBlank String name) {
         this.name = name;
