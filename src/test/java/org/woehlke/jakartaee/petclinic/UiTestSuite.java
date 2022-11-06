@@ -14,8 +14,8 @@ import org.woehlke.jakartaee.petclinic.it.ui.*;
     RestEndpointIT.class,
     SpecialtyUiTest.class,
     VetUiTest.class,
-    PetTypeUiTest.class,
-    OwnerUiTest.class//,
+    PetTypeUiTest.class//,
+    //OwnerUiTest.class//,
     //InformationUiTest.class//,
     //TellTheStoryUiTest.class
 })
