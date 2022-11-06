@@ -43,7 +43,7 @@ import java.util.UUID;
 @NamedQueries({
         @NamedQuery(
                 name = "PetType.getAll",
-                query = "select p from PetType p order by p.name"
+                query = "select p from PetType p order by p.name desc"
         ),
         @NamedQuery(
                 name = "PetType.findByName",
@@ -51,7 +51,7 @@ import java.util.UUID;
         ),
         @NamedQuery(
                 name = "PetType.search",
-                query = "select v from PetType v where v.searchindex like :searchterm"
+                query = "select v from PetType v where v.searchindex like :searchterm order by v.name desc"
         )
 })
 @EntityListeners(PetTypeListener.class)

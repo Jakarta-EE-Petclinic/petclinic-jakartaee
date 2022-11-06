@@ -49,6 +49,9 @@ public class PetTypeDaoImpl implements PetTypeDao, Serializable {
     public PetType addNew(PetType petType) {
         log.info("addNew PetType: " + petType.toString());
         petType.setUuid(UUID.randomUUID());
+        if(petType.getId() != null){
+            throw new IllegalArgumentException("new PetType Entity must not have a PetType.id before persistings");
+        }
         entityManager.persist(petType);
         return petType;
     }
@@ -61,6 +64,9 @@ public class PetTypeDaoImpl implements PetTypeDao, Serializable {
     @Override
     public PetType update(PetType petType) {
         log.info("update PetType: " + petType.toString());
+        if(petType.getId() == null){
+            throw new IllegalArgumentException("new PetType Entity must have a PetType.id before merging");
+        }
         return entityManager.merge(petType);
     }
 

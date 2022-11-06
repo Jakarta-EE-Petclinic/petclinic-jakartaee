@@ -2809,10 +2809,12 @@
 									<name>skipAfterFailureCount</name>
 									<value>1</value>
 								</property>
+								<!--
 								<property>
 									<name>rerunFailingTestsCount</name>
 									<value>true</value>
 								</property>
+								-->
 							</systemProperties>
 						</configuration>
 					</plugin>
