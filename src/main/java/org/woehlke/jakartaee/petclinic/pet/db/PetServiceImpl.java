@@ -68,4 +68,10 @@ public class PetServiceImpl implements PetService, Serializable  {
     public List<Visit> getVisits(Pet pet) {
         return this.petDao.getVisits(pet);
     }
+
+    @Override
+    public void delete(Pet pet) {
+        log.info("delete Pet: " + pet.toString());
+        this.petDao.delete(pet);
+    }
 }

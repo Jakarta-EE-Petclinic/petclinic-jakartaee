@@ -199,11 +199,11 @@ public class OwnerViewImpl implements OwnerView, Serializable {
             String selectedPrimaryKey = this.entity.getPrimaryKey() + "(" + id + "," + uuid + ")";
             for (Pet pet: entityService.getPetsAsList(this.entity)){
                 for(Visit visit:petService.getVisits(pet)){
-                    visitService.delete(visit.getId());
+                    visitService.delete(visit);
                 }
-                petService.delete(pet.getId());
+                petService.delete(pet);
             }
-            entityService.delete(id);
+            entityService.delete(this.entity);
             this.entity = null;
             this.ownerFlowView.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";

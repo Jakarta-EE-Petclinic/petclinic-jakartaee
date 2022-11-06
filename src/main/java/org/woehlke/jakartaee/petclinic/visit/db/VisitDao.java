@@ -1,6 +1,7 @@
 package org.woehlke.jakartaee.petclinic.visit.db;
 
 import jakarta.validation.constraints.NotNull;
+import org.netbeans.lib.cvsclient.commandLine.command.log;
 import org.woehlke.jakartaee.petclinic.application.framework.db.CrudDao;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -19,5 +20,5 @@ public interface VisitDao extends CrudDao<Visit> {
     long serialVersionUID = -2002874805548729384L;
 
     List<Visit> getVisits(@NotNull Pet pet);
-
+    void delete(Visit visit);
 }

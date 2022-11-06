@@ -17,4 +17,6 @@ public interface PetService extends CrudService<Pet>, Serializable {
     long serialVersionUID = 7113444329343577727L;
 
     List<Visit> getVisits(@NotNull Pet pet);
+
+    void delete(Pet pet);
 }

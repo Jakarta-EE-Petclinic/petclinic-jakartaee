@@ -10,6 +10,7 @@ import jakarta.annotation.PreDestroy;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.io.Serializable;
 import java.util.*;
@@ -40,6 +41,12 @@ public class OwnerDaoImpl implements OwnerDao, Serializable {
     @Override
     public void delete(long id) {
         Owner owner = entityManager.find(Owner.class, id);
+        log.info("delete Owner: " + owner.toString());
+        entityManager.remove(owner);
+    }
+
+    @Override
+    public void delete(Owner owner) {
         log.info("delete Owner: " + owner.toString());
         entityManager.remove(owner);
     }

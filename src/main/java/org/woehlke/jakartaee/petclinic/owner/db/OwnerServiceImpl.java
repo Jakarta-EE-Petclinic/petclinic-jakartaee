@@ -93,6 +93,11 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
     }
 
     @Override
+    public void delete(Owner owner) {
+        this.ownerDao.delete(owner);
+    }
+
+    @Override
     public Owner addNew(Owner owner) {
         //owner = this.updateSearchindex(owner);
         log.info("addNew Owner: " + owner.toString());

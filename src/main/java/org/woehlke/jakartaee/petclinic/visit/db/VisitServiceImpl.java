@@ -62,4 +62,9 @@ public class VisitServiceImpl implements VisitService, Serializable {
     public void preDestroy() {
         log.info("preDestroy: "+VisitServiceImpl.class.getSimpleName());
     }
+
+    @Override
+    public void delete(Visit visit) {
+        this.visitDao.delete(visit);
+    }
 }
