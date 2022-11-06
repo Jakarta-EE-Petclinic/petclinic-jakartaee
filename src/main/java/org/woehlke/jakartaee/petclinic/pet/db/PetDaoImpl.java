@@ -8,8 +8,6 @@ import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import jakarta.ejb.PostActivate;
-import jakarta.ejb.PrePassivate;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
@@ -36,16 +34,14 @@ public class PetDaoImpl implements PetDao, Serializable {
 
     @Override
     public List<Pet> getPetsAsList(Owner owner) {
-        String qlString = "select p from Pet p where p.owner=:owner order by p.name";
-        TypedQuery<Pet> q = entityManager.createQuery(qlString, Pet.class);
+        TypedQuery<Pet> q = entityManager.createNamedQuery("Pet.getPetsAsList", Pet.class);
         q.setParameter("owner",owner);
         return q.getResultList();
     }
 
     @Override
     public List<Visit> getVisits(Pet pet) {
-        String qlString = "select v from Visit v where v.pet=:pet order by v.date";
-        TypedQuery<Visit> q = entityManager.createQuery(qlString, Visit.class);
+        TypedQuery<Visit> q = entityManager.createNamedQuery( "Visit.getVisits", Visit.class);
         q.setParameter("pet",pet);
         return q.getResultList();
     }
@@ -62,8 +58,7 @@ public class PetDaoImpl implements PetDao, Serializable {
 
     @Override
     public List<Pet> getAll() {
-        String qlString = "select p from Pet p order by p.name";
-        TypedQuery<Pet> q = entityManager.createQuery(qlString, Pet.class);
+        TypedQuery<Pet> q = entityManager.createNamedQuery("Pet.getAll", Pet.class);
         return q.getResultList();
     }
 

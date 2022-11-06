@@ -49,6 +49,10 @@ import java.util.*;
         @NamedQuery(
                 name = "Vet.getAll",
                 query = "select s from Vet s order by s.lastName, s.firstName"
+        ),
+        @NamedQuery(
+                name = "Vet.search",
+                query = "select v from Vet v where v.searchindex like :searchterm"
         )
 })
 @EntityListeners(VetListener.class)

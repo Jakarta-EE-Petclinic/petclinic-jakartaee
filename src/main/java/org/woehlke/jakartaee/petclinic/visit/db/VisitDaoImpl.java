@@ -37,8 +37,7 @@ public class VisitDaoImpl implements VisitDao, Serializable {
 
     @Override
     public List<Visit> getVisits(@NotNull Pet pet) {
-        String qlString = "select p from Visit p where p.pet=:pet order by p.date";
-        TypedQuery<Visit> q = entityManager.createQuery(qlString, Visit.class);
+        TypedQuery<Visit> q = entityManager.createNamedQuery("Visit.getVisits", Visit.class);
         q.setParameter("pet", pet);
         List<Visit> list = q.getResultList();
         return list;
@@ -46,8 +45,7 @@ public class VisitDaoImpl implements VisitDao, Serializable {
 
     @Override
     public List<Visit> getAll() {
-        String qlString = "select p from Visit p";
-        TypedQuery<Visit> q = entityManager.createQuery(qlString, Visit.class);
+        TypedQuery<Visit> q = entityManager.createNamedQuery("Visit.getAll", Visit.class);
         List<Visit> list = q.getResultList();
         return list;
     }

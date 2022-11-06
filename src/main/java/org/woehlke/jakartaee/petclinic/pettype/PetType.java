@@ -36,9 +36,7 @@ import java.util.UUID;
                 ),
                 @UniqueConstraint(
                         name = PetType.TABLENAME + "_unique_names",
-                        columnNames = {
-                                PetType.COL_NAME
-                        }
+                        columnNames = {PetType.COL_NAME}
                 )
         }
 )
@@ -46,6 +44,14 @@ import java.util.UUID;
         @NamedQuery(
                 name = "PetType.getAll",
                 query = "select p from PetType p order by p.name"
+        ),
+        @NamedQuery(
+                name = "PetType.findByName",
+                query = "select s from PetType s where s.name=:name"
+        ),
+        @NamedQuery(
+                name = "PetType.search",
+                query = "select v from PetType v where v.searchindex like :searchterm"
         )
 })
 @EntityListeners(PetTypeListener.class)

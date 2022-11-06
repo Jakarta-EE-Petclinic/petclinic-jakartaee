@@ -50,6 +50,10 @@ import java.util.UUID;
         @NamedQuery(
                 name = "Visit.getAll",
                 query = "select s from Visit s order by s.date"
+        ),
+        @NamedQuery(
+                name = "Visit.getVisits",
+                query = "select v from Visit v where v.pet=:pet order by v.date"
         )
 })
 @EntityListeners(VisitListener.class)

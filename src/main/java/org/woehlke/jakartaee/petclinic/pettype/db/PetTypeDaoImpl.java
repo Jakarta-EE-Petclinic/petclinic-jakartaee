@@ -34,8 +34,7 @@ public class PetTypeDaoImpl implements PetTypeDao, Serializable {
 
     @Override
     public List<PetType> getAll() {
-        String qlString = "select pt from PetType pt order by pt.name";
-        TypedQuery<PetType> q = entityManager.createQuery(qlString, PetType.class);
+        TypedQuery<PetType> q = entityManager.createNamedQuery("PetType.getAll", PetType.class);
         return q.getResultList();
     }
 
@@ -82,8 +81,7 @@ public class PetTypeDaoImpl implements PetTypeDao, Serializable {
     @Override
     public List<PetType> search(String searchterm) {
         log.info("search PetType for: " + searchterm);
-        String qlString = "select v from PetType v where v.searchindex like :searchterm";
-        TypedQuery<PetType> q = entityManager.createQuery(qlString, PetType.class);
+        TypedQuery<PetType> q = entityManager.createNamedQuery( "PetType.search", PetType.class);
         q.setParameter("searchterm", "%" + searchterm + "%");
         List<PetType> list = q.getResultList();
         return list;
@@ -95,8 +93,7 @@ public class PetTypeDaoImpl implements PetTypeDao, Serializable {
 
     @Override
     public PetType findByName(String name) {
-        String ql = "select s from PetType s where s.name=:name";
-        TypedQuery<PetType> query = entityManager.createQuery(ql, PetType.class);
+        TypedQuery<PetType> query = entityManager.createNamedQuery( "PetType.findByName", PetType.class);
         query.setParameter("name", name);
         return query.getSingleResult();
     }

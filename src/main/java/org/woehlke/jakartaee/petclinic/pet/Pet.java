@@ -51,6 +51,10 @@ import java.util.*;
         @NamedQuery(
                 name = "Pet.getAll",
                 query = "select p from Pet p order by p.birthDate, p.name"
+        ),
+        @NamedQuery(
+                name = "Pet.getPetsAsList",
+                query =  "select p from Pet p where p.owner=:owner order by p.name"
         )
 })
 @EntityListeners(PetListener.class)

@@ -36,8 +36,7 @@ public class VetDaoImpl implements VetDao, Serializable {
 
     @Override
     public List<Vet> getAll() {
-        String qlString = "select v from Vet v order by v.lastName,v.firstName";
-        TypedQuery<Vet> q = entityManager.createQuery(qlString, Vet.class);
+        TypedQuery<Vet> q = entityManager.createNamedQuery("Vet.getAll", Vet.class);
         List<Vet> list = q.getResultList();
         return list;
     }
@@ -97,8 +96,7 @@ public class VetDaoImpl implements VetDao, Serializable {
     @Override
     public List<Vet> search(String searchterm) {
         log.info("search Vet: " + searchterm);
-        String qlString = "select v from Vet v where v.searchindex like :searchterm";
-        TypedQuery<Vet> q = entityManager.createQuery(qlString, Vet.class);
+        TypedQuery<Vet> q = entityManager.createNamedQuery("Vet.search", Vet.class);
         q.setParameter("searchterm", "%" + searchterm + "%");
         List<Vet> list = q.getResultList();
         return list;
