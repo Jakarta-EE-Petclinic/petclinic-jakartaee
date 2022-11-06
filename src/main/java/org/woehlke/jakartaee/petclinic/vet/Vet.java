@@ -164,6 +164,28 @@ public class Vet extends EntityBaseObject implements EntityBase, Comparable<Vet>
     }
 
     @Override
+    public void updateSearchindex() {
+        List<String> vetElements = new ArrayList<>();
+        for(String element :this.getFirstName().split("\\W")){
+            vetElements.add(element);
+        }
+        for(String element :this.getLastName().split("\\W")){
+            vetElements.add(element);
+        }
+        for(Specialty s: this.getSpecialties()){
+            for(String element :s.getName().split("\\W")) {
+                vetElements.add(element);
+            }
+        }
+        StringBuilder b = new StringBuilder();
+        for(String e: vetElements){
+            b.append(e);
+            b.append(" ");
+        }
+        this.setSearchindex(b.toString());
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Vet)) return false;

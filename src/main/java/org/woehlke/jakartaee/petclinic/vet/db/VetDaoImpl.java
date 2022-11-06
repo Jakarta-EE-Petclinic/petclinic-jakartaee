@@ -57,7 +57,7 @@ public class VetDaoImpl implements VetDao, Serializable {
     @Override
     public Vet addNew(Vet vet) {
         vet.setUuid(UUID.randomUUID());
-        vet = updateSearchindex(vet);
+        vet.updateSearchindex();
         log.info("addNew Vet: " + vet.toString());
         entityManager.persist(vet);
         log.info("addded New Vet: " + vet.toString());
@@ -66,31 +66,9 @@ public class VetDaoImpl implements VetDao, Serializable {
 
     @Override
     public Vet update(Vet vet) {
-        vet = updateSearchindex(vet);
+        vet.updateSearchindex();
         log.info("update Vet: " + vet.toString());
         return entityManager.merge(vet);
-    }
-
-    private Vet updateSearchindex(Vet vet) {
-        List<String> vetElements = new ArrayList<>();
-        for(String element :vet.getFirstName().split("\\W")){
-            vetElements.add(element);
-        }
-        for(String element :vet.getLastName().split("\\W")){
-            vetElements.add(element);
-        }
-        for(Specialty s: vet.getSpecialties()){
-            for(String element :s.getName().split("\\W")) {
-                vetElements.add(element);
-            }
-        }
-        StringBuilder b = new StringBuilder();
-        for(String e: vetElements){
-            b.append(e);
-            b.append(" ");
-        }
-        vet.setSearchindex(b.toString());
-        return vet;
     }
 
     @Override
