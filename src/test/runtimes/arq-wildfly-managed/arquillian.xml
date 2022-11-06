@@ -17,9 +17,7 @@
         <configuration>
             <property name="jbossHome">${jbossHome:target/wildfly-preview-27.0.0.Beta1}</property>
             <property name="serverConfig">standalone-full.xml</property>
-            <property name="javaVmArguments">-Xmx512m -XX:MaxPermSize=128m
-                -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y
-            </property>
+            <property name="javaVmArguments">-Xmx512m -XX:MaxPermSize=128m</property>
             <property name="outputToConsole">true</property>
         </configuration>
     </container>

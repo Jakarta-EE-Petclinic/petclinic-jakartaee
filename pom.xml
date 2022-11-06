@@ -2612,6 +2612,8 @@
 				<cargo.remote.username>wildfly</cargo.remote.username>
 				<cargo.remote.password>wildflypwd</cargo.remote.password>
 				<cargo.jboss.configuration>standalone</cargo.jboss.configuration>
+				<skipAfterFailureCount>1</skipAfterFailureCount>
+				<rerunFailingTestsCount>1</rerunFailingTestsCount>
 				<!--
 				<cargo.datasource.datasource.postgresql>
 					cargo.datasource.driver=org.postgresql.Driver|
@@ -2802,7 +2804,6 @@
 						<artifactId>maven-surefire-plugin</artifactId>
 						<configuration>
 							<skipTests>${skip.unit.tests}</skipTests>
-							<skipAfterFailureCount>1</skipAfterFailureCount>
 						</configuration>
 					</plugin>
 					<plugin>
