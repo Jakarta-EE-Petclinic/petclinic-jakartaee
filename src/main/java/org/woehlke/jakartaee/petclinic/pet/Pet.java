@@ -65,7 +65,7 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
     public final static String COL_UUID = "uuid";
     public final static String COL_NAME = "name";
     public final static String COL_BIRTH_DATE = "birth_date";
-    public final static String COL_PETTYPE_ID = "owner_pet_type_id";
+    public final static String COL_PETTYPE_ID = "owner_pet_pettype_id";
     public final static String COL_OWNER_ID = "owner_id";
     public final static String COL_SEARCHINDEX = "searchindex";
     private static final long serialVersionUID = 1007513582768464905L;
