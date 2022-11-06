@@ -184,13 +184,12 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
     @Override
     public void updateSearchindex() {
         List<String> l = new ArrayList<>();
-        String x = this.getAddressInfo();
-        if( null != x){
-            l.add(x);
-        }
         l.add(this.getFirstName());
         l.add(this.getLastName());
         l.add(this.getAddress());
+        if(null != this.getAddressInfo()){
+            l.add(this.getAddressInfo());
+        }
         l.add(this.getHouseNumber());
         l.add(this.getZipCode());
         l.add(this.getCity());

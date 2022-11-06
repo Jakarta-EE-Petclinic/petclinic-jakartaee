@@ -106,7 +106,7 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
 
     @Override
     public Owner addNew(Owner owner) {
-        owner = this.updateSearchindex(owner);
+        //owner = this.updateSearchindex(owner);
         log.info("addNew Owner: " + owner.toString());
         return this.ownerDao.addNew(owner);
     }
@@ -118,12 +118,14 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
 
     @Override
     public Owner update(Owner owner) {
-        owner = this.updateSearchindex(owner);
+        //owner = this.updateSearchindex(owner);
         log.info("update Owner: " + owner.toString());
         return this.ownerDao.update(owner);
     }
 
     private Owner updateSearchindex(Owner owner) {
+        //TODO
+        //owner.getSearchindex();
         for(Pet pet:this.petDao.getPetsAsList(owner)){
             for(Visit visit:visitDao.getVisits(pet)){
                 this.visitDao.update(visit);

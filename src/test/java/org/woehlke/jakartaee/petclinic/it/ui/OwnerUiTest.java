@@ -10,6 +10,7 @@ import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -117,6 +118,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(5)
     public void openOwnerDetailsPage() {
@@ -134,6 +136,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(6)
     public void editOwnerPageWithCancel() {
@@ -157,6 +160,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(7)
     public void editOwnerPageWithSave() {
@@ -181,6 +185,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(8)
     public void addNewPetToOwnerPageWithCancel() {
@@ -204,6 +209,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(9)
     public void addNewPetToOwnerPageWithSave() {
@@ -230,6 +236,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(10)
     public void editPetOfOwnerPageWithCancel() {
@@ -256,6 +263,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(11)
     public void editPetOfOwnerPageWithSave() {
@@ -282,6 +290,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(12)
     public void addNewVisitToOwnersFirstPetPageWithCancel() {
@@ -305,6 +314,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(13)
     public void addNewVisitToOwnersFirstPetPageWithSave() {
@@ -330,6 +340,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(14)
     public void deleteOwnerPageWithCancel() {
@@ -353,6 +364,7 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
+    @Ignore
     @Test
     @InSequence(15)
     public void deleteOwnerPageWithSave() {

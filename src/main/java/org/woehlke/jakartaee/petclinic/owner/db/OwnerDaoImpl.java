@@ -46,8 +46,8 @@ public class OwnerDaoImpl implements OwnerDao, Serializable {
 
     @Override
     public Owner addNew(Owner owner) {
-        owner = updateSearchindex(owner);
         owner.setUuid(UUID.randomUUID());
+        //owner.updateSearchindex();
         log.info("addNew Owner: " + owner.toString());
         entityManager.persist(owner);
         return owner;
@@ -60,40 +60,9 @@ public class OwnerDaoImpl implements OwnerDao, Serializable {
 
     @Override
     public Owner update(Owner owner) {
-        owner = updateSearchindex(owner);
+        //owner.updateSearchindex();
         log.info("update Owner: " + owner.toString());
         return entityManager.merge(owner);
-    }
-
-    private Owner updateSearchindex(Owner owner) {
-        List<String> l = new ArrayList<>();
-        // TODO
-        /*
-        for(Pet p: owner.getPetsAsList()){
-            l.add(p.getSearchindex());
-        }
-        */
-        String x = owner.getAddressInfo();
-        if( null != x){
-            l.add(x);
-        }
-        l.add(owner.getFirstName());
-        l.add(owner.getLastName());
-        l.add(owner.getAddress());
-        l.add(owner.getHouseNumber());
-        l.add(owner.getZipCode());
-        l.add(owner.getCity());
-        l.add(owner.getPhoneNumber());
-        l.add(owner.getEmail());
-        StringBuilder b = new StringBuilder();
-        for(String ll:l){
-            for(String e:ll.split("\\W")){
-                b.append(e);
-                b.append(" ");
-            }
-        }
-        owner.setSearchindex(b.toString());
-        return owner;
     }
 
     @Override
