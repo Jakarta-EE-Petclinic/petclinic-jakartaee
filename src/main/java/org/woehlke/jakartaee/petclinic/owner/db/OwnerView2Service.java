@@ -7,7 +7,7 @@ import org.woehlke.jakartaee.petclinic.visit.Visit;
 import java.io.Serializable;
 import java.util.List;
 
-public interface OwnerViewService extends Serializable {
+public interface OwnerView2Service extends Serializable {
 
     List<Pet> getPetsAsList(Owner owner);
 

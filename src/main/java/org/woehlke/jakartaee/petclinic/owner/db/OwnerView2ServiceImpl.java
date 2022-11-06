@@ -14,9 +14,9 @@ import java.util.List;
 
 @Log
 @Stateless
-public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
+public class OwnerView2ServiceImpl implements OwnerView2Service, Serializable {
 
-    private static final long serialVersionUID = -553095693269912269L;
+    private static final long serialVersionUID = -553095668269912269L;
 
     @EJB
     private OwnerDao ownerDao;
