@@ -24,10 +24,10 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
     private OwnerDao ownerDao;
 
     @EJB
-    private PetDao petDao;
+    private VisitDao visitDao;
 
     @EJB
-    private VisitDao visitDao;
+    private PetDao petDao;
 
     @Override
     public void deleteOwner(long ownerId) {

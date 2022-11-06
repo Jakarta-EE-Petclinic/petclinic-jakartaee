@@ -2,7 +2,6 @@ package org.woehlke.jakartaee.petclinic.visit.db;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
@@ -20,7 +19,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Created with IntelliJ IDEA.
+ * Created with IntelliJ IDEA.1^
  * User: tw
  * Date: 07.01.14
  * Time: 12:43
@@ -87,6 +86,16 @@ public class VisitDaoImpl implements VisitDao, Serializable {
     @PreDestroy
     public void preDestroy() {
         log.info("preDestroy: "+VisitDaoImpl.class.getSimpleName());
+    }
+
+    @PostActivate
+    public void handlePostActivate() {
+        log.info("PostActivate: "+VisitDaoImpl.class.getSimpleName());
+    }
+
+    @PrePassivate
+    public void handlePrePassivate() {
+        log.info("PrePassivate: "+VisitDaoImpl.class.getSimpleName());
     }
 
 }
