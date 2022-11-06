@@ -139,6 +139,17 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
     }
 
     @Override
+    public void updateSearchindex() {
+        String element[] = this.getName().split("\\W");
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        this.setSearchindex(b.toString());
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Pet)) return false;

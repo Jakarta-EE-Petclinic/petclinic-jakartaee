@@ -181,6 +181,31 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
         return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
     }
 
+    @Override
+    public void updateSearchindex() {
+        List<String> l = new ArrayList<>();
+        String x = this.getAddressInfo();
+        if( null != x){
+            l.add(x);
+        }
+        l.add(this.getFirstName());
+        l.add(this.getLastName());
+        l.add(this.getAddress());
+        l.add(this.getHouseNumber());
+        l.add(this.getZipCode());
+        l.add(this.getCity());
+        l.add(this.getPhoneNumber());
+        l.add(this.getEmail());
+        StringBuilder b = new StringBuilder();
+        for(String ll:l){
+            for(String e:ll.split("\\W")){
+                b.append(e);
+                b.append(" ");
+            }
+        }
+        this.setSearchindex(b.toString());
+    }
+
     @Transient
     public String getFullName() {
         return this.lastName + ", " + this.firstName;

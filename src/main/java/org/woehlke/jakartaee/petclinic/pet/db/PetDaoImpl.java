@@ -49,7 +49,7 @@ public class PetDaoImpl implements PetDao, Serializable {
     @Override
     public Pet addNew(Pet pet) {
         pet.setUuid(UUID.randomUUID());
-        pet = updateSearchindex(pet);
+        pet.updateSearchindex();
         log.info("transient New Pet: " + pet.toString());
         entityManager.persist(pet);
         log.info("persistent New Pet: " + pet.toString());
@@ -69,20 +69,9 @@ public class PetDaoImpl implements PetDao, Serializable {
 
     @Override
     public Pet update(Pet pet) {
-        pet = updateSearchindex(pet);
+        pet.updateSearchindex();
         log.info("update Pet: " + pet.toString());
         return entityManager.merge(pet);
-    }
-
-    private Pet updateSearchindex(Pet pet) {
-        String element[] = pet.getName().split("\\W");
-        StringBuilder b = new StringBuilder();
-        for(String e: element){
-            b.append(e);
-            b.append(" ");
-        }
-        pet.setSearchindex(b.toString());
-        return pet;
     }
 
     @Override
