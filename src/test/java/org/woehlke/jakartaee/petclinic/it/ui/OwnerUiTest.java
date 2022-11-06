@@ -365,17 +365,11 @@ public class OwnerUiTest extends UnitTestData {
         ownerPage.fullscreen();
         for(int i=0; i<ownerList.size()-1; i++) {
             ownerPage.clickShowDetailsFormButton0();
-            //ownerPage.fullscreen();
             Assert.assertTrue(ownerPage.isFlowStateDetails());
             ownerPage.clickShowDeleteForm();
-            //ownerPage.fullscreen();
             Assert.assertTrue(ownerPage.isFlowStateDelete());
-            ownerPage.clickSaveDeleteButton();
-            //ownerPage.fullscreen();
-            //Assert.assertTrue(ownerPage.isFlowStateList());
-            //Assert.assertTrue(ownerPage.isFlowStateDelete());
-            //ownerPage.clickConfirmDeleteButton();
-            //Assert.assertTrue(ownerPage.isFlowStateList());
+            ownerPage.clickConfirmDeleteButton();
+            Assert.assertTrue(ownerPage.isFlowStateList());
         }
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOwnerPageWithSave DONE ");

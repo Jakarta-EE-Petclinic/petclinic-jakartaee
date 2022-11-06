@@ -88,18 +88,6 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
     }
 
     @Override
-    public void deletePrepare(long id) {
-        Owner owner = this.ownerDao.findById(id);
-        for (Pet pet: this.getPetsAsList(owner)){
-            for(Visit visit:petDao.getVisits(pet)){
-                visitDao.delete(visit.getId());
-            }
-            petDao.delete(pet.getId());
-        }
-        log.info("delete Owner: " + id);
-    }
-
-    @Override
     public void delete(long id) {
         this.ownerDao.delete(id);
     }

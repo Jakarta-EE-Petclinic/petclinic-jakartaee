@@ -48,7 +48,7 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     private GrapheneElement cancelEditButton;
 
     @FindBy(id = "detailsOwnerForm:deleteSelectedButton")
-    private GrapheneElement showDeleteFormButton;
+    private GrapheneElement deleteSelectedButton;
 
     @FindBy(id = "detailsOwnerForm:confirmDeleteButton")
     private GrapheneElement confirmDeleteButton;
@@ -117,10 +117,10 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     }
 
     public OwnerPage clickShowDeleteForm() {
-        showDeleteFormButton.sendKeys(Keys.DOWN);
-        showDeleteFormButton.sendKeys(Keys.END);
-        showDeleteFormButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showDeleteFormButton).click();
+        //deleteSelectedButton.sendKeys(Keys.DOWN);
+        //deleteSelectedButton.sendKeys(Keys.END);
+        //deleteSelectedButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(deleteSelectedButton).click();
         fullscreen();
         return this;
     }
@@ -150,10 +150,10 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     }
 
     public OwnerPage clickShowDetailsFormButton0() {
-        showDetailsFormButton0.sendKeys(Keys.DOWN);
-        showDetailsFormButton0.sendKeys(Keys.END);
-        showDetailsFormButton0.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showDetailsFormButton0).click();
+        //showDetailsFormButton0.sendKeys(Keys.DOWN);
+        //showDetailsFormButton0.sendKeys(Keys.END);
+        //showDetailsFormButton0.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(showDetailsFormButton0).click();
         fullscreen();
         return this;
     }
@@ -200,10 +200,10 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     }
 
     public OwnerPage clickCancelDetailsButton() {
-        //Graphene.guardHttp(cancelDetailsButton).click();
-        cancelDetailsButton.sendKeys(Keys.DOWN);
-        cancelDetailsButton.sendKeys(Keys.END);
-        cancelDetailsButton.sendKeys(Keys.ENTER);
+        //cancelDetailsButton.sendKeys(Keys.DOWN);
+        //cancelDetailsButton.sendKeys(Keys.END);
+        //cancelDetailsButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(cancelDetailsButton).click();
         fullscreen();
         return this;
     }
@@ -410,17 +410,15 @@ public class OwnerPage implements CrudFlowStatePageOwner {
         return this;
     }
 
-    @FindBy(id="deleteOwnerForm:confirmDeleteButton")
-    private GrapheneElement deleteOwnerSaveButton;
-
+    /*
     public OwnerPage clickSaveDeleteButton() {
-        deleteOwnerSaveButton.sendKeys(Keys.END);
-        deleteOwnerSaveButton.sendKeys(Keys.DOWN);
-        deleteOwnerSaveButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(deleteOwnerSaveButton).click();
+        confirmDeleteButton.sendKeys(Keys.END);
+        confirmDeleteButton.sendKeys(Keys.DOWN);
+        confirmDeleteButton.sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(confirmDeleteButton).click();
         fullscreen();
         return this;
-    }
+    }*/
 
     @FindBy(id="addNewPetForm:petNameAddNewOwnersPet")
     private GrapheneElement petNameAddNewOwnersPetInput;
