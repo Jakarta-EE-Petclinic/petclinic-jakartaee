@@ -444,12 +444,11 @@ public class OwnerViewImpl implements OwnerView, Serializable {
                 String msgInfo = this.entity.getPrimaryKey();
                 this.ownerViewService.deleteOwner(this.entity.getId());
                 this.entity = null;
-                this.ownerFlowView.setFlowStateList();
-                loadList();
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, msgInfo);
                 this.ownerFlowView.setFlowStateList();
+                loadList();
             }
         } catch (EJBTransactionRolledbackException e) {
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.denied";

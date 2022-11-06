@@ -5,9 +5,9 @@ import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
-import org.woehlke.jakartaee.petclinic.pet.db.PetService;
+import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
-import org.woehlke.jakartaee.petclinic.visit.db.VisitService;
+import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,83 +19,90 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
     private static final long serialVersionUID = -553095693269912269L;
 
     @EJB
-    private OwnerService ownerService;
+    private OwnerDao ownerDao;
 
     @EJB
-    private PetService petService;
+    private PetDao petDao;
 
     @EJB
-    private VisitService visitService;
+    private VisitDao visitDao;
 
     @Override
     public void deleteOwner(long ownerId) {
-        Owner owner = ownerService.findById(ownerId);
-        for(Pet pet:petService.getAllPetsOfAnOwner(owner)){
-            for(Visit visit:visitService.getAllVisitsOfAnPet(pet)){
-                visitService.delete(visit.getId());
+        Owner owner = ownerDao.findById(ownerId);
+        for(Pet pet:petDao.getPetsAsList(owner)){
+            for(Visit visit:visitDao.getVisits(pet)){
+                visitDao.delete(visit.getId());
             }
-            petService.delete(pet.getId());
+            petDao.delete(pet.getId());
         }
-        ownerService.delete(owner.getId());
+        ownerDao.delete(owner.getId());
     }
 
     @Override
     public List<Owner> getAllOwner() {
-        return ownerService.getAll();
-    }
-
-    @Override
-    public List<Owner> searchOwner(String searchterm) {
-        return ownerService.search(searchterm);
-    }
-
-    @Override
-    public List<Pet> getPetsAsList(Owner owner) {
-        return ownerService.getPetsAsList(owner);
-    }
-
-    @Override
-    public String getPetsAsString(Owner owner) {
-        return ownerService.getPetsAsString(owner);
-    }
-
-    @Override
-    public List<Visit> getVisits(Pet ownersPet) {
-        return petService.getVisits(ownersPet);
-    }
-
-    @Override
-    public Visit addNewVisit(Visit visit) {
-        return visitService.addNew(visit);
-    }
-
-    @Override
-    public Pet addNewPet(Pet pet) {
-        return petService.addNew(pet);
-    }
-
-    @Override
-    public Pet findPetById(long id) {
-        return petService.findById(id);
-    }
-
-    @Override
-    public Pet updatePet(Pet pet) {
-        return petService.update(pet);
+        return ownerDao.getAll();
     }
 
     @Override
     public Owner findOwnerById(long id) {
-        return ownerService.findById(id);
+        return ownerDao.findById(id);
     }
 
     @Override
     public Owner updateOwner(Owner entity) {
-        return ownerService.update(entity);
+        return ownerDao.update(entity);
     }
 
     @Override
     public Owner addNewOwner(Owner entity) {
-        return ownerService.addNew(entity);
+        return ownerDao.addNew(entity);
+    }
+
+    @Override
+    public List<Owner> searchOwner(String searchterm) {
+        return ownerDao.search(searchterm);
+    }
+
+    @Override
+    public List<Pet> getPetsAsList(Owner owner) {
+        return petDao.getPetsAsList(owner);
+    }
+
+    @Override
+    public String getPetsAsString(Owner owner) {
+        StringBuilder s = new StringBuilder();
+        for (Pet pet : this.getPetsAsList(owner)) {
+            s.append(pet.getName())
+                    .append(" (")
+                    .append(pet.getType().getName())
+                    .append(") ");
+        }
+        return s.toString();
+    }
+
+    @Override
+    public Pet addNewPet(Pet pet) {
+        return petDao.addNew(pet);
+    }
+
+    @Override
+    public Pet findPetById(long id) {
+        return petDao.findById(id);
+    }
+
+    @Override
+    public Pet updatePet(Pet pet) {
+        return petDao.update(pet);
+    }
+
+    @Override
+    public List<Visit> getVisits(Pet ownersPet) {
+        return visitDao.getVisits(ownersPet);
+    }
+
+    @Override
+    public Visit addNewVisit(Visit visit) {
+        return visitDao.addNew(visit);
     }
 }
