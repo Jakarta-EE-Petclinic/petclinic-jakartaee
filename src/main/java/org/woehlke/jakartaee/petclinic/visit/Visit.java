@@ -76,7 +76,7 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
     @Column(name = COL_UUID, nullable = false, unique = true, length = 36)
     private UUID uuid;
 
-    @Column(name = COL_SEARCHINDEX, nullable = true)
+    @Column(name = COL_SEARCHINDEX)
     private String searchindex;
 
     @NotNull
@@ -88,7 +88,7 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
     @Column(name = COL_DESCRIPTION, nullable = false)
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.ALL})
     @JoinColumn(name = COL_PET_ID)
     private Pet pet;
 

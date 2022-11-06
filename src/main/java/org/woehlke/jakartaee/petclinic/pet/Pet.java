@@ -92,36 +92,14 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
     private String name;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = COL_PETTYPE_ID)
     private PetType type;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.ALL})
     @JoinColumn(name = COL_OWNER_ID)
     private Owner owner;
-
-    /*
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
-    private Set<Visit> visits = new HashSet<>();
-
-    public void addVisit(Visit visit) {
-        visits.add(visit);
-    }
-
-    public List<Visit> getVisits() {
-        List<Visit> listVisit = new ArrayList<>();
-        for (Visit visit : visits) {
-            listVisit.add(visit);
-        }
-        Collections.sort(listVisit);
-        return listVisit;
-    }
-
-    public void setVisits(Set<Visit> visits) {
-        this.visits = visits;
-    }
-    */
 
     @Transient
     public String getTableName() {

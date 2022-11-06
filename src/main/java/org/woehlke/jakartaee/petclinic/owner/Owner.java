@@ -4,8 +4,6 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBaseObject;
 import org.woehlke.jakartaee.petclinic.owner.db.OwnerListener;
-import org.woehlke.jakartaee.petclinic.pet.Pet;
-import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import jakarta.persistence.*;
 
@@ -50,11 +48,11 @@ import java.util.*;
 @NamedQueries({
         @NamedQuery(
                 name = "Owner.getAll",
-                query = "select o from Owner o order by o.lastName,o.firstName"
+                query = "select o from Owner o order by o.lastName,o.firstName asc"
         ),
         @NamedQuery(
                 name = "Owner.search",
-                query = "select o from Owner o where o.searchindex like :searchterm order by o.lastName,o.firstName"
+                query = "select o from Owner o where o.searchindex like :searchterm order by o.lastName,o.firstName asc"
         )
 })
 @EntityListeners(OwnerListener.class)
@@ -83,7 +81,7 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
     @Column(name = COL_UUID, nullable = false, unique = true, length = 36)
     private UUID uuid;
 
-    @Column(name = COL_SEARCHINDEX, nullable = true)
+    @Column(name = COL_SEARCHINDEX)
     private String searchindex;
 
     @Column(name = COL_FIRSTNAME, nullable = false)
@@ -125,38 +123,6 @@ public class Owner extends EntityBaseObject implements Comparable<Owner>, Serial
     @NotEmpty
     @Email
     private String email;
-
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.EAGER)
-    //private Set<Pet> pets = new TreeSet<>();
-
-    /*
-    public void addPet(Pet pet) {
-        pets.add(pet);
-        pet.setOwner(this);
-    }
-
-    @Transient
-    public List<Pet> getPetsAsList() {
-        List<Pet> listPets  = new ArrayList<>();
-        for (Pet pet : this.getPets()) {
-            listPets.add(pet);
-        }
-        Collections.sort(listPets);
-        return listPets;
-    }
-
-    @Transient
-    public String getPetsAsString() {
-        StringBuilder s = new StringBuilder();
-        for (Pet pet : this.pets) {
-          s.append(pet.getName())
-          .append(" (")
-          .append(pet.getType().getName())
-          .append(") ");
-        }
-        return s.toString();
-    }
-    */
 
     @Transient
     public String getFullname(){
