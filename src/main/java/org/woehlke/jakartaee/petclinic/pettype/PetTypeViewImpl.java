@@ -179,11 +179,24 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
         this.entity = new PetType();
     }
 
+    private PetType updateSearchindex(PetType petType) {
+        String element[] = petType.getName().split("\\W");
+
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        petType.setSearchindex(b.toString());
+        return petType;
+    }
+
     @Override
     public void saveNewEntity() {
         log.info("saveNewEntity");
         try {
             log.info((this.entity != null) ? this.entity.toString() : "null");
+            this.entity = updateSearchindex(this.entity);
             this.entity = this.entityService.addNew(this.entity);
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.petTypeViewFlow.setFlowStateDetails();
@@ -202,6 +215,7 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
         log.info("saveEditedEntity");
         try {
             log.info((this.entity != null) ? this.entity.toString() : "null");
+            this.entity = updateSearchindex(this.entity);
             this.entity = this.entityService.update(this.entity);
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.petTypeViewFlow.setFlowStateDetails();

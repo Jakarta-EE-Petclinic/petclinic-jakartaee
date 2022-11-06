@@ -47,7 +47,6 @@ public class PetTypeDaoImpl implements PetTypeDao, Serializable {
 
     @Override
     public PetType addNew(PetType petType) {
-        petType = updateSearchindex(petType);
         log.info("addNew PetType: " + petType.toString());
         petType.setUuid(UUID.randomUUID());
         entityManager.persist(petType);
@@ -61,21 +60,8 @@ public class PetTypeDaoImpl implements PetTypeDao, Serializable {
 
     @Override
     public PetType update(PetType petType) {
-        petType = updateSearchindex(petType);
         log.info("update PetType: " + petType.toString());
         return entityManager.merge(petType);
-    }
-
-    private PetType updateSearchindex(PetType petType) {
-        String element[] = petType.getName().split("\\W");
-
-        StringBuilder b = new StringBuilder();
-        for(String e: element){
-            b.append(e);
-            b.append(" ");
-        }
-        petType.setSearchindex(b.toString());
-        return petType;
     }
 
     @Override
@@ -99,13 +85,23 @@ public class PetTypeDaoImpl implements PetTypeDao, Serializable {
     }
 
 
+    @PostActivate
+    public void handlePostActivate() {
+        log.info("PostActivate: "+PetTypeDaoImpl.class.getSimpleName());
+    }
+
+    @PrePassivate
+    public void handlePrePassivate() {
+        log.info("PrePassivate: "+PetTypeDaoImpl.class.getSimpleName());
+    }
+
     @PostConstruct
     public void postConstruct() {
-        log.info("postConstruct: "+PetTypeDaoImpl.class.getSimpleName());
+        log.info("PostConstruct: "+PetTypeDaoImpl.class.getSimpleName());
     }
 
     @PreDestroy
     public void preDestroy() {
-        log.info("preDestroy: "+PetTypeDaoImpl.class.getSimpleName());
+        log.info("PreDestroy: "+PetTypeDaoImpl.class.getSimpleName());
     }
 }

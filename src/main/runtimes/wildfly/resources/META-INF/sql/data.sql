@@ -140,7 +140,7 @@ SELECT pg_catalog.setval('"public"."owner_pet_seq"', 50, false);
 -- Name: owner_pet_pettype_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."owner_pet_pettype_seq"', 50, false);
+SELECT pg_catalog.setval('"public"."owner_pet_pettype_seq"', 100, false);
 
 
 --

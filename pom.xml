@@ -2804,6 +2804,16 @@
 						<artifactId>maven-surefire-plugin</artifactId>
 						<configuration>
 							<skipTests>${skip.unit.tests}</skipTests>
+							<systemProperties>
+								<property>
+									<name>skipAfterFailureCount</name>
+									<value>1</value>
+								</property>
+								<property>
+									<name>rerunFailingTestsCount</name>
+									<value>true</value>
+								</property>
+							</systemProperties>
 						</configuration>
 					</plugin>
 					<plugin>
