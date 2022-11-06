@@ -57,7 +57,7 @@ import java.util.UUID;
 @EntityListeners(PetTypeListener.class)
 public class PetType extends EntityBaseObject implements EntityBase, Comparable<PetType>, Serializable {
 
-    public final static String TABLENAME = "owner_pet_type";
+    public final static String TABLENAME = "owner_pet_pettype";
     public final static String COL_ID = "id";
     public final static String COL_UUID = "uuid";
     public final static String COL_NAME = "name";
@@ -65,8 +65,8 @@ public class PetType extends EntityBaseObject implements EntityBase, Comparable<
     private static final long serialVersionUID = -2213412509142145275L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "owner_pet_type_gen")
-    @SequenceGenerator(name="owner_pet_type_gen", sequenceName="owner_pet_type_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "owner_pet_pettype_gen")
+    @SequenceGenerator(name="owner_pet_pettype_gen", sequenceName="owner_pet_pettype_seq")
     private Long id;
 
     @Column(name = COL_UUID, nullable = false, unique = true, length = 36)

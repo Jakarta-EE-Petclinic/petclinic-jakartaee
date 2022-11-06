@@ -133,42 +133,42 @@ ALTER TABLE "public"."vet_specialties" ENABLE TRIGGER ALL;
 -- Name: owner_pet_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."owner_pet_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."owner_pet_seq"', 50, false);
 
 
 --
 -- Name: owner_pet_type_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."owner_pet_type_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."owner_pet_type_seq"', 50, false);
 
 
 --
 -- Name: owner_pet_visit_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."owner_pet_visit_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."owner_pet_visit_seq"', 50, false);
 
 
 --
 -- Name: owner_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."owner_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."owner_seq"', 50, false);
 
 
 --
 -- Name: specialty_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."specialty_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."specialty_seq"', 50, false);
 
 
 --
 -- Name: vet_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."vet_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."vet_seq"', 50, false);
 
 
 COMMIT;
