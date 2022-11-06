@@ -1,5 +1,7 @@
 package org.woehlke.jakartaee.petclinic.owner.db;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
@@ -14,7 +16,7 @@ import java.util.List;
 
 @Log
 @Stateless
-public class OwnerView2ServiceImpl implements OwnerView2Service, Serializable {
+public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     private static final long serialVersionUID = -553095668269912269L;
 
@@ -104,5 +106,16 @@ public class OwnerView2ServiceImpl implements OwnerView2Service, Serializable {
     @Override
     public Visit addNewVisit(Visit visit) {
         return visitDao.addNew(visit);
+    }
+
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("postConstruct: "+OwnerViewServiceImpl.class.getSimpleName());
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        log.info("preDestroy: "+OwnerViewServiceImpl.class.getSimpleName());
     }
 }

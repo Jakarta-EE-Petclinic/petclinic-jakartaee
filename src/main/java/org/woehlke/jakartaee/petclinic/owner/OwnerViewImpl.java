@@ -9,7 +9,7 @@ import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
-import org.woehlke.jakartaee.petclinic.owner.db.OwnerView2Service;
+import org.woehlke.jakartaee.petclinic.owner.db.OwnerViewService;
 import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowView;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
@@ -67,7 +67,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     //private VisitService visitService;
 
     @EJB
-    private OwnerView2Service ownerView2Service;
+    private OwnerViewService ownerViewService;
 
     private String searchterm;
     private List<Owner> list;
@@ -81,7 +81,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     public String showDetailsForm(Owner o) {
         log.info("showDetailsForm");
         if (o != null) {
-            this.entity = this.ownerView2Service.findOwnerById(o.getId());
+            this.entity = this.ownerViewService.findOwnerById(o.getId());
             this.ownerFlowView.setFlowStateDetails();
         } else {
             this.ownerFlowView.setFlowStateList();
@@ -144,17 +144,17 @@ public class OwnerViewImpl implements OwnerView, Serializable {
 
     @Override
     public List<Pet> getPetsAsList(Owner owner) {
-        return ownerView2Service.getPetsAsList(owner);
+        return ownerViewService.getPetsAsList(owner);
     }
 
     @Override
     public String getPetsAsString(Owner owner) {
-        return ownerView2Service.getPetsAsString(owner);
+        return ownerViewService.getPetsAsString(owner);
     }
 
     @Override
     public List<Visit> getVisits(Pet ownersPet){
-        return ownerView2Service.getVisits(ownersPet);
+        return ownerViewService.getVisits(ownersPet);
     }
 
     @Override
@@ -234,7 +234,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
             this.pet.setUuid(UUID.randomUUID());
             this.pet.setType(petType);
             this.pet.setOwner(this.entity);
-            this.pet = this.ownerView2Service.addNewPet(this.pet);
+            this.pet = this.ownerViewService.addNewPet(this.pet);
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
             String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.pet);
@@ -257,7 +257,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     public String showOwnerPetEditForm(Pet pet) {
         log.info("showOwnerPetEditForm");
         if (pet != null) {
-            this.pet = this.ownerView2Service.findPetById(pet.getId());
+            this.pet = this.ownerViewService.findPetById(pet.getId());
             this.ownerFlowView.setFlowStateEditPet();
         } else {
             this.ownerFlowView.setFlowStateDetails();
@@ -271,9 +271,9 @@ public class OwnerViewImpl implements OwnerView, Serializable {
         try {
             PetType petType = petTypeService.findById(this.petTypeId);
             this.pet.setType(petType);
-            this.ownerView2Service.updatePet(this.pet);
+            this.ownerViewService.updatePet(this.pet);
             long ownerId = this.entity.getId();
-            this.entity = this.ownerView2Service.findOwnerById(ownerId);
+            this.entity = this.ownerViewService.findOwnerById(ownerId);
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.edit.done";
             String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, this.pet);
@@ -296,7 +296,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     public String editOwnerPetVisitNewForm(Pet rowPet) {
         log.info("editOwnerPetVisitNewForm");
         if (rowPet != null) {
-            this.pet = this.ownerView2Service.findPetById(rowPet.getId());
+            this.pet = this.ownerViewService.findPetById(rowPet.getId());
             this.petTypeId = this.pet.getType().getId();
             this.visit = new Visit();
             this.ownerFlowView.setFlowStateNewVisit();
@@ -317,17 +317,17 @@ public class OwnerViewImpl implements OwnerView, Serializable {
         log.info("saveOwnerPetVisitNew");
         try {
             if (rowPet != null) {
-                this.pet = this.ownerView2Service.findPetById(rowPet.getId());
+                this.pet = this.ownerViewService.findPetById(rowPet.getId());
                 this.petTypeId = this.pet.getType().getId();
                 this.visit.setPet(this.pet);
                 //this.pet.addVisit(this.visit);
-                this.visit = this.ownerView2Service.addNewVisit(this.visit);
+                this.visit = this.ownerViewService.addNewVisit(this.visit);
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, this.visit);
                 //reload View Data to display changes
-                this.pet = this.ownerView2Service.findPetById(rowPet.getId());
-                this.entity = this.ownerView2Service.findOwnerById(this.entity.getId());
+                this.pet = this.ownerViewService.findPetById(rowPet.getId());
+                this.entity = this.ownerViewService.findOwnerById(this.entity.getId());
             } else {
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.pet.visit.addNew";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
@@ -377,7 +377,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
 
     @Override
     public void loadList() {
-        this.list = this.ownerView2Service.getAllOwner();
+        this.list = this.ownerViewService.getAllOwner();
     }
 
     @Override
@@ -402,7 +402,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
         this.ownerFlowView.setFlowStateNew();
         try {
             if (this.entity != null) {
-                this.entity = this.ownerView2Service.addNewOwner(this.entity);
+                this.entity = this.ownerViewService.addNewOwner(this.entity);
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.addNew.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, this.entity);
@@ -421,7 +421,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
         this.ownerFlowView.setFlowStateEdit();
         try {
             if (this.entity != null) {
-                this.entity = this.ownerView2Service.updateOwner(this.entity);
+                this.entity = this.ownerViewService.updateOwner(this.entity);
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.edit.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, this.entity);
@@ -439,7 +439,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
         try {
             if (this.entity != null) {
                 String msgInfo = this.entity.getPrimaryKey();
-                this.ownerView2Service.deleteOwner(this.entity.getId());
+                this.ownerViewService.deleteOwner(this.entity.getId());
                 this.entity = null;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
@@ -460,7 +460,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     @Override
     public void performSearch() {
         log.info("performSearch");
-        this.list = ownerView2Service.searchOwner(this.searchterm);
+        this.list = ownerViewService.searchOwner(this.searchterm);
     }
 
     @Override
