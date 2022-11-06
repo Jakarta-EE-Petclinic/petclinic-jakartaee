@@ -104,7 +104,10 @@ public class PetTypePage implements CrudFlowStatePage {
 
 
     public PetTypePage clickAddNewEntityButton() {
-        Graphene.guardHttp(showNewFormButton).click();
+        showNewFormButton.sendKeys(Keys.END);
+        showNewFormButton.sendKeys(Keys.DOWN);
+        showNewFormButton.sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(showNewFormButton).click();
         return this;
     }
 
@@ -192,6 +195,11 @@ public class PetTypePage implements CrudFlowStatePage {
 
     public PetTypePage clickCancelDetailsButton() {
         Graphene.guardHttp(cancelDetailsButton).click();
+        return this;
+    }
+
+    public PetTypePage clickSaveNewButton() {
+        Graphene.guardHttp(saveNewButton).click();
         return this;
     }
 
