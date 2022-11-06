@@ -10,7 +10,6 @@ import jakarta.annotation.PreDestroy;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.io.Serializable;
 import java.util.*;

@@ -3,6 +3,7 @@ package org.woehlke.jakartaee.petclinic.pet.db;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import jakarta.annotation.PostConstruct;
@@ -70,8 +71,7 @@ public class PetServiceImpl implements PetService, Serializable  {
     }
 
     @Override
-    public void delete(Pet pet) {
-        log.info("delete Pet: " + pet.toString());
-        this.petDao.delete(pet);
+    public List<Pet> getAllPetsOfAnOwner(Owner owner) {
+        return this.petDao.getPetsAsList(owner);
     }
 }

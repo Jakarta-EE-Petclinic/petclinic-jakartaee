@@ -79,12 +79,6 @@ public class VisitDaoImpl implements VisitDao, Serializable {
         entityManager.remove(visit);
     }
 
-    @Override
-    public void delete(Visit visit){
-        log.info("delete Visit: " + visit.toString());
-        entityManager.remove(visit);
-    }
-
     @PostConstruct
     public void postConstruct() {
         log.info("postConstruct: "+VisitDaoImpl.class.getSimpleName());

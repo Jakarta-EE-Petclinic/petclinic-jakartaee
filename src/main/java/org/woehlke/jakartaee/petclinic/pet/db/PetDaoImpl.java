@@ -47,12 +47,6 @@ public class PetDaoImpl implements PetDao, Serializable {
     }
 
     @Override
-    public void delete(Pet pet) {
-        log.info("delete Pet: " + pet.toString());
-        entityManager.remove(pet);
-    }
-
-    @Override
     public Pet addNew(Pet pet) {
         pet.setUuid(UUID.randomUUID());
         pet.updateSearchindex();

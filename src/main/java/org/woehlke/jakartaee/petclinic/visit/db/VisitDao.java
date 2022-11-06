@@ -20,5 +20,4 @@ public interface VisitDao extends CrudDao<Visit> {
     long serialVersionUID = -2002874805548729384L;
 
     List<Visit> getVisits(@NotNull Pet pet);
-    void delete(Visit visit);
 }

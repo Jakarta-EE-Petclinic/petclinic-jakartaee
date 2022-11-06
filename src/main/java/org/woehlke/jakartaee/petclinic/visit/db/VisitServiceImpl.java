@@ -1,6 +1,8 @@
 package org.woehlke.jakartaee.petclinic.visit.db;
 
 import lombok.extern.java.Log;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
+import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import jakarta.annotation.PostConstruct;
@@ -52,6 +54,10 @@ public class VisitServiceImpl implements VisitService, Serializable {
         this.visitDao.delete(id);
     }
 
+    @Override
+    public List<Visit> getAllVisitsOfAnPet(Pet pet) {
+        return  this.visitDao.getVisits(pet);
+    }
 
     @PostConstruct
     public void postConstruct() {
@@ -63,8 +69,5 @@ public class VisitServiceImpl implements VisitService, Serializable {
         log.info("preDestroy: "+VisitServiceImpl.class.getSimpleName());
     }
 
-    @Override
-    public void delete(Visit visit) {
-        this.visitDao.delete(visit);
-    }
+
 }

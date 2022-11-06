@@ -22,5 +22,4 @@ public interface PetDao extends CrudDao<Pet> {
 
     List<Visit> getVisits(@NotNull Pet pet);
 
-    void delete(Pet pet);
 }

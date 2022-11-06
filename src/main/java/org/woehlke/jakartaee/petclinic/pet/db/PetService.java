@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.pet.db;
 
 import jakarta.validation.constraints.NotNull;
 import org.woehlke.jakartaee.petclinic.application.framework.db.CrudService;
+import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
@@ -18,5 +19,6 @@ public interface PetService extends CrudService<Pet>, Serializable {
 
     List<Visit> getVisits(@NotNull Pet pet);
 
-    void delete(Pet pet);
+    List<Pet> getAllPetsOfAnOwner(@NotNull Owner entity);
+
 }
