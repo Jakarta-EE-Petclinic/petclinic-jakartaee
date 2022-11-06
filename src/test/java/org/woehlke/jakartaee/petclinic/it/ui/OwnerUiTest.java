@@ -118,7 +118,6 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(5)
     public void openOwnerDetailsPage() {
@@ -136,7 +135,6 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(6)
     public void editOwnerPageWithCancel() {
@@ -160,7 +158,6 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(7)
     public void editOwnerPageWithSave() {
@@ -185,7 +182,6 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(8)
     public void addNewPetToOwnerPageWithCancel() {
@@ -209,7 +205,6 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(9)
     public void addNewPetToOwnerPageWithSave() {
@@ -340,7 +335,6 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(14)
     public void deleteOwnerPageWithCancel() {
@@ -364,7 +358,6 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
     }
 
-    @Ignore
     @Test
     @InSequence(15)
     public void deleteOwnerPageWithSave() {
