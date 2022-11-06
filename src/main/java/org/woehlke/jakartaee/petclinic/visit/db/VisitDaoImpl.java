@@ -55,26 +55,10 @@ public class VisitDaoImpl implements VisitDao, Serializable {
         return entityManager.find(Visit.class, id);
     }
 
-    private Visit updateSearchindex(Visit visit) {
-        String element1[] = visit.getDate().toInstant().toString().split("\\W");
-        String element2[] = visit.getDescription().split("\\W");
-        StringBuilder b = new StringBuilder();
-        for(String e: element1){
-            b.append(e);
-            b.append(" ");
-        }
-        for(String e: element2) {
-            b.append(e);
-            b.append(" ");
-        }
-        visit.setSearchindex(b.toString());
-        return visit;
-    }
-
     @Override
     public Visit addNew(Visit visit) {
         visit.setUuid(UUID.randomUUID());
-        visit = updateSearchindex(visit);
+        visit.updateSearchindex();
         log.info("addNew Visit: " + visit.toString());
         entityManager.persist(visit);
         return visit;
@@ -82,7 +66,7 @@ public class VisitDaoImpl implements VisitDao, Serializable {
 
     @Override
     public Visit update(Visit visit) {
-        visit = updateSearchindex(visit);
+        visit.updateSearchindex();
         log.info("addNew Visit: " + visit.toString());
         return entityManager.merge(visit);
     }
@@ -90,7 +74,7 @@ public class VisitDaoImpl implements VisitDao, Serializable {
     @Override
     public void delete(long id) {
         Visit visit = entityManager.find(Visit.class, id);
-        visit = updateSearchindex(visit);
+        visit.updateSearchindex();
         log.info("delete Visit: " + visit.toString());
         entityManager.remove(visit);
     }

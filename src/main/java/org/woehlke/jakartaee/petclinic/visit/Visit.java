@@ -112,6 +112,22 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
     }
 
     @Override
+    public void updateSearchindex() {
+        String element1[] = this.getDate().toInstant().toString().split("\\W");
+        String element2[] = this.getDescription().split("\\W");
+        StringBuilder b = new StringBuilder();
+        for(String e: element1){
+            b.append(e);
+            b.append(" ");
+        }
+        for(String e: element2) {
+            b.append(e);
+            b.append(" ");
+        }
+        this.setSearchindex(b.toString());
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Visit)) return false;
