@@ -22,6 +22,8 @@ SET row_security = off;
 
 SET SESSION AUTHORIZATION DEFAULT;
 
+VACUUM ;
+
 BEGIN ;
 
 ALTER TABLE "public"."owner" DISABLE TRIGGER ALL;
