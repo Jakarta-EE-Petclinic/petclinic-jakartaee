@@ -35,26 +35,26 @@ INSERT INTO "public"."owner" ("id", "address", "address_info", "city", "email", 
 ALTER TABLE "public"."owner" ENABLE TRIGGER ALL;
 
 --
--- Data for Name: owner_pet_type; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: owner_pet_pettype; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-ALTER TABLE "public"."owner_pet_type" DISABLE TRIGGER ALL;
+ALTER TABLE "public"."owner_pet_pettype" DISABLE TRIGGER ALL;
 
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (1, 'Dog', 'Dog ', 'f0d464c6-2149-4c6c-b477-bec0766b8052');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (2, 'Cat', 'Cat ', 'b88b6449-b44b-4cc4-b30a-311a3d1c3361');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (3, 'Mouse', 'Mouse ', '052ccd24-43e4-4181-8b32-ad3244b93199');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (4, 'Hamster', 'Hamster ', 'ee0149cf-5efb-420c-8e81-93143b97dfea');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (5, 'Rabbit', 'Rabbit ', '3f593756-7350-4580-8300-1b1e943dc026');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (6, 'Fish', 'Fish ', '4fd9a619-d9a5-43c4-b725-ca17ab60159f');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (8, 'Guinea pig', 'Guinea pig ', '3389ac8c-a541-4565-9577-3e93bdfc3ad1');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (9, 'Pigeon', 'Pigeon ', '91cbd075-d8cc-4b92-a5a6-0db340ddf019');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (10, 'Snake', 'Snake ', 'a23a4023-0c57-44a4-bc16-7949460b980e');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (11, 'Spider', 'Spider ', '070aacf3-08ca-4820-a6ee-bd011dff4e21');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (7, 'Pony', 'Pony ', 'd76b2627-af8d-4f7f-88e7-0fcee289f3ce');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (12, 'Donkey', 'Donkey ', '3417d73c-c8a3-4034-b37b-c31ebcd4cb49');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (1, 'Dog', 'Dog ', 'f0d464c6-2149-4c6c-b477-bec0766b8052');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (2, 'Cat', 'Cat ', 'b88b6449-b44b-4cc4-b30a-311a3d1c3361');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (3, 'Mouse', 'Mouse ', '052ccd24-43e4-4181-8b32-ad3244b93199');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (4, 'Hamster', 'Hamster ', 'ee0149cf-5efb-420c-8e81-93143b97dfea');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (5, 'Rabbit', 'Rabbit ', '3f593756-7350-4580-8300-1b1e943dc026');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (6, 'Fish', 'Fish ', '4fd9a619-d9a5-43c4-b725-ca17ab60159f');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (8, 'Guinea pig', 'Guinea pig ', '3389ac8c-a541-4565-9577-3e93bdfc3ad1');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (9, 'Pigeon', 'Pigeon ', '91cbd075-d8cc-4b92-a5a6-0db340ddf019');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (10, 'Snake', 'Snake ', 'a23a4023-0c57-44a4-bc16-7949460b980e');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (11, 'Spider', 'Spider ', '070aacf3-08ca-4820-a6ee-bd011dff4e21');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (7, 'Pony', 'Pony ', 'd76b2627-af8d-4f7f-88e7-0fcee289f3ce');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (12, 'Donkey', 'Donkey ', '3417d73c-c8a3-4034-b37b-c31ebcd4cb49');
 
 
-ALTER TABLE "public"."owner_pet_type" ENABLE TRIGGER ALL;
+ALTER TABLE "public"."owner_pet_pettype" ENABLE TRIGGER ALL;
 
 --
 -- Data for Name: owner_pet; Type: TABLE DATA; Schema: public; Owner: -
@@ -62,11 +62,11 @@ ALTER TABLE "public"."owner_pet_type" ENABLE TRIGGER ALL;
 
 ALTER TABLE "public"."owner_pet" DISABLE TRIGGER ALL;
 
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (25, '2018-02-10', 'Roger', 'Roger ', '2fa7e4f8-4009-48eb-b175-54a3bd5d9e3a', 24, 5);
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (26, '2021-08-15', 'Jerry', 'Jerry ', '7cf6da17-52f0-401e-a8f8-8d7f3d63ea16', 24, 3);
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (27, '2020-06-10', 'Tom', 'Tom ', 'a553f6aa-ac28-440d-8f28-981cddafec86', 24, 2);
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (28, '2020-06-14', 'Python', 'Python ', '0b8c7059-063f-4c55-bd22-0c8f9bc3b9c5', 23, 10);
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (29, '2022-02-18', 'Tarantula', 'Tarantula ', 'faf15ccf-383a-4b90-9155-e41e6107d658', 23, 11);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (25, '2018-02-10', 'Roger', 'Roger ', '2fa7e4f8-4009-48eb-b175-54a3bd5d9e3a', 24, 5);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (26, '2021-08-15', 'Jerry', 'Jerry ', '7cf6da17-52f0-401e-a8f8-8d7f3d63ea16', 24, 3);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (27, '2020-06-10', 'Tom', 'Tom ', 'a553f6aa-ac28-440d-8f28-981cddafec86', 24, 2);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (28, '2020-06-14', 'Python', 'Python ', '0b8c7059-063f-4c55-bd22-0c8f9bc3b9c5', 23, 10);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (29, '2022-02-18', 'Tarantula', 'Tarantula ', 'faf15ccf-383a-4b90-9155-e41e6107d658', 23, 11);
 
 
 ALTER TABLE "public"."owner_pet" ENABLE TRIGGER ALL;
@@ -137,10 +137,10 @@ SELECT pg_catalog.setval('"public"."owner_pet_seq"', 50, false);
 
 
 --
--- Name: owner_pet_type_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: owner_pet_pettype_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."owner_pet_type_seq"', 50, false);
+SELECT pg_catalog.setval('"public"."owner_pet_pettype_seq"', 50, false);
 
 
 --
