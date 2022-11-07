@@ -45,7 +45,7 @@ import java.util.UUID;
 @NamedQueries({
         @NamedQuery(
                 name = "Specialty.getAll",
-                query = "select s from Specialty s order by s.name"
+                query = "select s from Specialty s order by s.name asc"
         ),
         @NamedQuery(
                 name = "Specialty.findSpecialtyByName",
@@ -53,7 +53,7 @@ import java.util.UUID;
         ),
         @NamedQuery(
                 name = "Specialty.search",
-                query = "select v from Specialty v where v.searchindex like :searchterm"
+                query = "select v from Specialty v where v.searchindex like :searchterm order by v.name asc "
         )
 })
 public class Specialty extends EntityBaseObject implements EntityBase,Comparable<Specialty> {

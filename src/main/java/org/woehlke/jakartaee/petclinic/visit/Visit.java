@@ -88,7 +88,12 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
     @Column(name = COL_DESCRIPTION, nullable = false)
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.REFRESH,CascadeType.DETACH})
+    @ManyToOne(
+            fetch = FetchType.EAGER,
+            cascade={CascadeType.REFRESH,CascadeType.DETACH, CascadeType.MERGE},
+            targetEntity=Pet.class,
+            optional=false
+    )
     @JoinColumn(name = COL_PET_ID)
     private Pet pet;
 
@@ -111,6 +116,7 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
         return this.getPrimaryKey() + "(" + this.getId() + "," + this.getUuid() + ")";
     }
 
+    @Transient
     @Override
     public void updateSearchindex() {
         String element1[] = this.getDate().toInstant().toString().split("\\W");

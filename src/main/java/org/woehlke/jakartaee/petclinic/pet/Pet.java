@@ -50,11 +50,11 @@ import java.util.*;
 @NamedQueries({
         @NamedQuery(
                 name = "Pet.getAll",
-                query = "select p from Pet p order by p.birthDate, p.name"
+                query = "select p from Pet p order by p.birthDate, p.name asc "
         ),
         @NamedQuery(
                 name = "Pet.getPetsAsList",
-                query =  "select p from Pet p where p.owner=:owner order by p.name"
+                query =  "select p from Pet p where p.owner=:owner order by p.name asc "
         )
 })
 @EntityListeners(PetListener.class)
@@ -92,12 +92,22 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
     private String name;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToOne(
+            fetch = FetchType.EAGER,
+            cascade={CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE},
+            targetEntity=PetType.class,
+            optional = false
+    )
     @JoinColumn(name = COL_PETTYPE_ID)
     private PetType type;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToOne(
+            fetch = FetchType.EAGER,
+            cascade={CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE},
+            targetEntity=Owner.class,
+            optional = false
+    )
     @JoinColumn(name = COL_OWNER_ID)
     private Owner owner;
 

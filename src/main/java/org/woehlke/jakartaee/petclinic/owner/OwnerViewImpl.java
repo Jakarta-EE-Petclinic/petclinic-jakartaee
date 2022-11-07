@@ -439,7 +439,8 @@ public class OwnerViewImpl implements OwnerView, Serializable {
         try {
             if (this.entity != null) {
                 String msgInfo = this.entity.getPrimaryKey();
-                this.ownerViewService.deleteOwner(this.entity.getId());
+                this.ownerViewService.deleteOwnerPrepare(this.entity.getId());
+                this.ownerViewService.deleteOwnerPerform(this.entity.getId());
                 this.entity = null;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
