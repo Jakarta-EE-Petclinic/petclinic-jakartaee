@@ -111,7 +111,8 @@
 		<version.payara-runtime>6.2022.1</version.payara-runtime>
 		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
-		<version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
+		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
+		<payara-arquillian-container.version>3.0.alpha6</payara-arquillian-container.version>
 
 		<!-- Glassfish -->
 		<glassfish.version>7.0.0-M8</glassfish.version>
@@ -3871,7 +3872,8 @@
 		<profile>
 			<id>arq-payara-managed</id>
 			<properties>
-				<skip.unit.tests>true</skip.unit.tests>
+				<skip.tests>false</skip.tests>
+				<skip.unit.tests>false</skip.unit.tests>
 				<skip.integration.tests>false</skip.integration.tests>
 			</properties>
 			<dependencyManagement>
@@ -3884,20 +3886,42 @@
 						<scope>import</scope>
 					</dependency>
 					<dependency>
-						<groupId>fish.payara.arquillian</groupId>
-						<artifactId>arquillian-payara-server-managed</artifactId>
-						<version>${version.arquillian-payara}</version>
-						<scope>test</scope>
+						<groupId>org.glassfish.grizzly</groupId>
+						<artifactId>grizzly-bom</artifactId>
+						<version>4.0.0.payara-p1</version>
+						<type>pom</type>
+						<scope>import</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish.jersey</groupId>
+						<artifactId>jersey-bom</artifactId>
+						<version>3.1.0-M8</version>
+						<type>pom</type>
+						<scope>import</scope>
 					</dependency>
 					<dependency>
 						<groupId>fish.payara.arquillian</groupId>
 						<artifactId>environment-setup</artifactId>
 						<version>${version.arquillian-payara}</version>
+						<scope>test</scope>
 					</dependency>
 					<dependency>
 						<groupId>fish.payara.arquillian</groupId>
 						<artifactId>integration-tests</artifactId>
 						<version>${version.arquillian-payara}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>fish.payara.arquillian</groupId>
+						<artifactId>payara-container-common</artifactId>
+						<version>${version.arquillian-payara}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>fish.payara.arquillian</groupId>
+						<artifactId>arquillian-payara-server-managed</artifactId>
+						<version>${version.arquillian-payara}</version>
+						<scope>test</scope>
 					</dependency>
 					<dependency>
 						<groupId>org.postgresql</groupId>
@@ -3909,20 +3933,415 @@
 			<dependencies>
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
-					<artifactId>arquillian-payara-server-managed</artifactId>
+					<artifactId>environment-setup</artifactId>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
-					<artifactId>environment-setup</artifactId>
+					<artifactId>integration-tests</artifactId>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
-					<artifactId>integration-tests</artifactId>
+					<artifactId>payara-container-common</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>arquillian-payara-server-managed</artifactId>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.postgresql</groupId>
 					<artifactId>postgresql</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-framework</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-server</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-servlet</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-portunif</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-ajp</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-websockets</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http2</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-comet</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-server-multipart</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-server-jaxws</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-servlet-extras</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>tls-sni</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>connection-pool</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly.osgi</groupId>
+					<artifactId>grizzly-httpservice</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-framework-monitoring</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-monitoring</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-server-monitoring</artifactId>
+				</dependency>
+				<!-- Bundles -->
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-core</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-server-core</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-all</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-servlet-server</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-websockets-server</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-comet-server</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.grizzly.osgi</groupId>
+					<artifactId>grizzly-httpservice-bundle</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>org.glassfish.jersey.core</groupId>
+					<artifactId>jersey-common</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.core</groupId>
+					<artifactId>jersey-client</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.core</groupId>
+					<artifactId>jersey-server</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.bundles</groupId>
+					<artifactId>jaxrs-ri</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.connectors</groupId>
+					<artifactId>jersey-apache-connector</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.connectors</groupId>
+					<artifactId>jersey-apache5-connector</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.connectors</groupId>
+					<artifactId>jersey-helidon-connector</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.connectors</groupId>
+					<artifactId>jersey-grizzly-connector</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.connectors</groupId>
+					<artifactId>jersey-jnh-connector</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.connectors</groupId>
+					<artifactId>jersey-jetty-connector</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.connectors</groupId>
+					<artifactId>jersey-jdk-connector</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.connectors</groupId>
+					<artifactId>jersey-netty-connector</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-jetty-http</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-grizzly2-http</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-grizzly2-servlet</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-jetty-servlet</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-jdk-http</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-netty-http</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-servlet</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-servlet-core</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers</groupId>
+					<artifactId>jersey-container-simple-http</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.containers.glassfish</groupId>
+					<artifactId>jersey-gf-ejb</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-bean-validation</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-entity-filtering</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-metainf-services</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.microprofile</groupId>
+					<artifactId>jersey-mp-config</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-mvc</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-mvc-bean-validation</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-mvc-freemarker</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-mvc-jsp</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-mvc-mustache</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-proxy-client</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-spring6</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-declarative-linking</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext</groupId>
+					<artifactId>jersey-wadl-doclet</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.cdi</groupId>
+					<artifactId>jersey-weld2-se</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.cdi</groupId>
+					<artifactId>jersey-cdi1x</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.cdi</groupId>
+					<artifactId>jersey-cdi1x-transaction</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.cdi</groupId>
+					<artifactId>jersey-cdi1x-validation</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.cdi</groupId>
+					<artifactId>jersey-cdi1x-servlet</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.cdi</groupId>
+					<artifactId>jersey-cdi1x-ban-custom-hk2-binding</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.cdi</groupId>
+					<artifactId>jersey-cdi-rs-inject</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.rx</groupId>
+					<artifactId>jersey-rx-client-guava</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.rx</groupId>
+					<artifactId>jersey-rx-client-rxjava</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.rx</groupId>
+					<artifactId>jersey-rx-client-rxjava2</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.ext.microprofile</groupId>
+					<artifactId>jersey-mp-rest-client</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-jaxb</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-json-jackson</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-json-jettison</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-json-processing</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-json-gson</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-json-binding</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-kryo</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-moxy</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-multipart</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.media</groupId>
+					<artifactId>jersey-media-sse</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.security</groupId>
+					<artifactId>oauth1-client</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.security</groupId>
+					<artifactId>oauth1-server</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.security</groupId>
+					<artifactId>oauth1-signature</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.security</groupId>
+					<artifactId>oauth2-client</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.inject</groupId>
+					<artifactId>jersey-hk2</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.inject</groupId>
+					<artifactId>jersey-cdi2-se</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.test-framework</groupId>
+					<artifactId>jersey-test-framework-core</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+					<artifactId>jersey-test-framework-provider-bundle</artifactId>
+					<type>pom</type>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+					<artifactId>jersey-test-framework-provider-external</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+					<artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+					<artifactId>jersey-test-framework-provider-inmemory</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+					<artifactId>jersey-test-framework-provider-jdk-http</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+					<artifactId>jersey-test-framework-provider-simple</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+					<artifactId>jersey-test-framework-provider-jetty</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.jersey.test-framework</groupId>
+					<artifactId>jersey-test-framework-util</artifactId>
 				</dependency>
 			</dependencies>
 			<build>
