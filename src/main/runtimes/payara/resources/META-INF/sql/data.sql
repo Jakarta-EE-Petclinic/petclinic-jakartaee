@@ -22,35 +22,39 @@ SET row_security = off;
 
 SET SESSION AUTHORIZATION DEFAULT;
 
-BEGIN ;
+VACUUM ;
+
+BEGIN TRANSACTION ;
 
 ALTER TABLE "public"."owner" DISABLE TRIGGER ALL;
 
-INSERT INTO "public"."owner" ("id", "address", "address_info", "city", "email", "first_name", "housenumber", "lastname", "phonenumber", "searchindex", "uuid", "zipcode") VALUES (1, 'Laerheidestr.', '', 'Bochum', 'thomas.woehlke@gmail.com', 'Thomas', '8', 'Wöhlke', '+4923452007953', ' Thomas W hlke Laerheidestr 8 44799 Bochum  4923452007953 thomas woehlke gmail com ', '8ef28900-3c70-4276-ae12-b5ea408aaf10', '44799');
-INSERT INTO "public"."owner" ("id", "address", "address_info", "city", "email", "first_name", "housenumber", "lastname", "phonenumber", "searchindex", "uuid", "zipcode") VALUES (2, 'Hill Drive', 'Auf dem Schrottplatz von Titus Jonas', 'Rocky Beach', 'thomas.woehlke@rub.de', 'Justus', '128', 'Jonas', '+4923452007953', 'Auf dem Schrottplatz von Titus Jonas Justus Jonas Hill Drive 128 99777 Rocky Beach  4923452007953 thomas woehlke rub de ', 'd5debd0a-f0ce-4288-9947-2967824cd456', '99777');
+INSERT INTO "public"."owner" ("id", "address", "address_info", "city", "email", "first_name", "housenumber", "lastname", "phonenumber", "searchindex", "uuid", "zipcode") VALUES (23, 'Glatzer Str.', NULL, 'Berlin', 'thomas.woehlke@gmail.com', 'Thomas', '5a', 'Wöhlke', '+493052007953', 'Thomas W hlke Glatzer Str 5a 10247 Berlin  493052007953 thomas woehlke gmail com ', '6ee91567-a8eb-4c53-91fe-c4bd88ca3f11', '10247');
+INSERT INTO "public"."owner" ("id", "address", "address_info", "city", "email", "first_name", "housenumber", "lastname", "phonenumber", "searchindex", "uuid", "zipcode") VALUES (24, 'Hill Drive', 'Auf dem Schrottplatz von Titus Jonas', 'Rocky Beach', 'thomas.woehlke@rub.de', 'Justus', '128', 'Jonas', '+4923452007953', 'Auf dem Schrottplatz von Titus Jonas Justus Jonas Hill Drive 128 99777 Rocky Beach  4923452007953 thomas woehlke rub de ', '0349af29-16f3-4ffc-b3ab-e23daea5a90b', '99777');
 
 
 ALTER TABLE "public"."owner" ENABLE TRIGGER ALL;
 
 --
--- Data for Name: owner_pet_type; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: owner_pet_pettype; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-ALTER TABLE "public"."owner_pet_type" DISABLE TRIGGER ALL;
+ALTER TABLE "public"."owner_pet_pettype" DISABLE TRIGGER ALL;
 
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (8, 'Cat', 'Cat ', '0781b3ce-d7b2-43b0-9b15-ba53decf541d');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (9, 'Dog', 'Dog ', 'ae220828-288e-4a41-99a9-88b3afab2f7b');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (10, 'Mouse', 'Mouse ', 'e6d15047-f261-4a9c-b2e2-6341885a5223');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (11, 'Whale', 'Whale ', '65a7bc0b-a291-4e88-9a04-6e8b3231d199');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (12, 'Horse', 'Horse ', '1d080739-9c62-4263-ad84-cc9cfabfc61b');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (13, 'Guinea pig', 'Guinea pig ', '160d9947-35b2-4c60-a4c6-93d452f8a6dc');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (14, 'Snake', 'Snake ', '5049db12-e8ec-4478-bae8-6cc047c629f6');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (15, 'Shepards Dog', 'Shepards Dog ', '3949d83e-c4a4-4396-a4ca-bf58c3737cff');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (16, 'Spider', 'Spider ', 'a27347e4-eebc-4c66-b524-263ba41e4d1f');
-INSERT INTO "public"."owner_pet_type" ("id", "name", "searchindex", "uuid") VALUES (51, '01 sdas dasdas dasda das das dsa dsa  asddasasd', '01 sdas dasdas dasda das das dsa dsa  asddasasd ', '190a408a-b341-4da8-8398-661bddf883ad');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (1, 'Dog', 'Dog ', 'f0d464c6-2149-4c6c-b477-bec0766b8052');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (2, 'Cat', 'Cat ', 'b88b6449-b44b-4cc4-b30a-311a3d1c3361');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (3, 'Mouse', 'Mouse ', '052ccd24-43e4-4181-8b32-ad3244b93199');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (4, 'Hamster', 'Hamster ', 'ee0149cf-5efb-420c-8e81-93143b97dfea');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (5, 'Rabbit', 'Rabbit ', '3f593756-7350-4580-8300-1b1e943dc026');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (6, 'Fish', 'Fish ', '4fd9a619-d9a5-43c4-b725-ca17ab60159f');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (8, 'Guinea pig', 'Guinea pig ', '3389ac8c-a541-4565-9577-3e93bdfc3ad1');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (9, 'Pigeon', 'Pigeon ', '91cbd075-d8cc-4b92-a5a6-0db340ddf019');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (10, 'Snake', 'Snake ', 'a23a4023-0c57-44a4-bc16-7949460b980e');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (11, 'Spider', 'Spider ', '070aacf3-08ca-4820-a6ee-bd011dff4e21');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (7, 'Pony', 'Pony ', 'd76b2627-af8d-4f7f-88e7-0fcee289f3ce');
+INSERT INTO "public"."owner_pet_pettype" ("id", "name", "searchindex", "uuid") VALUES (12, 'Donkey', 'Donkey ', '3417d73c-c8a3-4034-b37b-c31ebcd4cb49');
 
 
-ALTER TABLE "public"."owner_pet_type" ENABLE TRIGGER ALL;
+ALTER TABLE "public"."owner_pet_pettype" ENABLE TRIGGER ALL;
 
 --
 -- Data for Name: owner_pet; Type: TABLE DATA; Schema: public; Owner: -
@@ -58,10 +62,11 @@ ALTER TABLE "public"."owner_pet_type" ENABLE TRIGGER ALL;
 
 ALTER TABLE "public"."owner_pet" DISABLE TRIGGER ALL;
 
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (1, '2019-03-14', 'Tom', 'Tom ', 'c83b2da6-8393-4e44-a53f-6a4d7dbbbc63', 2, 8);
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (3, '2021-01-10', 'Tom', 'Tom ', '11b50634-227d-43d4-a188-a8aafe344825', 1, 15);
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (4, '2021-07-11', 'Tom', 'Tom ', '7d452b17-e8a7-4d27-8def-99a0a964acb6', 1, 12);
-INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_type_id") VALUES (2, '2022-11-04', '01  lkjhbjhvbghvghkvghv', ' lkjhbjhvbghvghkvghv ', 'ca9f8b19-b6bf-479c-bf9d-cb054a1e45ee', 2, 12);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (25, '2018-02-10', 'Roger', 'Roger ', '2fa7e4f8-4009-48eb-b175-54a3bd5d9e3a', 24, 5);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (26, '2021-08-15', 'Jerry', 'Jerry ', '7cf6da17-52f0-401e-a8f8-8d7f3d63ea16', 24, 3);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (27, '2020-06-10', 'Tom', 'Tom ', 'a553f6aa-ac28-440d-8f28-981cddafec86', 24, 2);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (28, '2020-06-14', 'Python', 'Python ', '0b8c7059-063f-4c55-bd22-0c8f9bc3b9c5', 23, 10);
+INSERT INTO "public"."owner_pet" ("id", "birth_date", "name", "searchindex", "uuid", "owner_id", "owner_pet_pettype_id") VALUES (29, '2022-02-18', 'Tarantula', 'Tarantula ', 'faf15ccf-383a-4b90-9155-e41e6107d658', 23, 11);
 
 
 ALTER TABLE "public"."owner_pet" ENABLE TRIGGER ALL;
@@ -72,11 +77,13 @@ ALTER TABLE "public"."owner_pet" ENABLE TRIGGER ALL;
 
 ALTER TABLE "public"."owner_pet_visit" DISABLE TRIGGER ALL;
 
-INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (2, '2022-11-04', 'Routine', '2022 11 03T23 00 00Z Routine ', '2f8e4031-22f0-4467-9346-609b44a9d7e8', 1);
-INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (1, '2022-11-14', 'Routine', '2022 11 13T23 00 00Z Routine ', '9ed3402d-a15c-47b9-95c4-abd2fec2a190', 1);
-INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (3, '2022-11-13', 'Routine ASDQWER', '2022 11 12T23 00 00Z Routine ASDQWER ', '4e403885-317a-4c27-ae53-d997af99a770', 2);
-INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (4, '2022-11-01', 'Routine KO', '2022 10 31T23 00 00Z Routine KO ', '6256900e-15ad-4700-b471-03dc8c407370', 1);
-INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (5, '2022-08-12', 'Routine ASDQWER JOLO', '2022 08 11T22 00 00Z Routine ASDQWER JOLO ', '85bfc34a-d3b7-4c86-b672-e79da913835a', 1);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (30, '2022-08-09', 'Routine', '2022 08 08T22 00 00Z Routine ', 'a9affdd1-7eeb-4baa-b52d-46c3711396c4', 25);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (1, '2022-02-06', 'Routine ASDQWER JOLO', '2022 02 05T23 00 00Z Routine ASDQWER JOLO ', '92dba22d-ac1a-4f53-8528-1bf211a2173e', 28);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (2, '2022-03-08', 'Routine KO', '2022 03 07T23 00 00Z Routine KO ', 'c7257865-f858-4760-a6c6-cf66efd35794', 28);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (3, '2022-03-10', 'Routine ZZ', '2022 03 09T23 00 00Z Routine ZZ ', '4f64804b-a1ae-412f-9c46-ecf897ef80d0', 29);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (4, '2022-08-10', 'Routine KO', '2022 08 09T22 00 00Z Routine KO ', '23f9c0a1-8d3c-4327-b8c4-0100207419fb', 29);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (5, '2022-08-18', 'Routine ASDQWER 11', '2022 08 17T22 00 00Z Routine ASDQWER 11 ', '0ab10181-9724-44e3-9fd7-252cc8b64dda', 26);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (6, '2022-10-10', 'Routine 333', '2022 10 09T22 00 00Z Routine 333 ', '19a5978b-bbbc-49f1-bd7a-d2e785533290', 27);
 
 
 ALTER TABLE "public"."owner_pet_visit" ENABLE TRIGGER ALL;
@@ -87,13 +94,13 @@ ALTER TABLE "public"."owner_pet_visit" ENABLE TRIGGER ALL;
 
 ALTER TABLE "public"."specialty" DISABLE TRIGGER ALL;
 
-INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (1, 'Neurosurgeon', 'Neurosurgeon ', 'd54ab00b-938e-4d45-9b04-20fff41eeca6');
-INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (2, 'Rescue Doctor', 'Rescue Doctor ', 'f5bdc98c-b8b0-4874-8176-5443ce12365e');
-INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (3, 'Cardiologist', 'Cardiologist ', '29332a94-37d8-469e-9a77-e9207c4b6a8a');
-INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (4, 'Oncologist', 'Oncologist ', 'd698bc8a-5817-4ef7-937a-59c9847e5bee');
-INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (5, 'Anesthetist', 'Anesthetist ', '005c8818-4db2-405d-a656-c8308d553e1a');
-INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (6, 'Surgeon', 'Surgeon ', 'd5535a85-9042-4249-9f0f-8a3871396884');
-INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (7, 'Radiologist', 'Radiologist ', '6cf0fe05-97b5-4c19-98c0-aa4228654c5c');
+INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (13, 'Cardiologist', 'Cardiologist ', 'b1f1c1ec-c823-4ff2-b8de-9905ce802041');
+INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (14, 'Radiologist', 'Radiologist ', 'dfe23ba1-9fc7-428a-aae0-99cd69887286');
+INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (15, 'Rescue Doctor', 'Rescue Doctor ', '2ff652fb-df03-48af-aa77-f7b47e155604');
+INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (16, 'Surgeon', 'Surgeon ', '4247ab00-93f8-4593-9c8e-bea2b5f56d2f');
+INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (17, 'Neurosurgeon', 'Neurosurgeon ', 'e6643c99-7e95-410c-9184-a3b0c1edb597');
+INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (18, 'Anesthetist', 'Anesthetist ', 'd021c584-feda-4f79-80e6-c2e22cfdc880');
+INSERT INTO "public"."specialty" ("id", "name", "searchindex", "uuid") VALUES (19, 'Shaman', 'Shaman ', 'd9814cff-01e7-4f3d-b1b1-46b6df125641');
 
 
 ALTER TABLE "public"."specialty" ENABLE TRIGGER ALL;
@@ -104,8 +111,8 @@ ALTER TABLE "public"."specialty" ENABLE TRIGGER ALL;
 
 ALTER TABLE "public"."vet" DISABLE TRIGGER ALL;
 
-INSERT INTO "public"."vet" ("id", "first_name", "lastname", "searchindex", "uuid") VALUES (17, 'Marie', 'Curie', 'Marie Curie Neurosurgeon Oncologist Rescue Doctor Cardiologist Radiologist Anesthetist Surgeon ', '6e1900ee-0d99-4df0-8bc3-1fc3bca2ef10');
-INSERT INTO "public"."vet" ("id", "first_name", "lastname", "searchindex", "uuid") VALUES (18, 'Walter', 'von der Vogelweide', 'Walter von der Vogelweide Anesthetist ', 'ae71ac08-04f3-481e-ab23-5e0ef4754333');
+INSERT INTO "public"."vet" ("id", "first_name", "lastname", "searchindex", "uuid") VALUES (21, 'Marie', 'Curie', 'Marie Curie Neurosurgeon Rescue Doctor Shaman Cardiologist Radiologist Anesthetist Surgeon ', '8f05d625-6bcb-4762-a500-46df2f8ebdb5');
+INSERT INTO "public"."vet" ("id", "first_name", "lastname", "searchindex", "uuid") VALUES (22, 'Walther', 'von der Vogelweide', 'Walther von der Vogelweide Shaman ', '7c3620bd-8c04-41b3-818c-db32434f8fea');
 
 
 ALTER TABLE "public"."vet" ENABLE TRIGGER ALL;
@@ -116,30 +123,30 @@ ALTER TABLE "public"."vet" ENABLE TRIGGER ALL;
 
 ALTER TABLE "public"."vet_specialties" DISABLE TRIGGER ALL;
 
-INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (17, 5);
-INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (17, 2);
-INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (17, 4);
-INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (17, 1);
-INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (17, 6);
-INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (17, 7);
-INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (17, 3);
-INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (18, 5);
+INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (21, 17);
+INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (21, 15);
+INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (21, 19);
+INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (21, 13);
+INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (21, 14);
+INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (21, 18);
+INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (21, 16);
+INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (22, 19);
 
 
 ALTER TABLE "public"."vet_specialties" ENABLE TRIGGER ALL;
 
 --
+-- Name: owner_pet_pettype_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."owner_pet_pettype_seq"', 100, false);
+
+
+--
 -- Name: owner_pet_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."owner_pet_seq"', 50, true);
-
-
---
--- Name: owner_pet_type_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."owner_pet_type_seq"', 100, true);
+SELECT pg_catalog.setval('"public"."owner_pet_seq"', 50, false);
 
 
 --
@@ -160,16 +167,17 @@ SELECT pg_catalog.setval('"public"."owner_seq"', 50, false);
 -- Name: specialty_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."specialty_seq"', 100, true);
+SELECT pg_catalog.setval('"public"."specialty_seq"', 50, false);
 
 
 --
 -- Name: vet_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."vet_seq"', 50, true);
+SELECT pg_catalog.setval('"public"."vet_seq"', 50, false);
 
-COMMIT
+
+COMMIT ;
 
 --
 -- PostgreSQL database dump complete
