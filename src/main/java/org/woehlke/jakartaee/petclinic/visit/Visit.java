@@ -88,7 +88,7 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
     @Column(name = COL_DESCRIPTION, nullable = false)
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = COL_PET_ID)
     private Pet pet;
 

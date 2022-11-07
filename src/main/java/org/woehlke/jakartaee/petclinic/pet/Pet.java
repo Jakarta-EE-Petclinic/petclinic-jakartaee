@@ -97,7 +97,7 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
     private PetType type;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = COL_OWNER_ID)
     private Owner owner;
 
