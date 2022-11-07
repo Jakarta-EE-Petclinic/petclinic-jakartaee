@@ -99,55 +99,37 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     }
 
     public OwnerPage clickCancelNewEntityButton() {
-        cancelNewButton.sendKeys(Keys.DOWN);
-        cancelNewButton.sendKeys(Keys.END);
-        cancelNewButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(cancelNewButton).click();
+        Graphene.guardHttp(cancelNewButton).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickShowEditForm() {
-        showEditFormButton.sendKeys(Keys.DOWN);
-        showEditFormButton.sendKeys(Keys.END);
-        showEditFormButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showEditFormButton).click();
+        Graphene.guardHttp(showEditFormButton).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickCancelEditButton() {
-        cancelEditButton.sendKeys(Keys.DOWN);
-        cancelEditButton.sendKeys(Keys.END);
-        cancelEditButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(cancelEditButton).click();
+        Graphene.guardHttp(cancelEditButton).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickDeleteSelectedButton() {
-        deleteSelectedButton.sendKeys(Keys.DOWN);
-        deleteSelectedButton.sendKeys(Keys.END);
-        deleteSelectedButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(deleteSelectedButton).click();
+        Graphene.guardHttp(deleteSelectedButton).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickConfirmDeleteButton() {
-        confirmDeleteButton.sendKeys(Keys.DOWN);
-        confirmDeleteButton.sendKeys(Keys.END);
-        confirmDeleteButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(confirmDeleteButton).click();
+        Graphene.guardHttp(confirmDeleteButton).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickCancelDeleteButton() {
-        canceDeleteButton.sendKeys(Keys.DOWN);
-        canceDeleteButton.sendKeys(Keys.END);
-        canceDeleteButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(canceDeleteButton).click();
+        Graphene.guardHttp(canceDeleteButton).click();
         fullscreen();
         return this;
     }
@@ -158,17 +140,14 @@ public class OwnerPage implements CrudFlowStatePageOwner {
         return this;
     }
 
-    public OwnerPage clickClearSearchButton() {
+    public OwnerPage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 clickClearSearchButton() {
         Graphene.guardHttp(clearSearchButton).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickShowDetailsFormButton0() {
-        showDetailsFormButton0.sendKeys(Keys.DOWN);
-        showDetailsFormButton0.sendKeys(Keys.END);
-        showDetailsFormButton0.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showDetailsFormButton0).click();
+        Graphene.guardHttp(showDetailsFormButton0).click();
         fullscreen();
         return this;
     }
@@ -178,37 +157,25 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     }
 
     public OwnerPage clickShowDetailsFormButton1() {
-        showDetailsFormButton1.sendKeys(Keys.DOWN);
-        showDetailsFormButton1.sendKeys(Keys.END);
-        showDetailsFormButton1.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showDetailsFormButton1).click();
+        Graphene.guardHttp(showDetailsFormButton1).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickShowDetailsFormButton2() {
-        showDetailsFormButton2.sendKeys(Keys.DOWN);
-        showDetailsFormButton2.sendKeys(Keys.END);
-        showDetailsFormButton2.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showDetailsFormButton2).click();
+        Graphene.guardHttp(showDetailsFormButton2).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickShowDetailsFormButton3() {
-        showDetailsFormButton3.sendKeys(Keys.DOWN);
-        showDetailsFormButton3.sendKeys(Keys.END);
-        showDetailsFormButton3.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showDetailsFormButton3).click();
+        Graphene.guardHttp(showDetailsFormButton3).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickShowDetailsFormButton4() {
-        showDetailsFormButton4.sendKeys(Keys.DOWN);
-        showDetailsFormButton4.sendKeys(Keys.END);
-        showDetailsFormButton4.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(showDetailsFormButton4).click();
+        Graphene.guardHttp(showDetailsFormButton4).click();
         fullscreen();
         return this;
     }
@@ -227,10 +194,9 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     }
 
     public OwnerPage clickCancelDetailsButton() {
-        cancelDetailsButton.sendKeys(Keys.DOWN);
-        cancelDetailsButton.sendKeys(Keys.END);
-        cancelDetailsButton.sendKeys(Keys.ENTER);
         //Graphene.guardHttp(cancelDetailsButton).click();
+        cancelDetailsButton.sendKeys(Keys.DOWN);
+        cancelDetailsButton.sendKeys(Keys.ENTER);
         fullscreen();
         return this;
     }
@@ -240,7 +206,6 @@ public class OwnerPage implements CrudFlowStatePageOwner {
         //Actions action = new Actions(driver);
         //action.moveToElement(addNewPetButton).pause(1000).perform();
         addNewPetButton.sendKeys(Keys.DOWN);
-        addNewPetButton.sendKeys(Keys.END);
         addNewPetButton.sendKeys(Keys.ENTER);
         //Graphene.guardHttp(addNewPetButton).click();
         fullscreen();
@@ -249,10 +214,7 @@ public class OwnerPage implements CrudFlowStatePageOwner {
 
     public OwnerPage clickCancelNewPetButton() {
         //Graphene.waitModel(driver).until().element(cancelNewPetButton).is().enabled();
-        cancelNewPetButton.sendKeys(Keys.DOWN);
-        cancelNewPetButton.sendKeys(Keys.END);
-        cancelNewPetButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(cancelNewPetButton).click();
+        Graphene.guardHttp(cancelNewPetButton).click();
         fullscreen();
         return this;
     }
@@ -264,17 +226,14 @@ public class OwnerPage implements CrudFlowStatePageOwner {
         addVisitToPet0Button.sendKeys(Keys.DOWN);
         addVisitToPet0Button.sendKeys(Keys.END);
         addVisitToPet0Button.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(addVisitToPet0Button).click();
+        //Graphene.guardHttp(addNewVisitButton).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickCancelNewVisitButton() {
         //Graphene.waitModel(driver).until().element(cancelNewVisitButton).is().enabled();
-        cancelNewVisitButton.sendKeys(Keys.DOWN);
-        cancelNewVisitButton.sendKeys(Keys.END);
-        cancelNewVisitButton.sendKeys(Keys.ENTER);
-        //Graphene.guardHttp(cancelNewVisitButton).click();
+        Graphene.guardHttp(cancelNewVisitButton).click();
         fullscreen();
         return this;
     }
@@ -470,7 +429,7 @@ public class OwnerPage implements CrudFlowStatePageOwner {
         newOwnersPetSaveButton.sendKeys(Keys.END);
         newOwnersPetSaveButton.sendKeys(Keys.ENTER);
         //Graphene.guardHttp(newOwnersPetSaveButton).click();
-        this.fullscreen();
+        fullscreen();
         return this;
     }
 
@@ -544,8 +503,7 @@ public class OwnerPage implements CrudFlowStatePageOwner {
         //petTypeAddEditedOwnersPetInput.selectByIndex(option);
         editOwnersPetSaveButton.sendKeys(Keys.DOWN);
         editOwnersPetSaveButton.sendKeys(Keys.END);
-        //editOwnersPetSaveButton.sendKeys(Keys.ENTER);
-        Graphene.guardHttp(editOwnersPetSaveButton).click();
+        editOwnersPetSaveButton.sendKeys(Keys.ENTER);
         fullscreen();
         return this;
     }
