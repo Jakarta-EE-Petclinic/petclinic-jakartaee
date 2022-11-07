@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.owner.db;
 
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
+import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.io.Serializable;
@@ -34,4 +35,9 @@ public interface OwnerViewService extends Serializable {
     List<Owner> getAllOwner();
 
     List<Owner> searchOwner(String searchterm);
+
+    PetType findPetTypeById(long petTypeId);
+
+    List<PetType> getAllPetType();
+
 }

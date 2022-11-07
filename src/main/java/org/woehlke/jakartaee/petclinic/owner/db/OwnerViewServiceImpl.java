@@ -8,6 +8,9 @@ import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
+import org.woehlke.jakartaee.petclinic.pettype.PetType;
+import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeDao;
+import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeService;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
 
@@ -19,6 +22,9 @@ import java.util.List;
 public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     private static final long serialVersionUID = -553095668269912269L;
+
+    @EJB
+    private PetTypeDao petTypeDao;
 
     @EJB
     private OwnerDao ownerDao;
@@ -64,6 +70,16 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
     @Override
     public List<Owner> searchOwner(String searchterm) {
         return ownerDao.search(searchterm);
+    }
+
+    @Override
+    public PetType findPetTypeById(long petTypeId) {
+        return petTypeDao.findById(petTypeId);
+    }
+
+    @Override
+    public List<PetType> getAllPetType() {
+        return petTypeDao.getAll();
     }
 
     @Override

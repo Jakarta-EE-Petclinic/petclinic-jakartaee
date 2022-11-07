@@ -339,16 +339,18 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
-        ownerPage.clickShowDetailsFormButton2();
-        Assert.assertTrue(ownerPage.isFlowStateDetails());
-        // ----------------------------------
-        ownerPage.clickShowDeleteForm();
-        Assert.assertTrue(ownerPage.isFlowStateDelete());
-        ownerPage.clickCancelDeleteButton();
-        // ----------------------------------
-        Assert.assertTrue(ownerPage.isFlowStateDetails());
-        ownerPage.clickCancelDetailsButton();
-        Assert.assertTrue(ownerPage.isFlowStateList());
+        for(int i=0; i<ownerList.size(); i++) {
+            ownerPage.clickShowDetailsFormButton(i);
+            Assert.assertTrue(ownerPage.isFlowStateDetails());
+            // ----------------------------------
+            ownerPage.clickDeleteSelectedButton();
+            Assert.assertTrue(ownerPage.isFlowStateDelete());
+            ownerPage.clickCancelDeleteButton();
+            // ----------------------------------
+            Assert.assertTrue(ownerPage.isFlowStateDetails());
+            ownerPage.clickCancelDetailsButton();
+            Assert.assertTrue(ownerPage.isFlowStateList());
+        }
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOwnerPageWithCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
@@ -363,10 +365,10 @@ public class OwnerUiTest extends UnitTestData {
         goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
         ownerPage.fullscreen();
-        for(int i=0; i<ownerList.size()-1; i++) {
+        for(int i=0; i<ownerList.size(); i++) {
             ownerPage.clickShowDetailsFormButton0();
             Assert.assertTrue(ownerPage.isFlowStateDetails());
-            ownerPage.clickShowDeleteForm();
+            ownerPage.clickDeleteSelectedButton();
             Assert.assertTrue(ownerPage.isFlowStateDelete());
             ownerPage.clickConfirmDeleteButton();
             Assert.assertTrue(ownerPage.isFlowStateList());

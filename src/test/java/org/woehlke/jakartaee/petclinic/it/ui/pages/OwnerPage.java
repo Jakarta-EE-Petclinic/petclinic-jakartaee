@@ -116,17 +116,20 @@ public class OwnerPage implements CrudFlowStatePageOwner {
         return this;
     }
 
-    public OwnerPage clickShowDeleteForm() {
-        //deleteSelectedButton.sendKeys(Keys.DOWN);
-        //deleteSelectedButton.sendKeys(Keys.END);
-        //deleteSelectedButton.sendKeys(Keys.ENTER);
-        Graphene.guardHttp(deleteSelectedButton).click();
+    public OwnerPage clickDeleteSelectedButton() {
+        deleteSelectedButton.sendKeys(Keys.DOWN);
+        deleteSelectedButton.sendKeys(Keys.END);
+        deleteSelectedButton.sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(deleteSelectedButton).click();
         fullscreen();
         return this;
     }
 
     public OwnerPage clickConfirmDeleteButton() {
-        Graphene.guardHttp(confirmDeleteButton).click();
+        confirmDeleteButton.sendKeys(Keys.DOWN);
+        confirmDeleteButton.sendKeys(Keys.END);
+        confirmDeleteButton.sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(confirmDeleteButton).click();
         fullscreen();
         return this;
     }

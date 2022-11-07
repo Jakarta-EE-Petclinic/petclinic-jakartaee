@@ -9,21 +9,17 @@ import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
-import org.woehlke.jakartaee.petclinic.owner.db.OwnerService;
 import org.woehlke.jakartaee.petclinic.owner.db.OwnerViewService;
 import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowView;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
-import org.woehlke.jakartaee.petclinic.pet.db.PetService;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
-import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import org.woehlke.jakartaee.petclinic.visit.db.VisitService;
 
 import java.io.Serializable;
 import java.util.List;
@@ -57,6 +53,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     @Inject
     private OwnerFlowView ownerFlowView;
 
+    /*
     @EJB
     private OwnerService entityService;
 
@@ -68,6 +65,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
 
     @EJB
     private VisitService visitService;
+    */
 
     @EJB
     private OwnerViewService ownerViewService;
@@ -233,7 +231,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     public String saveOwnerPetNew() {
         log.info("saveOwnerPetNew");
         try {
-            PetType petType = petTypeService.findById(this.petTypeId);
+            PetType petType = this.ownerViewService.findPetTypeById(this.petTypeId);
             this.pet.setUuid(UUID.randomUUID());
             this.pet.setType(petType);
             this.pet.setOwner(this.entity);
@@ -272,7 +270,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     public String saveOwnerPetEdit() {
         log.info("saveOwnerPetEdit");
         try {
-            PetType petType = petTypeService.findById(this.petTypeId);
+            PetType petType = this.ownerViewService.findPetTypeById(this.petTypeId);
             this.pet.setType(petType);
             this.ownerViewService.updatePet(this.pet);
             long ownerId = this.entity.getId();
@@ -385,7 +383,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
 
     @Override
     public void loadPetTypeList() {
-        this.petTypeList = this.petTypeService.getAll();
+        this.petTypeList = this.ownerViewService.getAllPetType();
     }
 
     @Override
@@ -468,7 +466,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
 
     @Override
     public List<PetType> getAllPetTypes() {
-        return petTypeService.getAll();
+        return this.ownerViewService.getAllPetType();
     }
 
     @Override

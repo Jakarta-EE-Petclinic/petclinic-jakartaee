@@ -3,7 +3,6 @@ package org.woehlke.jakartaee.petclinic.vet.db;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import jakarta.annotation.PostConstruct;
@@ -14,7 +13,6 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,7 +55,7 @@ public class VetDaoImpl implements VetDao, Serializable {
     @Override
     public Vet addNew(Vet vet) {
         vet.setUuid(UUID.randomUUID());
-        vet.updateSearchindex();
+        //vet.updateSearchindex(); TODO
         log.info("addNew Vet: " + vet.toString());
         entityManager.persist(vet);
         log.info("addded New Vet: " + vet.toString());

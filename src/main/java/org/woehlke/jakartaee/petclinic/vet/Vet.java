@@ -32,16 +32,11 @@ import java.util.*;
         uniqueConstraints = {
                 @UniqueConstraint(
                         name = Vet.TABLENAME + "_unique_uuid",
-                        columnNames = {
-                                Vet.COL_UUID
-                        }
+                        columnNames = {Vet.COL_UUID}
                 ),
                 @UniqueConstraint(
                         name = Vet.TABLENAME + "_unique_names",
-                        columnNames = {
-                                Vet.COL_FIRSTNAME,
-                                Vet.COL_LASTNAME
-                        }
+                        columnNames = {Vet.COL_FIRSTNAME,Vet.COL_LASTNAME}
                 )
         }
 )

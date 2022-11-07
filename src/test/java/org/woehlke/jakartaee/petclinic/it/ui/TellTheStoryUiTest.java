@@ -572,7 +572,7 @@ public class TellTheStoryUiTest  extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         log.info(" ownerDeletePage ");
         log.info("------------------------------------------------------------------------------------");
-        ownerPage.clickShowDeleteForm();
+        ownerPage.clickDeleteSelectedButton();
         ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateDelete());
         log.info("------------------------------------------------------------------------------------");

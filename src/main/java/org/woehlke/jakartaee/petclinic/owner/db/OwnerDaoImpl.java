@@ -45,12 +45,6 @@ public class OwnerDaoImpl implements OwnerDao, Serializable {
     }
 
     @Override
-    public void delete(Owner owner) {
-        log.info("delete Owner: " + owner.toString());
-        entityManager.remove(owner);
-    }
-
-    @Override
     public Owner addNew(Owner owner) {
         owner.setUuid(UUID.randomUUID());
         //owner.updateSearchindex(); TODO

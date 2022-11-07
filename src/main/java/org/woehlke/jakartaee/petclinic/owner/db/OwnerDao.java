@@ -15,5 +15,4 @@ public interface OwnerDao extends CrudDao<Owner>, SearchableEntity<Owner> {
 
     long serialVersionUID = 4561420558388982124L;
 
-    void delete(Owner owner);
 }
