@@ -29,9 +29,7 @@ public interface OwnerViewService extends Serializable {
 
     Owner addNewOwner(Owner entity);
 
-    void deleteOwnerPrepare(long ownerId);
-
-    void deleteOwnerPerform(long ownerId);
+    void deleteOwner(long ownerId);
 
     List<Owner> getAllOwner();
 

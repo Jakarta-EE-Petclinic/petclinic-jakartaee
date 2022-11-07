@@ -9,9 +9,11 @@ import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.application.conf.PetclinicApplication;
 import org.woehlke.jakartaee.petclinic.application.views.FlashMessagesView;
 import org.woehlke.jakartaee.petclinic.application.views.LanguageView;
+import org.woehlke.jakartaee.petclinic.owner.db.OwnerService;
 import org.woehlke.jakartaee.petclinic.owner.db.OwnerViewService;
 import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowView;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
+import org.woehlke.jakartaee.petclinic.pet.db.PetService;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeService;
@@ -21,6 +23,7 @@ import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.woehlke.jakartaee.petclinic.visit.db.VisitService;
 
 import java.io.Serializable;
 import java.util.List;
@@ -54,17 +57,17 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     @Inject
     private OwnerFlowView ownerFlowView;
 
-    //@EJB
-    //private OwnerService entityService;
+    @EJB
+    private OwnerService entityService;
 
-    //@EJB
-    //private PetService petService;
+    @EJB
+    private PetService petService;
 
     @EJB
     private PetTypeService petTypeService;
 
-    //@EJB
-    //private VisitService visitService;
+    @EJB
+    private VisitService visitService;
 
     @EJB
     private OwnerViewService ownerViewService;
@@ -198,7 +201,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
             long id = this.entity.getId();
             String uuid = this.entity.getUuid().toString();
             String selectedPrimaryKey = this.entity.getPrimaryKey() + "(" + id + "," + uuid + ")";
-
+            this.ownerViewService.deleteOwner(this.entity.getId());
             this.entity = null;
             this.ownerFlowView.setFlowStateList();
             String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
@@ -439,8 +442,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
         try {
             if (this.entity != null) {
                 String msgInfo = this.entity.getPrimaryKey();
-                this.ownerViewService.deleteOwnerPrepare(this.entity.getId());
-                this.ownerViewService.deleteOwnerPerform(this.entity.getId());
+                this.ownerViewService.deleteOwner(this.entity.getId());
                 this.entity = null;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.owner.delete.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);

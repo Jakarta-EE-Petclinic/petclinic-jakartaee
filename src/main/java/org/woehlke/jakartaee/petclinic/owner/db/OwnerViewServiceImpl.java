@@ -30,7 +30,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
     private PetDao petDao;
 
     @Override
-    public void deleteOwnerPrepare(long ownerId) {
+    public void deleteOwner(long ownerId) {
         Owner owner = ownerDao.findById(ownerId);
         for(Pet pet:petDao.getPetsAsList(owner)){
             for(Visit visit:visitDao.getVisits(pet)){
@@ -38,10 +38,6 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
             }
             petDao.delete(pet.getId());
         }
-    }
-
-    @Override
-    public void deleteOwnerPerform(long ownerId) {
         ownerDao.delete(ownerId);
     }
 

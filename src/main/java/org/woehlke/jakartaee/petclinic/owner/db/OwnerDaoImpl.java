@@ -53,7 +53,7 @@ public class OwnerDaoImpl implements OwnerDao, Serializable {
     @Override
     public Owner addNew(Owner owner) {
         owner.setUuid(UUID.randomUUID());
-        //owner.updateSearchindex();
+        //owner.updateSearchindex(); TODO
         log.info("addNew Owner: " + owner.toString());
         entityManager.persist(owner);
         return owner;
@@ -66,7 +66,7 @@ public class OwnerDaoImpl implements OwnerDao, Serializable {
 
     @Override
     public Owner update(Owner owner) {
-        //owner.updateSearchindex();
+        //owner.updateSearchindex(); TODO
         log.info("update Owner: " + owner.toString());
         return entityManager.merge(owner);
     }
