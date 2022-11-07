@@ -23,7 +23,8 @@ SET row_security = off;
 SET SESSION AUTHORIZATION DEFAULT;
 
 VACUUM ;
-BEGIN;
+
+BEGIN TRANSACTION ;
 
 ALTER TABLE "public"."owner" DISABLE TRIGGER ALL;
 
@@ -77,6 +78,12 @@ ALTER TABLE "public"."owner_pet" ENABLE TRIGGER ALL;
 ALTER TABLE "public"."owner_pet_visit" DISABLE TRIGGER ALL;
 
 INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (30, '2022-08-09', 'Routine', '2022 08 08T22 00 00Z Routine ', 'a9affdd1-7eeb-4baa-b52d-46c3711396c4', 25);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (1, '2022-02-06', 'Routine ASDQWER JOLO', '2022 02 05T23 00 00Z Routine ASDQWER JOLO ', '92dba22d-ac1a-4f53-8528-1bf211a2173e', 28);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (2, '2022-03-08', 'Routine KO', '2022 03 07T23 00 00Z Routine KO ', 'c7257865-f858-4760-a6c6-cf66efd35794', 28);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (3, '2022-03-10', 'Routine ZZ', '2022 03 09T23 00 00Z Routine ZZ ', '4f64804b-a1ae-412f-9c46-ecf897ef80d0', 29);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (4, '2022-08-10', 'Routine KO', '2022 08 09T22 00 00Z Routine KO ', '23f9c0a1-8d3c-4327-b8c4-0100207419fb', 29);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (5, '2022-08-18', 'Routine ASDQWER 11', '2022 08 17T22 00 00Z Routine ASDQWER 11 ', '0ab10181-9724-44e3-9fd7-252cc8b64dda', 26);
+INSERT INTO "public"."owner_pet_visit" ("id", "visit_date", "description", "searchindex", "uuid", "owner_pet_id") VALUES (6, '2022-10-10', 'Routine 333', '2022 10 09T22 00 00Z Routine 333 ', '19a5978b-bbbc-49f1-bd7a-d2e785533290', 27);
 
 
 ALTER TABLE "public"."owner_pet_visit" ENABLE TRIGGER ALL;
@@ -146,7 +153,7 @@ SELECT pg_catalog.setval('"public"."owner_pet_seq"', 50, false);
 -- Name: owner_pet_visit_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."owner_pet_visit_seq"', 50, false);
+SELECT pg_catalog.setval('"public"."owner_pet_visit_seq"', 50, true);
 
 
 --
@@ -169,7 +176,8 @@ SELECT pg_catalog.setval('"public"."specialty_seq"', 50, false);
 
 SELECT pg_catalog.setval('"public"."vet_seq"', 50, false);
 
-COMMIT
+
+COMMIT ;
 
 --
 -- PostgreSQL database dump complete
