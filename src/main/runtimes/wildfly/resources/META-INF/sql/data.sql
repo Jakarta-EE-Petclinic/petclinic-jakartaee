@@ -23,8 +23,7 @@ SET row_security = off;
 SET SESSION AUTHORIZATION DEFAULT;
 
 VACUUM ;
-
-BEGIN ;
+BEGIN;
 
 ALTER TABLE "public"."owner" DISABLE TRIGGER ALL;
 
@@ -130,17 +129,17 @@ INSERT INTO "public"."vet_specialties" ("vet_id", "specialty_id") VALUES (22, 19
 ALTER TABLE "public"."vet_specialties" ENABLE TRIGGER ALL;
 
 --
--- Name: owner_pet_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."owner_pet_seq"', 50, false);
-
-
---
 -- Name: owner_pet_pettype_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('"public"."owner_pet_pettype_seq"', 100, false);
+
+
+--
+-- Name: owner_pet_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."owner_pet_seq"', 50, false);
 
 
 --
@@ -170,8 +169,7 @@ SELECT pg_catalog.setval('"public"."specialty_seq"', 50, false);
 
 SELECT pg_catalog.setval('"public"."vet_seq"', 50, false);
 
-
-COMMIT;
+COMMIT
 
 --
 -- PostgreSQL database dump complete
