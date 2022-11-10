@@ -65,14 +65,6 @@ Arquillian End2End Tests for REST Endpoints and for JSF Frontend Browser Tests w
 | ./mvnw -Parq-payara-managed     | Payara       | 6.2022.1     | work in progress  | 
 | ./mvnw -Parq-glassfish-managed  | GlassFish    | 7.0.0-M9     | work in progress  |
 
-
-### JBoss Wildfly JakartEE 10 Preview (27.0.0.Beta1)
-
-```
-./mvnw -Parq-wildfly-managed
-```
-
-
 ## Functional Requirements
 
 Object Oriented Design
