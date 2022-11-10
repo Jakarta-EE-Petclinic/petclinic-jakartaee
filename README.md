@@ -56,6 +56,8 @@ cd petclinic-jakartaee
 
 Arquillian End2End Tests for REST Endpoints and for JSF Frontend Browser Tests with Graphene and Selenium.
 
+* JSF: Primefaces 12.0.0
+
 | maven profile                   | Runtime      | Version      | Status            |
 |---------------------------------|--------------|--------------|-------------------|
 | ./mvnw -Parq-liberty-managed    | OpenLiberty  | 22.0.0.10    | Jakarta EE 9.1    |
