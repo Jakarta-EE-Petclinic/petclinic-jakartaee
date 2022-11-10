@@ -100,7 +100,7 @@
 		<version.wildfly-maven-plugin>4.0.0.Beta4</version.wildfly-maven-plugin>
 		<version.wildfly-jar-maven-plugin>8.0.0.Final</version.wildfly-jar-maven-plugin>
 		<version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
-		<version.jboss-logmanager>2.3.0.Alpha1</version.jboss-logmanager>
+		<version.jboss-logmanager>2.1.19.Final</version.jboss-logmanager>
 		<plugin.fork.embedded>true</plugin.fork.embedded>
 		<wildfly.version>${version.wildfly-runtime}</wildfly.version>
 		<jersey.version>3.0.4</jersey.version>
@@ -3657,8 +3657,10 @@
 				<skip.integration.tests>false</skip.integration.tests>
 				<enableDerby>true</enableDerby>
 				<cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
-				<glassfish.home>target/glassfish-7.0.0.M8/glassfish7</glassfish.home>
-				<glassfish.domainDir>target/glassfish-7.0.0.M8/glassfish7/glassfish/domains/domain1</glassfish.domainDir>
+				<glassfish.home>target/glassfish7</glassfish.home>
+				<glassfish.domainDir>target/glassfish7/glassfish/domains/domain1</glassfish.domainDir>
+				<skipAfterFailureCount>1</skipAfterFailureCount>
+				<rerunFailingTestsCount>1</rerunFailingTestsCount>
 			</properties>
 			<dependencyManagement>
 				<dependencies>
@@ -3710,6 +3712,18 @@
 						<version>${version.arquillian-glassfish-server-managed}</version>
 						<scope>test</scope>
 					</dependency>
+					<dependency>
+						<groupId>org.jboss.logmanager</groupId>
+						<artifactId>jboss-logmanager</artifactId>
+						<version>${version.jboss-logmanager}</version>
+						<scope>test</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.wildfly.common</groupId>
+						<artifactId>wildfly-common</artifactId>
+						<version>1.6.0.Final</version>
+						<scope>test</scope>
+					</dependency>
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
@@ -3753,10 +3767,12 @@
 					<artifactId>arquillian-glassfish-server-managed</artifactId>
 					<scope>test</scope>
 					<exclusions>
+						<!--
 						<exclusion>
 							<groupId>org.glassfish.jersey.core</groupId>
 							<artifactId>jersey-client</artifactId>
 						</exclusion>
+						-->
 						<exclusion>
 							<groupId>org.glassfish.jersey.inject</groupId>
 							<artifactId>jersey-hk2</artifactId>
@@ -3766,6 +3782,24 @@
 							<artifactId>jersey-media-multipart</artifactId>
 						</exclusion>
 					</exclusions>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.logmanager</groupId>
+					<artifactId>jboss-logmanager</artifactId>
+					<scope>test</scope>
+					<!--
+					<exclusions>
+						<exclusion>
+							<groupId>org.wildfly.common</groupId>
+							<artifactId>wildfly-common</artifactId>
+						</exclusion>
+					</exclusions>
+					-->
+				</dependency>
+				<dependency>
+					<groupId>org.wildfly.common</groupId>
+					<artifactId>wildfly-common</artifactId>
+					<scope>test</scope>
 				</dependency>
 			</dependencies>
 			<build>
@@ -3804,7 +3838,6 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
-						<!--
 						<executions>
 							<execution>
 								<id>unpack</id>
@@ -3826,7 +3859,6 @@
 								</configuration>
 							</execution>
 						</executions>
-						-->
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -3875,72 +3907,61 @@
 						</executions>
 					</plugin>
 					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven3-plugin</artifactId>
+						<groupId>org.omnifaces.arquillian</groupId>
+						<artifactId>arquillian-glassfish-server-managed</artifactId>
+						<version>1.2</version>
 						<configuration>
-							<container>
-								<containerId>glassfish7x</containerId>
-								<zipUrlInstaller>
-									<url>
-										https://download.eclipse.org/ee4j/glassfish/glassfish-${glassfish.version}.zip
-									</url>
-									<downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
-									<extractDir>${project.build.directory}</extractDir>
-								</zipUrlInstaller>
-								<!-- or use artifactInstaller-->
-								<!--<artifactInstaller>
-                                    <groupId>org.glassfish.main.distributions</groupId>
-                                    <artifactId>glassfish</artifactId>
-                                    <version>${glassfish.version}</version>
-                                </artifactInstaller>-->
-								<!-- Payara server example -->
-								<!--<container>
-                                         <containerId>payara</containerId>
-                                         <artifactInstaller>
-                                             <groupId>fish.payara.distributions</groupId>
-                                             <artifactId>payara</artifactId>
-                                             <version>${payara.version}</version>
-                                         </artifactInstaller>
-                                     </container>-->
-								<dependencies>
-									<dependency>
-										<groupId>org.postgresql</groupId>
-										<artifactId>postgresql</artifactId>
-									</dependency>
-								</dependencies>
-							</container>
-							<configuration>
-								<!-- the configuration used to deploy -->
-								<!--<home>${project.build.directory}/glassfish6x-home</home>-->
-								<home>${glassfish.home}</home>
-								<properties>
-									<cargo.hostname>${cargo.hostname}</cargo.hostname>
-									<cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
-									<cargo.glassfish.admin.port>${cargo.glassfish.admin.port}</cargo.glassfish.admin.port>
-									<cargo.remote.username>admin</cargo.remote.username>
-									<cargo.remote.password>adminadmin</cargo.remote.password>
-									<cargo.datasource.datasource.postgresql>
-										cargo.datasource.driver=org.postgresql.Driver|
-										cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_glassfish|
-										cargo.datasource.jndi=jdbc/petclinicDS|
-										cargo.datasource.username=petclinic_jakartaee|
-										cargo.datasource.password=petclinic_jakartaeepwd
-									</cargo.datasource.datasource.postgresql>
-								</properties>
-							</configuration>
+							<glassfishHome>target/glassfish7</glassfishHome>
+							<environmentVariables>
+								<glassfish.home>target/glassfish7</glassfish.home>
+							</environmentVariables>
 						</configuration>
 					</plugin>
 					<plugin>
-						<groupId>fish.payara.arquillian</groupId>
-						<artifactId>arquillian-payara-server-managed</artifactId>
-						<version>3.0.alpha7</version>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<skipTests>${skip.integration.tests}</skipTests>
+							<environmentVariables>
+								<GLASSFISH_HOME>target/glassfish7</GLASSFISH_HOME>
+								<glassfish.home>target/glassfish7</glassfish.home>
+							</environmentVariables>
+							<systemProperties>
+								<property>
+									<name>skipAfterFailureCount</name>
+									<value>1</value>
+								</property>
+								<!--
+								<property>
+									<name>rerunFailingTestsCount</name>
+									<value>true</value>
+								</property>
+								-->
+								<property>
+									<name>glassfish.home</name>
+									<value>target/glassfish7</value>
+								</property>
+								<property>
+									<name>glassfishHome</name>
+									<value>target/glassfish7</value>
+								</property>
+							</systemProperties>
+							<systemPropertyVariables>
+								<arquillian.launch>glassfish-managed</arquillian.launch>
+								<glassfish.home>target/glassfish7</glassfish.home>
+								<serverConfig>standalone-full.xml</serverConfig>
+								<my.admin.password>adminadmin</my.admin.password>
+								<java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+							</systemPropertyVariables>
+						</configuration>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
 						<configuration>
 							<environmentVariables>
-								<GLASSFISH_HOME>${project.build.directory}/glassfish-{glassfish.versions}/glassfish7</GLASSFISH_HOME>
+								<GLASSFISH_HOME>target/glassfish7</GLASSFISH_HOME>
+								<glassfish.home>target/glassfish7</glassfish.home>
 							</environmentVariables>
 						</configuration>
 					</plugin>
