@@ -15,7 +15,7 @@
 
     <container qualifier="wildfly-managed" default="true">
         <configuration>
-            <property name="jbossHome">${jbossHome:target/wildfly-preview-27.0.0.Beta1}</property>
+            <property name="jbossHome">${jbossHome:target/wildfly-preview-27.0.0.Final}</property>
             <property name="serverConfig">standalone-full.xml</property>
             <property name="javaVmArguments">-Xmx512m -XX:MaxPermSize=128m</property>
             <property name="outputToConsole">true</property>
