@@ -2140,17 +2140,33 @@
 						<artifactId>maven-resources-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>id-persistence-xml</id>
+								<id>id-runtimes-resources</id>
 								<configuration>
 									<resources>
 										<resource>
 											<directory>src/main/runtimes/liberty/resources/META-INF</directory>
 										</resource>
 									</resources>
-									<outputDirectory>src/main/resources/META-INF</outputDirectory>
+									<outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
 									<overwrite>true</overwrite>
 								</configuration>
-								<phase>clean</phase>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>id-runtimes-webapps</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/runtimes/liberty/webapp/WEB-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>target/petclinic/WEB-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>prepare-package</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
@@ -2158,13 +2174,14 @@
 							<execution>
 								<id>default-resources</id>
 								<configuration>
+									<propertiesEncoding>UTF-8</propertiesEncoding>
 									<resources>
 										<resource>
 											<directory>src/main/resources</directory>
 											<includes>
 												<include>**/Messages.properties</include>
-												<include>**/Messages_en.properties</include>
 												<include>**/Messages_de.properties</include>
+												<include>**/Messages_en.properties</include>
 											</includes>
 										</resource>
 										<resource>
@@ -2313,6 +2330,68 @@
 										</artifactItem>
 									</artifactItems>
 								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>id-runtimes-resources</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/runtimes/liberty/resources/META-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>id-runtimes-webapps</id>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/main/runtimes/liberty/webapp/WEB-INF</directory>
+										</resource>
+									</resources>
+									<outputDirectory>target/petclinic/WEB-INF</outputDirectory>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>default-resources</id>
+								<configuration>
+									<propertiesEncoding>UTF-8</propertiesEncoding>
+									<resources>
+										<resource>
+											<directory>src/main/resources</directory>
+											<includes>
+												<include>**/Messages.properties</include>
+												<include>**/Messages_de.properties</include>
+												<include>**/Messages_en.properties</include>
+											</includes>
+										</resource>
+										<resource>
+											<directory>src/main/runtimes/liberty/resources</directory>
+										</resource>
+									</resources>
+									<overwrite>true</overwrite>
+								</configuration>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>resources</goal>
+								</goals>
 							</execution>
 						</executions>
 					</plugin>

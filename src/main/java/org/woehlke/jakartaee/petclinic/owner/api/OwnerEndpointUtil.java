@@ -28,7 +28,7 @@ public class OwnerEndpointUtil implements Serializable {
     private static final long serialVersionUID = 532726561254887897L;
 
     @EJB
-    private final PetEndpointUtil petEndpointUtil = new PetEndpointUtil();
+    private  PetEndpointUtil petEndpointUtil;
 
     @EJB
     private OwnerService ownerService;
