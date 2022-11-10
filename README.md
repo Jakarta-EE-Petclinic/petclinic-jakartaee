@@ -43,29 +43,29 @@ cd petclinic-jakartaee
 
 ## ... deploy and run
 
-| maven profile      | Runtime      | Version          | Status           |
-|--------------------|--------------|------------------|------------------|
-| ./mvnw -Pliberty   | OpenLiberty  | 22.0.0.10        | Jakarta EE 9.1   |
-| ./mvnw -Pwildfly   | Wildfly      | 27.0.0.Final     | Jakarta EE 10    |
-| ./mvnw -Ppayara    | Payara       | 6.2022.1         | Jakarta EE 10    | 
-| ./mvnw -Pglassfish | GlassFish    | 7.0.0-M9         | work in progress |
-| ./mvnw -Ptomee     | Apache TomEE | 9.0              | Jakarta EE 9.1   |
+| maven profile      | Runtime                                                               | Version          | Status           |
+|--------------------|-----------------------------------------------------------------------|------------------|------------------|
+| ./mvnw -Pliberty   | [OpenLiberty](https://openliberty.io/)                                | 22.0.0.10        | Jakarta EE 9.1   |
+| ./mvnw -Pwildfly   | [Wildfly](https://www.wildfly.org/)                                   | 27.0.0.Final     | Jakarta EE 10    |
+| ./mvnw -Ppayara    | [Payara](https://www.payara.fish/products/payara-platform-community/) | 6.2022.1         | Jakarta EE 10    | 
+| ./mvnw -Pglassfish | [GlassFish](https://glassfish.org/)                                   | 7.0.0-M9         | work in progress |
+| ./mvnw -Ptomee     | [Apache TomEE](https://tomee.apache.org/)                             | 9.0              | Jakarta EE 9.1   |
 
 
 ## Integration Tests
 
 Arquillian End2End Tests for REST Endpoints and for JSF Frontend Browser Tests with Graphene and Selenium.
+* 
+* [JSF, Java Server Faces: Primefaces 12.0.0](https://www.primefaces.org/)
 
-* JSF: Primefaces 12.0.0
+| maven profile                   | Runtime                                                                  | Version      | Status            |
+|---------------------------------|--------------------------------------------------------------------------|--------------|-------------------|
+| ./mvnw -Parq-liberty-managed    | [OpenLiberty](https://openliberty.io/docs/latest/overview.html)          | 22.0.0.10    | work in progress  |
+| ./mvnw -Parq-wildfly-managed    | [Wildfly](https://docs.wildfly.org/27/)                                  | 27.0.0.Final | Jakarta EE 10     |
+| ./mvnw -Parq-payara-managed     | [Payara](https://docs.payara.fish/community/docs/6.2022.1/Overview.html) | 6.2022.1     | work in progress  | 
+| ./mvnw -Parq-glassfish-managed  | [GlassFish](https://glassfish.org/documentation)                         | 7.0.0-M9     | work in progress  |
 
-| maven profile                   | Runtime      | Version      | Status            |
-|---------------------------------|--------------|--------------|-------------------|
-| ./mvnw -Parq-liberty-managed    | OpenLiberty  | 22.0.0.10    | Jakarta EE 9.1    |
-| ./mvnw -Parq-wildfly-managed    | Wildfly      | 27.0.0.Final | Jakarta EE 10     |
-| ./mvnw -Parq-payara-managed     | Payara       | 6.2022.1     | work in progress  | 
-| ./mvnw -Parq-glassfish-managed  | GlassFish    | 7.0.0-M9     | work in progress  |
-
-## Functional Requirements
+## Petclinic - Functional Requirements
 
 Object Oriented Design
 
