@@ -55,15 +55,14 @@ cd petclinic-jakartaee
 ## Integration Tests
 
 Arquillian End2End Tests for REST Endpoints and for JSF Frontend Browser Tests with Graphene and Selenium.
-* 
 * [JSF, Java Server Faces: Primefaces 12.0.0](https://www.primefaces.org/)
 
-| maven profile                   | Runtime                                                                  | Version      | Status            |
-|---------------------------------|--------------------------------------------------------------------------|--------------|-------------------|
-| ./mvnw -Parq-liberty-managed    | [OpenLiberty](https://openliberty.io/docs/latest/overview.html)          | 22.0.0.10    | work in progress  |
-| ./mvnw -Parq-wildfly-managed    | [Wildfly](https://docs.wildfly.org/27/)                                  | 27.0.0.Final | Jakarta EE 10     |
-| ./mvnw -Parq-payara-managed     | [Payara](https://docs.payara.fish/community/docs/6.2022.1/Overview.html) | 6.2022.1     | work in progress  | 
-| ./mvnw -Parq-glassfish-managed  | [GlassFish](https://glassfish.org/documentation)                         | 7.0.0-M9     | work in progress  |
+| maven profile                  | Runtime                                                                  | Version      | Status                  |
+|--------------------------------|--------------------------------------------------------------------------|--------------|-------------------------|
+| ./mvnw -Parq-liberty-managed   | [OpenLiberty](https://openliberty.io/docs/latest/overview.html)          | 22.0.0.10    | waiting for OpenLiberty |
+| ./mvnw -Parq-wildfly-managed   | [Wildfly](https://docs.wildfly.org/27/)                                  | 27.0.0.Final | OK                      |
+| ./mvnw -Parq-payara-managed    | [Payara](https://docs.payara.fish/community/docs/6.2022.1/Overview.html) | 6.2022.1     | work in progress        | 
+| ./mvnw -Parq-glassfish-managed | [GlassFish](https://glassfish.org/documentation)                         | 7.0.0-M9     | waiting for Glassfish   |
 
 ## Petclinic - Functional Requirements
 
