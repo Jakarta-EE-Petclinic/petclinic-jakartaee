@@ -8,7 +8,8 @@
 
 	<name>Petclinic Jakarta EE 10</name>
 	<description>A JSF and Jakarta EE 10 Version of Spring Petclinic and Update from Java EE 7 Petclinic.</description>
-	<url>https://jakarta-ee-petclinic.github.io/jakartaee-petclinic/</url>
+	<url>https://java.woehlke.org/petclinic-jakartaee</url>
+
 	<organization>
 		<name>Jakarta-EE-Petclinic</name>
 		<url>https://github.com/Jakarta-EE-Petclinic</url>
@@ -18,26 +19,38 @@
 		<developer>
 			<id>thomaswoehlke</id>
 			<name>Thomas Woehlke</name>
+			<email>thomas.woehlke@gmail.com</email>
 			<url>https://github.com/thomaswoehlke</url>
 			<timezone>Europe/Paris</timezone>
 		</developer>
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:Jakarta-EE-Petclinic/jakartaee-petclinic.git</connection>
-		<developerConnection>scm:git:git@github.com:Jakarta-EE-Petclinic/jakartaee-petclinic.git</developerConnection>
-		<url>https://github.com/Jakarta-EE-Petclinic/jakartaee-petclinic/tree/${project.scm.tag}</url>
+		<connection>scm:git:git@github.com:Jakarta-EE-Petclinic/petclinic-jakartaee.git</connection>
+		<developerConnection>scm:git:git@github.com:Jakarta-EE-Petclinic/petclinic-jakartaee.git</developerConnection>
+		<url>https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee/tree/${project.scm.tag}</url>
 		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
-		<url>https://github.com/Jakarta-EE-Petclinic/jakartaee-petclinic/issues</url>
+		<url>https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee/issues</url>
 		<system>GitHub</system>
 	</issueManagement>
+
 	<distributionManagement>
+		<site>
+			<id>jakartaee-petclinic.public_html</id>
+			<url>file:///${user.home}/public_html/java/petclinic-jakartaee</url>
+		</site>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>tw-thinkpad-snapshots</name>
+			<url>file://${user.home}/public_html/java/libs-snapshot-local</url>
+		</snapshotRepository>
 		<repository>
-			<id>localhost</id>
-			<url>file:///${user.home}/public_html/p/jakartaee-petclinic</url>
+			<id>central</id>
+			<name>tw-thinkpad-releases</name>
+			<url>file://${user.home}/public_html/java/libs-release-local</url>
 		</repository>
 	</distributionManagement>
 
