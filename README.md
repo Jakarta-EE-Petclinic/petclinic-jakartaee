@@ -71,11 +71,11 @@ Object Oriented Design
 ## Petclinic Overview
 
 ### Petclinic Domain Class Modell
-![Figure Domain Class Modell](etc/uml/Petclinic__Domain_Class_Modell.png)
+![Figure Domain Class Modell](etc/plantuml/Petclinic__Domain_Class_Modell.png)
 
 ### Petclinic Use Case Diagram
 
-![Figure Uses Cases Petclinic](etc/uml/Petclinic__Use_Cases.png)
+![Figure Uses Cases Petclinic](etc/plantuml/Petclinic__Use_Cases.png)
 
 ## Application
 
@@ -85,7 +85,7 @@ Object Oriented Design
 
 #### Specialty Use Case Diagram
 
-![Figure Uses Case Specialty](etc/uml/vet/specialty/Specialty__UseCase.png)
+![Figure Uses Case Specialty](etc/plantuml/vet/specialty/Specialty__UseCase.png)
 
 #### Specialty Use Case and State Table
 
@@ -103,7 +103,7 @@ Object Oriented Design
 
 #### Specialty State Diagram
 
-![Figure Uses Cases Specialty](etc/uml/vet/specialty/Specialty__UseCase__State.png)
+![Figure Uses Cases Specialty](etc/plantuml/vet/specialty/Specialty__UseCase__State.png)
 
 #### Specialty State Table
 
@@ -134,7 +134,7 @@ Object Oriented Design
 
 #### Vet Use Case Diagram
 
-![Figure Uses Cases Vet](etc/uml/vet/vet/Vet__UseCase.png)
+![Figure Uses Cases Vet](etc/plantuml/vet/vet/Vet__UseCase.png)
 
 #### Vet Use Case and State Table
 
@@ -153,7 +153,7 @@ Object Oriented Design
 
 #### Vet State Diagram
 
-![Figure Vetinarian_State_Diagram](etc/uml/vet/vet/Vet__UseCase__State.png)
+![Figure Vetinarian_State_Diagram](etc/plantuml/vet/vet/Vet__UseCase__State.png)
 
 #### Vet State Table
 
@@ -182,11 +182,11 @@ Object Oriented Design
 
 ### VetView and SpecialtyView Class Diagram
 
-![Figure View Class](etc/uml/vet/Vet__View__Class.png)
+![Figure View Class](etc/plantuml/vet/Vet__View__Class.png)
 
 ### Specialty and Vet DB Backend: vet.oodm
 
-![Figure DB Class](etc/uml/vet/Vet__DB__Class.png)
+![Figure DB Class](etc/plantuml/vet/Vet__DB__Class.png)
 
 
 
@@ -196,7 +196,7 @@ Object Oriented Design
 
 #### PetType Use Case Diagram
 
-![Figure Uses Case PetType](etc/uml/owner/pettype/PetType__UseCase.png)
+![Figure Uses Case PetType](etc/plantuml/owner/pettype/PetType__UseCase.png)
 
 #### PetType Use Cases and States Table
 
@@ -213,7 +213,7 @@ Object Oriented Design
 *) TODO
 #### PetType State Diagram
 
-![Figure Uses Cases PetType](etc/uml/owner/pettype/PetType__UseCase_State.png)
+![Figure Uses Cases PetType](etc/plantuml/owner/pettype/PetType__UseCase_State.png)
 
 #### PetType State Table
 
@@ -246,7 +246,7 @@ Object Oriented Design
 
 #### Owner Use Cases
 
-![Figure Uses Cases Owner](etc/uml/owner/owner/Owner__UseCases.png)
+![Figure Uses Cases Owner](etc/plantuml/owner/owner/Owner__UseCases.png)
 
 #### Owner State
 
@@ -269,7 +269,7 @@ Object Oriented Design
 
 ##### Owner State Diagram
 
-![Figure Uses Cases Owner](etc/uml/owner/owner/Owner__UseCases__State.png)
+![Figure Uses Cases Owner](etc/plantuml/owner/owner/Owner__UseCases__State.png)
 
 #### Owner State Table
 
@@ -306,11 +306,11 @@ Object Oriented Design
 
 ### OwnerView and PetTypeView Class Diagram
 
-![Figure View Class](etc/uml/owner/Owner__View__Class.png)
+![Figure View Class](etc/plantuml/owner/Owner__View__Class.png)
 
 ### Owner and PetType DB Backend: owner.oodm
 
-![Figure DB Class](etc/uml/owner/Owner__DB__class.png)
+![Figure DB Class](etc/plantuml/owner/Owner__DB__class.png)
 
 
 ## User: First Steps to do
