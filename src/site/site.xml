@@ -19,8 +19,10 @@
         </breadcrumbs>
         <menu name="Overview">
             <item name="About" href="ABOUT.html" />
-            <item name="JavaDocs" href="apidocs/index.html"/>
+            <item name="JavaDocs" href="apidocs/index-all.html"/>
+            <item name="JavaDocs (Test)" href="testapidocs/index-all.html"/>
             <item name="Source Xref" href="xref/index.html"/>
+            <item name="Source Xref (Test)" href="xref-test/index.html"/>
         </menu>
         <menu name="Requirements">
             <item name="Deployments" href="DEPLOYMENTS.html" />
