@@ -136,6 +136,8 @@
 		<version.lombok-maven-plugin>1.18.20.0</version.lombok-maven-plugin>
 		<version.cargo-maven3-plugin>1.10.3</version.cargo-maven3-plugin>
 		<version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
+		<version.maven-source-plugin>3.2.1</version.maven-source-plugin>
+		<version.maven-jxr-plugin>3.2.0</version.maven-jxr-plugin>
 		<version.maven-war-plugin>3.3.2</version.maven-war-plugin>
 		<version.maven-dependency-plugin>3.3.0</version.maven-dependency-plugin>
 		<version.maven-resources-plugin>3.3.0</version.maven-resources-plugin>
@@ -146,8 +148,16 @@
 		<version.maven-release-plugin>3.0.0-M6</version.maven-release-plugin>
 		<version.maven-failsafe-plugin>3.0.0-M7</version.maven-failsafe-plugin>
 		<version.maven-surefire-plugin>3.0.0-M7</version.maven-surefire-plugin>
+		<version.maven-invoker-plugin>3.3.0</version.maven-invoker-plugin>
 		<version.maven-site-plugin>3.12.0</version.maven-site-plugin>
 		<version.maven-project-info-reports-plugin>3.3.0</version.maven-project-info-reports-plugin>
+		<version.maven-checkstyle-plugin>3.1.2</version.maven-checkstyle-plugin>
+		<version.maven-checkstyle-plugin.checkstyle>10.4</version.maven-checkstyle-plugin.checkstyle>
+		<version.maven-pmd-plugin>3.17.0</version.maven-pmd-plugin>
+		<version.maven-pmd-plugin.pmd>6.49.0</version.maven-pmd-plugin.pmd>
+		<version.maven-surefire-report-plugin>3.0.0-M7</version.maven-surefire-report-plugin>
+		<version.spotbugs-maven-plugin>4.7.0.0</version.spotbugs-maven-plugin>
+		<version.asciidoctor-maven-plugin>2.2.2</version.asciidoctor-maven-plugin>
 
 		<!-- maven DevOps Plugin Versions -->
 		<version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
@@ -1356,6 +1366,11 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${version.maven-jxr-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>${version.maven-javadoc-plugin}</version>
 				</plugin>
@@ -1403,6 +1418,74 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>${version.maven-failsafe-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-invoker-plugin</artifactId>
+					<version>${version.maven-invoker-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${version.maven-pmd-plugin}</version>
+					<dependencies>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-core</artifactId>
+							<version>${version.maven-pmd-plugin.pmd}</version>
+							<scope>compile</scope>
+						</dependency>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-java</artifactId>
+							<version>${version.maven-pmd-plugin.pmd}</version>
+							<scope>compile</scope>
+						</dependency>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-javascript</artifactId>
+							<version>${version.maven-pmd-plugin.pmd}</version>
+							<scope>compile</scope>
+						</dependency>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-jsp</artifactId>
+							<version>${version.maven-pmd-plugin.pmd}</version>
+							<scope>compile</scope>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${version.maven-checkstyle-plugin}</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>${version.maven-checkstyle-plugin.checkstyle}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${version.maven-source-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${version.maven-surefire-report-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>${version.spotbugs-maven-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.asciidoctor</groupId>
+					<artifactId>asciidoctor-maven-plugin</artifactId>
+					<version>${version.asciidoctor-maven-plugin}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -1581,17 +1664,7 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<inherited>true</inherited>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-invoker-plugin</artifactId>
-				<inherited>true</inherited>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
 				<inherited>true</inherited>
 			</plugin>
 			<plugin>
@@ -2286,6 +2359,16 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-surefire-plugin</artifactId>
 							<version>${version.maven-surefire-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-clean-plugin</artifactId>
+							<version>${version.maven-clean-plugin}</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-install-plugin</artifactId>
+							<version>${version.maven-install-plugin}</version>
 						</plugin>
 					</plugins>
 				</pluginManagement>
