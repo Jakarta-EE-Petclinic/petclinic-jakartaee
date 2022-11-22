@@ -7,7 +7,7 @@
 	<version>10.0.0.8-SNAPSHOT</version>
 
 	<name>Petclinic Jakarta EE 10</name>
-	<description>A JSF and Jakarta EE 10 Version of Spring Petclinic and Update from Java EE 7 Petclinic.</description>
+	<description>Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo application using PrimeFaces JSF.</description>
 	<url>https://java.woehlke.org/petclinic-jakartaee</url>
 
 	<organization>
