@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-./mvnw -Pwildfly -Parq-wildfly-managed -Ppayara -Pliberty -Ptomee site site:deploy
+./mvnw -Parq-wildfly-managed -Pwildfly -Ppayara -Pglassfish -Pliberty -Ptomee -Puml -Pwar -Pdocker.glassfis -Pdocker-liberty -Pdocker-wildfly site site:deploy
