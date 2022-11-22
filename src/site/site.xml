@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0
+    http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+
+    <!-- https://maven.apache.org/plugins/maven-site-plugin/examples/sitedescriptor.html -->
+    <bannerLeft>
+        <name>Petclinic Jakarta EE</name>
+        <src>/img/phasenraum_logo.gif</src>
+        <href>https://java.woehlke.org/petclinic-jakartaee</href>
+    </bannerLeft>
+    <body>
+        <breadcrumbs>
+            <item name="Thomas Wöhlke (Github)" href="https://github.com/thomaswoehlke"/>
+            <item name="Petclinic (Github)" href="https://github.com/Jakarta-EE-Petclinic/"/>
+            <item name="Petclinic Jakarta EE (Github)" href="https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee"/>
+            <item name="Petclinic Jakarta EE" href="https://java.woehlke.org/petclinic-jakartaee"/>
+        </breadcrumbs>
+        <menu name="Overview">
+            <item name="About" href="ABOUT.html" />
+            <item name="JavaDocs" href="apidocs/index.html"/>
+            <item name="Source Xref" href="xref/index.html"/>
+        </menu>
+        <menu name="Requirements">
+            <item name="Deployments" href="DEPLOYMENTS.html" />
+            <item name="Nonfunctional Requirements" href="REQUIREMENTS_NONFUNCTIONAL.html" />
+            <item name="Changelog" href="CHANGELOG.html" />
+        </menu>
+        <menu name="Development">
+            <item name="Development" href="DEVELOPMENT.html" />
+            <item name="Maven Plugins" href="MAVEN_PLUGINS.html" />
+            <item name="HOWTO" href="HOWTO.html" />
+            <item name="TODO" href="TODO.html" />
+        </menu>
+        <menu ref="reports"/>
+    </body>
+    <publishDate position="left"/>
+    <version position="left"/>
+    <poweredBy>
+        <logo name="Maven" href="http://maven.apache.org/"
+              img="http://maven.apache.org/images/logos/maven-feather.png"/>
+    </poweredBy>
+</project>
