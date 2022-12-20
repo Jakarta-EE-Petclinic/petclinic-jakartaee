@@ -15,6 +15,7 @@
 		<url>https://github.com/Jakarta-EE-Petclinic</url>
 	</organization>
 	<inceptionYear>2019</inceptionYear>
+
 	<developers>
 		<developer>
 			<id>thomaswoehlke</id>
@@ -84,7 +85,7 @@
 		<version.org.eclipse.microprofile>5.0</version.org.eclipse.microprofile>
 
 		<!-- Database JDBC Driver -->
-		<version.postgresql.driver>42.5.0</version.postgresql.driver>
+		<version.postgresql.driver>42.5.1</version.postgresql.driver>
 
 		<!-- JAX-RS JSON -->
 		<version.org.jboss.resteasy>6.0.1.Final</version.org.jboss.resteasy>
@@ -109,7 +110,7 @@
 		<liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
 
 		<!-- Wildfly -->
-		<version.wildfly-runtime>27.0.0.Final</version.wildfly-runtime>
+		<version.wildfly-runtime>27.0.1.Final</version.wildfly-runtime>
 		<version.wildfly-maven-plugin>4.0.0.Beta4</version.wildfly-maven-plugin>
 		<version.wildfly-jar-maven-plugin>8.0.0.Final</version.wildfly-jar-maven-plugin>
 		<version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
@@ -121,14 +122,14 @@
 		<version.wildfly-arquillian>5.0.0.Alpha5</version.wildfly-arquillian>
 
 		<!-- Payara -->
-		<version.payara-runtime>6.2022.1</version.payara-runtime>
+		<version.payara-runtime>6.2022.2</version.payara-runtime>
 		<version.payara>${version.payara-runtime}</version.payara>
 		<version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
 		<version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
 		<payara-arquillian-container.version>3.0.alpha6</payara-arquillian-container.version>
 
 		<!-- Glassfish -->
-		<glassfish.version>7.0.0-M9</glassfish.version>
+		<glassfish.version>7.0.0</glassfish.version>
 		<version.arquillian-glassfish-server-managed>1.2</version.arquillian-glassfish-server-managed>
 
 		<!-- maven Plugin Versions -->
