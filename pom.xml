@@ -130,7 +130,7 @@
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
         <version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
-        <payara-arquillian-container.version>3.0.alpha6</payara-arquillian-container.version>
+        <payara-arquillian-container.version>3.0.alpha7</payara-arquillian-container.version>
 
         <!-- Glassfish -->
         <glassfish.version>7.0.0</glassfish.version>
@@ -1034,11 +1034,6 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces-cli</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>fish.payara.arquillian</groupId>
-            <artifactId>arquillian-payara-server-managed</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -4179,6 +4174,10 @@
                                 <glassfish.home>target/glassfish7</glassfish.home>
                             </environmentVariables>
                         </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven3-plugin</artifactId>
                     </plugin>
                 </plugins>
             </build>
