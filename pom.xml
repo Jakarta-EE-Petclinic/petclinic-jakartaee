@@ -129,7 +129,7 @@
         <version.payara-runtime>6.2022.2</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
-        <version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
+        <version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
         <payara-arquillian-container.version>3.0.alpha6</payara-arquillian-container.version>
 
         <!-- Glassfish -->
@@ -1034,6 +1034,11 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces-cli</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>fish.payara.arquillian</groupId>
+            <artifactId>arquillian-payara-server-managed</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
