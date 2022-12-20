@@ -12,4 +12,8 @@
 ## features
 * Calendar for Pet.Birthday and Visit.date
 * AJAX Frontend in JSF
-* 
+
+## Issues
+* #15 update Server to Payara 6.2022.2
+* #16 update Server to Glassfish 7.0.0
+* #17 update Server to Wildfly 27.0.1.Final

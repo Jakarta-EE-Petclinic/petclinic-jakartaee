@@ -139,7 +139,7 @@
         <!-- maven Plugin Versions -->
         <version.org.projectlombok.lombok>1.18.24</version.org.projectlombok.lombok>
         <version.lombok-maven-plugin>1.18.20.0</version.lombok-maven-plugin>
-        <version.cargo-maven3-plugin>1.10.3</version.cargo-maven3-plugin>
+        <version.cargo-maven3-plugin>1.10.4</version.cargo-maven3-plugin>
         <version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
         <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
         <version.maven-jxr-plugin>3.2.0</version.maven-jxr-plugin>
@@ -3385,7 +3385,7 @@
                     <dependency>
                         <groupId>fish.payara.api</groupId>
                         <artifactId>payara-bom</artifactId>
-                        <version>6.2022.2</version>
+                        <version>${version.payara}</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
@@ -3560,7 +3560,7 @@
                                 <containerId>payara</containerId>
                                 <zipUrlInstaller>
                                     <url>
-                                        https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/6.2022.2/payara-6.2022.2.zip
+                                        https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/${version.payara}/payara-${version.payara}.zip
                                     </url>
                                     <downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
                                     <extractDir>${project.build.directory}</extractDir>
@@ -4191,21 +4191,21 @@
                     <dependency>
                         <groupId>fish.payara.api</groupId>
                         <artifactId>payara-bom</artifactId>
-                        <version>6.2022.1</version>
+                        <version>${version.payara}</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
                     <dependency>
                         <groupId>org.glassfish.grizzly</groupId>
                         <artifactId>grizzly-bom</artifactId>
-                        <version>4.0.0.payara-p1</version>
+                        <version>4.0.0</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
                     <dependency>
                         <groupId>org.glassfish.jersey</groupId>
                         <artifactId>jersey-bom</artifactId>
-                        <version>3.1.0-M8</version>
+                        <version>3.1.0</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
