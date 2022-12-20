@@ -4198,7 +4198,7 @@
                     <dependency>
                         <groupId>org.glassfish.grizzly</groupId>
                         <artifactId>grizzly-bom</artifactId>
-                        <version>4.0.0</version>
+                        <version>4.0.0.payara-p1</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
