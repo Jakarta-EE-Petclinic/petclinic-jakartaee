@@ -129,8 +129,8 @@
         <version.payara-runtime>6.2022.2</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
-        <version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
-        <payara-arquillian-container.version>3.0.alpha7</payara-arquillian-container.version>
+        <version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
+        <payara-arquillian-container.version>3.0.alpha6</payara-arquillian-container.version>
 
         <!-- Glassfish -->
         <glassfish.version>7.0.0</glassfish.version>
@@ -841,12 +841,14 @@
                 <version>${version.junit-platform-suite-engine}</version>
                 <scope>test</scope>
             </dependency>
+            <!--
             <dependency>
                 <groupId>org.junit.platform</groupId>
                 <artifactId>junit-platform-suite-engine</artifactId>
                 <version>${version.junit-platform-suite-engine}</version>
                 <scope>test</scope>
             </dependency>
+            -->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-platform-suite</artifactId>
@@ -1034,7 +1036,6 @@
             <artifactId>primefaces-cli</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -3120,7 +3121,7 @@
         <profile>
             <id>glassfish</id>
             <properties>
-                <glassfish.version>7.0.0-M8</glassfish.version>
+                <glassfish.version>7.0.0</glassfish.version>
                 <skip.unit.tests>true</skip.unit.tests>
                 <skip.integration.tests>true</skip.integration.tests>
                 <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
@@ -3384,7 +3385,7 @@
                     <dependency>
                         <groupId>fish.payara.api</groupId>
                         <artifactId>payara-bom</artifactId>
-                        <version>6.2022.1</version>
+                        <version>6.2022.2</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
@@ -3559,7 +3560,7 @@
                                 <containerId>payara</containerId>
                                 <zipUrlInstaller>
                                     <url>
-                                        https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/6.2022.1/payara-6.2022.1.zip
+                                        https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/6.2022.2/payara-6.2022.2.zip
                                     </url>
                                     <downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
                                     <extractDir>${project.build.directory}</extractDir>
@@ -3861,7 +3862,7 @@
         <profile>
             <id>arq-glassfish-managed</id>
             <properties>
-                <glassfish.version>7.0.0-M8</glassfish.version>
+                <glassfish.version>7.0.0</glassfish.version>
                 <skip.unit.tests>true</skip.unit.tests>
                 <skip.integration.tests>false</skip.integration.tests>
                 <enableDerby>true</enableDerby>
@@ -4659,6 +4660,15 @@
                         <directory>src/test/runtimes/arq-payara-managed</directory>
                     </testResource>
                 </testResources>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>fish.payara.arquillian</groupId>
+                            <artifactId>arquillian-payara-server-managed</artifactId>
+                            <version>${version.arquillian-payara}</version>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
