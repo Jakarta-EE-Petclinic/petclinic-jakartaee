@@ -1,11 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.woehlke.jakartaee</groupId>
     <artifactId>petclinic-jakartaee</artifactId>
     <packaging>war</packaging>
-    <version>10.0.0.8-SNAPSHOT</version>
+    <version>10.0.0.8</version>
 
     <name>Petclinic Jakarta EE 10</name>
     <description>Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo application using PrimeFaces
@@ -33,7 +32,7 @@
         <connection>scm:git:git@github.com:Jakarta-EE-Petclinic/petclinic-jakartaee.git</connection>
         <developerConnection>scm:git:git@github.com:Jakarta-EE-Petclinic/petclinic-jakartaee.git</developerConnection>
         <url>https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee/tree/${project.scm.tag}</url>
-        <tag>HEAD</tag>
+        <tag>v10.0.0.8</tag>
     </scm>
 
     <issueManagement>
