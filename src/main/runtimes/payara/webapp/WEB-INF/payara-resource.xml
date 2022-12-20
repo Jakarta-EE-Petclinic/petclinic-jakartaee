@@ -20,6 +20,6 @@
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="5432"/>
         -->
-        <property name="driver" value="petclinic.war_org.postgresql.Driver_42_5"/>
+        <property name="driver" value="petclinic.war_org.postgresql.Driver_42_5_1"/>
     </jdbc-connection-pool>
 </resources>

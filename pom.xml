@@ -62,7 +62,7 @@
         <java.version>11</java.version>
         <version.maven>3.6.3</version.maven>
         <junit.version>5.8.2</junit.version>
-        <version.junit-platform-suite-engine>1.8.2</version.junit-platform-suite-engine>
+        <version.junit-platform-suite-engine>1.9.1</version.junit-platform-suite-engine>
         <version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -75,7 +75,7 @@
 
         <!-- plantuml -->
         <version.plantuml-maven-plugin>1.5.2</version.plantuml-maven-plugin>
-        <version.net.sourceforge.plantuml>1.2022.7</version.net.sourceforge.plantuml>
+        <version.net.sourceforge.plantuml>1.2022.14</version.net.sourceforge.plantuml>
 
         <!-- general -->
         <version.log4j>2.17.2</version.log4j>
@@ -88,7 +88,7 @@
         <version.org.eclipse.microprofile>5.0</version.org.eclipse.microprofile>
 
         <!-- Database JDBC Driver -->
-        <version.postgresql.driver>42.5.0</version.postgresql.driver>
+        <version.postgresql.driver>42.5.1</version.postgresql.driver>
 
         <!-- JAX-RS JSON -->
         <version.org.jboss.resteasy>6.0.1.Final</version.org.jboss.resteasy>
@@ -115,22 +115,22 @@
 
         <!-- Wildfly -->
         <version.wildfly-runtime>27.0.1.Final</version.wildfly-runtime>
-        <version.wildfly-maven-plugin>4.0.0.Beta4</version.wildfly-maven-plugin>
+        <version.wildfly-maven-plugin>4.0.0.Final</version.wildfly-maven-plugin>
         <version.wildfly-jar-maven-plugin>8.0.0.Final</version.wildfly-jar-maven-plugin>
         <version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
         <version.jboss-logmanager>2.1.19.Final</version.jboss-logmanager>
         <plugin.fork.embedded>true</plugin.fork.embedded>
         <wildfly.version>${version.wildfly-runtime}</wildfly.version>
         <jersey.version>3.0.4</jersey.version>
-        <version.wildfly-arquillian-container-managed>5.0.0.Alpha5</version.wildfly-arquillian-container-managed>
-        <version.wildfly-arquillian>5.0.0.Alpha5</version.wildfly-arquillian>
+        <version.wildfly-arquillian-container-managed>5.0.0.Alpha6</version.wildfly-arquillian-container-managed>
+        <version.wildfly-arquillian>5.0.0.Alpha6</version.wildfly-arquillian>
 
         <!-- Payara -->
         <version.payara-runtime>6.2022.2</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
-        <version.arquillian-payara>3.0.alpha6</version.arquillian-payara>
-        <payara-arquillian-container.version>3.0.alpha6</payara-arquillian-container.version>
+        <version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
+        <payara-arquillian-container.version>3.0.alpha7</payara-arquillian-container.version>
 
         <!-- Glassfish -->
         <glassfish.version>7.0.0</glassfish.version>
@@ -150,7 +150,7 @@
         <version.maven-clean-plugin>3.2.0</version.maven-clean-plugin>
         <version.maven-install-plugin>3.0.0</version.maven-install-plugin>
         <version.maven-deploy-plugin>3.0.0</version.maven-deploy-plugin>
-        <version.maven-release-plugin>3.0.0-M6</version.maven-release-plugin>
+        <version.maven-release-plugin>3.0.0-M7</version.maven-release-plugin>
         <version.maven-failsafe-plugin>3.0.0-M7</version.maven-failsafe-plugin>
         <version.maven-surefire-plugin>3.0.0-M7</version.maven-surefire-plugin>
         <version.maven-invoker-plugin>3.3.0</version.maven-invoker-plugin>
@@ -1209,13 +1209,11 @@
             <artifactId>phantomjsdriver</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
@@ -1226,7 +1224,6 @@
 			<artifactId>junit-vintage-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
-		-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
@@ -1755,6 +1752,7 @@
         <profile>
             <id>war</id>
             <properties>
+                <skipTests>false</skipTests>
                 <skip.unit.tests>false</skip.unit.tests>
                 <skip.integration.tests>true</skip.integration.tests>
             </properties>
@@ -1769,6 +1767,7 @@
             <properties>
                 <skip.unit.tests>true</skip.unit.tests>
                 <skip.integration.tests>true</skip.integration.tests>
+                <skipTests>true</skipTests>
             </properties>
             <dependencyManagement>
                 <dependencies>
