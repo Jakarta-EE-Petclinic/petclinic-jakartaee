@@ -1763,6 +1763,19 @@
         </profile>
 
         <profile>
+            <id>build</id>
+            <properties>
+                <skipTests>false</skipTests>
+                <skip.unit.tests>false</skip.unit.tests>
+                <skip.integration.tests>true</skip.integration.tests>
+            </properties>
+            <build>
+                <finalName>petclinic</finalName>
+                <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:analyze dependency:analyze-dep-mgt dependency:analyze-duplicate dependency:tree package</defaultGoal>
+            </build>
+        </profile>
+
+        <profile>
             <id>uml</id>
             <properties>
                 <skip.unit.tests>true</skip.unit.tests>
