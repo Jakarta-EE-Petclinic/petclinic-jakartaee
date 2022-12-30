@@ -10,7 +10,7 @@
     <description>Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo application using PrimeFaces
         JSF.
     </description>
-    <url>https://java.woehlke.org/petclinic-jakartaee</url>
+    <url>https://java.woehlke.org/jakartaee/petclinic-jakartaee</url>
 
     <organization>
         <name>Jakarta-EE-Petclinic</name>
@@ -43,7 +43,7 @@
     <distributionManagement>
         <site>
             <id>jakartaee-petclinic.public_html</id>
-            <url>file:///${user.home}/public_html/java/petclinic-jakartaee</url>
+            <url>file:///${user.home}/public_html/java/jakartaee/petclinic-jakartaee</url>
         </site>
         <snapshotRepository>
             <id>snapshots</id>
