@@ -1771,7 +1771,11 @@
             </properties>
             <build>
                 <finalName>petclinic</finalName>
-                <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:analyze dependency:analyze-dep-mgt dependency:analyze-duplicate dependency:tree package</defaultGoal>
+                <defaultGoal>
+                    clean dependency:purge-local-repository dependency:resolve dependency:resolve-plugins
+                    dependency:analyze dependency:analyze-dep-mgt dependency:analyze-duplicate dependency:tree package
+                    dependency:sources install site site:deploy site:jar sources:jar javadoc:jar
+                </defaultGoal>
             </build>
         </profile>
 
