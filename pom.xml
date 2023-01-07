@@ -4090,8 +4090,7 @@
                             <container>
                                 <containerId>tomee9x</containerId>
                                 <zipUrlInstaller>
-                                    <url>https://dlcdn.apache.org/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-plume.zip
-                                    </url>
+                                    <url>https://dlcdn.apache.org/tomee/tomee-9.0.0.RC1/apache-tomee-9.0.0.RC1-plume.zip</url>
                                     <downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
                                     <extractDir>${project.build.directory}</extractDir>
                                 </zipUrlInstaller>
