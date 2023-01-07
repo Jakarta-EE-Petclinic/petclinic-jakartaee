@@ -1776,7 +1776,7 @@
                     dependency:resolve dependency:resolve-plugins dependency:sources
                     dependency:analyze dependency:analyze-dep-mgt dependency:analyze-duplicate dependency:tree
                     package install
-                    site site:deploy site:jar source:jar source.test:jar javadoc:jar javadoc:test-jar
+                    site site:deploy site:jar source:jar source:test-jar javadoc:jar javadoc:test-jar
                 </defaultGoal>
             </build>
         </profile>
