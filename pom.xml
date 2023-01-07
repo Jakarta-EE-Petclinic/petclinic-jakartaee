@@ -7,8 +7,8 @@
     <version>10.0.0.9-SNAPSHOT</version>
 
     <name>Petclinic Jakarta EE 10</name>
-    <description>Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo application using PrimeFaces
-        JSF.
+    <description>
+        Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo application using PrimeFaces JSF.
     </description>
     <url>https://java.woehlke.org/jakartaee/petclinic-jakartaee</url>
 
@@ -1772,9 +1772,11 @@
             <build>
                 <finalName>petclinic</finalName>
                 <defaultGoal>
-                    clean dependency:purge-local-repository dependency:resolve dependency:resolve-plugins
-                    dependency:analyze dependency:analyze-dep-mgt dependency:analyze-duplicate dependency:tree package
-                    dependency:sources install site site:deploy site:jar sources:jar javadoc:jar
+                    clean dependency:purge-local-repository
+                    dependency:resolve dependency:resolve-plugins dependency:sources
+                    dependency:analyze dependency:analyze-dep-mgt dependency:analyze-duplicate dependency:tree
+                    package install
+                    site site:deploy site:jar source:jar source.test:jar javadoc:jar javadoc:test-jar
                 </defaultGoal>
             </build>
         </profile>
