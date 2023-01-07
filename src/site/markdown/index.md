@@ -342,9 +342,9 @@ Object Oriented Design
 * [JSF Java Server Faces: Primefaces](https://github.com/primefaces/primefaces)
 
 ### Java and Jakarta EE
-* [Jakarta EE 9.1](etc/docs/JARTKARTA_EE.md)
-* [Java jdk and jvm](etc/docs/JAVA_JDK_AND_JVM.md)
-* [Java Server Faces JSF](etc/docs/JSF_PRIMEFACES.md)
+* [Jakarta EE 9.1](JARTKARTA_EE.md)
+* [Java jdk and jvm](JAVA_JDK_AND_JVM.md)
+* [Java Server Faces JSF](JSF_PRIMEFACES.md)
 
 ## Other Ressources used in this Technology Demo
 * [jakartaee9-starter-boilerplate by hantsy](https://github.com/hantsy/jakartaee9-starter-boilerplate)
@@ -353,3 +353,4 @@ Object Oriented Design
 * [(c) 2022 Thomas Woehlke](https://github.com/thomaswoehlke)
 * [This Document](https://jakarta-ee-petclinic.github.io/petclinic-jakartaee/)
 * [github repository](https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee)
+* [maven project reports](https://java.woehlke.org/jakartaee/petclinic-jakartaee)
