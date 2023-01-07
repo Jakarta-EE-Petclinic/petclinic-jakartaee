@@ -1,6 +1,6 @@
 # petclinic-jakartaee
 
-Jakarta EE 9.1 Petclinic - a JSF and Jakarta EE Version of Spring Petclinic, and Update from Java EE 7 Petclinic
+Jakarta EE 10 Petclinic - a JSF and Jakarta EE Version of Spring Petclinic, and Update from Java EE 7 Petclinic
 
 # DevOps
 

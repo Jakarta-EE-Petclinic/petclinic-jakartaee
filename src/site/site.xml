@@ -19,21 +19,29 @@
         </breadcrumbs>
         <menu name="Overview">
             <item name="About" href="index.html" />
+        </menu>
+        <menu name="Source Code">
             <item name="JavaDocs" href="apidocs/index-all.html"/>
             <item name="JavaDocs (Test)" href="testapidocs/index-all.html"/>
             <item name="Source Xref" href="xref/index.html"/>
             <item name="Source Xref (Test)" href="xref-test/index.html"/>
         </menu>
         <menu name="Requirements">
-            <item name="Deployments" href="DEPLOYMENTS.html" />
             <item name="Nonfunctional Requirements" href="REQUIREMENTS_NONFUNCTIONAL.html" />
+            <item name="Functional Requirements" href="REQUIREMENTS_FUNCTIONAL.html" />
             <item name="Changelog" href="CHANGELOG.html" />
         </menu>
         <menu name="Development">
             <item name="Development" href="DEVELOPMENT.html" />
-            <item name="Maven Plugins" href="MAVEN_PLUGINS.html" />
-            <item name="HOWTO" href="HOWTO.html" />
             <item name="TODO" href="TODO.html" />
+        </menu>
+        <menu name="Documentation">
+            <item name="CLOUD" href="CLOUD.html" />
+            <item name="Deployments" href="DEPLOYMENTS.html" />
+            <item name="Maven Plugins" href="MAVEN_PLUGINS.html" />
+            <item name="Docker" href="DOCKER.html" />
+            <item name="HELP" href="HELP.html" />
+            <item name="HOWTO" href="HOWTO.html" />
         </menu>
         <menu ref="reports"/>
     </body>
