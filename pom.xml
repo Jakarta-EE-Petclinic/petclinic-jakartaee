@@ -84,7 +84,7 @@
 
         <!-- jakartaee APIs -->
         <version.jakarta.jakartaee-api>10.0.0</version.jakarta.jakartaee-api>
-        <version.org.eclipse.microprofile>5.0</version.org.eclipse.microprofile>
+        <version.org.eclipse.microprofile>6.0</version.org.eclipse.microprofile>
 
         <!-- Database JDBC Driver -->
         <version.postgresql.driver>42.5.1</version.postgresql.driver>
@@ -101,7 +101,7 @@
         <version.org.primefaces>12.0.0</version.org.primefaces>
 
         <!-- OpenLiberty -->
-        <version.openliberty-runtime>22.0.0.12</version.openliberty-runtime>
+        <version.openliberty-runtime>23.0.0.1-beta</version.openliberty-runtime>
         <version.liberty-maven-plugin>3.7.1</version.liberty-maven-plugin>
         <generateFeatures>false</generateFeatures>
         <runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
@@ -1968,6 +1968,7 @@
             </properties>
             <dependencyManagement>
                 <dependencies>
+                    <!--
                     <dependency>
                         <groupId>io.openliberty.features</groupId>
                         <artifactId>features-bom</artifactId>
@@ -1975,19 +1976,25 @@
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
+                    -->
                     <dependency>
+                        <!--
                         <groupId>io.openliberty</groupId>
+                        -->
+                        <groupId>io.openliberty.beta</groupId>
                         <artifactId>openliberty-runtime</artifactId>
                         <version>${version.openliberty-runtime}</version>
                         <type>zip</type>
                         <scope>test</scope>
                     </dependency>
+                    <!--
                     <dependency>
                         <groupId>io.openliberty.features</groupId>
                         <artifactId>jakartaee-9.1</artifactId>
                         <version>${version.openliberty-runtime}</version>
                         <type>esa</type>
                     </dependency>
+                    -->
                     <dependency>
                         <groupId>io.openliberty.arquillian</groupId>
                         <artifactId>arquillian-liberty-support-jakarta</artifactId>
@@ -2149,6 +2156,7 @@
                     <classifier>feature</classifier>
                     <type>zip</type>
                 </dependency>
+                <!--
                 <dependency>
                     <groupId>io.openliberty.features</groupId>
                     <artifactId>jakartaee-9.1</artifactId>
@@ -2160,6 +2168,7 @@
                         </exclusion>
                     </exclusions>
                 </dependency>
+                -->
                 <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
@@ -2418,7 +2427,10 @@
                         <artifactId>liberty-maven-plugin</artifactId>
                         <configuration>
                             <runtimeArtifact>
+                                <groupId>io.openliberty.beta</groupId>
+                                <!--
                                 <groupId>io.openliberty</groupId>
+                                -->
                                 <artifactId>openliberty-runtime</artifactId>
                                 <version>${version.openliberty-runtime}</version>
                             </runtimeArtifact>
@@ -3133,6 +3145,246 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <!-- An optional Arquillian testing profile that executes tests in your
+                WildFly instance -->
+            <!-- This profile will start a new WildFly instance, and execute the test,
+                shutting it down when done -->
+            <!-- Run with: mvn clean verify -Parq-wildfly-remote -->
+            <id>arq-wildfly-remote</id>
+            <properties>
+                <skip.unit.tests>false</skip.unit.tests>
+                <skip.integration.tests>false</skip.integration.tests>
+                <serverProfile>standalone-full.xml</serverProfile>
+                <serverRoot>${project.build.directory}/wildfly-${wildfly.version}</serverRoot>
+                <cargo.remote.username>wildfly</cargo.remote.username>
+                <cargo.remote.password>wildflypwd</cargo.remote.password>
+                <cargo.jboss.configuration>standalone</cargo.jboss.configuration>
+                <skipAfterFailureCount>1</skipAfterFailureCount>
+                <rerunFailingTestsCount>1</rerunFailingTestsCount>
+                <!--
+				<cargo.datasource.datasource.postgresql>
+					cargo.datasource.driver=org.postgresql.Driver|
+					cargo.datasource.url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_wildfly
+					cargo.datasource.jndi=jboss/datasources/PostgreSQLDS|
+					cargo.datasource.username=petclinic_jakartaee|
+					cargo.datasource.password=petclinic_jakartaeepwd
+				</cargo.datasource.datasource.postgresql>
+				-->
+            </properties>
+            <dependencies>
+                <!--<dependency>
+                    <groupId>io.undertow</groupId>
+                    <artifactId>undertow-websockets-jsr</artifactId>
+                    <version>${undertow-websockets-jsr.version}</version>
+                    <scope>test</scope>
+                </dependency>-->
+
+                <!-- TESTS -->
+                <!-- JAXRS test need the dependency:resteasy-client -->
+                <!-- Import the RestEasy Client and jackson2/json-binding/json-p provider, we use test scope
+                    as we need that for test purposes -->
+                <!--<dependency>
+                    <groupId>org.jboss.resteasy</groupId>
+                    <artifactId>resteasy-client</artifactId>
+                    <version>${resteasy.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.resteasy</groupId>
+                    <artifactId>resteasy-jackson2-provider</artifactId>
+                    <version>${resteasy.version}</version>
+                    <scope>test</scope>
+                </dependency>-->
+                <dependency>
+                    <groupId>org.jboss.logmanager</groupId>
+                    <artifactId>jboss-logmanager</artifactId>
+                    <version>${version.jboss-logmanager}</version>
+                    <scope>test</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.wildfly.common</groupId>
+                            <artifactId>wildfly-common</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>org.wildfly.arquillian</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <version>${version.wildfly-arquillian}</version>
+                    <scope>test</scope>
+                </dependency>
+                <!--
+				<dependency>
+					<groupId>org.jboss.logmanager</groupId>
+					<artifactId>jboss-logmanager</artifactId>
+					<version>${version.jboss-logmanager}</version>
+					<scope>test</scope>
+				</dependency>
+				-->
+                <!-- use Jersey client instead -->
+                <dependency>
+                    <groupId>org.glassfish.jersey.media</groupId>
+                    <artifactId>jersey-media-json-binding</artifactId>
+                    <version>${jersey.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jersey.inject</groupId>
+                    <artifactId>jersey-hk2</artifactId>
+                    <version>${jersey.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jersey.core</groupId>
+                    <artifactId>jersey-client</artifactId>
+                    <version>${jersey.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>${version.postgresql.driver}</version>
+                </dependency>
+            </dependencies>
+            <build>
+                <finalName>petclinic</finalName>
+                <defaultGoal>dependency:purge-local-repository clean package verify</defaultGoal>
+                <testResources>
+                    <testResource>
+                        <directory>src/test/runtimes/arq-wildfly-remote</directory>
+                        <includes>
+                            <include>*</include>
+                        </includes>
+                    </testResource>
+                </testResources>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.wildfly</groupId>
+                                            <artifactId>wildfly-preview-dist</artifactId>
+                                            <version>${wildfly.version}</version>
+                                            <type>zip</type>
+                                            <overWrite>false</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>id-runtimes-resources</id>
+                                <configuration>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/runtimes/wildfly/resources/META-INF</directory>
+                                        </resource>
+                                    </resources>
+                                    <outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
+                                    <overwrite>true</overwrite>
+                                </configuration>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>id-runtimes-webapps</id>
+                                <configuration>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/runtimes/wildfly/webapp/WEB-INF</directory>
+                                        </resource>
+                                    </resources>
+                                    <outputDirectory>target/petclinic/WEB-INF</outputDirectory>
+                                    <overwrite>true</overwrite>
+                                </configuration>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>default-resources</id>
+                                <configuration>
+                                    <propertiesEncoding>UTF-8</propertiesEncoding>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/resources</directory>
+                                            <includes>
+                                                <include>**/Messages.properties</include>
+                                                <include>**/Messages_de.properties</include>
+                                                <include>**/Messages_en.properties</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/runtimes/wildfly/resources</directory>
+                                        </resource>
+                                    </resources>
+                                    <overwrite>true</overwrite>
+                                </configuration>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>resources</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <skipTests>${skip.unit.tests}</skipTests>
+                            <systemProperties>
+                                <property>
+                                    <name>skipAfterFailureCount</name>
+                                    <value>1</value>
+                                </property>
+                                <!--
+								<property>
+									<name>rerunFailingTestsCount</name>
+									<value>true</value>
+								</property>
+								-->
+                            </systemProperties>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <configuration>
+                            <skipTests>${skip.integration.tests}</skipTests>
+                            <environmentVariables>
+                                <JBOSS_HOME>${project.build.directory}/wildfly-preview-${wildfly.version}</JBOSS_HOME>
+                            </environmentVariables>
+                            <systemPropertyVariables>
+                                <arquillian.launch>wildfly-remote</arquillian.launch>
+                                <serverConfig>standalone-full.xml</serverConfig>
+                                <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
 
         <profile>
             <id>glassfish</id>

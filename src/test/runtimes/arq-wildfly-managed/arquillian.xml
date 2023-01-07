@@ -19,6 +19,7 @@
             <property name="serverConfig">standalone-full.xml</property>
             <property name="javaVmArguments">-Xmx512m -XX:MaxPermSize=128m</property>
             <property name="outputToConsole">true</property>
+            <property name="instantiationTimeoutInSeconds">300</property>
         </configuration>
     </container>
 
@@ -27,7 +28,7 @@
     </extension>
 
     <extension qualifier="drone">
-        <property name="instantiationTimeoutInSeconds">120</property>
+        <property name="instantiationTimeoutInSeconds">300</property>
     </extension>
 
     <extension qualifier="screenshooter">
