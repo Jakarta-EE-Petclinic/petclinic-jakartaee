@@ -101,7 +101,7 @@
         <version.org.primefaces>12.0.0</version.org.primefaces>
 
         <!-- OpenLiberty -->
-        <version.openliberty-runtime>23.0.0.1-beta</version.openliberty-runtime>
+        <version.openliberty-runtime>23.0.0.1</version.openliberty-runtime>
         <version.liberty-maven-plugin>3.7.1</version.liberty-maven-plugin>
         <generateFeatures>false</generateFeatures>
         <runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
@@ -1980,10 +1980,10 @@
                     </dependency>
                     -->
                     <dependency>
-                        <!--
                         <groupId>io.openliberty</groupId>
-                        -->
+                        <!--
                         <groupId>io.openliberty.beta</groupId>
+                        -->
                         <artifactId>openliberty-runtime</artifactId>
                         <version>${version.openliberty-runtime}</version>
                         <type>zip</type>
@@ -2429,10 +2429,10 @@
                         <artifactId>liberty-maven-plugin</artifactId>
                         <configuration>
                             <runtimeArtifact>
-                                <groupId>io.openliberty.beta</groupId>
                                 <!--
-                                <groupId>io.openliberty</groupId>
+                                <groupId>io.openliberty.beta</groupId>
                                 -->
+                                <groupId>io.openliberty</groupId>
                                 <artifactId>openliberty-runtime</artifactId>
                                 <version>${version.openliberty-runtime}</version>
                             </runtimeArtifact>
@@ -3391,7 +3391,7 @@
         <profile>
             <id>glassfish</id>
             <properties>
-                <glassfish.version>7.0.0</glassfish.version>
+                <glassfish.version>7.0.2</glassfish.version>
                 <skip.unit.tests>true</skip.unit.tests>
                 <skip.integration.tests>true</skip.integration.tests>
                 <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
