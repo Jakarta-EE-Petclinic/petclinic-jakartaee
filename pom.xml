@@ -2429,10 +2429,7 @@
                         <artifactId>liberty-maven-plugin</artifactId>
                         <configuration>
                             <runtimeArtifact>
-                                <!--
-                                  <groupId>io.openliberty</groupId>
-                                -->
-                                <groupId>io.openliberty.beta</groupId>
+                                <groupId>io.openliberty</groupId>
                                 <artifactId>openliberty-runtime</artifactId>
                                 <version>${version.openliberty-runtime}</version>
                             </runtimeArtifact>
