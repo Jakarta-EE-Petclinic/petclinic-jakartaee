@@ -128,8 +128,8 @@
         <version.payara-runtime>6.2023.4</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
-        <version.arquillian-payara>3.0.alpha8</version.arquillian-payara>
-        <payara-arquillian-container.version>3.0.alpha8</payara-arquillian-container.version>
+        <version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
+        <payara-arquillian-container.version>3.0.alpha7</payara-arquillian-container.version>
 
         <!-- Glassfish -->
         <glassfish.version>7.0.4</glassfish.version>
