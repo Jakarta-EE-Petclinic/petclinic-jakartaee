@@ -2323,7 +2323,7 @@
             </dependencies>
             <build>
                 <finalName>petclinic</finalName>
-                <defaultGoal>clean install liberty:dev</defaultGoal>
+                <defaultGoal>clean package liberty:dev</defaultGoal>
                 <pluginManagement>
                     <plugins>
                         <plugin>
@@ -2390,6 +2390,9 @@
                                     <resources>
                                         <resource>
                                             <directory>src/main/runtimes/liberty/webapp/WEB-INF</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                     <outputDirectory>target/petclinic/WEB-INF</outputDirectory>
