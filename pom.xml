@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.woehlke.jakartaee</groupId>
@@ -3525,6 +3527,22 @@
                                     <overwrite>true</overwrite>
                                 </configuration>
                                 <phase>clean</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>id-runtimes-webapps</id>
+                                <configuration>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/runtimes/glassfish/webapp/WEB-INF</directory>
+                                        </resource>
+                                    </resources>
+                                    <outputDirectory>target/petclinic/WEB-INF</outputDirectory>
+                                    <overwrite>true</overwrite>
+                                </configuration>
+                                <phase>prepare-package</phase>
                                 <goals>
                                     <goal>copy-resources</goal>
                                 </goals>
