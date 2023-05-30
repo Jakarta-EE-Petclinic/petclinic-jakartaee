@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <server description="defaultServer">
 	<featureManager>
+		<feature>jakartaee-9.1</feature>
+		<feature>microprofile-5.0</feature>
+		<!--
 		<feature>jakartaee-10.0</feature>
 		<feature>microprofile-6.0</feature>
-		<feature>faces-4.0</feature>
-		<feature>jdbc-4.2</feature>
+		-->
 		<!--
             <feature>restfulWS-3.1</feature>
             <feature>jsonbContainer-3.0</feature>
@@ -16,6 +18,7 @@
             <feature>concurrent-3.0</feature>
             <feature>jdbc-4.2</feature>
             <feature>web-6.0</feature>
+            <feature>faces-4.0</feature>
 		-->
 	</featureManager>
 
