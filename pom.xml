@@ -132,7 +132,7 @@
         <payara-arquillian-container.version>3.0.alpha7</payara-arquillian-container.version>
 
         <!-- Glassfish -->
-        <glassfish.version>7.0.4</glassfish.version>
+        <glassfish.version>7.0.5</glassfish.version>
         <version.arquillian-glassfish-server-managed>1.4</version.arquillian-glassfish-server-managed>
 
         <!-- maven Plugin Versions -->
@@ -3388,7 +3388,6 @@
         <profile>
             <id>glassfish</id>
             <properties>
-                <glassfish.version>7.0.2</glassfish.version>
                 <skip.unit.tests>true</skip.unit.tests>
                 <skip.integration.tests>true</skip.integration.tests>
                 <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
