@@ -3,6 +3,8 @@
 	<featureManager>
 		<feature>jakartaee-10.0</feature>
 		<feature>microprofile-6.0</feature>
+		<feature>faces-4.0</feature>
+		<feature>jdbc-4.2</feature>
 		<!--
             <feature>restfulWS-3.1</feature>
             <feature>jsonbContainer-3.0</feature>
@@ -72,6 +74,8 @@
 	<ssl id="defaultSSLConfig" trustDefaultCerts="true" verifyHostname="false"/>
 
 	<keyStore id="defaultKeyStore" password="mpKeystore"/>
+
+	<logging maxFfdcAge="2d"/>
 
 	<application location="petclinic.war" type="war"
 				 id="petclinic.war"
