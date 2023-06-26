@@ -60,4 +60,10 @@
         <logo name="Maven" href="http://maven.apache.org/"
               img="http://maven.apache.org/images/logos/maven-feather.png"/>
     </poweredBy>
+    <custom>
+        <fluidoSkin>
+            <googleSearch/>
+            <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+        </fluidoSkin>
+    </custom>
 </project>
