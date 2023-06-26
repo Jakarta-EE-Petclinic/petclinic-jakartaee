@@ -98,7 +98,7 @@
         <version.webjars.bootstrap>5.2.3</version.webjars.bootstrap>
         <version.webjars.font-awesome>6.4.0</version.webjars.font-awesome>
         <version.webjars.primeflex>3.3.0</version.webjars.primeflex>
-        <version.org.primefaces>12.0.0</version.org.primefaces>
+        <version.org.primefaces>13.0.0-RC2</version.org.primefaces>
 
         <!-- OpenLiberty -->
         <version.openliberty-runtime>23.0.0.4</version.openliberty-runtime>
@@ -125,7 +125,7 @@
         <version.wildfly-arquillian>5.0.0.Final</version.wildfly-arquillian>
 
         <!-- Payara -->
-        <version.payara-runtime>6.2023.4</version.payara-runtime>
+        <version.payara-runtime>6.2023.6</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
         <version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
@@ -3868,7 +3868,7 @@
                                 <containerId>payara</containerId>
                                 <zipUrlInstaller>
                                     <url>
-                                        https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/${version.payara}/payara-${version.payara}.zip
+                                        https://repo1.maven.org/maven2/fish/payara/distributions/payara/${version.payara}/payara-${version.payara}.zip
                                     </url>
                                     <downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
                                     <extractDir>${project.build.directory}</extractDir>
