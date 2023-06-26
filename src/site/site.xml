@@ -68,6 +68,8 @@
             <profile>pre-release</profile>
             <sideBarEnabled>false</sideBarEnabled>
             <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+            <breadcrumbDivider>»</breadcrumbDivider>
+            <skipGenerationDate>true</skipGenerationDate>
         </fluidoSkin>
     </custom>
 </project>
