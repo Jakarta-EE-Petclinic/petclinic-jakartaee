@@ -62,6 +62,9 @@
     </poweredBy>
     <custom>
         <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <topBarContailerStyle>width:90%</topBarContailerStyle>
+            <sideBarEnabled>false</sideBarEnabled>
             <googleSearch/>
             <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
         </fluidoSkin>
