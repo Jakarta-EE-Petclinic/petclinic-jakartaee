@@ -65,7 +65,6 @@
             <topBarEnabled>true</topBarEnabled>
             <topBarContailerStyle>width:90%</topBarContailerStyle>
             <navBarStyle>navbar-inverse</navBarStyle>
-            <profile>pre-release</profile>
             <sideBarEnabled>false</sideBarEnabled>
             <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
             <breadcrumbDivider>»</breadcrumbDivider>
